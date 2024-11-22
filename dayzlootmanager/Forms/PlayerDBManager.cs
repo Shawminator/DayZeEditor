@@ -18,6 +18,7 @@ using OpenTK.Graphics.OpenGL;
 using System.Web.UI.Design.WebControls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic;
+using TreeViewMS;
 
 namespace DayZeEditor
 {
@@ -68,28 +69,38 @@ namespace DayZeEditor
         private void LoadPlayerList()
         {
             treeViewMS1.Nodes.Clear();
-            TreeNode root = new TreeNode("Player List")
+            TreeNode dbver = new TreeNode("DB_Versions")
             {
-                Tag = "Parent"
+                
+            };
+            dbver.Nodes.Add(new TreeNode($"ID:{playerDB.DBVersions.ID}"));
+            dbver.Nodes.Add(new TreeNode($"Structures:{playerDB.DBVersions.Structure}"));
+            treeViewMS1.Nodes.Add(dbver);
+            TreeNode root = new TreeNode("Players")
+            {
+                Tag = "Players"
             };
             foreach(DBPlayers p in playerDB.PlayerList)
             {
-                TreeNode player = new TreeNode(p.UID);
+                TreeNode player = new TreeNode($"Player UID: {p.UID}");
                 player.Nodes.Add(new TreeNode($"Database ID: {p.DBID}") { Tag = "p:" + p.DBID });
                 player.Nodes.Add(new TreeNode($"isAlive: {p.isAlive}") { Tag = "p:" + p.isAlive });
                 TreeNode Serverstats = new TreeNode("Server Stats");
-                foreach(ServerStat ss in p.playerdata.dBStats.ServerStats.serverStats)
+                if (p.playerdata != null)
                 {
-                    Serverstats.Nodes.Add(new TreeNode($"{ss.name}: {ss.Value.ToString()}"));
+                    foreach (ServerStat ss in p.playerdata.dBStats.ServerStats.serverStats)
+                    {
+                        Serverstats.Nodes.Add(new TreeNode($"{ss.name}: {ss.Value.ToString()}"));
+                    }
+                    player.Nodes.Add(Serverstats);
+                    TreeNode inventory = new TreeNode("Inventory");
+
+                    foreach (DBItem pi in p.playerdata.InventoryItems)
+                    {
+                        inventory.Nodes.Add(loadItems(pi));
+                    }
+                    player.Nodes.Add(inventory);
                 }
-                player.Nodes.Add(Serverstats);
-                TreeNode inventory = new TreeNode("Inventory");
-               
-                foreach (DBItem pi in p.playerdata.InventoryItems)
-                {
-                    inventory.Nodes.Add(loadItems(pi));
-                }
-                player.Nodes.Add(inventory);
                 root.Nodes.Add(player);
             }
             treeViewMS1.Nodes.Add(root);

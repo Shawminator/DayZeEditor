@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DayZeEditor;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -135,22 +136,33 @@ namespace DayZeLib
     }
     public class MapData
     {
+        private long pointCount;
+        private float cellsize;
+        private int cellcount;
         public bool FileExists { get; set; }
         public string FileName { get; set; }
         public List<Vec3> Mappoints { get; set; }
 
-        public MapData(string filename)
+
+        public MapData(string filename, int? mapsize = null)
         {
             if (File.Exists(filename))
             {
                 FileName = filename;
-                Mappoints = new List<Vec3>();
+                using (FileStream fs = new FileStream(FileName, FileMode.Open, FileAccess.Read))
+                using (BinaryReader br = new BinaryReader(fs))
+                {
+                    pointCount = br.ReadInt64();
+                    cellcount = (int)Math.Sqrt(pointCount);
+                    cellsize = (float)(int)mapsize / cellcount;
+                }
+                
                 FileExists = true;
             }
             else
                 FileExists = false;
         }
-        public void CreateNewData()
+        public static void CreateNewData(string FileName)
         {
             List<Vec3> points = new List<Vec3>();
             string[] lines = File.ReadAllLines(FileName);
@@ -181,59 +193,67 @@ namespace DayZeLib
                 }
             }
         }
-        public void loadpoints()
-        {
-            Mappoints = new List<Vec3>();
-            byte[] bytearray = File.ReadAllBytes(FileName);
-            using (MemoryStream ms = new MemoryStream(bytearray))
-            using (BinaryReader br = new BinaryReader(ms))
-            {
-                long count = br.ReadInt64();
-                for (int i = 0; i < count; i++)
-                {
-                    Vec3 newvec = new Vec3();
-                    newvec.X = br.ReadSingle();
-                    newvec.Y = br.ReadSingle();
-                    newvec.Z = br.ReadSingle();
-                    Mappoints.Add(newvec);
-                }
-            }
-        }
-        public float getmaphieght(float v1, float v2)
-        {
-            Vec3[] closestPoints = Mappoints.OrderBy(p => Math.Abs(v1 - p.X) + Math.Abs(v2 - p.Y)).Take(4).ToArray();
-
-            if (closestPoints.Length < 4)
-            {
-                throw new Exception("Not enough points to perform interpolation.");
-            }
-
-
-            closestPoints = closestPoints.OrderBy(p => p.X).ThenBy(p => p.Y).ToArray();
-            Vec3 p1 = closestPoints[0];
-            Vec3 p2 = closestPoints[1];
-            Vec3 p3 = closestPoints[2];
-            Vec3 p4 = closestPoints[3];
-
-
-            float denom = (p2.X - p1.X) * (p4.Y - p1.Y);
-            if (denom == 0)
-            {
-                return closestPoints.OrderBy(p => Math.Sqrt(Math.Pow(v1 - p.X, 2) + Math.Pow(v2 - p.Y, 2))).First().Z;
-            }
-            float z = (1 / denom) * (p1.Z * (p2.X - v1) * (p4.Y - v2) +
-                                     p2.Z * (v1 - p1.X) * (p4.Y - v2) +
-                                     p3.Z * (p2.X - v1) * (v2 - p1.Y) +
-                                     p4.Z * (v1 - p1.X) * (v2 - p1.Y));
-
-            return z;
-        }
         public float gethieght(float v1, float v2)
         {
-            if (Mappoints == null || Mappoints.Count == 0)
-                loadpoints();
-            //CreateNewData(); only used to bin map file
-            //List<Vec3> points = new List<Vec3>();
+            int x1 = (int)(v1 / cellsize);
+            int y1 = (int)(v2 / cellsize);
+            float start = (cellcount*x1) + y1;
+            float minDistance = float.MaxValue;
+            float closestY = 0;
+            using (FileStream fs = new FileStream(FileName, FileMode.Open, FileAccess.Read))
+            using (BinaryReader br = new BinaryReader(fs))
+            {
+                long pos = 8 + ((long)start * 12);
+                br.BaseStream.Position = pos;
+                Vec3 newvec = new Vec3();
+                newvec.X = br.ReadSingle();
+                newvec.Y = br.ReadSingle();
+                newvec.Z = br.ReadSingle();
+                float distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestY = newvec.Z;
+                }
+
+                newvec = new Vec3();
+                newvec.X = br.ReadSingle();
+                newvec.Y = br.ReadSingle();
+                newvec.Z = br.ReadSingle();
+                distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestY = newvec.Z;
+                }
+                pos = pos + (cellcount * 12);
+                br.BaseStream.Position = pos;
+                newvec.X = br.ReadSingle();
+                newvec.Y = br.ReadSingle();
+                newvec.Z = br.ReadSingle();
+                distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestY = newvec.Z;
+                }
+                newvec = new Vec3();
+                newvec.X = br.ReadSingle();
+                newvec.Y = br.ReadSingle();
+                newvec.Z = br.ReadSingle();
+                distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestY = newvec.Z;
+                    
+                }
+                //MessageBox.Show($"Hieght = {closestY}");
+            }
+            return closestY;
+            
+
+            //List<Vec3> Mappoints = new List<Vec3>();
             //byte[] bytearray = File.ReadAllBytes(FileName);
             //using (MemoryStream ms = new MemoryStream(bytearray))
             //using (BinaryReader br = new BinaryReader(ms))
@@ -245,46 +265,37 @@ namespace DayZeLib
             //        newvec.X = br.ReadSingle();
             //        newvec.Y = br.ReadSingle();
             //        newvec.Z = br.ReadSingle();
-            //        points.Add(newvec);
+            //        Mappoints.Add(newvec);
             //    }
             //}
-            //points id a List<vec3> containing X,Y,Z values.
-
-            //List<Vec3> test = points
-            //    .OrderBy(x => Math.Abs(v1 - x.X))
-            //    .ToList();
-            //List<Vec3> test2 = test
-            //    .FindAll(x => x.X == test[0].X)
-            //    .OrderBy(x => Math.Abs(v2 - x.Y))
-            //    .ToList();
-            //return test2[0].Z;
-
-            Vec3[] closestPoints = Mappoints.OrderBy(p => Math.Abs(v1 - p.X) + Math.Abs(v2 - p.Y)).Take(4).ToArray();
-
-            if (closestPoints.Length < 4)
-            {
-                throw new Exception("Not enough points to perform interpolation.");
-            }
 
 
-            closestPoints = closestPoints.OrderBy(p => p.X).ThenBy(p => p.Y).ToArray();
-            Vec3 p1 = closestPoints[0];
-            Vec3 p2 = closestPoints[1];
-            Vec3 p3 = closestPoints[2];
-            Vec3 p4 = closestPoints[3];
+
+            //Vec3[] closestPoints = Mappoints.OrderBy(p => Math.Abs(v1 - p.X) + Math.Abs(v2 - p.Y)).Take(4).ToArray();
+
+            //if (closestPoints.Length < 4)
+            //{
+            //    throw new Exception("Not enough points to perform interpolation.");
+            //}
+
+            //closestPoints = closestPoints.OrderBy(p => p.X).ThenBy(p => p.Y).ToArray();
+            //Vec3 p1 = closestPoints[0];
+            //Vec3 p2 = closestPoints[1];
+            //Vec3 p3 = closestPoints[2];
+            //Vec3 p4 = closestPoints[3];
 
 
-            float denom = (p2.X - p1.X) * (p4.Y - p1.Y);
-            if (denom == 0)
-            {
-                return closestPoints.OrderBy(p => Math.Sqrt(Math.Pow(v1 - p.X, 2) + Math.Pow(v2 - p.Y, 2))).First().Z;
-            }
-            float z = (1 / denom) * (p1.Z * (p2.X - v1) * (p4.Y - v2) +
-                                     p2.Z * (v1 - p1.X) * (p4.Y - v2) +
-                                     p3.Z * (p2.X - v1) * (v2 - p1.Y) +
-                                     p4.Z * (v1 - p1.X) * (v2 - p1.Y));
+            //float denom = (p2.X - p1.X) * (p4.Y - p1.Y);
+            //if (denom == 0)
+            //{
+            //    return closestPoints.OrderBy(p => Math.Sqrt(Math.Pow(v1 - p.X, 2) + Math.Pow(v2 - p.Y, 2))).First().Z;
+            //}
+            //float z = (1 / denom) * (p1.Z * (p2.X - v1) * (p4.Y - v2) +
+            //                         p2.Z * (v1 - p1.X) * (p4.Y - v2) +
+            //                         p3.Z * (p2.X - v1) * (v2 - p1.Y) +
+            //                         p4.Z * (v1 - p1.X) * (v2 - p1.Y));
 
-            return z;
+            //return z;
 
         }
     }

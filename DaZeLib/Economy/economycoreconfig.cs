@@ -439,7 +439,7 @@ namespace DayZeLib
             sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
             var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
             serializer.Serialize(xmlWriter, prototypeGroup, ns);
-            Console.WriteLine(sw.ToString());
+            //Console.WriteLine(sw.ToString());
             File.WriteAllText(Filename, sw.ToString());
         }
     }
@@ -503,7 +503,7 @@ namespace DayZeLib
             sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
             var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
             serializer.Serialize(xmlWriter, map, ns);
-            Console.WriteLine(sw.ToString());
+            //Console.WriteLine(sw.ToString());
             File.WriteAllText(Filename, sw.ToString());
         }
     }

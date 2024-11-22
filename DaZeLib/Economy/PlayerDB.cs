@@ -16,9 +16,21 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace DayZeLib
 {
+    public class DBVersions
+    {
+        public int ID { get; set; }
+        public int Structure { get; set; }
+
+        public DBVersions(int v1, int v2)
+        {
+            ID = v1;
+            Structure = v2;
+        }
+    }
     public class PlayerDB
     {
         public BindingList<DBPlayers> PlayerList { get; set; }
+        public DBVersions DBVersions { get; set; }
 
         public PlayerDB(string dbpath)
         {
@@ -28,6 +40,14 @@ namespace DayZeLib
             {
                 connection.Open();
                 var command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM DB_Versions";
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        DBVersions = new DBVersions(reader.GetInt32(0), reader.GetInt32(1));
+                    }
+                }
                 command.CommandText = "SELECT * FROM Players";
                 using (var reader = command.ExecuteReader())
                 {
@@ -56,7 +76,8 @@ namespace DayZeLib
             isAlive = v2;
             UID = v3;
             PlayerdataBlob = bytes;
-            playerdata = new DBPlayerdata(PlayerdataBlob);
+            if(PlayerdataBlob != null)
+                playerdata = new DBPlayerdata(PlayerdataBlob);
             
         }
     }

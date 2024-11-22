@@ -154,7 +154,7 @@ namespace DayZeEditor
             try
             {
                 Map = Image.FromFile(Application.StartupPath + currentproject.MapPath);
-                MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
+                MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz", currentproject.MapSize);
 
 
                 pictureBox2.BackgroundImage = Map;
@@ -6538,8 +6538,8 @@ namespace DayZeEditor
             WMCactualNUD.Value = weather.windMagnitude.current.actual;
             WMCtimeNUD.Value = weather.windMagnitude.current.time;
             WMCdurationNUD.Value = weather.windMagnitude.current.duration;
-            WMLminNUD.Value = weather.windMagnitude.limit.min;
-            WMLmaxNUD.Value = weather.windMagnitude.limit.max;
+            WMLminNUD.Value = weather.windMagnitude.limits.min;
+            WMLmaxNUD.Value = weather.windMagnitude.limits.max;
             WMTLminNUD.Value = weather.windMagnitude.timelimits.min;
             WMTLmaxNUD.Value = weather.windMagnitude.timelimits.max;
             WMCLminNUD.Value = weather.windMagnitude.changelimits.min;
@@ -6548,8 +6548,8 @@ namespace DayZeEditor
             WDCactualNUD.Value = weather.windDirection.current.actual;
             WDCtimeNUD.Value = weather.windDirection.current.time;
             WDCdurationNUD.Value = weather.windDirection.current.duration;
-            WDLminNUD.Value = weather.windDirection.limit.min;
-            WDLmaxNUD.Value = weather.windDirection.limit.max;
+            WDLminNUD.Value = weather.windDirection.limits.min;
+            WDLmaxNUD.Value = weather.windDirection.limits.max;
             WDTLminNUD.Value = weather.windDirection.timelimits.min;
             WDTLmaxNUD.Value = weather.windDirection.timelimits.max;
             WDCLminNUD.Value = weather.windDirection.changelimits.min;
@@ -6558,8 +6558,8 @@ namespace DayZeEditor
             SCactualNUD.Value = weather.snowfall.current.actual;
             SCtimeNUD.Value = weather.snowfall.current.time;
             SCdurationNUD.Value = weather.snowfall.current.duration;
-            SLminNUD.Value = weather.snowfall.limit.min;
-            SLmaxNUD.Value = weather.snowfall.limit.max;
+            SLminNUD.Value = weather.snowfall.limits.min;
+            SLmaxNUD.Value = weather.snowfall.limits.max;
             STLminNUD.Value = weather.snowfall.timelimits.min;
             STLmaxNUD.Value = weather.snowfall.timelimits.max;
             SCLminNUD.Value = weather.snowfall.changelimits.min;
@@ -6733,13 +6733,13 @@ namespace DayZeEditor
         private void WMLminNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            weather.windMagnitude.limit.min = WMLminNUD.Value;
+            weather.windMagnitude.limits.min = WMLminNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
         private void WMLmaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            weather.windMagnitude.limit.max = WMLmaxNUD.Value;
+            weather.windMagnitude.limits.max = WMLmaxNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
         private void WMTLminNUD_ValueChanged(object sender, EventArgs e)
@@ -6788,13 +6788,13 @@ namespace DayZeEditor
         {
 
             if (!isUserInteraction) return;
-            weather.windDirection.limit.min = WDLminNUD.Value;
+            weather.windDirection.limits.min = WDLminNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
         private void WDLmaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            weather.windDirection.limit.max = WDLmaxNUD.Value;
+            weather.windDirection.limits.max = WDLmaxNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
         private void WDTLminNUD_ValueChanged(object sender, EventArgs e)
@@ -6842,13 +6842,13 @@ namespace DayZeEditor
         private void SLminNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            weather.snowfall.limit.min = SLminNUD.Value;
+            weather.snowfall.limits.min = SLminNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
         private void SLmaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            weather.snowfall.limit.max = SLmaxNUD.Value;
+            weather.snowfall.limits.max = SLmaxNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
         private void STLminNUD_ValueChanged(object sender, EventArgs e)
@@ -7351,6 +7351,7 @@ namespace DayZeEditor
             MapgroupProtoGroupcontainerNameTB.Text = currentmapgroupprotogroupcontainer.name;
             MapgroupProtoGroupcontainerUseLootMaxNUD.Visible = MapgroupProtoGroupcontainerUseLootMaxCB.Checked = currentmapgroupprotogroupcontainer.lootmaxSpecified;
             MapgroupProtoGroupcontainerUseLootMaxNUD.Value = currentmapgroupprotogroupcontainer.lootmax;
+            label131.Text = "Number of Loot Points :- " + currentmapgroupprotogroupcontainer.point.Count();
 
             MapgroupProtoGroupPopulatecategory();
             MapgroupProtoGroupPopulateTags();
@@ -7367,6 +7368,12 @@ namespace DayZeEditor
         {
             if (!isUserInteraction) return;
             MapgroupProtoGroupcontainerUseLootMaxNUD.Visible = currentmapgroupprotogroupcontainer.lootmaxSpecified = MapgroupProtoGroupcontainerUseLootMaxCB.Checked;
+            currentproject.mapgroupproto.isDirty = true;
+        }
+        private void MapgroupProtoGroupcontainerUseLootMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentmapgroupprotogroupcontainer.lootmax = (int)MapgroupProtoGroupcontainerUseLootMaxNUD.Value;
             currentproject.mapgroupproto.isDirty = true;
         }
         private void darkButton61_Click_1(object sender, EventArgs e)
@@ -9635,6 +9642,7 @@ namespace DayZeEditor
 
             }
         }
+
 
 
 

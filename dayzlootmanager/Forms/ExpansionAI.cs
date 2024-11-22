@@ -147,7 +147,7 @@ namespace DayZeEditor
             AIPatrolSettings.Filename = AIPatrolSettingsPath;
             SetupAIPatrolSettings();
 
-            MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
+            MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz", currentproject.MapSize);
             //MapData.loadpoints();
 
             pictureBox2.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400

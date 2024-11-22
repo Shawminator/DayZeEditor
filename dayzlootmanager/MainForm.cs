@@ -30,7 +30,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.8.2.6";
+        public string VersionNumber = "0.8.2.9";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -138,6 +138,7 @@ namespace DayZeEditor
                 Projects = (JsonSerializer.Deserialize<ProjectList>(File.ReadAllText(ProjectsJson)));
                 if (Projects.getActiveProject() != null)
                 {
+                    Projects.CheckAllPaths();
                     if (Projects.getActiveProject().ProfilePath == null)
                     {
                         Projects.getActiveProject().ProfilePath = "profile";
@@ -494,6 +495,15 @@ namespace DayZeEditor
                 else
                     ExpansionQuestsButton.Visible = false;
 
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionCircleMarker\\Config\\admins.json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionCircleMarker\\Config\\dynamicpvpzone.json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionCircleMarker\\Config\\ExpansionCircleMarker.json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionCircleMarker\\Config\\itemrules.json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionCircleMarker\\Config\\polygonzones.json"))
+                    ExpansionCircleMarkerButton.Visible = true;
+                else
+                    ExpansionCircleMarkerButton.Visible = false;
+
                 if ((File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\PvZmoD_CustomisableZombies_Profile\\PvZmoD_CustomisableZombies_Characteristics.xml") &&
                     File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\PvZmoD_CustomisableZombies_Profile\\PvZmoD_CustomisableZombies_Globals.xml"))||
                     File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\PvZmoD_Information_Panel\\PvZmoD_Information_Panel.xml"))
@@ -542,7 +552,7 @@ namespace DayZeEditor
             if (hidden)
             {
                 SlidePanel.Width = SlidePanel.Width + 10;
-                if (SlidePanel.Width == 160)
+                if (SlidePanel.Width == 180)
                 {
                     timer1.Stop();
                     hidden = false;
@@ -821,6 +831,32 @@ namespace DayZeEditor
             timer1.Start();
 
         }
+        private void ExpansionCircleMarkerButton_Click(object sender, EventArgs e)
+        {
+            ExpansionCircleMarkerManager _TM = Application.OpenForms["ExpansionCircleMarkerManager"] as ExpansionCircleMarkerManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new ExpansionCircleMarkerManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading Expansion Circle Marker Manager....");
+                label1.Text = "Expansion Circle Marker Manager";
+            }
+            timer1.Start();
+        }
         private void Lootchest_Click(object sender, EventArgs e)
         {
             Lootchest _TM = Application.OpenForms["Lootchest"] as Lootchest;
@@ -978,6 +1014,32 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void SearchForLootManagerButton_Click(object sender, EventArgs e)
+        {
+            SearchForLootManager _TM = Application.OpenForms["SearchForLootManager"] as SearchForLootManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new SearchForLootManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading Search For Loot manager....");
+                label1.Text = "Base Search For Loot manager";
+            }
+            timer1.Start();
+        }
         private void RAGTysonBBManagerButton_Click(object sender, EventArgs e)
         {
             RagTysonBaseBuildingManager _TM = Application.OpenForms["RagTysonBaseBuildingManager"] as RagTysonBaseBuildingManager;
@@ -1062,8 +1124,7 @@ namespace DayZeEditor
             openfile.Title = "Please select the map_output.txt u wish to convert";
             if (openfile.ShowDialog() == DialogResult.OK)
             {
-                MapData data = new MapData(openfile.FileName);
-                data.CreateNewData();
+                MapData.CreateNewData(openfile.FileName);
             }
         }
         private void AbandonedVehicleRemoverManagerButton_Click(object sender, EventArgs e)

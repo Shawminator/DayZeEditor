@@ -51,33 +51,49 @@ namespace DayZeLib
         {
             MPG_Spawner_PointsConfigs = new BindingList<MPG_Spawner_PointsConfig>();
             Console.Write("## Starting MPG Spawner points files ##" + Environment.NewLine);
+            List<String> removelist = new List<String>();
             foreach (string file in pointsConfigs)
             {
+                if(!File.Exists(Spawnerpointspath + file + ".json"))
+                {
+                    removelist.Add(file);
+                    Console.Write("  " + file + " : ");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Does Not exist, Removing from config list...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    continue;
+                }
                 MPG_Spawner_PointsConfig MPG_Spawner_PointsConfig = new MPG_Spawner_PointsConfig();
                 try
                 {
                     MPG_Spawner_PointsConfig.Points = new BindingList<MPG_Spawner_PointConfig>(JsonSerializer.Deserialize<BindingList<MPG_Spawner_PointConfig>>(File.ReadAllText(Spawnerpointspath + file + ".json")));
                     if (MPG_Spawner_PointsConfig != null)
                     {
+                        Console.Write("  " + file + " : ");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("  OK....");
+                        Console.WriteLine("OK....");
                         Console.ForegroundColor = ConsoleColor.White;
+                        MPG_Spawner_PointsConfig.Filename = file;
+                        MPG_Spawner_PointsConfigs.Add(MPG_Spawner_PointsConfig);
                     }
-                    MPG_Spawner_PointsConfig.Filename = file;
-                    MPG_Spawner_PointsConfigs.Add(MPG_Spawner_PointsConfig);
+                    
                 }
                 catch (Exception ex)
                 {
+                    Console.Write("  " + file + " : ");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("  Failed....");
+                    Console.WriteLine("Failed....");
                     Console.ForegroundColor = ConsoleColor.White;
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
-                    {
-                        form.Invoke(new Action(() => { form.Close(); }));
-                    }
                     MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
                 }
+            }
+            if (removelist.Count > 0)
+            {
+                foreach (string rf in removelist)
+                {
+                    pointsConfigs.Remove(rf);
+                }
+                isDirty = true;
             }
             Console.Write("## End MPG Spawner points files ##" + Environment.NewLine);
         }
@@ -212,7 +228,14 @@ namespace DayZeLib
         {
             foreach (MPG_Spawner_PointsConfig Spawnerfile in MPG_Spawner_PointsConfigs)
             {
-                Spawnerfile.GetAlllists(GetPointlist());
+                if (isDirty)
+                {
+                    Spawnerfile.GetAlllists(GetPointlist());
+                }
+                else
+                {
+                    isDirty = Spawnerfile.GetAlllists(GetPointlist());
+                }
             }
         }
     }
@@ -247,14 +270,20 @@ namespace DayZeLib
             }
         }
 
-        public void GetAlllists(List<MPG_Spawner_PointConfig> mPG_Spawner_PointConfigs)
+        public bool GetAlllists(List<MPG_Spawner_PointConfig> mPG_Spawner_PointConfigs)
         {
+            bool markasdirty = false;
             foreach (MPG_Spawner_PointConfig file in Points)
             {
                 file.getalllists(mPG_Spawner_PointConfigs);
-                file.getTriggerposition();
-                file.getSpawnpositions();
+                markasdirty = file.getTriggerposition();
+                markasdirty = file.getSpawnpositions();
+                if(markasdirty == true)
+                {
+                    isDirty = true;
+                }
             }
+            return markasdirty;
         }
         public void SetAllLists()
         {
@@ -347,21 +376,44 @@ namespace DayZeLib
         {
             triggerWorkingTime = _workinghours[0].ToString() + "-" + _workinghours[1].ToString();
         }
-        public void getTriggerposition()
+        public bool getTriggerposition()
         {
+            bool markasdirty = false;
+            if (triggerPosition.Contains(",") || triggerPosition.Contains("  "))
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("  Trigger Position is wrong format, " + triggerPosition +   " Fixing....");
+                Console.ForegroundColor = ConsoleColor.White;
+                triggerPosition = triggerPosition.Replace(",", " ");
+                triggerPosition = triggerPosition.Replace("  ", " ");
+                markasdirty = true;
+
+            }
             _triggerPosition = new Vec3PandR(triggerPosition);
+            return markasdirty;
         }
         public void setTriggerposition()
         {
             triggerPosition = _triggerPosition.GetString();
         }
-        public void getSpawnpositions()
+        public bool getSpawnpositions()
         {
+            bool markasdirty = false;
             _spawnPositions = new BindingList<Vec3PandR>();
-            foreach (string s in spawnPositions)
+            for (int i = 0; i < spawnPositions.Count; i++)
             {
-                _spawnPositions.Add(new Vec3PandR(s));
+                if (spawnPositions[i].Contains(",") || spawnPositions[i].Contains("  "))
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("  Spawn Position is wrong format, " + spawnPositions[i] + " Fixing....");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    spawnPositions[i] = spawnPositions[i].Replace(",", " ");
+                    spawnPositions[i] = spawnPositions[i].Replace("  ", " ");
+                    markasdirty = true;
+                }
+                _spawnPositions.Add(new Vec3PandR(spawnPositions[i]));
             }
+            return markasdirty;
         }
         public void setSpawnpositions()
         {

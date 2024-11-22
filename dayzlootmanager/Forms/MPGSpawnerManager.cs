@@ -86,8 +86,13 @@ namespace DayZeEditor
             MPG_SPWNR_ModConfig = JsonSerializer.Deserialize<MPG_SPWNR_ModConfig>(File.ReadAllText(MPGSpawnexConfigPath));
             MPG_SPWNR_ModConfig.GetallSpawnerpointsfiles(MPG_Spawner_PointsConfigPath);
             MPG_SPWNR_ModConfig.Getalllists();
-            MPG_SPWNR_ModConfig.isDirty = false;
             MPG_SPWNR_ModConfig.Filename = MPGSpawnexConfigPath;
+            if (MPG_SPWNR_ModConfig.isDirty == true)
+            {
+                Savefiles();
+            }
+            MPG_SPWNR_ModConfig.isDirty = false;
+            
 
             configVersionNUD.Value = MPG_SPWNR_ModConfig.configVersion;
             isModDisabledCB.Checked = MPG_SPWNR_ModConfig.isModDisabled == 1 ? true : false;

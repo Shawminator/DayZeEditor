@@ -88,6 +88,24 @@ namespace DayZeEditor
             Project p = getprojectfromname(profilename);
             Projects.Remove(p);
         }
+        public void CheckAllPaths()
+        {
+            bool save = false;
+            foreach(Project p in  Projects) 
+            {
+                if(p.projectFullName.EndsWith("\\"))
+                {
+                    p.projectFullName = p.projectFullName.Remove(p.projectFullName.Length - 1);
+                    save = true;
+                }
+                if(p.ProfilePath.EndsWith("\\"))
+                {
+                    p.ProfilePath = p.ProfilePath.Remove(p.ProfilePath.Length - 1);
+                    save = true;
+                }
+            }
+            if(save) { SaveProject(false, false); }
+        }
     }
     public class Project
     {
@@ -512,7 +530,6 @@ namespace DayZeEditor
         {
             cfgEffectAreaConfig = new cfgEffectAreaConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgEffectArea.json");
         }
-
         public void AssignRarity()
         {
             int TotalNomCount = 0;
@@ -617,8 +634,6 @@ namespace DayZeEditor
                 }
             }
         }
-
-
         public void SetallTypesasDirty()
         {
             vanillaTypes.isDirty = true;
@@ -627,7 +642,5 @@ namespace DayZeEditor
                 tfile.isDirty = true;
             }
         }
-
-
     }
 }

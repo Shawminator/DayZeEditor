@@ -1,4 +1,6 @@
-﻿namespace DayZeLib
+﻿using System;
+
+namespace DayZeLib
 {
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
@@ -813,6 +815,7 @@
                 this.maxField = value;
             }
         }
+
     }
 
     /// <remarks/>
@@ -960,7 +963,7 @@
 
         private weatherWindMagnitudeCurrent currentField;
 
-        private weatherWindMagnitudeLimit limitField;
+        private weatherWindMagnitudeLimits limitsField;
 
         private weatherWindMagnitudeTimelimits timelimitsField;
 
@@ -980,15 +983,15 @@
         }
 
         /// <remarks/>
-        public weatherWindMagnitudeLimit limit
+        public weatherWindMagnitudeLimits limits
         {
             get
             {
-                return this.limitField;
+                return this.limitsField;
             }
             set
             {
-                this.limitField = value;
+                this.limitsField = value;
             }
         }
 
@@ -1079,7 +1082,7 @@
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class weatherWindMagnitudeLimit
+    public partial class weatherWindMagnitudeLimits
     {
 
         private decimal minField;
@@ -1204,7 +1207,7 @@
 
         private weatherWindDirectionCurrent currentField;
 
-        private weatherWindDirectionLimit limitField;
+        private weatherWindDirectionLimits limitsField;
 
         private weatherWindDirectionTimelimits timelimitsField;
 
@@ -1224,15 +1227,15 @@
         }
 
         /// <remarks/>
-        public weatherWindDirectionLimit limit
+        public weatherWindDirectionLimits limits
         {
             get
             {
-                return this.limitField;
+                return this.limitsField;
             }
             set
             {
-                this.limitField = value;
+                this.limitsField = value;
             }
         }
 
@@ -1323,7 +1326,7 @@
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class weatherWindDirectionLimit
+    public partial class weatherWindDirectionLimits
     {
 
         private decimal minField;
@@ -1448,7 +1451,7 @@
 
         private weatherSnowfallCurrent currentField;
 
-        private weatherSnowfallLimit limitField;
+        private weatherSnowfallLimits limitsField;
 
         private weatherSnowfallTimelimits timelimitsField;
 
@@ -1470,15 +1473,15 @@
         }
 
         /// <remarks/>
-        public weatherSnowfallLimit limit
+        public weatherSnowfallLimits limits
         {
             get
             {
-                return this.limitField;
+                return this.limitsField;
             }
             set
             {
-                this.limitField = value;
+                this.limitsField = value;
             }
         }
 
@@ -1582,7 +1585,7 @@
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class weatherSnowfallLimit
+    public partial class weatherSnowfallLimits
     {
 
         private decimal minField;

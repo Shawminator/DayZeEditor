@@ -823,7 +823,7 @@ namespace DayZeEditor
             VehicleSettings.Filename = VehicleSettingsPath;
             LoadvehicleSettings();
 
-            MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
+            MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz", currentproject.MapSize);
 
             tabControl3.ItemSize = new Size(0, 1);
             tabControl4.ItemSize = new Size(0, 1);

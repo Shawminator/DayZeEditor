@@ -206,7 +206,7 @@ namespace DayZeEditor
             SetupListBoxes();
             dataGridView1.Invalidate();
 
-            data = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
+            data = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz", currentproject.MapSize);
 
             pictureBox1.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Chernarus Map Size is 15360 x 15360, 0,0 bottom left, center 7680 x 7680
             pictureBox1.Size = new Size(currentproject.MapSize, currentproject.MapSize);
@@ -2311,13 +2311,11 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton49_Click(object sender, EventArgs e)
         {
             MarketCats.SortbyDisplayName();
             SetupMarketCatsTreeview();
         }
-
         private void darkButton48_Click(object sender, EventArgs e)
         {
             MarketCats.Sortbyfilename();
@@ -4201,9 +4199,10 @@ namespace DayZeEditor
         }
         private void toolStripMenuItem3_Click_1(object sender, EventArgs e)
         {
-            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("input perecentage to Increase Price by\neg. 50 for 50%", "Price", "");
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("input perecentage to change Price by\nTo Decrease add a - before number \neg. -50 to decrease by 50%", "Price", "");
             if (UserAnswer == "") return;
             int value = Convert.ToInt32(UserAnswer);
+
             foreach (marketItem item in currentCat.Items)
             {
                 decimal num1 = (decimal)value / 100;

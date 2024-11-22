@@ -166,6 +166,11 @@
     <Compile Include="ExpansionAI\AILoadouts.cs" />
     <Compile Include="ExpansionAI\DynamicAI.cs" />
     <Compile Include="ExpansionAI\ExpansionAIPatrolSettings.cs" />
+    <Compile Include="ExpansionCircleMarker\ECMAdminConfig.cs" />
+    <Compile Include="ExpansionCircleMarker\ECMDynamicPVPZoneConfig.cs" />
+    <Compile Include="ExpansionCircleMarker\ECMExpansionCircleMarkerConfig.cs" />
+    <Compile Include="ExpansionCircleMarker\ECMItemRulesConfig.cs" />
+    <Compile Include="ExpansionCircleMarker\ECMPolygonZonesConfig.cs" />
     <Compile Include="ExpansionExtras\ATMs.cs" />
     <Compile Include="ExpansionMarket\MarketCategories.cs" />
     <Compile Include="ExpansionMarket\marketsettings.cs" />
@@ -274,6 +279,7 @@
     <Compile Include="Rag\RagBasebuilding.cs" />
     <Compile Include="RHCaptureTheFlag\CaptureTheFlag.cs" />
     <Compile Include="RHLootBoxes\RHLootBoxes.cs" />
+    <Compile Include="SearchForLoot\SFLConfig.cs" />
     <Compile Include="SpawnerBubaku\SpawnerBubaku.cs" />
     <Compile Include="TraderPlus\TraderPlusBankingConfig.cs" />
     <Compile Include="TraderPlus\TraderPlusGeneralConfig.cs" />
@@ -324,6 +330,9 @@
       <Project>{01294A8F-3EC3-457C-B260-6657DAF69ECB}</Project>
       <Name>TreeViewMS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TimedCrate\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

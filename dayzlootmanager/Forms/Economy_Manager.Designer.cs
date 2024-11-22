@@ -940,6 +940,7 @@ namespace DayZeEditor
             this.groupBox71 = new System.Windows.Forms.GroupBox();
             this.MapGroupProtoGroupContainersLB = new System.Windows.Forms.ListBox();
             this.groupBox69 = new System.Windows.Forms.GroupBox();
+            this.label131 = new System.Windows.Forms.Label();
             this.MapgroupProtoGroupcontainerUseLootMaxNUD = new System.Windows.Forms.NumericUpDown();
             this.MapgroupProtoGroupcontainerUseLootMaxCB = new System.Windows.Forms.CheckBox();
             this.MapgroupProtoGroupcontainerNameTB = new DarkUI.Controls.DarkTextBox();
@@ -14005,6 +14006,7 @@ namespace DayZeEditor
             // 
             // groupBox69
             // 
+            this.groupBox69.Controls.Add(this.label131);
             this.groupBox69.Controls.Add(this.MapgroupProtoGroupcontainerUseLootMaxNUD);
             this.groupBox69.Controls.Add(this.MapgroupProtoGroupcontainerUseLootMaxCB);
             this.groupBox69.Controls.Add(this.MapgroupProtoGroupcontainerNameTB);
@@ -14016,6 +14018,17 @@ namespace DayZeEditor
             this.groupBox69.TabIndex = 67;
             this.groupBox69.TabStop = false;
             this.groupBox69.Text = "Container Info";
+            // 
+            // label131
+            // 
+            this.label131.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label131.AutoSize = true;
+            this.label131.ForeColor = System.Drawing.SystemColors.Control;
+            this.label131.Location = new System.Drawing.Point(205, 46);
+            this.label131.Name = "label131";
+            this.label131.Size = new System.Drawing.Size(121, 13);
+            this.label131.TabIndex = 135;
+            this.label131.Text = "Number of Loot Points :-";
             // 
             // MapgroupProtoGroupcontainerUseLootMaxNUD
             // 
@@ -14031,6 +14044,7 @@ namespace DayZeEditor
             this.MapgroupProtoGroupcontainerUseLootMaxNUD.Size = new System.Drawing.Size(68, 20);
             this.MapgroupProtoGroupcontainerUseLootMaxNUD.TabIndex = 14;
             this.MapgroupProtoGroupcontainerUseLootMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MapgroupProtoGroupcontainerUseLootMaxNUD.ValueChanged += new System.EventHandler(this.MapgroupProtoGroupcontainerUseLootMaxNUD_ValueChanged);
             // 
             // MapgroupProtoGroupcontainerUseLootMaxCB
             // 
@@ -14955,7 +14969,7 @@ namespace DayZeEditor
             this.tabControl22.Location = new System.Drawing.Point(3, 3);
             this.tabControl22.Name = "tabControl22";
             this.tabControl22.SelectedIndex = 0;
-            this.tabControl22.Size = new System.Drawing.Size(275, 542);
+            this.tabControl22.Size = new System.Drawing.Size(275, 585);
             this.tabControl22.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl22.TabIndex = 58;
             // 
@@ -14966,7 +14980,7 @@ namespace DayZeEditor
             this.tabPage5.Location = new System.Drawing.Point(4, 5);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(267, 533);
+            this.tabPage5.Size = new System.Drawing.Size(267, 576);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "tabPage5";
             // 
@@ -14981,7 +14995,7 @@ namespace DayZeEditor
             this.MapGroupProtoGroupsLB.FormattingEnabled = true;
             this.MapGroupProtoGroupsLB.Location = new System.Drawing.Point(3, 4);
             this.MapGroupProtoGroupsLB.Name = "MapGroupProtoGroupsLB";
-            this.MapGroupProtoGroupsLB.Size = new System.Drawing.Size(261, 524);
+            this.MapGroupProtoGroupsLB.Size = new System.Drawing.Size(261, 563);
             this.MapGroupProtoGroupsLB.TabIndex = 50;
             this.MapGroupProtoGroupsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.MapGroupProtoGroupsLB.SelectedIndexChanged += new System.EventHandler(this.MapGroupProtoGroupsLB_SelectedIndexChanged);
@@ -18964,5 +18978,6 @@ namespace DayZeEditor
         private System.Windows.Forms.RadioButton eventgroupSecondarySpawnRB;
         private System.Windows.Forms.RadioButton eventgroupLootoptionRB;
         private System.Windows.Forms.CheckBox eventgroupdelootCB;
+        private System.Windows.Forms.Label label131;
     }
 }
