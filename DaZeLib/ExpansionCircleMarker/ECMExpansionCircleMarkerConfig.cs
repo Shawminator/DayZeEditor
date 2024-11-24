@@ -34,6 +34,7 @@ namespace DayZeLib
         public int OnlyAllowAIToDoDamageIfPlayerIsPvP { get; set; }
         public int AllowDamageToAIEverywhere { get; set; }
         public int AllowDamageToAIOnlyIfPlayerHasPvPStatus { get; set; }
+        public int IgnoreDamageProtectionForAIOwnedItems { get; set; }
         public int DisableExpansionGroupsFriendlyFire { get; set; }
         public int DisableExpansionGroupsFriendlyFireItemDamage { get; set; }
         public string PvPIconPath { get; set; }

@@ -61,6 +61,7 @@ namespace DayZeEditor
             this.OnlyAllowAIToDoDamageIfPlayerIsPvPCB = new System.Windows.Forms.CheckBox();
             this.AllowDamageToAIEverywhereCB = new System.Windows.Forms.CheckBox();
             this.AllowDamageToAIOnlyIfPlayerHasPvPStatusCB = new System.Windows.Forms.CheckBox();
+            this.IgnoreDamageProtectionForAIOwnedItemsCB = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.EnablePvPZoneCreationWhileLockpickingVehicleCB = new System.Windows.Forms.CheckBox();
@@ -374,8 +375,8 @@ namespace DayZeEditor
             this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(107, 25);
-            this.toolStripButton6.Text = "Admins and Items";
+            this.toolStripButton6.Size = new System.Drawing.Size(96, 25);
+            this.toolStripButton6.Text = "General Settings";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // toolStripSeparator1
@@ -607,7 +608,7 @@ namespace DayZeEditor
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox8.Location = new System.Drawing.Point(354, 213);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(279, 114);
+            this.groupBox8.Size = new System.Drawing.Size(279, 136);
             this.groupBox8.TabIndex = 282;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Ai Settings";
@@ -618,11 +619,12 @@ namespace DayZeEditor
             this.flowLayoutPanel7.Controls.Add(this.OnlyAllowAIToDoDamageIfPlayerIsPvPCB);
             this.flowLayoutPanel7.Controls.Add(this.AllowDamageToAIEverywhereCB);
             this.flowLayoutPanel7.Controls.Add(this.AllowDamageToAIOnlyIfPlayerHasPvPStatusCB);
+            this.flowLayoutPanel7.Controls.Add(this.IgnoreDamageProtectionForAIOwnedItemsCB);
             this.flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel7.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 16);
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            this.flowLayoutPanel7.Size = new System.Drawing.Size(273, 95);
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(273, 117);
             this.flowLayoutPanel7.TabIndex = 12;
             // 
             // AllowAIToDoDamageEverywhereCB
@@ -673,13 +675,24 @@ namespace DayZeEditor
             this.AllowDamageToAIOnlyIfPlayerHasPvPStatusCB.UseVisualStyleBackColor = true;
             this.AllowDamageToAIOnlyIfPlayerHasPvPStatusCB.CheckedChanged += new System.EventHandler(this.generaslSetiingsCheckBox_CheckedChanged);
             // 
+            // IgnoreDamageProtectionForAIOwnedItemsCB
+            // 
+            this.IgnoreDamageProtectionForAIOwnedItemsCB.AutoSize = true;
+            this.IgnoreDamageProtectionForAIOwnedItemsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.IgnoreDamageProtectionForAIOwnedItemsCB.Location = new System.Drawing.Point(3, 95);
+            this.IgnoreDamageProtectionForAIOwnedItemsCB.Name = "IgnoreDamageProtectionForAIOwnedItemsCB";
+            this.IgnoreDamageProtectionForAIOwnedItemsCB.Size = new System.Drawing.Size(246, 17);
+            this.IgnoreDamageProtectionForAIOwnedItemsCB.TabIndex = 195;
+            this.IgnoreDamageProtectionForAIOwnedItemsCB.Text = "Ignore Damage Protection For AI Owned Items";
+            this.IgnoreDamageProtectionForAIOwnedItemsCB.UseVisualStyleBackColor = true;
+            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.flowLayoutPanel6);
             this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox7.Location = new System.Drawing.Point(354, 333);
+            this.groupBox7.Location = new System.Drawing.Point(3, 333);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(279, 110);
+            this.groupBox7.Size = new System.Drawing.Size(345, 110);
             this.groupBox7.TabIndex = 282;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "LockPick Settings";
@@ -694,7 +707,7 @@ namespace DayZeEditor
             this.flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 16);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(273, 91);
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(339, 91);
             this.flowLayoutPanel6.TabIndex = 12;
             // 
             // EnablePvPZoneCreationWhileLockpickingVehicleCB
@@ -761,9 +774,9 @@ namespace DayZeEditor
             // 
             this.groupBox6.Controls.Add(this.flowLayoutPanel5);
             this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox6.Location = new System.Drawing.Point(3, 333);
+            this.groupBox6.Location = new System.Drawing.Point(354, 355);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(345, 110);
+            this.groupBox6.Size = new System.Drawing.Size(279, 88);
             this.groupBox6.TabIndex = 281;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Camera Settings";
@@ -777,7 +790,7 @@ namespace DayZeEditor
             this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 16);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(339, 91);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(273, 69);
             this.flowLayoutPanel5.TabIndex = 12;
             // 
             // PvPForceFirstPersonCB
@@ -951,7 +964,6 @@ namespace DayZeEditor
             // DisablePlayerZoneCheckIntervalCB
             // 
             this.DisablePlayerZoneCheckIntervalCB.AutoSize = true;
-            this.DisablePlayerZoneCheckIntervalCB.Enabled = false;
             this.DisablePlayerZoneCheckIntervalCB.ForeColor = System.Drawing.SystemColors.Control;
             this.DisablePlayerZoneCheckIntervalCB.Location = new System.Drawing.Point(3, 120);
             this.DisablePlayerZoneCheckIntervalCB.Name = "DisablePlayerZoneCheckIntervalCB";
@@ -964,7 +976,6 @@ namespace DayZeEditor
             // DisablePlayerMinMoveDistanceCB
             // 
             this.DisablePlayerMinMoveDistanceCB.AutoSize = true;
-            this.DisablePlayerMinMoveDistanceCB.Enabled = false;
             this.DisablePlayerMinMoveDistanceCB.ForeColor = System.Drawing.SystemColors.Control;
             this.DisablePlayerMinMoveDistanceCB.Location = new System.Drawing.Point(3, 143);
             this.DisablePlayerMinMoveDistanceCB.Name = "DisablePlayerMinMoveDistanceCB";
@@ -2955,5 +2966,6 @@ namespace DayZeEditor
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
         private System.Windows.Forms.CheckBox DisableExpansionGroupsFriendlyFireCB;
         private System.Windows.Forms.CheckBox DisableExpansionGroupsFriendlyFireItemDamageCB;
+        private System.Windows.Forms.CheckBox IgnoreDamageProtectionForAIOwnedItemsCB;
     }
 }

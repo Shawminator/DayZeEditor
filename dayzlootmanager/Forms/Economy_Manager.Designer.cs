@@ -6289,7 +6289,6 @@ namespace DayZeEditor
             this.fastColoredTextBox2.DefaultMarkerSize = 8;
             this.fastColoredTextBox2.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox2.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox2.IsReplaceMode = false;
             this.fastColoredTextBox2.Location = new System.Drawing.Point(3, 3);
@@ -8525,7 +8524,7 @@ namespace DayZeEditor
             this.PlayerSpawnFreshButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnFreshButton.Image")));
             this.PlayerSpawnFreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnFreshButton.Name = "PlayerSpawnFreshButton";
-            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(39, 22);
             this.PlayerSpawnFreshButton.Text = "Fresh";
             this.PlayerSpawnFreshButton.Click += new System.EventHandler(this.PlayerSpawnFreshButton_Click);
             // 
@@ -8545,7 +8544,7 @@ namespace DayZeEditor
             this.PlayerSpawnHopButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnHopButton.Image")));
             this.PlayerSpawnHopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnHopButton.Name = "PlayerSpawnHopButton";
-            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(34, 22);
             this.PlayerSpawnHopButton.Text = "Hop";
             this.PlayerSpawnHopButton.Click += new System.EventHandler(this.PlayerSpawnHopButton_Click);
             // 
@@ -8565,7 +8564,7 @@ namespace DayZeEditor
             this.PlayerSpawnTravelButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnTravelButton.Image")));
             this.PlayerSpawnTravelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnTravelButton.Name = "PlayerSpawnTravelButton";
-            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(41, 22);
             this.PlayerSpawnTravelButton.Text = "Travel";
             this.PlayerSpawnTravelButton.Click += new System.EventHandler(this.PlayerSpawnTravelButton_Click);
             // 
@@ -15527,6 +15526,7 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);

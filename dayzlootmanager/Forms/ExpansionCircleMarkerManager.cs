@@ -95,6 +95,8 @@ namespace DayZeEditor
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 2;
+            toolStripButton4.AutoSize = true;
+            toolStripButton5.AutoSize = true;
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1186,6 +1188,7 @@ namespace DayZeEditor
             OnlyAllowAIToDoDamageIfPlayerIsPvPCB.Checked = ECMExpansionCircleMarkerConfig.OnlyAllowAIToDoDamageIfPlayerIsPvP == 1 ? true : false;
             AllowDamageToAIEverywhereCB.Checked = ECMExpansionCircleMarkerConfig.AllowDamageToAIEverywhere == 1 ? true : false;
             AllowDamageToAIOnlyIfPlayerHasPvPStatusCB.Checked = ECMExpansionCircleMarkerConfig.AllowDamageToAIOnlyIfPlayerHasPvPStatus == 1 ? true : false;
+            IgnoreDamageProtectionForAIOwnedItemsCB.Checked = ECMExpansionCircleMarkerConfig.IgnoreDamageProtectionForAIOwnedItems == 1 ? true : false;
             EnablePvPZoneCreationWhileLockpickingVehicleCB.Checked = ECMExpansionCircleMarkerConfig.EnablePvPZoneCreationWhileLockpickingVehicle == 1 ? true : false;
             EnableLockpickingBroadcastCB.Checked = ECMExpansionCircleMarkerConfig.EnableLockpickingBroadcast == 1 ? true : false;
             LockpickingBroadcastRadiusNUD.Value = ECMExpansionCircleMarkerConfig.LockpickingBroadcastRadius;
@@ -1294,7 +1297,6 @@ namespace DayZeEditor
                 ObjectsToCreateDynamicZones.Nodes.Add(dynamiczoneTN);
             }
             EMCZonesTV.Nodes.Add(ObjectsToCreateDynamicZones);
-            EMCZonesTV.Nodes.Add(emcPolygonZones);
             TreeNode Statichelizones = new TreeNode("Static event Zones")
             {
                 Tag = "emcStaticEventZones",
