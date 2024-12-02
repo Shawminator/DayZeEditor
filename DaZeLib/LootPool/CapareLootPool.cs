@@ -8,6 +8,7 @@ namespace DayZeLib
         public BindingList<caparelprewardtable> CapareLPRewardTables { get; set; }
         public BindingList<caparelploottable> CapareLPLootTables { get; set; }
         public BindingList<capareLPdefinedItems> CapareLPdefinedItems { get; set; }
+        public BindingList<CapareLPLootItemSet> CapareLPItemSets { get; set; }
         public int NumberOfExtraMagsForDefinedWeapons { get; set; }
 
         [JsonIgnore]
@@ -35,6 +36,21 @@ namespace DayZeLib
         public override string ToString()
         {
             return TableName;
+        }
+    }
+    public class CapareLPLootItemSet
+    {
+        public string SetName { get; set; }
+        public BindingList<string> SetItems { get; set; }
+
+        public CapareLPLootItemSet() 
+        {
+            SetItems = new BindingList<string>();
+        }
+
+        public override string ToString()
+        {
+            return SetName;
         }
     }
 

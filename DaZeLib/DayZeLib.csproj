@@ -252,6 +252,7 @@
     <Compile Include="Helper\Helper.cs" />
     <Compile Include="Helper\Project.cs" />
     <Compile Include="Helper\XYZMapping.cs" />
+    <Compile Include="KillReward\KillReward_KillRewardBASESettings.cs" />
     <Compile Include="KingOfTheHill\KOTH.cs" />
     <Compile Include="KOSZone\KOSZone.cs" />
     <Compile Include="LootPool\CapareLootPool.cs" />

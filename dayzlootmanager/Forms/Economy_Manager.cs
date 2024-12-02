@@ -19,6 +19,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace DayZeEditor
 {
@@ -27,8 +28,6 @@ namespace DayZeEditor
         public bool isUserInteraction = true;
 
         public Project currentproject { get; set; }
-
-
         public TypesFile vanillatypes;
         public List<TypesFile> ModTypes;
         public TypesFile currentTypesFile;
@@ -1090,119 +1089,65 @@ namespace DayZeEditor
                     }
                 }
             }
-            this.treeViewMS1.SelectedNode = usingtreenode;
             treeViewMS1.Focus();
         }
         private void treeViewMS1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             TreeNode usingtreenode = e.Node;
+            treeViewMS1.SelectedNode = usingtreenode;
             if (ModifierKeys.HasFlag(Keys.Control) || ModifierKeys.HasFlag(Keys.Shift))
             {
                 return;
             }
-            if (usingtreenode.Tag != null && usingtreenode.Tag is typesType)
+            DeleteTypesTSMI.Visible = false;
+            AddTypesTSMI.Visible = false;
+            updateTypesFromFileToolStripMenuItem.Visible = false;
+            DeleteSpecificTypeTSMI.Visible = false;
+            exportAllToExcelToolStripMenuItem.Visible = false;
+            checkForDuplicateTypesTSMI.Visible = false;
+            if (e.Button == MouseButtons.Right)
             {
-                TreeNode parent = usingtreenode.Parent;
-                TreeNode mainparent = parent.Parent;
-                currentcollection = parent.Text;
-                String typesfile = mainparent.Text;
-                if (typesfile == "Vanilla Types")
-                    currentTypesFile = vanillatypes;
-                else
-                    currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == typesfile);
-                isUserInteraction = false;
-                tabControl1.SelectedIndex = 0;
-                currentlootpart = usingtreenode.Tag as typesType;
-                PopulateLootPartInfo();
-                isUserInteraction = true;
-                if (e.Button == MouseButtons.Right)
+                if (usingtreenode.Tag != null && usingtreenode.Tag is typesType)
                 {
-                    // Display context menu for eg:
-                    DeleteTypesTSMI.Visible = false;
-                    AddTypesTSMI.Visible = false;
-                    updateTypesFromFileToolStripMenuItem.Visible = false;
                     DeleteSpecificTypeTSMI.Visible = true;
-                    exportAllToExcelToolStripMenuItem.Visible = false;
-                    DeleteSpecificTypeTSMI.Text = "Delete " + currentlootpart.name + " from " + currentcollection + " in " + typesfile;
-                    checkForDuplicateTypesTSMI.Visible = false;
+                    DeleteSpecificTypeTSMI.Text = "Delete " + currentlootpart.name + " from " + currentcollection + " in " + usingtreenode.Parent.Parent.Text;
                     TypesContextMenu.Show(Cursor.Position);
                 }
-            }
-            else if (usingtreenode.Tag != null && usingtreenode.Tag is string)
-            {
-                tabControl1.SelectedIndex = 1;
-                currentcollection = usingtreenode.Tag.ToString();
-                darkLabel2.Text = currentcollection;
-                TreeNode parent = usingtreenode.Parent;
-
-                if (parent != null && parent.Tag.ToString() == "Parent")
+                else if (usingtreenode.Tag != null && usingtreenode.Tag is string)
                 {
-                    FullTypes = true;
-                    if (currentcollection == "VanillaTypes")
+                    if (usingtreenode.Parent != null && usingtreenode.Parent.Tag.ToString() == "Parent")
                     {
-                        currentTypesFile = vanillatypes;
-                        if (e.Button == MouseButtons.Right)
+                        FullTypes = true;
+                        if (currentcollection == "VanillaTypes")
                         {
-                            // Display context menu for eg:
-                            DeleteSpecificTypeTSMI.Visible = false;
-                            DeleteTypesTSMI.Visible = false;
                             AddTypesTSMI.Visible = true;
                             AddTypesTSMI.Text = "Add new Types to Vanilla Types";
                             updateTypesFromFileToolStripMenuItem.Visible = true;
                             updateTypesFromFileToolStripMenuItem.Text = "Update Vanilla Types from external file";
                             checkForDuplicateTypesTSMI.Visible = false;
                             TypesContextMenu.Show(Cursor.Position);
-
                         }
-                    }
-                    else
-                    {
-                        currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == currentcollection);
-                        if (e.Button == MouseButtons.Right)
+                        else
                         {
-                            DeleteSpecificTypeTSMI.Visible = false;
-                            // Display context menu for eg:
                             DeleteTypesTSMI.Visible = true;
                             DeleteTypesTSMI.Text = "Delete " + currentTypesFile.modname;
                             AddTypesTSMI.Visible = true;
                             AddTypesTSMI.Text = "Add new Types to " + currentTypesFile.modname;
                             updateTypesFromFileToolStripMenuItem.Visible = true;
                             updateTypesFromFileToolStripMenuItem.Text = "Update " + currentTypesFile.modname + " From external file";
-                            checkForDuplicateTypesTSMI.Visible = false;
-                            exportAllToExcelToolStripMenuItem.Visible = false;
                             TypesContextMenu.Show(Cursor.Position);
                         }
                     }
-                }
-                else if (parent != null)
-                {
-                    FullTypes = false;
-                    if (parent.Text == "Vanilla Types")
-                        currentTypesFile = vanillatypes;
-                    else
+                    else if (usingtreenode.Parent != null)
                     {
-                        currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == parent.Text);
-                    }
-                    if (e.Button == MouseButtons.Right)
-                    {
-                        DeleteSpecificTypeTSMI.Visible = false;
+                        FullTypes = false;
                         DeleteTypesTSMI.Visible = true;
-                        AddTypesTSMI.Visible = false;
-                        updateTypesFromFileToolStripMenuItem.Visible = false;
-                        checkForDuplicateTypesTSMI.Visible = false;
-                        exportAllToExcelToolStripMenuItem.Visible = false;
                         DeleteTypesTSMI.Text = "Delete " + currentcollection + " from " + currentTypesFile.modname;
                         TypesContextMenu.Show(Cursor.Position);
                     }
-                }
-                else if (currentcollection == "Parent")
-                {
-                    if (e.Button == MouseButtons.Right)
+                    else if(currentcollection == "Parent")
                     {
-                        DeleteSpecificTypeTSMI.Visible = false;
                         AddTypesTSMI.Visible = true;
-                        updateTypesFromFileToolStripMenuItem.Visible = false;
-                        DeleteTypesTSMI.Visible = false;
                         checkForDuplicateTypesTSMI.Visible = true;
                         exportAllToExcelToolStripMenuItem.Visible = true;
                         AddTypesTSMI.Text = "Add new Types to Custom Folder";
@@ -1210,7 +1155,6 @@ namespace DayZeEditor
                     }
                 }
             }
-            this.treeViewMS1.SelectedNode = usingtreenode;
         }
         private void checkForDuplicateTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1782,14 +1726,16 @@ namespace DayZeEditor
             if (isUserInteraction)
             {
                 listsCategory c = comboBox1.SelectedItem as listsCategory;
+                string LastType = "";
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
                     typesType looptype = tn.Tag as typesType;
+                    LastType = looptype.name;
                     looptype.changecategory(c);
                     currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                 }
                 PopulateTreeView();
-                isUserInteraction = false;
+                FindTypes(LastType);
             }
         }
         private void typeNomCountNUD_ValueChanged(object sender, EventArgs e)
@@ -2236,17 +2182,16 @@ namespace DayZeEditor
             switch (EconomyTabPage.SelectedIndex)
             {
                 case 3:
-                    FindTypes();
+                    FindTypes(EconomySearchBoxTB.Text);
                     break;
             }
         }
 
-        private void FindTypes()
+        private void FindTypes(string text)
         {
             isUserInteraction = false;
             if (treeViewMS1.Nodes.Count < 1)
                 return;
-            string text = EconomySearchBoxTB.Text;
             if (text == "") return;
             searchnum = 0;
             searchtreeNodes = new List<TreeNode>();
@@ -2281,15 +2226,6 @@ namespace DayZeEditor
                 }
             }
             treeViewMS1.SelectedNode = searchtreeNodes[searchnum];
-            treeViewMS1.Focus();
-            if (treeViewMS1.SelectedNode.Tag != null && treeViewMS1.SelectedNode.Tag is typesType)
-            {
-                isUserInteraction = false;
-                tabControl1.SelectedIndex = 1;
-                currentlootpart = treeViewMS1.SelectedNode.Tag as typesType;
-                PopulateLootPartInfo();
-                isUserInteraction = true;
-            }
             if (searchtreeNodes.Count > 1)
             {
                 economySearchNextButton.Visible = true;
@@ -2309,15 +2245,6 @@ namespace DayZeEditor
                 return;
             }
             treeViewMS1.SelectedNode = searchtreeNodes[searchnum];
-            treeViewMS1.Focus();
-            if (treeViewMS1.SelectedNode.Tag != null && treeViewMS1.SelectedNode.Tag is typesType)
-            {
-                isUserInteraction = false;
-                tabControl1.SelectedIndex = 1;
-                currentlootpart = treeViewMS1.SelectedNode.Tag as typesType;
-                PopulateLootPartInfo();
-                isUserInteraction = true;
-            }
         }
         private void searchtree(string str, TreeNode tree, List<TreeNode> List)
         {

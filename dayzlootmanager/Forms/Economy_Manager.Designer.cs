@@ -3311,7 +3311,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
+            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -6289,7 +6289,6 @@ namespace DayZeEditor
             this.fastColoredTextBox2.DefaultMarkerSize = 8;
             this.fastColoredTextBox2.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox2.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox2.IsReplaceMode = false;
             this.fastColoredTextBox2.Location = new System.Drawing.Point(3, 3);
@@ -15527,6 +15526,7 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);

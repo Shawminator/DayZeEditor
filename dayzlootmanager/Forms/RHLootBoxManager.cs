@@ -182,7 +182,7 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                List<string> predefweapon = form.WeaponList;
+                List<string> predefweapon = form.ReturnList;
                 foreach (string weapon in predefweapon)
                 {
                     CurrentRhlootboxconfig.PossibleLootList.Add(weapon);
@@ -306,7 +306,7 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                List<string> predefweapon = form.WeaponList;
+                List<string> predefweapon = form.ReturnList;
                 foreach (string weapon in predefweapon)
                 {
                     CurrentRhlootboxstaticbox.PossibleLootBoxNames.Add(weapon);
@@ -344,7 +344,7 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                List<string> predefweapon = form.WeaponList;
+                List<string> predefweapon = form.ReturnList;
                 foreach (string weapon in predefweapon)
                 {
                     CurrentRhlootboxstaticbox.CustomLootList.Add(weapon);

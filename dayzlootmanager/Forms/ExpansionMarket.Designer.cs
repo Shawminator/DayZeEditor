@@ -5624,7 +5624,7 @@ namespace DayZeEditor
             this.addNewMarketFileToolStripMenuItem,
             this.removeMarketFileToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 70);
             // 
             // addNewMarketFileToolStripMenuItem
             // 

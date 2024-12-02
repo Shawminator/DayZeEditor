@@ -200,7 +200,7 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                List<string> predefweapon = form.WeaponList;
+                List<string> predefweapon = form.ReturnList;
                 foreach (string weapon in predefweapon)
                 {
                     CurrentLootChestLocation.loot.Add(weapon);
@@ -569,7 +569,7 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                List<string> predefweapon = form.WeaponList;
+                List<string> predefweapon = form.ReturnList;
                 foreach (string weapon in predefweapon)
                 {
                     if (!currentLootCategories.Loot.Any(x => x == weapon))

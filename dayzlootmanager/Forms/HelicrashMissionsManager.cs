@@ -339,7 +339,7 @@ namespace DayZeEditor
                     SpecificLootTablesLB.ValueMember = "Value";
                     SpecificLootTablesLB.DataSource = currentCrashpoint.RewardTables;
                 }
-                List<string> predefweapon = form.WeaponList;
+                List<string> predefweapon = form.ReturnList;
                 foreach (string weapon in predefweapon)
                 {
                     currentCrashpoint.RewardTables.Add(weapon);
@@ -502,7 +502,7 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                List<string> predefweapon = form.WeaponList;
+                List<string> predefweapon = form.ReturnList;
                 foreach (string weapon in predefweapon)
                 {
                     Helicrash.RandomRewards.Add(weapon);

@@ -550,6 +550,11 @@ namespace DayZeEditor
                     SearchForLootManagerButton.Visible = true;
                 else
                     SearchForLootManagerButton.Visible = false;
+
+                if(KillrewardStatics.Checkallfiles(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath))
+                    KillRewardManagerButton.Visible = true;
+                else
+                    KillRewardManagerButton.Visible = false;
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -1456,6 +1461,32 @@ namespace DayZeEditor
             timer1.Start();
             
 
+        }
+        private void KillRewardManagerButton_Click(object sender, EventArgs e)
+        {
+            killRewardManager _TM = Application.OpenForms["killRewardManager"] as killRewardManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new killRewardManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading kill Reward Manager....");
+                label1.Text = "kill Reward Manager";
+            }
+            timer1.Start();
         }
         private void PlayerDBButton_Click(object sender, EventArgs e)
         {

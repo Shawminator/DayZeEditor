@@ -2529,7 +2529,7 @@ namespace DayZeEditor
             this.toolStripButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(88, 25);
+            this.toolStripButton4.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton4.Text = "Zones Settings";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
@@ -2548,7 +2548,7 @@ namespace DayZeEditor
             this.toolStripButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(139, 25);
+            this.toolStripButton5.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton5.Text = "Zones Map Visualisation";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 

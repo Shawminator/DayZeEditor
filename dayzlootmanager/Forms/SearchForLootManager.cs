@@ -638,7 +638,6 @@ namespace DayZeEditor
             currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
             SFLSettings.isDirty = true;
         }
-
         private void addNewProxyCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SFProxyCategory sFProxyCategory = new SFProxyCategory()
@@ -671,7 +670,6 @@ namespace DayZeEditor
             currentTreeNode.Nodes.Add(sflpcNode);
             SFLTV.SelectedNode = sflpcNode;
         }
-
         private void removeToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             SFProxyCategory sFProxyCategory = currentTreeNode.Tag as SFProxyCategory;
@@ -679,7 +677,6 @@ namespace DayZeEditor
             SFLSettings.isDirty = true;
             currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
         }
-
         private void addNewProxyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SFProxyCategory sFProxyCategory = currentTreeNode.Parent.Tag as SFProxyCategory;
@@ -694,7 +691,6 @@ namespace DayZeEditor
             currentTreeNode.Nodes.Add(buildiongnode);
             SFLTV.SelectedNode = buildiongnode;
         }
-
         private void removeToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             SFProxyCategory sFProxyCategory = currentTreeNode.Parent.Parent.Tag as SFProxyCategory;

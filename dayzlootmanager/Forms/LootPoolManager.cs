@@ -27,6 +27,9 @@ namespace DayZeEditor
         public string Projectname;
         private capareLPdefinedItems currentRHPredefineditems;
         private caparelploottable currentRhlploottable;
+
+        public CapareLPLootItemSet CurrentLootPoolitemSet { get; private set; }
+
         private bool useraction = false;
 
         public CapareLootPool LootPool;
@@ -56,36 +59,46 @@ namespace DayZeEditor
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
-            if (tabControl1.SelectedIndex == 0)
-                toolStripButton8.Checked = true;
         }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
-            if (tabControl1.SelectedIndex == 1)
-                toolStripButton3.Checked = true;
+        }
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
         }
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 2;
-            if (tabControl1.SelectedIndex == 2)
-                toolStripButton7.Checked = true;
+            tabControl1.SelectedIndex = 3;
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl1.SelectedIndex)
             {
                 case 0:
+                    toolStripButton8.Checked = true;
                     toolStripButton3.Checked = false;
+                    toolStripButton1.Checked = false;
                     toolStripButton7.Checked = false;
                     break;
                 case 1:
                     toolStripButton8.Checked = false;
+                    toolStripButton3.Checked = true;
+                    toolStripButton1.Checked = false;
                     toolStripButton7.Checked = false;
                     break;
                 case 2:
                     toolStripButton8.Checked = false;
                     toolStripButton3.Checked = false;
+                    toolStripButton1.Checked = true;
+                    toolStripButton7.Checked = false;
+                    break;
+                case 3:
+                    toolStripButton8.Checked = false;
+                    toolStripButton3.Checked = false;
+                    toolStripButton1.Checked = false;
+                    toolStripButton7.Checked = true;
                     break;
                 default:
                     break;
@@ -153,6 +166,10 @@ namespace DayZeEditor
             LootCategoriesLB.DisplayMember = "DisplayName";
             LootCategoriesLB.ValueMember = "Value";
             LootCategoriesLB.DataSource = LootPool.CapareLPLootTables;
+
+            listBox1.DisplayMember = "DisplayName";
+            listBox1.ValueMember = "Value";
+            listBox1.DataSource = LootPool.CapareLPItemSets;
 
             LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
             LCPredefinedWeaponsLB.ValueMember = "Value";
@@ -342,9 +359,6 @@ namespace DayZeEditor
         private void darkButton17_Click(object sender, EventArgs e)
         {
             currentRhlploottable.LootItems.Remove(LootCatLootLB.GetItemText(LootCatLootLB.SelectedItem));
-            if (currentRhlploottable.LootItems.Count == 0)
-                currentRhlploottable.LootItems.Add("");
-
             LootPool.isDirty = true;
         }
         private void darkButton7_Click(object sender, EventArgs e)
@@ -365,7 +379,36 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                List<string> predefweapon = form.WeaponList;
+                List<string> predefweapon = form.ReturnList;
+                foreach (string weapon in predefweapon)
+                {
+                    if (!currentRhlploottable.LootItems.Any(x => x == weapon))
+                    {
+                        currentRhlploottable.LootItems.Add(weapon);
+                        LootPool.isDirty = true;
+                    }
+                }
+            }
+        }
+        private void darkButton31_Click(object sender, EventArgs e)
+        {
+            AddfromPredefinedItems form = new AddfromPredefinedItems
+            {
+                CapareLPItemSets = LootPool.CapareLPItemSets,
+                titellabel = "Add Item Set(s)",
+                isLootList = false,
+                isRHTableList = false,
+                isRewardTable = false,
+                ispredefinedweapon = false,
+                isRHPredefinedWeapon = true,
+                isLootchest = false,
+                isLootBoxList = false,
+                isUtopiaAirdroplootPools = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> predefweapon = form.ReturnList;
                 foreach (string weapon in predefweapon)
                 {
                     if (!currentRhlploottable.LootItems.Any(x => x == weapon))
@@ -537,7 +580,7 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                List<string> predefweapon = form.WeaponList;
+                List<string> predefweapon = form.ReturnList;
                 foreach (string weapon in predefweapon)
                 {
                     CurrentRHLPRewardTables.Rewards.Add(weapon);
@@ -563,7 +606,7 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                List<string> predefweapon = form.WeaponList;
+                List<string> predefweapon = form.ReturnList;
                 foreach (string weapon in predefweapon)
                 {
                     CurrentRHLPRewardTables.Rewards.Add(weapon);
@@ -764,7 +807,6 @@ namespace DayZeEditor
             }
 
         }
-
         private void darkButton21_Click(object sender, EventArgs e)
         {
             List<spawnabletypesType> ST = new List<spawnabletypesType>();
@@ -844,7 +886,6 @@ namespace DayZeEditor
                 LootPool.isDirty = true;
             }
         }
-
         private void darkButton22_Click(object sender, EventArgs e)
         {
             listsCategory c = comboBox1.SelectedItem as listsCategory;
@@ -1056,7 +1097,6 @@ namespace DayZeEditor
             }
             LootPool.isDirty = true;
         }
-
         private void darkButton23_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -1151,6 +1191,144 @@ namespace DayZeEditor
                         LootPool.CapareLPdefinedItems.Add(newitem);
                         LootPool.isDirty = true;
                     }    
+                }
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItems.Count < 1) return;
+            CurrentLootPoolitemSet = listBox1.SelectedItem as CapareLPLootItemSet;
+            useraction = false;
+
+            textBox1.Text = CurrentLootPoolitemSet.SetName;
+
+            listBox2.DisplayMember = "DisplayName";
+            listBox2.ValueMember = "Value";
+            listBox2.DataSource = CurrentLootPoolitemSet.SetItems;
+
+            useraction = true;
+        }
+        private void darkButton25_Click(object sender, EventArgs e)
+        {
+            if(LootPool.CapareLPItemSets == null)
+            {
+                LootPool.CapareLPItemSets = new BindingList<CapareLPLootItemSet>();
+                listBox1.DataSource = LootPool.CapareLPItemSets;
+            }
+            CapareLPLootItemSet newitemset = new CapareLPLootItemSet()
+            {
+                SetName = "ItemSet_New",
+                SetItems = new BindingList<string>()
+            };
+            LootPool.CapareLPItemSets.Add(newitemset);
+            listBox1.Refresh();
+            LootPool.isDirty = true;
+        }
+        private void darkButton26_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItems.Count < 1) return;
+            int index = listBox1.SelectedIndex;
+            LootPool.CapareLPItemSets.Remove(CurrentLootPoolitemSet);
+            LootPool.isDirty = true;
+            listBox1.SelectedIndex = -1;
+            if (index - 1 == -1)
+            {
+                if (listBox1.Items.Count > 0)
+                    listBox1.SelectedIndex = 0;
+            }
+            else
+            {
+                listBox1.SelectedIndex = index - 1;
+            }
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentLootPoolitemSet.SetName = textBox1.Text;
+            listBox1.Refresh();
+            LootPool.isDirty = true;
+        }
+        private void darkButton27_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultipleofSameItem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentLootPoolitemSet.SetItems.Any(x => x == l))
+                    {
+                        if (CurrentLootPoolitemSet.SetItems.Count > 0 && CurrentLootPoolitemSet.SetItems[0] == "")
+                            CurrentLootPoolitemSet.SetItems.RemoveAt(0);
+                        CurrentLootPoolitemSet.SetItems.Add(l);
+                        LootPool.isDirty = true;
+                    }
+                }
+            }
+        }
+        private void darkButton29_Click(object sender, EventArgs e)
+        {
+            AddfromPredefinedItems form = new AddfromPredefinedItems
+            {
+                RHLPdefinedItems = LootPool.CapareLPdefinedItems,
+                titellabel = "Add Items from Predefined Weapons",
+                isLootList = false,
+                isRHTableList = false,
+                isRewardTable = false,
+                ispredefinedweapon = false,
+                isRHPredefinedWeapon = true,
+                isLootchest = false,
+                isLootBoxList = false,
+                isUtopiaAirdroplootPools = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> predefweapon = form.ReturnList;
+                foreach (string weapon in predefweapon)
+                {
+                    CurrentLootPoolitemSet.SetItems.Add(weapon);
+                    LootPool.isDirty = true;
+                }
+            }
+        }
+        private void darkButton30_Click(object sender, EventArgs e)
+        {
+            CurrentLootPoolitemSet.SetItems.Remove(listBox2.GetItemText(listBox2.SelectedItem));
+            LootPool.isDirty = true;
+        }
+
+        private void darkButton32_Click(object sender, EventArgs e)
+        {
+            AddfromPredefinedItems form = new AddfromPredefinedItems
+            {
+                CapareLPItemSets = LootPool.CapareLPItemSets,
+                titellabel = "Add Item Sets",
+                isLootList = false,
+                isRHTableList = false,
+                isRewardTable = false,
+                ispredefinedweapon = false,
+                isRHPredefinedWeapon = true,
+                isLootchest = false,
+                isLootBoxList = false,
+                isUtopiaAirdroplootPools = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> predefweapon = form.ReturnList;
+                foreach (string weapon in predefweapon)
+                {
+                    CurrentRHLPRewardTables.Rewards.Add(weapon);
+                    LootPool.isDirty = true;
                 }
             }
         }
