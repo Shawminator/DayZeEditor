@@ -114,16 +114,6 @@ namespace DayZeEditor
             this.EMCZonesTV = new TreeViewMS.TreeViewMS();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.helicrashGB = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.HeliCrashEnabledCB = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.EMCZonesAllowedWeaponsGB = new System.Windows.Forms.GroupBox();
             this.EMCZonesAllowedWeaponsLB = new System.Windows.Forms.ListBox();
             this.ObjectivesAICampAllowedWeaponsAddButton = new DarkUI.Controls.DarkButton();
@@ -138,27 +128,6 @@ namespace DayZeEditor
             this.label6 = new System.Windows.Forms.Label();
             this.EMCCustomTitleTB = new System.Windows.Forms.TextBox();
             this.EMCEnableCustomMessagesCB = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.SaturdayDOWCB = new System.Windows.Forms.CheckBox();
-            this.EMCZoneEndHourNUD = new System.Windows.Forms.NumericUpDown();
-            this.FridayDOWCB = new System.Windows.Forms.CheckBox();
-            this.EMCZoneStartHourNUD = new System.Windows.Forms.NumericUpDown();
-            this.ThursdayDOWCB = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.WednesdayDOWCB = new System.Windows.Forms.CheckBox();
-            this.TuesdayDOWCB = new System.Windows.Forms.CheckBox();
-            this.MondayDOWCB = new System.Windows.Forms.CheckBox();
-            this.SundayDOWCB = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.ECMZoneNamelabel = new System.Windows.Forms.Label();
-            this.EMCZoneNameTB = new System.Windows.Forms.TextBox();
-            this.EMCZoneDrawCB = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.EMCZoneTypeCB = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.CategorycolourPB = new System.Windows.Forms.PictureBox();
             this.EMCDynamicscanZonesGB = new System.Windows.Forms.GroupBox();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
@@ -188,6 +157,42 @@ namespace DayZeEditor
             this.EMCCustomZoneXNUD = new System.Windows.Forms.NumericUpDown();
             this.EMCCustomZoneRadiusNUD = new System.Windows.Forms.NumericUpDown();
             this.EMCZoneRadiuslabel = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ECMZoneNamelabel = new System.Windows.Forms.Label();
+            this.EMCZoneNameTB = new System.Windows.Forms.TextBox();
+            this.EMCZoneDrawCB = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.EMCZoneTypeCB = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.CategorycolourPB = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.EMCZonePriorityNUD = new System.Windows.Forms.NumericUpDown();
+            this.label20 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.SaturdayDOWCB = new System.Windows.Forms.CheckBox();
+            this.EMCZoneEndHourNUD = new System.Windows.Forms.NumericUpDown();
+            this.FridayDOWCB = new System.Windows.Forms.CheckBox();
+            this.EMCZoneStartHourNUD = new System.Windows.Forms.NumericUpDown();
+            this.ThursdayDOWCB = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.WednesdayDOWCB = new System.Windows.Forms.CheckBox();
+            this.TuesdayDOWCB = new System.Windows.Forms.CheckBox();
+            this.MondayDOWCB = new System.Windows.Forms.CheckBox();
+            this.SundayDOWCB = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.helicrashGB = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.HeliCrashEnabledCB = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new TreeViewMS.PanelEx();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -251,18 +256,8 @@ namespace DayZeEditor
             this.splitContainer1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.helicrashGB.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.EMCZonesAllowedWeaponsGB.SuspendLayout();
             this.EMCZonesMessagesGB.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EMCZoneEndHourNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EMCZoneStartHourNUD)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CategorycolourPB)).BeginInit();
             this.EMCDynamicscanZonesGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EMCDynamicZoneScanYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EMCDynamicZoneScanZNUD)).BeginInit();
@@ -276,6 +271,19 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.EMCCustomZoneZNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EMCCustomZoneXNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EMCCustomZoneRadiusNUD)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CategorycolourPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EMCZonePriorityNUD)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EMCZoneEndHourNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EMCZoneStartHourNUD)).BeginInit();
+            this.helicrashGB.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1398,14 +1406,14 @@ namespace DayZeEditor
             // 
             this.tabPage2.AutoScroll = true;
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage2.Controls.Add(this.helicrashGB);
             this.tabPage2.Controls.Add(this.EMCZonesAllowedWeaponsGB);
             this.tabPage2.Controls.Add(this.EMCZonesMessagesGB);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.EMCDynamicscanZonesGB);
             this.tabPage2.Controls.Add(this.EMCPolygonPointsGB);
             this.tabPage2.Controls.Add(this.EMCCustomZonesPointGB);
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.helicrashGB);
             this.tabPage2.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
@@ -1413,138 +1421,6 @@ namespace DayZeEditor
             this.tabPage2.Size = new System.Drawing.Size(762, 499);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "tabPage2";
-            // 
-            // helicrashGB
-            // 
-            this.helicrashGB.Controls.Add(this.flowLayoutPanel2);
-            this.helicrashGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.helicrashGB.Location = new System.Drawing.Point(6, 6);
-            this.helicrashGB.Name = "helicrashGB";
-            this.helicrashGB.Size = new System.Drawing.Size(231, 187);
-            this.helicrashGB.TabIndex = 278;
-            this.helicrashGB.TabStop = false;
-            this.helicrashGB.Text = "Zone Info";
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.HeliCrashEnabledCB);
-            this.flowLayoutPanel2.Controls.Add(this.checkBox1);
-            this.flowLayoutPanel2.Controls.Add(this.label12);
-            this.flowLayoutPanel2.Controls.Add(this.comboBox1);
-            this.flowLayoutPanel2.Controls.Add(this.label13);
-            this.flowLayoutPanel2.Controls.Add(this.pictureBox2);
-            this.flowLayoutPanel2.Controls.Add(this.label11);
-            this.flowLayoutPanel2.Controls.Add(this.numericUpDown1);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(225, 168);
-            this.flowLayoutPanel2.TabIndex = 12;
-            // 
-            // HeliCrashEnabledCB
-            // 
-            this.HeliCrashEnabledCB.AutoSize = true;
-            this.HeliCrashEnabledCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.HeliCrashEnabledCB.Location = new System.Drawing.Point(3, 3);
-            this.HeliCrashEnabledCB.Name = "HeliCrashEnabledCB";
-            this.HeliCrashEnabledCB.Size = new System.Drawing.Size(110, 17);
-            this.HeliCrashEnabledCB.TabIndex = 174;
-            this.HeliCrashEnabledCB.Text = "Enable Heli Crash";
-            this.HeliCrashEnabledCB.UseVisualStyleBackColor = true;
-            this.HeliCrashEnabledCB.CheckedChanged += new System.EventHandler(this.HeliCrashEnabledCB_CheckedChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBox1.Location = new System.Drawing.Point(3, 26);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Draw Circle";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 46);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(83, 13);
-            this.label12.TabIndex = 171;
-            this.label12.Text = "PVP Zone Type";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "PVE Zone",
-            "PVP Zone",
-            "Visual Zone Only. "});
-            this.comboBox1.Location = new System.Drawing.Point(3, 62);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(216, 21);
-            this.comboBox1.TabIndex = 172;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 86);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 13);
-            this.label13.TabIndex = 172;
-            this.label13.Text = "Zone Colour";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(3, 102);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(105, 16);
-            this.pictureBox2.TabIndex = 173;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 121);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(68, 13);
-            this.label11.TabIndex = 191;
-            this.label11.Text = "Zone Radius";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown1.DecimalPlaces = 1;
-            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.numericUpDown1.Location = new System.Drawing.Point(3, 137);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            30000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(151, 20);
-            this.numericUpDown1.TabIndex = 192;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // EMCZonesAllowedWeaponsGB
             // 
@@ -1702,280 +1578,6 @@ namespace DayZeEditor
             this.EMCEnableCustomMessagesCB.Text = "Enable Custom Messages";
             this.EMCEnableCustomMessagesCB.UseVisualStyleBackColor = true;
             this.EMCEnableCustomMessagesCB.CheckedChanged += new System.EventHandler(this.EMCEnableCustomMessagesCB_CheckedChanged);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.SaturdayDOWCB);
-            this.groupBox3.Controls.Add(this.EMCZoneEndHourNUD);
-            this.groupBox3.Controls.Add(this.FridayDOWCB);
-            this.groupBox3.Controls.Add(this.EMCZoneStartHourNUD);
-            this.groupBox3.Controls.Add(this.ThursdayDOWCB);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.WednesdayDOWCB);
-            this.groupBox3.Controls.Add(this.TuesdayDOWCB);
-            this.groupBox3.Controls.Add(this.MondayDOWCB);
-            this.groupBox3.Controls.Add(this.SundayDOWCB);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox3.Location = new System.Drawing.Point(6, 168);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(231, 159);
-            this.groupBox3.TabIndex = 188;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Zone Schedule";
-            // 
-            // SaturdayDOWCB
-            // 
-            this.SaturdayDOWCB.AutoSize = true;
-            this.SaturdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SaturdayDOWCB.Location = new System.Drawing.Point(116, 110);
-            this.SaturdayDOWCB.Name = "SaturdayDOWCB";
-            this.SaturdayDOWCB.Size = new System.Drawing.Size(68, 17);
-            this.SaturdayDOWCB.TabIndex = 138;
-            this.SaturdayDOWCB.Tag = "4";
-            this.SaturdayDOWCB.Text = "Saturday";
-            this.SaturdayDOWCB.UseVisualStyleBackColor = true;
-            this.SaturdayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
-            // 
-            // EMCZoneEndHourNUD
-            // 
-            this.EMCZoneEndHourNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.EMCZoneEndHourNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.EMCZoneEndHourNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.EMCZoneEndHourNUD.Location = new System.Drawing.Point(117, 37);
-            this.EMCZoneEndHourNUD.Maximum = new decimal(new int[] {
-            24,
-            0,
-            0,
-            0});
-            this.EMCZoneEndHourNUD.Name = "EMCZoneEndHourNUD";
-            this.EMCZoneEndHourNUD.Size = new System.Drawing.Size(105, 20);
-            this.EMCZoneEndHourNUD.TabIndex = 172;
-            this.EMCZoneEndHourNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.EMCZoneEndHourNUD.ValueChanged += new System.EventHandler(this.EMCZoneEndHourNUD_ValueChanged);
-            // 
-            // FridayDOWCB
-            // 
-            this.FridayDOWCB.AutoSize = true;
-            this.FridayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.FridayDOWCB.Location = new System.Drawing.Point(116, 87);
-            this.FridayDOWCB.Name = "FridayDOWCB";
-            this.FridayDOWCB.Size = new System.Drawing.Size(54, 17);
-            this.FridayDOWCB.TabIndex = 137;
-            this.FridayDOWCB.Tag = "4";
-            this.FridayDOWCB.Text = "Friday";
-            this.FridayDOWCB.UseVisualStyleBackColor = true;
-            this.FridayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
-            // 
-            // EMCZoneStartHourNUD
-            // 
-            this.EMCZoneStartHourNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.EMCZoneStartHourNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.EMCZoneStartHourNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.EMCZoneStartHourNUD.Location = new System.Drawing.Point(6, 37);
-            this.EMCZoneStartHourNUD.Maximum = new decimal(new int[] {
-            24,
-            0,
-            0,
-            0});
-            this.EMCZoneStartHourNUD.Name = "EMCZoneStartHourNUD";
-            this.EMCZoneStartHourNUD.Size = new System.Drawing.Size(105, 20);
-            this.EMCZoneStartHourNUD.TabIndex = 171;
-            this.EMCZoneStartHourNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.EMCZoneStartHourNUD.ValueChanged += new System.EventHandler(this.EMCZoneStartHourNUD_ValueChanged);
-            // 
-            // ThursdayDOWCB
-            // 
-            this.ThursdayDOWCB.AutoSize = true;
-            this.ThursdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ThursdayDOWCB.Location = new System.Drawing.Point(116, 64);
-            this.ThursdayDOWCB.Name = "ThursdayDOWCB";
-            this.ThursdayDOWCB.Size = new System.Drawing.Size(70, 17);
-            this.ThursdayDOWCB.TabIndex = 136;
-            this.ThursdayDOWCB.Tag = "4";
-            this.ThursdayDOWCB.Text = "Thursday";
-            this.ThursdayDOWCB.UseVisualStyleBackColor = true;
-            this.ThursdayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(134, 21);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "End Hour";
-            // 
-            // WednesdayDOWCB
-            // 
-            this.WednesdayDOWCB.AutoSize = true;
-            this.WednesdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.WednesdayDOWCB.Location = new System.Drawing.Point(6, 133);
-            this.WednesdayDOWCB.Name = "WednesdayDOWCB";
-            this.WednesdayDOWCB.Size = new System.Drawing.Size(83, 17);
-            this.WednesdayDOWCB.TabIndex = 132;
-            this.WednesdayDOWCB.Tag = "4";
-            this.WednesdayDOWCB.Text = "Wednesday";
-            this.WednesdayDOWCB.UseVisualStyleBackColor = true;
-            this.WednesdayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
-            // 
-            // TuesdayDOWCB
-            // 
-            this.TuesdayDOWCB.AutoSize = true;
-            this.TuesdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.TuesdayDOWCB.Location = new System.Drawing.Point(6, 110);
-            this.TuesdayDOWCB.Name = "TuesdayDOWCB";
-            this.TuesdayDOWCB.Size = new System.Drawing.Size(67, 17);
-            this.TuesdayDOWCB.TabIndex = 133;
-            this.TuesdayDOWCB.Tag = "3";
-            this.TuesdayDOWCB.Text = "Tuesday";
-            this.TuesdayDOWCB.UseVisualStyleBackColor = true;
-            this.TuesdayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
-            // 
-            // MondayDOWCB
-            // 
-            this.MondayDOWCB.AutoSize = true;
-            this.MondayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.MondayDOWCB.Location = new System.Drawing.Point(6, 87);
-            this.MondayDOWCB.Name = "MondayDOWCB";
-            this.MondayDOWCB.Size = new System.Drawing.Size(64, 17);
-            this.MondayDOWCB.TabIndex = 134;
-            this.MondayDOWCB.Tag = "2";
-            this.MondayDOWCB.Text = "Monday";
-            this.MondayDOWCB.UseVisualStyleBackColor = true;
-            this.MondayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
-            // 
-            // SundayDOWCB
-            // 
-            this.SundayDOWCB.AutoSize = true;
-            this.SundayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SundayDOWCB.Location = new System.Drawing.Point(6, 64);
-            this.SundayDOWCB.Name = "SundayDOWCB";
-            this.SundayDOWCB.Size = new System.Drawing.Size(62, 17);
-            this.SundayDOWCB.TabIndex = 135;
-            this.SundayDOWCB.Tag = "1";
-            this.SundayDOWCB.Text = "Sunday";
-            this.SundayDOWCB.UseVisualStyleBackColor = true;
-            this.SundayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Start Hour";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(231, 156);
-            this.groupBox2.TabIndex = 187;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Zone Info";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.ECMZoneNamelabel);
-            this.flowLayoutPanel1.Controls.Add(this.EMCZoneNameTB);
-            this.flowLayoutPanel1.Controls.Add(this.EMCZoneDrawCB);
-            this.flowLayoutPanel1.Controls.Add(this.label5);
-            this.flowLayoutPanel1.Controls.Add(this.EMCZoneTypeCB);
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.CategorycolourPB);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(225, 137);
-            this.flowLayoutPanel1.TabIndex = 12;
-            // 
-            // ECMZoneNamelabel
-            // 
-            this.ECMZoneNamelabel.AutoSize = true;
-            this.ECMZoneNamelabel.Location = new System.Drawing.Point(3, 0);
-            this.ECMZoneNamelabel.Name = "ECMZoneNamelabel";
-            this.ECMZoneNamelabel.Size = new System.Drawing.Size(63, 13);
-            this.ECMZoneNamelabel.TabIndex = 10;
-            this.ECMZoneNamelabel.Text = "Zone Name";
-            // 
-            // EMCZoneNameTB
-            // 
-            this.EMCZoneNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.EMCZoneNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EMCZoneNameTB.Location = new System.Drawing.Point(3, 16);
-            this.EMCZoneNameTB.Name = "EMCZoneNameTB";
-            this.EMCZoneNameTB.Size = new System.Drawing.Size(216, 20);
-            this.EMCZoneNameTB.TabIndex = 7;
-            this.EMCZoneNameTB.TextChanged += new System.EventHandler(this.EMCZoneNameTB_TextChanged);
-            // 
-            // EMCZoneDrawCB
-            // 
-            this.EMCZoneDrawCB.AutoSize = true;
-            this.EMCZoneDrawCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EMCZoneDrawCB.Location = new System.Drawing.Point(3, 42);
-            this.EMCZoneDrawCB.Name = "EMCZoneDrawCB";
-            this.EMCZoneDrawCB.Size = new System.Drawing.Size(80, 17);
-            this.EMCZoneDrawCB.TabIndex = 1;
-            this.EMCZoneDrawCB.Text = "Draw Circle";
-            this.EMCZoneDrawCB.UseVisualStyleBackColor = true;
-            this.EMCZoneDrawCB.CheckedChanged += new System.EventHandler(this.EMCZoneDrawCB_CheckedChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 62);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 13);
-            this.label5.TabIndex = 171;
-            this.label5.Text = "PVP Zone Type";
-            // 
-            // EMCZoneTypeCB
-            // 
-            this.EMCZoneTypeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.EMCZoneTypeCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EMCZoneTypeCB.FormattingEnabled = true;
-            this.EMCZoneTypeCB.Items.AddRange(new object[] {
-            "PVE Zone",
-            "PVP Zone",
-            "Visual Zone Only. "});
-            this.EMCZoneTypeCB.Location = new System.Drawing.Point(3, 78);
-            this.EMCZoneTypeCB.Name = "EMCZoneTypeCB";
-            this.EMCZoneTypeCB.Size = new System.Drawing.Size(216, 21);
-            this.EMCZoneTypeCB.TabIndex = 172;
-            this.EMCZoneTypeCB.SelectedIndexChanged += new System.EventHandler(this.EMCZoneTypeCB_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 102);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
-            this.label1.TabIndex = 172;
-            this.label1.Text = "Zone Colour";
-            // 
-            // CategorycolourPB
-            // 
-            this.CategorycolourPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CategorycolourPB.BackgroundImage")));
-            this.CategorycolourPB.Location = new System.Drawing.Point(3, 118);
-            this.CategorycolourPB.Name = "CategorycolourPB";
-            this.CategorycolourPB.Size = new System.Drawing.Size(105, 16);
-            this.CategorycolourPB.TabIndex = 173;
-            this.CategorycolourPB.TabStop = false;
-            this.CategorycolourPB.Click += new System.EventHandler(this.CategorycolourPB_Click);
-            this.CategorycolourPB.Paint += new System.Windows.Forms.PaintEventHandler(this.CategorycolourPB_Paint);
             // 
             // EMCDynamicscanZonesGB
             // 
@@ -2440,6 +2042,479 @@ namespace DayZeEditor
             this.EMCZoneRadiuslabel.TabIndex = 190;
             this.EMCZoneRadiuslabel.Text = "Zone Radius";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(231, 162);
+            this.groupBox2.TabIndex = 187;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Zone Info";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.ECMZoneNamelabel);
+            this.flowLayoutPanel1.Controls.Add(this.EMCZoneNameTB);
+            this.flowLayoutPanel1.Controls.Add(this.EMCZoneDrawCB);
+            this.flowLayoutPanel1.Controls.Add(this.label5);
+            this.flowLayoutPanel1.Controls.Add(this.EMCZoneTypeCB);
+            this.flowLayoutPanel1.Controls.Add(this.panel2);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(225, 143);
+            this.flowLayoutPanel1.TabIndex = 12;
+            // 
+            // ECMZoneNamelabel
+            // 
+            this.ECMZoneNamelabel.AutoSize = true;
+            this.ECMZoneNamelabel.Location = new System.Drawing.Point(3, 0);
+            this.ECMZoneNamelabel.Name = "ECMZoneNamelabel";
+            this.ECMZoneNamelabel.Size = new System.Drawing.Size(63, 13);
+            this.ECMZoneNamelabel.TabIndex = 10;
+            this.ECMZoneNamelabel.Text = "Zone Name";
+            // 
+            // EMCZoneNameTB
+            // 
+            this.EMCZoneNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EMCZoneNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EMCZoneNameTB.Location = new System.Drawing.Point(3, 16);
+            this.EMCZoneNameTB.Name = "EMCZoneNameTB";
+            this.EMCZoneNameTB.Size = new System.Drawing.Size(216, 20);
+            this.EMCZoneNameTB.TabIndex = 7;
+            this.EMCZoneNameTB.TextChanged += new System.EventHandler(this.EMCZoneNameTB_TextChanged);
+            // 
+            // EMCZoneDrawCB
+            // 
+            this.EMCZoneDrawCB.AutoSize = true;
+            this.EMCZoneDrawCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EMCZoneDrawCB.Location = new System.Drawing.Point(3, 42);
+            this.EMCZoneDrawCB.Name = "EMCZoneDrawCB";
+            this.EMCZoneDrawCB.Size = new System.Drawing.Size(80, 17);
+            this.EMCZoneDrawCB.TabIndex = 1;
+            this.EMCZoneDrawCB.Text = "Draw Circle";
+            this.EMCZoneDrawCB.UseVisualStyleBackColor = true;
+            this.EMCZoneDrawCB.CheckedChanged += new System.EventHandler(this.EMCZoneDrawCB_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 62);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 13);
+            this.label5.TabIndex = 171;
+            this.label5.Text = "PVP Zone Type";
+            // 
+            // EMCZoneTypeCB
+            // 
+            this.EMCZoneTypeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EMCZoneTypeCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EMCZoneTypeCB.FormattingEnabled = true;
+            this.EMCZoneTypeCB.Items.AddRange(new object[] {
+            "PVE Zone",
+            "PVP Zone",
+            "Visual Zone Only. "});
+            this.EMCZoneTypeCB.Location = new System.Drawing.Point(3, 78);
+            this.EMCZoneTypeCB.Name = "EMCZoneTypeCB";
+            this.EMCZoneTypeCB.Size = new System.Drawing.Size(216, 21);
+            this.EMCZoneTypeCB.TabIndex = 172;
+            this.EMCZoneTypeCB.SelectedIndexChanged += new System.EventHandler(this.EMCZoneTypeCB_SelectedIndexChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.CategorycolourPB);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.EMCZonePriorityNUD);
+            this.panel2.Controls.Add(this.label20);
+            this.panel2.Location = new System.Drawing.Point(3, 105);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(219, 35);
+            this.panel2.TabIndex = 279;
+            // 
+            // CategorycolourPB
+            // 
+            this.CategorycolourPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CategorycolourPB.BackgroundImage")));
+            this.CategorycolourPB.Location = new System.Drawing.Point(3, 15);
+            this.CategorycolourPB.Name = "CategorycolourPB";
+            this.CategorycolourPB.Size = new System.Drawing.Size(105, 16);
+            this.CategorycolourPB.TabIndex = 173;
+            this.CategorycolourPB.TabStop = false;
+            this.CategorycolourPB.Click += new System.EventHandler(this.CategorycolourPB_Click);
+            this.CategorycolourPB.Paint += new System.Windows.Forms.PaintEventHandler(this.CategorycolourPB_Paint);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 172;
+            this.label1.Text = "Zone Colour";
+            // 
+            // EMCZonePriorityNUD
+            // 
+            this.EMCZonePriorityNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EMCZonePriorityNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.EMCZonePriorityNUD.Location = new System.Drawing.Point(121, 14);
+            this.EMCZonePriorityNUD.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.EMCZonePriorityNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.EMCZonePriorityNUD.Name = "EMCZonePriorityNUD";
+            this.EMCZonePriorityNUD.Size = new System.Drawing.Size(95, 20);
+            this.EMCZonePriorityNUD.TabIndex = 196;
+            this.EMCZonePriorityNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.EMCZonePriorityNUD.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.EMCZonePriorityNUD.ValueChanged += new System.EventHandler(this.EMCZonePriorityNUD_ValueChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(121, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(38, 13);
+            this.label20.TabIndex = 195;
+            this.label20.Text = "Priority";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.SaturdayDOWCB);
+            this.groupBox3.Controls.Add(this.EMCZoneEndHourNUD);
+            this.groupBox3.Controls.Add(this.FridayDOWCB);
+            this.groupBox3.Controls.Add(this.EMCZoneStartHourNUD);
+            this.groupBox3.Controls.Add(this.ThursdayDOWCB);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.WednesdayDOWCB);
+            this.groupBox3.Controls.Add(this.TuesdayDOWCB);
+            this.groupBox3.Controls.Add(this.MondayDOWCB);
+            this.groupBox3.Controls.Add(this.SundayDOWCB);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox3.Location = new System.Drawing.Point(6, 168);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(231, 159);
+            this.groupBox3.TabIndex = 188;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Zone Schedule";
+            // 
+            // SaturdayDOWCB
+            // 
+            this.SaturdayDOWCB.AutoSize = true;
+            this.SaturdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SaturdayDOWCB.Location = new System.Drawing.Point(116, 110);
+            this.SaturdayDOWCB.Name = "SaturdayDOWCB";
+            this.SaturdayDOWCB.Size = new System.Drawing.Size(68, 17);
+            this.SaturdayDOWCB.TabIndex = 138;
+            this.SaturdayDOWCB.Tag = "4";
+            this.SaturdayDOWCB.Text = "Saturday";
+            this.SaturdayDOWCB.UseVisualStyleBackColor = true;
+            this.SaturdayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
+            // 
+            // EMCZoneEndHourNUD
+            // 
+            this.EMCZoneEndHourNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EMCZoneEndHourNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.EMCZoneEndHourNUD.Location = new System.Drawing.Point(117, 37);
+            this.EMCZoneEndHourNUD.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.EMCZoneEndHourNUD.Name = "EMCZoneEndHourNUD";
+            this.EMCZoneEndHourNUD.Size = new System.Drawing.Size(105, 20);
+            this.EMCZoneEndHourNUD.TabIndex = 172;
+            this.EMCZoneEndHourNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.EMCZoneEndHourNUD.ValueChanged += new System.EventHandler(this.EMCZoneEndHourNUD_ValueChanged);
+            // 
+            // FridayDOWCB
+            // 
+            this.FridayDOWCB.AutoSize = true;
+            this.FridayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.FridayDOWCB.Location = new System.Drawing.Point(116, 87);
+            this.FridayDOWCB.Name = "FridayDOWCB";
+            this.FridayDOWCB.Size = new System.Drawing.Size(54, 17);
+            this.FridayDOWCB.TabIndex = 137;
+            this.FridayDOWCB.Tag = "4";
+            this.FridayDOWCB.Text = "Friday";
+            this.FridayDOWCB.UseVisualStyleBackColor = true;
+            this.FridayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
+            // 
+            // EMCZoneStartHourNUD
+            // 
+            this.EMCZoneStartHourNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EMCZoneStartHourNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.EMCZoneStartHourNUD.Location = new System.Drawing.Point(6, 37);
+            this.EMCZoneStartHourNUD.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.EMCZoneStartHourNUD.Name = "EMCZoneStartHourNUD";
+            this.EMCZoneStartHourNUD.Size = new System.Drawing.Size(105, 20);
+            this.EMCZoneStartHourNUD.TabIndex = 171;
+            this.EMCZoneStartHourNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.EMCZoneStartHourNUD.ValueChanged += new System.EventHandler(this.EMCZoneStartHourNUD_ValueChanged);
+            // 
+            // ThursdayDOWCB
+            // 
+            this.ThursdayDOWCB.AutoSize = true;
+            this.ThursdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ThursdayDOWCB.Location = new System.Drawing.Point(116, 64);
+            this.ThursdayDOWCB.Name = "ThursdayDOWCB";
+            this.ThursdayDOWCB.Size = new System.Drawing.Size(70, 17);
+            this.ThursdayDOWCB.TabIndex = 136;
+            this.ThursdayDOWCB.Tag = "4";
+            this.ThursdayDOWCB.Text = "Thursday";
+            this.ThursdayDOWCB.UseVisualStyleBackColor = true;
+            this.ThursdayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(134, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "End Hour";
+            // 
+            // WednesdayDOWCB
+            // 
+            this.WednesdayDOWCB.AutoSize = true;
+            this.WednesdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.WednesdayDOWCB.Location = new System.Drawing.Point(6, 133);
+            this.WednesdayDOWCB.Name = "WednesdayDOWCB";
+            this.WednesdayDOWCB.Size = new System.Drawing.Size(83, 17);
+            this.WednesdayDOWCB.TabIndex = 132;
+            this.WednesdayDOWCB.Tag = "4";
+            this.WednesdayDOWCB.Text = "Wednesday";
+            this.WednesdayDOWCB.UseVisualStyleBackColor = true;
+            this.WednesdayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
+            // 
+            // TuesdayDOWCB
+            // 
+            this.TuesdayDOWCB.AutoSize = true;
+            this.TuesdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TuesdayDOWCB.Location = new System.Drawing.Point(6, 110);
+            this.TuesdayDOWCB.Name = "TuesdayDOWCB";
+            this.TuesdayDOWCB.Size = new System.Drawing.Size(67, 17);
+            this.TuesdayDOWCB.TabIndex = 133;
+            this.TuesdayDOWCB.Tag = "3";
+            this.TuesdayDOWCB.Text = "Tuesday";
+            this.TuesdayDOWCB.UseVisualStyleBackColor = true;
+            this.TuesdayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
+            // 
+            // MondayDOWCB
+            // 
+            this.MondayDOWCB.AutoSize = true;
+            this.MondayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.MondayDOWCB.Location = new System.Drawing.Point(6, 87);
+            this.MondayDOWCB.Name = "MondayDOWCB";
+            this.MondayDOWCB.Size = new System.Drawing.Size(64, 17);
+            this.MondayDOWCB.TabIndex = 134;
+            this.MondayDOWCB.Tag = "2";
+            this.MondayDOWCB.Text = "Monday";
+            this.MondayDOWCB.UseVisualStyleBackColor = true;
+            this.MondayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
+            // 
+            // SundayDOWCB
+            // 
+            this.SundayDOWCB.AutoSize = true;
+            this.SundayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SundayDOWCB.Location = new System.Drawing.Point(6, 64);
+            this.SundayDOWCB.Name = "SundayDOWCB";
+            this.SundayDOWCB.Size = new System.Drawing.Size(62, 17);
+            this.SundayDOWCB.TabIndex = 135;
+            this.SundayDOWCB.Tag = "1";
+            this.SundayDOWCB.Text = "Sunday";
+            this.SundayDOWCB.UseVisualStyleBackColor = true;
+            this.SundayDOWCB.CheckedChanged += new System.EventHandler(this.WeekdaysCB_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Start Hour";
+            // 
+            // helicrashGB
+            // 
+            this.helicrashGB.Controls.Add(this.flowLayoutPanel2);
+            this.helicrashGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.helicrashGB.Location = new System.Drawing.Point(6, 6);
+            this.helicrashGB.Name = "helicrashGB";
+            this.helicrashGB.Size = new System.Drawing.Size(231, 223);
+            this.helicrashGB.TabIndex = 278;
+            this.helicrashGB.TabStop = false;
+            this.helicrashGB.Text = "Zone Info";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.HeliCrashEnabledCB);
+            this.flowLayoutPanel2.Controls.Add(this.checkBox1);
+            this.flowLayoutPanel2.Controls.Add(this.label12);
+            this.flowLayoutPanel2.Controls.Add(this.comboBox1);
+            this.flowLayoutPanel2.Controls.Add(this.label13);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox2);
+            this.flowLayoutPanel2.Controls.Add(this.label11);
+            this.flowLayoutPanel2.Controls.Add(this.numericUpDown1);
+            this.flowLayoutPanel2.Controls.Add(this.label19);
+            this.flowLayoutPanel2.Controls.Add(this.numericUpDown2);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(225, 204);
+            this.flowLayoutPanel2.TabIndex = 12;
+            // 
+            // HeliCrashEnabledCB
+            // 
+            this.HeliCrashEnabledCB.AutoSize = true;
+            this.HeliCrashEnabledCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.HeliCrashEnabledCB.Location = new System.Drawing.Point(3, 3);
+            this.HeliCrashEnabledCB.Name = "HeliCrashEnabledCB";
+            this.HeliCrashEnabledCB.Size = new System.Drawing.Size(110, 17);
+            this.HeliCrashEnabledCB.TabIndex = 174;
+            this.HeliCrashEnabledCB.Text = "Enable Heli Crash";
+            this.HeliCrashEnabledCB.UseVisualStyleBackColor = true;
+            this.HeliCrashEnabledCB.CheckedChanged += new System.EventHandler(this.HeliCrashEnabledCB_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox1.Location = new System.Drawing.Point(3, 26);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 1;
+            this.checkBox1.Text = "Draw Circle";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 46);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(83, 13);
+            this.label12.TabIndex = 171;
+            this.label12.Text = "PVP Zone Type";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "PVE Zone",
+            "PVP Zone",
+            "Visual Zone Only. "});
+            this.comboBox1.Location = new System.Drawing.Point(3, 62);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(216, 21);
+            this.comboBox1.TabIndex = 172;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 86);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(65, 13);
+            this.label13.TabIndex = 172;
+            this.label13.Text = "Zone Colour";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(3, 102);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(105, 16);
+            this.pictureBox2.TabIndex = 173;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 121);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(68, 13);
+            this.label11.TabIndex = 191;
+            this.label11.Text = "Zone Radius";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown1.DecimalPlaces = 1;
+            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown1.Location = new System.Drawing.Point(3, 137);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(151, 20);
+            this.numericUpDown1.TabIndex = 192;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(3, 160);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(38, 13);
+            this.label19.TabIndex = 193;
+            this.label19.Text = "Priority";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown2.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown2.Location = new System.Drawing.Point(3, 176);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(151, 20);
+            this.numericUpDown2.TabIndex = 194;
+            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -2529,7 +2604,7 @@ namespace DayZeEditor
             this.toolStripButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton4.Size = new System.Drawing.Size(88, 25);
             this.toolStripButton4.Text = "Zones Settings";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
@@ -2548,7 +2623,7 @@ namespace DayZeEditor
             this.toolStripButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton5.Size = new System.Drawing.Size(139, 25);
             this.toolStripButton5.Text = "Zones Map Visualisation";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -2738,22 +2813,9 @@ namespace DayZeEditor
             this.splitContainer1.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.helicrashGB.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.EMCZonesAllowedWeaponsGB.ResumeLayout(false);
             this.EMCZonesMessagesGB.ResumeLayout(false);
             this.EMCZonesMessagesGB.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EMCZoneEndHourNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EMCZoneStartHourNUD)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CategorycolourPB)).EndInit();
             this.EMCDynamicscanZonesGB.ResumeLayout(false);
             this.EMCDynamicscanZonesGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EMCDynamicZoneScanYNUD)).EndInit();
@@ -2770,6 +2832,23 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.EMCCustomZoneZNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EMCCustomZoneXNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EMCCustomZoneRadiusNUD)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CategorycolourPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EMCZonePriorityNUD)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EMCZoneEndHourNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EMCZoneStartHourNUD)).EndInit();
+            this.helicrashGB.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -2967,5 +3046,10 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox DisableExpansionGroupsFriendlyFireCB;
         private System.Windows.Forms.CheckBox DisableExpansionGroupsFriendlyFireItemDamageCB;
         private System.Windows.Forms.CheckBox IgnoreDamageProtectionForAIOwnedItemsCB;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.NumericUpDown EMCZonePriorityNUD;
+        private System.Windows.Forms.Label label20;
     }
 }

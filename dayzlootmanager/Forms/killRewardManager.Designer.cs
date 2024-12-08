@@ -61,14 +61,6 @@ namespace DayZeEditor
             this.removeToolToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewMedicalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMedicalToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.KRGiftGB = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.PlayerGiftCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel4 = new DarkUI.Controls.DarkLabel();
-            this.GiftLifetimeNUD = new System.Windows.Forms.NumericUpDown();
-            this.KillRewardHUNTINGGB = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.HuntingRewardCB = new System.Windows.Forms.CheckBox();
             this.addNewKillMoneyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,11 +70,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.PointLoseByDeathNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatsloseNUD)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            this.KRGiftGB.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GiftLifetimeNUD)).BeginInit();
-            this.KillRewardHUNTINGGB.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -139,7 +126,7 @@ namespace DayZeEditor
             this.KillRewardTV.Name = "KillRewardTV";
             this.KillRewardTV.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("KillRewardTV.SelectedNodes")));
             this.KillRewardTV.SetMultiselect = true;
-            this.KillRewardTV.Size = new System.Drawing.Size(329, 390);
+            this.KillRewardTV.Size = new System.Drawing.Size(412, 390);
             this.KillRewardTV.TabIndex = 186;
             this.KillRewardTV.RequestDisplayText += new System.EventHandler<TreeViewMS.NodeRequestTextEventArgs>(this.KillRewardTV_RequestDisplayText);
             this.KillRewardTV.RequestEditText += new System.EventHandler<TreeViewMS.NodeRequestTextEventArgs>(this.KillRewardTV_RequestEditText);
@@ -155,7 +142,7 @@ namespace DayZeEditor
             // 
             this.KRBaseGB.Controls.Add(this.flowLayoutPanel3);
             this.KRBaseGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KRBaseGB.Location = new System.Drawing.Point(347, 48);
+            this.KRBaseGB.Location = new System.Drawing.Point(430, 48);
             this.KRBaseGB.Name = "KRBaseGB";
             this.KRBaseGB.Size = new System.Drawing.Size(358, 253);
             this.KRBaseGB.TabIndex = 187;
@@ -346,7 +333,7 @@ namespace DayZeEditor
             this.removeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(158, 356);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(158, 334);
             // 
             // addSteamIDToolStripMenuItem
             // 
@@ -446,103 +433,6 @@ namespace DayZeEditor
             this.removeMedicalToolStripMenuItem4.Text = "Remove";
             this.removeMedicalToolStripMenuItem4.Click += new System.EventHandler(this.removeMedicalToolStripMenuItem4_Click);
             // 
-            // KRGiftGB
-            // 
-            this.KRGiftGB.Controls.Add(this.flowLayoutPanel1);
-            this.KRGiftGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KRGiftGB.Location = new System.Drawing.Point(347, 48);
-            this.KRGiftGB.Name = "KRGiftGB";
-            this.KRGiftGB.Size = new System.Drawing.Size(358, 103);
-            this.KRGiftGB.TabIndex = 188;
-            this.KRGiftGB.TabStop = false;
-            this.KRGiftGB.Text = "Kill Reward Gift Settings";
-            this.KRGiftGB.Visible = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.PlayerGiftCB);
-            this.flowLayoutPanel1.Controls.Add(this.darkLabel4);
-            this.flowLayoutPanel1.Controls.Add(this.GiftLifetimeNUD);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(352, 84);
-            this.flowLayoutPanel1.TabIndex = 13;
-            // 
-            // PlayerGiftCB
-            // 
-            this.PlayerGiftCB.AutoSize = true;
-            this.PlayerGiftCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PlayerGiftCB.Location = new System.Drawing.Point(3, 3);
-            this.PlayerGiftCB.Name = "PlayerGiftCB";
-            this.PlayerGiftCB.Size = new System.Drawing.Size(74, 17);
-            this.PlayerGiftCB.TabIndex = 207;
-            this.PlayerGiftCB.Text = "Player Gift";
-            this.PlayerGiftCB.UseVisualStyleBackColor = true;
-            this.PlayerGiftCB.CheckedChanged += new System.EventHandler(this.PlayerGiftCB_CheckedChanged);
-            // 
-            // darkLabel4
-            // 
-            this.darkLabel4.AutoSize = true;
-            this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel4.Location = new System.Drawing.Point(3, 23);
-            this.darkLabel4.Name = "darkLabel4";
-            this.darkLabel4.Size = new System.Drawing.Size(65, 13);
-            this.darkLabel4.TabIndex = 206;
-            this.darkLabel4.Text = "Gift Life time";
-            // 
-            // GiftLifetimeNUD
-            // 
-            this.GiftLifetimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.GiftLifetimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.GiftLifetimeNUD.Location = new System.Drawing.Point(3, 39);
-            this.GiftLifetimeNUD.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.GiftLifetimeNUD.Name = "GiftLifetimeNUD";
-            this.GiftLifetimeNUD.Size = new System.Drawing.Size(151, 20);
-            this.GiftLifetimeNUD.TabIndex = 205;
-            this.GiftLifetimeNUD.Tag = "float";
-            this.GiftLifetimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.GiftLifetimeNUD.ValueChanged += new System.EventHandler(this.GiftLifetimeNUD_ValueChanged);
-            // 
-            // KillRewardHUNTINGGB
-            // 
-            this.KillRewardHUNTINGGB.Controls.Add(this.flowLayoutPanel2);
-            this.KillRewardHUNTINGGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillRewardHUNTINGGB.Location = new System.Drawing.Point(347, 48);
-            this.KillRewardHUNTINGGB.Name = "KillRewardHUNTINGGB";
-            this.KillRewardHUNTINGGB.Size = new System.Drawing.Size(358, 46);
-            this.KillRewardHUNTINGGB.TabIndex = 189;
-            this.KillRewardHUNTINGGB.TabStop = false;
-            this.KillRewardHUNTINGGB.Text = "Kill Reward Hunting Settings";
-            this.KillRewardHUNTINGGB.Visible = false;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.HuntingRewardCB);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(352, 27);
-            this.flowLayoutPanel2.TabIndex = 13;
-            // 
-            // HuntingRewardCB
-            // 
-            this.HuntingRewardCB.AutoSize = true;
-            this.HuntingRewardCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.HuntingRewardCB.Location = new System.Drawing.Point(3, 3);
-            this.HuntingRewardCB.Name = "HuntingRewardCB";
-            this.HuntingRewardCB.Size = new System.Drawing.Size(145, 17);
-            this.HuntingRewardCB.TabIndex = 207;
-            this.HuntingRewardCB.Text = "Hunting Reward Enabled";
-            this.HuntingRewardCB.UseVisualStyleBackColor = true;
-            this.HuntingRewardCB.CheckedChanged += new System.EventHandler(this.HuntingRewardCB_CheckedChanged);
-            // 
             // addNewKillMoneyToolStripMenuItem
             // 
             this.addNewKillMoneyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
@@ -572,8 +462,6 @@ namespace DayZeEditor
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.KillRewardHUNTINGGB);
-            this.Controls.Add(this.KRGiftGB);
             this.Controls.Add(this.KRBaseGB);
             this.Controls.Add(this.KillRewardTV);
             this.Controls.Add(this.darkToolStrip21);
@@ -590,13 +478,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.PointLoseByDeathNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatsloseNUD)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.KRGiftGB.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GiftLifetimeNUD)).EndInit();
-            this.KillRewardHUNTINGGB.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -633,14 +514,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem removeToolToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem addNewMedicalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeMedicalToolStripMenuItem4;
-        private System.Windows.Forms.GroupBox KRGiftGB;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.CheckBox PlayerGiftCB;
-        private DarkUI.Controls.DarkLabel darkLabel4;
-        private System.Windows.Forms.NumericUpDown GiftLifetimeNUD;
-        private System.Windows.Forms.GroupBox KillRewardHUNTINGGB;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.CheckBox HuntingRewardCB;
         private System.Windows.Forms.ToolStripMenuItem addNewKillMoneyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;

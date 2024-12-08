@@ -77,6 +77,7 @@ namespace DayZeLib
         public int zoneRed { get; set; }
         public int zoneGreen { get; set; }
         public int zoneBlue { get; set; }
+        public int priority { get; set; }
     }
 
     public class Customzone
@@ -91,6 +92,7 @@ namespace DayZeLib
         public int zoneBlue { get; set; }
         public int drawCircle { get; set; }
         public int isPvPZone { get; set; }
+        public int priority { get; set; }
         public Zoneschedule ZoneSchedule { get; set; }
         public int EnableCustomMessages { get; set; }
         public string CustomTitle { get; set; }

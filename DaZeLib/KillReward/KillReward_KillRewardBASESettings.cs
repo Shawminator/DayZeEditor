@@ -349,7 +349,10 @@ namespace DayZeLib
         {
             return (int)GetType().GetProperty(type).GetValue(this, null);
         }
-
+        public void setPoints(string v1, int v2)
+        {
+           GetType().GetProperty(v1).SetValue(this, v2, null);
+        }
         public BindingList<int> GetIntList(string v)
         {
             return (BindingList<int>)GetType().GetProperty(v).GetValue(this, null);
@@ -399,6 +402,8 @@ namespace DayZeLib
                 SetIntList(animal.AnimalName + "Money", MoneyArray);
             }
         }
+
+
     }
     public class KillReward_KillrewardHuntingAnimals
     {
@@ -489,6 +494,9 @@ namespace DayZeLib
         public BindingList<int> PlayerWeaponBox { get; set; }
         public BindingList<int> PlayerWeaponBoxNumber { get; set; }
 
+        [JsonIgnore]
+        public BindingList<Killreward_Player_Weapons> _playuerWeapons { get; set; }
+
         public KillReward_KillRewardPLAYERSettings()
         {
             PlayerKillReward = 1;                                           // 1 = ON   0 = OFF
@@ -498,6 +506,52 @@ namespace DayZeLib
             PlayerWeaponBox = new BindingList<int>() { 50, 75, 100 };                        // WeaponBox for 3,5 Player kills
             PlayerWeaponBoxNumber = new BindingList<int>() { 1, 2, 3 };
         }
+
+        public void GetPlayerlist()
+        {
+            _playuerWeapons = new BindingList<Killreward_Player_Weapons>();
+            for (int i = 0;i< PlayerKills.Count(); i++)
+            {
+                Killreward_Player_Weapons newpw = new Killreward_Player_Weapons()
+                {
+                    kills = PlayerKills[i],
+                    money = PlayerMoney[i]
+                };
+                if(PlayerWeaponBox.Contains(newpw.kills))
+                {
+                    int index = PlayerWeaponBox.IndexOf(newpw.kills);
+                    newpw.hasWeaponsBox = true;
+                    newpw.WeaponsBoxNumber = PlayerWeaponBoxNumber[index];
+                }
+                _playuerWeapons.Add(newpw);
+            }
+        }
+
+        public void SetPlayerList()
+        {
+            PlayerKills = new BindingList<int>();
+            PlayerMoney = new BindingList<int>();
+            PlayerWeaponBox = new BindingList<int>();
+            PlayerWeaponBoxNumber = new BindingList<int>();
+            foreach(Killreward_Player_Weapons KRPW in _playuerWeapons)
+            {
+                PlayerKills.Add(KRPW.kills);
+                PlayerMoney.Add(KRPW.money);
+                if(KRPW.hasWeaponsBox)
+                {
+                    PlayerWeaponBox.Add(KRPW.kills);
+                    PlayerWeaponBoxNumber.Add(KRPW.WeaponsBoxNumber);
+                }
+            }
+        }
+    }
+    public class Killreward_Player_Weapons
+    {
+        public int kills { get; set; }
+        public int money { get; set; }
+        public bool hasWeaponsBox = false;
+        public int WeaponsBoxNumber { get; set; }
+
     }
     public class KillReward_KillRewardSHOOTDISTANCESettings
     {

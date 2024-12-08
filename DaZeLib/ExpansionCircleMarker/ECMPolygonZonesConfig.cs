@@ -44,6 +44,7 @@ namespace DayZeLib
         public int polyzoneBlue { get; set; }
         public int polydrawPolygon { get; set; }
         public int polyisPvPZone { get; set; }
+        public int priority { get;set; }
         public Zoneschedule ZoneSchedule { get; set; }
         public int EnableCustomMessages { get; set; }
         public string CustomTitle { get; set; }

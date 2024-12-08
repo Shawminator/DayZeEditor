@@ -463,6 +463,32 @@ namespace DayZeEditor
                 CantBeUnpinnedOutsidePvProot.Nodes.Add(CantBeUnpinnedOutsidePvP);
             }
             ItemRulesTV.Nodes.Add(CantBeUnpinnedOutsidePvProot);
+            TreeNode CantBePlacedInsidePvProot = new TreeNode("Cant Be Placed Inside PvP")
+            {
+                Tag = "CantBePlacedInsidePvProot"
+            };
+            foreach (string cbuopvp in ECMItemRulesConfig.CantBePlacedInsidePvP)
+            {
+                TreeNode CantBePlacedInsidePvP = new TreeNode($"Item Name: {cbuopvp}")
+                {
+                    Tag = cbuopvp
+                };
+                CantBePlacedInsidePvProot.Nodes.Add(CantBePlacedInsidePvP);
+            }
+            ItemRulesTV.Nodes.Add(CantBePlacedInsidePvProot);
+            TreeNode CantBePlacedInsidePvEroot = new TreeNode("Cant Be Placed Inside PvE")
+            {
+                Tag = "CantBePlacedInsidePvEroot"
+            };
+            foreach (string cbuopvp in ECMItemRulesConfig.CantBePlacedInsidePvE)
+            {
+                TreeNode CantBePlacedInsidePvE = new TreeNode($"Item Name: {cbuopvp}")
+                {
+                    Tag = cbuopvp
+                };
+                CantBePlacedInsidePvEroot.Nodes.Add(CantBePlacedInsidePvE);
+            }
+            ItemRulesTV.Nodes.Add(CantBePlacedInsidePvEroot);
         }
         private void ItemRulesTV_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -482,6 +508,8 @@ namespace DayZeEditor
                 case "CantDoDamageOutsidePvProot":
                 case "CantBeDamagedAtAllroot":
                 case "CantBeUnpinnedOutsidePvProot":
+                case "CantBePlacedInsidePvProot":
+                case "CantBePlacedInsidePvEroot":
                     CantBeDamagedOutsidePvPGB.Visible = true;
                     textBox1.Text = e.Node.Tag.ToString();
                     EnableDamageOnGroundCB.Visible = false;
@@ -519,6 +547,8 @@ namespace DayZeEditor
                         case "CantDoDamageOutsidePvProot":
                         case "CantBeDamagedAtAllroot":
                         case "CantBeUnpinnedOutsidePvProot":
+                        case "CantBePlacedInsidePvProot":
+                        case "CantBePlacedInsidePvEroot":
                             addNewToolStripMenuItem.Visible = false;
                             removeSelectedItemToolStripMenuItem.Visible = true;
                             moveUpToolStripMenuItem.Visible = false;
@@ -572,6 +602,22 @@ namespace DayZeEditor
                     };
                     CurrentTreenode.Nodes.Add(CantBeUnpinnedOutsidePvProot);
                     break;
+                case "CantBePlacedInsidePvProot":
+                    ECMItemRulesConfig.CantBePlacedInsidePvP.Add("ChangeMe");
+                    TreeNode CantBePlacedInsidePvProot = new TreeNode($"Item Name: ChangeMe")
+                    {
+                        Tag = "ChangeMe"
+                    };
+                    CurrentTreenode.Nodes.Add(CantBePlacedInsidePvProot);
+                    break;
+                case "CantBePlacedInsidePvEroot":
+                    ECMItemRulesConfig.CantBePlacedInsidePvE.Add("ChangeMe");
+                    TreeNode CantBePlacedInsidePvEroot = new TreeNode($"Item Name: ChangeMe")
+                    {
+                        Tag = "ChangeMe"
+                    };
+                    CurrentTreenode.Nodes.Add(CantBePlacedInsidePvEroot);
+                    break;
             }
             ECMItemRulesConfig.isDirty = true;
         }
@@ -591,6 +637,12 @@ namespace DayZeEditor
                     break;
                 case "CantBeUnpinnedOutsidePvProot":
                     ECMItemRulesConfig.CantBeUnpinnedOutsidePvP.Remove(CurrentTreenode.Tag.ToString());
+                    break;
+                case "CantBePlacedInsidePvProot":
+                    ECMItemRulesConfig.CantBePlacedInsidePvP.Remove(CurrentTreenode.Tag.ToString());
+                    break;
+                case "CantBePlacedInsidePvEroot":
+                    ECMItemRulesConfig.CantBePlacedInsidePvE.Remove(CurrentTreenode.Tag.ToString());
                     break;
             }
             CurrentTreenode.Parent.Nodes.Remove(CurrentTreenode);
@@ -671,6 +723,32 @@ namespace DayZeEditor
                             ECMItemRulesConfig.CantBeUnpinnedOutsidePvP[i] = textBox1.Text;
                             CurrentTreenode.Tag = ECMItemRulesConfig.CantBeUnpinnedOutsidePvP[i];
                             CurrentTreenode.Text = $"Item Name: {ECMItemRulesConfig.CantBeUnpinnedOutsidePvP[i]}";
+                            break;
+                        }
+                    }
+                    break;
+                case "CantBePlacedInsidePvProot":
+                    text = CurrentTreenode.Tag.ToString();
+                    for (int i = 0; i < ECMItemRulesConfig.CantBePlacedInsidePvP.Count(); i++)
+                    {
+                        if (ECMItemRulesConfig.CantBePlacedInsidePvP[i] == text)
+                        {
+                            ECMItemRulesConfig.CantBePlacedInsidePvP[i] = textBox1.Text;
+                            CurrentTreenode.Tag = ECMItemRulesConfig.CantBePlacedInsidePvP[i];
+                            CurrentTreenode.Text = $"Item Name: {ECMItemRulesConfig.CantBePlacedInsidePvP[i]}";
+                            break;
+                        }
+                    }
+                    break;
+                case "CantBePlacedInsidePvEroot":
+                    text = CurrentTreenode.Tag.ToString();
+                    for (int i = 0; i < ECMItemRulesConfig.CantBePlacedInsidePvE.Count(); i++)
+                    {
+                        if (ECMItemRulesConfig.CantBePlacedInsidePvE[i] == text)
+                        {
+                            ECMItemRulesConfig.CantBePlacedInsidePvE[i] = textBox1.Text;
+                            CurrentTreenode.Tag = ECMItemRulesConfig.CantBePlacedInsidePvE[i];
+                            CurrentTreenode.Text = $"Item Name: {ECMItemRulesConfig.CantBePlacedInsidePvE[i]}";
                             break;
                         }
                     }
@@ -1443,6 +1521,7 @@ namespace DayZeEditor
                 EMCZoneNameTB.Text = (CurrentSelectedZone as Customzone).zoneName;
                 EMCZoneDrawCB.Checked = (CurrentSelectedZone as Customzone).drawCircle == 1 ? true : false;
                 EMCZoneTypeCB.SelectedIndex = (CurrentSelectedZone as Customzone).isPvPZone;
+                EMCZonePriorityNUD.Value = (CurrentSelectedZone as Customzone).priority;
                 EMCCustomZonesPointGB.Visible = true;
                 EMCCustomZoneXNUD.Value = (CurrentSelectedZone as Customzone).x;
                 EMCCustomZoneZNUD.Value = (CurrentSelectedZone as Customzone).z;
@@ -1515,6 +1594,7 @@ namespace DayZeEditor
                 EMCZoneNameTB.Text = (CurrentSelectedZone as Polygonzone).polyzoneName;
                 EMCZoneDrawCB.Checked = (CurrentSelectedZone as Polygonzone).polydrawPolygon == 1 ? true : false;
                 EMCZoneTypeCB.SelectedIndex = (CurrentSelectedZone as Polygonzone).polyisPvPZone;
+                EMCZonePriorityNUD.Value = (CurrentSelectedZone as Polygonzone).priority;
                 groupBox3.Visible = true;
                 EMCZoneStartHourNUD.Value = (CurrentSelectedZone as Polygonzone).ZoneSchedule.StartHour;
                 EMCZoneEndHourNUD.Value = (CurrentSelectedZone as Polygonzone).ZoneSchedule.EndHour;
@@ -1586,6 +1666,7 @@ namespace DayZeEditor
                 EMCZoneNameTB.Text = (CurrentSelectedZone as Objectstocreatedynamiczone).itemName;
                 EMCZoneDrawCB.Checked = (CurrentSelectedZone as Objectstocreatedynamiczone).drawCircle == 1 ? true : false;
                 EMCZoneTypeCB.SelectedIndex = (CurrentSelectedZone as Objectstocreatedynamiczone).isPvPZone;
+                EMCZonePriorityNUD.Value = (CurrentSelectedZone as Objectstocreatedynamiczone).priority;
                 groupBox3.Visible = true;
                 EMCZoneStartHourNUD.Value = (CurrentSelectedZone as Objectstocreatedynamiczone).ZoneSchedule.StartHour;
                 EMCZoneEndHourNUD.Value = (CurrentSelectedZone as Objectstocreatedynamiczone).ZoneSchedule.EndHour;
@@ -1626,13 +1707,16 @@ namespace DayZeEditor
             {
                 useraction = false;
                 helicrashGB.Visible = true;
-                if(Currentzonetag.Tag is Mi8)
+                HeliCrashEnabledCB.Text = "Enable HeliCrash";
+                HeliCrashEnabledCB.Enabled = true;
+                if (Currentzonetag.Tag is Mi8)
                 {
                     CurrentSelectedZone = Currentzonetag.Tag as Mi8;
                     HeliCrashEnabledCB.Checked = ECMDynamicPVPZoneConfig.Mi8_Crashed == 1 ? true : false;
                     checkBox1.Checked = ECMDynamicPVPZoneConfig.Mi8.drawCircle == 1 ? true : false;
                     numericUpDown1.Value = ECMDynamicPVPZoneConfig.Mi8.Radius;
                     comboBox1.SelectedIndex = ECMDynamicPVPZoneConfig.Mi8.isPvPZone;
+                    numericUpDown2.Value = ECMDynamicPVPZoneConfig.Mi8.priority;
                 }
                 else if (Currentzonetag.Tag is UH1Y)
                 {
@@ -1641,14 +1725,18 @@ namespace DayZeEditor
                     checkBox1.Checked = ECMDynamicPVPZoneConfig.UH1Y.drawCircle == 1 ? true : false;
                     numericUpDown1.Value = ECMDynamicPVPZoneConfig.UH1Y.Radius;
                     comboBox1.SelectedIndex = ECMDynamicPVPZoneConfig.UH1Y.isPvPZone;
+                    numericUpDown2.Value = ECMDynamicPVPZoneConfig.UH1Y.priority;
                 }
                 else if (Currentzonetag.Tag is AIRDROP_ZONES)
                 {
                     CurrentSelectedZone = Currentzonetag.Tag as AIRDROP_ZONES;
                     HeliCrashEnabledCB.Checked = true;
+                    HeliCrashEnabledCB.Text = "Enable Airdrops";
+                    HeliCrashEnabledCB.Enabled = false;
                     checkBox1.Checked = (CurrentSelectedZone as AIRDROP_ZONES).drawCircle == 1 ? true : false;
                     numericUpDown1.Value = (CurrentSelectedZone as AIRDROP_ZONES).Radius;
                     comboBox1.SelectedIndex = (CurrentSelectedZone as AIRDROP_ZONES).isPvPZone;
+                    numericUpDown2.Value = (CurrentSelectedZone as AIRDROP_ZONES).priority;
                 }
             }
             CategorycolourPB.Invalidate();
@@ -1983,6 +2071,25 @@ namespace DayZeEditor
             else if (CurrentSelectedZone is Objectstocreatedynamiczone)
             {
                 (CurrentSelectedZone as Objectstocreatedynamiczone).isPvPZone = EMCZoneTypeCB.SelectedIndex;
+                ECMDynamicPVPZoneConfig.isDirty = true;
+            }
+        }
+        private void EMCZonePriorityNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (CurrentSelectedZone is Customzone)
+            {
+                (CurrentSelectedZone as Customzone).priority = (int)EMCZonePriorityNUD.Value;
+                ECMExpansionCircleMarkerConfig.isDirty = true;
+            }
+            else if (CurrentSelectedZone is Polygonzone)
+            {
+                (CurrentSelectedZone as Polygonzone).priority = (int)EMCZonePriorityNUD.Value;
+                ECMPolygonZonesConfig.isDirty = true;
+            }
+            else if (CurrentSelectedZone is Objectstocreatedynamiczone)
+            {
+                (CurrentSelectedZone as Objectstocreatedynamiczone).priority = (int)EMCZonePriorityNUD.Value;
                 ECMDynamicPVPZoneConfig.isDirty = true;
             }
         }
@@ -2797,6 +2904,25 @@ namespace DayZeEditor
                 ECMExpansionCircleMarkerConfig.isDirty = true;
             }
         }
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (CurrentSelectedZone is Mi8)
+            {
+                ECMDynamicPVPZoneConfig.Mi8.priority = (int)numericUpDown2.Value;
+                ECMDynamicPVPZoneConfig.isDirty = true;
+            }
+            else if (CurrentSelectedZone is UH1Y)
+            {
+                ECMDynamicPVPZoneConfig.UH1Y.priority = (int)numericUpDown2.Value;
+                ECMDynamicPVPZoneConfig.isDirty = true;
+            }
+            else if (CurrentSelectedZone is AIRDROP_ZONES)
+            {
+                ECMExpansionCircleMarkerConfig.AIRDROP_ZONES.priority = (int)numericUpDown2.Value;
+                ECMExpansionCircleMarkerConfig.isDirty = true;
+            }
+        }
 
         private void generaslSetiingsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -2819,6 +2945,9 @@ namespace DayZeEditor
             ECMExpansionCircleMarkerConfig.SetDecimalValue(nud.Name.Substring(0, nud.Name.Length - 3), nud.Value);
             ECMExpansionCircleMarkerConfig.isDirty = true;
         }
+
         #endregion
+
+
     }
 }

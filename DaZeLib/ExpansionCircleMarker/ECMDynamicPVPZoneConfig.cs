@@ -33,6 +33,7 @@ namespace DayZeLib
         public decimal Radius { get; set; }
         public int drawCircle { get; set; }
         public int isPvPZone { get; set; }
+        public int priority { get; set; }
     }
 
     public class UH1Y
@@ -44,6 +45,7 @@ namespace DayZeLib
         public decimal Radius { get; set; }
         public int drawCircle { get; set; }
         public int isPvPZone { get; set; }
+        public int priority { get; set; }
     }
 
     public class Objectstocreatedynamiczone
@@ -56,6 +58,7 @@ namespace DayZeLib
         public int zoneRed { get; set; }
         public int zoneGreen { get; set; }
         public int zoneBlue { get; set; }
+        public int priority { get; set; }
         public BindingList<Scanzone> ScanZones { get; set; }
         public Zoneschedule ZoneSchedule { get; set; }
     }

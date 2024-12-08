@@ -114,6 +114,20 @@ namespace DayZeEditor
                 File.WriteAllText(KillRewardHunting_Config.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(KillRewardHunting_Config.Filename));
             }
+            if (KillRewardPlayer_Config.isDirty)
+            {
+                if (currentproject.Createbackups && File.Exists(KillRewardPlayer_Config.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(KillRewardPlayer_Config.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(KillRewardPlayer_Config.Filename, Path.GetDirectoryName(KillRewardPlayer_Config.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(KillRewardPlayer_Config.Filename) + ".bak", true);
+                }
+                KillRewardPlayer_Config.isDirty = false;
+                KillRewardPlayer_Config.KillRewardPLAYER.SetPlayerList();
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(KillRewardPlayer_Config, options);
+                File.WriteAllText(KillRewardPlayer_Config.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(KillRewardPlayer_Config.Filename));
+            }
             string message = "The Following Files were saved....\n";
             int i = 0;
             foreach (string l in midifiedfiles)
@@ -169,6 +183,7 @@ namespace DayZeEditor
 
             string KillRewardPlayer_ConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + KillrewardStatics.KillRewardPlayer_CONFIG_JSON;
             KillRewardPlayer_Config = JsonSerializer.Deserialize<KillRewardPlayer_Config>(File.ReadAllText(KillRewardPlayer_ConfigPath));
+            KillRewardPlayer_Config.KillRewardPLAYER.GetPlayerlist();
             KillRewardPlayer_Config.isDirty = false;
             KillRewardPlayer_Config.Filename = KillRewardPlayer_ConfigPath;
 
@@ -189,6 +204,7 @@ namespace DayZeEditor
 
         private void Loadsettings()
         {
+            Cursor.Current = Cursors.WaitCursor;
             KillRewardTV.Nodes.Clear();
             TreeNode RootNode = new TreeNode("Kill Reward Settings:-")
             {
@@ -197,13 +213,18 @@ namespace DayZeEditor
             RootNode.Nodes.Add(AddKRBaseNode());
             RootNode.Nodes.Add(AddKRGiftNode());
             RootNode.Nodes.Add(AddHuntingNodes());
+            TreeNode playerroot = new TreeNode("Kill Reward Player")
+            {
+                Tag = KillRewardPlayer_Config
+            };
+            playerroot.Nodes.Add(AddPlayerNegative());
+            playerroot.Nodes.Add(AddPlayerPlayer());
+            playerroot.Nodes.Add(addPlayerShootdistance());
 
 
-
-
-
-
+            RootNode.Nodes.Add(playerroot);
             KillRewardTV.Nodes.Add(RootNode);
+            Cursor.Current = Cursors.Default;
         }
         private TreeNode AddKRBaseNode()
         {
@@ -235,12 +256,25 @@ namespace DayZeEditor
             {
                 Tag = KillRewardGift_Config
             };
+            TreeNode PlayerGiftEnabledtn = new TreeNode($"Player Gift Enabled:- {(KillRewardGift_Config.KillRewardGIFT.PlayerGift == 1 ? true : false)}")
+            {
+                Tag = "PlayerGiftEnabled",
+                Name = "PlayerGiftEnabled"
+            };
+            KRgiftNode.Nodes.Add(PlayerGiftEnabledtn);
+            TreeNode GiftLifetimetn = new TreeNode($"Gift Lifetime:- {KillRewardGift_Config.KillRewardGIFT.GiftLifetime}")
+            {
+                Tag = "GiftLifetime",
+                Name = "GiftLifetime"
+            };
+            KRgiftNode.Nodes.Add(GiftLifetimetn);
             TreeNode GiftBoxNode = new TreeNode("Gift Boxes:-")
             {
                 Tag = "GiftBoxes",
                 Name = "GiftBoxes",
             };
-            foreach(string gb in KillRewardGift_Config.KillRewardGIFT.Giftbox)
+
+            foreach (string gb in KillRewardGift_Config.KillRewardGIFT.Giftbox)
             {
                 TreeNode gbnode = new TreeNode($"Box Type: - {gb}")
                 {
@@ -323,12 +357,17 @@ namespace DayZeEditor
             {
                 Tag = KillRewardHunting_Config
             };
-
+            TreeNode HuntingRewardEnabledtn = new TreeNode($"Hunting Reward Enabled:- {(KillRewardHunting_Config.KillRewardHUNTING.HuntingReward == 1 ? true : false)}")
+            {
+                Tag = "HuntingKillRewardEnabled",
+                Name = "HuntingKillRewardEnabled"
+            };
+            KRHuntingNode.Nodes.Add(HuntingRewardEnabledtn);
             foreach (KillReward_KillrewardHuntingAnimals animals in KillRewardHunting_Config.KillRewardHUNTING.KRAnimals)
             {
                 TreeNode Animalnode = new TreeNode($"Animal:- {animals.AnimalName}")
                 {
-                    Tag = "Animal",
+                    Tag = animals.AnimalName,
                     Name = "Animal"
                 };
                 TreeNode animapoints = new TreeNode($"Points:- {KillRewardHunting_Config.KillRewardHUNTING.getPoints(animals.AnimalName + "Points")}")
@@ -356,11 +395,124 @@ namespace DayZeEditor
             }
             return KRHuntingNode;
         }
+        private TreeNode AddPlayerNegative()
+        {
+            TreeNode negativetn = new TreeNode("Negative")
+            {
+                Tag = KillRewardPlayer_Config.KillRewardNEGATIVE
+            };
+            TreeNode PlayerKillNegativeRewardtn = new TreeNode($"Player Kill Negative Reward Enabled:- {(KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeReward == 1 ? true : false)}")
+            {
+                Tag = "PlayerKillNegativeReward",
+                Name = "PlayerKillNegativeReward"
+            };
+            negativetn.Nodes.Add(PlayerKillNegativeRewardtn);
+            TreeNode PlayerKilltn = new TreeNode($"Player Kill:- {KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKill}")
+            {
+                Tag = "PlayerKill",
+                Name = "PlayerKill"
+            };
+            negativetn.Nodes.Add(PlayerKilltn);
+            TreeNode Pointlosetn = new TreeNode($"Point lose:- {KillRewardPlayer_Config.KillRewardNEGATIVE.Pointlose}")
+            {
+                Tag = "Pointlose",
+                Name = "Pointlose"
+            };
+            negativetn.Nodes.Add(Pointlosetn);
+            TreeNode LoseMoneytn = new TreeNode($"Lose Money:- {KillRewardPlayer_Config.KillRewardNEGATIVE.LoseMoney}")
+            {
+                Tag = "LoseMoney",
+                Name = "LoseMoney"
+            };
+            negativetn.Nodes.Add(LoseMoneytn);
+            TreeNode PlayerKillNegativeRewardBonusQuantitytn = new TreeNode($"Player Kill Negative Reward Bonus Quantity:- {KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeRewardBonusQuantity}")
+            {
+                Tag = "PlayerKillNegativeRewardBonusQuantity",
+                Name = "PlayerKillNegativeRewardBonusQuantity"
+            };
+            negativetn.Nodes.Add(PlayerKillNegativeRewardBonusQuantitytn);
+            TreeNode PlayerKillNegativeRewardBonustn = new TreeNode($"Player Kill Negative Reward Bonus:-")
+            {
+                Tag = "PlayerKillNegativeRewardBonus",
+                Name = "PlayerKillNegativeRewardBonus"
+            };
+            foreach (string s in KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeRewardBonus)
+            {
+                PlayerKillNegativeRewardBonustn.Nodes.Add( new TreeNode($"Negative Reward Bonus Type:- {s}")
+                {
+                    Tag = "negativeRewardBonusType",
+                    Name = "negativeRewardBonusType"
+                });
+            }
+            negativetn.Nodes.Add(PlayerKillNegativeRewardBonustn);
+            return negativetn;
+        }
+        private TreeNode AddPlayerPlayer()
+        {
+            TreeNode Playertn = new TreeNode("Player")
+            {
+                Tag = KillRewardPlayer_Config.KillRewardPLAYER
+            };
+            TreeNode PlayerKillRewardtn = new TreeNode($"Player Kill Reward Enabled:- {(KillRewardPlayer_Config.KillRewardPLAYER.PlayerKillReward == 1 ? true : false)}")
+            {
+                Tag = "PlayerKillReward",
+                Name = "PlayerKillReward"
+            };
+            Playertn.Nodes.Add(PlayerKillRewardtn);
+            TreeNode PlayerKillPointstn = new TreeNode($"Player Kill Points:- {KillRewardPlayer_Config.KillRewardPLAYER.PlayerKillPoints}")
+            {
+                Tag = "PlayerKillPoints",
+                Name = "PlayerKillPoints"
+            };
+            Playertn.Nodes.Add(PlayerKillPointstn);
+            TreeNode PlayerKillsMoneytn = new TreeNode("Player Kills : Money")
+            {
+                Tag = "Killreward_Player_Weapons",
+                Name = "Killreward_Player_Weapons"
+            };
+            foreach(Killreward_Player_Weapons KRpw in KillRewardPlayer_Config.KillRewardPLAYER._playuerWeapons)
+            {
+                TreeNode treeNode = new TreeNode($"{KRpw.kills}:{KRpw.money}")
+                {
+                    Tag = KRpw
+                };
+                if(KRpw.hasWeaponsBox) 
+                {
+                    treeNode.Nodes.Add(new TreeNode($"Player Weapon Box Number:- {KRpw.WeaponsBoxNumber}")
+                    {
+                        Tag = "PlayerWeaponBoxNumber",
+                        Name = "PlayerWeaponBoxNumber"
+                    });
+                }
+                PlayerKillsMoneytn.Nodes.Add(treeNode);
+            }
+            Playertn.Nodes.Add(PlayerKillsMoneytn);
+            return Playertn;
+        }
+        private TreeNode addPlayerShootdistance()
+        {
+            TreeNode Distancetn = new TreeNode("Shooting Distance")
+            {
+                Tag = KillRewardPlayer_Config.KillRewardSHOOTDISTANCE
+            };
+            TreeNode SHOOTRewardtn = new TreeNode($"Shot Ditance Reward Enabled:- {(KillRewardPlayer_Config.KillRewardSHOOTDISTANCE.SHOOTReward == 1 ? true : false)}")
+            {
+                Tag = "SHOOTReward",
+                Name = "SHOOTReward"
+            };
+            Distancetn.Nodes.Add(SHOOTRewardtn);
+            TreeNode PlayerSHOOTDISTANCEtn = new TreeNode($"Player Shot Distance:- {KillRewardPlayer_Config.KillRewardSHOOTDISTANCE.PlayerSHOOTDISTANCE}")
+            {
+                Tag = "PlayerSHOOTDISTANCE",
+                Name = "PlayerSHOOTDISTANCE"
+            };
+            Distancetn.Nodes.Add(PlayerSHOOTDISTANCEtn);
+            return Distancetn;
+        }
         private void KillRewardTV_AfterSelect(object sender, TreeViewEventArgs e)
         {
             Currenttreeviewtag = e.Node;
             KRBaseGB.Visible = false;
-            KRGiftGB.Visible = false;
             useraction = false;
             if(e.Node.Tag.ToString() == "NotListedIDs" || e.Node.Tag.ToString() == "SteamID" || e.Node.Tag is KillRewardBase_Config)
             {
@@ -373,30 +525,6 @@ namespace DayZeEditor
                 DebugLogCB.Checked = KillRewardBase_Config.KillRewardBASE.DebugLog == 1 ? true : false;
                 PVPVECB.SelectedIndex = KillRewardBase_Config.KillRewardBASE.PVPVE;
             }
-            else if (e.Node.Tag.ToString() == "GiftBoxes" ||
-                e.Node.Tag.ToString() == "GiftBoxes" ||
-                e.Node.Tag.ToString() == "BoxType" ||
-                e.Node.Tag.ToString() == "GiftDrinks" ||
-                e.Node.Tag.ToString() == "DrinkType" ||
-                e.Node.Tag.ToString() == "GiftTreats" ||
-                e.Node.Tag.ToString() == "TreatType" ||
-                e.Node.Tag.ToString() == "GiftTools" ||
-                e.Node.Tag.ToString() == "Tooltype" ||
-                e.Node.Tag.ToString() == "GiftMedical" ||
-                e.Node.Tag.ToString() == "MedicalType" ||
-                e.Node.Tag is KillRewardGift_Config)
-            {
-                KRGiftGB.Visible = true;
-                PlayerGiftCB.Checked = KillRewardGift_Config.KillRewardGIFT.PlayerGift == 1 ? true : false;
-                GiftLifetimeNUD.Value = KillRewardGift_Config.KillRewardGIFT.GiftLifetime;
-            }
-            else if (e.Node.Tag is KillRewardHunting_Config ||
-                e.Node.Tag.ToString() == "Animal" ||
-                e.Node.Tag.ToString() == "AnimalPoints")
-            {
-                KillRewardHUNTINGGB.Visible = true;
-                HuntingRewardCB.Checked = KillRewardHunting_Config.KillRewardHUNTING.HuntingReward == 1 ? true : false;
-            }
             useraction = true;
         }
         private void KillRewardTV_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
@@ -404,6 +532,16 @@ namespace DayZeEditor
             AnimalKillMoney akm = null;
             akm = e.Node.Tag as AnimalKillMoney;
             if (e.Node.Tag.ToString() != "SteamID" &&
+                e.Node.Tag.ToString() != "PlayerGiftEnabled" &&
+                e.Node.Tag.ToString() != "GiftLifetime" &&
+                e.Node.Tag.ToString() != "HuntingKillRewardEnabled" &&
+                e.Node.Tag.ToString() != "AnimalPoints" &&
+                e.Node.Tag.ToString() != "PlayerKillNegativeReward" &&
+                e.Node.Tag.ToString() != "PlayerKill" &&
+                e.Node.Tag.ToString() != "Pointlose" &&
+                e.Node.Tag.ToString() != "LoseMoney" &&
+                e.Node.Tag.ToString() != "PlayerKillNegativeRewardBonusQuantity" &&
+                e.Node.Tag.ToString() != "PlayerKillReward" &&
                 akm == null)
                 e.CancelEdit = true;
         }
@@ -505,8 +643,42 @@ namespace DayZeEditor
         private void KillRewardTV_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Node.Tag.ToString() == "SteamID"||
-                e.Node.Tag is AnimalKillMoney)
+                e.Node.Tag.ToString() == "PlayerGiftEnabled" ||
+                e.Node.Tag.ToString() == "GiftLifetime" ||
+                e.Node.Tag.ToString() == "HuntingKillRewardEnabled" ||
+                e.Node.Tag.ToString()== "AnimalPoints" ||
+                e.Node.Tag is AnimalKillMoney ||
+                e.Node.Tag.ToString() == "PlayerKillNegativeReward" ||
+                e.Node.Tag.ToString() == "PlayerKill" ||
+                e.Node.Tag.ToString() == "Pointlose" ||
+                e.Node.Tag.ToString() == "LoseMoney" ||
+                e.Node.Tag.ToString() == "PlayerKillNegativeRewardBonusQuantity" ||
+                e.Node.Tag.ToString() == "PlayerKillReward")
                 e.Node.BeginEdit();
+            else if (e.Node.Tag.ToString() == "negativeRewardBonusType")
+            {
+                AddItemfromTypes form = new AddItemfromTypes
+                {
+                    vanillatypes = vanillatypes,
+                    ModTypes = ModTypes,
+                    currentproject = currentproject,
+                    UseOnlySingleitem = true
+                };
+                DialogResult result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    List<string> addedtypes = form.addedtypes.ToList();
+                    foreach (string l in addedtypes)
+                    {
+                        string currentitem = e.Node.Text.Substring(29);
+                        int index = KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeRewardBonus.IndexOf(currentitem);
+                        KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeRewardBonus[index] = l;
+                        e.Node.Text = $"Negative Reward Bonus Type:- {l}";
+                        KillRewardPlayer_Config.isDirty = true;
+                    }
+
+                }
+            }
         }
         private void KillRewardTV_RequestDisplayText(object sender, TreeViewMS.NodeRequestTextEventArgs e)
         {
@@ -518,6 +690,49 @@ namespace DayZeEditor
                 e.Node.Text = e.Label = $"Steam ID: - {e.Label}";
                 KillRewardBase_Config.isDirty = true;
             }
+            else if (e.Node.Tag.ToString() == "PlayerGiftEnabled")
+            {
+                if (e.Label.ToLower() == "true")
+                    KillRewardGift_Config.KillRewardGIFT.PlayerGift = 1;
+                else if (e.Label.ToLower() == "false")
+                    KillRewardGift_Config.KillRewardGIFT.PlayerGift = 0;
+                else
+                {
+                    MessageBox.Show("Please Enter either True or False");
+                    e.Node.Text = e.Label = $"Player Gift Enabled:- {(KillRewardGift_Config.KillRewardGIFT.PlayerGift == 1 ? true : false)}";
+                    return;
+                }
+                e.Node.Text = e.Label = $"Player Gift Enabled:- {(KillRewardGift_Config.KillRewardGIFT.PlayerGift == 1 ? true : false)}";
+                KillRewardGift_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "GiftLifetime")
+            {
+                KillRewardGift_Config.KillRewardGIFT.GiftLifetime = Convert.ToInt32(e.Label);
+                e.Node.Text = e.Label = $"Gift Lifetime:- {e.Label}";
+                KillRewardGift_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "HuntingKillRewardEnabled")
+            {
+                if (e.Label.ToLower() == "true")
+                    KillRewardHunting_Config.KillRewardHUNTING.HuntingReward = 1;
+                else if (e.Label.ToLower() == "false")
+                    KillRewardHunting_Config.KillRewardHUNTING.HuntingReward = 0;
+                else
+                {
+                    MessageBox.Show("Please Enter either True or False");
+                    e.Node.Text = e.Label = $"Hunting Reward Enabled:- {(KillRewardHunting_Config.KillRewardHUNTING.HuntingReward == 1 ? true : false)}";
+                    return;
+                }
+                e.Node.Text = e.Label = $"Hunting Reward Enabled:- {(KillRewardHunting_Config.KillRewardHUNTING.HuntingReward == 1 ? true : false)}";
+                KillRewardHunting_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "AnimalPoints")
+            {
+                string animalname = e.Node.Parent.Tag.ToString();
+                KillRewardHunting_Config.KillRewardHUNTING.setPoints(animalname + "Points", Convert.ToInt32(e.Label));
+                e.Node.Text = e.Label = $"Points:- {e.Label}";
+                KillRewardHunting_Config.isDirty = true;
+            }
             else if (e.Node.Tag is AnimalKillMoney)
             {
                 string[] info = e.Label.Split(':');
@@ -528,7 +743,60 @@ namespace DayZeEditor
                 akm.money = Convert.ToInt32(money);
                 e.Node.Text = e.Label = $"{akm.kills}:{akm.money}";
                 KillRewardHunting_Config.isDirty = true;
-
+            }
+            else if (e.Node.Tag.ToString() == "PlayerKillNegativeReward")
+            {
+                if (e.Label.ToLower() == "true")
+                    KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeReward = 1;
+                else if (e.Label.ToLower() == "false")
+                    KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeReward = 0;
+                else
+                {
+                    MessageBox.Show("Please Enter either True or False");
+                    e.Node.Text = e.Label = $"Player Kill Negative Reward Enabled:- {(KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeReward == 1 ? true : false)}";
+                    return;
+                }
+                e.Node.Text = e.Label = $"Player Kill Negative Reward Enabled:- {(KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeReward == 1 ? true : false)}";
+                KillRewardPlayer_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "PlayerKill")
+            {
+                KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKill = Convert.ToInt32(e.Label);
+                e.Node.Text = e.Label = $"Player Kill:- {KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKill}";
+                KillRewardPlayer_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "Pointlose")
+            {
+                KillRewardPlayer_Config.KillRewardNEGATIVE.Pointlose = Convert.ToInt32(e.Label);
+                e.Node.Text = e.Label = $"Point lose:- {KillRewardPlayer_Config.KillRewardNEGATIVE.Pointlose}";
+                KillRewardPlayer_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "LoseMoney")
+            {
+                KillRewardPlayer_Config.KillRewardNEGATIVE.LoseMoney = Convert.ToInt32(e.Label);
+                e.Node.Text = e.Label = $"Lose Money:- {KillRewardPlayer_Config.KillRewardNEGATIVE.LoseMoney}";
+                KillRewardPlayer_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "PlayerKillNegativeRewardBonusQuantity")
+            {
+                KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeRewardBonusQuantity = Convert.ToInt32(e.Label);
+                e.Node.Text = e.Label = $"Player Kill Negative Reward Bonus Quantity:- {KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeRewardBonusQuantity}";
+                KillRewardPlayer_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "PlayerKillReward")
+            {
+                if (e.Label.ToLower() == "true")
+                    KillRewardPlayer_Config.KillRewardPLAYER.PlayerKillReward = 1;
+                else if (e.Label.ToLower() == "false")
+                    KillRewardPlayer_Config.KillRewardPLAYER.PlayerKillReward = 0;
+                else
+                {
+                    MessageBox.Show("Please Enter either True or False");
+                    e.Node.Text = e.Label = $"Player Kill Reward Enabled:- {(KillRewardPlayer_Config.KillRewardPLAYER.PlayerKillReward == 1 ? true : false)}";
+                    return;
+                }
+                e.Node.Text = e.Label = $"Player Kill Reward Enabled:- {(KillRewardPlayer_Config.KillRewardPLAYER.PlayerKillReward == 1 ? true : false)}";
+                KillRewardPlayer_Config.isDirty = true;
             }
         }
         private void KillRewardTV_RequestEditText(object sender, TreeViewMS.NodeRequestTextEventArgs e)
@@ -536,6 +804,46 @@ namespace DayZeEditor
             if (e.Node.Tag.ToString() == "SteamID")
             {
                 e.Label = e.Node.Text.Substring(12);
+            }
+            if (e.Node.Tag.ToString() == "PlayerGiftEnabled")
+            {
+                e.Label = (KillRewardGift_Config.KillRewardGIFT.PlayerGift == 1 ? true : false).ToString();
+            }
+            if (e.Node.Tag.ToString() == "GiftLifetime")
+            {
+                e.Label = e.Node.Text.Substring(16);
+            }
+            else if (e.Node.Tag.ToString() == "HuntingKillRewardEnabled")
+            {
+                e.Label = (KillRewardHunting_Config.KillRewardHUNTING.HuntingReward == 1 ? true : false).ToString();
+            }
+            else if (e.Node.Tag.ToString() == "AnimalPoints")
+            {
+                e.Label = e.Node.Text.Substring(9);
+            }
+            else if (e.Node.Tag.ToString() == "PlayerKillNegativeReward")
+            {
+                e.Label = (KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeReward == 1 ? true : false).ToString();
+            }
+            else if (e.Node.Tag.ToString() == "PlayerKill")
+            {
+                e.Label = e.Node.Text.Substring(14);
+            }
+            else if (e.Node.Tag.ToString() == "Pointlose")
+            {
+                e.Label = e.Node.Text.Substring(13);
+            }
+            else if (e.Node.Tag.ToString() == "LoseMoney")
+            {
+                e.Label = e.Node.Text.Substring(13);
+            }
+            else if (e.Node.Tag.ToString() == "PlayerKillNegativeRewardBonusQuantity")
+            {
+                e.Label = e.Node.Text.Substring(45);
+            }
+            else if (e.Node.Tag.ToString() == "PlayerKillReward")
+            {
+                e.Label = (KillRewardPlayer_Config.KillRewardPLAYER.PlayerKillReward == 1 ? true : false).ToString();
             }
         }
         private void KillRewardTV_BeforeCollapse(object sender, TreeViewCancelEventArgs e)
@@ -608,18 +916,6 @@ namespace DayZeEditor
             Currenttreeviewtag.Parent.Nodes.Remove(Currenttreeviewtag);
         }
 
-        private void PlayerGiftCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            KillRewardGift_Config.KillRewardGIFT.PlayerGift = PlayerGiftCB.Checked == true ? 1 : 0;
-            KillRewardGift_Config.isDirty = true;
-        }
-        private void GiftLifetimeNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            KillRewardGift_Config.KillRewardGIFT.GiftLifetime = (int)GiftLifetimeNUD.Value;
-            KillRewardGift_Config.isDirty = true;
-        }
         private void addNewGiftBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BindingList<string> liststring = new BindingList<string>()
@@ -836,12 +1132,6 @@ namespace DayZeEditor
             Currenttreeviewtag.Parent.Nodes.Remove(Currenttreeviewtag);
         }
 
-        private void HuntingRewardCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            KillRewardHunting_Config.KillRewardHUNTING.HuntingReward = HuntingRewardCB.Checked == true ? 1 : 0;
-            KillRewardHunting_Config.isDirty = true;
-        }
         private void addNewKillMoneyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AnimalKillMoney newakm = new AnimalKillMoney()

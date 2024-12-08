@@ -19,6 +19,8 @@ namespace DayZeLib
         public BindingList<string> CantDoDamageOutsidePvP { get; set; }
         public BindingList<string> CantBeDamagedAtAll { get; set; }
         public BindingList<string> CantBeUnpinnedOutsidePvP { get; set; }
+        public BindingList<string> CantBePlacedInsidePvP { get; set; }
+        public BindingList<string> CantBePlacedInsidePvE { get; set; }
     }
 
     public class Cantbedamagedoutsidepvp
