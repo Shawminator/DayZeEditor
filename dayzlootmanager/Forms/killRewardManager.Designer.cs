@@ -64,6 +64,8 @@ namespace DayZeEditor
             this.addNewKillMoneyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addWeaponBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeWeaponBoxToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip21.SuspendLayout();
             this.KRBaseGB.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -330,10 +332,12 @@ namespace DayZeEditor
             this.removeMedicalToolStripMenuItem4,
             this.addNewKillMoneyToolStripMenuItem,
             this.sortToolStripMenuItem,
-            this.removeToolStripMenuItem});
+            this.removeToolStripMenuItem,
+            this.addWeaponBoxToolStripMenuItem,
+            this.removeWeaponBoxToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(158, 334);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(158, 400);
             // 
             // addSteamIDToolStripMenuItem
             // 
@@ -457,14 +461,30 @@ namespace DayZeEditor
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
+            // addWeaponBoxToolStripMenuItem
+            // 
+            this.addWeaponBoxToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addWeaponBoxToolStripMenuItem.Name = "addWeaponBoxToolStripMenuItem";
+            this.addWeaponBoxToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.addWeaponBoxToolStripMenuItem.Text = "Add Weapon Box";
+            this.addWeaponBoxToolStripMenuItem.Click += new System.EventHandler(this.addWeaponBoxToolStripMenuItem_Click);
+            // 
+            // removeWeaponBoxToolStripMenuItem1
+            // 
+            this.removeWeaponBoxToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeWeaponBoxToolStripMenuItem1.Name = "removeWeaponBoxToolStripMenuItem1";
+            this.removeWeaponBoxToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.removeWeaponBoxToolStripMenuItem1.Text = "Remove";
+            this.removeWeaponBoxToolStripMenuItem1.Click += new System.EventHandler(this.removeWeaponBoxToolStripMenuItem1_Click);
+            // 
             // killRewardManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.KRBaseGB);
             this.Controls.Add(this.KillRewardTV);
             this.Controls.Add(this.darkToolStrip21);
+            this.Controls.Add(this.KRBaseGB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "killRewardManager";
             this.Text = "KillRewardManager";
@@ -517,5 +537,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem addNewKillMoneyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addWeaponBoxToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeWeaponBoxToolStripMenuItem1;
     }
 }

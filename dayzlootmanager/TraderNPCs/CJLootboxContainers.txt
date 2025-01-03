@@ -42,7 +42,7 @@ CJ_LootChest_Wood_Green_Foods_Large
 CJ_LootChest_Wood_Green_Medics_Large
 CJ_LootChest_Ammo_Small_Brown
 CJ_LootChest_Ammo_Small_Green
-CJ_LootChest_Ammo_Large_Brown		
+CJ_LootChest_Ammo_Large_Brown
 CJ_LootChest_Ammo_Large_Green
 CJ_LootChest_MoneySafe_Old
 CJ_LootChest_MoneySafe_New

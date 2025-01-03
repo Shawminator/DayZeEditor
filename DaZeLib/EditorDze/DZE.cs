@@ -11,12 +11,17 @@ namespace DayZeLib
     public class DZE
     {
         [JsonIgnore]
-        const int Version = 5;
+        const int Version = 8;
 
         public string MapName { get; set; }
+        public string AuthorID { get; set; }
+        public string CreditsID { get; set; }
+        public DateTime LastModified { get; set; }
+        public DateTime CreationDate { get; set; }
         public float[] CameraPosition { get; set; }
         public BindingList<Editorobject> EditorObjects { get; set; }
         public BindingList<Editordeletedobject> EditorHiddenObjects { get; set; }
+        public BindingList<EditorCameraTrackData> CameraTracks { get; set; }
 
         public DZE()
         {
@@ -43,6 +48,14 @@ namespace DayZeLib
                 {
                     CameraPosition[i] = (float)br.ReadSingle();
                 }
+                AuthorID = Helper.ReadCString(br, br.ReadInt32());
+                int creditscount = br.ReadInt32();
+                for (int i = 0; i < creditscount; i++)
+                {
+                    CreditsID = Helper.ReadCString(br, br.ReadInt32());
+                }
+                LastModified = new DateTime(br.ReadInt32());
+                CreationDate = new DateTime(br.ReadInt32());
                 int EditorobjectCount = br.ReadInt32();
                 EditorObjects = new BindingList<Editorobject>();
                 for (int j = 0; j < EditorobjectCount; j++)
@@ -100,7 +113,7 @@ namespace DayZeLib
         [JsonIgnore]
         public bool Simulate { get; set; }
         [JsonIgnore]
-        public List<String> Attachments { get; set; }
+        public Dictionary<int, Editorobject> Attachments { get; set; }
         [JsonIgnore]
         public int attachments_count { get; set; }
         [JsonIgnore]
@@ -138,12 +151,16 @@ namespace DayZeLib
             if (fileversion < 2)
                 return;
 
-            attachments_count = br.ReadInt32();
-            Attachments = new List<string>();
-            for (int k = 0; k < attachments_count; k++)
-            {
-                Attachments.Add(Helper.ReadCString(br, br.ReadInt32()));
-            }
+            //if (fileversion < 8)
+            //{
+            //    attachments_count = br.ReadInt32();
+            //    Attachments = new List<string>();
+            //    for (int k = 0; k < attachments_count; k++)
+            //    {
+            //        Attachments.Add(Helper.ReadCString(br, br.ReadInt32()));
+            //    }
+            //}
+
             params_count = br.ReadInt32();
             for (int k = 0; k < params_count; k++)
             {
@@ -179,12 +196,22 @@ namespace DayZeLib
                 return;
 
             Model = Helper.ReadCString(br, br.ReadInt32());
+            long pos = br.BaseStream.Position;
+
+            attachments_count = br.ReadInt32();
+            Attachments = new Dictionary<int, Editorobject>();
+            for (int k = 0; k < attachments_count; k++)
+            {
+                int slotid = br.ReadInt32();
+                Attachments.Add(slotid, new Editorobject(br, fileversion));
+            }
         }
     }
 
     public class Editordeletedobject
     {
         public string Type { get; set; }
+        public string ModelName { get; set; }
         public float[] Position { get; set; }
         public int Flags { get; set; }
 
@@ -202,6 +229,11 @@ namespace DayZeLib
                 Position[i] = br.ReadSingle();
             }
             Flags = br.ReadInt32();
+            ModelName = Helper.ReadCString(br, br.ReadInt32());
         }
+    }
+    public class EditorCameraTrackData
+    {
+
     }
 }

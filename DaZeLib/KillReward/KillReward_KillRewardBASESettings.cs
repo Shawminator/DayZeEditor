@@ -580,6 +580,8 @@ namespace DayZeLib
             KillRewardWEAPONBOX = new BindingList<KillReward_KillRewardWEAPONBOXSettings>();
             version = 9;
         }
+
+
     }
     public class KillReward_KillRewardWEAPONBOXSettings
     {
@@ -612,6 +614,11 @@ namespace DayZeLib
             BoxWeaponMagazin = boxWeaponMagazin;
             BoxMagazinQuantity = boxMagazinQuantity;
             BoxBonus = boxBonus;
+        }
+
+        public override string ToString()
+        {
+            return BoxNumber.ToString();
         }
     }
 
