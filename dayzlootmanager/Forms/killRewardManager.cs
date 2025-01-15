@@ -129,6 +129,33 @@ namespace DayZeEditor
                 File.WriteAllText(KillRewardPlayer_Config.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(KillRewardPlayer_Config.Filename));
             }
+            if (KillRewardWeaponBox_Config.isDirty)
+            {
+                if (currentproject.Createbackups && File.Exists(KillRewardWeaponBox_Config.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(KillRewardWeaponBox_Config.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(KillRewardWeaponBox_Config.Filename, Path.GetDirectoryName(KillRewardWeaponBox_Config.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(KillRewardWeaponBox_Config.Filename) + ".bak", true);
+                }
+                KillRewardWeaponBox_Config.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(KillRewardWeaponBox_Config, options);
+                File.WriteAllText(KillRewardWeaponBox_Config.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(KillRewardWeaponBox_Config.Filename));
+            }
+            if (KillRewardZombie_Config.isDirty)
+            {
+                if (currentproject.Createbackups && File.Exists(KillRewardZombie_Config.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(KillRewardZombie_Config.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(KillRewardZombie_Config.Filename, Path.GetDirectoryName(KillRewardZombie_Config.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(KillRewardZombie_Config.Filename) + ".bak", true);
+                }
+                KillRewardZombie_Config.isDirty = false;
+                KillRewardZombie_Config.KillRewardZOMBIE.SetZombieist();
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(KillRewardZombie_Config, options);
+                File.WriteAllText(KillRewardZombie_Config.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(KillRewardZombie_Config.Filename));
+            }
             string message = "The Following Files were saved....\n";
             int i = 0;
             foreach (string l in midifiedfiles)
@@ -195,6 +222,7 @@ namespace DayZeEditor
 
             string KillRewardZombie_ConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + KillrewardStatics.KillRewardZombie_CONFIG_JSON;
             KillRewardZombie_Config = JsonSerializer.Deserialize<KillRewardZombie_Config>(File.ReadAllText(KillRewardZombie_ConfigPath));
+            KillRewardZombie_Config.KillRewardZOMBIE.GetZombielist();
             KillRewardZombie_Config.isDirty = false;
             KillRewardZombie_Config.Filename = KillRewardZombie_ConfigPath;
 
@@ -224,6 +252,7 @@ namespace DayZeEditor
 
             RootNode.Nodes.Add(playerroot);
             RootNode.Nodes.Add(AddweaponBoxNodes());
+            RootNode.Nodes.Add(AddZombieNodes());
             KillRewardTV.Nodes.Add(RootNode);
             Cursor.Current = Cursors.Default;
         }
@@ -471,7 +500,7 @@ namespace DayZeEditor
                 Tag = "Killreward_Player_Weapons",
                 Name = "Killreward_Player_Weapons"
             };
-            foreach(Killreward_Player_Weapons KRpw in KillRewardPlayer_Config.KillRewardPLAYER._playuerWeapons)
+            foreach(Killreward_Kilss_Money_Weapons KRpw in KillRewardPlayer_Config.KillRewardPLAYER._playuerWeapons)
             {
                 TreeNode treeNode = new TreeNode($"{KRpw.kills}:{KRpw.money}")
                 {
@@ -559,15 +588,15 @@ namespace DayZeEditor
                 });
                 weaponBoxNode.Nodes.Add(new TreeNode($"Box Weapon Magazine:- {krwb.BoxWeaponMagazin}")
                 {
-                    Tag = "BoxWeaponMagazin",
-                    Name = "BoxWeaponMagazin"
+                    Tag = "BoxWeaponMagazine",
+                    Name = "BoxWeaponMagazine"
                 });
-                weaponBoxNode.Nodes.Add(new TreeNode($"Box Magazin Quantity:- {krwb.BoxMagazinQuantity}")
+                weaponBoxNode.Nodes.Add(new TreeNode($"Box Magazine Quantity:- {krwb.BoxMagazinQuantity}")
                 {
-                    Tag = "BoxMagazinQuantity",
-                    Name = "BoxMagazinQuantity"
+                    Tag = "BoxMagazineQuantity",
+                    Name = "BoxMagazineQuantity"
                 });
-                TreeNode BoxBonusroot = new TreeNode($"NotListedIDs:-")
+                TreeNode BoxBonusroot = new TreeNode($"Box Bonus:-")
                 {
                     Tag = "BoxBonus",
                     Name = "BoxBonus"
@@ -586,6 +615,54 @@ namespace DayZeEditor
                 WeaponBoxRoot.Nodes.Add(weaponBoxNode);
             }
             return WeaponBoxRoot;
+        }
+        private TreeNode AddZombieNodes()
+        {
+            TreeNode ZombieRoot = new TreeNode("Kill Reward Zombie")
+            {
+                Tag = KillRewardZombie_Config
+            };
+            TreeNode ZombieKillRewardEnabledtn = new TreeNode($"Zombie Kill Reward Enabled:- {(KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillReward == 1 ? true : false)}")
+            {
+                Tag = "ZombieKillRewardEnabled",
+                Name = "ZombieKillRewardEnabled"
+            };
+            ZombieRoot.Nodes.Add(ZombieKillRewardEnabledtn);
+            TreeNode PlayerKillPointstn = new TreeNode($"Zombie Kill Points:- {KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillPoints}")
+            {
+                Tag = "ZombieKillPoints",
+                Name = "ZombieKillPoints"
+            };
+            ZombieRoot.Nodes.Add(PlayerKillPointstn);
+            TreeNode ZombieKillsbyCarEnabledtn = new TreeNode($"Zombie Kill by Car Enabled:- {(KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillsbyCar == 1 ? true : false)}")
+            {
+                Tag = "ZombieKillsbyCarEnabled",
+                Name = "ZombieKillsbyCarEnabled"
+            };
+            ZombieRoot.Nodes.Add(ZombieKillsbyCarEnabledtn);
+            TreeNode ZonbieKillsMoneytn = new TreeNode("Zombie Kills : Money")
+            {
+                Tag = "Killreward_Zombie_Weapons",
+                Name = "Killreward_Zombie_Weapons"
+            };
+            foreach (Killreward_Kilss_Money_Weapons KRpw in KillRewardZombie_Config.KillRewardZOMBIE._ZombieWeapons)
+            {
+                TreeNode treeNode = new TreeNode($"{KRpw.kills}:{KRpw.money}")
+                {
+                    Tag = KRpw
+                };
+                if (KRpw.hasWeaponsBox)
+                {
+                    treeNode.Nodes.Add(new TreeNode($"Zombie Weapon Box Number:- {KRpw.WeaponsBoxNumber}")
+                    {
+                        Tag = "ZombieWeaponBoxNumber",
+                        Name = "ZombieWeaponBoxNumber"
+                    });
+                }
+                ZonbieKillsMoneytn.Nodes.Add(treeNode);
+            }
+            ZombieRoot.Nodes.Add(ZonbieKillsMoneytn);
+            return ZombieRoot;
         }
         private void KillRewardTV_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -608,9 +685,9 @@ namespace DayZeEditor
         private void KillRewardTV_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             AnimalKillMoney akm = null;
-            Killreward_Player_Weapons krpw = null;
+            Killreward_Kilss_Money_Weapons krpw = null;
             akm = e.Node.Tag as AnimalKillMoney;
-            krpw = e.Node.Tag as Killreward_Player_Weapons;
+            krpw = e.Node.Tag as Killreward_Kilss_Money_Weapons;
             if (e.Node.Tag.ToString() != "SteamID" &&
                 e.Node.Tag.ToString() != "PlayerGiftEnabled" &&
                 e.Node.Tag.ToString() != "GiftLifetime" &&
@@ -625,6 +702,10 @@ namespace DayZeEditor
                 e.Node.Tag.ToString() != "PlayerKillPoints" &&
                 e.Node.Tag.ToString() != "SHOOTReward" &&
                 e.Node.Tag.ToString() != "PlayerSHOOTDISTANCE" &&
+                e.Node.Tag.ToString() != "BoxMagazineQuantity" &&
+                e.Node.Tag.ToString() != "ZombieKillRewardEnabled" &&
+                e.Node.Tag.ToString() != "ZombieKillPoints" &&
+                e.Node.Tag.ToString() != "ZombieKillsbyCarEnabled" &&
                 krpw == null &&
                 akm == null)
                 e.CancelEdit = true;
@@ -647,11 +728,20 @@ namespace DayZeEditor
                 removeToolToolStripMenuItem3.Visible = false;
                 addNewMedicalToolStripMenuItem.Visible = false;
                 removeMedicalToolStripMenuItem4.Visible = false;
-                addNewKillMoneyToolStripMenuItem.Visible = false;
-                removeToolStripMenuItem.Visible= false;
+                addNewKillMoneyAnimalToolStripMenuItem.Visible = false;
+                removeKillMoneyAnimalToolStripMenuItem.Visible= false;
                 sortToolStripMenuItem.Visible= false;
                 addWeaponBoxToolStripMenuItem.Visible = false;
                 removeWeaponBoxToolStripMenuItem1.Visible = false;
+                addNegativeKillRewardBonusToolStripMenuItem.Visible = false;
+                removeNegativeBonusToolStripMenuItem1.Visible = false;
+                addNewKillMoneyPlayerToolStripMenuItem1.Visible = false;
+                removeKillMoneyPlayerToolStripMenuItem1.Visible = false;
+                addNewWeaponBoxToolStripMenuItem.Visible = false;
+                removeWeaponBoxToolStripMenuItem.Visible = false;
+                addNewBoxBonusToolStripMenuItem.Visible = false;
+                removeBoxBonusToolStripMenuItem.Visible = false;
+                addNewKillMoneyZombieToolStripMenuItem.Visible = false;
                 if (e.Node.Tag.ToString() == "NotListedIDs")
                 {
                     addSteamIDToolStripMenuItem.Visible = true;
@@ -714,34 +804,78 @@ namespace DayZeEditor
                 }
                 else if (e.Node.Tag is KillReward_KillrewardHuntingAnimals)
                 {
-                    addNewKillMoneyToolStripMenuItem.Visible = true;
+                    addNewKillMoneyAnimalToolStripMenuItem.Visible = true;
                     sortToolStripMenuItem.Visible = true;
                     contextMenuStrip1.Show(Cursor.Position);
                 }
                 else if (e.Node.Tag is AnimalKillMoney)
                 {
-                    removeToolStripMenuItem.Visible= true;
+                    removeKillMoneyAnimalToolStripMenuItem.Visible= true;
                     contextMenuStrip1.Show(Cursor.Position);
                 }
-                else if (e.Node.Tag is Killreward_Player_Weapons)
+                else if (e.Node.Tag.ToString() == "Killreward_Player_Weapons")
+                {
+                    addNewKillMoneyPlayerToolStripMenuItem1.Visible = true;
+                    sortToolStripMenuItem.Visible = true;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+                else if (e.Node.Tag is Killreward_Kilss_Money_Weapons)
                 {
                     addWeaponBoxToolStripMenuItem.Visible = true;
+                    removeKillMoneyPlayerToolStripMenuItem1.Visible = true;
                     contextMenuStrip1.Show(Cursor.Position);
                 }
-                else if (e.Node.Tag.ToString() == "PlayerWeaponBoxNumber")
+                else if (e.Node.Tag.ToString() == "PlayerWeaponBoxNumber" ||
+                    e.Node.Tag.ToString() == "ZombieWeaponBoxNumber")
                 {
                     removeWeaponBoxToolStripMenuItem1.Visible = true;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+                else if (e.Node.Tag.ToString() == "PlayerKillNegativeRewardBonus")
+                {
+                    addNegativeKillRewardBonusToolStripMenuItem.Visible = true;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+                else if (e.Node.Tag.ToString() == "negativeRewardBonusType")
+                {
+                    removeNegativeBonusToolStripMenuItem1.Visible= true;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+                else if (e.Node.Tag is KillRewardWeaponBox_Config)
+                {
+                    addNewWeaponBoxToolStripMenuItem.Visible = true;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+                else if (e.Node.Tag is KillReward_KillRewardWEAPONBOXSettings)
+                {
+                    removeWeaponBoxToolStripMenuItem.Visible = true;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+                else if (e.Node.Tag.ToString() == "BoxBonus")
+                {
+                    addNewBoxBonusToolStripMenuItem.Visible = true;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+                else if (e.Node.Tag.ToString() == "BoxBonusType")
+                {
+                    removeBoxBonusToolStripMenuItem.Visible = true;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+                else if (e.Node.Tag.ToString() == "Killreward_Zombie_Weapons")
+                {
+                    addNewKillMoneyZombieToolStripMenuItem.Visible = true;
+                    sortToolStripMenuItem.Visible = true;
                     contextMenuStrip1.Show(Cursor.Position);
                 }
             }
         }
         private void KillRewardTV_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Node.Tag.ToString() == "SteamID"||
+            if (e.Node.Tag.ToString() == "SteamID" ||
                 e.Node.Tag.ToString() == "PlayerGiftEnabled" ||
                 e.Node.Tag.ToString() == "GiftLifetime" ||
                 e.Node.Tag.ToString() == "HuntingKillRewardEnabled" ||
-                e.Node.Tag.ToString()== "AnimalPoints" ||
+                e.Node.Tag.ToString() == "AnimalPoints" ||
                 e.Node.Tag is AnimalKillMoney ||
                 e.Node.Tag.ToString() == "PlayerKillNegativeReward" ||
                 e.Node.Tag.ToString() == "PlayerKill" ||
@@ -750,9 +884,13 @@ namespace DayZeEditor
                 e.Node.Tag.ToString() == "PlayerKillNegativeRewardBonusQuantity" ||
                 e.Node.Tag.ToString() == "PlayerKillReward" ||
                 e.Node.Tag.ToString() == "PlayerKillPoints" ||
-                e.Node.Tag is Killreward_Player_Weapons ||
+                e.Node.Tag is Killreward_Kilss_Money_Weapons ||
                 e.Node.Tag.ToString() == "SHOOTReward" ||
-                e.Node.Tag.ToString() == "PlayerSHOOTDISTANCE" )
+                e.Node.Tag.ToString() == "PlayerSHOOTDISTANCE" ||
+                e.Node.Tag.ToString() == "BoxMagazineQuantity" ||
+                e.Node.Tag.ToString() == "ZombieKillRewardEnabled" ||
+                e.Node.Tag.ToString() == "ZombieKillPoints" ||
+                e.Node.Tag.ToString() == "ZombieKillsbyCarEnabled")
                 e.Node.BeginEdit();
             else if (e.Node.Tag.ToString() == "negativeRewardBonusType")
             {
@@ -778,7 +916,7 @@ namespace DayZeEditor
 
                 }
             }
-            else if(e.Node.Tag.ToString() == "PlayerWeaponBoxNumber")
+            else if (e.Node.Tag.ToString() == "PlayerWeaponBoxNumber")
             {
                 addKillRewardWeaponBox addnewweaponbox = new addKillRewardWeaponBox()
                 {
@@ -788,11 +926,75 @@ namespace DayZeEditor
                 if (result == DialogResult.OK)
                 {
                     KillReward_KillRewardWEAPONBOXSettings newwb = addnewweaponbox.SelectedWeaponBox;
-                    Killreward_Player_Weapons krpw = e.Node.Parent.Tag as Killreward_Player_Weapons;
+                    Killreward_Kilss_Money_Weapons krpw = e.Node.Parent.Tag as Killreward_Kilss_Money_Weapons;
                     krpw.hasWeaponsBox = true;
                     krpw.WeaponsBoxNumber = newwb.BoxNumber;
                     e.Node.Text = $"Player Weapon Box Number:- {krpw.WeaponsBoxNumber}";
                     KillRewardPlayer_Config.isDirty = true;
+                }
+            }
+            else if (e.Node.Parent.Tag is KillReward_KillRewardWEAPONBOXSettings &&
+                e.Node.Tag.ToString() != "BoxBonus" ||
+                e.Node.Tag.ToString() != "BoxBonusType")
+            {
+                AddItemfromTypes form = new AddItemfromTypes
+                {
+                    vanillatypes = vanillatypes,
+                    ModTypes = ModTypes,
+                    currentproject = currentproject,
+                    UseOnlySingleitem = true
+                };
+                DialogResult result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    if (e.Node.Parent.Tag is KillReward_KillRewardWEAPONBOXSettings)
+                    {
+                        KillReward_KillRewardWEAPONBOXSettings krwbs = Currenttreeviewtag.Parent.Tag as KillReward_KillRewardWEAPONBOXSettings;
+                        List<string> addedtypes = form.addedtypes.ToList();
+                        if (addedtypes.Count() == 0)
+                        {
+                            addedtypes.Add("");
+                        }
+                        foreach (string l in addedtypes)
+                        {
+                            switch (e.Node.Tag.ToString())
+                            {
+                                case "Box":
+                                    krwbs.Box = l;
+                                    e.Node.Text = $"Box Type:- {krwbs.Box}";
+                                    break;
+                                case "BoxWeapon":
+                                    krwbs.BoxWeapon = l;
+                                    e.Node.Text = $"Box Weapon:- {krwbs.BoxWeapon}";
+                                    break;
+                                case "BoxWeaponBayonet":
+                                    krwbs.BoxWeaponBayonet = l;
+                                    e.Node.Text = $"Box Weapon Bayonet:- {krwbs.BoxWeaponBayonet}";
+                                    break;
+                                case "BoxWeaponButtstock":
+                                    krwbs.BoxWeaponButtstock = l;
+                                    e.Node.Text = $"Box Weapon Buttstock:- {krwbs.BoxWeaponButtstock}";
+                                    break;
+                                case "BoxWeaponHandguard":
+                                    krwbs.BoxWeaponHandguard = l;
+                                    e.Node.Text = $"Box Weapon Handguard:- {krwbs.BoxWeaponHandguard}";
+                                    break;
+                                case "BoxWeaponsuppressor":
+                                    krwbs.BoxWeaponsuppressor = l;
+                                    e.Node.Text = $"Box Weapon suppressor:- {krwbs.BoxWeaponsuppressor}";
+                                    break;
+                                case "BoxWeaponSight":
+                                    krwbs.BoxWeaponSight = l;
+                                    e.Node.Text = $"Box Weapon Sight:- {krwbs.BoxWeaponSight}";
+                                    break;
+                                case "BoxWeaponMagazine":
+                                    krwbs.BoxWeaponMagazin = l;
+                                    e.Node.Text = $"Box Weapon Magazine:- {krwbs.BoxWeaponMagazin}";
+                                    break;
+                            }
+                            KillRewardWeaponBox_Config.isDirty = true;
+                        }
+                    }
                 }
             }
         }
@@ -920,16 +1122,19 @@ namespace DayZeEditor
                 e.Node.Text = e.Label = $"Player Kill points:- {KillRewardPlayer_Config.KillRewardPLAYER.PlayerKillPoints}";
                 KillRewardPlayer_Config.isDirty = true;
             }
-            else if (e.Node.Tag is Killreward_Player_Weapons)
+            else if (e.Node.Tag is Killreward_Kilss_Money_Weapons)
             {
                 string[] info = e.Label.Split(':');
                 string kills = info[0];
                 string money = info[1];
-                Killreward_Player_Weapons krpw = e.Node.Tag as Killreward_Player_Weapons;
+                Killreward_Kilss_Money_Weapons krpw = e.Node.Tag as Killreward_Kilss_Money_Weapons;
                 krpw.kills = Convert.ToInt32(kills);
                 krpw.money = Convert.ToInt32(money);
                 e.Node.Text = e.Label = $"{krpw.kills}:{krpw.money}";
-                KillRewardPlayer_Config.isDirty = true;
+                if (e.Node.Parent.Parent.Tag is KillRewardZombie_Config)
+                    KillRewardZombie_Config.isDirty = true;
+                else if(e.Node.Parent.Parent.Tag is KillReward_KillRewardPLAYERSettings)
+                    KillRewardPlayer_Config.isDirty = true;
             }
             else if (e.Node.Tag.ToString() == "SHOOTReward")
             {
@@ -951,6 +1156,49 @@ namespace DayZeEditor
                 KillRewardPlayer_Config.KillRewardSHOOTDISTANCE.PlayerSHOOTDISTANCE = Convert.ToInt32(e.Label);
                 e.Node.Text = e.Label = $"Player Shot Distance:- {KillRewardPlayer_Config.KillRewardSHOOTDISTANCE.PlayerSHOOTDISTANCE}";
                 KillRewardPlayer_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "BoxMagazineQuantity")
+            {
+                KillReward_KillRewardWEAPONBOXSettings krwbs = Currenttreeviewtag.Parent.Tag as KillReward_KillRewardWEAPONBOXSettings;
+                krwbs.BoxMagazinQuantity = Convert.ToInt32(e.Label);
+                e.Node.Text = e.Label = $"Box Magazine Quantity:- {krwbs.BoxMagazinQuantity}";
+                KillRewardWeaponBox_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "ZombieKillRewardEnabled")
+            {
+                if (e.Label.ToLower() == "true")
+                    KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillReward = 1;
+                else if (e.Label.ToLower() == "false")
+                    KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillReward = 0;
+                else
+                {
+                    MessageBox.Show("Please Enter either True or False");
+                    e.Node.Text = e.Label = $"Player Gift Enabled:- {(KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillReward == 1 ? true : false)}";
+                    return;
+                }
+                e.Node.Text = e.Label = $"Player Gift Enabled:- {(KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillReward == 1 ? true : false)}";
+                KillRewardZombie_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "ZombieKillPoints")
+            {
+                KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillPoints = Convert.ToInt32(e.Label);
+                e.Node.Text = e.Label = $"Zombie Kill Points:- {KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillPoints}";
+                KillRewardZombie_Config.isDirty = true;
+            }
+            else if (e.Node.Tag.ToString() == "ZombieKillsbyCarEnabled")
+            {
+                if (e.Label.ToLower() == "true")
+                    KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillsbyCar = 1;
+                else if (e.Label.ToLower() == "false")
+                    KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillsbyCar = 0;
+                else
+                {
+                    MessageBox.Show("Please Enter either True or False");
+                    e.Node.Text = e.Label = $"Zombie Kill by Car Enabled:- {(KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillsbyCar == 1 ? true : false)}";
+                    return;
+                }
+                e.Node.Text = e.Label = $"Zombie Kill by Car Enabled:- {(KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillsbyCar == 1 ? true : false)}";
+                KillRewardZombie_Config.isDirty = true;
             }
         }
         private void KillRewardTV_RequestEditText(object sender, TreeViewMS.NodeRequestTextEventArgs e)
@@ -1010,6 +1258,22 @@ namespace DayZeEditor
             else if (e.Node.Tag.ToString() == "PlayerSHOOTDISTANCE")
             {
                 e.Label = e.Node.Text.Substring(23);
+            }
+            else if (e.Node.Tag.ToString() == "BoxMagazineQuantity")
+            {
+                e.Label = e.Node.Text.Substring(24);
+            }
+            else if (e.Node.Tag.ToString() == "ZombieKillRewardEnabled")
+            {
+                e.Label = (KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillReward == 1 ? true : false).ToString();
+            }
+            else if (e.Node.Tag.ToString() == "ZombieKillPoints")
+            {
+                e.Label = KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillPoints.ToString();
+            }
+            else if (e.Node.Tag.ToString() == "ZombieKillsbyCarEnabled")
+            {
+                e.Label = (KillRewardZombie_Config.KillRewardZOMBIE.ZombieKillsbyCar == 1 ? true : false).ToString();
             }
         }
         private void KillRewardTV_BeforeCollapse(object sender, TreeViewCancelEventArgs e)
@@ -1316,14 +1580,57 @@ namespace DayZeEditor
         private void sortToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Currenttreeviewtag.Nodes.Clear();
-            var sortedListInstance = new BindingList<AnimalKillMoney>((Currenttreeviewtag.Tag as KillReward_KillrewardHuntingAnimals).killsmoney.OrderBy(x => x.kills).ToList());
-            foreach (AnimalKillMoney akmall in sortedListInstance)
+            if (Currenttreeviewtag.Tag is KillReward_KillrewardHuntingAnimals)
             {
-                TreeNode akill = new TreeNode($"{akmall.kills}:{akmall.money}")
+                var sortedListInstance = new BindingList<AnimalKillMoney>((Currenttreeviewtag.Tag as KillReward_KillrewardHuntingAnimals).killsmoney.OrderBy(x => x.kills).ToList());
+                foreach (AnimalKillMoney akmall in sortedListInstance)
                 {
-                    Tag = akmall
-                };
-                Currenttreeviewtag.Nodes.Add(akill);
+                    TreeNode akill = new TreeNode($"{akmall.kills}:{akmall.money}")
+                    {
+                        Tag = akmall
+                    };
+                    Currenttreeviewtag.Nodes.Add(akill);
+                }
+            }
+            else if (Currenttreeviewtag.Tag.ToString() == "Killreward_Player_Weapons")
+            {
+                var sortedListInstance = new BindingList<Killreward_Kilss_Money_Weapons>(KillRewardPlayer_Config.KillRewardPLAYER._playuerWeapons.OrderBy(x => x.kills).ToList());
+                foreach (Killreward_Kilss_Money_Weapons KRpw in sortedListInstance)
+                {
+                    TreeNode treeNode = new TreeNode($"{KRpw.kills}:{KRpw.money}")
+                    {
+                        Tag = KRpw
+                    };
+                    if (KRpw.hasWeaponsBox)
+                    {
+                        treeNode.Nodes.Add(new TreeNode($"Player Weapon Box Number:- {KRpw.WeaponsBoxNumber}")
+                        {
+                            Tag = "PlayerWeaponBoxNumber",
+                            Name = "PlayerWeaponBoxNumber"
+                        });
+                    }
+                    Currenttreeviewtag.Nodes.Add(treeNode);
+                }
+            }
+            else if (Currenttreeviewtag.Tag.ToString() == "Killreward_Zombie_Weapons")
+            {
+                var sortedListInstance = new BindingList<Killreward_Kilss_Money_Weapons>(KillRewardZombie_Config.KillRewardZOMBIE._ZombieWeapons.OrderBy(x => x.kills).ToList());
+                foreach (Killreward_Kilss_Money_Weapons KRpw in sortedListInstance)
+                {
+                    TreeNode treeNode = new TreeNode($"{KRpw.kills}:{KRpw.money}")
+                    {
+                        Tag = KRpw
+                    };
+                    if (KRpw.hasWeaponsBox)
+                    {
+                        treeNode.Nodes.Add(new TreeNode($"Zombie Weapon Box Number:- {KRpw.WeaponsBoxNumber}")
+                        {
+                            Tag = "ZombieWeaponBoxNumber",
+                            Name = "ZombieWeaponBoxNumber"
+                        });
+                    }
+                    Currenttreeviewtag.Nodes.Add(treeNode);
+                }
             }
         }
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1332,7 +1639,6 @@ namespace DayZeEditor
             KillRewardHunting_Config.isDirty = true;
             Currenttreeviewtag.Parent.Nodes.Remove(Currenttreeviewtag);
         }
-
         private void addWeaponBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             addKillRewardWeaponBox addnewweaponbox = new addKillRewardWeaponBox()
@@ -1343,25 +1649,255 @@ namespace DayZeEditor
             if (result == DialogResult.OK)
             {
                 KillReward_KillRewardWEAPONBOXSettings newwb = addnewweaponbox.SelectedWeaponBox;
-                Killreward_Player_Weapons krpw = Currenttreeviewtag.Tag as Killreward_Player_Weapons;
+                Killreward_Kilss_Money_Weapons krpw = Currenttreeviewtag.Tag as Killreward_Kilss_Money_Weapons;
                 krpw.hasWeaponsBox = true;
                 krpw.WeaponsBoxNumber = newwb.BoxNumber;
-                Currenttreeviewtag.Nodes.Add(new TreeNode($"Player Weapon Box Number:- {krpw.WeaponsBoxNumber}")
+
+                if (Currenttreeviewtag.Parent.Tag.ToString() == "Killreward_Zombie_Weapons")
                 {
-                    Tag = "PlayerWeaponBoxNumber",
-                    Name = "PlayerWeaponBoxNumber"
-                });
-                KillRewardPlayer_Config.isDirty = true;
+                    Currenttreeviewtag.Nodes.Add(new TreeNode($"Zombie Weapon Box Number:- {krpw.WeaponsBoxNumber}")
+                    {
+                        Tag = "ZombieWeaponBoxNumber",
+                        Name = "ZombieWeaponBoxNumber"
+                    });
+                    KillRewardZombie_Config.isDirty = true;
+                }
+                else if (Currenttreeviewtag.Parent.Tag.ToString() == "Killreward_Player_Weapons")
+                {
+
+                    Currenttreeviewtag.Nodes.Add(new TreeNode($"Player Weapon Box Number:- {krpw.WeaponsBoxNumber}")
+                    {
+                        Tag = "PlayerWeaponBoxNumber",
+                        Name = "PlayerWeaponBoxNumber"
+                    });
+                    KillRewardPlayer_Config.isDirty = true;
+                }
             }
 
         }
         private void removeWeaponBoxToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Killreward_Player_Weapons krpw = Currenttreeviewtag.Parent.Tag as Killreward_Player_Weapons;
+            Killreward_Kilss_Money_Weapons krpw = Currenttreeviewtag.Parent.Tag as Killreward_Kilss_Money_Weapons;
             krpw.hasWeaponsBox = false;
             krpw.WeaponsBoxNumber = 0;
             Currenttreeviewtag.Parent.Nodes.Remove(Currenttreeviewtag);
+            if (Currenttreeviewtag.Parent.Tag.ToString() == "Killreward_Zombie_Weapons")
+            {
+                KillRewardZombie_Config.isDirty = true;
+            }
+            else if (Currenttreeviewtag.Parent.Tag.ToString() == "Killreward_Player_Weapons")
+            {
+                KillRewardPlayer_Config.isDirty = true;
+            }
+        }
+        private void addNegativeKillRewardBonusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeRewardBonus.Add(l);
+                    Currenttreeviewtag.Nodes.Add(new TreeNode($"Negative Reward Bonus Type:- {l}")
+                    {
+                        Tag = "negativeRewardBonusType",
+                        Name = "negativeRewardBonusType"
+                    });
+                    KillRewardPlayer_Config.isDirty = true;
+                }
+
+            }
+        }
+        private void removeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            KillRewardPlayer_Config.KillRewardNEGATIVE.PlayerKillNegativeRewardBonus.Remove(Currenttreeviewtag.Text.Substring(29));
+            KillRewardPlayer_Config.isDirty = true;
+            Currenttreeviewtag.Parent.Nodes.Remove(Currenttreeviewtag);
+        }
+        private void addNewKillMoneyPlayerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Killreward_Kilss_Money_Weapons KRpw = new Killreward_Kilss_Money_Weapons()
+            {
+                kills = 0,
+                money = 0,
+                hasWeaponsBox = false,
+                WeaponsBoxNumber = 0
+            };
+            KillRewardPlayer_Config.KillRewardPLAYER._playuerWeapons.Add(KRpw);
+            TreeNode pkill = new TreeNode($"{KRpw.kills}:{KRpw.money}")
+            {
+                Tag = KRpw
+            };
+            Currenttreeviewtag.Nodes.Add(pkill);
             KillRewardPlayer_Config.isDirty = true;
         }
-    }
+        private void removeKillMoneyPlayerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (Currenttreeviewtag.Parent.Tag.ToString() == "Killreward_Player_Weapons")
+            {
+                KillRewardPlayer_Config.KillRewardPLAYER._playuerWeapons.Remove(Currenttreeviewtag.Tag as Killreward_Kilss_Money_Weapons);
+                KillRewardPlayer_Config.isDirty = true;
+            }
+            else if (Currenttreeviewtag.Parent.Tag.ToString() == "Killreward_Zombie_Weapons")
+            {
+                KillRewardZombie_Config.KillRewardZOMBIE._ZombieWeapons.Remove(Currenttreeviewtag.Tag as Killreward_Kilss_Money_Weapons);
+                KillRewardZombie_Config.isDirty = true;
+            }
+            Currenttreeviewtag.Parent.Nodes.Remove(Currenttreeviewtag);
+        }
+
+        private void addNewWeaponBoxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KillReward_KillRewardWEAPONBOXSettings krwb = new KillReward_KillRewardWEAPONBOXSettings()
+            {
+                BoxNumber = KillRewardWeaponBox_Config.Getnextboxnumber(),
+                Box = "WoodenCrate",
+                BoxWeapon ="",
+                BoxWeaponBayonet ="",
+                BoxWeaponButtstock ="",
+                BoxWeaponHandguard ="",
+                BoxWeaponsuppressor ="",
+                BoxWeaponSight ="",
+                BoxWeaponMagazin ="",
+                BoxMagazinQuantity = 1,
+                BoxBonus = new BindingList<string>() { "WeaponCleaningKit", "WeaponCleaningKit","WeaponCleaningKit" }
+            };
+            KillRewardWeaponBox_Config.KillRewardWEAPONBOX.Add(krwb);
+            KillRewardWeaponBox_Config.isDirty = true;
+            TreeNode weaponBoxNode = new TreeNode($"Weapon Box Number:- {krwb.BoxNumber}")
+            {
+                Tag = krwb
+            };
+            weaponBoxNode.Nodes.Add(new TreeNode($"Box Type:- {krwb.Box}")
+            {
+                Tag = "Box",
+                Name = "Box"
+            });
+            weaponBoxNode.Nodes.Add(new TreeNode($"Box Weapon:- {krwb.BoxWeapon}")
+            {
+                Tag = "BoxWeapon",
+                Name = "BoxWeapon"
+            });
+            weaponBoxNode.Nodes.Add(new TreeNode($"Box Weapon Bayonet:- {krwb.BoxWeaponBayonet}")
+            {
+                Tag = "BoxWeaponBayonet",
+                Name = "BoxWeaponBayonet"
+            });
+            weaponBoxNode.Nodes.Add(new TreeNode($"Box Weapon Buttstock:- {krwb.BoxWeaponButtstock}")
+            {
+                Tag = "BoxWeaponButtstock",
+                Name = "BoxWeaponButtstock"
+            });
+            weaponBoxNode.Nodes.Add(new TreeNode($"Box Weapon Handguard:- {krwb.BoxWeaponHandguard}")
+            {
+                Tag = "BoxWeaponHandguard",
+                Name = "BoxWeaponHandguard"
+            });
+            weaponBoxNode.Nodes.Add(new TreeNode($"Box Weapon suppressor:- {krwb.BoxWeaponsuppressor}")
+            {
+                Tag = "BoxWeaponsuppressor",
+                Name = "BoxWeaponsuppressor"
+            });
+            weaponBoxNode.Nodes.Add(new TreeNode($"Box Weapon Sight:- {krwb.BoxWeaponSight}")
+            {
+                Tag = "BoxWeaponSight",
+                Name = "BoxWeaponSight"
+            });
+            weaponBoxNode.Nodes.Add(new TreeNode($"Box Weapon Magazine:- {krwb.BoxWeaponMagazin}")
+            {
+                Tag = "BoxWeaponMagazin",
+                Name = "BoxWeaponMagazin"
+            });
+            weaponBoxNode.Nodes.Add(new TreeNode($"Box Magazin Quantity:- {krwb.BoxMagazinQuantity}")
+            {
+                Tag = "BoxMagazinQuantity",
+                Name = "BoxMagazinQuantity"
+            });
+            TreeNode BoxBonusroot = new TreeNode($"NotListedIDs:-")
+            {
+                Tag = "BoxBonus",
+                Name = "BoxBonus"
+            };
+            foreach (string BoxBonus in krwb.BoxBonus)
+            {
+                TreeNode boxbonusnode = new TreeNode($"Box Bonus Type: - {BoxBonus}")
+                {
+                    Tag = "BoxBonusType",
+                    Name = "BoxBonusType"
+
+                };
+                BoxBonusroot.Nodes.Add(boxbonusnode);
+            }
+            weaponBoxNode.Nodes.Add(BoxBonusroot);
+            Currenttreeviewtag.Nodes.Add(weaponBoxNode);
+        }
+        private void removeWeaponBoxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KillRewardWeaponBox_Config.KillRewardWEAPONBOX.Remove(Currenttreeviewtag.Tag as KillReward_KillRewardWEAPONBOXSettings);
+            KillRewardWeaponBox_Config.isDirty = true;
+            Currenttreeviewtag.Parent.Nodes.Remove(Currenttreeviewtag);
+        }
+        private void addNewBoxBonusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                KillReward_KillRewardWEAPONBOXSettings krwbs = Currenttreeviewtag.Parent.Tag as KillReward_KillRewardWEAPONBOXSettings;
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    krwbs.BoxBonus.Add(l);
+                    TreeNode boxbonusnode = new TreeNode($"Box Bonus Type: - {l}")
+                    {
+                        Tag = "BoxBonusType",
+                        Name = "BoxBonusType"
+
+                    };
+                    Currenttreeviewtag.Nodes.Add(boxbonusnode);
+                    KillRewardWeaponBox_Config.isDirty = true;
+                }
+
+            }
+        }
+        private void removeBoxBonusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KillReward_KillRewardWEAPONBOXSettings krwbs = Currenttreeviewtag.Parent.Parent.Tag as KillReward_KillRewardWEAPONBOXSettings;
+            krwbs.BoxBonus.Remove(Currenttreeviewtag.Text.Substring(18));
+            KillRewardWeaponBox_Config.isDirty = true;
+            Currenttreeviewtag.Parent.Nodes.Remove(Currenttreeviewtag);
+        }
+        private void addNewKillMoneyZombieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Killreward_Kilss_Money_Weapons KRpw = new Killreward_Kilss_Money_Weapons()
+            {
+                kills = 0,
+                money = 0,
+                hasWeaponsBox = false,
+                WeaponsBoxNumber = 0
+            };
+            KillRewardZombie_Config.KillRewardZOMBIE._ZombieWeapons.Add(KRpw);
+            TreeNode pkill = new TreeNode($"{KRpw.kills}:{KRpw.money}")
+            {
+                Tag = KRpw
+            };
+            Currenttreeviewtag.Nodes.Add(pkill);
+            KillRewardZombie_Config.isDirty = true;
+        }
+
+       }
 }

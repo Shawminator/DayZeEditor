@@ -495,7 +495,7 @@ namespace DayZeLib
         public BindingList<int> PlayerWeaponBoxNumber { get; set; }
 
         [JsonIgnore]
-        public BindingList<Killreward_Player_Weapons> _playuerWeapons { get; set; }
+        public BindingList<Killreward_Kilss_Money_Weapons> _playuerWeapons { get; set; }
 
         public KillReward_KillRewardPLAYERSettings()
         {
@@ -509,10 +509,10 @@ namespace DayZeLib
 
         public void GetPlayerlist()
         {
-            _playuerWeapons = new BindingList<Killreward_Player_Weapons>();
+            _playuerWeapons = new BindingList<Killreward_Kilss_Money_Weapons>();
             for (int i = 0;i< PlayerKills.Count(); i++)
             {
-                Killreward_Player_Weapons newpw = new Killreward_Player_Weapons()
+                Killreward_Kilss_Money_Weapons newpw = new Killreward_Kilss_Money_Weapons()
                 {
                     kills = PlayerKills[i],
                     money = PlayerMoney[i]
@@ -533,7 +533,8 @@ namespace DayZeLib
             PlayerMoney = new BindingList<int>();
             PlayerWeaponBox = new BindingList<int>();
             PlayerWeaponBoxNumber = new BindingList<int>();
-            foreach(Killreward_Player_Weapons KRPW in _playuerWeapons)
+            var sortedListInstance = new BindingList<Killreward_Kilss_Money_Weapons>(_playuerWeapons.OrderBy(x => x.kills).ToList());
+            foreach (Killreward_Kilss_Money_Weapons KRPW in sortedListInstance)
             {
                 PlayerKills.Add(KRPW.kills);
                 PlayerMoney.Add(KRPW.money);
@@ -545,7 +546,7 @@ namespace DayZeLib
             }
         }
     }
-    public class Killreward_Player_Weapons
+    public class Killreward_Kilss_Money_Weapons
     {
         public int kills { get; set; }
         public int money { get; set; }
@@ -579,6 +580,15 @@ namespace DayZeLib
         {
             KillRewardWEAPONBOX = new BindingList<KillReward_KillRewardWEAPONBOXSettings>();
             version = 9;
+        }
+        public int Getnextboxnumber()
+        {
+            List<int> numlist = new List<int>();
+            foreach (KillReward_KillRewardWEAPONBOXSettings weap in KillRewardWEAPONBOX)
+            {
+                numlist.Add(weap.BoxNumber);
+            }
+            return Enumerable.Range(1, Int32.MaxValue).Except(numlist).First();
         }
 
 
@@ -621,8 +631,6 @@ namespace DayZeLib
             return BoxNumber.ToString();
         }
     }
-
-
     public class KillRewardZombie_Config
     {
         [JsonIgnore]
@@ -639,7 +647,6 @@ namespace DayZeLib
             version = 9;
         }
     }
-
     public class KillReward_KillRewardZOMBIESettings
     {
         public int ZombieKillReward { get; set; }
@@ -650,6 +657,9 @@ namespace DayZeLib
         public BindingList<int> ZombieWeaponBox { get; set; }
         public BindingList<int> ZombieWeaponBoxNumber { get; set; }
 
+        [JsonIgnore]
+        public BindingList<Killreward_Kilss_Money_Weapons> _ZombieWeapons { get; set; }
+
         public KillReward_KillRewardZOMBIESettings()
         {
             ZombieKillReward = 1;                                       // 1 = ON   0 = OFF
@@ -659,6 +669,44 @@ namespace DayZeLib
             ZombieMoney = new BindingList<int>() { 50, 150, 250, 500, 750, 1000 };       // Money for Kills
             ZombieWeaponBox = new BindingList<int>() { 50, 75, 100 };                    // WeaponBox for 3,5 Zombie kills
             ZombieWeaponBoxNumber = new BindingList<int>() { 1, 2, 3 };
+        }
+
+        public void GetZombielist()
+        {
+            _ZombieWeapons = new BindingList<Killreward_Kilss_Money_Weapons>();
+            for (int i = 0; i < ZombieKills.Count(); i++)
+            {
+                Killreward_Kilss_Money_Weapons newpw = new Killreward_Kilss_Money_Weapons()
+                {
+                    kills = ZombieKills[i],
+                    money = ZombieMoney[i]
+                };
+                if (ZombieWeaponBox.Contains(newpw.kills))
+                {
+                    int index = ZombieWeaponBox.IndexOf(newpw.kills);
+                    newpw.hasWeaponsBox = true;
+                    newpw.WeaponsBoxNumber = ZombieWeaponBoxNumber[index];
+                }
+                _ZombieWeapons.Add(newpw);
+            }
+        }
+        public void SetZombieist()
+        {
+            ZombieKills = new BindingList<int>();
+            ZombieMoney = new BindingList<int>();
+            ZombieWeaponBox = new BindingList<int>();
+            ZombieWeaponBoxNumber = new BindingList<int>();
+            var sortedListInstance = new BindingList<Killreward_Kilss_Money_Weapons>(_ZombieWeapons.OrderBy(x => x.kills).ToList());
+            foreach (Killreward_Kilss_Money_Weapons KRPW in sortedListInstance)
+            {
+                ZombieKills.Add(KRPW.kills);
+                ZombieMoney.Add(KRPW.money);
+                if (KRPW.hasWeaponsBox)
+                {
+                    ZombieWeaponBox.Add(KRPW.kills);
+                    ZombieWeaponBoxNumber.Add(KRPW.WeaponsBoxNumber);
+                }
+            }
         }
     }
 
