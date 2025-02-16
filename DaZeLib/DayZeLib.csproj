@@ -140,6 +140,7 @@
     <Compile Include="DRJonesTrader\DrJonesTrader.cs" />
     <Compile Include="DRJonesTrader\DRJonesVariables.cs" />
     <Compile Include="DRJonesTrader\DrJonesvehicleParts.cs" />
+    <Compile Include="DynamicWeatherPlugin\WeatherDynamic.cs" />
     <Compile Include="Economy\cfgeconomycore.cs" />
     <Compile Include="Economy\cfgEffectArea.cs" />
     <Compile Include="Economy\cfgenviromentxml.cs" />

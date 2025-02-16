@@ -733,35 +733,6 @@ namespace DayZeEditor
             AirdropUpgradedSettings.isDirty = true;
         }
 
-        private void NotificationARGBPB_Paint(object sender, PaintEventArgs e)
-        {
-            PictureBox pb = sender as PictureBox;
-            Rectangle region;
-            region = pb.ClientRectangle;
-            Color colour = Color.FromArgb(AirdropUpgradedSettings.Messages.NotificationARGB[0], AirdropUpgradedSettings.Messages.NotificationARGB[1], AirdropUpgradedSettings.Messages.NotificationARGB[2], AirdropUpgradedSettings.Messages.NotificationARGB[3]);
-            using (Brush brush = new SolidBrush(colour))
-            {
-                e.Graphics.FillRectangle(brush, region);
-            }
-            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
-        }
-        private void NotificationARGBPB_Click(object sender, EventArgs e)
-        {
-            PictureBox pb = sender as PictureBox;
-            ColorPickerDialog cpick = new ColorPickerDialog();
-            cpick.StartPosition = FormStartPosition.CenterParent;
-            cpick.Color = Color.FromArgb(AirdropUpgradedSettings.Messages.NotificationARGB[0], AirdropUpgradedSettings.Messages.NotificationARGB[1], AirdropUpgradedSettings.Messages.NotificationARGB[2], AirdropUpgradedSettings.Messages.NotificationARGB[3]);
-            if (cpick.ShowDialog() == DialogResult.OK)
-            {
-
-                AirdropUpgradedSettings.Messages.NotificationARGB[0] = cpick.Color.A;
-                AirdropUpgradedSettings.Messages.NotificationARGB[1] = cpick.Color.R;
-                AirdropUpgradedSettings.Messages.NotificationARGB[2] = cpick.Color.G;
-                AirdropUpgradedSettings.Messages.NotificationARGB[3] = cpick.Color.B;
-                NotificationARGBPB.Invalidate();
-                AirdropUpgradedSettings.isDirty = true;
-            }
-        }
 
         private void ImperialUnitsNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -1212,6 +1183,12 @@ namespace DayZeEditor
                 SpawnMin = (decimal)1.0,
                 SpawnMax = (decimal)3.0,
                 SpawnOffset = (decimal)0.05,
+                ItemCondition = new ItemCondition()
+                {
+                    MinCondition = 50,
+                    MaxCondition = 100,
+                    Samples = 1
+                },
                 Lifespan = 60,
                 Items = new BindingList<string>()
             };

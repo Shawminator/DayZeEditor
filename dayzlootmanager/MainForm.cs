@@ -1,6 +1,8 @@
 ﻿using DarkUI.Forms;
 using DayZeLib;
+using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -30,7 +32,8 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.8.2.9";
+
+        public string VersionNumber = "0.8.3.0";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -89,7 +92,7 @@ namespace DayZeEditor
         public MainForm(SplashForm form)
         {
             frm = form;
-
+            
             InitializeComponent();
             Form_Controls.InitializeForm_Controls
             (
@@ -365,11 +368,13 @@ namespace DayZeEditor
 
         private void HideConsole(bool Hide)
         {
-            var handle = GetConsoleWindow();
+            IntPtr handle = GetConsoleWindow();
             if (Hide)
                 ShowWindow(handle, SW_SHOW);
             else
+            {
                 ShowWindow(handle, SW_HIDE);
+            }
         }
 
         private void DiscordButton_Click(object sender, EventArgs e)
@@ -555,6 +560,11 @@ namespace DayZeEditor
                     KillRewardManagerButton.Visible = true;
                 else
                     KillRewardManagerButton.Visible = false;
+                
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\mpmissions\\" + Projects.getActiveProject().mpmissionpath + "\\weather.json"))
+                    DynamicWeatherManagerButton.Visible = true;
+                else
+                    DynamicWeatherManagerButton.Visible = false;
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -1191,6 +1201,33 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void DynamicWeatherManagerButton_Click(object sender, EventArgs e)
+        {
+            DynamicWeatherPluginManager _TM = Application.OpenForms["DynamicWeatherPluginManager"] as DynamicWeatherPluginManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new DynamicWeatherPluginManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+
+                };
+                _TM.Show();
+                Console.WriteLine("loading Dynamic Weather Plugin Manager....");
+                label1.Text = "Dynamic Weather Plugin Manager";
+            }
+            timer1.Start();
+        }
         private void AdvancedWB_Click(object sender, EventArgs e)
         {
             AdvancedWorkBenchManager _TM = Application.OpenForms["AdvancedWorkBenchManager"] as AdvancedWorkBenchManager;
@@ -1591,8 +1628,6 @@ namespace DayZeEditor
                 }
             }
         }
-
-
     }
 }
 

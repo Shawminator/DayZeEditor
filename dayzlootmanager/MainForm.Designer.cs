@@ -73,6 +73,7 @@ namespace DayZeEditor
             this.PVZCZManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BBPManagerButton = new System.Windows.Forms.ToolStripButton();
             this.AbandonedVehicleRemoverManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.KillRewardManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BreachingChargeManagerButton = new System.Windows.Forms.ToolStripButton();
             this.KOSzoneManagerButton = new System.Windows.Forms.ToolStripButton();
             this.MysteryBoxButton = new System.Windows.Forms.ToolStripButton();
@@ -90,7 +91,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.KillRewardManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.DynamicWeatherManagerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -236,6 +237,7 @@ namespace DayZeEditor
             this.CapareWorkBenchManagerButton,
             this.CapareTreasureManagerButton,
             this.LootchestButton,
+            this.DynamicWeatherManagerButton,
             this.SearchForLootManagerButton,
             this.MPGSpawnerButton,
             this.KOTHManagerButton,
@@ -570,7 +572,7 @@ namespace DayZeEditor
             this.WorkBenchReduxButton.Image = ((System.Drawing.Image)(resources.GetObject("WorkBenchReduxButton.Image")));
             this.WorkBenchReduxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.WorkBenchReduxButton.Name = "WorkBenchReduxButton";
-            this.WorkBenchReduxButton.Size = new System.Drawing.Size(147, 19);
+            this.WorkBenchReduxButton.Size = new System.Drawing.Size(108, 19);
             this.WorkBenchReduxButton.Text = "WorkBench Redux";
             this.WorkBenchReduxButton.Visible = false;
             this.WorkBenchReduxButton.Click += new System.EventHandler(this.WorkBenchReduxButton_Click);
@@ -622,6 +624,18 @@ namespace DayZeEditor
             this.AbandonedVehicleRemoverManagerButton.Text = "Vehicle Remover";
             this.AbandonedVehicleRemoverManagerButton.Visible = false;
             this.AbandonedVehicleRemoverManagerButton.Click += new System.EventHandler(this.AbandonedVehicleRemoverManagerButton_Click);
+            // 
+            // KillRewardManagerButton
+            // 
+            this.KillRewardManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.KillRewardManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillRewardManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("KillRewardManagerButton.Image")));
+            this.KillRewardManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.KillRewardManagerButton.Name = "KillRewardManagerButton";
+            this.KillRewardManagerButton.Size = new System.Drawing.Size(119, 19);
+            this.KillRewardManagerButton.Text = "Kill Reward Manager";
+            this.KillRewardManagerButton.Visible = false;
+            this.KillRewardManagerButton.Click += new System.EventHandler(this.KillRewardManagerButton_Click);
             // 
             // BreachingChargeManagerButton
             // 
@@ -811,17 +825,16 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // KillRewardManagerButton
+            // DynamicWeatherManagerButton
             // 
-            this.KillRewardManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.KillRewardManagerButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillRewardManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("KillRewardManagerButton.Image")));
-            this.KillRewardManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.KillRewardManagerButton.Name = "KillRewardManagerButton";
-            this.KillRewardManagerButton.Size = new System.Drawing.Size(119, 19);
-            this.KillRewardManagerButton.Text = "Kill Reward Manager";
-            this.KillRewardManagerButton.Visible = false;
-            this.KillRewardManagerButton.Click += new System.EventHandler(this.KillRewardManagerButton_Click);
+            this.DynamicWeatherManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DynamicWeatherManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.DynamicWeatherManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("DynamicWeatherManagerButton.Image")));
+            this.DynamicWeatherManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DynamicWeatherManagerButton.Name = "DynamicWeatherManagerButton";
+            this.DynamicWeatherManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.DynamicWeatherManagerButton.Text = "Dynamic Weather Manager";
+            this.DynamicWeatherManagerButton.Click += new System.EventHandler(this.DynamicWeatherManagerButton_Click);
             // 
             // MainForm
             // 
@@ -917,6 +930,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton ExpansionCircleMarkerButton;
         private System.Windows.Forms.ToolStripButton SearchForLootManagerButton;
         private System.Windows.Forms.ToolStripButton KillRewardManagerButton;
+        private System.Windows.Forms.ToolStripButton DynamicWeatherManagerButton;
     }
 }
 

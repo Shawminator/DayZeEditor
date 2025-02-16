@@ -308,6 +308,10 @@ namespace DayZeLib
         {
             src.GetType().GetProperty(mytype).SetValue(src, myvalue, null);
         }
+        public static void SetDecimalValue(object src, string mytype, decimal myvalue)
+        {
+            src.GetType().GetProperty(mytype).SetValue(src, myvalue, null);
+        }
         public static void SetFakeBoolValue(object src, string mytype, bool myvalue)
         {
             int myvalueasint = myvalue == true ? 1 : 0;
@@ -450,6 +454,8 @@ namespace DayZeLib
             }
             return false;
         }
+
+
     }
     public static class extenstions
     {

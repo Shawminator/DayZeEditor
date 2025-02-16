@@ -1,4 +1,12 @@
-﻿Version 0.8.2.9
+﻿Version 0.8.3.0
+[Fixed]
+Economy Editor	-	A value has been normalised to between 0 and 360 when importing from dze for event spanws and event groups
+					Fixed A value of eventspawns not actually updated the value.
+AirDropUpgraded	-	Updated config so that the manager can be loaded, it is still missing some stuff but dont have time to sort it out ATM
+[ADDED]
+Dynamic Weather Plugin - Added dynamic weather plugin manager, 
+
+Version 0.8.2.9
 [Updated]
 DZE Import - Updated dze reading to match latest version
 [Added]

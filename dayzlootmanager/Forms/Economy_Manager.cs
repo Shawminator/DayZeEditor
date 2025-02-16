@@ -3030,7 +3030,24 @@ namespace DayZeEditor
         private void EventSpawnPosANUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            eventposdefEventPos.group = EventSpawnGroupTB.Text;
+            
+            isUserInteraction = false;
+            if (EventSpawnPosANUD.Value < 0)
+            {
+                while (EventSpawnPosANUD.Value < 0)
+                {
+                    EventSpawnPosANUD.Value += 360;
+                }
+            }
+            else if (EventSpawnPosANUD.Value >= 360)
+            {
+                while (EventSpawnPosANUD.Value >= 360)
+                {
+                    EventSpawnPosANUD.Value -= 360;
+                }
+            }
+            isUserInteraction = true;
+            eventposdefEventPos.a = EventSpawnPosANUD.Value;
             currentproject.cfgeventspawns.isDirty = true;
         }
         private void EventSpawnGroupTB_TextChanged(object sender, EventArgs e)
@@ -3196,6 +3213,20 @@ namespace DayZeEditor
                             group = null
 
                         };
+                        if (newpos.a < 0)
+                        {
+                            while (newpos.a < 0)
+                            {
+                                newpos.a += 360;
+                            }
+                        }
+                        else if (newpos.a >= 360)
+                        {
+                            while (newpos.a >= 360)
+                            {
+                                newpos.a -= 360;
+                            }
+                        }
                         eventposdefEvent.pos.Add(newpos);
                     }
                     foreach (eventposdefEventPos pos in eventposdefEvent.pos)
@@ -3270,6 +3301,8 @@ namespace DayZeEditor
                             group = Groupname
 
                         };
+                        
+                        
                         eventposdefEvent.pos.Add(newpos);
                         TreeNode posnodes = new TreeNode(newpos.ToString());
                         posnodes.Tag = newpos;
@@ -3301,6 +3334,20 @@ namespace DayZeEditor
                                 lootmaxSpecified = true,
                                 lootmax = 3
                             };
+                            if (eventgroupdefGroupChild.a < 0)
+                            {
+                                while (eventgroupdefGroupChild.a < 0)
+                                {
+                                    eventgroupdefGroupChild.a += 360;
+                                }
+                            }
+                            else if(eventgroupdefGroupChild.a >= 360)
+                            {
+                                while (eventgroupdefGroupChild.a >= 0)
+                                {
+                                    eventgroupdefGroupChild.a -= 360;
+                                }
+                            }
                             TreeNode eventgroupchile = new TreeNode(eventgroupdefGroupChild.type);
                             eventgroupchile.Tag = eventgroupdefGroupChild;
                             neweventspawn.Nodes.Add(eventgroupchile);

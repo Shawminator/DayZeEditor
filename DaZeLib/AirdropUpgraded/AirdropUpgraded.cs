@@ -30,7 +30,10 @@ namespace DayZeLib
     public class Controls
     {
         public string Version { get; set; }
+        public string Description { get; set; }
         public int Interval { get; set; }
+        public int Variance { get; set; }
+        public BindingList<int> FlightHours { get;set; }
         public int Mode { get; set; }
         public int AD_LogManager { get; set; }
         public int AD_LogAircraft { get; set; }
@@ -64,12 +67,14 @@ namespace DayZeLib
         public int Duration { get; set; }
         public int Proximity { get; set; }
         public int ImperialUnits { get; set; }
-        public BindingList<int> NotificationARGB { get; set; }
+        public int TitlePostfixMode { get; set; }
+        public string Dispatched_S { get; set; }
+        public string Dispatched_C { get; set; }
+        public string Proximity_S { get; set; }
+        public string Proximity_C { get; set; }
+        public string Released_S { get; set; }
+        public string Released_C { get; set; }
 
-        public Messages()
-        {
-            NotificationARGB = new BindingList<int>();
-        }
     }
 
     public class Container
@@ -126,11 +131,13 @@ namespace DayZeLib
         public decimal SpawnMin { get; set; }
         public decimal SpawnMax { get; set; }
         public decimal SpawnOffset { get; set; }
-        public int Lifespan { get; set; }
+        public ItemCondition ItemCondition { get; set; }
+        public int Lifespan { get; set; }   
         public BindingList<string> Items { get; set; }
 
         public Droptype()
         {
+            ItemCondition = new ItemCondition();
             Items = new BindingList<string>();
         }
 
@@ -138,6 +145,12 @@ namespace DayZeLib
         {
             return Title;
         }
+    }
+    public class ItemCondition
+    {
+        public int MinCondition { get; set; }
+        public int MaxCondition { get; set; }
+        public int Samples { get; set; }
     }
     public class VPP_Map
     {

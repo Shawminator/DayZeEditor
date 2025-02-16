@@ -79,9 +79,7 @@ namespace DayZeEditor
             this.TriggerAGLNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel37 = new DarkUI.Controls.DarkLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.NotificationARGBPB = new System.Windows.Forms.PictureBox();
             this.MessaggesModeCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel26 = new DarkUI.Controls.DarkLabel();
             this.ImperialUnitsNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel27 = new DarkUI.Controls.DarkLabel();
             this.ProximityNUD = new System.Windows.Forms.NumericUpDown();
@@ -217,7 +215,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.FallRateNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TriggerAGLNUD)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NotificationARGBPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImperialUnitsNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProximityNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DurationNUD)).BeginInit();
@@ -955,9 +952,7 @@ namespace DayZeEditor
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.NotificationARGBPB);
             this.groupBox4.Controls.Add(this.MessaggesModeCB);
-            this.groupBox4.Controls.Add(this.darkLabel26);
             this.groupBox4.Controls.Add(this.ImperialUnitsNUD);
             this.groupBox4.Controls.Add(this.darkLabel27);
             this.groupBox4.Controls.Add(this.ProximityNUD);
@@ -973,17 +968,6 @@ namespace DayZeEditor
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Messages";
             // 
-            // NotificationARGBPB
-            // 
-            this.NotificationARGBPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("NotificationARGBPB.BackgroundImage")));
-            this.NotificationARGBPB.Location = new System.Drawing.Point(166, 122);
-            this.NotificationARGBPB.Name = "NotificationARGBPB";
-            this.NotificationARGBPB.Size = new System.Drawing.Size(147, 22);
-            this.NotificationARGBPB.TabIndex = 188;
-            this.NotificationARGBPB.TabStop = false;
-            this.NotificationARGBPB.Click += new System.EventHandler(this.NotificationARGBPB_Click);
-            this.NotificationARGBPB.Paint += new System.Windows.Forms.PaintEventHandler(this.NotificationARGBPB_Paint);
-            // 
             // MessaggesModeCB
             // 
             this.MessaggesModeCB.FormattingEnabled = true;
@@ -997,16 +981,6 @@ namespace DayZeEditor
             this.MessaggesModeCB.Size = new System.Drawing.Size(226, 21);
             this.MessaggesModeCB.TabIndex = 187;
             this.MessaggesModeCB.SelectedIndexChanged += new System.EventHandler(this.MessaghesModeCB_SelectedIndexChanged);
-            // 
-            // darkLabel26
-            // 
-            this.darkLabel26.AutoSize = true;
-            this.darkLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel26.Location = new System.Drawing.Point(9, 125);
-            this.darkLabel26.Name = "darkLabel26";
-            this.darkLabel26.Size = new System.Drawing.Size(90, 13);
-            this.darkLabel26.TabIndex = 182;
-            this.darkLabel26.Text = "NotificationARGB";
             // 
             // ImperialUnitsNUD
             // 
@@ -2604,7 +2578,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.TriggerAGLNUD)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NotificationARGBPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImperialUnitsNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProximityNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DurationNUD)).EndInit();
@@ -2737,7 +2710,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel21;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox MessaggesModeCB;
-        private DarkUI.Controls.DarkLabel darkLabel26;
         private System.Windows.Forms.NumericUpDown ImperialUnitsNUD;
         private DarkUI.Controls.DarkLabel darkLabel27;
         private System.Windows.Forms.NumericUpDown ProximityNUD;
@@ -2745,7 +2717,6 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown DurationNUD;
         private DarkUI.Controls.DarkLabel darkLabel30;
         private DarkUI.Controls.DarkLabel darkLabel32;
-        private System.Windows.Forms.PictureBox NotificationARGBPB;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.NumericUpDown SpawnOffsetNUD;
         private DarkUI.Controls.DarkLabel darkLabel25;
