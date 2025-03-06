@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -1547,6 +1548,35 @@ namespace DayZeEditor
             StaticPatrolUnitsLB.Invalidate();
             AIPatrolSettings.isDirty = true;
         }
+        private void darkButton52_Click(object sender, EventArgs e)
+        {
+            if (StaticPatrolWayPointsLB.SelectedItems.Count <= 0) return;
+            int index = StaticPatrolWayPointsLB.SelectedIndex;
+            if (index == 0) return;
+            int newindex = index - 1;
+            Vec3 waypoint = StaticPatrolWayPointsLB.SelectedItem as Vec3;
+            CurrentPatrol._waypoints.RemoveAt(index);
+            CurrentPatrol._waypoints.Insert(newindex, waypoint);
+            StaticPatrolWayPointsLB.Refresh();
+            StaticPatrolWayPointsLB.SelectedIndex = newindex;
+            AIPatrolSettings.isDirty = true;
+        }
+
+        private void darkButton51_Click(object sender, EventArgs e)
+        {
+            if (StaticPatrolWayPointsLB.SelectedItems.Count <= 0) return;
+            int index = StaticPatrolWayPointsLB.SelectedIndex;
+            if (index == StaticPatrolWayPointsLB.Items.Count - 1) return;
+            int newindex = index + 1;
+            Vec3 waypoint = StaticPatrolWayPointsLB.SelectedItem as Vec3;
+            CurrentPatrol._waypoints.RemoveAt(index);
+            CurrentPatrol._waypoints.Insert(newindex, waypoint);
+            StaticPatrolWayPointsLB.Refresh();
+            StaticPatrolWayPointsLB.SelectedIndex = newindex;
+            AIPatrolSettings.isDirty = true;
+        }
+
+
         private Point _mouseLastPosition;
         private Point _newscrollPosition;
         private Rectangle doubleClickRectangle = new Rectangle();
@@ -1588,6 +1618,23 @@ namespace DayZeEditor
                         Pen pen = new Pen(Color.Red, 4);
                         if (aipatrol == CurrentPatrol)
                             pen = new Pen(Color.Green, 4);
+                            Pen pen2 = new Pen(Color.Green, 2);
+                            if (CurrentWapypoint == waypoints)
+                                pen2 = new Pen(Color.Yellow, 2);
+                            int centerX2 = 0;
+                            int centerY2 = 0;
+                            if (c < aipatrol._waypoints.Count)
+                            {
+                                centerX2 = (int)(Math.Round(aipatrol._waypoints[c].X) * scalevalue);
+                                centerY2 = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(aipatrol._waypoints[c].Z, 0) * scalevalue);
+                            }
+                            else
+                            {
+                                centerX2 = (int)(Math.Round(aipatrol._waypoints[0].X) * scalevalue);
+                                centerY2 = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(aipatrol._waypoints[0].Z, 0) * scalevalue);
+                            }
+                            Point center2 = new Point(centerX2, centerY2);
+                            e.Graphics.DrawLine(pen2, center, center2);
                         if (CurrentWapypoint == waypoints)
                             pen = new Pen(Color.Yellow, 4);
                         string num = c.ToString();
@@ -1606,14 +1653,34 @@ namespace DayZeEditor
                 foreach (Vec3 waypoints in CurrentPatrol._waypoints)
                 {
                     float scalevalue = AIPatrolScale * 0.05f;
+                    string num = c.ToString();
+
                     int centerX = (int)(Math.Round(waypoints.X) * scalevalue);
                     int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(waypoints.Z, 0) * scalevalue);
                     int eventradius = (int)(Math.Round(5f, 0) * scalevalue);
                     Point center = new Point(centerX, centerY);
+
+                    Pen pen2 = new Pen(Color.Green, 2);
+                    if (CurrentWapypoint == waypoints)
+                        pen2 = new Pen(Color.Yellow, 2);
+                    int centerX2 = 0;
+                    int centerY2 = 0;
+                    if (c < CurrentPatrol._waypoints.Count)
+                    {
+                        centerX2 = (int)(Math.Round(CurrentPatrol._waypoints[c].X) * scalevalue);
+                        centerY2 = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(CurrentPatrol._waypoints[c].Z, 0) * scalevalue);
+                    }
+                    else
+                    {
+                        centerX2 = (int)(Math.Round(CurrentPatrol._waypoints[0].X) * scalevalue);
+                        centerY2 = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(CurrentPatrol._waypoints[0].Z, 0) * scalevalue);
+                    }
+                    Point center2 = new Point(centerX2, centerY2);
+                    e.Graphics.DrawLine(pen2, center, center2);
+
                     Pen pen = new Pen(Color.Green, 4);
                     if (CurrentWapypoint == waypoints)
                         pen = new Pen(Color.Yellow, 4);
-                    string num = c.ToString();
                     if (c == 1)
                         getCircle(e.Graphics, pen, center, eventradius, CurrentPatrol.Name + "\n" + num);
                     else

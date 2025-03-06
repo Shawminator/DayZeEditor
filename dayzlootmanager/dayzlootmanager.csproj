@@ -663,15 +663,13 @@
     <None Include="Maps\bearisland_Map.png.xyz" />
     <None Include="Maps\Capare_Map.png.xyz" />
     <None Include="Maps\chernarusplus_Map.png.xyz">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Maps\chiemsee_Map.png.xyz" />
     <None Include="Maps\esseker_Map.png.xyz" />
     <None Include="Maps\fogfall_Map.png.xyz" />
     <None Include="Maps\iztek_Map.png.xyz" />
-    <None Include="Maps\banov_Map.png.xyz">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Maps\banov_Map.png.xyz" />
     <None Include="Maps\lux_Map.png.xyz" />
     <None Include="Maps\melkart_Map.png.xyz" />
     <None Include="Maps\namalsk_Map.png.xyz" />
@@ -734,17 +732,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\alteria_Map.png" />
-    <Content Include="Maps\anastara_Map.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Maps\anastara_Map.png" />
+    <Content Include="Maps\arsteinen_Map.png" />
     <Content Include="Maps\barrington_Map.png" />
     <Content Include="Maps\bearisland_Map.png" />
-    <Content Include="Maps\Capare_Map.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Maps\Capare_Map.png" />
     <Content Include="Maps\chiemsee_Map.png" />
     <Content Include="Maps\chernarusplus_Map.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\esseker_Map.png" />
     <Content Include="Maps\fogfall_Map.png" />
@@ -754,9 +749,7 @@
     <Content Include="Maps\Icons\Arrow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Maps\banov_Map.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Maps\banov_Map.png" />
     <Content Include="Maps\Icons\Bear.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -810,9 +803,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\iztek_Map.png" />
-    <Content Include="Maps\deerisle_map.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Maps\deerisle_map.png" />
     <Content Include="Maps\lux_Map.png" />
     <Content Include="Maps\MapSizes.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

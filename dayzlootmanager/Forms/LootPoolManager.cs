@@ -1128,6 +1128,16 @@ namespace DayZeEditor
                             }
                             newitem.attachments.Add(NEWLIST);
                         }
+                        if (weapon.attachmentsBipods.Count > 0)
+                        {
+                            capareLPAttachment NEWLIST = new capareLPAttachment();
+                            NEWLIST.attachments = new BindingList<string>();
+                            foreach (string bay in weapon.attachmentsBipods)
+                            {
+                                NEWLIST.attachments.Add(bay);
+                            }
+                            newitem.attachments.Add(NEWLIST);
+                        }
                         if (weapon.attachmentsButtStocks.Count > 0)
                         {
                             capareLPAttachment NEWLIST = new capareLPAttachment();
@@ -1183,6 +1193,16 @@ namespace DayZeEditor
                             capareLPAttachment NEWLIST = new capareLPAttachment();
                             NEWLIST.attachments = new BindingList<string>();
                             foreach (string bay in weapon.attachmentsWraps)
+                            {
+                                NEWLIST.attachments.Add(bay);
+                            }
+                            newitem.attachments.Add(NEWLIST);
+                        }
+                        if (weapon.attachmentsAFG.Count > 0)
+                        {
+                            capareLPAttachment NEWLIST = new capareLPAttachment();
+                            NEWLIST.attachments = new BindingList<string>();
+                            foreach (string bay in weapon.attachmentsAFG)
                             {
                                 NEWLIST.attachments.Add(bay);
                             }

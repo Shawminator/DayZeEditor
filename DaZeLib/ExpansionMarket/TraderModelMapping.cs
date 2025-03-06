@@ -203,6 +203,35 @@ namespace DayZeLib
         {
             return NPCName + " " + NPCTrade;
         }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            //if (ReferenceEquals(obj, this))
+            //    return false;
+
+            if (obj.GetType() != this.GetType())
+                return false;
+
+            Tradermap optionsToCheck = obj as Tradermap;
+            return this.IsInAZone == optionsToCheck.IsInAZone &&
+                this.Roamingpoints == optionsToCheck.Roamingpoints &&
+                this.NPCName == optionsToCheck.NPCName &&
+                this.NPCTrade == optionsToCheck.NPCTrade &&
+                this.Roamingpoints == optionsToCheck.Roamingpoints &&
+                this.Attachments == optionsToCheck.Attachments &&
+                this.position == optionsToCheck.position;
+        }
+        public static bool operator ==(Tradermap optionsA, Tradermap optionsB)
+        {
+            return Object.Equals(optionsA, optionsB);
+        }
+
+        public static bool operator !=(Tradermap optionsA, Tradermap optionsB)
+        {
+            return !Object.Equals(optionsA, optionsB);
+        }
     }
 
 

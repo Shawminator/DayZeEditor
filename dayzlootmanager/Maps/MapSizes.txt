@@ -29,3 +29,4 @@ anastara:10240
 alteria:8192
 bitterroot:12288
 sakhal:15360
+arsteinen:15360

@@ -163,6 +163,7 @@ namespace DayZeEditor
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.darkButton27 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LootRandomizationNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -918,7 +919,7 @@ namespace DayZeEditor
             this.posZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.posZNUD.Location = new System.Drawing.Point(276, 384);
             this.posZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -940,7 +941,7 @@ namespace DayZeEditor
             this.posYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.posYNUD.Location = new System.Drawing.Point(164, 384);
             this.posYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -962,7 +963,7 @@ namespace DayZeEditor
             this.posXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.posXNUD.Location = new System.Drawing.Point(52, 384);
             this.posXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -1013,7 +1014,7 @@ namespace DayZeEditor
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(749, 481);
+            this.tabPage6.Size = new System.Drawing.Size(861, 528);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "tabPage6";
             // 
@@ -1045,7 +1046,7 @@ namespace DayZeEditor
             this.panelEx1.Controls.Add(this.pictureBox1);
             this.panelEx1.Location = new System.Drawing.Point(6, 29);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(743, 450);
+            this.panelEx1.Size = new System.Drawing.Size(855, 497);
             this.panelEx1.TabIndex = 116;
             // 
             // pictureBox1
@@ -1133,7 +1134,7 @@ namespace DayZeEditor
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1001, 544);
+            this.tabPage2.Size = new System.Drawing.Size(1113, 591);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -1345,6 +1346,7 @@ namespace DayZeEditor
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.darkButton27);
             this.tabPage3.Controls.Add(this.darkButton15);
             this.tabPage3.Controls.Add(this.darkButton16);
             this.tabPage3.Controls.Add(this.groupBox2);
@@ -1352,7 +1354,7 @@ namespace DayZeEditor
             this.tabPage3.Controls.Add(this.LCPredefinedWeaponsLB);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1001, 544);
+            this.tabPage3.Size = new System.Drawing.Size(1113, 591);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.ToolTipText = "\"LC_Table_xxxxxx\" for all Items // \"LC_Table_Weapons_xxxxxx\" for Weapons and pred" +
@@ -1622,7 +1624,7 @@ namespace DayZeEditor
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1001, 544);
+            this.tabPage4.Size = new System.Drawing.Size(1113, 591);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             // 
@@ -1904,6 +1906,18 @@ namespace DayZeEditor
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
+            // darkButton27
+            // 
+            this.darkButton27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton27.Location = new System.Drawing.Point(7, 542);
+            this.darkButton27.Name = "darkButton27";
+            this.darkButton27.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton27.Size = new System.Drawing.Size(319, 23);
+            this.darkButton27.TabIndex = 99;
+            this.darkButton27.Text = "Create all from Spawnabletypes";
+            this.darkButton27.Visible = false;
+            this.darkButton27.Click += new System.EventHandler(this.darkButton27_Click);
+            // 
             // Lootchest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2106,5 +2120,6 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.Label label2;
         private DarkUI.Controls.DarkButton darkButton26;
+        private DarkUI.Controls.DarkButton darkButton27;
     }
 }

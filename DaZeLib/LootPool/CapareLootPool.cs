@@ -94,6 +94,7 @@ namespace DayZeLib
         public BindingList<string> attachmentsOpticsAndSights { get; set; }
         public BindingList<string> attachmentsMuzzles { get; set; }
         public BindingList<string> attachmentsWraps { get; set; }
+        public BindingList<string> attachmentsAFG { get; set; }
         public BindingList<string> bullets { get; set; }
         public BindingList<string> magazines { get; set; }
     }

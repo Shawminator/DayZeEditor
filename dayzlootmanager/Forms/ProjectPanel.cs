@@ -2,6 +2,7 @@
 using SevenZipExtractor;
 using System;
 using System.Collections.Generic;
+using System.Data.Odbc;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -92,6 +93,7 @@ namespace DayZeEditor
             GitHub info = getavaiableMapAddons();
             foreach (Asset ass in info.assets)
             {
+                if (ass.name == "MapSizes.txt") continue;
                 ListViewItem item = new ListViewItem();
                 item.Text = ass.name;
                 item.Tag = ass;
@@ -993,6 +995,17 @@ namespace DayZeEditor
                     item.SubItems.Add("Installed");
                     listView3.Items[index] = item;
                     listView3.Refresh();
+
+                    Console.WriteLine("Updating MapSizes.txt");
+                    using (var client = new WebClient())
+                    {
+                        Console.WriteLine("Downloading Zip file......");
+                        GitHub info = getavaiableMapAddons();
+                        Asset ass = info.assets.Find(x => x.name == "MapSizes.txt");
+                        client.DownloadFile(ass.browser_download_url, "Maps/MapSizes.txt");
+                    }
+                
+
                 }
             }
         }

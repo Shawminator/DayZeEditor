@@ -556,6 +556,8 @@ namespace DayZeEditor
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.darkButton52 = new DarkUI.Controls.DarkButton();
+            this.darkButton51 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -3073,7 +3075,6 @@ namespace DayZeEditor
             this.tabControl2.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl2.Controls.Add(this.tabPage3);
             this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl2.Location = new System.Drawing.Point(0, 28);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -3326,6 +3327,8 @@ namespace DayZeEditor
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.darkButton52);
+            this.groupBox2.Controls.Add(this.darkButton51);
             this.groupBox2.Controls.Add(this.groupBox6);
             this.groupBox2.Controls.Add(this.StaticPatrolWayPointsLB);
             this.groupBox2.Controls.Add(this.darkButton22);
@@ -8452,6 +8455,27 @@ namespace DayZeEditor
             this.toolStripButton6.Text = "Dynamic AI Addon";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
+            // darkButton52
+            // 
+            this.darkButton52.Location = new System.Drawing.Point(208, 45);
+            this.darkButton52.Name = "darkButton52";
+            this.darkButton52.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton52.Size = new System.Drawing.Size(20, 20);
+            this.darkButton52.TabIndex = 284;
+            this.darkButton52.Text = "↑";
+            this.darkButton52.Click += new System.EventHandler(this.darkButton52_Click);
+            // 
+            // darkButton51
+            // 
+            this.darkButton51.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton51.Location = new System.Drawing.Point(208, 199);
+            this.darkButton51.Name = "darkButton51";
+            this.darkButton51.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton51.Size = new System.Drawing.Size(20, 20);
+            this.darkButton51.TabIndex = 283;
+            this.darkButton51.Text = "↓";
+            this.darkButton51.Click += new System.EventHandler(this.darkButton51_Click);
+            // 
             // ExpansionAI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -9188,5 +9212,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton39;
         private DarkUI.Controls.DarkLabel darkLabel180;
         private System.Windows.Forms.ListBox listBox1;
+        private DarkUI.Controls.DarkButton darkButton52;
+        private DarkUI.Controls.DarkButton darkButton51;
     }
 }

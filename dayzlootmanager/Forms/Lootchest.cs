@@ -330,7 +330,7 @@ namespace DayZeEditor
                 optic = "",
                 opticbattery = 0
             }
-            ); ;
+            );
             LCPredefinedWeaponsLB.SelectedIndex = -1;
             LCPredefinedWeaponsLB.SelectedIndex = LCPredefinedWeaponsLB.Items.Count - 1;
         }
@@ -1323,6 +1323,8 @@ namespace DayZeEditor
             pictureBox1.Invalidate();
         }
 
-
+        private void darkButton27_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

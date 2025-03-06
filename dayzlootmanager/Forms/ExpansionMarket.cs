@@ -1,6 +1,7 @@
 ﻿using Cyotek.Windows.Forms;
 using DarkUI.Forms;
 using DayZeLib;
+//using OpenTK.Input;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,6 +82,8 @@ namespace DayZeEditor
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
+            toolStripButton10.AutoSize = true;
+            toolStripButton11.AutoSize = true;
             if (tabControl1.SelectedIndex == 1)
                 toolStripButton3.Checked = true;
         }
@@ -125,6 +128,7 @@ namespace DayZeEditor
             InitializeComponent();
             tabControl1.ItemSize = new Size(0, 1);
             tabControl3.ItemSize = new Size(0, 1);
+            tabControl4.ItemSize = new Size(0, 1);
         }
         private void ExpansionMarket_Load(object sender, EventArgs e)
         {
@@ -206,6 +210,9 @@ namespace DayZeEditor
             SetupListBoxes();
             dataGridView1.Invalidate();
 
+            doubleClickTimer.Interval = 100;
+            doubleClickTimer.Tick += new EventHandler(doubleClickTimer_Tick);
+
             data = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz", currentproject.MapSize);
 
             pictureBox1.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Chernarus Map Size is 15360 x 15360, 0,0 bottom left, center 7680 x 7680
@@ -219,6 +226,12 @@ namespace DayZeEditor
             pictureBox2.Paint += new PaintEventHandler(DrawAllSpawns);
             trackBar4.Value = 1;
             SetSpawnscale();
+
+            pictureBox3.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
+            pictureBox3.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+            pictureBox3.Paint += new PaintEventHandler(DrawNPCTranders);
+            trackBar1.Value = 1;
+            SetNPCScale();
 
             if (needtosave)
             {
@@ -3372,6 +3385,7 @@ namespace DayZeEditor
             if (listBox13.SelectedItems.Count < 1) { return; }
             currenttradermapzone = listBox13.SelectedItem as Zones;
             setTraderzonelist();
+            pictureBox3.Invalidate();
         }
         private void setTraderzonelist()
         {
@@ -3424,7 +3438,7 @@ namespace DayZeEditor
                 RoamingTraderWaypointsLB.ValueMember = "Value";
                 RoamingTraderWaypointsLB.DataSource = currenttradermap.Roamingpoints;
             }
-
+            pictureBox3.Invalidate();
             pcontroll = false;
         }
         private void RoamingTraderWaypointsLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -3598,6 +3612,10 @@ namespace DayZeEditor
         {
             if (pcontroll) return;
             currenttradermap.position.X = (float)numericUpDown14.Value;
+            if (data.FileExists)
+            {
+                numericUpDown15.Value = (decimal)(data.gethieght(currenttradermap.position.X, currenttradermap.position.Z));
+            }
             tradermaps.isDirty = true;
         }
         private void numericUpDown15_ValueChanged(object sender, EventArgs e)
@@ -3610,6 +3628,10 @@ namespace DayZeEditor
         {
             if (pcontroll) return;
             currenttradermap.position.Z = (float)numericUpDown16.Value;
+            if (data.FileExists)
+            {
+                numericUpDown15.Value = (decimal)(data.gethieght(currenttradermap.position.X, currenttradermap.position.Z));
+            }
             tradermaps.isDirty = true;
         }
         private void numericUpDown17_ValueChanged(object sender, EventArgs e)
@@ -3733,6 +3755,33 @@ namespace DayZeEditor
             RoamingTraderWaypointsLB.DisplayMember = "Name";
             RoamingTraderWaypointsLB.ValueMember = "Value";
             RoamingTraderWaypointsLB.DataSource = currenttradermap.Roamingpoints;
+            tradermaps.isDirty = true;
+        }
+        private void darkButton6_Click(object sender, EventArgs e)
+        {
+            if (RoamingTraderWaypointsLB.SelectedItems.Count <= 0) return;
+            int index = RoamingTraderWaypointsLB.SelectedIndex;
+            if (index == 0) return;
+            int newindex = index - 1;
+            Vec3 waypoint = RoamingTraderWaypointsLB.SelectedItem as Vec3;
+            currenttradermap.Roamingpoints.RemoveAt(index);
+            currenttradermap.Roamingpoints.Insert(newindex, waypoint);
+            RoamingTraderWaypointsLB.Refresh();
+            RoamingTraderWaypointsLB.SelectedIndex = newindex;
+            tradermaps.isDirty = true;
+        }
+
+        private void darkButton7_Click(object sender, EventArgs e)
+        {
+            if (RoamingTraderWaypointsLB.SelectedItems.Count <= 0) return;
+            int index = RoamingTraderWaypointsLB.SelectedIndex;
+            if (index == RoamingTraderWaypointsLB.Items.Count - 1) return;
+            int newindex = index + 1;
+            Vec3 waypoint = RoamingTraderWaypointsLB.SelectedItem as Vec3;
+            currenttradermap.Roamingpoints.RemoveAt(index);
+            currenttradermap.Roamingpoints.Insert(newindex, waypoint);
+            RoamingTraderWaypointsLB.Refresh();
+            RoamingTraderWaypointsLB.SelectedIndex = newindex;
             tradermaps.isDirty = true;
         }
         private void darkButton35_Click(object sender, EventArgs e)
@@ -4448,7 +4497,6 @@ namespace DayZeEditor
             currentCat.isDirty = true;
             setMarketItem();
         }
-
         private void darkButton54_Click(object sender, EventArgs e)
         {
             foreach (marketItem item in currentCat.Items)
@@ -4458,8 +4506,301 @@ namespace DayZeEditor
             setMarketItem();
             currentCat.isDirty = true;
         }
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            tabControl4.SelectedIndex = 0;
+        }
+        private void toolStripButton11_Click(object sender, EventArgs e)
+        {
+            tabControl4.SelectedIndex = 1;
+        }
+        private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            toolStripButton10.Checked = false;
+            toolStripButton11.Checked = false;
+            switch (tabControl4.SelectedIndex)
+            {
+                case 0:
+                    toolStripButton10.Checked = true;
+                    break;
+                case 1:
+                    toolStripButton11.Checked = true;
+                    break;
+            }
+        }
 
+        public int NPCScale = 1;
+        private Rectangle doubleClickRectangle = new Rectangle();
+        private Timer doubleClickTimer = new Timer();
+        private bool isFirstClick = true;
+        private bool isDoubleClick = false;
+        private int milliseconds = 0;
+        private MouseEventArgs mouseeventargs;
+        private void trackBar1_MouseUp(object sender, MouseEventArgs e)
+        {
+            NPCScale = trackBar1.Value;
+            SetNPCScale();
+        }
+        private void SetNPCScale()
+        {
+            float scalevalue = NPCScale * 0.05f;
+            float mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox3.Size = new Size(newsize, newsize);
+        }
+        private void checkBox10_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBox3.Invalidate();
+        }
+        private void DrawNPCTranders(object sender, PaintEventArgs e)
+        {
+            float scalevalue = NPCScale * 0.05f;
+            if (checkBox10.Checked)
+            {
+                foreach (Zones zones in Zones.ZoneList)
+                {
+                    int centerX = (int)(Math.Round(zones.Position[0], 0) * scalevalue);
+                    int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(zones.Position[2], 0) * scalevalue);
+                    //int radius = ((int)zones.Radius / (currentproject.MapSize / 512)) * TraderZoneMapScale;
+                    int radius = (int)((float)zones.Radius * scalevalue);
+                    Point center = new Point(centerX, centerY);
+                    Pen pen = new Pen(Color.Red);
+                    if (currenttradermapzone.Filename == zones.Filename)
+                        pen.Color = Color.LimeGreen;
+                    pen.Width = 2;
+                    getCircle(e.Graphics, pen, center, radius);
+                }
+                foreach (Tradermap trader in ZoneTraders)
+                {
 
+                }
+            }
+            else
+            {
+                int centerX = (int)(Math.Round(currentZone.Position[0], 0) * scalevalue);
+                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(currentZone.Position[2], 0) * scalevalue);
+                //int radius = ((int)zones.Radius / (currentproject.MapSize / 512)) * TraderZoneMapScale;
+                int radius = (int)((float)currentZone.Radius * scalevalue);
+                Point center = new Point(centerX, centerY);
+                Pen pen = new Pen(Color.LimeGreen);
+                pen.Width = 2;
+                Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
+                e.Graphics.DrawEllipse(pen, rect2);
+                BindingList<Tradermap> traders = GetTradersforzone();
+                foreach (Tradermap trader in traders)
+                {
+                    int centerXt = (int)(Math.Round(trader.position.X, 0) * scalevalue);
+                    int centerYt = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(trader.position.Z, 0) * scalevalue);
+                    //int radius = ((int)zones.Radius / (currentproject.MapSize / 512)) * TraderZoneMapScale;
+                    Point centert = new Point(centerXt, centerYt);
+                    Pen pent = new Pen(Color.Red);
+                    if (currenttradermap == trader)
+                        pent.Color = Color.LimeGreen;
+                    pent.Width = 2;
+                    getCircle(e.Graphics, pent, centert, 3);
+                }
+                
+            }
+        }
+        private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Cursor.Current = Cursors.SizeAll;
+                _mouseLastPosition = e.Location;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                mouseeventargs = e;
+                // This is the first mouse click.
+                if (isFirstClick)
+                {
+                    isFirstClick = false;
+
+                    // Determine the location and size of the double click
+                    // rectangle area to draw around the cursor point.
+                    doubleClickRectangle = new Rectangle(
+                        e.X - (SystemInformation.DoubleClickSize.Width / 2),
+                        e.Y - (SystemInformation.DoubleClickSize.Height / 2),
+                        SystemInformation.DoubleClickSize.Width,
+                        SystemInformation.DoubleClickSize.Height);
+                    Invalidate();
+
+                    // Start the double click timer.
+                    doubleClickTimer.Start();
+                }
+
+                // This is the second mouse click.
+                else
+                {
+                    // Verify that the mouse click is within the double click
+                    // rectangle and is within the system-defined double
+                    // click period.
+                    if (doubleClickRectangle.Contains(e.Location) &&
+                        milliseconds < SystemInformation.DoubleClickTime)
+                    {
+                        isDoubleClick = true;
+                    }
+                }
+            }
+        }
+        private void pictureBox3_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox3.Focused == false)
+            {
+                pictureBox3.Focus();
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+                pictureBox3.Invalidate();
+            }
+        }
+        private void pictureBox3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panelEx1.AutoScrollPosition.X - changePoint.X, -panelEx1.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+                pictureBox3.Invalidate();
+            }
+            decimal scalevalue = NPCScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label10.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        void doubleClickTimer_Tick(object sender, EventArgs e)
+        {
+            milliseconds += 100;
+
+            // The timer has reached the double click time limit.
+            if (milliseconds >= SystemInformation.DoubleClickTime)
+            {
+                doubleClickTimer.Stop();
+
+                if (isDoubleClick)
+                {
+                    //Console.WriteLine("Perform double click action");
+                    if (currenttradermap == null) return;
+                    //if (CurrentWapypoint == null) return;
+                    //if (e is MouseEventArgs mouseEventArgs)
+                    //{
+                    Cursor.Current = Cursors.WaitCursor;
+                    decimal scalevalue = NPCScale * (decimal)0.05;
+                    decimal mapsize = currentproject.MapSize;
+                    int newsize = (int)(mapsize * scalevalue);
+                    numericUpDown14.Value = Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4);
+                    numericUpDown16.Value = Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4);
+                    if (data.FileExists)
+                    {
+                        numericUpDown15.Value = (decimal)(data.gethieght(currenttradermap.position.X, currenttradermap.position.Z));
+                    }
+                    Cursor.Current = Cursors.Default;
+                    tradermaps.isDirty = true;
+                    pictureBox3.Invalidate();
+                    //}
+                }
+                else
+                {
+                    //Console.WriteLine("Perform single click action");
+                    if (currenttradermap == null) return;
+                    //if (e is MouseEventArgs mouseEventArgs)
+                    //{
+                    decimal scalevalue = NPCScale * (decimal)0.05;
+                    decimal mapsize = currentproject.MapSize;
+                    int newsize = (int)(mapsize * scalevalue);
+                    PointF pC = new PointF((float)Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4), (float)Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4));
+                    BindingList<Tradermap> traders = GetTradersforzone();
+                    foreach (Tradermap trader in traders)
+                    {
+                        PointF pP = new PointF((float)trader.position.X, (float)trader.position.Z);
+                        if (IsWithinCircle(pC, pP, (float)5))
+                        {
+                            listBox14.SelectedItem = trader;
+                            listBox14.Refresh();
+                            pictureBox3.Invalidate();
+                            continue;
+                        }
+                    }
+                    //}
+                }
+
+                // Allow the MouseDown event handler to process clicks again.
+                isFirstClick = true;
+                isDoubleClick = false;
+                milliseconds = 0;
+            }
+        }
+        private void pictureBox3_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox3_ZoomOut();
+            }
+            else
+            {
+                pictureBox3_ZoomIn();
+            }
+
+        }
+        private void pictureBox3_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox3.Height;
+            int oldpitureboxwidht = pictureBox3.Width;
+            Point oldscrollpos = panelEx1.AutoScrollPosition;
+            int tbv = trackBar1.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar1.Value = newval;
+            NPCScale = trackBar1.Value;
+            SetNPCScale();
+            if (pictureBox3.Height > panelEx1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox3.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox3.Width > panelEx1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox3.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox3.Invalidate();
+        }
+        private void pictureBox3_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox3.Height;
+            int oldpitureboxwidht = pictureBox3.Width;
+            Point oldscrollpos = panelEx1.AutoScrollPosition;
+            int tbv = trackBar1.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar1.Value = newval;
+            NPCScale = trackBar1.Value;
+            SetNPCScale();
+            if (pictureBox3.Height > panelEx1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox3.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox3.Width > panelEx1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox3.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox3.Invalidate();
+        }
     }
 }
 

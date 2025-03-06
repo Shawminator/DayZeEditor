@@ -6,7 +6,7 @@ namespace DayZeLib
     public class ExpansionAISettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 11;
+        const int CurrentVersion = 12;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
