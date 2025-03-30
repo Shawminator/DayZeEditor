@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
@@ -1090,98 +1091,139 @@ namespace DayZeEditor
 
         private void darkButton41_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI P2P Trader Waypoints";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        currentp2pmarket.Roamingwaypoints = new BindingList<Vec3>();
-                    }
-                    int i = 0;
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        Vec3 newvec3 = new Vec3()
-                        {
-                            X = Convert.ToSingle(eo.Position[0]),
-                            Y = Convert.ToSingle(eo.Position[1]),
-                            Z = Convert.ToSingle(eo.Position[2])
-                        };
-                        if (i == 0)
-                        {
-                            positionXNUD.Value = (decimal)newvec3.X;
-                            positionYNUD.Value = (decimal)newvec3.Y;
-                            positionZNUD.Value = (decimal)newvec3.Z;
-                        }
-                        else
-                        {
-                            currentp2pmarket.Roamingwaypoints.Add(newvec3);
-                        }
-                        i++;
-                    }
-                    RoamingTraderWaypointsLB.DisplayMember = "Name";
-                    RoamingTraderWaypointsLB.ValueMember = "Value";
-                    RoamingTraderWaypointsLB.DataSource = currentp2pmarket.Roamingwaypoints;
-                    RoamingTraderWaypointsLB.Refresh();
-                    currentp2pmarket.isDirty = true;
+                    currentp2pmarket.Roamingwaypoints = new BindingList<Vec3>();
                 }
+                string filePath = openFileDialog.FileName;
+                int i = 0;
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        for (int ii = 0; ii < fileContent.Length; ii++)
+                        {
+                            if (fileContent[ii] == "") continue;
+                            string[] linesplit = fileContent[ii].Split('|');
+                            Vec3 newvec3 = new Vec3(linesplit[1].Split(' '));
+                            if (i == 0)
+                            {
+                                positionXNUD.Value = (decimal)newvec3.X;
+                                positionYNUD.Value = (decimal)newvec3.Y;
+                                positionZNUD.Value = (decimal)newvec3.Z;
+                            }
+                            else
+                            {
+                                currentp2pmarket.Roamingwaypoints.Add(newvec3);
+                            }
+                            i++;
+                        }
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        foreach (SpawnObjects so in newobjectspawner.Objects)
+                        {
+                            Vec3 newvec3 = new Vec3(so.pos);
+                            if (i == 0)
+                            {
+                                positionXNUD.Value = (decimal)newvec3.X;
+                                positionYNUD.Value = (decimal)newvec3.Y;
+                                positionZNUD.Value = (decimal)newvec3.Z;
+                            }
+                            else
+                            {
+                                currentp2pmarket.Roamingwaypoints.Add(newvec3);
+                            }
+                            i++;
+                        }
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            Vec3 newvec3 = new Vec3()
+                            {
+                                X = Convert.ToSingle(eo.Position[0]),
+                                Y = Convert.ToSingle(eo.Position[1]),
+                                Z = Convert.ToSingle(eo.Position[2])
+                            };
+                            if (i == 0)
+                            {
+                                positionXNUD.Value = (decimal)newvec3.X;
+                                positionYNUD.Value = (decimal)newvec3.Y;
+                                positionZNUD.Value = (decimal)newvec3.Z;
+                            }
+                            else
+                            {
+                                currentp2pmarket.Roamingwaypoints.Add(newvec3);
+                            }
+                            i++;
+                        }
+                        break;
+                }
+                RoamingTraderWaypointsLB.DisplayMember = "Name";
+                RoamingTraderWaypointsLB.ValueMember = "Value";
+                RoamingTraderWaypointsLB.DataSource = currentp2pmarket.Roamingwaypoints;
+                RoamingTraderWaypointsLB.Refresh();
+                currentp2pmarket.isDirty = true;
             }
         }
 
         private void darkButton42_Click(object sender, EventArgs e)
         {
-            DZE newdze = new DZE()
-            {
-                EditorObjects = new BindingList<Editorobject>(),
-                EditorHiddenObjects = new BindingList<Editordeletedobject>(),
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            int m_Id = 0;
-            Editorobject eo = new Editorobject()
-            {
-                Type = currentp2pmarket.m_ClassName,
-                DisplayName = currentp2pmarket.m_ClassName,
-                Position = new float[] { (float)currentp2pmarket.m_Position[0], (float)currentp2pmarket.m_Position[1], (float)currentp2pmarket.m_Position[2] },
-                Orientation = new float[]{ (float)currentp2pmarket.m_Orientation[0],
-                (float)currentp2pmarket.m_Orientation[1],
-                (float)currentp2pmarket.m_Orientation[2]
-            },
-                Scale = 1.0f,
-                Model = "",
-                Flags = 2147483647,
-                m_Id = m_Id
-            };
-            newdze.EditorObjects.Add(eo);
-            m_Id++;
-            foreach (Vec3 array in currentp2pmarket.Roamingwaypoints)
-            {
-                eo = new Editorobject()
-                {
-                    Type = currentp2pmarket.m_ClassName,
-                    DisplayName = currentp2pmarket.m_ClassName,
-                    Position = new float[] { array.X, array.Y, array.Z },
-                    Orientation = new float[] { 0, 0, 0 },
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(eo);
-                m_Id++;
-            }
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
             SaveFileDialog save = new SaveFileDialog();
+            save.Title = "Export AI P2p Trader Waypoints";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+            save.FileName = "RoamingP2PTrader -" + currentp2pmarket.m_TraderID.ToString();
             if (save.ShowDialog() == DialogResult.OK)
             {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
+                switch (save.FilterIndex)
+                {
+                    case 1:
+                        StringBuilder SB = new StringBuilder();
+                        SB.AppendLine(currentp2pmarket.m_ClassName + "| " + currentp2pmarket.GetExpansionMapPosition() + "|" + currentp2pmarket.getExpansionMapOrientation());
+                        foreach (Vec3 array in currentp2pmarket.Roamingwaypoints)
+                        {
+                            SB.AppendLine(currentp2pmarket.m_ClassName + "| " + array.GetString() + "|0.0 0.0 0.0");
+                        }
+                        File.WriteAllText(save.FileName, SB.ToString());
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+                        SpawnObjects newobject = new SpawnObjects()
+                        {
+                            name = currentp2pmarket.m_ClassName,
+                            pos = currentp2pmarket.GetExpansionMapPositionfloatarray(),
+                            ypr = currentp2pmarket.getExpansionMapOrientationfloatarray(),
+                            scale = 1,
+                            enableCEPersistency = false
+                        };
+                        newobjectspawner.Objects.Add(newobject);
+                        foreach (Vec3 array in currentp2pmarket.Roamingwaypoints)
+                        {
+                            newobject = new SpawnObjects()
+                            {
+                                name = currentp2pmarket.m_ClassName,
+                                pos = array.getfloatarray(),
+                                ypr = new float[] { 0, 0, 0 },
+                                scale = 1,
+                                enableCEPersistency = false
+                            };
+                            newobjectspawner.Objects.Add(newobject);
+                        }
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
+                }
             }
         }
-
-
     }
 }

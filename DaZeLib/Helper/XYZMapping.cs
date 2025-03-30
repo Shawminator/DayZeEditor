@@ -1,9 +1,9 @@
-﻿using DayZeEditor;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -24,10 +24,10 @@ namespace DayZeLib
             else
                 Rotation = new Vec3(0, 0, 0);
         }
-        public Vec3PandR(string Stuff)
+        public Vec3PandR(string Stuff, bool importrotations = true)
         {
             rotspecified = false;
-            if (Stuff.Contains('|'))
+            if (Stuff.Contains('|') && importrotations)
             {
                 string[] posrotstring = Stuff.Split('|');
                 string[] possplit = posrotstring[0].Split(' ');
@@ -38,9 +38,19 @@ namespace DayZeLib
             }
             else
             {
-                string[] possplit = Stuff.Split(' ');
-                Position = new Vec3(Convert.ToSingle(possplit[0]), Convert.ToSingle(possplit[1]), Convert.ToSingle(possplit[2]));
-                Rotation = new Vec3(0, 0, 0);
+                if (Stuff.Contains('|'))
+                {
+                    string[] posrotstring = Stuff.Split('|');
+                    string[] possplit = posrotstring[0].Split(' ');
+                    Position = new Vec3(Convert.ToSingle(possplit[0]), Convert.ToSingle(possplit[1]), Convert.ToSingle(possplit[2]));
+                    Rotation = new Vec3(0, 0, 0);
+                }
+                else
+                {
+                    string[] possplit = Stuff.Split(' ');
+                    Position = new Vec3(Convert.ToSingle(possplit[0]), Convert.ToSingle(possplit[1]), Convert.ToSingle(possplit[2]));
+                    Rotation = new Vec3(0, 0, 0);
+                }
             }
         }
         public string GetString()
@@ -79,6 +89,11 @@ namespace DayZeLib
                 return Position.X + " " + Position.Y + " " + Position.Z;
             }
         }
+
+        public string GetExpansionString()
+        {
+            return Position.X + " " + Position.Y + " " + Position.Z + "|" + Rotation.X + " " + Rotation.Y + " " + Rotation.Z;
+        }
     }
 
     public class Vec3
@@ -113,6 +128,13 @@ namespace DayZeLib
             Y = y;
             Z = z;
         }
+        public Vec3(string position)
+        {
+            string[] possplit = position.Split(' ');
+            X = Convert.ToSingle(possplit[0]);
+            Y = Convert.ToSingle(possplit[1]);
+            Z = Convert.ToSingle(possplit[2]);
+        }
         public Vec3() { }
 
         public override string ToString()
@@ -126,7 +148,7 @@ namespace DayZeLib
         }
         public string GetString()
         {
-            return X.ToString() + " " + Y.ToString() + " " + Z.ToString();
+            return X.ToString("F6") + " " + Y.ToString("F6") + " " + Z.ToString("F6");
         }
 
         public decimal[] getDecimalArray()
@@ -156,7 +178,7 @@ namespace DayZeLib
                     cellcount = (int)Math.Sqrt(pointCount);
                     cellsize = (float)(int)mapsize / cellcount;
                 }
-                
+
                 FileExists = true;
             }
             else
@@ -197,61 +219,71 @@ namespace DayZeLib
         {
             int x1 = (int)(v1 / cellsize);
             int y1 = (int)(v2 / cellsize);
-            float start = (cellcount*x1) + y1;
-            float minDistance = float.MaxValue;
-            float closestY = 0;
+            float start = (cellcount * x1) + y1;
             using (FileStream fs = new FileStream(FileName, FileMode.Open, FileAccess.Read))
             using (BinaryReader br = new BinaryReader(fs))
             {
                 long pos = 8 + ((long)start * 12);
                 br.BaseStream.Position = pos;
-                Vec3 newvec = new Vec3();
-                newvec.X = br.ReadSingle();
-                newvec.Y = br.ReadSingle();
-                newvec.Z = br.ReadSingle();
-                float distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
-                if (distance < minDistance)
-                {
-                    minDistance = distance;
-                    closestY = newvec.Z;
-                }
+                Vector3 newVec1 = new Vector3();
+                newVec1.X = br.ReadSingle();
+                newVec1.Y = br.ReadSingle();
+                newVec1.Z = br.ReadSingle();
+                //float distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
+                //if (distance < minDistance)
+                //{
+                //    minDistance = distance;
+                //    closestY = newvec.Z;
+                //}
 
-                newvec = new Vec3();
-                newvec.X = br.ReadSingle();
-                newvec.Y = br.ReadSingle();
-                newvec.Z = br.ReadSingle();
-                distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
-                if (distance < minDistance)
-                {
-                    minDistance = distance;
-                    closestY = newvec.Z;
-                }
+                Vector3 newVec2 = new Vector3();
+                newVec2.X = br.ReadSingle();
+                newVec2.Y = br.ReadSingle();
+                newVec2.Z = br.ReadSingle();
+                //distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
+                //if (distance < minDistance)
+                //{
+                //    minDistance = distance;
+                //    closestY = newvec.Z;
+                //}
                 pos = pos + (cellcount * 12);
                 br.BaseStream.Position = pos;
-                newvec.X = br.ReadSingle();
-                newvec.Y = br.ReadSingle();
-                newvec.Z = br.ReadSingle();
-                distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
-                if (distance < minDistance)
+                Vector3 newVec3 = new Vector3();
+                newVec3.X = br.ReadSingle();
+                newVec3.Y = br.ReadSingle();
+                newVec3.Z = br.ReadSingle();
+                //distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
+                //if (distance < minDistance)
+                //{
+                //    minDistance = distance;
+                //    closestY = newvec.Z;
+                //}
+                Vector3 newVec4 = new Vector3();
+                newVec4.X = br.ReadSingle();
+                newVec4.Y = br.ReadSingle();
+                newVec4.Z = br.ReadSingle();
+                //distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
+                //if (distance < minDistance)
+                //{
+                //    minDistance = distance;
+                //    closestY = newvec.Z;
+
+                //}
+
+                // Find which triangle the point falls into
+                float Z;
+                if (IsPointInTriangle(v1, v2, newVec1, newVec2, newVec3))
                 {
-                    minDistance = distance;
-                    closestY = newvec.Z;
+                    Z = ComputeZ(v1, v2, newVec1, newVec2, newVec3);
                 }
-                newvec = new Vec3();
-                newvec.X = br.ReadSingle();
-                newvec.Y = br.ReadSingle();
-                newvec.Z = br.ReadSingle();
-                distance = Math.Abs(v1 - newvec.X) + Math.Abs(v2 - newvec.Y);
-                if (distance < minDistance)
+                else
                 {
-                    minDistance = distance;
-                    closestY = newvec.Z;
-                    
+                    Z = ComputeZ(v1, v2, newVec2, newVec3, newVec4);
                 }
-                //MessageBox.Show($"Hieght = {closestY}");
+                return Z;
+
             }
-            return closestY;
-            
+
 
             //List<Vec3> Mappoints = new List<Vec3>();
             //byte[] bytearray = File.ReadAllBytes(FileName);
@@ -298,5 +330,24 @@ namespace DayZeLib
             //return z;
 
         }
+        static bool IsPointInTriangle(float x, float y, Vector3 p1, Vector3 p2, Vector3 p3)
+        {
+            float denominator = ((p2.Y - p3.Y) * (p1.X - p3.X) + (p3.X - p2.X) * (p1.Y - p3.Y));
+            float a = ((p2.Y - p3.Y) * (x - p3.X) + (p3.X - p2.X) * (y - p3.Y)) / denominator;
+            float b = ((p3.Y - p1.Y) * (x - p3.X) + (p1.X - p3.X) * (y - p3.Y)) / denominator;
+            float c = 1 - a - b;
+
+            return (a >= 0) && (b >= 0) && (c >= 0);
+        }
+
+        static float ComputeZ(float x, float y, Vector3 p1, Vector3 p2, Vector3 p3)
+        {
+            Vector3 normal = Vector3.Cross(p2 - p1, p3 - p1);
+            float A = normal.X, B = normal.Y, C = normal.Z;
+            float D = -Vector3.Dot(normal, p1);
+
+            return (-(A * x + B * y + D)) / C;
+        }
     }
+
 }

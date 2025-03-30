@@ -24,7 +24,7 @@ namespace DayZeLib
     };
     public class ExpansionBaseBuildingSettings
     {
-        const int CurrentVersion = 4;
+        const int CurrentVersion = 5;
 
         public int m_Version { get; set; }  // Current Version is 3
         public int CanBuildAnywhere { get; set; }
@@ -52,7 +52,7 @@ namespace DayZeLib
         public int CodelockAttachMode { get; set; }
         public int DismantleFlagMode { get; set; }
         public int FlagMenuMode { get; set; }
-        public int OverrideVanillaEntityPlacement { get; set; }
+        public int PreventItemAccessThroughObstructingItems { get; set; }
         public int EnableVirtualStorage { get; set; }
         public BindingList<string> VirtualStorageExcludedContainers { get; set; }
 
@@ -121,6 +121,8 @@ namespace DayZeLib
             FlagMenuMode = (int)ExpansionFlagMenuMode.NoFlagChoice;
             GetTerritoryFlagKitAfterBuild = 0;
 
+            PreventItemAccessThroughObstructingItems = 1;
+            EnableVirtualStorage = 0;
             VirtualStorageExcludedContainers = new BindingList<string>() { "ExpansionAirdropContainerBase" };
             Zones = new BindingList<ExpansionBuildNoBuildZone>();
 

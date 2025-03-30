@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -50,8 +52,9 @@ namespace DayZeLib
             return false;
         }
 
-        public void LoadIndividualMissions(string Missionpath)
+        public bool LoadIndividualMissions(string Missionpath)
         {
+            bool needtosave = false;
             MissionSettingFiles = new BindingList<object>();
             string path = Missionpath + "\\expansion\\missions";
             if (!Directory.Exists(path))
@@ -70,6 +73,8 @@ namespace DayZeLib
                         Amsf.isDirty = false;
                         Amsf.Filename = file.FullName;
                         Amsf.MissionPath = Missionpath;
+                        if (Amsf.checkver())
+                            needtosave = true;
                         MissionSettingFiles.Add(Amsf);
                         break;
 
@@ -82,6 +87,7 @@ namespace DayZeLib
                         break;
                 }
             }
+            return needtosave;
         }
         public void SetIntValue(string mytype, int myvalue)
         {

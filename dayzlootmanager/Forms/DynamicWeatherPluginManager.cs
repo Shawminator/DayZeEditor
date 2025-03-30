@@ -121,7 +121,7 @@ namespace DayZeEditor
             useraction = false;
             DynamicWeatherPluginPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\weather.json";
             DynamicWeatherPlugin = new DynamicWeatherPlugin();
-            DynamicWeatherPlugin.m_Dynamics = new BindingList<WeatherDynamic>(JsonSerializer.Deserialize<WeatherDynamic[]>(File.ReadAllText(DynamicWeatherPluginPath)).ToList());
+            DynamicWeatherPlugin.m_Dynamics = new BindingList<WeatherDynamic>(JsonSerializer.Deserialize<WeatherDynamic[]>(File.ReadAllText(DynamicWeatherPluginPath), new JsonSerializerOptions { Converters = { new BoolConverter() } }).ToList());
             DynamicWeatherPlugin.isDirty = false;
             DynamicWeatherPlugin.Filename = DynamicWeatherPluginPath;
 

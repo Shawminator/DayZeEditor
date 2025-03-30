@@ -116,6 +116,7 @@ namespace DayZeEditor
             this.darkLabel13 = new DarkUI.Controls.DarkLabel();
             this.LootCategoriesLB = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.darkButton27 = new DarkUI.Controls.DarkButton();
             this.darkButton15 = new DarkUI.Controls.DarkButton();
             this.darkButton16 = new DarkUI.Controls.DarkButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -163,7 +164,6 @@ namespace DayZeEditor
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.darkButton27 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LootRandomizationNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -793,7 +793,7 @@ namespace DayZeEditor
             this.darkButton26.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton26.Size = new System.Drawing.Size(104, 23);
             this.darkButton26.TabIndex = 136;
-            this.darkButton26.Text = "Export to .dze";
+            this.darkButton26.Text = "Export";
             this.darkButton26.Click += new System.EventHandler(this.darkButton26_Click);
             // 
             // darkLabel20
@@ -813,7 +813,7 @@ namespace DayZeEditor
             this.darkButton23.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton23.Size = new System.Drawing.Size(104, 23);
             this.darkButton23.TabIndex = 134;
-            this.darkButton23.Text = "Import from .dze";
+            this.darkButton23.Text = "Import";
             this.darkButton23.Click += new System.EventHandler(this.darkButton23_Click);
             // 
             // darkButton13
@@ -919,12 +919,12 @@ namespace DayZeEditor
             this.posZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.posZNUD.Location = new System.Drawing.Point(276, 384);
             this.posZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.posZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -941,12 +941,12 @@ namespace DayZeEditor
             this.posYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.posYNUD.Location = new System.Drawing.Point(164, 384);
             this.posYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.posYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -963,12 +963,12 @@ namespace DayZeEditor
             this.posXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.posXNUD.Location = new System.Drawing.Point(52, 384);
             this.posXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.posXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1359,6 +1359,18 @@ namespace DayZeEditor
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.ToolTipText = "\"LC_Table_xxxxxx\" for all Items // \"LC_Table_Weapons_xxxxxx\" for Weapons and pred" +
     "ifinied Weapons ONLY!";
+            // 
+            // darkButton27
+            // 
+            this.darkButton27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton27.Location = new System.Drawing.Point(7, 542);
+            this.darkButton27.Name = "darkButton27";
+            this.darkButton27.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton27.Size = new System.Drawing.Size(319, 23);
+            this.darkButton27.TabIndex = 99;
+            this.darkButton27.Text = "Create all from Spawnabletypes";
+            this.darkButton27.Visible = false;
+            this.darkButton27.Click += new System.EventHandler(this.darkButton27_Click);
             // 
             // darkButton15
             // 
@@ -1905,18 +1917,6 @@ namespace DayZeEditor
             // 
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
-            // 
-            // darkButton27
-            // 
-            this.darkButton27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton27.Location = new System.Drawing.Point(7, 542);
-            this.darkButton27.Name = "darkButton27";
-            this.darkButton27.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton27.Size = new System.Drawing.Size(319, 23);
-            this.darkButton27.TabIndex = 99;
-            this.darkButton27.Text = "Create all from Spawnabletypes";
-            this.darkButton27.Visible = false;
-            this.darkButton27.Click += new System.EventHandler(this.darkButton27_Click);
             // 
             // Lootchest
             // 

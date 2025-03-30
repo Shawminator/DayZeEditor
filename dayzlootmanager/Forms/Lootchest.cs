@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
@@ -875,65 +876,79 @@ namespace DayZeEditor
         }
         private void darkButton23_Click(object sender, EventArgs e)
         {
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI Patrol";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                DialogResult result = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNoCancel);
+                if ((result == DialogResult.Cancel))
                 {
-                    filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult result = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNoCancel);
-                    if ((result == DialogResult.Cancel))
-                    {
-                        return;
-                    }
-                    else if (result == DialogResult.Yes)
-                    {
-                        CurrentLootChestLocation._pos = new BindingList<Vec3PandR>();
-                    }
-                    CurrentLootChestLocation.ImportDZE(importfile);
-                    useraction = false;
-                    posLB.DataSource = CurrentLootChestLocation._pos;
-                    LootChestTable.isDirty = true;
-                    darkLabel20.Text = "Location count:" + CurrentLootChestLocation._pos.Count.ToString();
-                    useraction = true;
+                    return;
                 }
+                else if (result == DialogResult.Yes)
+                {
+                    CurrentLootChestLocation._pos = new BindingList<Vec3PandR>();
+                }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        CurrentLootChestLocation.ImportMap(fileContent);
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        CurrentLootChestLocation.ImportObjectSpawner(newobjectspawner);
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        CurrentLootChestLocation.ImportDZE(importfile);
+                        break;
+                }
+                useraction = false;
+                posLB.DataSource = CurrentLootChestLocation._pos;
+                LootChestTable.isDirty = true;
+                darkLabel20.Text = "Location count:" + CurrentLootChestLocation._pos.Count.ToString();
+                useraction = true;
             }
         }
         private void darkButton26_Click(object sender, EventArgs e)
         {
-            DZE newdze = new DZE()
-            {
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            int m_Id = 0;
-            string filename = "";
-            foreach (Vec3PandR vec3pandr in CurrentLootChestLocation._pos)
-            {
-                Editorobject SpawnObject = new Editorobject()
-                {
-                    Type = CurrentLootChestLocation.chest[0],
-                    DisplayName = CurrentLootChestLocation.chest[0],
-                    Position = vec3pandr.GetPositionFloatArray(),
-                    Orientation = vec3pandr.GetRotationFloatArray(),
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(SpawnObject);
-                m_Id++;
-            }
-            filename = "CJ Loot Chest - " + CurrentLootChestLocation.name;
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
             SaveFileDialog save = new SaveFileDialog();
-            save.FileName = filename;
+            save.Title = "Export AI Patrol";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+            save.FileName = "CJ Loot Chest - " + CurrentLootChestLocation.name;
             if (save.ShowDialog() == DialogResult.OK)
             {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
+                switch (save.FilterIndex)
+                {
+                    case 1:
+                        StringBuilder SB = new StringBuilder();
+                        foreach (Vec3PandR vec3pandr in CurrentLootChestLocation._pos)
+                        {
+                            SB.AppendLine(CurrentLootChestLocation.chest[0] + "|" + vec3pandr.GetExpansionString());
+                        }
+                        File.WriteAllText(save.FileName, SB.ToString());
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+                        foreach (Vec3PandR vec3pandr in CurrentLootChestLocation._pos)
+                        {
+                            SpawnObjects newobject = new SpawnObjects();
+                            newobject.name = CurrentLootChestLocation.chest[0];
+                            newobject.pos = vec3pandr.GetPositionFloatArray();
+                            newobject.ypr = vec3pandr.GetRotationFloatArray();
+                            newobject.scale = 1;
+                            newobject.enableCEPersistency = false;
+                            newobjectspawner.Objects.Add(newobject);
+                        }
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
+                }
             }
         }
         private void darkButton24_Click(object sender, EventArgs e)

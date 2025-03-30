@@ -30,3 +30,5 @@ alteria:8192
 bitterroot:12288
 sakhal:15360
 arsteinen:15360
+raman:32768
+NorthTakistan:12288

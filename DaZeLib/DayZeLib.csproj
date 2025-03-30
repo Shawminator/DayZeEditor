@@ -166,6 +166,7 @@
     <Compile Include="EditorDze\DZE.cs" />
     <Compile Include="ExpansionAI\AILoadouts.cs" />
     <Compile Include="ExpansionAI\DynamicAI.cs" />
+    <Compile Include="ExpansionAI\ExpansionAILocationSettings.cs" />
     <Compile Include="ExpansionAI\ExpansionAIPatrolSettings.cs" />
     <Compile Include="ExpansionCircleMarker\ECMAdminConfig.cs" />
     <Compile Include="ExpansionCircleMarker\ECMDynamicPVPZoneConfig.cs" />
@@ -283,6 +284,8 @@
     <Compile Include="RHLootBoxes\RHLootBoxes.cs" />
     <Compile Include="SearchForLoot\SFLConfig.cs" />
     <Compile Include="SpawnerBubaku\SpawnerBubaku.cs" />
+    <Compile Include="TimedCrate\TimedCrateLoot.cs" />
+    <Compile Include="TimedCrate\TimedCrates.cs" />
     <Compile Include="TraderPlus\TraderPlusBankingConfig.cs" />
     <Compile Include="TraderPlus\TraderPlusGeneralConfig.cs" />
     <Compile Include="TraderPlus\TraderPlusGarageConfig.cs" />
@@ -333,9 +336,7 @@
       <Name>TreeViewMS</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TimedCrate\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

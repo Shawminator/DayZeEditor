@@ -33,7 +33,7 @@ namespace DayZeEditor
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
 
-        public string VersionNumber = "0.8.3.0";
+        public string VersionNumber = "0.8.3.2";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -188,6 +188,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().SetIgnoreList();
                     Projects.getActiveProject().Setmapgrouproto();
                     Projects.getActiveProject().Setmapgroupos();
+                    Projects.getActiveProject().SetCfgEnviroment();
                     Projects.getActiveProject().SetTerritories();
                     Console.WriteLine("Project is Running Dr Jones Trader...." + Projects.getActiveProject().usingDrJoneTrader.ToString());
                     Console.WriteLine("Project is Running Expansion Market...." + Projects.getActiveProject().usingexpansionMarket.ToString());
@@ -556,7 +557,13 @@ namespace DayZeEditor
                 else
                     SearchForLootManagerButton.Visible = false;
 
-                if(KillrewardStatics.Checkallfiles(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath))
+                //if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MB_TimedCrate\\CrateSettings.json") &&
+                //    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MB_TimedCrate\\CustomLootData.json"))
+                //    TimedCrateManagerButton.Visible = true;
+                //else
+                //    TimedCrateManagerButton.Visible = false;
+
+                if (KillrewardStatics.Checkallfiles(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath))
                     KillRewardManagerButton.Visible = true;
                 else
                     KillRewardManagerButton.Visible = false;
@@ -1499,6 +1506,32 @@ namespace DayZeEditor
             
 
         }
+        private void TimedCrateManagerButton_Click(object sender, EventArgs e)
+        {
+            TimedCrateManager _TM = Application.OpenForms["TimedCrateManager"] as TimedCrateManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new TimedCrateManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading Timed Crate Manager....");
+                label1.Text = "Timed Crate Manager";
+            }
+            timer1.Start();
+        }
         private void KillRewardManagerButton_Click(object sender, EventArgs e)
         {
             killRewardManager _TM = Application.OpenForms["killRewardManager"] as killRewardManager;
@@ -1551,27 +1584,6 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = openFileDialog.FileName;
-                    StringBuilder sb = new StringBuilder();
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-
-                    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                    string jsonString = JsonSerializer.Serialize(importfile, options);
-                    SaveFileDialog savefile = new SaveFileDialog();
-                    if (savefile.ShowDialog() == DialogResult.OK)
-                    {
-                        File.WriteAllText(savefile.FileName, jsonString);
-                        MessageBox.Show(Path.GetFileName(savefile.FileName) + " HAs been saved in JSon format");
-                    }
-                }
-            }
-        }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.FormState = this.WindowState;
@@ -1597,6 +1609,33 @@ namespace DayZeEditor
                     string filePath = openFileDialog.FileName;
                     StringBuilder sb = new StringBuilder();
                     DZE importfile = DZEHelpers.LoadFile(filePath);
+
+                    //SaveFileDialog save = new SaveFileDialog();
+                    //save.Title = "Export AI Patrol";
+                    //save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+                    //if (save.ShowDialog() == DialogResult.OK)
+                    //{
+                    //    switch (save.FilterIndex)
+                    //    {
+                    //        case 1:
+                    //            StringBuilder SB = new StringBuilder();
+                    //            foreach (Editorobject eo in importfile.EditorObjects)
+                    //            {
+                    //                SB.AppendLine(eo.DisplayName + "|" + eo.Position[0].ToString() + " " + eo.Position[1].ToString() + " " + eo.Position[2].ToString() + "|" + eo.Orientation[0].ToString() + " " + eo.Orientation[1].ToString() + " " + eo.Orientation[2].ToString());
+                    //            }
+                    //            foreach (Editordeletedobject eo in importfile.EditorHiddenObjects)
+                    //            {
+                    //                SB.AppendLine("-" + eo.Type + "|" + eo.Position[0].ToString() + " " + eo.Position[1].ToString() + " " + eo.Position[2].ToString() + "|0 0 0");
+                    //            }
+                    //            File.WriteAllText(save.FileName, SB.ToString());
+                    //            break;
+                    //        case 2:
+                    //            break;
+                    //        case 3:
+                    //            break;
+                    //    }
+                    //}
+
                     ObjectSpawnerArr newobjectspawnerarr = importfile.convertToObjectSpawner();
 
                     AddNeweventFile form = new AddNeweventFile
@@ -1628,6 +1667,8 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }
 

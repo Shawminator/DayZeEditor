@@ -142,6 +142,9 @@ namespace DayZeEditor
             this.QuestQuestItemsLB = new System.Windows.Forms.ListBox();
             this.darkLabel36 = new DarkUI.Controls.DarkLabel();
             this.panel24 = new System.Windows.Forms.Panel();
+            this.panel85 = new System.Windows.Forms.Panel();
+            this.darkLabel59 = new DarkUI.Controls.DarkLabel();
+            this.QuestRewardChanceNUD = new System.Windows.Forms.NumericUpDown();
             this.panel75 = new System.Windows.Forms.Panel();
             this.darkLabel153 = new DarkUI.Controls.DarkLabel();
             this.QuestRewardsQuestIDNUD = new System.Windows.Forms.NumericUpDown();
@@ -282,8 +285,6 @@ namespace DayZeEditor
             this.QuestNPCsOXNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel11 = new DarkUI.Controls.DarkLabel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.darkButton30 = new DarkUI.Controls.DarkButton();
-            this.darkButton33 = new DarkUI.Controls.DarkButton();
             this.darkButton10 = new DarkUI.Controls.DarkButton();
             this.darkButton9 = new DarkUI.Controls.DarkButton();
             this.darkLabel43 = new DarkUI.Controls.DarkLabel();
@@ -345,6 +346,7 @@ namespace DayZeEditor
             this.darkButton39 = new DarkUI.Controls.DarkButton();
             this.ObjectivesAICampGB = new System.Windows.Forms.GroupBox();
             this.darkButton6 = new DarkUI.Controls.DarkButton();
+            this.expansionQuestAISpawnControlAICamp = new DayZeEditor.ExpansionQuestAISpawnControl();
             this.darkButton89 = new DarkUI.Controls.DarkButton();
             this.darkButton88 = new DarkUI.Controls.DarkButton();
             this.darkLabel175 = new DarkUI.Controls.DarkLabel();
@@ -364,6 +366,7 @@ namespace DayZeEditor
             this.ObjectivesAICampAllowedWeaponsRemoveButton = new DarkUI.Controls.DarkButton();
             this.ObjectivesAICampAllowedWeaponsAddButton = new DarkUI.Controls.DarkButton();
             this.ObjectivesAIPatrolGB = new System.Windows.Forms.GroupBox();
+            this.expansionQuestAISpawnControlAIPatrol = new DayZeEditor.ExpansionQuestAISpawnControl();
             this.darkLabel54 = new DarkUI.Controls.DarkLabel();
             this.darkLabel55 = new DarkUI.Controls.DarkLabel();
             this.darkButton17 = new DarkUI.Controls.DarkButton();
@@ -494,6 +497,7 @@ namespace DayZeEditor
             this.ObjectivesTravelPositionYNUD = new System.Windows.Forms.NumericUpDown();
             this.ObjectivesTravelPositionZNUD = new System.Windows.Forms.NumericUpDown();
             this.ObjectivesTresureHuntGB = new System.Windows.Forms.GroupBox();
+            this.expansionLootControlTH = new DayZeLib.ExpansionLootControl();
             this.darkLabel144 = new DarkUI.Controls.DarkLabel();
             this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
@@ -507,8 +511,6 @@ namespace DayZeEditor
             this.darkLabel136 = new DarkUI.Controls.DarkLabel();
             this.ObjectivesTreasureHuntAmountNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel132 = new DarkUI.Controls.DarkLabel();
-            this.darkButton63 = new DarkUI.Controls.DarkButton();
-            this.darkButton64 = new DarkUI.Controls.DarkButton();
             this.darkButton65 = new DarkUI.Controls.DarkButton();
             this.darkButton66 = new DarkUI.Controls.DarkButton();
             this.darkLabel133 = new DarkUI.Controls.DarkLabel();
@@ -599,12 +601,6 @@ namespace DayZeEditor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel85 = new System.Windows.Forms.Panel();
-            this.darkLabel59 = new DarkUI.Controls.DarkLabel();
-            this.QuestRewardChanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.expansionQuestAISpawnControlAICamp = new DayZeEditor.ExpansionQuestAISpawnControl();
-            this.expansionQuestAISpawnControlAIPatrol = new DayZeEditor.ExpansionQuestAISpawnControl();
-            this.expansionLootControlTH = new DayZeLib.ExpansionLootControl();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -643,6 +639,8 @@ namespace DayZeEditor
             this.panel48.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestQuestItemsAmountNUD)).BeginInit();
             this.panel24.SuspendLayout();
+            this.panel85.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardChanceNUD)).BeginInit();
             this.panel75.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsQuestIDNUD)).BeginInit();
             this.panel74.SuspendLayout();
@@ -798,8 +796,6 @@ namespace DayZeEditor
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
-            this.panel85.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardChanceNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -881,7 +877,7 @@ namespace DayZeEditor
             this.tabControl1.Location = new System.Drawing.Point(0, 73);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1220, 564);
+            this.tabControl1.Size = new System.Drawing.Size(1220, 666);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 94;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -896,7 +892,7 @@ namespace DayZeEditor
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1212, 535);
+            this.tabPage1.Size = new System.Drawing.Size(1212, 637);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -1045,7 +1041,7 @@ namespace DayZeEditor
             this.TabPage2.Location = new System.Drawing.Point(4, 25);
             this.TabPage2.Name = "TabPage2";
             this.TabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage2.Size = new System.Drawing.Size(1212, 535);
+            this.TabPage2.Size = new System.Drawing.Size(1212, 637);
             this.TabPage2.TabIndex = 1;
             this.TabPage2.Text = "tabPage2";
             // 
@@ -1097,7 +1093,7 @@ namespace DayZeEditor
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(194, 8);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1015, 521);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1015, 623);
             this.flowLayoutPanel1.TabIndex = 180;
             // 
             // panel1
@@ -1425,7 +1421,7 @@ namespace DayZeEditor
             this.panel8.Controls.Add(this.darkButton77);
             this.panel8.Controls.Add(this.QuestPreQuestIDsLB);
             this.panel8.Controls.Add(this.darkLabel19);
-            this.panel8.Location = new System.Drawing.Point(345, 3);
+            this.panel8.Location = new System.Drawing.Point(3, 404);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(336, 136);
             this.panel8.TabIndex = 245;
@@ -1479,7 +1475,7 @@ namespace DayZeEditor
             // 
             this.panel9.Controls.Add(this.QuestFollowupQuestCB);
             this.panel9.Controls.Add(this.darkLabel20);
-            this.panel9.Location = new System.Drawing.Point(345, 145);
+            this.panel9.Location = new System.Drawing.Point(3, 546);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(336, 20);
             this.panel9.TabIndex = 189;
@@ -1511,7 +1507,7 @@ namespace DayZeEditor
             this.panel11.Controls.Add(this.darkButton75);
             this.panel11.Controls.Add(this.QuestGiverIDsLB);
             this.panel11.Controls.Add(this.darkLabel22);
-            this.panel11.Location = new System.Drawing.Point(345, 171);
+            this.panel11.Location = new System.Drawing.Point(345, 3);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(336, 136);
             this.panel11.TabIndex = 242;
@@ -1567,7 +1563,7 @@ namespace DayZeEditor
             this.panel10.Controls.Add(this.darkButton73);
             this.panel10.Controls.Add(this.QuestQuestTurnInIDsLB);
             this.panel10.Controls.Add(this.darkLabel21);
-            this.panel10.Location = new System.Drawing.Point(345, 313);
+            this.panel10.Location = new System.Drawing.Point(345, 145);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(336, 136);
             this.panel10.TabIndex = 207;
@@ -1621,7 +1617,7 @@ namespace DayZeEditor
             // 
             this.panel12.Controls.Add(this.QuestRepeatableCB);
             this.panel12.Controls.Add(this.darkLabel24);
-            this.panel12.Location = new System.Drawing.Point(345, 455);
+            this.panel12.Location = new System.Drawing.Point(345, 287);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(336, 20);
             this.panel12.TabIndex = 191;
@@ -1651,7 +1647,7 @@ namespace DayZeEditor
             // 
             this.panel6.Controls.Add(this.QuestIsAchievementCB);
             this.panel6.Controls.Add(this.darkLabel23);
-            this.panel6.Location = new System.Drawing.Point(345, 481);
+            this.panel6.Location = new System.Drawing.Point(345, 313);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(336, 20);
             this.panel6.TabIndex = 190;
@@ -1681,7 +1677,7 @@ namespace DayZeEditor
             // 
             this.panel13.Controls.Add(this.QuestIsDailyQuestCB);
             this.panel13.Controls.Add(this.darkLabel25);
-            this.panel13.Location = new System.Drawing.Point(687, 3);
+            this.panel13.Location = new System.Drawing.Point(345, 339);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(336, 20);
             this.panel13.TabIndex = 192;
@@ -1711,7 +1707,7 @@ namespace DayZeEditor
             // 
             this.panel14.Controls.Add(this.QuestIsWeeklyQuestCB);
             this.panel14.Controls.Add(this.darkLabel26);
-            this.panel14.Location = new System.Drawing.Point(687, 29);
+            this.panel14.Location = new System.Drawing.Point(345, 365);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(336, 20);
             this.panel14.TabIndex = 193;
@@ -1741,7 +1737,7 @@ namespace DayZeEditor
             // 
             this.panel15.Controls.Add(this.QuestCancelQuestOnPlayerDeathCB);
             this.panel15.Controls.Add(this.darkLabel27);
-            this.panel15.Location = new System.Drawing.Point(687, 55);
+            this.panel15.Location = new System.Drawing.Point(345, 391);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(336, 20);
             this.panel15.TabIndex = 194;
@@ -1771,7 +1767,7 @@ namespace DayZeEditor
             // 
             this.panel16.Controls.Add(this.questAutocompleteCB);
             this.panel16.Controls.Add(this.darkLabel28);
-            this.panel16.Location = new System.Drawing.Point(687, 81);
+            this.panel16.Location = new System.Drawing.Point(345, 417);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(336, 20);
             this.panel16.TabIndex = 195;
@@ -1801,7 +1797,7 @@ namespace DayZeEditor
             // 
             this.panel17.Controls.Add(this.QuestIsGroupQuestCB);
             this.panel17.Controls.Add(this.darkLabel29);
-            this.panel17.Location = new System.Drawing.Point(687, 107);
+            this.panel17.Location = new System.Drawing.Point(345, 443);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(336, 20);
             this.panel17.TabIndex = 196;
@@ -1831,7 +1827,7 @@ namespace DayZeEditor
             // 
             this.panel20.Controls.Add(this.darkLabel32);
             this.panel20.Controls.Add(this.QuestObjectSetFileNameTB);
-            this.panel20.Location = new System.Drawing.Point(687, 133);
+            this.panel20.Location = new System.Drawing.Point(345, 469);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(336, 20);
             this.panel20.TabIndex = 198;
@@ -1860,7 +1856,7 @@ namespace DayZeEditor
             // 
             this.panel21.Controls.Add(this.darkLabel33);
             this.panel21.Controls.Add(this.QuestQuestClassNameTB);
-            this.panel21.Location = new System.Drawing.Point(687, 159);
+            this.panel21.Location = new System.Drawing.Point(345, 495);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(336, 20);
             this.panel21.TabIndex = 199;
@@ -1890,7 +1886,7 @@ namespace DayZeEditor
             this.panel22.Controls.Add(this.darkButton24);
             this.panel22.Controls.Add(this.QuestObjectivesLB);
             this.panel22.Controls.Add(this.darkLabel34);
-            this.panel22.Location = new System.Drawing.Point(687, 185);
+            this.panel22.Location = new System.Drawing.Point(687, 3);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(336, 132);
             this.panel22.TabIndex = 200;
@@ -1947,7 +1943,7 @@ namespace DayZeEditor
             this.panel23.Controls.Add(this.darkButton28);
             this.panel23.Controls.Add(this.QuestQuestItemsLB);
             this.panel23.Controls.Add(this.darkLabel36);
-            this.panel23.Location = new System.Drawing.Point(687, 323);
+            this.panel23.Location = new System.Drawing.Point(687, 141);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(336, 176);
             this.panel23.TabIndex = 201;
@@ -2049,6 +2045,47 @@ namespace DayZeEditor
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(336, 418);
             this.panel24.TabIndex = 202;
+            // 
+            // panel85
+            // 
+            this.panel85.Controls.Add(this.darkLabel59);
+            this.panel85.Controls.Add(this.QuestRewardChanceNUD);
+            this.panel85.Location = new System.Drawing.Point(6, 244);
+            this.panel85.Name = "panel85";
+            this.panel85.Size = new System.Drawing.Size(330, 20);
+            this.panel85.TabIndex = 253;
+            // 
+            // darkLabel59
+            // 
+            this.darkLabel59.AutoSize = true;
+            this.darkLabel59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel59.Location = new System.Drawing.Point(6, 2);
+            this.darkLabel59.Name = "darkLabel59";
+            this.darkLabel59.Size = new System.Drawing.Size(44, 13);
+            this.darkLabel59.TabIndex = 112;
+            this.darkLabel59.Text = "Chance";
+            // 
+            // QuestRewardChanceNUD
+            // 
+            this.QuestRewardChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QuestRewardChanceNUD.DecimalPlaces = 2;
+            this.QuestRewardChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestRewardChanceNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.QuestRewardChanceNUD.Location = new System.Drawing.Point(171, 0);
+            this.QuestRewardChanceNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.QuestRewardChanceNUD.Name = "QuestRewardChanceNUD";
+            this.QuestRewardChanceNUD.Size = new System.Drawing.Size(120, 20);
+            this.QuestRewardChanceNUD.TabIndex = 108;
+            this.QuestRewardChanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.QuestRewardChanceNUD.ValueChanged += new System.EventHandler(this.QuestRewardChanceNUD_ValueChanged);
             // 
             // panel75
             // 
@@ -2376,7 +2413,7 @@ namespace DayZeEditor
             // 
             this.panel65.Controls.Add(this.QuestReputationRewardNUD);
             this.panel65.Controls.Add(this.darkLabel138);
-            this.panel65.Location = new System.Drawing.Point(1371, 3);
+            this.panel65.Location = new System.Drawing.Point(1029, 505);
             this.panel65.Name = "panel65";
             this.panel65.Size = new System.Drawing.Size(336, 20);
             this.panel65.TabIndex = 243;
@@ -2411,7 +2448,7 @@ namespace DayZeEditor
             // 
             this.panel66.Controls.Add(this.QuestReputationRequirmentNUD);
             this.panel66.Controls.Add(this.darkLabel139);
-            this.panel66.Location = new System.Drawing.Point(1371, 29);
+            this.panel66.Location = new System.Drawing.Point(1029, 531);
             this.panel66.Name = "panel66";
             this.panel66.Size = new System.Drawing.Size(349, 20);
             this.panel66.TabIndex = 244;
@@ -2456,7 +2493,7 @@ namespace DayZeEditor
             // 
             this.panel70.Controls.Add(this.QuestPlayerNeedQuestItemsCB);
             this.panel70.Controls.Add(this.darkLabel148);
-            this.panel70.Location = new System.Drawing.Point(1371, 55);
+            this.panel70.Location = new System.Drawing.Point(1029, 557);
             this.panel70.Name = "panel70";
             this.panel70.Size = new System.Drawing.Size(349, 20);
             this.panel70.TabIndex = 251;
@@ -2486,7 +2523,7 @@ namespace DayZeEditor
             // 
             this.panel72.Controls.Add(this.QuestDeleteQuestItemsCB);
             this.panel72.Controls.Add(this.darkLabel150);
-            this.panel72.Location = new System.Drawing.Point(1371, 81);
+            this.panel72.Location = new System.Drawing.Point(1029, 583);
             this.panel72.Name = "panel72";
             this.panel72.Size = new System.Drawing.Size(349, 20);
             this.panel72.TabIndex = 252;
@@ -2516,7 +2553,7 @@ namespace DayZeEditor
             // 
             this.panel76.Controls.Add(this.QuestRandomRewardCB);
             this.panel76.Controls.Add(this.darkLabel154);
-            this.panel76.Location = new System.Drawing.Point(1371, 107);
+            this.panel76.Location = new System.Drawing.Point(1384, 3);
             this.panel76.Name = "panel76";
             this.panel76.Size = new System.Drawing.Size(349, 20);
             this.panel76.TabIndex = 254;
@@ -2546,7 +2583,7 @@ namespace DayZeEditor
             // 
             this.panel77.Controls.Add(this.QuestRandomRewardAmountNUD);
             this.panel77.Controls.Add(this.darkLabel155);
-            this.panel77.Location = new System.Drawing.Point(1371, 133);
+            this.panel77.Location = new System.Drawing.Point(1384, 29);
             this.panel77.Name = "panel77";
             this.panel77.Size = new System.Drawing.Size(349, 20);
             this.panel77.TabIndex = 255;
@@ -2591,7 +2628,7 @@ namespace DayZeEditor
             // 
             this.panel84.Controls.Add(this.QuestRewardBehavorCB);
             this.panel84.Controls.Add(this.darkLabel56);
-            this.panel84.Location = new System.Drawing.Point(1371, 159);
+            this.panel84.Location = new System.Drawing.Point(1384, 55);
             this.panel84.Name = "panel84";
             this.panel84.Size = new System.Drawing.Size(349, 23);
             this.panel84.TabIndex = 251;
@@ -2621,7 +2658,7 @@ namespace DayZeEditor
             // 
             this.panel78.Controls.Add(this.QuestSequentialObjectivesCB);
             this.panel78.Controls.Add(this.darkLabel156);
-            this.panel78.Location = new System.Drawing.Point(1371, 188);
+            this.panel78.Location = new System.Drawing.Point(1384, 84);
             this.panel78.Name = "panel78";
             this.panel78.Size = new System.Drawing.Size(349, 20);
             this.panel78.TabIndex = 256;
@@ -2651,7 +2688,7 @@ namespace DayZeEditor
             // 
             this.panel71.Controls.Add(this.QuestRequiredFactionCB);
             this.panel71.Controls.Add(this.darkLabel149);
-            this.panel71.Location = new System.Drawing.Point(1371, 214);
+            this.panel71.Location = new System.Drawing.Point(1384, 110);
             this.panel71.Name = "panel71";
             this.panel71.Size = new System.Drawing.Size(349, 23);
             this.panel71.TabIndex = 250;
@@ -2686,7 +2723,7 @@ namespace DayZeEditor
             this.panel36.Controls.Add(this.darkButton83);
             this.panel36.Controls.Add(this.darkLabel167);
             this.panel36.Controls.Add(this.QuestsFactionReputationRequirementsLB);
-            this.panel36.Location = new System.Drawing.Point(1371, 243);
+            this.panel36.Location = new System.Drawing.Point(1384, 139);
             this.panel36.Name = "panel36";
             this.panel36.Size = new System.Drawing.Size(349, 206);
             this.panel36.TabIndex = 257;
@@ -2777,7 +2814,7 @@ namespace DayZeEditor
             // 
             this.panel73.Controls.Add(this.QuestFactionRewardCB);
             this.panel73.Controls.Add(this.darkLabel151);
-            this.panel73.Location = new System.Drawing.Point(1371, 455);
+            this.panel73.Location = new System.Drawing.Point(1384, 351);
             this.panel73.Name = "panel73";
             this.panel73.Size = new System.Drawing.Size(349, 23);
             this.panel73.TabIndex = 253;
@@ -2812,7 +2849,7 @@ namespace DayZeEditor
             this.panel37.Controls.Add(this.darkButton85);
             this.panel37.Controls.Add(this.darkLabel170);
             this.panel37.Controls.Add(this.QuestFactionReputationRewardsLB);
-            this.panel37.Location = new System.Drawing.Point(1726, 3);
+            this.panel37.Location = new System.Drawing.Point(1384, 380);
             this.panel37.Name = "panel37";
             this.panel37.Size = new System.Drawing.Size(336, 202);
             this.panel37.TabIndex = 258;
@@ -2909,7 +2946,7 @@ namespace DayZeEditor
             this.groupBox4.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox4.Location = new System.Drawing.Point(8, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(180, 521);
+            this.groupBox4.Size = new System.Drawing.Size(180, 623);
             this.groupBox4.TabIndex = 99;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Quest";
@@ -2917,7 +2954,7 @@ namespace DayZeEditor
             // darkButton3
             // 
             this.darkButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton3.Location = new System.Drawing.Point(6, 492);
+            this.darkButton3.Location = new System.Drawing.Point(6, 594);
             this.darkButton3.Name = "darkButton3";
             this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton3.Size = new System.Drawing.Size(168, 23);
@@ -2928,7 +2965,7 @@ namespace DayZeEditor
             // darkButton4
             // 
             this.darkButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton4.Location = new System.Drawing.Point(6, 463);
+            this.darkButton4.Location = new System.Drawing.Point(6, 565);
             this.darkButton4.Name = "darkButton4";
             this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton4.Size = new System.Drawing.Size(168, 23);
@@ -2946,7 +2983,7 @@ namespace DayZeEditor
             this.QuestsListLB.FormattingEnabled = true;
             this.QuestsListLB.Location = new System.Drawing.Point(6, 19);
             this.QuestsListLB.Name = "QuestsListLB";
-            this.QuestsListLB.Size = new System.Drawing.Size(168, 433);
+            this.QuestsListLB.Size = new System.Drawing.Size(168, 524);
             this.QuestsListLB.TabIndex = 90;
             this.QuestsListLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.QuestsListLB.SelectedIndexChanged += new System.EventHandler(this.QuestsListLB_SelectedIndexChanged);
@@ -2958,7 +2995,7 @@ namespace DayZeEditor
             this.tabPage3.Controls.Add(this.QuestNPCListGB);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1212, 535);
+            this.tabPage3.Size = new System.Drawing.Size(1212, 637);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.ToolTipText = "\"LC_Table_xxxxxx\" for all Items // \"LC_Table_Weapons_xxxxxx\" for Weapons and pred" +
@@ -2990,7 +3027,7 @@ namespace DayZeEditor
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(194, 6);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1010, 521);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1010, 623);
             this.flowLayoutPanel2.TabIndex = 168;
             // 
             // panel28
@@ -3495,7 +3532,7 @@ namespace DayZeEditor
             this.panel39.Controls.Add(this.QuestNPCsPOSZNUD);
             this.panel39.Controls.Add(this.QuestNPCsOXNUD);
             this.panel39.Controls.Add(this.darkLabel11);
-            this.panel39.Location = new System.Drawing.Point(358, 3);
+            this.panel39.Location = new System.Drawing.Point(3, 491);
             this.panel39.Name = "panel39";
             this.panel39.Size = new System.Drawing.Size(349, 100);
             this.panel39.TabIndex = 180;
@@ -3507,12 +3544,12 @@ namespace DayZeEditor
             this.QuestNPCsPOSXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestNPCsPOSXNUD.Location = new System.Drawing.Point(11, 18);
             this.QuestNPCsPOSXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.QuestNPCsPOSXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -3561,12 +3598,12 @@ namespace DayZeEditor
             this.QuestNPCsPOSYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestNPCsPOSYNUD.Location = new System.Drawing.Point(123, 18);
             this.QuestNPCsPOSYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.QuestNPCsPOSYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -3605,12 +3642,12 @@ namespace DayZeEditor
             this.QuestNPCsPOSZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestNPCsPOSZNUD.Location = new System.Drawing.Point(235, 18);
             this.QuestNPCsPOSZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.QuestNPCsPOSZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -3654,8 +3691,6 @@ namespace DayZeEditor
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.darkButton30);
-            this.groupBox6.Controls.Add(this.darkButton33);
             this.groupBox6.Controls.Add(this.darkButton10);
             this.groupBox6.Controls.Add(this.darkButton9);
             this.groupBox6.Controls.Add(this.darkLabel43);
@@ -3668,35 +3703,13 @@ namespace DayZeEditor
             this.groupBox6.Controls.Add(this.darkButton8);
             this.groupBox6.Controls.Add(this.QuestNPCWaypointsLB);
             this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox6.Location = new System.Drawing.Point(358, 109);
+            this.groupBox6.Location = new System.Drawing.Point(358, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(384, 239);
+            this.groupBox6.Size = new System.Drawing.Size(354, 239);
             this.groupBox6.TabIndex = 181;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "WayPoints";
             this.groupBox6.Visible = false;
-            // 
-            // darkButton30
-            // 
-            this.darkButton30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton30.Location = new System.Drawing.Point(237, 103);
-            this.darkButton30.Name = "darkButton30";
-            this.darkButton30.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton30.Size = new System.Drawing.Size(106, 23);
-            this.darkButton30.TabIndex = 168;
-            this.darkButton30.Text = "Export to  .dze";
-            this.darkButton30.Click += new System.EventHandler(this.darkButton30_Click);
-            // 
-            // darkButton33
-            // 
-            this.darkButton33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton33.Location = new System.Drawing.Point(237, 74);
-            this.darkButton33.Name = "darkButton33";
-            this.darkButton33.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton33.Size = new System.Drawing.Size(106, 23);
-            this.darkButton33.TabIndex = 167;
-            this.darkButton33.Text = "Import from .dze";
-            this.darkButton33.Click += new System.EventHandler(this.darkButton33_Click);
             // 
             // darkButton10
             // 
@@ -3706,7 +3719,7 @@ namespace DayZeEditor
             this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton10.Size = new System.Drawing.Size(106, 23);
             this.darkButton10.TabIndex = 166;
-            this.darkButton10.Text = "Export to  .map";
+            this.darkButton10.Text = "Export";
             this.darkButton10.Click += new System.EventHandler(this.darkButton10_Click);
             // 
             // darkButton9
@@ -3717,7 +3730,7 @@ namespace DayZeEditor
             this.darkButton9.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton9.Size = new System.Drawing.Size(106, 23);
             this.darkButton9.TabIndex = 165;
-            this.darkButton9.Text = "Import from .map";
+            this.darkButton9.Text = "Import";
             this.darkButton9.Click += new System.EventHandler(this.darkButton9_Click);
             // 
             // darkLabel43
@@ -3757,12 +3770,12 @@ namespace DayZeEditor
             this.QuestNPCWaypointXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestNPCWaypointXNUD.Location = new System.Drawing.Point(237, 158);
             this.QuestNPCWaypointXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.QuestNPCWaypointXNUD.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -3779,12 +3792,12 @@ namespace DayZeEditor
             this.QuestNPCWaypointYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestNPCWaypointYNUD.Location = new System.Drawing.Point(237, 185);
             this.QuestNPCWaypointYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.QuestNPCWaypointYNUD.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -3801,12 +3814,12 @@ namespace DayZeEditor
             this.QuestNPCWaypointZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestNPCWaypointZNUD.Location = new System.Drawing.Point(237, 211);
             this.QuestNPCWaypointZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.QuestNPCWaypointZNUD.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -3864,7 +3877,7 @@ namespace DayZeEditor
             this.QuestNPCListGB.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestNPCListGB.Location = new System.Drawing.Point(8, 6);
             this.QuestNPCListGB.Name = "QuestNPCListGB";
-            this.QuestNPCListGB.Size = new System.Drawing.Size(180, 521);
+            this.QuestNPCListGB.Size = new System.Drawing.Size(180, 623);
             this.QuestNPCListGB.TabIndex = 100;
             this.QuestNPCListGB.TabStop = false;
             this.QuestNPCListGB.Text = "NPCs";
@@ -3872,7 +3885,7 @@ namespace DayZeEditor
             // darkButton1
             // 
             this.darkButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton1.Location = new System.Drawing.Point(6, 492);
+            this.darkButton1.Location = new System.Drawing.Point(6, 594);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(168, 23);
@@ -3883,7 +3896,7 @@ namespace DayZeEditor
             // darkButton2
             // 
             this.darkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton2.Location = new System.Drawing.Point(6, 463);
+            this.darkButton2.Location = new System.Drawing.Point(6, 565);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(168, 23);
@@ -3901,7 +3914,7 @@ namespace DayZeEditor
             this.QuestNPCListLB.FormattingEnabled = true;
             this.QuestNPCListLB.Location = new System.Drawing.Point(6, 19);
             this.QuestNPCListLB.Name = "QuestNPCListLB";
-            this.QuestNPCListLB.Size = new System.Drawing.Size(168, 433);
+            this.QuestNPCListLB.Size = new System.Drawing.Size(168, 524);
             this.QuestNPCListLB.TabIndex = 90;
             this.QuestNPCListLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.QuestNPCListLB.SelectedIndexChanged += new System.EventHandler(this.QuestNPCListLB_SelectedIndexChanged);
@@ -3914,7 +3927,7 @@ namespace DayZeEditor
             this.tabPage4.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1212, 535);
+            this.tabPage4.Size = new System.Drawing.Size(1212, 637);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             // 
@@ -3938,7 +3951,7 @@ namespace DayZeEditor
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(244, 8);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(965, 524);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(965, 626);
             this.flowLayoutPanel3.TabIndex = 214;
             // 
             // QuestObjectivesBaseInfoGB
@@ -4467,6 +4480,20 @@ namespace DayZeEditor
             this.darkButton6.Text = "Import Multiple Ai Spawns";
             this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
             // 
+            // expansionQuestAISpawnControlAICamp
+            // 
+            this.expansionQuestAISpawnControlAICamp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.expansionQuestAISpawnControlAICamp.currentAISpawn = null;
+            this.expansionQuestAISpawnControlAICamp.Factions = null;
+            this.expansionQuestAISpawnControlAICamp.ForeColor = System.Drawing.SystemColors.Control;
+            this.expansionQuestAISpawnControlAICamp.isDirty = false;
+            this.expansionQuestAISpawnControlAICamp.LoadoutList = null;
+            this.expansionQuestAISpawnControlAICamp.Location = new System.Drawing.Point(454, 12);
+            this.expansionQuestAISpawnControlAICamp.Name = "expansionQuestAISpawnControlAICamp";
+            this.expansionQuestAISpawnControlAICamp.Size = new System.Drawing.Size(913, 623);
+            this.expansionQuestAISpawnControlAICamp.TabIndex = 304;
+            this.expansionQuestAISpawnControlAICamp.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionQuestAISpawnControlAICamp_IsDirtyChanged);
+            // 
             // darkButton89
             // 
             this.darkButton89.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4718,6 +4745,20 @@ namespace DayZeEditor
             this.ObjectivesAIPatrolGB.TabStop = false;
             this.ObjectivesAIPatrolGB.Text = "AI Patrol";
             this.ObjectivesAIPatrolGB.Visible = false;
+            // 
+            // expansionQuestAISpawnControlAIPatrol
+            // 
+            this.expansionQuestAISpawnControlAIPatrol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.expansionQuestAISpawnControlAIPatrol.currentAISpawn = null;
+            this.expansionQuestAISpawnControlAIPatrol.Factions = null;
+            this.expansionQuestAISpawnControlAIPatrol.ForeColor = System.Drawing.SystemColors.Control;
+            this.expansionQuestAISpawnControlAIPatrol.isDirty = false;
+            this.expansionQuestAISpawnControlAIPatrol.LoadoutList = null;
+            this.expansionQuestAISpawnControlAIPatrol.Location = new System.Drawing.Point(245, 12);
+            this.expansionQuestAISpawnControlAIPatrol.Name = "expansionQuestAISpawnControlAIPatrol";
+            this.expansionQuestAISpawnControlAIPatrol.Size = new System.Drawing.Size(915, 623);
+            this.expansionQuestAISpawnControlAIPatrol.TabIndex = 295;
+            this.expansionQuestAISpawnControlAIPatrol.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionQuestAISpawnControlAIPatrol_IsDirtyChanged);
             // 
             // darkLabel54
             // 
@@ -5047,12 +5088,12 @@ namespace DayZeEditor
             this.ObjectivesAIVIPPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAIVIPPositionXNUD.Location = new System.Drawing.Point(35, 32);
             this.ObjectivesAIVIPPositionXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesAIVIPPositionXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -5069,12 +5110,12 @@ namespace DayZeEditor
             this.ObjectivesAIVIPPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAIVIPPositionYNUD.Location = new System.Drawing.Point(35, 60);
             this.ObjectivesAIVIPPositionYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesAIVIPPositionYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -5091,12 +5132,12 @@ namespace DayZeEditor
             this.ObjectivesAIVIPPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAIVIPPositionZNUD.Location = new System.Drawing.Point(35, 85);
             this.ObjectivesAIVIPPositionZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesAIVIPPositionZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -5389,7 +5430,7 @@ namespace DayZeEditor
             this.ObjectivesCollectionAmountNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesCollectionAmountNUD.Location = new System.Drawing.Point(103, 222);
             this.ObjectivesCollectionAmountNUD.Maximum = new decimal(new int[] {
-            int.MaxValue,
+            2147483647,
             0,
             0,
             0});
@@ -5594,7 +5635,7 @@ namespace DayZeEditor
             this.ObjectivesDeliveryAmountNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesDeliveryAmountNUD.Location = new System.Drawing.Point(100, 18);
             this.ObjectivesDeliveryAmountNUD.Maximum = new decimal(new int[] {
-            int.MaxValue,
+            2147483647,
             0,
             0,
             0});
@@ -6209,12 +6250,12 @@ namespace DayZeEditor
             this.ObjectivesTargetPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTargetPositionXNUD.Location = new System.Drawing.Point(32, 32);
             this.ObjectivesTargetPositionXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesTargetPositionXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -6231,12 +6272,12 @@ namespace DayZeEditor
             this.ObjectivesTargetPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTargetPositionYNUD.Location = new System.Drawing.Point(32, 60);
             this.ObjectivesTargetPositionYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesTargetPositionYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -6253,12 +6294,12 @@ namespace DayZeEditor
             this.ObjectivesTargetPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTargetPositionZNUD.Location = new System.Drawing.Point(32, 85);
             this.ObjectivesTargetPositionZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesTargetPositionZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -6433,12 +6474,12 @@ namespace DayZeEditor
             this.ObjectivesTravelPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTravelPositionXNUD.Location = new System.Drawing.Point(31, 37);
             this.ObjectivesTravelPositionXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesTravelPositionXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -6455,12 +6496,12 @@ namespace DayZeEditor
             this.ObjectivesTravelPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTravelPositionYNUD.Location = new System.Drawing.Point(31, 65);
             this.ObjectivesTravelPositionYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesTravelPositionYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -6477,12 +6518,12 @@ namespace DayZeEditor
             this.ObjectivesTravelPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTravelPositionZNUD.Location = new System.Drawing.Point(31, 90);
             this.ObjectivesTravelPositionZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesTravelPositionZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -6508,8 +6549,6 @@ namespace DayZeEditor
             this.ObjectivesTresureHuntGB.Controls.Add(this.darkLabel136);
             this.ObjectivesTresureHuntGB.Controls.Add(this.ObjectivesTreasureHuntAmountNUD);
             this.ObjectivesTresureHuntGB.Controls.Add(this.darkLabel132);
-            this.ObjectivesTresureHuntGB.Controls.Add(this.darkButton63);
-            this.ObjectivesTresureHuntGB.Controls.Add(this.darkButton64);
             this.ObjectivesTresureHuntGB.Controls.Add(this.darkButton65);
             this.ObjectivesTresureHuntGB.Controls.Add(this.darkButton66);
             this.ObjectivesTresureHuntGB.Controls.Add(this.darkLabel133);
@@ -6529,6 +6568,22 @@ namespace DayZeEditor
             this.ObjectivesTresureHuntGB.TabStop = false;
             this.ObjectivesTresureHuntGB.Text = "Treasure Hunt";
             this.ObjectivesTresureHuntGB.Visible = false;
+            // 
+            // expansionLootControlTH
+            // 
+            this.expansionLootControlTH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.expansionLootControlTH.currentExpansionLoot = null;
+            this.expansionLootControlTH.currentproject = null;
+            this.expansionLootControlTH.ForeColor = System.Drawing.SystemColors.Control;
+            this.expansionLootControlTH.isDirty = false;
+            this.expansionLootControlTH.Location = new System.Drawing.Point(344, 12);
+            this.expansionLootControlTH.LootparentName = null;
+            this.expansionLootControlTH.ModTypes = null;
+            this.expansionLootControlTH.Name = "expansionLootControlTH";
+            this.expansionLootControlTH.Size = new System.Drawing.Size(578, 478);
+            this.expansionLootControlTH.TabIndex = 350;
+            this.expansionLootControlTH.vanillatypes = null;
+            this.expansionLootControlTH.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionLootControlTH_IsDirtyChanged);
             // 
             // darkLabel144
             // 
@@ -6693,26 +6748,6 @@ namespace DayZeEditor
             this.darkLabel132.TabIndex = 251;
             this.darkLabel132.Text = "Positions";
             // 
-            // darkButton63
-            // 
-            this.darkButton63.Location = new System.Drawing.Point(230, 121);
-            this.darkButton63.Name = "darkButton63";
-            this.darkButton63.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton63.Size = new System.Drawing.Size(106, 23);
-            this.darkButton63.TabIndex = 250;
-            this.darkButton63.Text = "Export to  .dze";
-            this.darkButton63.Click += new System.EventHandler(this.darkButton63_Click);
-            // 
-            // darkButton64
-            // 
-            this.darkButton64.Location = new System.Drawing.Point(230, 92);
-            this.darkButton64.Name = "darkButton64";
-            this.darkButton64.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton64.Size = new System.Drawing.Size(106, 23);
-            this.darkButton64.TabIndex = 249;
-            this.darkButton64.Text = "Import from .dze";
-            this.darkButton64.Click += new System.EventHandler(this.darkButton64_Click);
-            // 
             // darkButton65
             // 
             this.darkButton65.Location = new System.Drawing.Point(230, 63);
@@ -6720,7 +6755,7 @@ namespace DayZeEditor
             this.darkButton65.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton65.Size = new System.Drawing.Size(106, 23);
             this.darkButton65.TabIndex = 248;
-            this.darkButton65.Text = "Export to  .map";
+            this.darkButton65.Text = "Export";
             this.darkButton65.Click += new System.EventHandler(this.darkButton65_Click);
             // 
             // darkButton66
@@ -6730,7 +6765,7 @@ namespace DayZeEditor
             this.darkButton66.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton66.Size = new System.Drawing.Size(106, 23);
             this.darkButton66.TabIndex = 247;
-            this.darkButton66.Text = "Import from .map";
+            this.darkButton66.Text = "Import";
             this.darkButton66.Click += new System.EventHandler(this.darkButton66_Click);
             // 
             // darkLabel133
@@ -6770,12 +6805,12 @@ namespace DayZeEditor
             this.ObjectivesTreasureHuntPositionsXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTreasureHuntPositionsXNUD.Location = new System.Drawing.Point(230, 161);
             this.ObjectivesTreasureHuntPositionsXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesTreasureHuntPositionsXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -6792,12 +6827,12 @@ namespace DayZeEditor
             this.ObjectivesTreasureHuntPositionsYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTreasureHuntPositionsYNUD.Location = new System.Drawing.Point(230, 188);
             this.ObjectivesTreasureHuntPositionsYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesTreasureHuntPositionsYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -6814,12 +6849,12 @@ namespace DayZeEditor
             this.ObjectivesTreasureHuntPositionsZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTreasureHuntPositionsZNUD.Location = new System.Drawing.Point(230, 214);
             this.ObjectivesTreasureHuntPositionsZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectivesTreasureHuntPositionsZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -6875,7 +6910,7 @@ namespace DayZeEditor
             this.treeViewMS1.Name = "treeViewMS1";
             this.treeViewMS1.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS1.SelectedNodes")));
             this.treeViewMS1.SetMultiselect = true;
-            this.treeViewMS1.Size = new System.Drawing.Size(230, 517);
+            this.treeViewMS1.Size = new System.Drawing.Size(230, 619);
             this.treeViewMS1.TabIndex = 206;
             this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS1_NodeMouseClick);
             // 
@@ -6888,7 +6923,7 @@ namespace DayZeEditor
             this.Tab5.ForeColor = System.Drawing.SystemColors.Control;
             this.Tab5.Location = new System.Drawing.Point(4, 25);
             this.Tab5.Name = "Tab5";
-            this.Tab5.Size = new System.Drawing.Size(1212, 535);
+            this.Tab5.Size = new System.Drawing.Size(1212, 637);
             this.Tab5.TabIndex = 4;
             this.Tab5.Text = "tabPage5";
             // 
@@ -6998,12 +7033,12 @@ namespace DayZeEditor
             this.numericUpDown6.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown6.Location = new System.Drawing.Point(3, 18);
             this.numericUpDown6.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.numericUpDown6.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -7029,12 +7064,12 @@ namespace DayZeEditor
             this.numericUpDown8.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown8.Location = new System.Drawing.Point(115, 18);
             this.numericUpDown8.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.numericUpDown8.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -7050,12 +7085,12 @@ namespace DayZeEditor
             this.numericUpDown10.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown10.Location = new System.Drawing.Point(227, 18);
             this.numericUpDown10.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.numericUpDown10.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -7771,96 +7806,11 @@ namespace DayZeEditor
             this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
             this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
             // 
-            // panel85
-            // 
-            this.panel85.Controls.Add(this.darkLabel59);
-            this.panel85.Controls.Add(this.QuestRewardChanceNUD);
-            this.panel85.Location = new System.Drawing.Point(6, 244);
-            this.panel85.Name = "panel85";
-            this.panel85.Size = new System.Drawing.Size(330, 20);
-            this.panel85.TabIndex = 253;
-            // 
-            // darkLabel59
-            // 
-            this.darkLabel59.AutoSize = true;
-            this.darkLabel59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel59.Location = new System.Drawing.Point(6, 2);
-            this.darkLabel59.Name = "darkLabel59";
-            this.darkLabel59.Size = new System.Drawing.Size(44, 13);
-            this.darkLabel59.TabIndex = 112;
-            this.darkLabel59.Text = "Chance";
-            // 
-            // QuestRewardChanceNUD
-            // 
-            this.QuestRewardChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.QuestRewardChanceNUD.DecimalPlaces = 2;
-            this.QuestRewardChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestRewardChanceNUD.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.QuestRewardChanceNUD.Location = new System.Drawing.Point(171, 0);
-            this.QuestRewardChanceNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.QuestRewardChanceNUD.Name = "QuestRewardChanceNUD";
-            this.QuestRewardChanceNUD.Size = new System.Drawing.Size(120, 20);
-            this.QuestRewardChanceNUD.TabIndex = 108;
-            this.QuestRewardChanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.QuestRewardChanceNUD.ValueChanged += new System.EventHandler(this.QuestRewardChanceNUD_ValueChanged);
-            // 
-            // expansionQuestAISpawnControlAICamp
-            // 
-            this.expansionQuestAISpawnControlAICamp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.expansionQuestAISpawnControlAICamp.currentAISpawn = null;
-            this.expansionQuestAISpawnControlAICamp.Factions = null;
-            this.expansionQuestAISpawnControlAICamp.ForeColor = System.Drawing.SystemColors.Control;
-            this.expansionQuestAISpawnControlAICamp.isDirty = false;
-            this.expansionQuestAISpawnControlAICamp.LoadoutList = null;
-            this.expansionQuestAISpawnControlAICamp.Location = new System.Drawing.Point(454, 12);
-            this.expansionQuestAISpawnControlAICamp.Name = "expansionQuestAISpawnControlAICamp";
-            this.expansionQuestAISpawnControlAICamp.Size = new System.Drawing.Size(913, 623);
-            this.expansionQuestAISpawnControlAICamp.TabIndex = 304;
-            this.expansionQuestAISpawnControlAICamp.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionQuestAISpawnControlAICamp_IsDirtyChanged);
-            // 
-            // expansionQuestAISpawnControlAIPatrol
-            // 
-            this.expansionQuestAISpawnControlAIPatrol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.expansionQuestAISpawnControlAIPatrol.currentAISpawn = null;
-            this.expansionQuestAISpawnControlAIPatrol.Factions = null;
-            this.expansionQuestAISpawnControlAIPatrol.ForeColor = System.Drawing.SystemColors.Control;
-            this.expansionQuestAISpawnControlAIPatrol.isDirty = false;
-            this.expansionQuestAISpawnControlAIPatrol.LoadoutList = null;
-            this.expansionQuestAISpawnControlAIPatrol.Location = new System.Drawing.Point(245, 12);
-            this.expansionQuestAISpawnControlAIPatrol.Name = "expansionQuestAISpawnControlAIPatrol";
-            this.expansionQuestAISpawnControlAIPatrol.Size = new System.Drawing.Size(915, 623);
-            this.expansionQuestAISpawnControlAIPatrol.TabIndex = 295;
-            this.expansionQuestAISpawnControlAIPatrol.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionQuestAISpawnControlAIPatrol_IsDirtyChanged);
-            // 
-            // expansionLootControlTH
-            // 
-            this.expansionLootControlTH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.expansionLootControlTH.currentExpansionLoot = null;
-            this.expansionLootControlTH.currentproject = null;
-            this.expansionLootControlTH.ForeColor = System.Drawing.SystemColors.Control;
-            this.expansionLootControlTH.isDirty = false;
-            this.expansionLootControlTH.Location = new System.Drawing.Point(344, 12);
-            this.expansionLootControlTH.LootparentName = null;
-            this.expansionLootControlTH.ModTypes = null;
-            this.expansionLootControlTH.Name = "expansionLootControlTH";
-            this.expansionLootControlTH.Size = new System.Drawing.Size(578, 478);
-            this.expansionLootControlTH.TabIndex = 350;
-            this.expansionLootControlTH.vanillatypes = null;
-            this.expansionLootControlTH.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionLootControlTH_IsDirtyChanged);
-            // 
             // ExpansionQuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1220, 637);
+            this.ClientSize = new System.Drawing.Size(1220, 739);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.darkToolStrip23);
             this.Controls.Add(this.darkToolStrip21);
@@ -7936,6 +7886,9 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.QuestQuestItemsAmountNUD)).EndInit();
             this.panel24.ResumeLayout(false);
             this.panel24.PerformLayout();
+            this.panel85.ResumeLayout(false);
+            this.panel85.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardChanceNUD)).EndInit();
             this.panel75.ResumeLayout(false);
             this.panel75.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsQuestIDNUD)).EndInit();
@@ -8164,9 +8117,6 @@ namespace DayZeEditor
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
-            this.panel85.ResumeLayout(false);
-            this.panel85.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardChanceNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -8369,8 +8319,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem addNewTravelObjectiveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewTreasureHuntObjectiveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteObjectiveToolStripMenuItem;
-        private DarkUI.Controls.DarkButton darkButton30;
-        private DarkUI.Controls.DarkButton darkButton33;
         private System.Windows.Forms.Panel panel46;
         private System.Windows.Forms.ComboBox QuestTypeCB;
         private DarkUI.Controls.DarkLabel darkLabel71;
@@ -8550,8 +8498,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel136;
         private System.Windows.Forms.NumericUpDown ObjectivesTreasureHuntAmountNUD;
         private DarkUI.Controls.DarkLabel darkLabel132;
-        private DarkUI.Controls.DarkButton darkButton63;
-        private DarkUI.Controls.DarkButton darkButton64;
         private DarkUI.Controls.DarkButton darkButton65;
         private DarkUI.Controls.DarkButton darkButton66;
         private DarkUI.Controls.DarkLabel darkLabel133;

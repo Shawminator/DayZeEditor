@@ -16,6 +16,7 @@ namespace DayZeLib
         public Basebuildingdata BaseBuildingData { get; set; }
         public Uidata UIData { get; set; }
         public CFGGameplayMapData MapData { get; set; }
+        public VehicleData VehicleData { get; set; }
 
         [JsonIgnore]
         const int currentversion = 122;
@@ -31,6 +32,7 @@ namespace DayZeLib
             BaseBuildingData = new Basebuildingdata();
             UIData = new Uidata();
             MapData = new CFGGameplayMapData();
+            VehicleData = new VehicleData();
             SpawnGearPresetFiles = new BindingList<SpawnGearPresetFiles>();
         }
 
@@ -298,6 +300,16 @@ namespace DayZeLib
             ignoreNavItemsOwnership = false;
             displayPlayerPosition = false;
             displayNavInfo = true;
+        }
+    }
+
+    public class VehicleData
+    {
+        public decimal boatDecayMultiplier { get; set; }
+
+        public VehicleData()
+        {
+            boatDecayMultiplier = 1;
         }
     }
 

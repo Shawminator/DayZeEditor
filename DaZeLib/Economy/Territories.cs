@@ -12,6 +12,11 @@ namespace DayZeLib
     public partial class territorytype
     {
 
+        public territorytype()
+        {
+            territory = new BindingList<territorytypeTerritory>();
+        }
+
         private BindingList<territorytypeTerritory> territoryField;
 
         /// <remarks/>

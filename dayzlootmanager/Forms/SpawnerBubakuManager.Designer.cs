@@ -511,12 +511,12 @@ namespace DayZeEditor
             this.BubakLocationTriggerPosXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationTriggerPosXNUD.Location = new System.Drawing.Point(136, 29);
             this.BubakLocationTriggerPosXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.BubakLocationTriggerPosXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -543,12 +543,12 @@ namespace DayZeEditor
             this.BubakLocationTriggerPosZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationTriggerPosZNUD.Location = new System.Drawing.Point(136, 81);
             this.BubakLocationTriggerPosZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.BubakLocationTriggerPosZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -565,12 +565,12 @@ namespace DayZeEditor
             this.BubakLocationTriggerPosYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationTriggerPosYNUD.Location = new System.Drawing.Point(136, 55);
             this.BubakLocationTriggerPosYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.BubakLocationTriggerPosYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1046,15 +1046,10 @@ namespace DayZeEditor
             this.BukabLocationtriggerradiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BukabLocationtriggerradiusNUD.Location = new System.Drawing.Point(136, 0);
             this.BukabLocationtriggerradiusNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
-            this.BukabLocationtriggerradiusNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
             this.BukabLocationtriggerradiusNUD.Name = "BukabLocationtriggerradiusNUD";
             this.BukabLocationtriggerradiusNUD.Size = new System.Drawing.Size(146, 20);
             this.BukabLocationtriggerradiusNUD.TabIndex = 236;
@@ -1209,7 +1204,7 @@ namespace DayZeEditor
             this.darkButton12.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton12.Size = new System.Drawing.Size(145, 23);
             this.darkButton12.TabIndex = 269;
-            this.darkButton12.Text = "Import from DZE";
+            this.darkButton12.Text = "Import";
             this.darkButton12.Click += new System.EventHandler(this.darkButton12_Click);
             // 
             // darkButton11
@@ -1220,7 +1215,7 @@ namespace DayZeEditor
             this.darkButton11.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton11.Size = new System.Drawing.Size(145, 23);
             this.darkButton11.TabIndex = 138;
-            this.darkButton11.Text = "Export to DZE";
+            this.darkButton11.Text = "Export";
             this.darkButton11.Click += new System.EventHandler(this.darkButton11_Click);
             // 
             // darkButton10
@@ -1366,12 +1361,12 @@ namespace DayZeEditor
             this.BubakLocationSpawnPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationSpawnPositionXNUD.Location = new System.Drawing.Point(136, 29);
             this.BubakLocationSpawnPositionXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.BubakLocationSpawnPositionXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1398,12 +1393,12 @@ namespace DayZeEditor
             this.BubakLocationSpawnPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationSpawnPositionZNUD.Location = new System.Drawing.Point(136, 81);
             this.BubakLocationSpawnPositionZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.BubakLocationSpawnPositionZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1420,12 +1415,12 @@ namespace DayZeEditor
             this.BubakLocationSpawnPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationSpawnPositionYNUD.Location = new System.Drawing.Point(136, 55);
             this.BubakLocationSpawnPositionYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.BubakLocationSpawnPositionYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1677,15 +1672,10 @@ namespace DayZeEditor
             this.BubakLocationspawnradiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationspawnradiusNUD.Location = new System.Drawing.Point(86, 0);
             this.BubakLocationspawnradiusNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
-            this.BubakLocationspawnradiusNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
             this.BubakLocationspawnradiusNUD.Name = "BubakLocationspawnradiusNUD";
             this.BubakLocationspawnradiusNUD.Size = new System.Drawing.Size(132, 20);
             this.BubakLocationspawnradiusNUD.TabIndex = 236;

@@ -5,7 +5,7 @@ namespace DayZeLib
 {
     public class ExpansionAirdropSettings
     {
-        const int CurrentVersion = 5;
+        const int CurrentVersion = 7;
 
         public int m_Version { get; set; }
         public int ServerMarkerOnDropLocation { get; set; }
@@ -14,12 +14,16 @@ namespace DayZeLib
         public int HideCargoWhileParachuteIsDeployed { get; set; }
         public int HeightIsRelativeToGroundLevel { get; set; }
         public decimal Height { get; set; }
+        public decimal DropZoneHeight { get; set; }
         public decimal FollowTerrainFraction { get; set; }
         public decimal Speed { get; set; }
+        public decimal DropZoneSpeed { get; set; }
         public decimal Radius { get; set; }
         public decimal InfectedSpawnRadius { get; set; }
         public int InfectedSpawnInterval { get; set; }
         public int ItemCount { get; set; }
+        public string AirdropPlaneClassName { get; set; }
+        public decimal DropZoneProximityDistance { get; set; }
         public BindingList<ExpansionLootContainer> Containers { get; set; }
 
         [JsonIgnore]

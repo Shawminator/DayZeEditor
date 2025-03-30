@@ -226,9 +226,9 @@ namespace DayZeLib
     public partial class envTerritoriesTerritoryAgent
     {
 
-        private BindingList<envTerritoriesTerritoryAgentSpawn> spawnField;
+        private envTerritoriesTerritoryAgentSpawn[] spawnField;
 
-        private BindingList<envTerritoriesTerritoryAgentItem> itemField;
+        private envTerritoriesTerritoryAgentItem[] itemField;
 
         private string typeField;
 
@@ -238,7 +238,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("spawn")]
-        public BindingList<envTerritoriesTerritoryAgentSpawn> spawn
+        public envTerritoriesTerritoryAgentSpawn[] spawn
         {
             get
             {
@@ -252,7 +252,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("item")]
-        public BindingList<envTerritoriesTerritoryAgentItem> item
+        public envTerritoriesTerritoryAgentItem[] item
         {
             get
             {

@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
@@ -268,6 +269,15 @@ namespace DayZeEditor
 
             VersionTB.Text = AirdropUpgradedSettings.Controls.Version;
             IntervalNUD.Value = AirdropUpgradedSettings.Controls.Interval;
+            VarianceNUD.Value = AirdropUpgradedSettings.Controls.Variance;
+            DateTime Dtime = DateTime.Now.Date;
+            Dtime = Dtime.AddHours(AirdropUpgradedSettings.Controls.FlightHours[0]);
+            Dtime = Dtime.AddMinutes(AirdropUpgradedSettings.Controls.FlightHours[1]);
+            FlightHoursStartDT.Value = Dtime;
+            DateTime Dtime2 = DateTime.Now.Date;
+            Dtime2 = Dtime2.AddHours(AirdropUpgradedSettings.Controls.FlightHours[2]);
+            Dtime2 = Dtime2.AddMinutes(AirdropUpgradedSettings.Controls.FlightHours[3]);
+            FlightHoursEndDT.Value = Dtime2;
             ModeCB.SelectedIndex = AirdropUpgradedSettings.Controls.Mode - 1;
             AD_LogManagerCB.Checked = AirdropUpgradedSettings.Controls.AD_LogManager == 1 ? true : false;
             AD_LogAircraftCB.Checked = AirdropUpgradedSettings.Controls.AD_LogContainer == 1 ? true : false;
@@ -279,7 +289,7 @@ namespace DayZeEditor
 
             HeightNUD.Value = AirdropUpgradedSettings.Map.Height;
             WidthNUD.Value = AirdropUpgradedSettings.Map.Width;
-            OffsetNUD.Value = AirdropUpgradedSettings.Map.Offset;
+            MapNameTB.Text = AirdropUpgradedSettings.Map.MapName;
 
             AirSpeedKIASNUD.Value = AirdropUpgradedSettings.Aircraft.AirSpeedKIAS;
             StartAltMSLNUD.Value = AirdropUpgradedSettings.Aircraft.StartAltMSL;
@@ -292,6 +302,13 @@ namespace DayZeEditor
             DurationNUD.Value = AirdropUpgradedSettings.Messages.Duration;
             ProximityNUD.Value = AirdropUpgradedSettings.Messages.Proximity;
             ImperialUnitsNUD.Value = AirdropUpgradedSettings.Messages.ImperialUnits;
+            TitlePostfixModeCB.SelectedIndex = AirdropUpgradedSettings.Messages.TitlePostfixMode;
+            Dispatched_STB.Text = AirdropUpgradedSettings.Messages.Dispatched_S;
+            Dispatched_CTB.Text = AirdropUpgradedSettings.Messages.Dispatched_C;
+            Proximity_STB.Text = AirdropUpgradedSettings.Messages.Proximity_S;
+            Proximity_CTB.Text = AirdropUpgradedSettings.Messages.Proximity_C;
+            Released_STB.Text = AirdropUpgradedSettings.Messages.Released_S;
+            Released_CTB.Text = AirdropUpgradedSettings.Messages?.Released_C;
 
             TriggerAGLNUD.Value = AirdropUpgradedSettings.Container.TriggerAGL;
             FallRateNUD.Value = AirdropUpgradedSettings.Container.FallRate;
@@ -301,6 +318,12 @@ namespace DayZeEditor
             SpawnOffsetNUD.Value = AirdropUpgradedSettings.Container.SpawnOffset;
             WindStrengthNUD.Value = AirdropUpgradedSettings.Container.WindStrength;
             LifespanNUD.Value = AirdropUpgradedSettings.Container.Lifespan;
+
+            ExportMapCB.Checked = AirdropUpgradedSettings.VPP_Map.ExportMap == 1 ? true : false;
+            TitleModeCB.SelectedIndex = AirdropUpgradedSettings.VPP_Map.TitleMode;
+            MapIconTB.Text = AirdropUpgradedSettings.VPP_Map.MapIcon;
+            IsActiveCB.Checked = AirdropUpgradedSettings.VPP_Map.Isactive == 1 ? true : false;
+            Is3DActiveCB.Checked = AirdropUpgradedSettings.VPP_Map.Is3DActive == 1 ? true : false;
 
             CreateDropLocationsTreeview();
             DropTypesLB.DisplayMember = "DisplayName";
@@ -628,6 +651,28 @@ namespace DayZeEditor
             AirdropUpgradedSettings.Controls.Interval = (int)IntervalNUD.Value;
             AirdropUpgradedSettings.isDirty = true;
         }
+        private void VarianceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AirdropUpgradedSettings.Controls.Variance = (int)VarianceNUD.Value;
+            AirdropUpgradedSettings.isDirty = true;
+        }
+        private void FlightHoursStartDT_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            DateTime Dtime = FlightHoursStartDT.Value;
+            AirdropUpgradedSettings.Controls.FlightHours[0] = Dtime.Hour;
+            AirdropUpgradedSettings.Controls.FlightHours[1] = Dtime.Minute;
+            AirdropUpgradedSettings.isDirty = true;
+        }
+        private void FlightHoursEndDT_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            DateTime Dtime = FlightHoursEndDT.Value;
+            AirdropUpgradedSettings.Controls.FlightHours[2] = Dtime.Hour;
+            AirdropUpgradedSettings.Controls.FlightHours[3] = Dtime.Minute;
+            AirdropUpgradedSettings.isDirty = true;
+        }
         private void ModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -677,6 +722,12 @@ namespace DayZeEditor
             AirdropUpgradedSettings.isDirty = true;
         }
 
+        private void MapNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AirdropUpgradedSettings.Map.MapName = MapNameTB.Text;
+            AirdropUpgradedSettings.isDirty = true;
+        }
         private void WidthNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -687,12 +738,6 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             AirdropUpgradedSettings.Map.Height = HeightNUD.Value;
-            AirdropUpgradedSettings.isDirty = true;
-        }
-        private void OffsetNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            AirdropUpgradedSettings.Map.Offset = OffsetNUD.Value;
             AirdropUpgradedSettings.isDirty = true;
         }
 
@@ -758,6 +803,50 @@ namespace DayZeEditor
             AirdropUpgradedSettings.Messages.Mode = MessaggesModeCB.SelectedIndex;
             AirdropUpgradedSettings.isDirty = true;
         }
+        private void TitlePostfixModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (!useraction) return;
+            AirdropUpgradedSettings.Messages.TitlePostfixMode = TitlePostfixModeCB.SelectedIndex;
+            AirdropUpgradedSettings.isDirty = true;
+        }
+        private void Dispatched_STB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AirdropUpgradedSettings.Messages.Dispatched_S = Dispatched_STB.Text;
+            AirdropUpgradedSettings.isDirty = true;
+        }
+        private void Dispatched_CTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AirdropUpgradedSettings.Messages.Dispatched_C = Dispatched_CTB.Text;
+            AirdropUpgradedSettings.isDirty = true;
+        }
+        private void Proximity_STB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AirdropUpgradedSettings.Messages.Proximity_S = Proximity_STB.Text;
+            AirdropUpgradedSettings.isDirty = true;
+        }
+        private void Proximity_CTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AirdropUpgradedSettings.Messages.Proximity_C = Proximity_CTB.Text;
+            AirdropUpgradedSettings.isDirty = true;
+        }
+        private void Released_STB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AirdropUpgradedSettings.Messages.Released_S = Released_STB.Text;
+            AirdropUpgradedSettings.isDirty = true;
+        }
+        private void Released_CTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AirdropUpgradedSettings.Messages.Released_C = Released_CTB.Text;
+            AirdropUpgradedSettings.isDirty = true;
+        }
+
 
         private void TriggerAGLNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -806,6 +895,52 @@ namespace DayZeEditor
             if (!useraction) return;
             AirdropUpgradedSettings.Container.Lifespan = (int)LifespanNUD.Value;
             AirdropUpgradedSettings.isDirty = true;
+        }
+
+        private void ExportMapCB_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void IsActiveTB_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void Is3DActiveCB_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void TitleModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void MapIconTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void pictureBox3_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            Rectangle region;
+            region = pb.ClientRectangle;
+            Color colour = Color.FromArgb(255, AirdropUpgradedSettings.VPP_Map.MapColor[0], AirdropUpgradedSettings.VPP_Map.MapColor[1], AirdropUpgradedSettings.VPP_Map.MapColor[2]);
+            using (Brush brush = new SolidBrush(colour))
+            {
+                e.Graphics.FillRectangle(brush, region);
+            }
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+        }
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog();
+            cpick.StartPosition = FormStartPosition.CenterParent;
+            cpick.Color = Color.FromArgb(0, AirdropUpgradedSettings.VPP_Map.MapColor[0], AirdropUpgradedSettings.VPP_Map.MapColor[1], AirdropUpgradedSettings.VPP_Map.MapColor[2]);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+                AirdropUpgradedSettings.VPP_Map.MapColor = new int[] {cpick.Color.R, cpick.Color.G, cpick.Color.B };
+                pb.Invalidate();
+                AirdropUpgradedSettings.isDirty = true;
+            }
         }
 
         private void DropLocationsTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -1166,7 +1301,9 @@ namespace DayZeEditor
             DropTypeSpawnMaxNUD.Value = currentDropType.SpawnMax;
             DropTypeSpawnOffsetNUD.Value = currentDropType.SpawnOffset;
             DropTypeLifespanNUD.Value = currentDropType.Lifespan;
-
+            MinConditionNUD.Value = currentDropType.ItemCondition.MinCondition;
+            MaxConditionNUD.Value = currentDropType.ItemCondition.MaxCondition;
+            SamplesNUD.Value = currentDropType.ItemCondition.Samples;
             DropTypeItemsLB.DisplayMember = "DisplayName";
             DropTypeItemsLB.ValueMember = "Value";
             DropTypeItemsLB.DataSource = currentDropType.Items;
@@ -1245,6 +1382,24 @@ namespace DayZeEditor
             currentDropType.SpawnOffset = DropTypeSpawnOffsetNUD.Value;
             AirdropUpgradedSettings.isDirty = true;
         }
+        private void MinConditionNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentDropType.ItemCondition.MinCondition = (int)MinConditionNUD.Value;
+            AirdropUpgradedSettings.isDirty = true;
+        }
+        private void MaxConditionNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentDropType.ItemCondition.MaxCondition = (int)MaxConditionNUD.Value;
+            AirdropUpgradedSettings.isDirty = true;
+        }
+        private void SamplesNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentDropType.ItemCondition.Samples = (int)SamplesNUD.Value;
+            AirdropUpgradedSettings.isDirty = true;
+        }
         private void DropTypeLifespanNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -1284,5 +1439,7 @@ namespace DayZeEditor
             }
             DropTypeItemsLB.Refresh();
         }
+
+
     }
 }

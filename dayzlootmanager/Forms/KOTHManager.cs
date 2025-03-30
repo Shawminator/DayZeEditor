@@ -1022,98 +1022,186 @@ namespace DayZeEditor
         }
         private void darkButton9_Click(object sender, EventArgs e)
         {
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI Patrol";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                DialogResult dialogResult = MessageBox.Show("Clear All Exisitng Flags?", "Clear Flags", MessageBoxButtons.YesNoCancel);
+                if (dialogResult == DialogResult.Cancel)
                 {
-                    filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear All Exisitng Flags?", "Clear Flags", MessageBoxButtons.YesNoCancel);
-                    if (dialogResult == DialogResult.Cancel)
-                    {
-                        return;
-                    }
-                    else if (dialogResult == DialogResult.Yes)
-                    {
-                        MDCKOTHConfig.zones.Clear();
-                    }
-                    MDCKOTHZones newzone = new MDCKOTHZones();
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        if (eo.Type == "KOTH_Flag")
-                        {
-                            newzone.zoneName = Path.GetFileNameWithoutExtension(filePath);
-                            newzone.zonePosition = eo.Position;
-                        }
-                        else
-                        {
-                            KOTHObject newobject = new KOTHObject()
-                            {
-                                classname = eo.Type,
-                                position = new decimal[] { (decimal)eo.Position[0], (decimal)eo.Position[1], (decimal)eo.Position[2] },
-                                orientation = new decimal[] { (decimal)eo.Orientation[0], (decimal)eo.Orientation[1], (decimal)eo.Orientation[2] },
-                                absolutePlacement = 1,
-                                alignToTerrain = 0,
-                                placeOnSurface = 0
-                            };
-                            newzone.objects.Add(newobject);
-                        }
-                    }
-                    MDCKOTHConfig.zones.Add(newzone);
-                    MDCKOTHConfig.isDirty = true;
-                    pictureBox2.Invalidate();
-                    if (MDCKOTHConfig.zones.Count == 1)
-                    {
-                        HillsLB.SelectedIndex = -1;
-                        HillsLB.SelectedIndex = 0;
-                    }
-                    tabControl2.Visible = true;
+                    return;
                 }
+                else if (dialogResult == DialogResult.Yes)
+                {
+                    MDCKOTHConfig.zones.Clear();
+                }
+                MDCKOTHZones newzone = new MDCKOTHZones();
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        for (int i = 0; i < fileContent.Length; i++)
+                        {
+                            if (fileContent[i] == "") continue;
+                            string[] linesplit = fileContent[i].Split('|');
+                            string[] XYZ = linesplit[1].Split(' ');
+                            string[] YPR = linesplit[2].Split(' ');
+                            if (linesplit[0] == "KOTH_Flag")
+                            {
+                                newzone.zoneName = Path.GetFileNameWithoutExtension(filePath);
+                                newzone.zonePosition = new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[2]) , Convert.ToSingle(XYZ[2]) };
+                            }
+                            else
+                            {
+                                KOTHObject newobject = new KOTHObject()
+                                {
+                                    classname = linesplit[0],
+                                    position = new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[2]), Convert.ToDecimal(XYZ[2]) },
+                                    orientation = new decimal[] { Convert.ToDecimal(YPR[0]), Convert.ToDecimal(YPR[2]), Convert.ToDecimal(YPR[2]) },
+                                    absolutePlacement = 1,
+                                    alignToTerrain = 0,
+                                    placeOnSurface = 0
+                                };
+                                newzone.objects.Add(newobject);
+                            }
+                        }
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        foreach (SpawnObjects eo in newobjectspawner.Objects)
+                        {
+                            if (eo.name == "KOTH_Flag")
+                            {
+                                newzone.zoneName = Path.GetFileNameWithoutExtension(filePath);
+                                newzone.zonePosition = eo.pos;
+                            }
+                            else
+                            {
+                                KOTHObject newobject = new KOTHObject()
+                                {
+                                    classname = eo.name,
+                                    position = new decimal[] { (decimal)eo.pos[0], (decimal)eo.pos[1], (decimal)eo.pos[2] },
+                                    orientation = new decimal[] { (decimal)eo.ypr[0], (decimal)eo.ypr[1], (decimal)eo.ypr[2] },
+                                    absolutePlacement = 1,
+                                    alignToTerrain = 0,
+                                    placeOnSurface = 0
+                                };
+                                newzone.objects.Add(newobject);
+                            }
+                        }
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            if (eo.Type == "KOTH_Flag")
+                            {
+                                newzone.zoneName = Path.GetFileNameWithoutExtension(filePath);
+                                newzone.zonePosition = eo.Position;
+                            }
+                            else
+                            {
+                                KOTHObject newobject = new KOTHObject()
+                                {
+                                    classname = eo.Type,
+                                    position = new decimal[] { (decimal)eo.Position[0], (decimal)eo.Position[1], (decimal)eo.Position[2] },
+                                    orientation = new decimal[] { (decimal)eo.Orientation[0], (decimal)eo.Orientation[1], (decimal)eo.Orientation[2] },
+                                    absolutePlacement = 1,
+                                    alignToTerrain = 0,
+                                    placeOnSurface = 0
+                                };
+                                newzone.objects.Add(newobject);
+                            }
+                        }
+                        break;
+                }
+                MDCKOTHConfig.zones.Add(newzone);
+                MDCKOTHConfig.isDirty = true;
+                pictureBox2.Invalidate();
+                if (MDCKOTHConfig.zones.Count == 1)
+                {
+                    HillsLB.SelectedIndex = -1;
+                    HillsLB.SelectedIndex = 0;
+                }
+                tabControl2.Visible = true;
             }
         }
         private void darkButton10_Click(object sender, EventArgs e)
         {
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI Patrol";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                DialogResult dialogResult = MessageBox.Show("Clear All Exisitng Flags?", "Clear Flags", MessageBoxButtons.YesNoCancel);
+                if (dialogResult == DialogResult.Cancel)
                 {
-                    filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear All Exisitng Flags?", "Clear Flags", MessageBoxButtons.YesNoCancel);
-                    if (dialogResult == DialogResult.Cancel)
-                    {
-                        return;
-                    }
-                    else if (dialogResult == DialogResult.Yes)
-                    {
-                        MDCKOTHConfig.zones.Clear();
-                    }
-                    int i = 1;
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        MDCKOTHZones newzone = new MDCKOTHZones();
-                        if (eo.Type == "KOTH_Flag")
-                        {
-                            newzone.zoneName = "Zone " + i.ToString();
-                            i++;
-                            newzone.zonePosition = eo.Position;
-                            MDCKOTHConfig.zones.Add(newzone);
-                        }
-                    }
-
-                    MDCKOTHConfig.isDirty = true;
-                    pictureBox2.Invalidate();
-                    if (MDCKOTHConfig.zones.Count == 1)
-                    {
-                        HillsLB.SelectedIndex = -1;
-                        HillsLB.SelectedIndex = 0;
-                    }
-                    tabControl2.Visible = true;
+                    return;
                 }
+                else if (dialogResult == DialogResult.Yes)
+                {
+                    MDCKOTHConfig.zones.Clear();
+                }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        for (int i = 0; i < fileContent.Length; i++)
+                        {
+                            if (fileContent[i] == "") continue;
+                            string[] linesplit = fileContent[i].Split('|');
+                            string[] XYZ = linesplit[1].Split(' ');
+                            MDCKOTHZones newzone = new MDCKOTHZones();
+                            if (linesplit[0] == "KOTH_Flag")
+                            {
+                                newzone.zoneName = "Zone " + (i+ 1).ToString();
+                                newzone.zonePosition = new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) };
+                                MDCKOTHConfig.zones.Add(newzone);
+                            }
+                        }
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        int f = 1;
+                        foreach (SpawnObjects so in newobjectspawner.Objects)
+                        {
+                            MDCKOTHZones newzone = new MDCKOTHZones();
+                            if (so.name == "KOTH_Flag")
+                            {
+                                newzone.zoneName = "Zone " + f.ToString();
+                                f++;
+                                newzone.zonePosition = so.pos;
+                                MDCKOTHConfig.zones.Add(newzone);
+                            }
+                        }
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        f = 1;
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            MDCKOTHZones newzone = new MDCKOTHZones();
+                            if (eo.Type == "KOTH_Flag")
+                            {
+                                newzone.zoneName = "Zone " + f.ToString();
+                                f++;
+                                newzone.zonePosition = eo.Position;
+                                MDCKOTHConfig.zones.Add(newzone);
+                            }
+                        }
+                        break;
+                }
+                MDCKOTHConfig.isDirty = true;
+                pictureBox2.Invalidate();
+                if (MDCKOTHConfig.zones.Count == 1)
+                {
+                    HillsLB.SelectedIndex = -1;
+                    HillsLB.SelectedIndex = 0;
+                }
+                tabControl2.Visible = true;
             }
         }
 
@@ -1292,38 +1380,77 @@ namespace DayZeEditor
         }
         private void darkButton6_Click(object sender, EventArgs e)
         {
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import KOTH Objects";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                DialogResult dialogResult = MessageBox.Show("Clear All Exisitng Objects?", "Clear Objects", MessageBoxButtons.YesNoCancel);
+                if (dialogResult == DialogResult.Cancel)
                 {
-                    filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear All Exisitng Objects?", "Clear Objects", MessageBoxButtons.YesNoCancel);
-                    if (dialogResult == DialogResult.Cancel)
-                    {
-                        return;
-                    }
-                    else if (dialogResult == DialogResult.Yes)
-                    {
-                        currentKOTHZoneAreaLocation.objects.Clear();
-                    }
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        KOTHObject newobject = new KOTHObject()
-                        {
-                            classname = eo.Type,
-                            position = new decimal[] { (decimal)eo.Position[0], (decimal)eo.Position[1], (decimal)eo.Position[2] },
-                            orientation = new decimal[] { (decimal)eo.Orientation[0], (decimal)eo.Orientation[1], (decimal)eo.Orientation[2] },
-                            absolutePlacement = 1,
-                            alignToTerrain = 0,
-                            placeOnSurface = 0
-                        };
-                        currentKOTHZoneAreaLocation.objects.Add(newobject);
-                    }
-                    MDCKOTHConfig.isDirty = true;
+                    return;
                 }
+                else if (dialogResult == DialogResult.Yes)
+                {
+                    currentKOTHZoneAreaLocation.objects.Clear();
+                }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        for (int i = 0; i < fileContent.Length; i++)
+                        {
+                            if (fileContent[i] == "") continue;
+                            string[] linesplit = fileContent[i].Split('|');
+                            string[] XYZ = linesplit[1].Split(' ');
+                            string[] YPR = linesplit[2].Split(' ');
+                            KOTHObject newobject = new KOTHObject()
+                            {
+                                classname = linesplit[0],
+                                position = new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[1]), Convert.ToDecimal(XYZ[2]) },
+                                orientation = new decimal[] { Convert.ToDecimal(YPR[0]), Convert.ToDecimal(YPR[1]), Convert.ToDecimal(YPR[2]) },
+                                absolutePlacement = 1,
+                                alignToTerrain = 0,
+                                placeOnSurface = 0
+                            };
+                            currentKOTHZoneAreaLocation.objects.Add(newobject);
+                        }
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        foreach (SpawnObjects so in newobjectspawner.Objects)
+                        {
+                            KOTHObject newobject = new KOTHObject()
+                            {
+                                classname = so.name,
+                                position = new decimal[] { (decimal)so.pos[0], (decimal)so.pos[1], (decimal)so.pos[2] },
+                                orientation = new decimal[] { (decimal)so.ypr[0], (decimal)so.ypr[1], (decimal)so.ypr[2] },
+                                absolutePlacement = 1,
+                                alignToTerrain = 0,
+                                placeOnSurface = 0
+                            };
+                            currentKOTHZoneAreaLocation.objects.Add(newobject);
+                        }
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            KOTHObject newobject = new KOTHObject()
+                            {
+                                classname = eo.Type,
+                                position = new decimal[] { (decimal)eo.Position[0], (decimal)eo.Position[1], (decimal)eo.Position[2] },
+                                orientation = new decimal[] { (decimal)eo.Orientation[0], (decimal)eo.Orientation[1], (decimal)eo.Orientation[2] },
+                                absolutePlacement = 1,
+                                alignToTerrain = 0,
+                                placeOnSurface = 0
+                            };
+                            currentKOTHZoneAreaLocation.objects.Add(newobject);
+                        }
+                        break;
+                }
+                MDCKOTHConfig.isDirty = true;
             }
         }
         private void darkButton4_Click(object sender, EventArgs e)

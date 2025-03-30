@@ -1255,7 +1255,7 @@ namespace DayZeEditor
             this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton10.Size = new System.Drawing.Size(228, 23);
             this.darkButton10.TabIndex = 157;
-            this.darkButton10.Text = "Add Multiple Flags No Objects from DZE";
+            this.darkButton10.Text = "Add Multiple Flags No Objects";
             this.darkButton10.Click += new System.EventHandler(this.darkButton10_Click);
             // 
             // darkButton9
@@ -1265,7 +1265,7 @@ namespace DayZeEditor
             this.darkButton9.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton9.Size = new System.Drawing.Size(228, 23);
             this.darkButton9.TabIndex = 156;
-            this.darkButton9.Text = "Add SIngle Flag With Objects from DZE";
+            this.darkButton9.Text = "Add SIngle Flag With Objects";
             this.darkButton9.Click += new System.EventHandler(this.darkButton9_Click);
             // 
             // tabControl2
@@ -1364,7 +1364,7 @@ namespace DayZeEditor
             this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton6.Size = new System.Drawing.Size(110, 23);
             this.darkButton6.TabIndex = 167;
-            this.darkButton6.Text = "Import Dze";
+            this.darkButton6.Text = "Import";
             this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
             // 
             // darkButton4
@@ -1512,12 +1512,12 @@ namespace DayZeEditor
             this.ZoneObjectPosZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ZoneObjectPosZNUD.Location = new System.Drawing.Point(162, 256);
             this.ZoneObjectPosZNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.ZoneObjectPosZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1534,12 +1534,12 @@ namespace DayZeEditor
             this.ZoneObjectPosYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ZoneObjectPosYNUD.Location = new System.Drawing.Point(85, 256);
             this.ZoneObjectPosYNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.ZoneObjectPosYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1556,12 +1556,12 @@ namespace DayZeEditor
             this.ZoneObjectPosXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ZoneObjectPosXNUD.Location = new System.Drawing.Point(5, 256);
             this.ZoneObjectPosXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ZoneObjectPosXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1872,12 +1872,12 @@ namespace DayZeEditor
             this.ZoneZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ZoneZNUD.Location = new System.Drawing.Point(172, 51);
             this.ZoneZNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.ZoneZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1904,12 +1904,12 @@ namespace DayZeEditor
             this.ZoneYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ZoneYNUD.Location = new System.Drawing.Point(95, 51);
             this.ZoneYNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.ZoneYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1946,7 +1946,7 @@ namespace DayZeEditor
             this.ZoneRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ZoneRadiusNUD.Location = new System.Drawing.Point(152, 77);
             this.ZoneRadiusNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
@@ -2036,12 +2036,12 @@ namespace DayZeEditor
             this.ZoneXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ZoneXNUD.Location = new System.Drawing.Point(16, 51);
             this.ZoneXNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.ZoneXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});

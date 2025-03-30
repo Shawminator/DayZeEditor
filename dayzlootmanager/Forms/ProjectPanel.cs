@@ -470,7 +470,9 @@ namespace DayZeEditor
             projects.getActiveProject().AssignRarity();
             projects.getActiveProject().Setmapgrouproto();
             projects.getActiveProject().Setmapgroupos();
+            projects.getActiveProject().SetCfgEnviroment();
             projects.getActiveProject().SetTerritories();
+
             getActiveProject();
         }
         private void SaveFileButton_Click(object sender, EventArgs e)
@@ -1010,5 +1012,16 @@ namespace DayZeEditor
             }
         }
 
+        private void darkButton4_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Updating MapSizes.txt");
+            using (var client = new WebClient())
+            {
+                Console.WriteLine("Downloading Zip file......");
+                GitHub info = getavaiableMapAddons();
+                Asset ass = info.assets.Find(x => x.name == "MapSizes.txt");
+                client.DownloadFile(ass.browser_download_url, "Maps/MapSizes.txt");
+            }
+        }
     }
 }

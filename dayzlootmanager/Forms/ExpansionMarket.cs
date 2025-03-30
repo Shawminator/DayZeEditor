@@ -3814,149 +3814,143 @@ namespace DayZeEditor
             RoamingTraderWaypointsLB.Invalidate();
             tradermaps.isDirty = true;
         }
-        private void darkButton39_Click(object sender, EventArgs e)
-        {
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    filePath = openFileDialog.FileName;
-                    fileContent = File.ReadAllLines(filePath);
-                    currenttradermap.Roamingpoints = new BindingList<Vec3>();
-                    for (int i = 0; i < fileContent.Length; i++)
-                    {
-                        if (fileContent[i] == "") continue;
-                        string[] linesplit = fileContent[i].Split('|');
-                        string[] XYZ = linesplit[1].Split(' ');
-                        Vec3 newvec3 = new Vec3()
-                        {
-                            X = Convert.ToSingle(XYZ[0]),
-                            Y = Convert.ToSingle(XYZ[1]),
-                            Z = Convert.ToSingle(XYZ[2])
-                        };
-                        if (i == 0)
-                        {
-                            currenttradermap.position = newvec3;
-
-                        }
-                        else
-                        {
-                            currenttradermap.Roamingpoints.Add(newvec3);
-                        }
-
-                    }
-                    RoamingTraderWaypointsLB.SelectedIndex = -1;
-                    RoamingTraderWaypointsLB.SelectedIndex = RoamingTraderWaypointsLB.Items.Count - 1;
-                    RoamingTraderWaypointsLB.Invalidate();
-                    tradermaps.isDirty = true;
-                }
-            }
-        }
         private void darkButton41_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI Trader Waypoints";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        currenttradermap.Roamingpoints = new BindingList<Vec3>();
-                    }
-                    int i = 0;
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        Vec3 newvec3 = new Vec3()
-                        {
-                            X = Convert.ToSingle(eo.Position[0]),
-                            Y = Convert.ToSingle(eo.Position[1]),
-                            Z = Convert.ToSingle(eo.Position[2])
-                        };
-                        if (i == 0)
-                        {
-                            currenttradermap.position = newvec3;
-                            numericUpDown14.Value = (decimal)currenttradermap.position.X;
-                            numericUpDown15.Value = (decimal)currenttradermap.position.Y;
-                            numericUpDown16.Value = (decimal)currenttradermap.position.Z;
-                        }
-                        else
-                        {
-                            currenttradermap.Roamingpoints.Add(newvec3);
-                        }
-                        i++;
-                    }
-                    RoamingTraderWaypointsLB.DisplayMember = "Name";
-                    RoamingTraderWaypointsLB.ValueMember = "Value";
-                    RoamingTraderWaypointsLB.DataSource = currenttradermap.Roamingpoints;
-                    RoamingTraderWaypointsLB.Refresh();
-                    tradermaps.isDirty = true;
+                    currenttradermap.Roamingpoints = new BindingList<Vec3>();
                 }
+                string filePath = openFileDialog.FileName;
+                int i = 0;
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        for (int ii = 0; ii < fileContent.Length; ii++)
+                        {
+                            if (fileContent[ii] == "") continue;
+                            string[] linesplit = fileContent[ii].Split('|');
+                            if (i == 0)
+                            {
+                                currenttradermap.position = new Vec3(linesplit[1].Split(' '));
+                                numericUpDown14.Value = (decimal)currenttradermap.position.X;
+                                numericUpDown15.Value = (decimal)currenttradermap.position.Y;
+                                numericUpDown16.Value = (decimal)currenttradermap.position.Z;
+                            }
+                            else
+                            {
+                                currenttradermap.Roamingpoints.Add(new Vec3(linesplit[1].Split(' ')));
+                            }
+                            i++;
+                        }
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        foreach (SpawnObjects so in newobjectspawner.Objects)
+                        {
+                            if (i == 0)
+                            {
+                                currenttradermap.position = new Vec3(so.pos);
+                                numericUpDown14.Value = (decimal)currenttradermap.position.X;
+                                numericUpDown15.Value = (decimal)currenttradermap.position.Y;
+                                numericUpDown16.Value = (decimal)currenttradermap.position.Z;
+                            }
+                            else
+                            {
+                                currenttradermap.Roamingpoints.Add(new Vec3(so.pos));
+                            }
+                            i++;
+                        }
+                        break;
+
+                    case 3:
+                        
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            Vec3 newvec3 = new Vec3()
+                            {
+                                X = Convert.ToSingle(eo.Position[0]),
+                                Y = Convert.ToSingle(eo.Position[1]),
+                                Z = Convert.ToSingle(eo.Position[2])
+                            };
+                            if (i == 0)
+                            {
+                                currenttradermap.position = newvec3;
+                                numericUpDown14.Value = (decimal)currenttradermap.position.X;
+                                numericUpDown15.Value = (decimal)currenttradermap.position.Y;
+                                numericUpDown16.Value = (decimal)currenttradermap.position.Z;
+                            }
+                            else
+                            {
+                                currenttradermap.Roamingpoints.Add(newvec3);
+                            }
+                            i++;
+                        }
+                        break;
+                    
+                }
+                RoamingTraderWaypointsLB.DisplayMember = "Name";
+                RoamingTraderWaypointsLB.ValueMember = "Value";
+                RoamingTraderWaypointsLB.DataSource = currenttradermap.Roamingpoints;
+                RoamingTraderWaypointsLB.Refresh();
+                tradermaps.isDirty = true;
             }
         }
-
         private void darkButton42_Click(object sender, EventArgs e)
         {
-            DZE newdze = new DZE()
+            SaveFileDialog save = new SaveFileDialog();
+            save.Title = "Export AI Trader Waypoints";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+            save.FileName = currenttradermap.NPCName + "-" + currenttradermap.NPCTrade;
+            if (save.ShowDialog() == DialogResult.OK)
             {
-                EditorObjects = new BindingList<Editorobject>(),
-                EditorHiddenObjects = new BindingList<Editordeletedobject>(),
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            int m_Id = 0;
-            Editorobject eo = new Editorobject()
-            {
-                Type = currenttradermap.NPCName,
-                DisplayName = currenttradermap.NPCName,
-                Position = new float[] { currenttradermap.position.X, currenttradermap.position.Y, currenttradermap.position.Z },
-                Orientation = new float[] { 0, 0, 0 },
-                Scale = 1.0f,
-                Model = "",
-                Flags = 2147483647,
-                m_Id = m_Id
-            };
-            newdze.EditorObjects.Add(eo);
-            m_Id++;
-            foreach (Vec3 array in currenttradermap.Roamingpoints)
-            {
-                eo = new Editorobject()
+                switch (save.FilterIndex)
                 {
-                    Type = currenttradermap.NPCName,
-                    DisplayName = currenttradermap.NPCName,
-                    Position = new float[] { array.X, array.Y, array.Z },
-                    Orientation = new float[] { 0, 0, 0 },
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(eo);
-                m_Id++;
-            }
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
-            }
-        }
-        private void darkButton38_Click(object sender, EventArgs e)
-        {
-            StringBuilder SB = new StringBuilder();
-            SB.AppendLine(currenttradermap.NPCName + "|" + currenttradermap.position.X.ToString("F6") + " " + currenttradermap.position.Y.ToString("F6") + " " + currenttradermap.position.Z.ToString("F6") + "|0.0 0.0 0.0");
-            foreach (Vec3 vec3 in currenttradermap.Roamingpoints)
-            {
-                SB.AppendLine(currenttradermap.NPCName + "|" + vec3.X.ToString("F6") + " " + vec3.Y.ToString("F6") + " " + vec3.Z.ToString("F6") + "|0.0 0.0 0.0");
-            }
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(save.FileName + ".map", SB.ToString());
+                    case 1:
+                        StringBuilder SB = new StringBuilder();
+                        SB.AppendLine(currenttradermap.NPCName + "| " + currenttradermap.position.GetString() + "|0.0 0.0 0.0");
+                        foreach (Vec3 array in currenttradermap.Roamingpoints)
+                        {
+                            SB.AppendLine(currenttradermap.NPCName + "| " + array.GetString() + "|0.0 0.0 0.0");
+                        }
+                        File.WriteAllText(save.FileName, SB.ToString());
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+                        SpawnObjects newobject = new SpawnObjects()
+                        {
+                            name = currenttradermap.NPCName,
+                            pos = currenttradermap.position.getfloatarray(),
+                            ypr = new float[] { 0, 0, 0 },
+                            scale = 1,
+                            enableCEPersistency = false
+                        };
+                        newobjectspawner.Objects.Add(newobject);
+                        foreach (Vec3 array in currenttradermap.Roamingpoints)
+                        {
+                            newobject = new SpawnObjects()
+                            {
+                                name = currenttradermap.NPCName,
+                                pos = array.getfloatarray(),
+                                ypr = new float[] { 0, 0, 0 },
+                                scale = 1,
+                                enableCEPersistency = false
+                            };
+                            newobjectspawner.Objects.Add(newobject);
+                        }
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
+                }
             }
         }
         private void darkButton40_Click(object sender, EventArgs e)

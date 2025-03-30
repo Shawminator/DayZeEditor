@@ -201,5 +201,23 @@ namespace DayZeLib
                 });
             }
         }
+
+        public string GetExpansionMapPosition()
+        {
+            return m_Position[0].ToString("F6") + " " + m_Position[1].ToString("F6") + " " + m_Position[2].ToString("F6");
+        }
+        public string getExpansionMapOrientation()
+        {
+            return m_Orientation[0].ToString("F6") + " " + m_Orientation[1].ToString("F6") + " " + m_Orientation[2].ToString("F6");
+        }
+
+        public float[] GetExpansionMapPositionfloatarray()
+        {
+            return new float[] { (float)m_Position[0], (float)m_Position[1], (float)m_Position[2] };
+        }
+        public float[] getExpansionMapOrientationfloatarray()
+        {
+            return new float[] { (float)m_Orientation[0], (float)m_Orientation[1], (float)m_Orientation[2] };
+        }
     }
 }

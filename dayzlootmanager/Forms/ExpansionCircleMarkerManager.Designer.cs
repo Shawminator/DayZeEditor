@@ -1408,12 +1408,12 @@ namespace DayZeEditor
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.tabPage2.Controls.Add(this.EMCZonesAllowedWeaponsGB);
             this.tabPage2.Controls.Add(this.EMCZonesMessagesGB);
-            this.tabPage2.Controls.Add(this.EMCDynamicscanZonesGB);
-            this.tabPage2.Controls.Add(this.EMCPolygonPointsGB);
             this.tabPage2.Controls.Add(this.EMCCustomZonesPointGB);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.helicrashGB);
+            this.tabPage2.Controls.Add(this.EMCDynamicscanZonesGB);
+            this.tabPage2.Controls.Add(this.EMCPolygonPointsGB);
             this.tabPage2.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
@@ -1656,12 +1656,12 @@ namespace DayZeEditor
             this.EMCDynamicZoneScanYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.EMCDynamicZoneScanYNUD.Location = new System.Drawing.Point(77, 233);
             this.EMCDynamicZoneScanYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.EMCDynamicZoneScanYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1688,12 +1688,12 @@ namespace DayZeEditor
             this.EMCDynamicZoneScanZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.EMCDynamicZoneScanZNUD.Location = new System.Drawing.Point(77, 259);
             this.EMCDynamicZoneScanZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.EMCDynamicZoneScanZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1720,12 +1720,12 @@ namespace DayZeEditor
             this.EMCDynamicZoneScanXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.EMCDynamicZoneScanXNUD.Location = new System.Drawing.Point(77, 207);
             this.EMCDynamicZoneScanXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.EMCDynamicZoneScanXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1747,15 +1747,10 @@ namespace DayZeEditor
             131072});
             this.EMCDynamicZoneScanRadiusNUD.Location = new System.Drawing.Point(77, 285);
             this.EMCDynamicZoneScanRadiusNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
-            this.EMCDynamicZoneScanRadiusNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
             this.EMCDynamicZoneScanRadiusNUD.Name = "EMCDynamicZoneScanRadiusNUD";
             this.EMCDynamicZoneScanRadiusNUD.Size = new System.Drawing.Size(151, 20);
             this.EMCDynamicZoneScanRadiusNUD.TabIndex = 191;
@@ -1836,12 +1831,12 @@ namespace DayZeEditor
             this.EMCPolygonVerticePOSXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.EMCPolygonVerticePOSXNUD.Location = new System.Drawing.Point(30, 233);
             this.EMCPolygonVerticePOSXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.EMCPolygonVerticePOSXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1858,12 +1853,12 @@ namespace DayZeEditor
             this.EMCPolygonVerticePOSZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.EMCPolygonVerticePOSZNUD.Location = new System.Drawing.Point(30, 285);
             this.EMCPolygonVerticePOSZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.EMCPolygonVerticePOSZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1880,12 +1875,12 @@ namespace DayZeEditor
             this.EMCPolygonVerticePOSYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.EMCPolygonVerticePOSYNUD.Location = new System.Drawing.Point(30, 259);
             this.EMCPolygonVerticePOSYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.EMCPolygonVerticePOSYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});

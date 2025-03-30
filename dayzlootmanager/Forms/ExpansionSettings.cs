@@ -534,7 +534,8 @@ namespace DayZeEditor
             }
             MissionSettings.Filename = MissionSettingsPath;
             Console.WriteLine("Loading Mission files....");
-            MissionSettings.LoadIndividualMissions(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath);
+            if (MissionSettings.LoadIndividualMissions(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath))
+                needtosave = true;
             loadMissionSettings();
 
             MonitoringSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\MonitoringSettings.json";
@@ -1912,6 +1913,10 @@ namespace DayZeEditor
             numericUpDown5.Value = (decimal)AirdropsettingsJson.InfectedSpawnRadius;
             numericUpDown6.Value = (decimal)AirdropsettingsJson.InfectedSpawnInterval;
             numericUpDown7.Value = (decimal)AirdropsettingsJson.ItemCount;
+            textBox1.Text = AirdropsettingsJson.AirdropPlaneClassName;
+            numericUpDown12.Value = (decimal)AirdropsettingsJson.DropZoneHeight;
+            numericUpDown31.Value = (decimal)AirdropsettingsJson.DropZoneSpeed;
+            numericUpDown33.Value = (decimal)AirdropsettingsJson.DropZoneProximityDistance;
             PopelateContainerList();
             useraction = true;
         }
@@ -2089,11 +2094,6 @@ namespace DayZeEditor
                 }
             }
         }
-        private void darkButton10_Click(object sender, EventArgs e)
-        {
-            //CurrentAirdropContainerLoot.Attachments.Remove(listBox4.GetItemText(listBox4.SelectedItem));
-            //AirdropsettingsJson.isDirty = true;
-        }
         private void numericUpDown11_ValueChanged(object sender, EventArgs e)
         {
             if (useraction)
@@ -2245,6 +2245,40 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = true;
             }
         }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                AirdropsettingsJson.AirdropPlaneClassName = textBox1.Text;
+                AirdropsettingsJson.isDirty = true;
+            }
+        }
+        private void numericUpDown12_ValueChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                AirdropsettingsJson.DropZoneHeight = (decimal)numericUpDown12.Value;
+                AirdropsettingsJson.isDirty = true;
+            }
+        }
+
+        private void numericUpDown31_ValueChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                AirdropsettingsJson.DropZoneSpeed = (decimal)numericUpDown31.Value;
+                AirdropsettingsJson.isDirty = true;
+            }
+        }
+
+        private void numericUpDown33_ValueChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                AirdropsettingsJson.DropZoneProximityDistance = (decimal)numericUpDown33.Value;
+                AirdropsettingsJson.isDirty = true;
+            }
+        }
         private void ExpansionLootAirdropsettings_IsDirtyChanged(object sender, PropertyChangedEventArgs e)
         {
             AirdropsettingsJson.isDirty = ExpansionLootAirdropsettings.isDirty;
@@ -2283,7 +2317,7 @@ namespace DayZeEditor
             textBox2.Text = BaseBuildingSettings.BuildZoneRequiredCustomMessage;
             ZonesAreNoBuildZonesCB.Checked = BaseBuildingSettings.ZonesAreNoBuildZones == 1 ? true : false;
             EnableVirtualStorageCB.Checked = BaseBuildingSettings.EnableVirtualStorage == 1 ? true : false;
-            OverrideVanillaEntityPlacementCB.Checked = BaseBuildingSettings.OverrideVanillaEntityPlacement == 1 ? true : false;
+            PreventItemAccessThroughObstructingItemsCB.Checked = BaseBuildingSettings.PreventItemAccessThroughObstructingItems == 1 ? true : false;
 
             listBox6.DisplayMember = "DisplayName";
             listBox6.ValueMember = "Value";
@@ -2735,7 +2769,7 @@ namespace DayZeEditor
         private void OverrideVanillaEntityPlacementCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            BaseBuildingSettings.OverrideVanillaEntityPlacement = OverrideVanillaEntityPlacementCB.Checked == true ? 1 : 0;
+            BaseBuildingSettings.PreventItemAccessThroughObstructingItems = PreventItemAccessThroughObstructingItemsCB.Checked == true ? 1 : 0;
             BaseBuildingSettings.isDirty = true;
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -3510,6 +3544,7 @@ namespace DayZeEditor
             UseNewsFeedInGameMenuCB.Checked = GeneralSettings.UseNewsFeedInGameMenu == 1 ? true : false;
             EnableEarPlugsCB.Checked = GeneralSettings.EnableEarPlugs == 1 ? true : false;
             InGameMenuLogoPathTB.Text = GeneralSettings.InGameMenuLogoPath;
+            UseHUDColorsCB.Checked = GeneralSettings.UseHUDColors == 1 ? true : false;
             useraction = true;
         }
         private void HudColourPB_Click(object sender, EventArgs e)
@@ -4893,14 +4928,17 @@ namespace DayZeEditor
                 MissionWeightNUD.Value = (decimal)currentAirdropmissionfile.Weight;
                 MissionMissionMaxTimeNUD.Value = (decimal)Helper.ConvertSecondsToMinutes(currentAirdropmissionfile.MissionMaxTime);
                 MissionHeightNUD.Value = (decimal)currentAirdropmissionfile.Height;
+                MIssionDropZoneHeightNUD.Value = (decimal)currentAirdropmissionfile.DropZoneHeight;
                 MissionSpeedNUD.Value = (decimal)currentAirdropmissionfile.Speed;
                 MissionFallSpeedNUD.Value = (decimal)currentAirdropmissionfile.FallSpeed;
+                MissionDropZoneSpeedNUD.Value = (decimal)currentAirdropmissionfile.DropZoneSpeed;
                 MissionDropXNUD.Value = (decimal)currentAirdropmissionfile.DropLocation.x;
                 MissionDropYNUD.Value = (decimal)currentAirdropmissionfile.DropLocation.z;
                 MissionDropRadiusNUD.Value = (decimal)currentAirdropmissionfile.DropLocation.Radius;
                 MissionDropNameTB.Text = currentAirdropmissionfile.DropLocation.Name;
                 numericUpDown38.Value = currentAirdropmissionfile.InfectedCount;
                 numericUpDown37.Value = currentAirdropmissionfile.ItemCount;
+                MissionAirdropPlaneClassNameTB.Text = currentAirdropmissionfile.AirdropPlaneClassName;
                 Specificpopulatelistbox();
                 SpecificpopulateZombies();
             }
@@ -5020,6 +5058,12 @@ namespace DayZeEditor
         {
             if (!useraction) { return; }
             currentAirdropmissionfile.MissionName = MissionNameTB.Text;
+            currentAirdropmissionfile.isDirty = true;
+        }
+        private void MissionAirdropPlaneClassNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentAirdropmissionfile.AirdropPlaneClassName = MissionAirdropPlaneClassNameTB.Text;
             currentAirdropmissionfile.isDirty = true;
         }
         private void MissionFallSpeedNUD_ValueChanged(object sender, EventArgs e)
@@ -9464,6 +9508,11 @@ namespace DayZeEditor
                 currentstoragelevel.ExcludedSlots.Add(Slot);
             PersonalStorageSettingsNew.isDirty = true;
         }
+
+
+
+
+
 
 
 

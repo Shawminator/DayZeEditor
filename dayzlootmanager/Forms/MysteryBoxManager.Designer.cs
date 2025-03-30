@@ -29,7 +29,7 @@ namespace DayZeEditor
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MPGSpawnerManager));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MysteryBoxManager));
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -312,7 +312,7 @@ namespace DayZeEditor
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(177, 23);
             this.darkButton1.TabIndex = 168;
-            this.darkButton1.Text = "Import from Dze";
+            this.darkButton1.Text = "Import";
             this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
             // PossibleBoxPositionsPOSXNUD
@@ -322,12 +322,12 @@ namespace DayZeEditor
             this.PossibleBoxPositionsPOSXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.PossibleBoxPositionsPOSXNUD.Location = new System.Drawing.Point(281, 19);
             this.PossibleBoxPositionsPOSXNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.PossibleBoxPositionsPOSXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -366,12 +366,12 @@ namespace DayZeEditor
             this.PossibleBoxPositionsPOSYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.PossibleBoxPositionsPOSYNUD.Location = new System.Drawing.Point(281, 45);
             this.PossibleBoxPositionsPOSYNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.PossibleBoxPositionsPOSYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -474,12 +474,12 @@ namespace DayZeEditor
             this.PossibleBoxPositionsPOSZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.PossibleBoxPositionsPOSZNUD.Location = new System.Drawing.Point(281, 71);
             this.PossibleBoxPositionsPOSZNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.PossibleBoxPositionsPOSZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});

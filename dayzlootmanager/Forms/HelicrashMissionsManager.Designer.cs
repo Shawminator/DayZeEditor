@@ -308,12 +308,12 @@ namespace DayZeEditor
             this.CrashpointYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.CrashpointYNUD.Location = new System.Drawing.Point(162, 238);
             this.CrashpointYNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.CrashpointYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -331,12 +331,12 @@ namespace DayZeEditor
             this.CrashPointXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.CrashPointXNUD.Location = new System.Drawing.Point(85, 238);
             this.CrashPointXNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.CrashPointXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -376,15 +376,10 @@ namespace DayZeEditor
             this.CrashPointradiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.CrashPointradiusNUD.Location = new System.Drawing.Point(85, 264);
             this.CrashPointradiusNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
-            this.CrashPointradiusNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
             this.CrashPointradiusNUD.Name = "CrashPointradiusNUD";
             this.CrashPointradiusNUD.Size = new System.Drawing.Size(71, 20);
             this.CrashPointradiusNUD.TabIndex = 134;

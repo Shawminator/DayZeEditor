@@ -1497,12 +1497,12 @@ namespace DayZeEditor
             this.numericUpDown7.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown7.Location = new System.Drawing.Point(144, 231);
             this.numericUpDown7.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.numericUpDown7.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1519,12 +1519,12 @@ namespace DayZeEditor
             this.numericUpDown8.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown8.Location = new System.Drawing.Point(249, 231);
             this.numericUpDown8.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.numericUpDown8.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1541,12 +1541,12 @@ namespace DayZeEditor
             this.numericUpDown9.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown9.Location = new System.Drawing.Point(349, 231);
             this.numericUpDown9.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.numericUpDown9.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1649,12 +1649,12 @@ namespace DayZeEditor
             this.numericUpDown3.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown3.Location = new System.Drawing.Point(349, 179);
             this.numericUpDown3.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.numericUpDown3.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1671,12 +1671,12 @@ namespace DayZeEditor
             this.numericUpDown1.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown1.Location = new System.Drawing.Point(144, 179);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.numericUpDown1.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -1693,12 +1693,12 @@ namespace DayZeEditor
             this.numericUpDown2.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown2.Location = new System.Drawing.Point(249, 179);
             this.numericUpDown2.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.numericUpDown2.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -2210,12 +2210,12 @@ namespace DayZeEditor
             this.ObjectPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectPositionZNUD.Location = new System.Drawing.Point(233, 137);
             this.ObjectPositionZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectPositionZNUD.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -2232,12 +2232,12 @@ namespace DayZeEditor
             this.ObjectPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectPositionXNUD.Location = new System.Drawing.Point(233, 85);
             this.ObjectPositionXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectPositionXNUD.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -2254,12 +2254,12 @@ namespace DayZeEditor
             this.ObjectPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectPositionYNUD.Location = new System.Drawing.Point(233, 111);
             this.ObjectPositionYNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.ObjectPositionYNUD.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -3132,10 +3132,15 @@ namespace DayZeEditor
             this.TraderNPCPositionZ.ForeColor = System.Drawing.SystemColors.Control;
             this.TraderNPCPositionZ.Location = new System.Drawing.Point(235, 249);
             this.TraderNPCPositionZ.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
+            this.TraderNPCPositionZ.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
             this.TraderNPCPositionZ.Name = "TraderNPCPositionZ";
             this.TraderNPCPositionZ.Size = new System.Drawing.Size(88, 20);
             this.TraderNPCPositionZ.TabIndex = 131;
@@ -3149,10 +3154,15 @@ namespace DayZeEditor
             this.TraderNPCPositionX.ForeColor = System.Drawing.SystemColors.Control;
             this.TraderNPCPositionX.Location = new System.Drawing.Point(235, 197);
             this.TraderNPCPositionX.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
+            this.TraderNPCPositionX.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
             this.TraderNPCPositionX.Name = "TraderNPCPositionX";
             this.TraderNPCPositionX.Size = new System.Drawing.Size(88, 20);
             this.TraderNPCPositionX.TabIndex = 129;
@@ -3166,10 +3176,15 @@ namespace DayZeEditor
             this.TraderNPCPositionY.ForeColor = System.Drawing.SystemColors.Control;
             this.TraderNPCPositionY.Location = new System.Drawing.Point(235, 223);
             this.TraderNPCPositionY.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
+            this.TraderNPCPositionY.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
             this.TraderNPCPositionY.Name = "TraderNPCPositionY";
             this.TraderNPCPositionY.Size = new System.Drawing.Size(88, 20);
             this.TraderNPCPositionY.TabIndex = 130;
@@ -4453,7 +4468,7 @@ namespace DayZeEditor
             this.SafeZoneradiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SafeZoneradiusNUD.Location = new System.Drawing.Point(79, 172);
             this.SafeZoneradiusNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
@@ -4480,12 +4495,12 @@ namespace DayZeEditor
             this.SafeZoneXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SafeZoneXNUD.Location = new System.Drawing.Point(68, 146);
             this.SafeZoneXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.SafeZoneXNUD.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -4502,12 +4517,12 @@ namespace DayZeEditor
             this.safeZoneZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.safeZoneZNUD.Location = new System.Drawing.Point(145, 146);
             this.safeZoneZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.safeZoneZNUD.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});

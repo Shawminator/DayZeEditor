@@ -1,4 +1,31 @@
-﻿Version 0.8.3.0
+﻿Version 0.8.3.2
+[Fixed]
+Expansion Base Building	-	Updated Version Number.
+Expansion Missions		-	Added mission DropZoneHeight,DropZoneSpeed,AirdropPlaneClassname to airdrop missions,
+							Updated version number
+Expansion General		-	Added missing UseHudcolors bool.
+CFGGameplay				-	Added Vehichle Damage Boat decay.
+Economy Map Group Pos	-	Added Multiple highlight of selected point on the map,
+							removed the right click to remove and added button at the button.
+
+Version 0.8.3.1
+[Removed]
+debin DZE File - removed as dayz editor no longer supports json file verson of dze
+any dze export - removed as per the above reason
+[added]
+Project>MapAddons - Map Sizez text file will now be updated when you install an addon
+					You can also manaully update the map sizes from the same page by isng the update map sizes button
+[Updated]
+Import/Export		-	Any Import Export has been updated to now inlude Map, ObjectSpawner type files, DZe will only be for import.
+Expansion Airdrops	-	DropZoneHeight,DropZoneSpeed,AirdropPlaneClassname and DropZoneProximityDistance added to match current config.
+Coord Num boxes		-	All Numboxes that have a x,y,z, coord has been updated to handle the bigger maps, max size is set to 50000.
+Economy Territories	-	Updated Territories manager to now work from the cfgenviroment.xml rather than just whats in the env folder.
+						you can now add a new file through the editor and it will update the cfgenviroment.xml with the correct details.
+						manaulay editing of x y and z coords added 
+						use y checkbox added.
+Airdrop Upgraded	-	Updated to match mod version 1.25.03.10
+
+Version 0.8.3.0
 [Fixed]
 Economy Editor	-	A value has been normalised to between 0 and 360 when importing from dze for event spanws and event groups
 					Fixed A value of eventspawns not actually updated the value.

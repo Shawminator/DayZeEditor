@@ -5,7 +5,7 @@ namespace DayZeLib
 {
     public class AirdropMissionSettingFiles
     {
-        const int CurrentVersion = 1;
+        const int CurrentVersion = 3;
 
         public int m_Version { get; set; }
         public int Enabled { get; set; }
@@ -17,13 +17,16 @@ namespace DayZeLib
         public string Reward { get; set; }
         public int ShowNotification { get; set; }
         public decimal Height { get; set; }
+        public decimal DropZoneHeight { get;set; }
         public decimal Speed { get; set; }
+        public decimal DropZoneSpeed { get; set; }
         public string Container { get; set; }
         public decimal FallSpeed { get; set; }
         public ExpansionAirdropLocation DropLocation { get; set; }
         public BindingList<string> Infected { get; set; }
         public int ItemCount { get; set; }
         public int InfectedCount { get; set; }
+        public string AirdropPlaneClassName { get; set; }
         public BindingList<ExpansionLoot> Loot { get; set; }
 
 
@@ -46,7 +49,9 @@ namespace DayZeLib
             Reward = "";
             ShowNotification = 1;
             Height = (decimal)450.0;
+            DropZoneHeight = (decimal)450.0;
             Speed = (decimal)25.0;
+            DropZoneSpeed = (decimal)25.0;
             Container = "Random";
             FallSpeed = (decimal)4.5;
             DropLocation = new ExpansionAirdropLocation();
@@ -54,6 +59,7 @@ namespace DayZeLib
             Infected = new BindingList<string>();
             isDirty = true;
             ItemCount = -1;
+            AirdropPlaneClassName = "";
             InfectedCount = -1;
         }
         public void SetIntValue(string mytype, int myvalue)
@@ -67,6 +73,16 @@ namespace DayZeLib
         public override string ToString()
         {
             return MissionName;
+        }
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
     }
     public class ExpansionAirdropLocation

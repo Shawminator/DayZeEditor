@@ -239,6 +239,11 @@ namespace DayZeLib
         public territorytype territorytype { get; set; }
         public string Filename { get; set; }
         public bool isDirty = false;
+
+        public territoriesConfig()
+        {
+            territorytype = new territorytype();
+        }
         public territoriesConfig(string filename)
         {
             Filename = filename;
@@ -281,6 +286,9 @@ namespace DayZeLib
                 }
             }
         }
+
+
+
         public void SaveTerritories(string saveTime = null)
         {
             if (saveTime != null)
@@ -301,6 +309,98 @@ namespace DayZeLib
         public override string ToString()
         {
             return Path.GetFileNameWithoutExtension(Filename);
+        }
+
+        public void movetoremovedfolder()
+        {
+            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmmss");
+            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Removed\\" + SaveTime);
+            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Removed\\" + SaveTime + "\\" + Path.GetFileName(Filename), true);
+            File.Delete(Filename);
+        }
+    }
+    public class cfgenviromentConfig
+    {
+        public env cfgenvironment { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty { get; set; }
+
+        public cfgenviromentConfig(string filename)
+        {
+            Filename = filename;
+            if (File.Exists(Filename))
+            {
+                var mySerializer = new XmlSerializer(typeof(env));
+                // To read the file, create a FileStream.
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    Console.Write("serializing " + Path.GetFileName(Filename));
+                    try
+                    {
+                        // Call the Deserialize method and cast to the object type.
+                        cfgenvironment = (env)mySerializer.Deserialize(myFileStream);
+                        if (cfgenvironment != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....");
+                cfgenvironment = new env();
+            }
+        }
+        public void Saveenv(string saveTime = null)
+        {
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
+            var serializer = new XmlSerializer(typeof(env));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, cfgenvironment, ns);
+            //Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+
+        public void Remove(string filename)
+        {
+            string path = filename.Substring((Path.GetDirectoryName(Path.GetDirectoryName(filename)) + "\\").Count());
+            string envfilepath = path.Replace("\\", "/");
+            cfgenvironment.territories.file.Remove(GetFilepath(envfilepath));
+            cfgenvironment.territories.territory.Remove(Getterritory(Path.GetFileNameWithoutExtension(envfilepath)));
+            isDirty = true;
+        }
+
+        public envTerritoriesTerritory Getterritory(string v)
+        {
+            return cfgenvironment.territories.territory.First(x => x.file.usable == v);
+        }
+
+        public envTerritoriesFile GetFilepath(string envfilepath)
+        {
+            return cfgenvironment.territories.file.First(x => x.path == envfilepath);
         }
     }
 

@@ -128,11 +128,24 @@ namespace DayZeEditor
         {
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
+                AddItem(tn);
+            }
+        }
+        public void AddItem(TreeNode tn)
+        {
+            if (tn.Tag is string)
+            {
+                foreach (TreeNode tn1 in tn.Nodes)
+                {
+                    AddItem(tn1);
+                }
+            }
+            else if (tn.Tag is typesType)
+            {
                 typesType looptype = tn.Tag as typesType;
                 Additem(looptype.name);
             }
         }
-
         public void Additem(string item)
         {
             if (UseOnlySingleitem)

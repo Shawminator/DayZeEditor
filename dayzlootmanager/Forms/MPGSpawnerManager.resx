@@ -163,7 +163,7 @@
 GiftBox_Large_1    Trigger (Use One only)
 GiftBox_Small_1    SpawnPoints(Can have Multiple)
 
-These ClassNames will be used when Exporting to DZE if you wish to check and tweak 
+These ClassNames will be used when Exporting if you wish to check and tweak 
 any existing point config.
 </value>
   </data>

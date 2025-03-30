@@ -218,6 +218,47 @@ namespace DayZeLib
                 }
             }
         }
+        public void ImportMapFile(string[] fileContent, bool importTrigger, bool importrtotation)
+        {
+            if (_spawnerpos == null)
+                _spawnerpos = new BindingList<Vec3PandR>();
+            for (int i = 0; i < fileContent.Length; i++)
+            {
+                if (fileContent[i] == "") continue;
+                string[] linesplit = fileContent[i].Split('|');
+                Vec3 newvec3 = new Vec3(linesplit[1].Split(' '));
+                if (linesplit[0] == "GiftBox_Large_1")
+                {
+                    if (importTrigger)
+                    {
+                        _triggerpos = new Vec3PandR(linesplit[1] + "|" + linesplit[2], importrtotation);
+                    }
+                }
+                else if (linesplit[0] == "GiftBox_Small_1")
+                {
+                    _spawnerpos.Add(new Vec3PandR(linesplit[1] + "|" + linesplit[2], importrtotation));
+                }
+            }
+        }
+        public void ImportOpbjectSpawner(ObjectSpawnerArr newobjectspawner, bool importTrigger, bool importrtotation)
+        {
+            if (_spawnerpos == null)
+                _spawnerpos = new BindingList<Vec3PandR>();
+            foreach (SpawnObjects so in newobjectspawner.Objects)
+            {
+                if (so.name == "GiftBox_Large_1")
+                {
+                    if (importTrigger)
+                    {
+                        _triggerpos = new Vec3PandR(so.pos, so.ypr, importrtotation);
+                    }
+                }
+                else if (so.name == "GiftBox_Small_1")
+                {
+                    _spawnerpos.Add(new Vec3PandR(so.pos, so.ypr, importrtotation));
+                }
+            }
+        }
         public void ImportDZE(DZE Importfile, bool importTrigger, bool importrotation)
         {
             if (_spawnerpos == null)
@@ -241,6 +282,8 @@ namespace DayZeLib
         {
             return name;
         }
+
+
     }
     public class BukakuPosRot
     {

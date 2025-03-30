@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
@@ -402,40 +403,52 @@ namespace DayZeEditor
         }
         private void darkButton12_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI Patrol";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                bool ImportTrigger = false;
+                var result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                    ImportTrigger = true;
+                bool importrtotation = false;
+                result = MessageBox.Show("Would you like to import rotations?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                    importrtotation = true;
+                result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if ((result == DialogResult.Cancel))
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    bool ImportTrigger = false;
-                    var result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                        ImportTrigger = true;
-                    bool importrtotation = false;
-                    result = MessageBox.Show("Would you like to import rotations?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                        importrtotation = true;
-                    result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if ((result == DialogResult.Cancel))
-                    {
-                        return;
-                    }
-                    else if (result == DialogResult.Yes)
-                    {
-                        CurrentBubaklocation._spawnerpos = new BindingList<Vec3PandR>();
-                    }
-                    CurrentBubaklocation.ImportDZE(importfile, ImportTrigger, importrtotation);
-                    useraction = false;
-
-                    BubakLocationTriggerPosXNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.X;
-                    BubakLocationTriggerPosYNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.Y;
-                    BubakLocationTriggerPosZNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.Z;
-                    BubakLocationSpawnerPosLB.DataSource = CurrentBubaklocation._spawnerpos;
-                    SpawnerBubakuConfig.isDirty = true;
-                    useraction = true;
-                    BubakLocationTriggerPositionRotSpecifiedCB.Checked = importrtotation;
+                    return;
                 }
+                else if (result == DialogResult.Yes)
+                {
+                    CurrentBubaklocation._spawnerpos = new BindingList<Vec3PandR>();
+                }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        CurrentBubaklocation.ImportMapFile(fileContent, ImportTrigger, importrtotation);
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        CurrentBubaklocation.ImportOpbjectSpawner(newobjectspawner, ImportTrigger, importrtotation);
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        CurrentBubaklocation.ImportDZE(importfile, ImportTrigger, importrtotation);
+                        break;
+                }
+                useraction = false;
+                BubakLocationTriggerPosXNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.X;
+                BubakLocationTriggerPosYNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.Y;
+                BubakLocationTriggerPosZNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.Z;
+                BubakLocationSpawnerPosLB.DataSource = CurrentBubaklocation._spawnerpos;
+                SpawnerBubakuConfig.isDirty = true;
+                useraction = true;
+                BubakLocationTriggerPositionRotSpecifiedCB.Checked = importrtotation;
             }
         }
         private void darkButton10_Click(object sender, EventArgs e)
@@ -448,58 +461,52 @@ namespace DayZeEditor
         }
         private void darkButton11_Click(object sender, EventArgs e)
         {
-            DZE newdze = new DZE()
-            {
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            int m_Id = 0;
-            string filename = "";
-            var result = MessageBox.Show("Would yo ulike to export the trigger as well?", "Export options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.Cancel)
-            {
-                return;
-            }
-            else if (result == DialogResult.Yes)
-            {
-                Editorobject Triggerobject = new Editorobject()
-                {
-                    Type = "GiftBox_Large_1",
-                    DisplayName = "GiftBox_Large_1",
-                    Position = CurrentBubaklocation._triggerpos.GetPositionFloatArray(),
-                    Orientation = CurrentBubaklocation._triggerpos.GetRotationFloatArray(),
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(Triggerobject);
-                m_Id++;
-            }
-            foreach (Vec3PandR vec3pandr in CurrentBubaklocation._spawnerpos)
-            {
-                Editorobject SpawnObject = new Editorobject()
-                {
-                    Type = "GiftBox_Small_1",
-                    DisplayName = "GiftBox_Small_1",
-                    Position = vec3pandr.GetPositionFloatArray(),
-                    Orientation = vec3pandr.GetRotationFloatArray(),
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(SpawnObject);
-                m_Id++;
-            }
-            filename = "Bubaku Spawner Location - " + CurrentBubaklocation.name;
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
             SaveFileDialog save = new SaveFileDialog();
-            save.FileName = filename;
+            save.Title = "ExportSpawn Positions";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+            save.FileName = "Bubaku Spawner Location - " + CurrentBubaklocation.name;
             if (save.ShowDialog() == DialogResult.OK)
             {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
+                switch (save.FilterIndex)
+                {
+                    case 1:
+                        StringBuilder SB = new StringBuilder();
+                        SB.AppendLine("GiftBox_Large_1|" + CurrentBubaklocation._triggerpos.GetExpansionString());
+                        foreach (Vec3PandR vec3pandr in CurrentBubaklocation._spawnerpos)
+                        {
+                            SB.AppendLine("GiftBox_Small_1|" + vec3pandr.GetExpansionString());
+                        }
+                        File.WriteAllText(save.FileName, SB.ToString());
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+                        
+                        SpawnObjects newobject = new SpawnObjects();
+                        newobject.name = "GiftBox_Large_1";
+                        newobject.pos = CurrentBubaklocation._triggerpos.GetPositionFloatArray();
+                        newobject.ypr = CurrentBubaklocation._triggerpos.GetRotationFloatArray();
+                        newobject.scale = 1;
+                        newobject.enableCEPersistency = false;
+                        newobjectspawner.Objects.Add(newobject);
+
+                        foreach (Vec3PandR vec3pandr in CurrentBubaklocation._spawnerpos)
+                        {
+                            newobject = new SpawnObjects()
+                            {
+                                name = "GiftBox_Small_1",
+                                pos = vec3pandr.GetPositionFloatArray(),
+                                ypr = vec3pandr.GetRotationFloatArray(),
+                                scale = 1,
+                                enableCEPersistency = false
+                            };
+                            newobjectspawner.Objects.Add(newobject);
+                        }
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
+                }
             }
         }
         private void darkButton5_Click(object sender, EventArgs e)

@@ -38,39 +38,39 @@ namespace DayZeEditor
             this.darkButton6 = new DarkUI.Controls.DarkButton();
             this.TreasureStashLB = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.IsUndergroundCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
-            this.darkButton3 = new DarkUI.Controls.DarkButton();
-            this.darkLabel5 = new DarkUI.Controls.DarkLabel();
-            this.TriggerRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
-            this.StashNameTB = new System.Windows.Forms.TextBox();
-            this.darkButton1 = new DarkUI.Controls.DarkButton();
-            this.darkButton2 = new DarkUI.Controls.DarkButton();
-            this.RewardTablesLB = new System.Windows.Forms.ListBox();
-            this.rotZNUD = new System.Windows.Forms.NumericUpDown();
-            this.rotYNUD = new System.Windows.Forms.NumericUpDown();
-            this.rotXNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel12 = new DarkUI.Controls.DarkLabel();
-            this.posZNUD = new System.Windows.Forms.NumericUpDown();
-            this.posYNUD = new System.Windows.Forms.NumericUpDown();
-            this.posXNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel67 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
+            this.DescriptionTB = new System.Windows.Forms.RichTextBox();
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.ContainerTypeTB = new System.Windows.Forms.TextBox();
-            this.DescriptionTB = new System.Windows.Forms.RichTextBox();
-            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
+            this.rotZNUD = new System.Windows.Forms.NumericUpDown();
+            this.IsUndergroundCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
+            this.rotYNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkButton3 = new DarkUI.Controls.DarkButton();
+            this.darkLabel5 = new DarkUI.Controls.DarkLabel();
+            this.rotXNUD = new System.Windows.Forms.NumericUpDown();
+            this.TriggerRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel12 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel67 = new DarkUI.Controls.DarkLabel();
+            this.posXNUD = new System.Windows.Forms.NumericUpDown();
+            this.StashNameTB = new System.Windows.Forms.TextBox();
+            this.posZNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkButton1 = new DarkUI.Controls.DarkButton();
+            this.darkButton2 = new DarkUI.Controls.DarkButton();
+            this.posYNUD = new System.Windows.Forms.NumericUpDown();
+            this.RewardTablesLB = new System.Windows.Forms.ListBox();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TriggerRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rotZNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rotYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rotXNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TriggerRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posXNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posZNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posYNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.posXNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -198,6 +198,67 @@ namespace DayZeEditor
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Stash";
             // 
+            // darkLabel3
+            // 
+            this.darkLabel3.AutoSize = true;
+            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel3.Location = new System.Drawing.Point(10, 168);
+            this.darkLabel3.Name = "darkLabel3";
+            this.darkLabel3.Size = new System.Drawing.Size(60, 13);
+            this.darkLabel3.TabIndex = 258;
+            this.darkLabel3.Text = "Description";
+            // 
+            // DescriptionTB
+            // 
+            this.DescriptionTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DescriptionTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DescriptionTB.Location = new System.Drawing.Point(7, 184);
+            this.DescriptionTB.Name = "DescriptionTB";
+            this.DescriptionTB.Size = new System.Drawing.Size(330, 96);
+            this.DescriptionTB.TabIndex = 257;
+            this.DescriptionTB.Text = "";
+            this.DescriptionTB.TextChanged += new System.EventHandler(this.DescriptionTB_TextChanged);
+            // 
+            // darkLabel1
+            // 
+            this.darkLabel1.AutoSize = true;
+            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel1.Location = new System.Drawing.Point(9, 305);
+            this.darkLabel1.Name = "darkLabel1";
+            this.darkLabel1.Size = new System.Drawing.Size(79, 13);
+            this.darkLabel1.TabIndex = 256;
+            this.darkLabel1.Text = "Container Type";
+            // 
+            // ContainerTypeTB
+            // 
+            this.ContainerTypeTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ContainerTypeTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ContainerTypeTB.Location = new System.Drawing.Point(105, 302);
+            this.ContainerTypeTB.Name = "ContainerTypeTB";
+            this.ContainerTypeTB.Size = new System.Drawing.Size(232, 20);
+            this.ContainerTypeTB.TabIndex = 255;
+            // 
+            // rotZNUD
+            // 
+            this.rotZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.rotZNUD.DecimalPlaces = 6;
+            this.rotZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.rotZNUD.Location = new System.Drawing.Point(230, 108);
+            this.rotZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.rotZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.rotZNUD.Name = "rotZNUD";
+            this.rotZNUD.Size = new System.Drawing.Size(106, 20);
+            this.rotZNUD.TabIndex = 253;
+            this.rotZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // IsUndergroundCB
             // 
             this.IsUndergroundCB.AutoSize = true;
@@ -217,6 +278,27 @@ namespace DayZeEditor
             this.darkLabel11.Size = new System.Drawing.Size(48, 13);
             this.darkLabel11.TabIndex = 245;
             this.darkLabel11.Text = "Is Buried";
+            // 
+            // rotYNUD
+            // 
+            this.rotYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.rotYNUD.DecimalPlaces = 6;
+            this.rotYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.rotYNUD.Location = new System.Drawing.Point(118, 108);
+            this.rotYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.rotYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.rotYNUD.Name = "rotYNUD";
+            this.rotYNUD.Size = new System.Drawing.Size(106, 20);
+            this.rotYNUD.TabIndex = 252;
+            this.rotYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // darkButton3
             // 
@@ -239,6 +321,27 @@ namespace DayZeEditor
             this.darkLabel5.TabIndex = 108;
             this.darkLabel5.Text = "Reward Tables";
             // 
+            // rotXNUD
+            // 
+            this.rotXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.rotXNUD.DecimalPlaces = 6;
+            this.rotXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.rotXNUD.Location = new System.Drawing.Point(6, 108);
+            this.rotXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.rotXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.rotXNUD.Name = "rotXNUD";
+            this.rotXNUD.Size = new System.Drawing.Size(106, 20);
+            this.rotXNUD.TabIndex = 251;
+            this.rotXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // TriggerRadiusNUD
             // 
             this.TriggerRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -246,7 +349,7 @@ namespace DayZeEditor
             this.TriggerRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.TriggerRadiusNUD.Location = new System.Drawing.Point(118, 137);
             this.TriggerRadiusNUD.Maximum = new decimal(new int[] {
-            1000000000,
+            50000,
             0,
             0,
             0});
@@ -265,6 +368,16 @@ namespace DayZeEditor
             this.darkLabel8.TabIndex = 101;
             this.darkLabel8.Text = "Trigger Radius";
             // 
+            // darkLabel12
+            // 
+            this.darkLabel12.AutoSize = true;
+            this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel12.Location = new System.Drawing.Point(9, 92);
+            this.darkLabel12.Name = "darkLabel12";
+            this.darkLabel12.Size = new System.Drawing.Size(44, 13);
+            this.darkLabel12.TabIndex = 254;
+            this.darkLabel12.Text = "Rotaion";
+            // 
             // darkLabel2
             // 
             this.darkLabel2.AutoSize = true;
@@ -275,6 +388,37 @@ namespace DayZeEditor
             this.darkLabel2.TabIndex = 99;
             this.darkLabel2.Text = "Stash Name";
             // 
+            // darkLabel67
+            // 
+            this.darkLabel67.AutoSize = true;
+            this.darkLabel67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel67.Location = new System.Drawing.Point(9, 53);
+            this.darkLabel67.Name = "darkLabel67";
+            this.darkLabel67.Size = new System.Drawing.Size(38, 13);
+            this.darkLabel67.TabIndex = 250;
+            this.darkLabel67.Text = "Center";
+            // 
+            // posXNUD
+            // 
+            this.posXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.posXNUD.DecimalPlaces = 6;
+            this.posXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.posXNUD.Location = new System.Drawing.Point(7, 69);
+            this.posXNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.posXNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
+            this.posXNUD.Name = "posXNUD";
+            this.posXNUD.Size = new System.Drawing.Size(106, 20);
+            this.posXNUD.TabIndex = 247;
+            this.posXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // StashNameTB
             // 
             this.StashNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -283,6 +427,27 @@ namespace DayZeEditor
             this.StashNameTB.Name = "StashNameTB";
             this.StashNameTB.Size = new System.Drawing.Size(232, 20);
             this.StashNameTB.TabIndex = 98;
+            // 
+            // posZNUD
+            // 
+            this.posZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.posZNUD.DecimalPlaces = 6;
+            this.posZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.posZNUD.Location = new System.Drawing.Point(231, 69);
+            this.posZNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.posZNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
+            this.posZNUD.Name = "posZNUD";
+            this.posZNUD.Size = new System.Drawing.Size(106, 20);
+            this.posZNUD.TabIndex = 249;
+            this.posZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // darkButton1
             // 
@@ -306,6 +471,27 @@ namespace DayZeEditor
             this.darkButton2.Text = "Remove";
             this.darkButton2.Click += new System.EventHandler(this.darkButton2_Click);
             // 
+            // posYNUD
+            // 
+            this.posYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.posYNUD.DecimalPlaces = 6;
+            this.posYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.posYNUD.Location = new System.Drawing.Point(119, 69);
+            this.posYNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.posYNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
+            this.posYNUD.Name = "posYNUD";
+            this.posYNUD.Size = new System.Drawing.Size(106, 20);
+            this.posYNUD.TabIndex = 248;
+            this.posYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // RewardTablesLB
             // 
             this.RewardTablesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -318,192 +504,6 @@ namespace DayZeEditor
             this.RewardTablesLB.Size = new System.Drawing.Size(331, 108);
             this.RewardTablesLB.TabIndex = 92;
             this.RewardTablesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // rotZNUD
-            // 
-            this.rotZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.rotZNUD.DecimalPlaces = 6;
-            this.rotZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.rotZNUD.Location = new System.Drawing.Point(230, 108);
-            this.rotZNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.rotZNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.rotZNUD.Name = "rotZNUD";
-            this.rotZNUD.Size = new System.Drawing.Size(106, 20);
-            this.rotZNUD.TabIndex = 253;
-            this.rotZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rotYNUD
-            // 
-            this.rotYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.rotYNUD.DecimalPlaces = 6;
-            this.rotYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.rotYNUD.Location = new System.Drawing.Point(118, 108);
-            this.rotYNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.rotYNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.rotYNUD.Name = "rotYNUD";
-            this.rotYNUD.Size = new System.Drawing.Size(106, 20);
-            this.rotYNUD.TabIndex = 252;
-            this.rotYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rotXNUD
-            // 
-            this.rotXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.rotXNUD.DecimalPlaces = 6;
-            this.rotXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.rotXNUD.Location = new System.Drawing.Point(6, 108);
-            this.rotXNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.rotXNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.rotXNUD.Name = "rotXNUD";
-            this.rotXNUD.Size = new System.Drawing.Size(106, 20);
-            this.rotXNUD.TabIndex = 251;
-            this.rotXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkLabel12
-            // 
-            this.darkLabel12.AutoSize = true;
-            this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel12.Location = new System.Drawing.Point(9, 92);
-            this.darkLabel12.Name = "darkLabel12";
-            this.darkLabel12.Size = new System.Drawing.Size(44, 13);
-            this.darkLabel12.TabIndex = 254;
-            this.darkLabel12.Text = "Rotaion";
-            // 
-            // posZNUD
-            // 
-            this.posZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.posZNUD.DecimalPlaces = 6;
-            this.posZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.posZNUD.Location = new System.Drawing.Point(231, 69);
-            this.posZNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.posZNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.posZNUD.Name = "posZNUD";
-            this.posZNUD.Size = new System.Drawing.Size(106, 20);
-            this.posZNUD.TabIndex = 249;
-            this.posZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // posYNUD
-            // 
-            this.posYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.posYNUD.DecimalPlaces = 6;
-            this.posYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.posYNUD.Location = new System.Drawing.Point(119, 69);
-            this.posYNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.posYNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.posYNUD.Name = "posYNUD";
-            this.posYNUD.Size = new System.Drawing.Size(106, 20);
-            this.posYNUD.TabIndex = 248;
-            this.posYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // posXNUD
-            // 
-            this.posXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.posXNUD.DecimalPlaces = 6;
-            this.posXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.posXNUD.Location = new System.Drawing.Point(7, 69);
-            this.posXNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.posXNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.posXNUD.Name = "posXNUD";
-            this.posXNUD.Size = new System.Drawing.Size(106, 20);
-            this.posXNUD.TabIndex = 247;
-            this.posXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkLabel67
-            // 
-            this.darkLabel67.AutoSize = true;
-            this.darkLabel67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel67.Location = new System.Drawing.Point(9, 53);
-            this.darkLabel67.Name = "darkLabel67";
-            this.darkLabel67.Size = new System.Drawing.Size(38, 13);
-            this.darkLabel67.TabIndex = 250;
-            this.darkLabel67.Text = "Center";
-            // 
-            // darkLabel1
-            // 
-            this.darkLabel1.AutoSize = true;
-            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(9, 305);
-            this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(79, 13);
-            this.darkLabel1.TabIndex = 256;
-            this.darkLabel1.Text = "Container Type";
-            // 
-            // ContainerTypeTB
-            // 
-            this.ContainerTypeTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ContainerTypeTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ContainerTypeTB.Location = new System.Drawing.Point(105, 302);
-            this.ContainerTypeTB.Name = "ContainerTypeTB";
-            this.ContainerTypeTB.Size = new System.Drawing.Size(232, 20);
-            this.ContainerTypeTB.TabIndex = 255;
-            // 
-            // DescriptionTB
-            // 
-            this.DescriptionTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DescriptionTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.DescriptionTB.Location = new System.Drawing.Point(7, 184);
-            this.DescriptionTB.Name = "DescriptionTB";
-            this.DescriptionTB.Size = new System.Drawing.Size(330, 96);
-            this.DescriptionTB.TabIndex = 257;
-            this.DescriptionTB.Text = "";
-            this.DescriptionTB.TextChanged += new System.EventHandler(this.DescriptionTB_TextChanged);
-            // 
-            // darkLabel3
-            // 
-            this.darkLabel3.AutoSize = true;
-            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel3.Location = new System.Drawing.Point(10, 168);
-            this.darkLabel3.Name = "darkLabel3";
-            this.darkLabel3.Size = new System.Drawing.Size(60, 13);
-            this.darkLabel3.TabIndex = 258;
-            this.darkLabel3.Text = "Description";
             // 
             // CapareTreasureManager
             // 
@@ -523,13 +523,13 @@ namespace DayZeEditor
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TriggerRadiusNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rotZNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rotYNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rotXNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TriggerRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posXNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posZNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posYNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.posXNUD)).EndInit();
             this.ResumeLayout(false);
 
         }

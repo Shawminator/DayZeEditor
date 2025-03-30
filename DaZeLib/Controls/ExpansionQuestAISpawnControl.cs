@@ -444,110 +444,90 @@ namespace DayZeEditor
 
         private void darkButton17_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI Patrol";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        _currentAISpawn._waypoints.Clear();
-                    }
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        _currentAISpawn._waypoints.Add(new Vec3(eo.Position));
-                    }
-                    StaticPatrolWayPointsLB.SelectedIndex = -1;
-                    StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
-                    StaticPatrolWayPointsLB.Refresh();
-                    StaticPatrolWaypointPOSXNUD.Visible = true;
-                    StaticPatrolWaypointPOSYNUD.Visible = true;
-                    StaticPatrolWaypointPOSZNUD.Visible = true;
-                    isDirty = true;
+                    _currentAISpawn._waypoints.Clear();
                 }
-            }
-        }
-
-        private void darkButton5_Click(object sender, EventArgs e)
-        {
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                switch (openFileDialog.FilterIndex)
                 {
-                    filePath = openFileDialog.FileName;
-                    fileContent = File.ReadAllLines(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        _currentAISpawn._waypoints.Clear();
-                    }
-                    for (int i = 0; i < fileContent.Length; i++)
-                    {
-                        if (fileContent[i] == "") continue;
-                        string[] linesplit = fileContent[i].Split('|');
-                        string[] XYZ = linesplit[1].Split(' ');
-                        _currentAISpawn._waypoints.Add(new Vec3(XYZ));
-
-                    }
-                    StaticPatrolWayPointsLB.SelectedIndex = -1;
-                    StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
-                    StaticPatrolWayPointsLB.Refresh();
-                    StaticPatrolWaypointPOSXNUD.Visible = true;
-                    StaticPatrolWaypointPOSYNUD.Visible = true;
-                    StaticPatrolWaypointPOSZNUD.Visible = true;
-                    isDirty = true;
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        for (int i = 0; i < fileContent.Length; i++)
+                        {
+                            if (fileContent[i] == "") continue;
+                            string[] linesplit = fileContent[i].Split('|');
+                            string[] XYZ = linesplit[1].Split(' ');
+                            _currentAISpawn._waypoints.Add(new Vec3(XYZ));
+                        }
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        foreach (SpawnObjects so in newobjectspawner.Objects)
+                        {
+                            _currentAISpawn._waypoints.Add(new Vec3(so.pos));
+                        }
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            _currentAISpawn._waypoints.Add(new Vec3(eo.Position));
+                        }
+                        break;
                 }
+                StaticPatrolWayPointsLB.SelectedIndex = -1;
+                StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
+                StaticPatrolWayPointsLB.Refresh();
+                StaticPatrolWaypointPOSXNUD.Visible = true;
+                StaticPatrolWaypointPOSYNUD.Visible = true;
+                StaticPatrolWaypointPOSZNUD.Visible = true;
+                isDirty = true;
             }
         }
 
         private void darkButton14_Click(object sender, EventArgs e)
         {
-            DZE newdze = new DZE()
+            SaveFileDialog save = new SaveFileDialog();
+            save.Title = "Export AI Patrol";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+            save.FileName = _currentAISpawn.Name;
+            if (save.ShowDialog() == DialogResult.OK)
             {
-                MapName = ""
-            };
-            int m_Id = 0;
-            foreach (Vec3 array in _currentAISpawn._waypoints)
-            {
-                Editorobject eo = new Editorobject()
+                switch (save.FilterIndex)
                 {
-                    Type = "eAI_SurvivorM_Jose",
-                    DisplayName = "eAI_SurvivorM_Jose",
-                    Position = array.getfloatarray(),
-                    Orientation = new float[] { 0, 0, 0 },
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(eo);
-                m_Id++;
-            }
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
-            }
-        }
-
-        private void StaticPatrolExporttoMapButton_Click(object sender, EventArgs e)
-        {
-            StringBuilder SB = new StringBuilder();
-            foreach (Vec3 array in _currentAISpawn._waypoints)
-            {
-                SB.AppendLine("eAI_SurvivorM_Lewis|" + array.GetString() + "|0.0 0.0 0.0");
-            }
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(save.FileName + ".map", SB.ToString());
+                    case 1:
+                        StringBuilder SB = new StringBuilder();
+                        foreach (Vec3 array in _currentAISpawn._waypoints)
+                        {
+                            SB.AppendLine("eAI_SurvivorM_Lewis|" + array.GetString() + "|0.0 0.0 0.0");
+                        }
+                        File.WriteAllText(save.FileName, SB.ToString());
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+                        foreach (Vec3 array in _currentAISpawn._waypoints)
+                        {
+                            SpawnObjects newobject = new SpawnObjects();
+                            newobject.name = "eAI_SurvivorM_Lewis";
+                            newobject.pos = array.getfloatarray();
+                            newobject.ypr = new float[] { 0, 0, 0 };
+                            newobject.scale = 1;
+                            newobject.enableCEPersistency = false;
+                            newobjectspawner.Objects.Add(newobject);
+                        }
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
+                }
             }
         }
 

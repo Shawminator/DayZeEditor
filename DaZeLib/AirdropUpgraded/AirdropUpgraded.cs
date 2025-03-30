@@ -18,6 +18,7 @@ namespace DayZeLib
         public BindingList<Location> Locations { get; set; }
         public BindingList<Dropzone> DropZones { get; set; }
         public BindingList<Droptype> DropTypes { get; set; }
+        public VPP_Map VPP_Map { get; set; }
 
         public AirdropUpgraded()
         {
@@ -48,7 +49,7 @@ namespace DayZeLib
     {
         public decimal Width { get; set; }
         public decimal Height { get; set; }
-        public decimal Offset { get; set; }
+        public string MapName { get; set; }
     }
 
     public class Aircraft
@@ -57,7 +58,7 @@ namespace DayZeLib
         public int StartAltMSL { get; set; }
         public int DropAGL { get; set; }
         public int DropOffset { get; set; }
-        public int DropAccuracy { get; set; }
+        public decimal DropAccuracy { get; set; }
         public decimal TerrainFollowing { get; set; }
     }
 

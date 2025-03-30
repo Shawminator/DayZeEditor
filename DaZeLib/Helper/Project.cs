@@ -155,12 +155,15 @@ namespace DayZeEditor
         public mapgroupproto mapgroupproto { get; set; }
         [JsonIgnore]
         public mapgrouppos mapgrouppos { get; set; }
-
+        [JsonIgnore]
+        public cfgenviromentConfig cfgenviroment { get; set; }  
         [JsonIgnore]
         public int TotalNomCount { get; set; }
-
+        [JsonIgnore]
         private TypesFile vanillaTypes;
+        [JsonIgnore]
         private BindingList<TypesFile> ModTypesList;
+        [JsonIgnore]
         public BindingList<territoriesConfig> territoriesList;
 
         public Project()
@@ -408,15 +411,18 @@ namespace DayZeEditor
                 }
             }
         }
+        public void SetCfgEnviroment()
+        {
+            cfgenviroment = new cfgenviromentConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgenvironment.xml");
+        }
         public void SetTerritories()
         {
             territoriesList = new BindingList<territoriesConfig>();
-            string[] Territoryfiles = Directory.GetFiles(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\env");
             Console.WriteLine("****Starting Territory files****");
-            foreach (string file in Territoryfiles)
+            foreach(envTerritoriesFile envtf in cfgenviroment.cfgenvironment.territories.file)
             {
-                if (Path.GetExtension(file) == ".xml")
-                    territoriesList.Add(new territoriesConfig(file));
+                string file = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + envtf.path;
+                territoriesList.Add(new territoriesConfig(file));
             }
             Console.WriteLine("****End Territory files****");
         }
@@ -642,5 +648,7 @@ namespace DayZeEditor
                 tfile.isDirty = true;
             }
         }
+
+
     }
 }

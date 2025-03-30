@@ -433,12 +433,12 @@ namespace DayZeEditor
             this.DropLocationZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.DropLocationZNUD.Location = new System.Drawing.Point(150, 305);
             this.DropLocationZNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.DropLocationZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -454,12 +454,12 @@ namespace DayZeEditor
             this.DropLocationXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.DropLocationXNUD.Location = new System.Drawing.Point(61, 305);
             this.DropLocationXNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.DropLocationXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -495,15 +495,10 @@ namespace DayZeEditor
             this.DroplocationRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.DroplocationRadiusNUD.Location = new System.Drawing.Point(61, 331);
             this.DroplocationRadiusNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
-            this.DroplocationRadiusNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
             this.DroplocationRadiusNUD.Name = "DroplocationRadiusNUD";
             this.DroplocationRadiusNUD.Size = new System.Drawing.Size(83, 20);
             this.DroplocationRadiusNUD.TabIndex = 134;

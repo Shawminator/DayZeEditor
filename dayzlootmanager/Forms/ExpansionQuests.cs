@@ -1073,109 +1073,133 @@ namespace DayZeEditor
         }
         private void darkButton9_Click(object sender, EventArgs e)
         {
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI Patrol";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                DialogResult dialogResult = MessageBox.Show("Clear Exisitng Positions?", "Clear positions", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    filePath = openFileDialog.FileName;
-                    fileContent = File.ReadAllLines(filePath);
-                    currentQuestNPC._Waypoints = new BindingList<Vec3>();
-                    for (int i = 0; i < fileContent.Length; i++)
-                    {
-                        if (fileContent[i] == "") continue;
-                        string[] linesplit = fileContent[i].Split('|');
-                        string[] XYZ = linesplit[1].Split(' ');
-
-                        currentQuestNPC._Waypoints.Add(new Vec3(XYZ));
-                    }
-                    QuestNPCWaypointsLB.SelectedIndex = -1;
-                    QuestNPCWaypointsLB.SelectedIndex = QuestNPCWaypointsLB.Items.Count - 1;
-                    QuestNPCWaypointsLB.Invalidate();
-                    currentQuestNPC.isDirty = true;
+                    currentQuestNPC._Waypoints.Clear();
                 }
+                int i = 0;
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = new string[] { };
+
+                        fileContent = File.ReadAllLines(filePath);
+                        currentQuestNPC._Waypoints = new BindingList<Vec3>();
+                        for (int ii = 0; ii < fileContent.Length; ii++)
+                        {
+                            if (fileContent[ii] == "") continue;
+                            string[] linesplit = fileContent[ii].Split('|');
+                            string[] XYZ = linesplit[1].Split(' ');
+                            if (i == 0)
+                            {
+                                currentQuestNPC._Position = new Vec3(XYZ);
+                                QuestNPCsPOSXNUD.Value = (decimal)currentQuestNPC.Position[0];
+                                QuestNPCsPOSYNUD.Value = (decimal)currentQuestNPC.Position[1];
+                                QuestNPCsPOSZNUD.Value = (decimal)currentQuestNPC.Position[2];
+                            }
+                            else
+                            {
+                                currentQuestNPC._Waypoints.Add(new Vec3(XYZ));
+                            }
+                        }
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        foreach (SpawnObjects so in newobjectspawner.Objects)
+                        {
+                            if (i == 0)
+                            {
+                                currentQuestNPC._Position = new Vec3(so.pos);
+                                QuestNPCsPOSXNUD.Value = (decimal)currentQuestNPC.Position[0];
+                                QuestNPCsPOSYNUD.Value = (decimal)currentQuestNPC.Position[1];
+                                QuestNPCsPOSZNUD.Value = (decimal)currentQuestNPC.Position[2];
+                            }
+                            else
+                            {
+                                currentQuestNPC._Waypoints.Add(new Vec3(so.pos));
+                            }
+                        }
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            if (i == 0)
+                            {
+                                currentQuestNPC._Position = new Vec3(eo.Position);
+                                QuestNPCsPOSXNUD.Value = (decimal)currentQuestNPC.Position[0];
+                                QuestNPCsPOSYNUD.Value = (decimal)currentQuestNPC.Position[1];
+                                QuestNPCsPOSZNUD.Value = (decimal)currentQuestNPC.Position[2];
+                            }
+                            else
+                            {
+                                currentQuestNPC._Waypoints.Add(new Vec3(eo.Position));
+                            }
+                        }
+                        break;
+                }
+                QuestNPCWaypointsLB.SelectedIndex = -1;
+                QuestNPCWaypointsLB.SelectedIndex = QuestNPCWaypointsLB.Items.Count - 1;
+                QuestNPCWaypointsLB.Invalidate();
+                currentQuestNPC.isDirty = true;
             }
         }
         private void darkButton10_Click(object sender, EventArgs e)
         {
-            StringBuilder SB = new StringBuilder();
-            SB.AppendLine(currentQuestNPC.NPCName + "|" + currentQuestNPC.Position[0].ToString("F6") + " " + currentQuestNPC.Position[1].ToString("F6") + " " + currentQuestNPC.Position[2].ToString("F6") + "|0.0 0.0 0.0");
-            foreach (Vec3 vec3 in currentQuestNPC._Waypoints)
-            {
-                SB.AppendLine(currentQuestNPC.NPCName + "|" + vec3.GetString() + "|0.0 0.0 0.0");
-            }
             SaveFileDialog save = new SaveFileDialog();
+            save.Title = "Export Quest Ai Waypoints";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+            save.FileName = currentQuestNPC.NPCName + "-"+ currentQuestNPC.ID;
             if (save.ShowDialog() == DialogResult.OK)
             {
-                File.WriteAllText(save.FileName + ".map", SB.ToString());
-            }
-        }
-        private void darkButton33_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                switch (save.FilterIndex)
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        currentQuestNPC._Waypoints.Clear();
-                    }
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        int i = 0;
-                        if (i == 0)
+                    case 1:
+
+                        StringBuilder SB = new StringBuilder();
+                        SB.AppendLine(currentQuestNPC.NPCName + "|" + currentQuestNPC._Position.GetString() + "|" + currentQuestNPC._Orientation.GetString());
+                        foreach (Vec3 vec3 in currentQuestNPC._Waypoints)
                         {
-                            currentQuestNPC._Position = new Vec3(eo.Position);
-                            QuestNPCsPOSXNUD.Value = (decimal)currentQuestNPC.Position[0];
-                            QuestNPCsPOSYNUD.Value = (decimal)currentQuestNPC.Position[1];
-                            QuestNPCsPOSZNUD.Value = (decimal)currentQuestNPC.Position[2];
+                            SB.AppendLine(currentQuestNPC.NPCName + "|" + vec3.GetString() + "|0.0 0.0 0.0");
                         }
-                        else
+                        File.WriteAllText(save.FileName + ".map", SB.ToString());
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+                        SpawnObjects newobject = new SpawnObjects()
                         {
-                            currentQuestNPC._Waypoints.Add(new Vec3(eo.Position));
+                            name = currentQuestNPC.NPCName,
+                            pos = currentQuestNPC._Position.getfloatarray(),
+                            ypr = currentQuestNPC._Orientation.getfloatarray(),
+                            scale = 1,
+                            enableCEPersistency = false
+                        };
+                        newobjectspawner.Objects.Add(newobject);
+                        foreach (Vec3 array in currentQuestNPC._Waypoints)
+                        {
+                            newobject = new SpawnObjects()
+                            {
+                                name = currentQuestNPC.NPCName,
+                                pos = array.getfloatarray(),
+                                ypr = new float[] { 0, 0, 0 },
+                                scale = 1,
+                                enableCEPersistency = false
+                            };
+                            newobjectspawner.Objects.Add(newobject);
                         }
-                    }
-                    QuestNPCWaypointsLB.SelectedIndex = -1;
-                    QuestNPCWaypointsLB.SelectedIndex = QuestNPCWaypointsLB.Items.Count - 1;
-                    QuestNPCWaypointsLB.Refresh();
-                    currentQuestNPC.isDirty = true;
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
                 }
-            }
-        }
-        private void darkButton30_Click(object sender, EventArgs e)
-        {
-            DZE newdze = new DZE()
-            {
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            int m_Id = 0;
-            foreach (Vec3 array in currentQuestNPC._Waypoints)
-            {
-                Editorobject eo = new Editorobject()
-                {
-                    Type = currentQuestNPC.NPCName,
-                    DisplayName = currentQuestNPC.NPCName,
-                    Position = array.getfloatarray(),
-                    Orientation = new float[] { 0, 0, 0 },
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(eo);
-                m_Id++;
-            }
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
             }
         }
         private void NPCQuestNPCTypeCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -4487,107 +4511,90 @@ namespace DayZeEditor
         }
         private void darkButton66_Click(object sender, EventArgs e)
         {
-
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import Treasure Hunt Positions";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    filePath = openFileDialog.FileName;
-                    fileContent = File.ReadAllLines(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        CurrentTreasureHunt._Positions.Clear();
-                    }
-                    for (int i = 0; i < fileContent.Length; i++)
-                    {
-                        if (fileContent[i] == "") continue;
-                        string[] linesplit = fileContent[i].Split('|');
-                        string[] XYZ = linesplit[1].Split(' ');
-                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[1]), Convert.ToDecimal(XYZ[2]) };
-                        CurrentTreasureHunt._Positions.Add(new Vec3(newfloatarray));
-
-                    }
-                    ObjectivesTreasureHuntPositionsLB.SelectedIndex = -1;
-                    ObjectivesTreasureHuntPositionsLB.SelectedIndex = ObjectivesTreasureHuntPositionsLB.Items.Count - 1;
-                    ObjectivesTreasureHuntPositionsLB.Refresh();
-                    CurrentTreasureHunt.isDirty = true;
+                    CurrentTreasureHunt._Positions.Clear();
                 }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        for (int i = 0; i < fileContent.Length; i++)
+                        {
+                            if (fileContent[i] == "") continue;
+                            string[] linesplit = fileContent[i].Split('|');
+                            string[] XYZ = linesplit[1].Split(' ');
+                            decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[1]), Convert.ToDecimal(XYZ[2]) };
+                            CurrentTreasureHunt._Positions.Add(new Vec3(newfloatarray));
+
+                        }
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        foreach (SpawnObjects so in newobjectspawner.Objects)
+                        {
+                            CurrentTreasureHunt._Positions.Add(new Vec3(so.pos));
+                        }
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            CurrentTreasureHunt._Positions.Add(new Vec3(eo.Position));
+                        }
+                        break;
+                }
+                ObjectivesTreasureHuntPositionsLB.SelectedIndex = -1;
+                ObjectivesTreasureHuntPositionsLB.SelectedIndex = ObjectivesTreasureHuntPositionsLB.Items.Count - 1;
+                ObjectivesTreasureHuntPositionsLB.Refresh();
+                CurrentTreasureHunt.isDirty = true;
             }
         }
         private void darkButton65_Click(object sender, EventArgs e)
         {
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            StringBuilder SB = new StringBuilder();
-            foreach (Vec3 v3 in CurrentTreasureHunt._Positions)
-            {
-                SB.AppendLine("UndergroundStash|" + v3.GetString() + "|0.0 0.0 0.0");
-            }
             SaveFileDialog save = new SaveFileDialog();
+            save.Title = "Export Treasure Hunt Positions";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+            save.FileName = "Treasure_Hunt-" + CurrentTreasureHunt.ID.ToString();
             if (save.ShowDialog() == DialogResult.OK)
             {
-                File.WriteAllText(save.FileName + ".map", SB.ToString());
-            }
-        }
-        private void darkButton64_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                switch (save.FilterIndex)
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        CurrentTreasureHunt._Positions.Clear();
-                    }
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        CurrentTreasureHunt._Positions.Add(new Vec3(eo.Position));
-                    }
-                    ObjectivesTreasureHuntPositionsLB.SelectedIndex = -1;
-                    ObjectivesTreasureHuntPositionsLB.SelectedIndex = ObjectivesTreasureHuntPositionsLB.Items.Count - 1;
-                    ObjectivesTreasureHuntPositionsLB.Refresh();
-                    CurrentTreasureHunt.isDirty = true;
+                    case 1:
+                        StringBuilder SB = new StringBuilder();
+                        foreach (Vec3 v3 in CurrentTreasureHunt._Positions)
+                        {
+                            SB.AppendLine("UndergroundStash|" + v3.GetString() + "|0.0 0.0 0.0");
+                        }
+                        File.WriteAllText(save.FileName, SB.ToString());
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+                        foreach (Vec3 v3 in CurrentTreasureHunt._Positions)
+                        {
+                            SpawnObjects newobject = new SpawnObjects();
+                            newobject.name = "UndergroundStash";
+                            newobject.pos = v3.getfloatarray();
+                            newobject.ypr = new float[] { 0, 0, 0 };
+                            newobject.scale = 1;
+                            newobject.enableCEPersistency = false;
+                            newobjectspawner.Objects.Add(newobject);
+                        }
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
                 }
-            }
-        }
-        private void darkButton63_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            DZE newdze = new DZE()
-            {
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            int m_Id = 0;
-            foreach (Vec3 v3 in CurrentTreasureHunt._Positions)
-            {
-                Editorobject eo = new Editorobject()
-                {
-                    Type = "UndergroundStash",
-                    DisplayName = "UndergroundStash",
-                    Position = v3.getfloatarray(),
-                    Orientation = new float[] { 0, 0, 0 },
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(eo);
-                m_Id++;
-            }
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
             }
         }
         private void ObjectivesTreasureHuntPositionsXNUD_ValueChanged(object sender, EventArgs e)

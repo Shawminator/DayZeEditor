@@ -128,6 +128,7 @@ namespace DayZeEditor
             this.ProjectTSB = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.FTPTSB = new System.Windows.Forms.ToolStripButton();
+            this.darkButton4 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -995,6 +996,7 @@ namespace DayZeEditor
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.darkButton4);
             this.groupBox7.Controls.Add(this.listView3);
             this.groupBox7.Controls.Add(this.darkButton6);
             this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
@@ -1036,7 +1038,7 @@ namespace DayZeEditor
             this.darkButton6.Location = new System.Drawing.Point(6, 526);
             this.darkButton6.Name = "darkButton6";
             this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton6.Size = new System.Drawing.Size(300, 23);
+            this.darkButton6.Size = new System.Drawing.Size(142, 23);
             this.darkButton6.TabIndex = 53;
             this.darkButton6.Text = "Download And Install";
             this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
@@ -1168,6 +1170,16 @@ namespace DayZeEditor
             this.FTPTSB.Size = new System.Drawing.Size(60, 22);
             this.FTPTSB.Text = "FTP/SFTP";
             this.FTPTSB.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // darkButton4
+            // 
+            this.darkButton4.Location = new System.Drawing.Point(164, 526);
+            this.darkButton4.Name = "darkButton4";
+            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton4.Size = new System.Drawing.Size(142, 23);
+            this.darkButton4.TabIndex = 55;
+            this.darkButton4.Text = "Update Map Sizes";
+            this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
             // 
             // ProjectPanel
             // 
@@ -1313,5 +1325,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ListView listView3;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private DarkUI.Controls.DarkButton darkButton4;
     }
 }

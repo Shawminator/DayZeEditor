@@ -18,6 +18,7 @@ namespace DayZeLib
         public string TraderPath { get; set; }
         public bool SortedbyDisplayName { get; set; }
         public List<Traders> Markedfordelete { get; set; }
+        public List<string> duplicatefiles { get; set; }
 
         public TradersList()
         {
@@ -77,6 +78,7 @@ namespace DayZeLib
             StringBuilder sb = new StringBuilder();
             sb.Append("The below files are duplicated, please manually fix:" + Environment.NewLine);
             bool printmessage = false;
+            duplicatefiles = new List<string>();
             foreach (Categories cat in marketCats.CatList)
             {
                 foreach (marketItem item in cat.Items)
@@ -84,6 +86,7 @@ namespace DayZeLib
                     if (duplist.Any(x => x.Split(',')[0] == item.ClassName))
                     {
                         printmessage = true;
+                        duplicatefiles.Add(item.ClassName);
                         sb.Append(duplist.First(x => x.Split(',')[0] == item.ClassName) + "," + cat.DisplayName + Environment.NewLine);
                     }
                     duplist.Add(item.ClassName + "," + cat.DisplayName);
@@ -91,6 +94,8 @@ namespace DayZeLib
             }
             if (printmessage)
             {
+                Console.WriteLine();
+                Console.Write(sb.ToString());
                 MessageBox.Show(sb.ToString());
             }
         }
@@ -115,7 +120,7 @@ namespace DayZeLib
         }
         public Traders GetTraderFromName(string name)
         {
-            return Traderlist.FirstOrDefault(x => x.Filename == name);
+            return Traderlist.FirstOrDefault(x => x.Filename.ToLower() == name.ToLower());
         }
         public void removeTrader(Traders removeitem)
         {

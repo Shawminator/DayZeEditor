@@ -498,6 +498,49 @@ namespace DayZeLib
                 }
             }
         }
+
+        public void ImportMapFile(string[] fileContent, bool importTrigger, bool importrtotation)
+        {
+            if (_spawnPositions == null)
+                _spawnPositions = new BindingList<Vec3PandR>();
+            for (int i = 0; i < fileContent.Length; i++)
+            {
+                if (fileContent[i] == "") continue;
+                string[] linesplit = fileContent[i].Split('|');
+                Vec3 newvec3 = new Vec3(linesplit[1].Split(' '));
+                if (linesplit[0] == "GiftBox_Large_1")
+                {
+                    if (importTrigger)
+                    {
+                        _triggerPosition = new Vec3PandR(linesplit[1] + "|" + linesplit[2], importrtotation);
+                    }
+                }
+                else if (linesplit[0] == "GiftBox_Small_1")
+                {
+                    _spawnPositions.Add(new Vec3PandR(linesplit[1] + "|" + linesplit[2], importrtotation));
+                }
+            }
+        }
+
+        public void ImportOpbjectSpawner(ObjectSpawnerArr newobjectspawner, bool importTrigger, bool importrtotation)
+        {
+            if (_spawnPositions == null)
+                _spawnPositions = new BindingList<Vec3PandR>();
+            foreach (SpawnObjects so in newobjectspawner.Objects)
+            {
+                if (so.name == "GiftBox_Large_1")
+                {
+                    if (importTrigger)
+                    {
+                        _triggerPosition = new Vec3PandR(so.pos, so.ypr, importrtotation);
+                    }
+                }
+                else if (so.name == "GiftBox_Small_1")
+                {
+                    _spawnPositions.Add(new Vec3PandR(so.pos, so.ypr, importrtotation));
+                }
+            }
+        }
     }
     public class MPG_Spawner_mappingData
     {
@@ -525,6 +568,50 @@ namespace DayZeLib
                     pos = eo.Position,
                     ypr = eo.Orientation,
                     scale = eo.Scale,
+                    enableCEPersistency = 0
+                };
+                mappingObjects.Add(newobject);
+            }
+        }
+
+        public void ImportMapFile(string[] fileContent, bool wipeobjects)
+        {
+            if (mappingObjects == null)
+                mappingObjects = new BindingList<ITEM_SpawnerObject>();
+            if (wipeobjects)
+                mappingObjects = new BindingList<ITEM_SpawnerObject>();
+            for (int i = 0; i < fileContent.Length; i++)
+            {
+                if (fileContent[i] == "") continue;
+                string[] linesplit = fileContent[i].Split('|');
+                string[] XYZ = linesplit[1].Split(' ');
+                string[] YPR = linesplit[2].Split(' ');
+                ITEM_SpawnerObject newobject = new ITEM_SpawnerObject()
+                {
+                    name = linesplit[0],
+                    pos = new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) },
+                    ypr = new float[] { Convert.ToSingle(YPR[0]), Convert.ToSingle(YPR[1]), Convert.ToSingle(YPR[2]) },
+                    scale = 1,
+                    enableCEPersistency = 0
+                };
+                mappingObjects.Add(newobject);
+            }
+        }
+
+        public void ImportObjectSpawner(ObjectSpawnerArr newobjectspawner, bool wipeobjects)
+        {
+            if (mappingObjects == null)
+                mappingObjects = new BindingList<ITEM_SpawnerObject>();
+            if (wipeobjects)
+                mappingObjects = new BindingList<ITEM_SpawnerObject>();
+            foreach (SpawnObjects so in newobjectspawner.Objects)
+            {
+                ITEM_SpawnerObject newobject = new ITEM_SpawnerObject()
+                {
+                    name = so.name,
+                    pos = so.pos,
+                    ypr = so.ypr,
+                    scale = so.scale,
                     enableCEPersistency = 0
                 };
                 mappingObjects.Add(newobject);

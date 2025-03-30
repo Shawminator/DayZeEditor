@@ -12,6 +12,8 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
+using static System.Windows.Forms.Design.AxImporter;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DayZeEditor
 {
@@ -22,6 +24,7 @@ namespace DayZeEditor
         public bool IsDynamicAiLoaded = false;
         public int AIPatrolScale = 1;
         public ExpansionAISettings AISettings { get; set; }
+        public ExpansionAILocationSettings ExpansionAILocationSettings { get; set; }
         public ExpansionAIPatrolSettings AIPatrolSettings { get; set; }
         public BindingList<AILoadouts> LoadoutList { get; private set; }
         public BindingList<string> LoadoutNameList { get; private set; }
@@ -34,6 +37,7 @@ namespace DayZeEditor
         public string AISettingsPath;
         public string AILoadoutsPath;
         public string AIPatrolSettingsPath;
+        public string AILocationsPath;
         public string AIDynamicSettingsPath;
         public TypesFile vanillatypes;
         public TypesFile Expansiontypes;
@@ -148,14 +152,46 @@ namespace DayZeEditor
             AIPatrolSettings.Filename = AIPatrolSettingsPath;
             SetupAIPatrolSettings();
 
+
+            AILocationsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\AILocationSettings.json";
+            if (!File.Exists(AILocationsPath))
+            {
+                ExpansionAILocationSettings = new ExpansionAILocationSettings();
+                ExpansionAILocationSettings.isDirty = true;
+                needtosave = true;
+                Console.WriteLine(Path.GetFileName(AILocationsPath) + " File not found, Creating new....");
+            }
+            else
+            {
+                Console.WriteLine("serializing " + Path.GetFileName(AILocationsPath));
+                var options = new JsonSerializerOptions
+                {
+                    Converters = { new BoolConverter() },
+                };
+                ExpansionAILocationSettings = JsonSerializer.Deserialize<ExpansionAILocationSettings>(File.ReadAllText(AILocationsPath), options);
+                ExpansionAILocationSettings.isDirty = false;
+                if (ExpansionAILocationSettings.checkver())
+                    needtosave = true;
+            }
+            ExpansionAILocationSettings.Filename = AILocationsPath;
+            ExpansionAILocationSettings.GetVec3Points();
+            SetupExpansionAILocationSettingss();
+
+
             MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz", currentproject.MapSize);
             //MapData.loadpoints();
 
             pictureBox2.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
             pictureBox2.Size = new Size(currentproject.MapSize, currentproject.MapSize);
             pictureBox2.Paint += new PaintEventHandler(DrawAIPAtrols);
-            trackBar4.Value = 1;
+            trackBar2.Value = 1;
             SetAIPatrolZonescale();
+
+            pictureBox3.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
+            pictureBox3.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+            pictureBox3.Paint += new PaintEventHandler(DrawAILocations);
+            trackBar4.Value = 1;
+            SetAILocationZonescale();
 
             if (File.Exists(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\AI\\Spatial\\SpatialSettings.json") &&
                 File.Exists(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\AI\\Spatial\\SpatialPlayerSettings.json") &&
@@ -239,10 +275,12 @@ namespace DayZeEditor
             tabControl2.ItemSize = new Size(0, 1);
             tabControl3.ItemSize = new Size(0, 1);
             tabControl4.ItemSize = new Size(0, 1);
+            tabControl5.ItemSize = new Size(0, 1);
             toolStripButton8.Checked = true;
             toolStripButton4.Checked = true;
             toolStripButton7.Checked = true;
             toolStripButton12.Checked = true;
+            toolStripButton15.Checked = true;
             if (needtosave)
             {
                 savefiles(true);
@@ -250,6 +288,8 @@ namespace DayZeEditor
 
 
         }
+
+
 
         private void ExpansionAI_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -360,6 +400,20 @@ namespace DayZeEditor
                     File.WriteAllText(AILO.Filename, jsonString);
                     midifiedfiles.Add(Path.GetFileName(AILO.Filename));
                 }
+            }
+            if(ExpansionAILocationSettings.isDirty)
+            {
+                ExpansionAILocationSettings.SetAILocationsPoints();
+                if (currentproject.Createbackups && File.Exists(ExpansionAILocationSettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(ExpansionAILocationSettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(ExpansionAILocationSettings.Filename, Path.GetDirectoryName(ExpansionAILocationSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(ExpansionAILocationSettings.Filename) + ".bak", true);
+                }
+                ExpansionAILocationSettings.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping, Converters = { new BoolConverter() } };
+                string jsonString = JsonSerializer.Serialize(ExpansionAILocationSettings, options);
+                File.WriteAllText(ExpansionAILocationSettings.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(ExpansionAILocationSettings.Filename));
             }
 
             if (IsDynamicAiLoaded)
@@ -472,6 +526,13 @@ namespace DayZeEditor
         {
             tabControl1.SelectedIndex = 0;
         }
+        private void toolStripButton14_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 4;
+            toolStripButton15.AutoSize = true;
+            toolStripButton16.AutoSize = true;
+            toolStripButton17.AutoSize = true;
+        }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
@@ -493,6 +554,7 @@ namespace DayZeEditor
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             toolStripButton8.Checked = false;
+            toolStripButton14.Checked = false;
             toolStripButton3.Checked = false;
             toolStripButton1.Checked = false;
             toolStripButton6.Checked = false;
@@ -509,6 +571,9 @@ namespace DayZeEditor
                     break;
                 case 3:
                     toolStripButton6.Checked = true;
+                    break;
+                case 4:
+                    toolStripButton14.Checked = true;
                     break;
             }
         }
@@ -576,12 +641,10 @@ namespace DayZeEditor
         {
             tabControl4.SelectedIndex = 0;
         }
-
         private void toolStripButton13_Click(object sender, EventArgs e)
         {
             tabControl4.SelectedIndex = 1;
         }
-
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
             toolStripButton12.Checked = false;
@@ -595,6 +658,37 @@ namespace DayZeEditor
                     toolStripButton13.Checked = true;
                     break;
             }
+        }
+        private void toolStripButton15_Click(object sender, EventArgs e)
+        {
+            tabControl5.SelectedIndex = 0;
+        }
+        private void toolStripButton16_Click(object sender, EventArgs e)
+        {
+            tabControl5.SelectedIndex = 1;
+        }
+        private void toolStripButton17_Click(object sender, EventArgs e)
+        {
+            tabControl5.SelectedIndex = 2;
+        }
+        private void tabControl5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            toolStripButton15.Checked = false;
+            toolStripButton16.Checked = false;
+            toolStripButton17.Checked = false;
+            switch (tabControl5.SelectedIndex)
+            {
+                case 0:
+                    toolStripButton15.Checked = true;
+                    break;
+                case 1:
+                    toolStripButton16.Checked = true;
+                    break;
+                case 2:
+                    toolStripButton17.Checked = true;
+                    break;
+            }
+            pictureBox3.Invalidate();
         }
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
@@ -611,6 +705,9 @@ namespace DayZeEditor
                     break;
                 case 3:
                     Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\AI\\Spatial");
+                    break;
+                case 4:
+                     Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings");
                     break;
             }
         }
@@ -1118,63 +1215,90 @@ namespace DayZeEditor
             StaticPatrolWaypointPOSZNUD.Value = (decimal)CurrentWapypoint.Z;
             useraction = true;
         }
-        private void darkButton5_Click(object sender, EventArgs e)
+        private void ImportObjectPositions(object sender, EventArgs e)
         {
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI Patrol";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    filePath = openFileDialog.FileName;
-                    fileContent = File.ReadAllLines(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        CurrentPatrol._waypoints.Clear();
-                    }
-                    for (int i = 0; i < fileContent.Length; i++)
-                    {
-                        if (fileContent[i] == "") continue;
-                        string[] linesplit = fileContent[i].Split('|');
-                        string[] XYZ = linesplit[1].Split(' ');
-                        CurrentPatrol._waypoints.Add(new Vec3(XYZ));
-
-                    }
-                    StaticPatrolWayPointsLB.SelectedIndex = -1;
-                    StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
-                    StaticPatrolWayPointsLB.Refresh();
-                    StaticPatrolWaypointPOSXNUD.Visible = true;
-                    StaticPatrolWaypointPOSYNUD.Visible = true;
-                    StaticPatrolWaypointPOSZNUD.Visible = true;
-                    AIPatrolSettings.isDirty = true;
+                    CurrentPatrol._waypoints.Clear();
                 }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        for (int i = 0; i < fileContent.Length; i++)
+                        {
+                            if (fileContent[i] == "") continue;
+                            string[] linesplit = fileContent[i].Split('|');
+                            string[] XYZ = linesplit[1].Split(' ');
+                            CurrentPatrol._waypoints.Add(new Vec3(XYZ));
+                        }
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        foreach(SpawnObjects so in newobjectspawner.Objects)
+                        {
+                            CurrentPatrol._waypoints.Add(new Vec3(so.pos));
+                        }
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            CurrentPatrol._waypoints.Add(new Vec3(eo.Position));
+                        }
+                        break;
+                }
+                StaticPatrolWayPointsLB.SelectedIndex = -1;
+                StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
+                StaticPatrolWayPointsLB.Refresh();
+                StaticPatrolWaypointPOSXNUD.Visible = true;
+                StaticPatrolWaypointPOSYNUD.Visible = true;
+                StaticPatrolWaypointPOSZNUD.Visible = true;
+                AIPatrolSettings.isDirty = true;
             }
         }
-        private void darkButton17_Click(object sender, EventArgs e)
+        private void ExportObjectPositions(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            SaveFileDialog save = new SaveFileDialog();
+            save.Title = "Export AI Patrol";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+            save.FileName = CurrentPatrol.Name;
+            if (save.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                switch (save.FilterIndex)
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        CurrentPatrol._waypoints.Clear();
-                    }
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        CurrentPatrol._waypoints.Add(new Vec3(eo.Position));
-                    }
-                    StaticPatrolWayPointsLB.SelectedIndex = -1;
-                    StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
-                    StaticPatrolWayPointsLB.Refresh();
-                    StaticPatrolWaypointPOSXNUD.Visible = true;
-                    StaticPatrolWaypointPOSYNUD.Visible = true;
-                    StaticPatrolWaypointPOSZNUD.Visible = true;
-                    AIPatrolSettings.isDirty = true;
+                    case 1:
+                        StringBuilder SB = new StringBuilder();
+                        foreach (Vec3 array in CurrentPatrol._waypoints)
+                        {
+                            SB.AppendLine("eAI_SurvivorM_Lewis|" + array.GetString() + "|0.0 0.0 0.0");
+                        }
+                        File.WriteAllText(save.FileName, SB.ToString());
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+                        foreach (Vec3 array in CurrentPatrol._waypoints)
+                        {
+                            SpawnObjects newobject = new SpawnObjects();
+                            newobject.name = "eAI_SurvivorM_Lewis";
+                            newobject.pos = array.getfloatarray();
+                            newobject.ypr = new float[] { 0, 0, 0 };
+                            newobject.scale = 1;
+                            newobject.enableCEPersistency = false;
+                            newobjectspawner.Objects.Add(newobject);
+                        }
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
                 }
             }
         }
@@ -1441,53 +1565,6 @@ namespace DayZeEditor
             StaticPatrolLB.Refresh();
             StaticPatrolWayPointsLB.Refresh();
         }
-        private void darkButton10_Click(object sender, EventArgs e)
-        {
-            StringBuilder SB = new StringBuilder();
-            foreach (Vec3 array in CurrentPatrol._waypoints)
-            {
-                SB.AppendLine("eAI_SurvivorM_Lewis|" + array.GetString() + "|0.0 0.0 0.0");
-            }
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(save.FileName + ".map", SB.ToString());
-            }
-
-        }
-        private void darkButton14_Click(object sender, EventArgs e)
-        {
-            DZE newdze = new DZE()
-            {
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            int m_Id = 0;
-            foreach (Vec3 array in CurrentPatrol._waypoints)
-            {
-                Editorobject eo = new Editorobject()
-                {
-                    Type = "eAI_SurvivorM_Jose",
-                    DisplayName = "eAI_SurvivorM_Jose",
-                    Position = array.getfloatarray(),
-                    Orientation = new float[] { 0, 0, 0 },
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(eo);
-                m_Id++;
-            }
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
-            }
-
-        }
         private void darkButton22_Click(object sender, EventArgs e)
         {
             if (CurrentPatrol._waypoints == null)
@@ -1561,7 +1638,6 @@ namespace DayZeEditor
             StaticPatrolWayPointsLB.SelectedIndex = newindex;
             AIPatrolSettings.isDirty = true;
         }
-
         private void darkButton51_Click(object sender, EventArgs e)
         {
             if (StaticPatrolWayPointsLB.SelectedItems.Count <= 0) return;
@@ -1575,7 +1651,6 @@ namespace DayZeEditor
             StaticPatrolWayPointsLB.SelectedIndex = newindex;
             AIPatrolSettings.isDirty = true;
         }
-
 
         private Point _mouseLastPosition;
         private Point _newscrollPosition;
@@ -1689,10 +1764,13 @@ namespace DayZeEditor
                 }
             }
         }
-        private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius, string c)
+        private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius, string c, bool drawCenter = true)
         {
-            Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
-            drawingArea.DrawEllipse(penToUse, rect);
+            if (drawCenter)
+            {
+                Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
+                drawingArea.DrawEllipse(penToUse, rect);
+            }
             Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
             drawingArea.DrawEllipse(penToUse, rect2);
             Rectangle rect3 = new Rectangle(center.X - radius, center.Y - (radius + 30), 200, 40);
@@ -2069,40 +2147,6 @@ namespace DayZeEditor
             AISettings.isDirty = true;
             PreventClimbLB.Refresh();
         }
-        private void darkButton39_Click(object sender, EventArgs e)
-        {
-            string classname = textBox2.Text;
-            if (classname == "") return;
-            if (!AISettings.ExcludedRoamingLocations.Contains(classname))
-            {
-                AISettings.ExcludedRoamingLocations.Add(classname);
-                AIPatrolSettings.isDirty = true;
-                listBox1.Refresh();
-            }
-        }
-        private void darkButton38_Click(object sender, EventArgs e)
-        {
-            AISettings.ExcludedRoamingLocations.Remove(listBox1.GetItemText(listBox1.SelectedItem));
-            AISettings.isDirty = true;
-            listBox1.Refresh();
-        }
-        private void darkButton41_Click(object sender, EventArgs e)
-        {
-            string classname = textBox3.Text;
-            if (classname == "") return;
-            if (!AISettings.ExcludedRoamingBuildings.Contains(classname))
-            {
-                AISettings.ExcludedRoamingBuildings.Add(classname);
-                AIPatrolSettings.isDirty = true;
-                listBox2.Refresh();
-            }
-        }
-        private void darkButton40_Click(object sender, EventArgs e)
-        {
-            AISettings.ExcludedRoamingBuildings.Remove(listBox2.GetItemText(listBox2.SelectedItem));
-            AISettings.isDirty = true;
-            listBox2.Refresh();
-        }
         private void NoiseInvestigationDistanceLimitNUD_ValueChanged_1(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -2110,6 +2154,433 @@ namespace DayZeEditor
             AISettings.isDirty = true;
         }
         #endregion AISettings
+        #region AIlocations
+        public ExpansionAIRoamingLocation CurrentAiLocation { get; set; }
+        public ExpansionAINoGoAreaConfig CurrentAiLocationNOGOArea { get; set; }
+        private Timer doubleClickTimer2 = new Timer();
+        public int AILocationScale = 1;
+        private void SetupExpansionAILocationSettingss()
+        {
+            useraction = false;
+            listBox2.DisplayMember = "DisplayName";
+            listBox2.ValueMember = "Value";
+            listBox2.DataSource = ExpansionAILocationSettings.ExcludedRoamingBuildings;
+
+            listBox1.DisplayMember = "DisplayName";
+            listBox1.ValueMember = "Value";
+            listBox1.DataSource = ExpansionAILocationSettings.RoamingLocations;
+
+            listBox3.DisplayMember = "DisplayName";
+            listBox3.ValueMember = "Value";
+            listBox3.DataSource = ExpansionAILocationSettings.NoGoAreas;
+
+            pictureBox3.Invalidate();
+            doubleClickTimer2.Tick += new EventHandler(doubleClickTimer_Tick2);
+            useraction = true;
+        }
+        private void darkButton41_Click(object sender, EventArgs e)
+        {
+            string classname = textBox3.Text;
+            if (classname == "") return;
+            if (!ExpansionAILocationSettings.ExcludedRoamingBuildings.Contains(classname))
+            {
+                ExpansionAILocationSettings.ExcludedRoamingBuildings.Add(classname);
+                ExpansionAILocationSettings.isDirty = true;
+                listBox2.Refresh();
+            }
+        }
+        private void darkButton40_Click(object sender, EventArgs e)
+        {
+            ExpansionAILocationSettings.ExcludedRoamingBuildings.Remove(listBox2.GetItemText(listBox2.SelectedItem));
+            ExpansionAILocationSettings.isDirty = true;
+            listBox2.Refresh();
+        }
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItems.Count < 1) return;
+            CurrentAiLocation = listBox1.SelectedItem as ExpansionAIRoamingLocation;
+            useraction = false;
+            textBox2.Text = CurrentAiLocation.Name;
+            numericUpDown1.Value = (decimal)CurrentAiLocation._Position.X;
+            numericUpDown2.Value = (decimal)CurrentAiLocation._Position.Y;
+            numericUpDown3.Value = (decimal)CurrentAiLocation._Position.Z;
+            numericUpDown4.Value = (decimal)CurrentAiLocation.Radius;
+            textBox4.Text = CurrentAiLocation.Type;
+            checkBox12.Checked = CurrentAiLocation.Enabled;
+            useraction = true;
+            pictureBox3.Invalidate();
+        }
+        private void checkBox12_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentAiLocation.Enabled = checkBox12.Checked;
+            ExpansionAILocationSettings.isDirty = true;
+        }
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox3.SelectedItems.Count < 1) return;
+            CurrentAiLocationNOGOArea = listBox3.SelectedItem as ExpansionAINoGoAreaConfig;
+            useraction = false;
+            textBox5.Text = CurrentAiLocationNOGOArea.Name;
+            numericUpDown6.Value = (decimal)CurrentAiLocationNOGOArea._Position.X; 
+            numericUpDown7.Value = (decimal)CurrentAiLocationNOGOArea._Position.Y;
+            numericUpDown8.Value = (decimal)CurrentAiLocationNOGOArea._Position.Z;
+            numericUpDown5.Value = (decimal)CurrentAiLocationNOGOArea.Radius;
+            numericUpDown9.Value = (decimal)CurrentAiLocationNOGOArea.Height;
+            useraction = true;
+            pictureBox3.Invalidate();
+        }
+        private void darkButton5_Click(object sender, EventArgs e)
+        {
+            ExpansionAINoGoAreaConfig newnogo = new ExpansionAINoGoAreaConfig()
+            {
+                Name = "New NoGO Area",
+                _Position = new Vec3(currentproject.MapSize / 2, 0, currentproject.MapSize / 2),
+                Radius = 300,
+                Height = MapData.gethieght(currentproject.MapSize / 2, currentproject.MapSize / 2) + 200
+            };
+            ExpansionAILocationSettings.NoGoAreas.Add(newnogo);
+            listBox3.SelectedIndex = listBox3.Items.Count - 1;
+            ExpansionAILocationSettings.isDirty = true;
+        }
+        private void darkButton14_Click(object sender, EventArgs e)
+        {
+            ExpansionAILocationSettings.NoGoAreas.Remove(CurrentAiLocationNOGOArea);
+            ExpansionAILocationSettings.isDirty = true;
+            listBox3.Refresh();
+        }
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentAiLocationNOGOArea.Name = textBox5.Text;
+            ExpansionAILocationSettings.isDirty = true;
+            pictureBox3.Invalidate();
+        }
+        private void numericUpDown6_ValueChanged_2(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentAiLocationNOGOArea._Position.X = (float)numericUpDown6.Value;
+            ExpansionAILocationSettings.isDirty = true;
+            pictureBox3.Invalidate();
+        }
+        private void numericUpDown7_ValueChanged_1(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentAiLocationNOGOArea._Position.Y = (float)numericUpDown7.Value;
+            ExpansionAILocationSettings.isDirty = true;
+            pictureBox3.Invalidate();
+        }
+        private void numericUpDown8_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentAiLocationNOGOArea._Position.Z = (float)numericUpDown8.Value;
+            ExpansionAILocationSettings.isDirty = true;
+            pictureBox3.Invalidate();
+        }
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentAiLocationNOGOArea.Radius = (float)numericUpDown5.Value;
+            ExpansionAILocationSettings.isDirty = true;
+            pictureBox3.Invalidate();
+        }
+        private void numericUpDown9_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentAiLocationNOGOArea.Height = (float)numericUpDown9.Value;
+            ExpansionAILocationSettings.isDirty = true;
+            pictureBox3.Invalidate();
+        }
+        private void trackBar2_MouseUp(object sender, MouseEventArgs e)
+        {
+            AILocationScale = trackBar2.Value;
+            SetAILocationZonescale();
+        }
+        private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Cursor.Current = Cursors.SizeAll;
+                _mouseLastPosition = e.Location;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                mouseeventargs = e;
+                if (isFirstClick)
+                {
+                    isFirstClick = false;
+
+                    // Determine the location and size of the double click
+                    // rectangle area to draw around the cursor point.
+                    doubleClickRectangle = new Rectangle(
+                        e.X - (SystemInformation.DoubleClickSize.Width / 2),
+                        e.Y - (SystemInformation.DoubleClickSize.Height / 2),
+                        SystemInformation.DoubleClickSize.Width,
+                        SystemInformation.DoubleClickSize.Height);
+                    Invalidate();
+
+                    // Start the double click timer.
+                    doubleClickTimer2.Start();
+                }
+
+                // This is the second mouse click.
+                else
+                {
+                    // Verify that the mouse click is within the double click
+                    // rectangle and is within the system-defined double
+                    // click period.
+                    if (doubleClickRectangle.Contains(e.Location) &&
+                        milliseconds < SystemInformation.DoubleClickTime)
+                    {
+                        isDoubleClick = true;
+                    }
+                }
+            }
+        }
+        void doubleClickTimer_Tick2(object sender, EventArgs e)
+        {
+            milliseconds += 100;
+
+            // The timer has reached the double click time limit.
+            if (milliseconds >= SystemInformation.DoubleClickTime)
+            {
+                doubleClickTimer2.Stop();
+
+                if (isDoubleClick)
+                {
+                    switch (tabControl5.SelectedIndex)
+                    {
+                        case 0:
+                        case 1:
+                            break;
+                        case 2:
+                            //Console.WriteLine("Perform double click action");
+                            if (CurrentAiLocationNOGOArea == null) return;
+                            Cursor.Current = Cursors.WaitCursor;
+                            decimal scalevalue = AILocationScale * (decimal)0.05;
+                            decimal mapsize = currentproject.MapSize;
+                            int newsize = (int)(mapsize * scalevalue);
+                            numericUpDown6.Value = Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4);
+                            numericUpDown8.Value = Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4);
+                            if (MapData.FileExists)
+                            {
+                                numericUpDown7.Value = (decimal)(MapData.gethieght(CurrentAiLocationNOGOArea._Position.X, CurrentAiLocationNOGOArea._Position.Z));
+                            }
+                            Cursor.Current = Cursors.Default;
+                            ExpansionAILocationSettings.isDirty = true;
+                            pictureBox3.Invalidate();
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (tabControl5.SelectedIndex)
+                    {
+                        case 0:
+
+                            break;
+                        case 1:
+                            //Console.WriteLine("Perform single click action");
+                            if (CurrentAiLocation == null) return;
+                            decimal scalevalue = AILocationScale * (decimal)0.05;
+                            decimal mapsize = currentproject.MapSize;
+                            int newsize = (int)(mapsize * scalevalue);
+                            PointF pC = new PointF((float)Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4), (float)Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4));
+                            foreach (ExpansionAIRoamingLocation poiny in ExpansionAILocationSettings.RoamingLocations)
+                            {
+                                PointF pP = new PointF((float)poiny._Position.X, (float)poiny._Position.Z);
+                                if (IsWithinCircle(pC, pP, (float)poiny.Radius))
+                                {
+                                    listBox1.SelectedItem = poiny;
+                                    StaticPatrolWayPointsLB.Refresh();
+                                    pictureBox2.Invalidate();
+                                    continue;
+                                }
+                            }
+                            break;
+                        case 2:
+                            //Console.WriteLine("Perform single click action");
+                            if (CurrentAiLocationNOGOArea == null) return;
+                            scalevalue = AILocationScale * (decimal)0.05;
+                            mapsize = currentproject.MapSize;
+                            newsize = (int)(mapsize * scalevalue);
+                            pC = new PointF((float)Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4), (float)Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4));
+                            foreach (ExpansionAINoGoAreaConfig ExpansionAINoGoAreaConfig in ExpansionAILocationSettings.NoGoAreas)
+                            {
+                                PointF pP = new PointF((float)ExpansionAINoGoAreaConfig._Position.X, (float)ExpansionAINoGoAreaConfig._Position.Z);
+                                if (IsWithinCircle(pC, pP, ExpansionAINoGoAreaConfig.Radius))
+                                {
+                                    listBox3.SelectedItem = ExpansionAINoGoAreaConfig;
+                                    StaticPatrolWayPointsLB.Refresh();
+                                    pictureBox2.Invalidate();
+                                    continue;
+                                }
+                            }
+                            break;
+                    }
+                }
+
+                // Allow the MouseDown event handler to process clicks again.
+                isFirstClick = true;
+                isDoubleClick = false;
+                milliseconds = 0;
+            }
+        }
+        private void pictureBox3_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox3.Focused == false)
+            {
+                pictureBox3.Focus();
+                panelEx2.AutoScrollPosition = _newscrollPosition;
+                pictureBox3.Invalidate();
+            }
+        }
+        private void pictureBox3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panelEx2.AutoScrollPosition.X - changePoint.X, -panelEx2.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panelEx2.AutoScrollPosition = _newscrollPosition;
+                pictureBox3.Invalidate();
+            }
+            decimal scalevalue = AILocationScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label3.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox3_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox3_ZoomOut();
+            }
+            else
+            {
+                pictureBox3_ZoomIn();
+            }
+
+        }
+        private void pictureBox3_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox3.Height;
+            int oldpitureboxwidht = pictureBox3.Width;
+            Point oldscrollpos = panelEx2.AutoScrollPosition;
+            int tbv = trackBar2.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar2.Value = newval;
+            AILocationScale = trackBar2.Value;
+            SetAILocationZonescale();
+            if (pictureBox3.Height > panelEx2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox3.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox3.Width > panelEx2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox3.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox3.Invalidate();
+        }
+        private void pictureBox3_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox3.Height;
+            int oldpitureboxwidht = pictureBox3.Width;
+            Point oldscrollpos = panelEx2.AutoScrollPosition;
+            int tbv = trackBar2.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar2.Value = newval;
+            AILocationScale = trackBar2.Value;
+            SetAILocationZonescale();
+            if (pictureBox3.Height > panelEx2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox3.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox3.Width > panelEx2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox3.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox3.Invalidate();
+        }
+        private void SetAILocationZonescale()
+        {
+            float scalevalue = AILocationScale * 0.05f;
+            float mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox3.Size = new Size(newsize, newsize);
+        }
+        private void DrawAILocations(object sender, PaintEventArgs e)
+        {
+            switch (tabControl5.SelectedIndex)
+            {
+                case 0:
+                    
+                    break;
+                case 1:
+                    if (checkBox11.Checked)
+                    {
+                        foreach (ExpansionAIRoamingLocation ExpansionAIRoamingLocation in ExpansionAILocationSettings.RoamingLocations)
+                        {
+                            float scalevalue = AILocationScale * 0.05f;
+                            int centerX = (int)(Math.Round(ExpansionAIRoamingLocation._Position.X) * scalevalue);
+                            int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(ExpansionAIRoamingLocation._Position.Z, 0) * scalevalue);
+                            int eventradius = (int)((float)ExpansionAIRoamingLocation.Radius * scalevalue);
+                            Point center = new Point(centerX, centerY);
+                            Pen pen = new Pen(Color.Red, 1);
+                            if (CurrentAiLocation == ExpansionAIRoamingLocation)
+                                pen = new Pen(Color.Green, 1);
+                            getCircle(e.Graphics, pen, center, eventradius, ExpansionAIRoamingLocation.Name);
+                        }
+                    }
+                    else
+                    {
+                        float scalevalue = AILocationScale * 0.05f;
+                        int centerX = (int)(Math.Round(CurrentAiLocation._Position.X) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(CurrentAiLocation._Position.Z, 0) * scalevalue);
+                        int eventradius = (int)((float)CurrentAiLocation.Radius * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Green, 1);
+                        getCircle(e.Graphics, pen, center, eventradius, CurrentAiLocation.Name);
+                    }
+                    break;
+                case 2:
+                    foreach (ExpansionAINoGoAreaConfig ExpansionAINoGoAreaConfig in ExpansionAILocationSettings.NoGoAreas)
+                    {
+                        float scalevalue = AILocationScale * 0.05f;
+                        int centerX = (int)(Math.Round(ExpansionAINoGoAreaConfig._Position.X) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(ExpansionAINoGoAreaConfig._Position.Z, 0) * scalevalue);
+                        int eventradius = (int)((float)ExpansionAINoGoAreaConfig.Radius * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 1);
+                        if (CurrentAiLocationNOGOArea == ExpansionAINoGoAreaConfig)
+                            pen = new Pen(Color.Green, 1);
+                        getCircle(e.Graphics, pen, center, eventradius, ExpansionAINoGoAreaConfig.Name);
+                    }
+                    break;
+            }
+            
+        }
+
+        #endregion AIlocations
         #region dynamic AI Notifications
         private void SetupSpatialNotifications()
         {
@@ -3544,64 +4015,184 @@ namespace DayZeEditor
         }
         private void darkButton32_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI Patrol";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    bool ImportTrigger = false;
-                    switch (SpatialGroupsCB.SelectedIndex)
-                    {
-                        case 0:
-                            MessageBox.Show("Spatial Groups dont have a trigger position or and spawn points.");
-                            return;
-                        case 1:
-                            currentSpatialPoint.ImportDZE(importfile);
-                            SpatialGroupsPointSpatial_PositionXNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.X;
-                            SpatialGroupsPointSpatial_PositionYNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.Y;
-                            SpatialGroupsPointSpatial_PositionZNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.Z;
-                            break;
-                        case 2:
-                            var result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                            if (result == DialogResult.Yes)
-                                ImportTrigger = true;
-                            result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                            if ((result == DialogResult.Cancel))
-                            {
+                    CurrentPatrol._waypoints.Clear();
+                }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        bool ImportTrigger = false;
+                        switch (SpatialGroupsCB.SelectedIndex)
+                        {
+                            case 0:
+                                MessageBox.Show("Spatial Groups dont have a trigger position or and spawn points.");
                                 return;
-                            }
-                            else if (result == DialogResult.Yes)
-                            {
-                                currentSpatialLocation._Spatial_SpawnPosition = new BindingList<Vec3>();
-                            }
-                            currentSpatialLocation.ImportDZE(importfile, ImportTrigger);
-                            SpatialGroupsLocationSpatial_TriggerPositionXNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.X;
-                            SpatialGroupsLocationSpatial_TriggerPositionYNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.Y;
-                            SpatialGroupsLocationSpatial_TriggerPositionZNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.Z;
-                            SpatialGroupsSpawnPositionLB.DataSource = currentSpatialLocation._Spatial_SpawnPosition;
-                            break;
-                        case 3:
-                            result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                            if (result == DialogResult.Yes)
-                                ImportTrigger = true;
-                            result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                            if ((result == DialogResult.Cancel))
-                            {
+                            case 1:
+                                currentSpatialPoint.ImportMap(fileContent);
+                                SpatialGroupsPointSpatial_PositionXNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.X;
+                                SpatialGroupsPointSpatial_PositionYNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.Y;
+                                SpatialGroupsPointSpatial_PositionZNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.Z;
+                                break;
+                            case 2:
+                                var result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (result == DialogResult.Yes)
+                                    ImportTrigger = true;
+                                result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                                if ((result == DialogResult.Cancel))
+                                {
+                                    return;
+                                }
+                                else if (result == DialogResult.Yes)
+                                {
+                                    currentSpatialLocation._Spatial_SpawnPosition = new BindingList<Vec3>();
+                                }
+                                currentSpatialLocation.ImportMap(fileContent, ImportTrigger);
+                                SpatialGroupsLocationSpatial_TriggerPositionXNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.X;
+                                SpatialGroupsLocationSpatial_TriggerPositionYNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.Y;
+                                SpatialGroupsLocationSpatial_TriggerPositionZNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.Z;
+                                SpatialGroupsSpawnPositionLB.DataSource = currentSpatialLocation._Spatial_SpawnPosition;
+                                break;
+                            case 3:
+                                result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (result == DialogResult.Yes)
+                                    ImportTrigger = true;
+                                result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                                if ((result == DialogResult.Cancel))
+                                {
+                                    return;
+                                }
+                                else if (result == DialogResult.Yes)
+                                {
+                                    currentSpatialAudio._Spatial_SpawnPosition = new BindingList<Vec3>();
+                                }
+                                currentSpatialAudio.ImportMap(fileContent, ImportTrigger);
+                                SpatialGroupsAudioSpatial_TriggerPositionXNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.X;
+                                SpatialGroupsAudioSpatial_TriggerPositionYNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.Y;
+                                SpatialGroupsAudioSpatial_TriggerPositionZNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.Z;
+                                SpatialGroupsSpawnPositionLB.DataSource = currentSpatialAudio._Spatial_SpawnPosition;
+                                break;
+                        }
+                        m_Spatial_Groups.isDirty = true;
+                        break;
+                    case 2:
+                        ImportTrigger = false;
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        switch (SpatialGroupsCB.SelectedIndex)
+                        {
+                            case 0:
+                                MessageBox.Show("Spatial Groups dont have a trigger position or and spawn points.");
                                 return;
-                            }
-                            else if (result == DialogResult.Yes)
-                            {
-                                currentSpatialAudio._Spatial_SpawnPosition = new BindingList<Vec3>();
-                            }
-                            currentSpatialAudio.ImportDZE(importfile, ImportTrigger);
-                            SpatialGroupsAudioSpatial_TriggerPositionXNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.X;
-                            SpatialGroupsAudioSpatial_TriggerPositionYNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.Y;
-                            SpatialGroupsAudioSpatial_TriggerPositionZNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.Z;
-                            SpatialGroupsSpawnPositionLB.DataSource = currentSpatialAudio._Spatial_SpawnPosition;
-                            break;
-                    }
-                    m_Spatial_Groups.isDirty = true;
+                            case 1:
+                                currentSpatialPoint.ImportOpbjectSpawner(newobjectspawner);
+                                SpatialGroupsPointSpatial_PositionXNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.X;
+                                SpatialGroupsPointSpatial_PositionYNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.Y;
+                                SpatialGroupsPointSpatial_PositionZNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.Z;
+                                break;
+                            case 2:
+                                var result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (result == DialogResult.Yes)
+                                    ImportTrigger = true;
+                                result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                                if ((result == DialogResult.Cancel))
+                                {
+                                    return;
+                                }
+                                else if (result == DialogResult.Yes)
+                                {
+                                    currentSpatialLocation._Spatial_SpawnPosition = new BindingList<Vec3>();
+                                }
+                                currentSpatialLocation.ImportOpbjectSpawner(newobjectspawner, ImportTrigger);
+                                SpatialGroupsLocationSpatial_TriggerPositionXNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.X;
+                                SpatialGroupsLocationSpatial_TriggerPositionYNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.Y;
+                                SpatialGroupsLocationSpatial_TriggerPositionZNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.Z;
+                                SpatialGroupsSpawnPositionLB.DataSource = currentSpatialLocation._Spatial_SpawnPosition;
+                                break;
+                            case 3:
+                                result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (result == DialogResult.Yes)
+                                    ImportTrigger = true;
+                                result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                                if ((result == DialogResult.Cancel))
+                                {
+                                    return;
+                                }
+                                else if (result == DialogResult.Yes)
+                                {
+                                    currentSpatialAudio._Spatial_SpawnPosition = new BindingList<Vec3>();
+                                }
+                                currentSpatialAudio.ImportOpbjectSpawner(newobjectspawner, ImportTrigger);
+                                SpatialGroupsAudioSpatial_TriggerPositionXNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.X;
+                                SpatialGroupsAudioSpatial_TriggerPositionYNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.Y;
+                                SpatialGroupsAudioSpatial_TriggerPositionZNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.Z;
+                                SpatialGroupsSpawnPositionLB.DataSource = currentSpatialAudio._Spatial_SpawnPosition;
+                                break;
+                        }
+                        m_Spatial_Groups.isDirty = true;
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        ImportTrigger = false;
+                        switch (SpatialGroupsCB.SelectedIndex)
+                        {
+                            case 0:
+                                MessageBox.Show("Spatial Groups dont have a trigger position or and spawn points.");
+                                return;
+                            case 1:
+                                currentSpatialPoint.ImportDZE(importfile);
+                                SpatialGroupsPointSpatial_PositionXNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.X;
+                                SpatialGroupsPointSpatial_PositionYNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.Y;
+                                SpatialGroupsPointSpatial_PositionZNUD.Value = (decimal)currentSpatialPoint._Spatial_Position.Z;
+                                break;
+                            case 2:
+                                var result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (result == DialogResult.Yes)
+                                    ImportTrigger = true;
+                                result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                                if ((result == DialogResult.Cancel))
+                                {
+                                    return;
+                                }
+                                else if (result == DialogResult.Yes)
+                                {
+                                    currentSpatialLocation._Spatial_SpawnPosition = new BindingList<Vec3>();
+                                }
+                                currentSpatialLocation.ImportDZE(importfile, ImportTrigger);
+                                SpatialGroupsLocationSpatial_TriggerPositionXNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.X;
+                                SpatialGroupsLocationSpatial_TriggerPositionYNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.Y;
+                                SpatialGroupsLocationSpatial_TriggerPositionZNUD.Value = (decimal)currentSpatialLocation._Spatial_TriggerPosition.Z;
+                                SpatialGroupsSpawnPositionLB.DataSource = currentSpatialLocation._Spatial_SpawnPosition;
+                                break;
+                            case 3:
+                                result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (result == DialogResult.Yes)
+                                    ImportTrigger = true;
+                                result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                                if ((result == DialogResult.Cancel))
+                                {
+                                    return;
+                                }
+                                else if (result == DialogResult.Yes)
+                                {
+                                    currentSpatialAudio._Spatial_SpawnPosition = new BindingList<Vec3>();
+                                }
+                                currentSpatialAudio.ImportDZE(importfile, ImportTrigger);
+                                SpatialGroupsAudioSpatial_TriggerPositionXNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.X;
+                                SpatialGroupsAudioSpatial_TriggerPositionYNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.Y;
+                                SpatialGroupsAudioSpatial_TriggerPositionZNUD.Value = (decimal)currentSpatialAudio._Spatial_TriggerPosition.Z;
+                                SpatialGroupsSpawnPositionLB.DataSource = currentSpatialAudio._Spatial_SpawnPosition;
+                                break;
+                        }
+                        m_Spatial_Groups.isDirty = true;
+                        break;
                 }
             }
         }
@@ -3760,6 +4351,16 @@ namespace DayZeEditor
         {
             SetupFactionsDropDownBoxes();
             File.WriteAllLines(Application.StartupPath + "\\TraderNPCs\\Factions.txt", Factions);
+        }
+
+        private void checkBox11_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBox3.Invalidate();
+        }
+
+        private void SpatialPointGB_Enter(object sender, EventArgs e)
+        {
+
         }
 
 

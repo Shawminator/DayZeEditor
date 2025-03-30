@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Text.Json.Serialization;
 
@@ -335,6 +336,30 @@ namespace DayZeLib
                 }
             }
         }
+        public void ImportMap(string[] fileContent)
+        {
+            for (int i = 0; i < fileContent.Length; i++)
+            {
+                if (fileContent[i] == "") continue;
+                string[] linesplit = fileContent[i].Split('|');
+                string[] XYZ = linesplit[1].Split(' ');
+                if (linesplit[0] == "GiftBox_Large_1")
+                {
+                    _Spatial_Position = new Vec3(XYZ);
+                }
+            }
+        }
+
+        public void ImportOpbjectSpawner(ObjectSpawnerArr newobjectspawner)
+        {
+            foreach (SpawnObjects so in newobjectspawner.Objects)
+            {
+                if (so.name == "GiftBox_Large_1")
+                {
+                    _Spatial_Position = new Vec3(so.pos);
+                }
+            }
+        }
     }
 
     public class Spatial_Location
@@ -409,6 +434,48 @@ namespace DayZeLib
                 }
             }
         }
+        public void ImportMap(string[] fileContent, bool importTrigger)
+        {
+            if (_Spatial_SpawnPosition == null)
+                _Spatial_SpawnPosition = new BindingList<Vec3>();
+            for (int i = 0; i < fileContent.Length; i++)
+            {
+                if (fileContent[i] == "") continue;
+                string[] linesplit = fileContent[i].Split('|');
+                string[] XYZ = linesplit[1].Split(' ');
+                if (linesplit[0] == "GiftBox_Large_1")
+                {
+                    if (importTrigger)
+                    {
+                        _Spatial_TriggerPosition = new Vec3(XYZ);
+                    }
+                }
+                else if (linesplit[0] == "GiftBox_Small_1")
+                {
+                    _Spatial_SpawnPosition.Add(new Vec3(XYZ));
+                }
+            }
+        }
+
+        public void ImportOpbjectSpawner(ObjectSpawnerArr newobjectspawner, bool importTrigger)
+        {
+            if (_Spatial_SpawnPosition == null)
+                _Spatial_SpawnPosition = new BindingList<Vec3>();
+            foreach (SpawnObjects so in newobjectspawner.Objects)
+            {
+                if (so.name == "GiftBox_Large_1")
+                {
+                    if (importTrigger)
+                    {
+                        _Spatial_TriggerPosition = new Vec3(so.pos);
+                    }
+                }
+                else if (so.name == "GiftBox_Small_1")
+                {
+                    _Spatial_SpawnPosition.Add(new Vec3(so.pos));
+                }
+            }
+        }
     }
 
     public class Spatial_Audio
@@ -479,6 +546,47 @@ namespace DayZeLib
                 else if (eo.DisplayName == "GiftBox_Small_1")
                 {
                     _Spatial_SpawnPosition.Add(new Vec3(eo.Position));
+                }
+            }
+        }
+        public void ImportMap(string[] fileContent, bool importTrigger)
+        {
+            if (_Spatial_SpawnPosition == null)
+                _Spatial_SpawnPosition = new BindingList<Vec3>();
+            for (int i = 0; i < fileContent.Length; i++)
+            {
+                if (fileContent[i] == "") continue;
+                string[] linesplit = fileContent[i].Split('|');
+                string[] XYZ = linesplit[1].Split(' ');
+                if (linesplit[0] == "GiftBox_Large_1")
+                {
+                    if (importTrigger)
+                    {
+                        _Spatial_TriggerPosition = new Vec3(XYZ);
+                    }
+                }
+                else if (linesplit[0] == "GiftBox_Small_1")
+                {
+                    _Spatial_SpawnPosition.Add(new Vec3(XYZ));
+                }
+            }
+        }
+        public void ImportOpbjectSpawner(ObjectSpawnerArr newobjectspawner, bool importTrigger)
+        {
+            if (_Spatial_SpawnPosition == null)
+                _Spatial_SpawnPosition = new BindingList<Vec3>();
+            foreach (SpawnObjects so in newobjectspawner.Objects)
+            {
+                if (so.name == "GiftBox_Large_1")
+                {
+                    if (importTrigger)
+                    {
+                        _Spatial_TriggerPosition = new Vec3(so.pos);
+                    }
+                }
+                else if (so.name == "GiftBox_Small_1")
+                {
+                    _Spatial_SpawnPosition.Add(new Vec3(so.pos));
                 }
             }
         }

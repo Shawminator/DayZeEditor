@@ -98,6 +98,36 @@ namespace DayZeLib
             }
         }
 
+        public void ImportMap(string[] fileContent)
+        {
+            if (_pos == null)
+                _pos = new BindingList<Vec3PandR>();
+            for (int i = 0; i < fileContent.Length; i++)
+            {
+                if (fileContent[i] == "") continue;
+                string[] linesplit = fileContent[i].Split('|');
+                string[] XYZ = linesplit[1].Split(' ');
+                string[] YPR = linesplit[2].Split(' ');
+                if (linesplit[0].Contains("CJ_LootChest"))
+                {
+                    _pos.Add(new Vec3PandR(XYZ + "|" + YPR));
+                }
+            }
+        }
+
+        public void ImportObjectSpawner(ObjectSpawnerArr newobjectspawner)
+        {
+            if (_pos == null)
+                _pos = new BindingList<Vec3PandR>();
+            foreach (SpawnObjects so in newobjectspawner.Objects)
+            {
+                if (so.name.Contains("CJ_LootChest"))
+                {
+                    _pos.Add(new Vec3PandR(so.pos, so.ypr, true));
+                }
+            }
+        }
+
         public void setSpawnpositions()
         {
             pos = new BindingList<string>();

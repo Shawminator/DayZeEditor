@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
@@ -868,96 +869,102 @@ namespace DayZeEditor
         }
         private void darkButton12_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI Patrol";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                bool ImportTrigger = false;
+                var result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                    ImportTrigger = true;
+                bool importrtotation = false;
+                result = MessageBox.Show("Would you like to import rotations?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                    importrtotation = true;
+                result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if ((result == DialogResult.Cancel))
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    bool ImportTrigger = false;
-                    var result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                        ImportTrigger = true;
-                    bool importrtotation = false;
-                    result = MessageBox.Show("Would you like to import rotations?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                        importrtotation = true;
-                    result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if ((result == DialogResult.Cancel))
-                    {
-                        return;
-                    }
-                    else if (result == DialogResult.Yes)
-                    {
-                        currentSpawnerPoint._spawnPositions = new BindingList<Vec3PandR>();
-                    }
-                    currentSpawnerPoint.ImportDZE(importfile, ImportTrigger, importrtotation);
-                    useraction = false;
-
-                    PointConfigTriggerPosXNUD.Value = (decimal)currentSpawnerPoint._triggerPosition.Position.X;
-                    PointConfigTriggerPosYNUD.Value = (decimal)currentSpawnerPoint._triggerPosition.Position.Y;
-                    PointConfigTriggerPosZNUD.Value = (decimal)currentSpawnerPoint._triggerPosition.Position.Z;
-                    PointConfigSpawnPositionsLB.DataSource = currentSpawnerPoint._spawnPositions;
-                    currentSpawnerPointsFile.isDirty = true;
-                    useraction = true;
-                    PointConfigTriggerPositionRotSpecifiedCB.Checked = importrtotation;
+                    return;
                 }
+                else if (result == DialogResult.Yes)
+                {
+                    currentSpawnerPoint._spawnPositions = new BindingList<Vec3PandR>();
+                }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        currentSpawnerPoint.ImportMapFile(fileContent, ImportTrigger, importrtotation);
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        currentSpawnerPoint.ImportOpbjectSpawner(newobjectspawner, ImportTrigger, importrtotation);
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        currentSpawnerPoint.ImportDZE(importfile, ImportTrigger, importrtotation);
+                        break;
+                }
+                useraction = false;
+                PointConfigTriggerPosXNUD.Value = (decimal)currentSpawnerPoint._triggerPosition.Position.X;
+                PointConfigTriggerPosYNUD.Value = (decimal)currentSpawnerPoint._triggerPosition.Position.Y;
+                PointConfigTriggerPosZNUD.Value = (decimal)currentSpawnerPoint._triggerPosition.Position.Z;
+                PointConfigSpawnPositionsLB.DataSource = currentSpawnerPoint._spawnPositions;
+                currentSpawnerPointsFile.isDirty = true;
+                useraction = true;
+                PointConfigTriggerPositionRotSpecifiedCB.Checked = importrtotation;
             }
         }
         private void darkButton11_Click(object sender, EventArgs e)
         {
-            DZE newdze = new DZE()
-            {
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            int m_Id = 0;
-            string filename = "";
-            var result = MessageBox.Show("Would yo ulike to export the trigger as well?", "Export options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.Cancel)
-            {
-                return;
-            }
-            else if (result == DialogResult.Yes)
-            {
-                Editorobject Triggerobject = new Editorobject()
-                {
-                    Type = "GiftBox_Large_1",
-                    DisplayName = "GiftBox_Large_1",
-                    Position = currentSpawnerPoint._triggerPosition.GetPositionFloatArray(),
-                    Orientation = currentSpawnerPoint._triggerPosition.GetRotationFloatArray(),
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(Triggerobject);
-                m_Id++;
-            }
-            foreach (Vec3PandR vec3pandr in currentSpawnerPoint._spawnPositions)
-            {
-                Editorobject SpawnObject = new Editorobject()
-                {
-                    Type = "GiftBox_Small_1",
-                    DisplayName = "GiftBox_Small_1",
-                    Position = vec3pandr.GetPositionFloatArray(),
-                    Orientation = vec3pandr.GetRotationFloatArray(),
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(SpawnObject);
-                m_Id++;
-            }
-            filename = "MPG Spawner Points - " + currentSpawnerPoint.notificationTitle;
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
             SaveFileDialog save = new SaveFileDialog();
-            save.FileName = filename;
+            save.Title = "ExportSpawn Positions";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+            save.FileName = "MPG Spawner Points - " + currentSpawnerPoint.notificationTitle;
             if (save.ShowDialog() == DialogResult.OK)
             {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
+                switch (save.FilterIndex)
+                {
+                    case 1:
+                        StringBuilder SB = new StringBuilder();
+                        SB.AppendLine("GiftBox_Large_1|" + currentSpawnerPoint._triggerPosition.GetExpansionString());
+                        foreach (Vec3PandR vec3pandr in currentSpawnerPoint._spawnPositions)
+                        {
+                            SB.AppendLine("GiftBox_Small_1|" + vec3pandr.GetExpansionString());
+                        }
+                        File.WriteAllText(save.FileName, SB.ToString());
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+
+                        SpawnObjects newobject = new SpawnObjects();
+                        newobject.name = "GiftBox_Large_1";
+                        newobject.pos = currentSpawnerPoint._triggerPosition.GetPositionFloatArray();
+                        newobject.ypr = currentSpawnerPoint._triggerPosition.GetRotationFloatArray();
+                        newobject.scale = 1;
+                        newobject.enableCEPersistency = false;
+                        newobjectspawner.Objects.Add(newobject);
+
+                        foreach (Vec3PandR vec3pandr in currentSpawnerPoint._spawnPositions)
+                        {
+                            newobject = new SpawnObjects()
+                            {
+                                name = "GiftBox_Small_1",
+                                pos = vec3pandr.GetPositionFloatArray(),
+                                ypr = vec3pandr.GetRotationFloatArray(),
+                                scale = 1,
+                                enableCEPersistency = false
+                            };
+                            newobjectspawner.Objects.Add(newobject);
+                        }
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
+                }
             }
         }
         private void darkButton4_Click(object sender, EventArgs e)
@@ -1417,28 +1424,41 @@ namespace DayZeEditor
         private void darkButton15_Click(object sender, EventArgs e)
         {
             if (currentMappingData == null) return;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    bool wipeobjects = false;
-                    var result = MessageBox.Show("Would you like to clear existing Spawn objects??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if ((result == DialogResult.Cancel))
-                    {
-                        return;
-                    }
-                    else if (result == DialogResult.Yes)
-                    {
-                        wipeobjects = true;
-                    }
-                    currentMappingData.ImportDze(importfile, wipeobjects);
-                    currentSpawnerPointsFile.isDirty = true;
-                    PointConfigItemmappingDataItemSpawnerLB.Invalidate();
-                    PointConfigItemmappingDataItemSpawnerLB.DataSource = currentMappingData.mappingObjects;
-                }
 
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import AI Patrol";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                bool wipeobjects = false;
+                var result = MessageBox.Show("Would you like to clear existing Spawn objects??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if ((result == DialogResult.Cancel))
+                {
+                    return;
+                }
+                else if (result == DialogResult.Yes)
+                {
+                    wipeobjects = true;
+                }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        currentMappingData.ImportMapFile(fileContent, wipeobjects);
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        currentMappingData.ImportObjectSpawner(newobjectspawner, wipeobjects);
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        currentMappingData.ImportDze(importfile, wipeobjects);
+                        break;
+                }
+                currentSpawnerPointsFile.isDirty = true;
+                PointConfigItemmappingDataItemSpawnerLB.Invalidate();
+                PointConfigItemmappingDataItemSpawnerLB.DataSource = currentMappingData.mappingObjects;
             }
         }
         private void darkButton13_Click(object sender, EventArgs e)
@@ -1466,39 +1486,41 @@ namespace DayZeEditor
         private void darkButton16_Click(object sender, EventArgs e)
         {
             if (currentMappingData == null || currentMappingData.mappingObjects.Count == 0) return;
-            DZE newdze = new DZE()
-            {
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            int m_Id = 1;
-            foreach (ITEM_SpawnerObject ITEM_SpawnerObject in currentMappingData.mappingObjects)
-            {
-                Editorobject SpawnObject = new Editorobject()
-                {
-                    Type = ITEM_SpawnerObject.name,
-                    DisplayName = ITEM_SpawnerObject.name,
-                    Position = ITEM_SpawnerObject.pos,
-                    Orientation = ITEM_SpawnerObject.ypr,
-                    Scale = ITEM_SpawnerObject.scale,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(SpawnObject);
-                m_Id++;
-            }
-            string filename = "MPG Item Spawner";
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+
             SaveFileDialog save = new SaveFileDialog();
-            save.FileName = filename;
+            save.Title = "Export Object Mapping Data";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
             if (save.ShowDialog() == DialogResult.OK)
             {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
+                switch (save.FilterIndex)
+                {
+                    case 1:
+                        StringBuilder SB = new StringBuilder();
+                        foreach (ITEM_SpawnerObject ITEM_SpawnerObject in currentMappingData.mappingObjects)
+                        {
+                            SB.AppendLine(ITEM_SpawnerObject.name + "|" + ITEM_SpawnerObject.pos[0].ToString() + " " + ITEM_SpawnerObject.pos[1].ToString() + " " + ITEM_SpawnerObject.pos[2].ToString() + "|" + ITEM_SpawnerObject.ypr[0].ToString() + " " + ITEM_SpawnerObject.ypr[1].ToString() + " " + ITEM_SpawnerObject.ypr[2].ToString());
+                        }
+                        File.WriteAllText(save.FileName, SB.ToString());
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+                        foreach (ITEM_SpawnerObject ITEM_SpawnerObject in currentMappingData.mappingObjects)
+                        {
+                            SpawnObjects newobject = new SpawnObjects();
+                            newobject.name = ITEM_SpawnerObject.name;
+                            newobject.pos = ITEM_SpawnerObject.pos;
+                            newobject.ypr = ITEM_SpawnerObject.ypr;
+                            newobject.scale = ITEM_SpawnerObject.scale;
+                            newobject.enableCEPersistency = ITEM_SpawnerObject.enableCEPersistency == 0 ? false: true;
+                            newobjectspawner.Objects.Add(newobject);
+                        }
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
+                }
             }
         }
-
-
     }
 }

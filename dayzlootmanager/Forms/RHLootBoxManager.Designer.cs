@@ -490,12 +490,12 @@ namespace DayZeEditor
             this.posZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.posZNUD.Location = new System.Drawing.Point(276, 384);
             this.posZNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.posZNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -512,12 +512,12 @@ namespace DayZeEditor
             this.posYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.posYNUD.Location = new System.Drawing.Point(164, 384);
             this.posYNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.posYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -534,12 +534,12 @@ namespace DayZeEditor
             this.posXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.posXNUD.Location = new System.Drawing.Point(52, 384);
             this.posXNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.posXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});

@@ -351,33 +351,70 @@ namespace DayZeEditor
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import Mystery Box positions";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        MysteryBoxConfig.PossibleBoxPositions.Clear();
-                    }
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        Possibleboxposition newbox = new Possibleboxposition()
-                        {
-                            BoxName = MysteryBoxConfig.GetNextName(),
-                            Position = new float[] { eo.Position[0], eo.Position[1], eo.Position[2] },
-                            Orientation = new float[] { eo.Orientation[0], eo.Orientation[1], eo.Orientation[2] }
-                        };
-                        MysteryBoxConfig.PossibleBoxPositions.Add(newbox);
-                        SetPossibleBoxInfo();
-                    }
-                    PossibleBoxPositionsLB.SelectedIndex = -1;
-                    PossibleBoxPositionsLB.SelectedIndex = PossibleBoxPositionsLB.Items.Count - 1;
-                    PossibleBoxPositionsLB.Refresh();
-                    MysteryBoxConfig.isDirty = true;
+                    MysteryBoxConfig.PossibleBoxPositions.Clear();
                 }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        for (int i = 0; i < fileContent.Length; i++)
+                        {
+                            if (fileContent[i] == "") continue;
+                            string[] linesplit = fileContent[i].Split('|');
+                            string[] XYZ = linesplit[1].Split(' ');
+                            string[] YPR = linesplit[2].Split(' ');
+                            Possibleboxposition newbox = new Possibleboxposition()
+                            {
+                                BoxName = MysteryBoxConfig.GetNextName(),
+                                Position = new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) },
+                                Orientation = new float[] { Convert.ToSingle(YPR[0]), Convert.ToSingle(YPR[1]), Convert.ToSingle(YPR[2]) }
+                            };
+                            MysteryBoxConfig.PossibleBoxPositions.Add(newbox);
+                            SetPossibleBoxInfo();
+                        }
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        foreach (SpawnObjects so in newobjectspawner.Objects)
+                        {
+                            Possibleboxposition newbox = new Possibleboxposition()
+                            {
+                                BoxName = MysteryBoxConfig.GetNextName(),
+                                Position = new float[] { so.pos[0], so.pos[1], so.pos[2] },
+                                Orientation = new float[] { so.ypr[0], so.ypr[1], so.ypr[2] }
+                            };
+                            MysteryBoxConfig.PossibleBoxPositions.Add(newbox);
+                            SetPossibleBoxInfo();
+                        }
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            Possibleboxposition newbox = new Possibleboxposition()
+                            {
+                                BoxName = MysteryBoxConfig.GetNextName(),
+                                Position = new float[] { eo.Position[0], eo.Position[1], eo.Position[2] },
+                                Orientation = new float[] { eo.Orientation[0], eo.Orientation[1], eo.Orientation[2] }
+                            };
+                            MysteryBoxConfig.PossibleBoxPositions.Add(newbox);
+                            SetPossibleBoxInfo();
+                        }
+                        break;
+                }
+                PossibleBoxPositionsLB.SelectedIndex = -1;
+                PossibleBoxPositionsLB.SelectedIndex = PossibleBoxPositionsLB.Items.Count - 1;
+                PossibleBoxPositionsLB.Refresh();
+                MysteryBoxConfig.isDirty = true;
             }
         }
         private void toolStripButton2_Click(object sender, EventArgs e)

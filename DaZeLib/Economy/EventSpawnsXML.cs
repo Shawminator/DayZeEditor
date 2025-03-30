@@ -315,5 +315,9 @@ namespace DayZeLib
         {
             return x.ToString() + "," + z.ToString();
         }
+        public string ToExpansionMapString(float y, float a)
+        {
+            return x.ToString() + " " + y + " " + z.ToString() + "|" + a.ToString() + " 0.0 0.0";
+        }
     }
 }

@@ -570,6 +570,9 @@ namespace DayZeEditor
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.PlayerSpawnTravelButton = new System.Windows.Forms.ToolStripButton();
             this.CFGGameplayTab = new System.Windows.Forms.TabPage();
+            this.groupBox95 = new System.Windows.Forms.GroupBox();
+            this.boatDecayMultiplierNUD = new System.Windows.Forms.NumericUpDown();
+            this.label198 = new System.Windows.Forms.Label();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
             this.wetnessWeightModifiers5NUD = new System.Windows.Forms.NumericUpDown();
             this.wetnessWeightModifiers4NUD = new System.Windows.Forms.NumericUpDown();
@@ -1021,18 +1024,34 @@ namespace DayZeEditor
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.MapGroupProtoGroupsLB = new System.Windows.Forms.ListBox();
             this.TerritoriesTab = new System.Windows.Forms.TabPage();
-            this.label155 = new System.Windows.Forms.Label();
+            this.label195 = new System.Windows.Forms.Label();
+            this.TerritoriesZonesPOSYNUD = new System.Windows.Forms.NumericUpDown();
+            this.label194 = new System.Windows.Forms.Label();
+            this.label193 = new System.Windows.Forms.Label();
+            this.TerritoriesZonesPOSZNUD = new System.Windows.Forms.NumericUpDown();
+            this.TerritoriesZonesPOSXNUD = new System.Windows.Forms.NumericUpDown();
             this.TerritoryPaintAllCB = new System.Windows.Forms.CheckBox();
             this.TerritorieszonesCB = new System.Windows.Forms.CheckBox();
             this.panel5 = new TreeViewMS.PanelEx();
+            this.label155 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.trackBar6 = new System.Windows.Forms.TrackBar();
             this.tabControl23 = new System.Windows.Forms.TabControl();
             this.tabPage18 = new System.Windows.Forms.TabPage();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.TerritoriesTreeview = new TreeViewMS.TreeViewMS();
+            this.TerritoryZonePanel = new System.Windows.Forms.Panel();
+            this.TerritoriesZonesUseYCB = new System.Windows.Forms.CheckBox();
             this.label154 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label151 = new System.Windows.Forms.Label();
+            this.TerritoriesZonesRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.groupBox72 = new System.Windows.Forms.GroupBox();
+            this.TerritoriesZonesDynamicMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.TerritoriesZonesDynamicMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label150 = new System.Windows.Forms.Label();
+            this.label149 = new System.Windows.Forms.Label();
             this.TerritoriesZonesLB = new System.Windows.Forms.ListBox();
+            this.darkButton64 = new DarkUI.Controls.DarkButton();
             this.groupBox74 = new System.Windows.Forms.GroupBox();
             this.TerritoriesZonesDynamicRB = new System.Windows.Forms.RadioButton();
             this.TerritoriesZonesHuntingGroundRB = new System.Windows.Forms.RadioButton();
@@ -1040,20 +1059,24 @@ namespace DayZeEditor
             this.TerritoriesZonesWaterRB = new System.Windows.Forms.RadioButton();
             this.TerritoriesZonesRestRB = new System.Windows.Forms.RadioButton();
             this.TerritoriesZonesDynamicTB = new DarkUI.Controls.DarkTextBox();
-            this.darkButton65 = new DarkUI.Controls.DarkButton();
             this.groupBox73 = new System.Windows.Forms.GroupBox();
             this.TerritoriesZonesStaticMaxNUD = new System.Windows.Forms.NumericUpDown();
             this.TerritoriesZonesStaticMInNUD = new System.Windows.Forms.NumericUpDown();
             this.label152 = new System.Windows.Forms.Label();
             this.label153 = new System.Windows.Forms.Label();
-            this.darkButton64 = new DarkUI.Controls.DarkButton();
-            this.groupBox72 = new System.Windows.Forms.GroupBox();
-            this.TerritoriesZonesDynamicMaxNUD = new System.Windows.Forms.NumericUpDown();
-            this.TerritoriesZonesDynamicMinNUD = new System.Windows.Forms.NumericUpDown();
-            this.label150 = new System.Windows.Forms.Label();
-            this.label149 = new System.Windows.Forms.Label();
-            this.TerritoriesZonesRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.label151 = new System.Windows.Forms.Label();
+            this.darkButton65 = new DarkUI.Controls.DarkButton();
+            this.TerritoryEnviromentPanel = new System.Windows.Forms.Panel();
+            this.label197 = new System.Windows.Forms.Label();
+            this.TerritoryEnviromentPathTB = new System.Windows.Forms.TextBox();
+            this.darkLabel36 = new DarkUI.Controls.DarkLabel();
+            this.TerritoryEnviromentusableTB = new System.Windows.Forms.TextBox();
+            this.darkLabel35 = new DarkUI.Controls.DarkLabel();
+            this.TerritoryEnviromentbehavorTB = new System.Windows.Forms.TextBox();
+            this.darkLabel34 = new DarkUI.Controls.DarkLabel();
+            this.TerritoryEnviromentnameTB = new System.Windows.Forms.TextBox();
+            this.darkLabel32 = new DarkUI.Controls.DarkLabel();
+            this.TerritoryEnviromentTypeTB = new System.Windows.Forms.TextBox();
+            this.label196 = new System.Windows.Forms.Label();
             this.InitCTab = new System.Windows.Forms.TabPage();
             this.label158 = new System.Windows.Forms.Label();
             this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
@@ -1106,6 +1129,8 @@ namespace DayZeEditor
             this.darkButton70 = new DarkUI.Controls.DarkButton();
             this.SpawnGearItemTypeTB = new System.Windows.Forms.TextBox();
             this.MapGroupPosTab = new System.Windows.Forms.TabPage();
+            this.darkButton85 = new DarkUI.Controls.DarkButton();
+            this.label199 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.panelEx1 = new TreeViewMS.PanelEx();
@@ -1142,9 +1167,7 @@ namespace DayZeEditor
             this.EventSpawnContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewEventSpawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteSelectedEventSpawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importPositionsFromMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importPositionFromdzeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportPositionsTomapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportPositionTodzeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewPosirtionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSelectedPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1186,6 +1209,8 @@ namespace DayZeEditor
             this.TerritoryContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewTerritoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeTerritoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewTerritoryFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeTerritoryFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miniToolStrip = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -1210,7 +1235,6 @@ namespace DayZeEditor
             this.deleteDiscreetUnsortedItemSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapgroupposcontextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1378,6 +1402,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.darkToolStrip24.SuspendLayout();
             this.CFGGameplayTab.SuspendLayout();
+            this.groupBox95.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.boatDecayMultiplierNUD)).BeginInit();
             this.groupBox27.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers5NUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers4NUD)).BeginInit();
@@ -1587,20 +1613,25 @@ namespace DayZeEditor
             this.tabControl22.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.TerritoriesTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesPOSYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesPOSZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesPOSXNUD)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).BeginInit();
             this.tabControl23.SuspendLayout();
             this.tabPage18.SuspendLayout();
+            this.TerritoryZonePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesRadiusNUD)).BeginInit();
+            this.groupBox72.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMinNUD)).BeginInit();
             this.groupBox74.SuspendLayout();
             this.groupBox73.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesStaticMaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesStaticMInNUD)).BeginInit();
-            this.groupBox72.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMaxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMinNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesRadiusNUD)).BeginInit();
+            this.TerritoryEnviromentPanel.SuspendLayout();
             this.InitCTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -1638,7 +1669,6 @@ namespace DayZeEditor
             this.bindingNavigator1.SuspendLayout();
             this.SpawnGearCMS.SuspendLayout();
             this.mapgroupposcontextMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -3311,7 +3341,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
+            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -4805,7 +4835,7 @@ namespace DayZeEditor
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(285, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(925, 514);
+            this.panel1.Size = new System.Drawing.Size(925, 568);
             this.panel1.TabIndex = 7;
             this.panel1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             // 
@@ -8410,12 +8440,12 @@ namespace DayZeEditor
             this.FreshPosZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.FreshPosZNUD.Location = new System.Drawing.Point(171, 442);
             this.FreshPosZNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.FreshPosZNUD.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -8432,12 +8462,12 @@ namespace DayZeEditor
             this.FreshPosXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.FreshPosXNUD.Location = new System.Drawing.Point(39, 442);
             this.FreshPosXNUD.Maximum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             0});
             this.FreshPosXNUD.Minimum = new decimal(new int[] {
-            30000,
+            50000,
             0,
             0,
             -2147483648});
@@ -8479,7 +8509,7 @@ namespace DayZeEditor
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Location = new System.Drawing.Point(305, 33);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(913, 520);
+            this.panel2.Size = new System.Drawing.Size(913, 563);
             this.panel2.TabIndex = 67;
             this.panel2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);
             // 
@@ -8573,6 +8603,7 @@ namespace DayZeEditor
             // 
             this.CFGGameplayTab.AutoScroll = true;
             this.CFGGameplayTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CFGGameplayTab.Controls.Add(this.groupBox95);
             this.CFGGameplayTab.Controls.Add(this.groupBox27);
             this.CFGGameplayTab.Controls.Add(this.groupBox59);
             this.CFGGameplayTab.Controls.Add(this.groupBox31);
@@ -8587,6 +8618,45 @@ namespace DayZeEditor
             this.CFGGameplayTab.Size = new System.Drawing.Size(1218, 596);
             this.CFGGameplayTab.TabIndex = 7;
             this.CFGGameplayTab.Text = "CFGGameplay";
+            // 
+            // groupBox95
+            // 
+            this.groupBox95.Controls.Add(this.boatDecayMultiplierNUD);
+            this.groupBox95.Controls.Add(this.label198);
+            this.groupBox95.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox95.Location = new System.Drawing.Point(251, 528);
+            this.groupBox95.Name = "groupBox95";
+            this.groupBox95.Size = new System.Drawing.Size(355, 40);
+            this.groupBox95.TabIndex = 85;
+            this.groupBox95.TabStop = false;
+            this.groupBox95.Text = "Vehicle Data";
+            // 
+            // boatDecayMultiplierNUD
+            // 
+            this.boatDecayMultiplierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.boatDecayMultiplierNUD.DecimalPlaces = 2;
+            this.boatDecayMultiplierNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.boatDecayMultiplierNUD.Location = new System.Drawing.Point(236, 13);
+            this.boatDecayMultiplierNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.boatDecayMultiplierNUD.Name = "boatDecayMultiplierNUD";
+            this.boatDecayMultiplierNUD.Size = new System.Drawing.Size(97, 20);
+            this.boatDecayMultiplierNUD.TabIndex = 70;
+            this.boatDecayMultiplierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.boatDecayMultiplierNUD.ValueChanged += new System.EventHandler(this.boatDecayMultiplierNUD_ValueChanged);
+            // 
+            // label198
+            // 
+            this.label198.AutoSize = true;
+            this.label198.ForeColor = System.Drawing.SystemColors.Control;
+            this.label198.Location = new System.Drawing.Point(6, 17);
+            this.label198.Name = "label198";
+            this.label198.Size = new System.Drawing.Size(106, 13);
+            this.label198.TabIndex = 69;
+            this.label198.Text = "boat Decay Multiplier";
             // 
             // groupBox27
             // 
@@ -9322,7 +9392,7 @@ namespace DayZeEditor
             this.groupBox59.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox59.Location = new System.Drawing.Point(251, 460);
             this.groupBox59.Name = "groupBox59";
-            this.groupBox59.Size = new System.Drawing.Size(355, 108);
+            this.groupBox59.Size = new System.Drawing.Size(355, 65);
             this.groupBox59.TabIndex = 84;
             this.groupBox59.TabStop = false;
             this.groupBox59.Text = "Map Data";
@@ -11142,7 +11212,7 @@ namespace DayZeEditor
             this.RadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.RadiusNUD.Location = new System.Drawing.Point(102, 45);
             this.RadiusNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
@@ -11173,10 +11243,15 @@ namespace DayZeEditor
             this.posZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.posZNUD.Location = new System.Drawing.Point(277, 19);
             this.posZNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
+            this.posZNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
             this.posZNUD.Name = "posZNUD";
             this.posZNUD.Size = new System.Drawing.Size(71, 20);
             this.posZNUD.TabIndex = 123;
@@ -11189,10 +11264,15 @@ namespace DayZeEditor
             this.posYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.posYNUD.Location = new System.Drawing.Point(191, 19);
             this.posYNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
+            this.posYNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
             this.posYNUD.Name = "posYNUD";
             this.posYNUD.Size = new System.Drawing.Size(71, 20);
             this.posYNUD.TabIndex = 122;
@@ -11205,10 +11285,15 @@ namespace DayZeEditor
             this.PosXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.PosXNUD.Location = new System.Drawing.Point(102, 19);
             this.PosXNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
+            this.PosXNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
             this.PosXNUD.Name = "PosXNUD";
             this.PosXNUD.Size = new System.Drawing.Size(71, 20);
             this.PosXNUD.TabIndex = 120;
@@ -15003,7 +15088,12 @@ namespace DayZeEditor
             // TerritoriesTab
             // 
             this.TerritoriesTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.TerritoriesTab.Controls.Add(this.label155);
+            this.TerritoriesTab.Controls.Add(this.label195);
+            this.TerritoriesTab.Controls.Add(this.TerritoriesZonesPOSYNUD);
+            this.TerritoriesTab.Controls.Add(this.label194);
+            this.TerritoriesTab.Controls.Add(this.label193);
+            this.TerritoriesTab.Controls.Add(this.TerritoriesZonesPOSZNUD);
+            this.TerritoriesTab.Controls.Add(this.TerritoriesZonesPOSXNUD);
             this.TerritoriesTab.Controls.Add(this.TerritoryPaintAllCB);
             this.TerritoriesTab.Controls.Add(this.TerritorieszonesCB);
             this.TerritoriesTab.Controls.Add(this.panel5);
@@ -15016,20 +15106,108 @@ namespace DayZeEditor
             this.TerritoriesTab.TabIndex = 15;
             this.TerritoriesTab.Text = "Territories";
             // 
-            // label155
+            // label195
             // 
-            this.label155.AutoSize = true;
-            this.label155.Location = new System.Drawing.Point(813, 3);
-            this.label155.Name = "label155";
-            this.label155.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label155.Size = new System.Drawing.Size(0, 13);
-            this.label155.TabIndex = 104;
-            this.label155.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label195.AutoSize = true;
+            this.label195.Location = new System.Drawing.Point(1060, 4);
+            this.label195.Name = "label195";
+            this.label195.Size = new System.Drawing.Size(17, 13);
+            this.label195.TabIndex = 137;
+            this.label195.Text = "Y:";
+            this.label195.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label195.Visible = false;
+            // 
+            // TerritoriesZonesPOSYNUD
+            // 
+            this.TerritoriesZonesPOSYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesPOSYNUD.DecimalPlaces = 6;
+            this.TerritoriesZonesPOSYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesPOSYNUD.Location = new System.Drawing.Point(1078, 1);
+            this.TerritoriesZonesPOSYNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.TerritoriesZonesPOSYNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
+            this.TerritoriesZonesPOSYNUD.Name = "TerritoriesZonesPOSYNUD";
+            this.TerritoriesZonesPOSYNUD.Size = new System.Drawing.Size(159, 20);
+            this.TerritoriesZonesPOSYNUD.TabIndex = 136;
+            this.TerritoriesZonesPOSYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoriesZonesPOSYNUD.Visible = false;
+            this.TerritoriesZonesPOSYNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesPOSYNUD_ValueChanged);
+            // 
+            // label194
+            // 
+            this.label194.AutoSize = true;
+            this.label194.Location = new System.Drawing.Point(876, 4);
+            this.label194.Name = "label194";
+            this.label194.Size = new System.Drawing.Size(17, 13);
+            this.label194.TabIndex = 135;
+            this.label194.Text = "Z:";
+            this.label194.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label193
+            // 
+            this.label193.AutoSize = true;
+            this.label193.Location = new System.Drawing.Point(691, 4);
+            this.label193.Name = "label193";
+            this.label193.Size = new System.Drawing.Size(17, 13);
+            this.label193.TabIndex = 134;
+            this.label193.Text = "X:";
+            this.label193.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TerritoriesZonesPOSZNUD
+            // 
+            this.TerritoriesZonesPOSZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesPOSZNUD.DecimalPlaces = 6;
+            this.TerritoriesZonesPOSZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesPOSZNUD.Location = new System.Drawing.Point(894, 1);
+            this.TerritoriesZonesPOSZNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.TerritoriesZonesPOSZNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
+            this.TerritoriesZonesPOSZNUD.Name = "TerritoriesZonesPOSZNUD";
+            this.TerritoriesZonesPOSZNUD.Size = new System.Drawing.Size(159, 20);
+            this.TerritoriesZonesPOSZNUD.TabIndex = 133;
+            this.TerritoriesZonesPOSZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoriesZonesPOSZNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesPOSZNUD_ValueChanged);
+            // 
+            // TerritoriesZonesPOSXNUD
+            // 
+            this.TerritoriesZonesPOSXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesPOSXNUD.DecimalPlaces = 6;
+            this.TerritoriesZonesPOSXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesPOSXNUD.Location = new System.Drawing.Point(711, 1);
+            this.TerritoriesZonesPOSXNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.TerritoriesZonesPOSXNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
+            this.TerritoriesZonesPOSXNUD.Name = "TerritoriesZonesPOSXNUD";
+            this.TerritoriesZonesPOSXNUD.Size = new System.Drawing.Size(159, 20);
+            this.TerritoriesZonesPOSXNUD.TabIndex = 132;
+            this.TerritoriesZonesPOSXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoriesZonesPOSXNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesPOSXNUD_ValueChanged);
             // 
             // TerritoryPaintAllCB
             // 
             this.TerritoryPaintAllCB.AutoSize = true;
-            this.TerritoryPaintAllCB.Location = new System.Drawing.Point(688, 3);
+            this.TerritoryPaintAllCB.Location = new System.Drawing.Point(569, 3);
             this.TerritoryPaintAllCB.Name = "TerritoryPaintAllCB";
             this.TerritoryPaintAllCB.Size = new System.Drawing.Size(109, 17);
             this.TerritoryPaintAllCB.TabIndex = 103;
@@ -15040,11 +15218,11 @@ namespace DayZeEditor
             // TerritorieszonesCB
             // 
             this.TerritorieszonesCB.AutoSize = true;
-            this.TerritorieszonesCB.Location = new System.Drawing.Point(463, 3);
+            this.TerritorieszonesCB.Location = new System.Drawing.Point(446, 3);
             this.TerritorieszonesCB.Name = "TerritorieszonesCB";
-            this.TerritorieszonesCB.Size = new System.Drawing.Size(202, 17);
+            this.TerritorieszonesCB.Size = new System.Drawing.Size(117, 17);
             this.TerritorieszonesCB.TabIndex = 102;
-            this.TerritorieszonesCB.Text = "Paint all zones of current territory type";
+            this.TerritorieszonesCB.Text = "Paint all type zones";
             this.TerritorieszonesCB.UseVisualStyleBackColor = true;
             this.TerritorieszonesCB.CheckedChanged += new System.EventHandler(this.TerritorieszonesCB_CheckedChanged);
             // 
@@ -15054,12 +15232,24 @@ namespace DayZeEditor
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.AutoScroll = true;
+            this.panel5.Controls.Add(this.label155);
             this.panel5.Controls.Add(this.pictureBox6);
             this.panel5.Location = new System.Drawing.Point(270, 24);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(945, 569);
             this.panel5.TabIndex = 101;
             this.panel5.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
+            // 
+            // label155
+            // 
+            this.label155.AutoSize = true;
+            this.label155.Location = new System.Drawing.Point(0, 0);
+            this.label155.Name = "label155";
+            this.label155.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label155.Size = new System.Drawing.Size(17, 13);
+            this.label155.TabIndex = 104;
+            this.label155.Text = "xy";
+            this.label155.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox6
             // 
@@ -15098,42 +15288,22 @@ namespace DayZeEditor
             this.tabControl23.Location = new System.Drawing.Point(3, 3);
             this.tabControl23.Name = "tabControl23";
             this.tabControl23.SelectedIndex = 0;
-            this.tabControl23.Size = new System.Drawing.Size(261, 547);
+            this.tabControl23.Size = new System.Drawing.Size(261, 590);
             this.tabControl23.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl23.TabIndex = 4;
             // 
             // tabPage18
             // 
             this.tabPage18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage18.Controls.Add(this.pictureBox3);
             this.tabPage18.Controls.Add(this.TerritoriesTreeview);
-            this.tabPage18.Controls.Add(this.label154);
-            this.tabPage18.Controls.Add(this.TerritoriesZonesLB);
-            this.tabPage18.Controls.Add(this.groupBox74);
-            this.tabPage18.Controls.Add(this.darkButton65);
-            this.tabPage18.Controls.Add(this.groupBox73);
-            this.tabPage18.Controls.Add(this.darkButton64);
-            this.tabPage18.Controls.Add(this.groupBox72);
-            this.tabPage18.Controls.Add(this.TerritoriesZonesRadiusNUD);
-            this.tabPage18.Controls.Add(this.label151);
+            this.tabPage18.Controls.Add(this.TerritoryZonePanel);
+            this.tabPage18.Controls.Add(this.TerritoryEnviromentPanel);
             this.tabPage18.Location = new System.Drawing.Point(4, 5);
             this.tabPage18.Name = "tabPage18";
             this.tabPage18.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage18.Size = new System.Drawing.Size(253, 538);
+            this.tabPage18.Size = new System.Drawing.Size(253, 581);
             this.tabPage18.TabIndex = 0;
             this.tabPage18.Text = "tabPage18";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(51, 155);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(193, 13);
-            this.pictureBox3.TabIndex = 144;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            this.pictureBox3.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox3_Paint);
             // 
             // TerritoriesTreeview
             // 
@@ -15144,24 +15314,174 @@ namespace DayZeEditor
             this.TerritoriesTreeview.ForeColor = System.Drawing.SystemColors.Control;
             this.TerritoriesTreeview.HideSelection = false;
             this.TerritoriesTreeview.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.TerritoriesTreeview.Location = new System.Drawing.Point(6, 6);
+            this.TerritoriesTreeview.Location = new System.Drawing.Point(6, 5);
             this.TerritoriesTreeview.Name = "TerritoriesTreeview";
             this.TerritoriesTreeview.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("TerritoriesTreeview.SelectedNodes")));
             this.TerritoriesTreeview.SetMultiselect = true;
-            this.TerritoriesTreeview.Size = new System.Drawing.Size(241, 146);
+            this.TerritoriesTreeview.Size = new System.Drawing.Size(241, 189);
             this.TerritoriesTreeview.TabIndex = 0;
             this.TerritoriesTreeview.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TerritoriesTreeview_NodeMouseClick);
+            // 
+            // TerritoryZonePanel
+            // 
+            this.TerritoryZonePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TerritoryZonePanel.Controls.Add(this.TerritoriesZonesUseYCB);
+            this.TerritoryZonePanel.Controls.Add(this.label154);
+            this.TerritoryZonePanel.Controls.Add(this.pictureBox3);
+            this.TerritoryZonePanel.Controls.Add(this.label151);
+            this.TerritoryZonePanel.Controls.Add(this.TerritoriesZonesRadiusNUD);
+            this.TerritoryZonePanel.Controls.Add(this.groupBox72);
+            this.TerritoryZonePanel.Controls.Add(this.TerritoriesZonesLB);
+            this.TerritoryZonePanel.Controls.Add(this.darkButton64);
+            this.TerritoryZonePanel.Controls.Add(this.groupBox74);
+            this.TerritoryZonePanel.Controls.Add(this.groupBox73);
+            this.TerritoryZonePanel.Controls.Add(this.darkButton65);
+            this.TerritoryZonePanel.Location = new System.Drawing.Point(5, 197);
+            this.TerritoryZonePanel.Name = "TerritoryZonePanel";
+            this.TerritoryZonePanel.Size = new System.Drawing.Size(244, 383);
+            this.TerritoryZonePanel.TabIndex = 146;
+            this.TerritoryZonePanel.Visible = false;
+            // 
+            // TerritoriesZonesUseYCB
+            // 
+            this.TerritoriesZonesUseYCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TerritoriesZonesUseYCB.AutoSize = true;
+            this.TerritoriesZonesUseYCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.TerritoriesZonesUseYCB.Location = new System.Drawing.Point(187, 149);
+            this.TerritoriesZonesUseYCB.Name = "TerritoriesZonesUseYCB";
+            this.TerritoriesZonesUseYCB.Size = new System.Drawing.Size(55, 17);
+            this.TerritoriesZonesUseYCB.TabIndex = 145;
+            this.TerritoriesZonesUseYCB.Text = "Use Y";
+            this.TerritoriesZonesUseYCB.UseVisualStyleBackColor = true;
+            this.TerritoriesZonesUseYCB.CheckedChanged += new System.EventHandler(this.TerritoriesZonesUseYCB_CheckedChanged);
             // 
             // label154
             // 
             this.label154.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label154.AutoSize = true;
             this.label154.ForeColor = System.Drawing.SystemColors.Control;
-            this.label154.Location = new System.Drawing.Point(8, 155);
+            this.label154.Location = new System.Drawing.Point(3, 0);
             this.label154.Name = "label154";
             this.label154.Size = new System.Drawing.Size(37, 13);
             this.label154.TabIndex = 143;
             this.label154.Text = "Colour";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
+            this.pictureBox3.Location = new System.Drawing.Point(46, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(193, 13);
+            this.pictureBox3.TabIndex = 144;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.pictureBox3.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox3_Paint);
+            // 
+            // label151
+            // 
+            this.label151.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label151.AutoSize = true;
+            this.label151.ForeColor = System.Drawing.SystemColors.Control;
+            this.label151.Location = new System.Drawing.Point(3, 152);
+            this.label151.Name = "label151";
+            this.label151.Size = new System.Drawing.Size(49, 13);
+            this.label151.TabIndex = 134;
+            this.label151.Text = "Radius - ";
+            // 
+            // TerritoriesZonesRadiusNUD
+            // 
+            this.TerritoriesZonesRadiusNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TerritoriesZonesRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesRadiusNUD.Location = new System.Drawing.Point(55, 148);
+            this.TerritoriesZonesRadiusNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.TerritoriesZonesRadiusNUD.Name = "TerritoriesZonesRadiusNUD";
+            this.TerritoriesZonesRadiusNUD.Size = new System.Drawing.Size(112, 20);
+            this.TerritoriesZonesRadiusNUD.TabIndex = 135;
+            this.TerritoriesZonesRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoriesZonesRadiusNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesRadiusNUD_ValueChanged);
+            // 
+            // groupBox72
+            // 
+            this.groupBox72.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox72.Controls.Add(this.TerritoriesZonesDynamicMaxNUD);
+            this.groupBox72.Controls.Add(this.TerritoriesZonesDynamicMinNUD);
+            this.groupBox72.Controls.Add(this.label150);
+            this.groupBox72.Controls.Add(this.label149);
+            this.groupBox72.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox72.Location = new System.Drawing.Point(1, 217);
+            this.groupBox72.Name = "groupBox72";
+            this.groupBox72.Size = new System.Drawing.Size(239, 49);
+            this.groupBox72.TabIndex = 140;
+            this.groupBox72.TabStop = false;
+            this.groupBox72.Text = "dynamic";
+            // 
+            // TerritoriesZonesDynamicMaxNUD
+            // 
+            this.TerritoriesZonesDynamicMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesDynamicMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesDynamicMaxNUD.Location = new System.Drawing.Point(144, 19);
+            this.TerritoriesZonesDynamicMaxNUD.Maximum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            0});
+            this.TerritoriesZonesDynamicMaxNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
+            this.TerritoriesZonesDynamicMaxNUD.Name = "TerritoriesZonesDynamicMaxNUD";
+            this.TerritoriesZonesDynamicMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.TerritoriesZonesDynamicMaxNUD.TabIndex = 132;
+            this.TerritoriesZonesDynamicMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoriesZonesDynamicMaxNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesDynamicMaxNUD_ValueChanged);
+            // 
+            // TerritoriesZonesDynamicMinNUD
+            // 
+            this.TerritoriesZonesDynamicMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesDynamicMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesDynamicMinNUD.Location = new System.Drawing.Point(41, 19);
+            this.TerritoriesZonesDynamicMinNUD.Maximum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            0});
+            this.TerritoriesZonesDynamicMinNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
+            this.TerritoriesZonesDynamicMinNUD.Name = "TerritoriesZonesDynamicMinNUD";
+            this.TerritoriesZonesDynamicMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.TerritoriesZonesDynamicMinNUD.TabIndex = 131;
+            this.TerritoriesZonesDynamicMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoriesZonesDynamicMinNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesDynamicMinNUD_ValueChanged);
+            // 
+            // label150
+            // 
+            this.label150.AutoSize = true;
+            this.label150.ForeColor = System.Drawing.SystemColors.Control;
+            this.label150.Location = new System.Drawing.Point(11, 21);
+            this.label150.Name = "label150";
+            this.label150.Size = new System.Drawing.Size(24, 13);
+            this.label150.TabIndex = 130;
+            this.label150.Text = "Min";
+            // 
+            // label149
+            // 
+            this.label149.AutoSize = true;
+            this.label149.ForeColor = System.Drawing.SystemColors.Control;
+            this.label149.Location = new System.Drawing.Point(111, 21);
+            this.label149.Name = "label149";
+            this.label149.Size = new System.Drawing.Size(27, 13);
+            this.label149.TabIndex = 133;
+            this.label149.Text = "Max";
             // 
             // TerritoriesZonesLB
             // 
@@ -15170,12 +15490,24 @@ namespace DayZeEditor
             this.TerritoriesZonesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.TerritoriesZonesLB.ForeColor = System.Drawing.SystemColors.Control;
             this.TerritoriesZonesLB.FormattingEnabled = true;
-            this.TerritoriesZonesLB.Location = new System.Drawing.Point(6, 174);
+            this.TerritoriesZonesLB.Location = new System.Drawing.Point(1, 19);
             this.TerritoriesZonesLB.Name = "TerritoriesZonesLB";
             this.TerritoriesZonesLB.Size = new System.Drawing.Size(212, 121);
             this.TerritoriesZonesLB.TabIndex = 51;
             this.TerritoriesZonesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.TerritoriesZonesLB.SelectedIndexChanged += new System.EventHandler(this.TerritoriesZonesLB_SelectedIndexChanged);
+            // 
+            // darkButton64
+            // 
+            this.darkButton64.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton64.Location = new System.Drawing.Point(216, 117);
+            this.darkButton64.Name = "darkButton64";
+            this.darkButton64.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton64.Size = new System.Drawing.Size(23, 23);
+            this.darkButton64.TabIndex = 129;
+            this.darkButton64.Text = "-";
+            this.darkButton64.Click += new System.EventHandler(this.darkButton64_Click);
             // 
             // groupBox74
             // 
@@ -15187,7 +15519,7 @@ namespace DayZeEditor
             this.groupBox74.Controls.Add(this.TerritoriesZonesRestRB);
             this.groupBox74.Controls.Add(this.TerritoriesZonesDynamicTB);
             this.groupBox74.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox74.Location = new System.Drawing.Point(5, 422);
+            this.groupBox74.Location = new System.Drawing.Point(0, 267);
             this.groupBox74.Name = "groupBox74";
             this.groupBox74.Size = new System.Drawing.Size(239, 114);
             this.groupBox74.TabIndex = 142;
@@ -15265,18 +15597,6 @@ namespace DayZeEditor
             this.TerritoriesZonesDynamicTB.TabIndex = 2;
             this.TerritoriesZonesDynamicTB.TextChanged += new System.EventHandler(this.TerritoriesZonesDynamicTB_TextChanged);
             // 
-            // darkButton65
-            // 
-            this.darkButton65.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton65.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton65.Location = new System.Drawing.Point(221, 174);
-            this.darkButton65.Name = "darkButton65";
-            this.darkButton65.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton65.Size = new System.Drawing.Size(23, 23);
-            this.darkButton65.TabIndex = 128;
-            this.darkButton65.Text = "+";
-            this.darkButton65.Click += new System.EventHandler(this.darkButton65_Click);
-            // 
             // groupBox73
             // 
             this.groupBox73.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -15285,7 +15605,7 @@ namespace DayZeEditor
             this.groupBox73.Controls.Add(this.label152);
             this.groupBox73.Controls.Add(this.label153);
             this.groupBox73.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox73.Location = new System.Drawing.Point(6, 323);
+            this.groupBox73.Location = new System.Drawing.Point(1, 168);
             this.groupBox73.Name = "groupBox73";
             this.groupBox73.Size = new System.Drawing.Size(239, 49);
             this.groupBox73.TabIndex = 141;
@@ -15354,127 +15674,149 @@ namespace DayZeEditor
             this.label153.TabIndex = 133;
             this.label153.Text = "Max";
             // 
-            // darkButton64
+            // darkButton65
             // 
-            this.darkButton64.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton64.Location = new System.Drawing.Point(221, 272);
-            this.darkButton64.Name = "darkButton64";
-            this.darkButton64.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton64.Size = new System.Drawing.Size(23, 23);
-            this.darkButton64.TabIndex = 129;
-            this.darkButton64.Text = "-";
-            this.darkButton64.Click += new System.EventHandler(this.darkButton64_Click);
+            this.darkButton65.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton65.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton65.Location = new System.Drawing.Point(216, 19);
+            this.darkButton65.Name = "darkButton65";
+            this.darkButton65.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton65.Size = new System.Drawing.Size(23, 23);
+            this.darkButton65.TabIndex = 128;
+            this.darkButton65.Text = "+";
+            this.darkButton65.Click += new System.EventHandler(this.darkButton65_Click);
             // 
-            // groupBox72
+            // TerritoryEnviromentPanel
             // 
-            this.groupBox72.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox72.Controls.Add(this.TerritoriesZonesDynamicMaxNUD);
-            this.groupBox72.Controls.Add(this.TerritoriesZonesDynamicMinNUD);
-            this.groupBox72.Controls.Add(this.label150);
-            this.groupBox72.Controls.Add(this.label149);
-            this.groupBox72.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox72.Location = new System.Drawing.Point(6, 372);
-            this.groupBox72.Name = "groupBox72";
-            this.groupBox72.Size = new System.Drawing.Size(239, 49);
-            this.groupBox72.TabIndex = 140;
-            this.groupBox72.TabStop = false;
-            this.groupBox72.Text = "dynamic";
+            this.TerritoryEnviromentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TerritoryEnviromentPanel.Controls.Add(this.label197);
+            this.TerritoryEnviromentPanel.Controls.Add(this.TerritoryEnviromentPathTB);
+            this.TerritoryEnviromentPanel.Controls.Add(this.darkLabel36);
+            this.TerritoryEnviromentPanel.Controls.Add(this.TerritoryEnviromentusableTB);
+            this.TerritoryEnviromentPanel.Controls.Add(this.darkLabel35);
+            this.TerritoryEnviromentPanel.Controls.Add(this.TerritoryEnviromentbehavorTB);
+            this.TerritoryEnviromentPanel.Controls.Add(this.darkLabel34);
+            this.TerritoryEnviromentPanel.Controls.Add(this.TerritoryEnviromentnameTB);
+            this.TerritoryEnviromentPanel.Controls.Add(this.darkLabel32);
+            this.TerritoryEnviromentPanel.Controls.Add(this.TerritoryEnviromentTypeTB);
+            this.TerritoryEnviromentPanel.Controls.Add(this.label196);
+            this.TerritoryEnviromentPanel.Location = new System.Drawing.Point(5, 197);
+            this.TerritoryEnviromentPanel.Name = "TerritoryEnviromentPanel";
+            this.TerritoryEnviromentPanel.Size = new System.Drawing.Size(244, 383);
+            this.TerritoryEnviromentPanel.TabIndex = 147;
+            this.TerritoryEnviromentPanel.Visible = false;
             // 
-            // TerritoriesZonesDynamicMaxNUD
+            // label197
             // 
-            this.TerritoriesZonesDynamicMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.TerritoriesZonesDynamicMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerritoriesZonesDynamicMaxNUD.Location = new System.Drawing.Point(144, 19);
-            this.TerritoriesZonesDynamicMaxNUD.Maximum = new decimal(new int[] {
-            30000,
-            0,
-            0,
-            0});
-            this.TerritoriesZonesDynamicMaxNUD.Minimum = new decimal(new int[] {
-            30000,
-            0,
-            0,
-            -2147483648});
-            this.TerritoriesZonesDynamicMaxNUD.Name = "TerritoriesZonesDynamicMaxNUD";
-            this.TerritoriesZonesDynamicMaxNUD.Size = new System.Drawing.Size(68, 20);
-            this.TerritoriesZonesDynamicMaxNUD.TabIndex = 132;
-            this.TerritoriesZonesDynamicMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TerritoriesZonesDynamicMaxNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesDynamicMaxNUD_ValueChanged);
+            this.label197.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label197.AutoSize = true;
+            this.label197.ForeColor = System.Drawing.SystemColors.Control;
+            this.label197.Location = new System.Drawing.Point(65, 2);
+            this.label197.Name = "label197";
+            this.label197.Size = new System.Drawing.Size(102, 13);
+            this.label197.TabIndex = 146;
+            this.label197.Text = "CFGEnviroment Info";
             // 
-            // TerritoriesZonesDynamicMinNUD
+            // TerritoryEnviromentPathTB
             // 
-            this.TerritoriesZonesDynamicMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.TerritoriesZonesDynamicMinNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerritoriesZonesDynamicMinNUD.Location = new System.Drawing.Point(41, 19);
-            this.TerritoriesZonesDynamicMinNUD.Maximum = new decimal(new int[] {
-            30000,
-            0,
-            0,
-            0});
-            this.TerritoriesZonesDynamicMinNUD.Minimum = new decimal(new int[] {
-            30000,
-            0,
-            0,
-            -2147483648});
-            this.TerritoriesZonesDynamicMinNUD.Name = "TerritoriesZonesDynamicMinNUD";
-            this.TerritoriesZonesDynamicMinNUD.Size = new System.Drawing.Size(68, 20);
-            this.TerritoriesZonesDynamicMinNUD.TabIndex = 131;
-            this.TerritoriesZonesDynamicMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TerritoriesZonesDynamicMinNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesDynamicMinNUD_ValueChanged);
+            this.TerritoryEnviromentPathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoryEnviromentPathTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoryEnviromentPathTB.Location = new System.Drawing.Point(3, 40);
+            this.TerritoryEnviromentPathTB.Name = "TerritoryEnviromentPathTB";
+            this.TerritoryEnviromentPathTB.ReadOnly = true;
+            this.TerritoryEnviromentPathTB.Size = new System.Drawing.Size(238, 20);
+            this.TerritoryEnviromentPathTB.TabIndex = 145;
             // 
-            // label150
+            // darkLabel36
             // 
-            this.label150.AutoSize = true;
-            this.label150.ForeColor = System.Drawing.SystemColors.Control;
-            this.label150.Location = new System.Drawing.Point(11, 21);
-            this.label150.Name = "label150";
-            this.label150.Size = new System.Drawing.Size(24, 13);
-            this.label150.TabIndex = 130;
-            this.label150.Text = "Min";
+            this.darkLabel36.AutoSize = true;
+            this.darkLabel36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel36.Location = new System.Drawing.Point(11, 200);
+            this.darkLabel36.Name = "darkLabel36";
+            this.darkLabel36.Size = new System.Drawing.Size(40, 13);
+            this.darkLabel36.TabIndex = 144;
+            this.darkLabel36.Text = "Usable";
             // 
-            // label149
+            // TerritoryEnviromentusableTB
             // 
-            this.label149.AutoSize = true;
-            this.label149.ForeColor = System.Drawing.SystemColors.Control;
-            this.label149.Location = new System.Drawing.Point(111, 21);
-            this.label149.Name = "label149";
-            this.label149.Size = new System.Drawing.Size(27, 13);
-            this.label149.TabIndex = 133;
-            this.label149.Text = "Max";
+            this.TerritoryEnviromentusableTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoryEnviromentusableTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoryEnviromentusableTB.Location = new System.Drawing.Point(3, 216);
+            this.TerritoryEnviromentusableTB.Name = "TerritoryEnviromentusableTB";
+            this.TerritoryEnviromentusableTB.ReadOnly = true;
+            this.TerritoryEnviromentusableTB.Size = new System.Drawing.Size(238, 20);
+            this.TerritoryEnviromentusableTB.TabIndex = 143;
             // 
-            // TerritoriesZonesRadiusNUD
+            // darkLabel35
             // 
-            this.TerritoriesZonesRadiusNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TerritoriesZonesRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.TerritoriesZonesRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerritoriesZonesRadiusNUD.Location = new System.Drawing.Point(60, 303);
-            this.TerritoriesZonesRadiusNUD.Maximum = new decimal(new int[] {
-            30000,
-            0,
-            0,
-            0});
-            this.TerritoriesZonesRadiusNUD.Minimum = new decimal(new int[] {
-            30000,
-            0,
-            0,
-            -2147483648});
-            this.TerritoriesZonesRadiusNUD.Name = "TerritoriesZonesRadiusNUD";
-            this.TerritoriesZonesRadiusNUD.Size = new System.Drawing.Size(149, 20);
-            this.TerritoriesZonesRadiusNUD.TabIndex = 135;
-            this.TerritoriesZonesRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TerritoriesZonesRadiusNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesRadiusNUD_ValueChanged);
+            this.darkLabel35.AutoSize = true;
+            this.darkLabel35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel35.Location = new System.Drawing.Point(11, 155);
+            this.darkLabel35.Name = "darkLabel35";
+            this.darkLabel35.Size = new System.Drawing.Size(49, 13);
+            this.darkLabel35.TabIndex = 142;
+            this.darkLabel35.Text = "Behavior";
             // 
-            // label151
+            // TerritoryEnviromentbehavorTB
             // 
-            this.label151.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label151.AutoSize = true;
-            this.label151.ForeColor = System.Drawing.SystemColors.Control;
-            this.label151.Location = new System.Drawing.Point(8, 307);
-            this.label151.Name = "label151";
-            this.label151.Size = new System.Drawing.Size(49, 13);
-            this.label151.TabIndex = 134;
-            this.label151.Text = "Radius - ";
+            this.TerritoryEnviromentbehavorTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoryEnviromentbehavorTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoryEnviromentbehavorTB.Location = new System.Drawing.Point(3, 171);
+            this.TerritoryEnviromentbehavorTB.Name = "TerritoryEnviromentbehavorTB";
+            this.TerritoryEnviromentbehavorTB.Size = new System.Drawing.Size(238, 20);
+            this.TerritoryEnviromentbehavorTB.TabIndex = 141;
+            this.TerritoryEnviromentbehavorTB.TextChanged += new System.EventHandler(this.TerritoryEnviromentbehavorTB_TextChanged);
+            // 
+            // darkLabel34
+            // 
+            this.darkLabel34.AutoSize = true;
+            this.darkLabel34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel34.Location = new System.Drawing.Point(13, 110);
+            this.darkLabel34.Name = "darkLabel34";
+            this.darkLabel34.Size = new System.Drawing.Size(35, 13);
+            this.darkLabel34.TabIndex = 140;
+            this.darkLabel34.Text = "Name";
+            // 
+            // TerritoryEnviromentnameTB
+            // 
+            this.TerritoryEnviromentnameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoryEnviromentnameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoryEnviromentnameTB.Location = new System.Drawing.Point(3, 126);
+            this.TerritoryEnviromentnameTB.Name = "TerritoryEnviromentnameTB";
+            this.TerritoryEnviromentnameTB.Size = new System.Drawing.Size(238, 20);
+            this.TerritoryEnviromentnameTB.TabIndex = 139;
+            this.TerritoryEnviromentnameTB.TextChanged += new System.EventHandler(this.TerritoryEnviromentnameTB_TextChanged);
+            // 
+            // darkLabel32
+            // 
+            this.darkLabel32.AutoSize = true;
+            this.darkLabel32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel32.Location = new System.Drawing.Point(11, 69);
+            this.darkLabel32.Name = "darkLabel32";
+            this.darkLabel32.Size = new System.Drawing.Size(31, 13);
+            this.darkLabel32.TabIndex = 138;
+            this.darkLabel32.Text = "Type";
+            // 
+            // TerritoryEnviromentTypeTB
+            // 
+            this.TerritoryEnviromentTypeTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoryEnviromentTypeTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoryEnviromentTypeTB.Location = new System.Drawing.Point(3, 85);
+            this.TerritoryEnviromentTypeTB.Name = "TerritoryEnviromentTypeTB";
+            this.TerritoryEnviromentTypeTB.ReadOnly = true;
+            this.TerritoryEnviromentTypeTB.Size = new System.Drawing.Size(238, 20);
+            this.TerritoryEnviromentTypeTB.TabIndex = 137;
+            // 
+            // label196
+            // 
+            this.label196.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label196.AutoSize = true;
+            this.label196.ForeColor = System.Drawing.SystemColors.Control;
+            this.label196.Location = new System.Drawing.Point(11, 24);
+            this.label196.Name = "label196";
+            this.label196.Size = new System.Drawing.Size(48, 13);
+            this.label196.TabIndex = 135;
+            this.label196.Text = "File Path";
             // 
             // InitCTab
             // 
@@ -16195,6 +16537,8 @@ namespace DayZeEditor
             // MapGroupPosTab
             // 
             this.MapGroupPosTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MapGroupPosTab.Controls.Add(this.darkButton85);
+            this.MapGroupPosTab.Controls.Add(this.label199);
             this.MapGroupPosTab.Controls.Add(this.label44);
             this.MapGroupPosTab.Controls.Add(this.trackBar2);
             this.MapGroupPosTab.Controls.Add(this.panelEx1);
@@ -16205,6 +16549,29 @@ namespace DayZeEditor
             this.MapGroupPosTab.Size = new System.Drawing.Size(1218, 596);
             this.MapGroupPosTab.TabIndex = 18;
             this.MapGroupPosTab.Text = "MapGroupPos";
+            // 
+            // darkButton85
+            // 
+            this.darkButton85.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton85.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton85.Location = new System.Drawing.Point(11, 565);
+            this.darkButton85.Name = "darkButton85";
+            this.darkButton85.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton85.Size = new System.Drawing.Size(292, 23);
+            this.darkButton85.TabIndex = 224;
+            this.darkButton85.Text = "Remove Selected Points";
+            this.darkButton85.Click += new System.EventHandler(this.darkButton85_Click);
+            // 
+            // label199
+            // 
+            this.label199.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label199.AutoSize = true;
+            this.label199.Location = new System.Drawing.Point(8, 510);
+            this.label199.Name = "label199";
+            this.label199.Size = new System.Drawing.Size(227, 52);
+            this.label199.TabIndex = 223;
+            this.label199.Text = "NOTE:-\r\nTo Select Multpile Please hold down left CTRL\r\n and click each point you " +
+    "wifh to add to the list\r\non the map.";
             // 
             // label44
             // 
@@ -16268,7 +16635,7 @@ namespace DayZeEditor
             this.treeViewMS2.Name = "treeViewMS2";
             this.treeViewMS2.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS2.SelectedNodes")));
             this.treeViewMS2.SetMultiselect = true;
-            this.treeViewMS2.Size = new System.Drawing.Size(292, 514);
+            this.treeViewMS2.Size = new System.Drawing.Size(292, 495);
             this.treeViewMS2.TabIndex = 216;
             this.treeViewMS2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMS2_AfterSelect);
             this.treeViewMS2.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS2_NodeMouseClick);
@@ -16588,9 +16955,7 @@ namespace DayZeEditor
             this.EventSpawnContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNewEventSpawnToolStripMenuItem,
             this.deleteSelectedEventSpawnToolStripMenuItem,
-            this.importPositionsFromMapToolStripMenuItem,
             this.importPositionFromdzeToolStripMenuItem,
-            this.exportPositionsTomapToolStripMenuItem,
             this.exportPositionTodzeToolStripMenuItem,
             this.addNewPosirtionToolStripMenuItem,
             this.removeSelectedPositionToolStripMenuItem,
@@ -16598,83 +16963,69 @@ namespace DayZeEditor
             this.exportGroupSpawnTodzeToolStripMenuItem,
             this.importPositionAndCreateEventgroupFormdzeToolStripMenuItem});
             this.EventSpawnContextMenu.Name = "EventSpawnContextMenu";
-            this.EventSpawnContextMenu.Size = new System.Drawing.Size(332, 246);
+            this.EventSpawnContextMenu.Size = new System.Drawing.Size(279, 202);
             // 
             // addNewEventSpawnToolStripMenuItem
             // 
             this.addNewEventSpawnToolStripMenuItem.Name = "addNewEventSpawnToolStripMenuItem";
-            this.addNewEventSpawnToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
+            this.addNewEventSpawnToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.addNewEventSpawnToolStripMenuItem.Text = "Add new event spawn";
             this.addNewEventSpawnToolStripMenuItem.Click += new System.EventHandler(this.addNewEventSpawnToolStripMenuItem_Click);
             // 
             // deleteSelectedEventSpawnToolStripMenuItem
             // 
             this.deleteSelectedEventSpawnToolStripMenuItem.Name = "deleteSelectedEventSpawnToolStripMenuItem";
-            this.deleteSelectedEventSpawnToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
+            this.deleteSelectedEventSpawnToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.deleteSelectedEventSpawnToolStripMenuItem.Text = "Delete selected event spawn";
             this.deleteSelectedEventSpawnToolStripMenuItem.Click += new System.EventHandler(this.deleteSelectedEventSpawnToolStripMenuItem_Click);
-            // 
-            // importPositionsFromMapToolStripMenuItem
-            // 
-            this.importPositionsFromMapToolStripMenuItem.Name = "importPositionsFromMapToolStripMenuItem";
-            this.importPositionsFromMapToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
-            this.importPositionsFromMapToolStripMenuItem.Text = "Import positions from .Map";
-            this.importPositionsFromMapToolStripMenuItem.Click += new System.EventHandler(this.importPositionsFromMapToolStripMenuItem_Click);
             // 
             // importPositionFromdzeToolStripMenuItem
             // 
             this.importPositionFromdzeToolStripMenuItem.Name = "importPositionFromdzeToolStripMenuItem";
-            this.importPositionFromdzeToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
-            this.importPositionFromdzeToolStripMenuItem.Text = "Import position from .dze";
-            this.importPositionFromdzeToolStripMenuItem.Click += new System.EventHandler(this.importPositionFromdzeToolStripMenuItem_Click);
-            // 
-            // exportPositionsTomapToolStripMenuItem
-            // 
-            this.exportPositionsTomapToolStripMenuItem.Name = "exportPositionsTomapToolStripMenuItem";
-            this.exportPositionsTomapToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
-            this.exportPositionsTomapToolStripMenuItem.Text = "Export positions to .map";
-            this.exportPositionsTomapToolStripMenuItem.Click += new System.EventHandler(this.exportPositionsTomapToolStripMenuItem_Click);
+            this.importPositionFromdzeToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.importPositionFromdzeToolStripMenuItem.Text = "Import position";
+            this.importPositionFromdzeToolStripMenuItem.Click += new System.EventHandler(this.importPositionToolStripMenuItem_Click);
             // 
             // exportPositionTodzeToolStripMenuItem
             // 
             this.exportPositionTodzeToolStripMenuItem.Name = "exportPositionTodzeToolStripMenuItem";
-            this.exportPositionTodzeToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
-            this.exportPositionTodzeToolStripMenuItem.Text = "Export Position to .dze";
-            this.exportPositionTodzeToolStripMenuItem.Click += new System.EventHandler(this.exportPositionTodzeToolStripMenuItem_Click);
+            this.exportPositionTodzeToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.exportPositionTodzeToolStripMenuItem.Text = "Export Position";
+            this.exportPositionTodzeToolStripMenuItem.Click += new System.EventHandler(this.exportPositionToolStripMenuItem_Click);
             // 
             // addNewPosirtionToolStripMenuItem
             // 
             this.addNewPosirtionToolStripMenuItem.Name = "addNewPosirtionToolStripMenuItem";
-            this.addNewPosirtionToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
+            this.addNewPosirtionToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.addNewPosirtionToolStripMenuItem.Text = "Add new position";
             this.addNewPosirtionToolStripMenuItem.Click += new System.EventHandler(this.addNewPosirtionToolStripMenuItem_Click);
             // 
             // removeSelectedPositionToolStripMenuItem
             // 
             this.removeSelectedPositionToolStripMenuItem.Name = "removeSelectedPositionToolStripMenuItem";
-            this.removeSelectedPositionToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
+            this.removeSelectedPositionToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.removeSelectedPositionToolStripMenuItem.Text = "Remove selected position";
             this.removeSelectedPositionToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedPositionToolStripMenuItem_Click);
             // 
             // removeAllPositionToolStripMenuItem
             // 
             this.removeAllPositionToolStripMenuItem.Name = "removeAllPositionToolStripMenuItem";
-            this.removeAllPositionToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
+            this.removeAllPositionToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.removeAllPositionToolStripMenuItem.Text = "Remove all position";
             this.removeAllPositionToolStripMenuItem.Click += new System.EventHandler(this.removeAllPositionToolStripMenuItem_Click);
             // 
             // exportGroupSpawnTodzeToolStripMenuItem
             // 
             this.exportGroupSpawnTodzeToolStripMenuItem.Name = "exportGroupSpawnTodzeToolStripMenuItem";
-            this.exportGroupSpawnTodzeToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
-            this.exportGroupSpawnTodzeToolStripMenuItem.Text = "Export Group Spawn to .dze";
+            this.exportGroupSpawnTodzeToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.exportGroupSpawnTodzeToolStripMenuItem.Text = "Export Group Spawn";
             this.exportGroupSpawnTodzeToolStripMenuItem.Click += new System.EventHandler(this.exportGroupSpawnTodzeToolStripMenuItem_Click);
             // 
             // importPositionAndCreateEventgroupFormdzeToolStripMenuItem
             // 
             this.importPositionAndCreateEventgroupFormdzeToolStripMenuItem.Name = "importPositionAndCreateEventgroupFormdzeToolStripMenuItem";
-            this.importPositionAndCreateEventgroupFormdzeToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
-            this.importPositionAndCreateEventgroupFormdzeToolStripMenuItem.Text = "Import Position and create Eventgroup form .dze";
+            this.importPositionAndCreateEventgroupFormdzeToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.importPositionAndCreateEventgroupFormdzeToolStripMenuItem.Text = "Import Position and create Eventgroup";
             this.importPositionAndCreateEventgroupFormdzeToolStripMenuItem.Click += new System.EventHandler(this.importPositionAndCreateEventgroupFormdzeToolStripMenuItem_Click);
             // 
             // EventgroupContextMenu
@@ -17004,23 +17355,39 @@ namespace DayZeEditor
             // 
             this.TerritoryContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNewTerritoryToolStripMenuItem,
-            this.removeTerritoryToolStripMenuItem});
+            this.removeTerritoryToolStripMenuItem,
+            this.addNewTerritoryFileToolStripMenuItem,
+            this.removeTerritoryFileToolStripMenuItem});
             this.TerritoryContextMenu.Name = "TerritoryContextMenu";
-            this.TerritoryContextMenu.Size = new System.Drawing.Size(168, 48);
+            this.TerritoryContextMenu.Size = new System.Drawing.Size(191, 92);
             // 
             // addNewTerritoryToolStripMenuItem
             // 
             this.addNewTerritoryToolStripMenuItem.Name = "addNewTerritoryToolStripMenuItem";
-            this.addNewTerritoryToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.addNewTerritoryToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.addNewTerritoryToolStripMenuItem.Text = "Add new Territory";
             this.addNewTerritoryToolStripMenuItem.Click += new System.EventHandler(this.addNewTerritoryToolStripMenuItem_Click);
             // 
             // removeTerritoryToolStripMenuItem
             // 
             this.removeTerritoryToolStripMenuItem.Name = "removeTerritoryToolStripMenuItem";
-            this.removeTerritoryToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.removeTerritoryToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.removeTerritoryToolStripMenuItem.Text = "Remove Territory";
             this.removeTerritoryToolStripMenuItem.Click += new System.EventHandler(this.removeTerritoryToolStripMenuItem_Click);
+            // 
+            // addNewTerritoryFileToolStripMenuItem
+            // 
+            this.addNewTerritoryFileToolStripMenuItem.Name = "addNewTerritoryFileToolStripMenuItem";
+            this.addNewTerritoryFileToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.addNewTerritoryFileToolStripMenuItem.Text = "Add New Territory File";
+            this.addNewTerritoryFileToolStripMenuItem.Click += new System.EventHandler(this.addNewTerritoryFileToolStripMenuItem_Click);
+            // 
+            // removeTerritoryFileToolStripMenuItem
+            // 
+            this.removeTerritoryFileToolStripMenuItem.Name = "removeTerritoryFileToolStripMenuItem";
+            this.removeTerritoryFileToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.removeTerritoryFileToolStripMenuItem.Text = "Remove Territory File";
+            this.removeTerritoryFileToolStripMenuItem.Click += new System.EventHandler(this.removeTerritoryFileToolStripMenuItem_Click);
             // 
             // miniToolStrip
             // 
@@ -17240,11 +17607,6 @@ namespace DayZeEditor
             this.removeMapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeMapToolStripMenuItem.Text = "Remove Map Group";
             this.removeMapToolStripMenuItem.Click += new System.EventHandler(this.removeMapToolStripMenuItem_Click);
-            // 
-            // fileSystemWatcher1
-            // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
             // 
             // Economy_Manager
             // 
@@ -17468,6 +17830,9 @@ namespace DayZeEditor
             this.darkToolStrip24.PerformLayout();
             this.CFGGameplayTab.ResumeLayout(false);
             this.CFGGameplayTab.PerformLayout();
+            this.groupBox95.ResumeLayout(false);
+            this.groupBox95.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.boatDecayMultiplierNUD)).EndInit();
             this.groupBox27.ResumeLayout(false);
             this.groupBox27.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers5NUD)).EndInit();
@@ -17727,24 +18092,31 @@ namespace DayZeEditor
             this.tabPage5.ResumeLayout(false);
             this.TerritoriesTab.ResumeLayout(false);
             this.TerritoriesTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesPOSYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesPOSZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesPOSXNUD)).EndInit();
             this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).EndInit();
             this.tabControl23.ResumeLayout(false);
             this.tabPage18.ResumeLayout(false);
-            this.tabPage18.PerformLayout();
+            this.TerritoryZonePanel.ResumeLayout(false);
+            this.TerritoryZonePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesRadiusNUD)).EndInit();
+            this.groupBox72.ResumeLayout(false);
+            this.groupBox72.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMinNUD)).EndInit();
             this.groupBox74.ResumeLayout(false);
             this.groupBox74.PerformLayout();
             this.groupBox73.ResumeLayout(false);
             this.groupBox73.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesStaticMaxNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesStaticMInNUD)).EndInit();
-            this.groupBox72.ResumeLayout(false);
-            this.groupBox72.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMaxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMinNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesRadiusNUD)).EndInit();
+            this.TerritoryEnviromentPanel.ResumeLayout(false);
+            this.TerritoryEnviromentPanel.PerformLayout();
             this.InitCTab.ResumeLayout(false);
             this.InitCTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).EndInit();
@@ -17795,7 +18167,6 @@ namespace DayZeEditor
             this.bindingNavigator1.PerformLayout();
             this.SpawnGearCMS.ResumeLayout(false);
             this.mapgroupposcontextMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -18390,9 +18761,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ContextMenuStrip EventSpawnContextMenu;
         private System.Windows.Forms.ToolStripMenuItem addNewEventSpawnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteSelectedEventSpawnToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importPositionsFromMapToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importPositionFromdzeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportPositionsTomapToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportPositionTodzeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewPosirtionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSelectedPositionToolStripMenuItem;
@@ -18862,7 +19231,6 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox checkBox112;
         private System.Windows.Forms.CheckBox eventgroupSecondarySpawnCB;
         private FastColoredTextBox fastColoredTextBox2;
-        private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.GroupBox groupBox78;
         private System.Windows.Forms.GroupBox Spaenabletypestagbox;
         private System.Windows.Forms.TextBox textBox2;
@@ -18979,5 +19347,32 @@ namespace DayZeEditor
         private System.Windows.Forms.RadioButton eventgroupLootoptionRB;
         private System.Windows.Forms.CheckBox eventgroupdelootCB;
         private System.Windows.Forms.Label label131;
+        private System.Windows.Forms.ToolStripMenuItem addNewTerritoryFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeTerritoryFileToolStripMenuItem;
+        private System.Windows.Forms.NumericUpDown TerritoriesZonesPOSZNUD;
+        private System.Windows.Forms.NumericUpDown TerritoriesZonesPOSXNUD;
+        private System.Windows.Forms.Label label194;
+        private System.Windows.Forms.Label label193;
+        private System.Windows.Forms.CheckBox TerritoriesZonesUseYCB;
+        private System.Windows.Forms.Label label195;
+        private System.Windows.Forms.NumericUpDown TerritoriesZonesPOSYNUD;
+        private System.Windows.Forms.Panel TerritoryZonePanel;
+        private System.Windows.Forms.Panel TerritoryEnviromentPanel;
+        private System.Windows.Forms.Label label196;
+        private System.Windows.Forms.TextBox TerritoryEnviromentPathTB;
+        private DarkUI.Controls.DarkLabel darkLabel36;
+        private System.Windows.Forms.TextBox TerritoryEnviromentusableTB;
+        private DarkUI.Controls.DarkLabel darkLabel35;
+        private System.Windows.Forms.TextBox TerritoryEnviromentbehavorTB;
+        private DarkUI.Controls.DarkLabel darkLabel34;
+        private System.Windows.Forms.TextBox TerritoryEnviromentnameTB;
+        private DarkUI.Controls.DarkLabel darkLabel32;
+        private System.Windows.Forms.TextBox TerritoryEnviromentTypeTB;
+        private System.Windows.Forms.Label label197;
+        private System.Windows.Forms.GroupBox groupBox95;
+        private System.Windows.Forms.NumericUpDown boatDecayMultiplierNUD;
+        private System.Windows.Forms.Label label198;
+        private DarkUI.Controls.DarkButton darkButton85;
+        private System.Windows.Forms.Label label199;
     }
 }

@@ -384,15 +384,10 @@ namespace DayZeEditor
             this.KOSZoneRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.KOSZoneRadiusNUD.Location = new System.Drawing.Point(68, 416);
             this.KOSZoneRadiusNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
-            this.KOSZoneRadiusNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
             this.KOSZoneRadiusNUD.Name = "KOSZoneRadiusNUD";
             this.KOSZoneRadiusNUD.Size = new System.Drawing.Size(71, 20);
             this.KOSZoneRadiusNUD.TabIndex = 115;
@@ -416,12 +411,12 @@ namespace DayZeEditor
             this.KOSZoneXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.KOSZoneXNUD.Location = new System.Drawing.Point(68, 390);
             this.KOSZoneXNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.KOSZoneXNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});
@@ -438,12 +433,12 @@ namespace DayZeEditor
             this.KOSZoneYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.KOSZoneYNUD.Location = new System.Drawing.Point(145, 390);
             this.KOSZoneYNUD.Maximum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             0});
             this.KOSZoneYNUD.Minimum = new decimal(new int[] {
-            20000,
+            50000,
             0,
             0,
             -2147483648});

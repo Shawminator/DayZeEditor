@@ -432,7 +432,16 @@ namespace DayZeEditor
                 }
                 currentproject.CFGGameplayConfig.SaveSpawnGearPresetFiles(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\");
             }
+            if (currentproject.cfgenviroment != null)
+            {
+                if (currentproject.cfgenviroment.isDirty)
+                {
+                    currentproject.cfgenviroment.Saveenv();
 
+                    currentproject.cfgenviroment.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.cfgenviroment.Filename) + " Saved....");
+                }
+            }
             if (currentproject.cfgEffectAreaConfig != null)
             {
                 if (currentproject.cfgEffectAreaConfig.isDirty)
@@ -3160,207 +3169,412 @@ namespace DayZeEditor
             currentproject.cfgeventspawns.isDirty = true;
             pictureBox1.Invalidate();
         }
-        private void importPositionsFromMapToolStripMenuItem_Click(object sender, EventArgs e)
+        private void importPositionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-        private void importPositionFromdzeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import Positions";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string filePath = openFileDialog.FileName;
+                TreeNode eventposnodes = null;
+                if (eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0)
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    TreeNode eventposnodes = null;
-                    if (eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0)
+                    eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                    if (!EventSpawnTV.SelectedNode.Nodes.ContainsKey("POS"))
                     {
-                        eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
-                        if (!EventSpawnTV.SelectedNode.Nodes.ContainsKey("POS"))
-                        {
-                            eventposnodes = new TreeNode("pos");
-                            eventposnodes.Name = "POS";
-                            eventposnodes.Tag = "PosParent";
-                        }
-                        else
-                        {
-                            eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
-                        }
+                        eventposnodes = new TreeNode("pos");
+                        eventposnodes.Name = "POS";
+                        eventposnodes.Tag = "PosParent";
                     }
                     else
                     {
                         eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
-                        DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
-                            eventposnodes.Nodes.Clear();
-
-                        }
-                        eventposnodes.Remove();
                     }
-
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        eventposdefEventPos newpos = new eventposdefEventPos()
-                        {
-                            x = Convert.ToDecimal(eo.Position[0]),
-                            ySpecified = true,
-                            y = Convert.ToDecimal(eo.Position[1]),
-                            z = Convert.ToDecimal(eo.Position[2]),
-                            aSpecified = true,
-                            a = Convert.ToDecimal(eo.Orientation[0]),
-                            group = null
-
-                        };
-                        if (newpos.a < 0)
-                        {
-                            while (newpos.a < 0)
-                            {
-                                newpos.a += 360;
-                            }
-                        }
-                        else if (newpos.a >= 360)
-                        {
-                            while (newpos.a >= 360)
-                            {
-                                newpos.a -= 360;
-                            }
-                        }
-                        eventposdefEvent.pos.Add(newpos);
-                    }
-                    foreach (eventposdefEventPos pos in eventposdefEvent.pos)
-                    {
-                        TreeNode posnodes = new TreeNode(pos.ToString());
-                        posnodes.Tag = pos;
-                        eventposnodes.Nodes.Add(posnodes);
-                    }
-                    EventSpawnTV.SelectedNode.Nodes.Add(eventposnodes);
-                    currentproject.cfgeventspawns.isDirty = true;
                 }
+                else
+                {
+                    eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Positions?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                        eventposnodes.Nodes.Clear();
+
+                    }
+                    eventposnodes.Remove();
+                }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        string[] fileContent = File.ReadAllLines(filePath);
+                        for (int i = 0; i < fileContent.Length; i++)
+                        {
+                            if (fileContent[i] == "") continue;
+                            string[] linesplit = fileContent[i].Split('|');
+                            string[] XYZ = linesplit[1].Split(' ');
+                            string[] YPR = linesplit[2].Split(' ');
+                            eventposdefEventPos newpos = new eventposdefEventPos()
+                            {
+                                x = Convert.ToDecimal(XYZ[0]),
+                                ySpecified = true,
+                                y = Convert.ToDecimal(XYZ[1]),
+                                z = Convert.ToDecimal(XYZ[2]),
+                                aSpecified = true,
+                                a = Convert.ToDecimal(YPR[0]),
+                                group = null
+
+                            };
+                            if (newpos.a < 0)
+                            {
+                                while (newpos.a < 0)
+                                {
+                                    newpos.a += 360;
+                                }
+                            }
+                            else if (newpos.a >= 360)
+                            {
+                                while (newpos.a >= 360)
+                                {
+                                    newpos.a -= 360;
+                                }
+                            }
+                            eventposdefEvent.pos.Add(newpos);
+                        }
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(filePath));
+                        foreach (SpawnObjects so in newobjectspawner.Objects)
+                        {
+                            eventposdefEventPos newpos = new eventposdefEventPos()
+                            {
+                                x = Convert.ToDecimal(so.pos[0]),
+                                ySpecified = true,
+                                y = Convert.ToDecimal(so.pos[1]),
+                                z = Convert.ToDecimal(so.pos[2]),
+                                aSpecified = true,
+                                a = Convert.ToDecimal(so.ypr[0]),
+                                group = null
+
+                            };
+                            if (newpos.a < 0)
+                            {
+                                while (newpos.a < 0)
+                                {
+                                    newpos.a += 360;
+                                }
+                            }
+                            else if (newpos.a >= 360)
+                            {
+                                while (newpos.a >= 360)
+                                {
+                                    newpos.a -= 360;
+                                }
+                            }
+                            eventposdefEvent.pos.Add(newpos);
+                        }
+                        break;
+                    case 3:
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            eventposdefEventPos newpos = new eventposdefEventPos()
+                            {
+                                x = Convert.ToDecimal(eo.Position[0]),
+                                ySpecified = true,
+                                y = Convert.ToDecimal(eo.Position[1]),
+                                z = Convert.ToDecimal(eo.Position[2]),
+                                aSpecified = true,
+                                a = Convert.ToDecimal(eo.Orientation[0]),
+                                group = null
+
+                            };
+                            if (newpos.a < 0)
+                            {
+                                while (newpos.a < 0)
+                                {
+                                    newpos.a += 360;
+                                }
+                            }
+                            else if (newpos.a >= 360)
+                            {
+                                while (newpos.a >= 360)
+                                {
+                                    newpos.a -= 360;
+                                }
+                            }
+                            eventposdefEvent.pos.Add(newpos);
+                        }
+                        break;
+                }
+                foreach (eventposdefEventPos pos in eventposdefEvent.pos)
+                {
+                    TreeNode posnodes = new TreeNode(pos.ToString());
+                    posnodes.Tag = pos;
+                    eventposnodes.Nodes.Add(posnodes);
+                }
+                EventSpawnTV.SelectedNode.Nodes.Add(eventposnodes);
+                currentproject.cfgeventspawns.isDirty = true;
             }
         }
         private void importPositionAndCreateEventgroupFormdzeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Import Positions";
+            openFileDialog.Filter = "Expansion Map|*.map|Object Spawner|*.json|DayZ Editor|*.dze";
+            openFileDialog.Multiselect = true;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                openFileDialog.Multiselect = true;
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                TreeNode eventposnodes = null;
+                if (eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0)
                 {
-                    TreeNode eventposnodes = null;
-                    if (eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0)
+                    eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                    if (!EventSpawnTV.SelectedNode.Nodes.ContainsKey("POS"))
                     {
-                        eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
-                        if (!EventSpawnTV.SelectedNode.Nodes.ContainsKey("POS"))
-                        {
-                            eventposnodes = new TreeNode("pos");
-                            eventposnodes.Name = "POS";
-                            eventposnodes.Tag = "PosParent";
-                        }
-                        else
-                        {
-                            eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
-                        }
+                        eventposnodes = new TreeNode("pos");
+                        eventposnodes.Name = "POS";
+                        eventposnodes.Tag = "PosParent";
                     }
                     else
                     {
                         eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
-                        DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
-                            eventposnodes.Nodes.Clear();
-
-                        }
-                        eventposnodes.Remove();
                     }
-                    foreach (string file in openFileDialog.FileNames)
-                    {
-                        string filePath = file;
-                        DZE importfile = DZEHelpers.LoadFile(filePath);
-                        //AddItemfromString form = new AddItemfromString();
-                        //form.TitleLable = "Enter Name of Event Group";
-                        //DialogResult result = form.ShowDialog();
-                        //if (result == DialogResult.OK)
-                        //{
-                        string Groupname = Path.GetFileNameWithoutExtension(file);
-                        //List<string> addedtypes = form.addedtypes.ToList();
-                        //foreach (string l in addedtypes)
-                        //{
-                        //    Groupname = l;
-                        //}
-
-                        eventposdefEventPos newpos = new eventposdefEventPos()
-                        {
-                            x = Convert.ToDecimal(importfile.EditorObjects[0].Position[0]),
-                            ySpecified = true,
-                            y = Convert.ToDecimal(importfile.EditorObjects[0].Position[1]),
-                            z = Convert.ToDecimal(importfile.EditorObjects[0].Position[2]),
-                            aSpecified = true,
-                            a = 0,
-                            group = Groupname
-
-                        };
-                        
-                        
-                        eventposdefEvent.pos.Add(newpos);
-                        TreeNode posnodes = new TreeNode(newpos.ToString());
-                        posnodes.Tag = newpos;
-                        eventposnodes.Nodes.Add(posnodes);
-                        eventgroupdefGroup newvengroup = new eventgroupdefGroup()
-                        {
-                            name = Groupname,
-                            child = new BindingList<eventgroupdefGroupChild>()
-                        };
-
-                        TreeNode neweventspawn = new TreeNode(Groupname);
-                        neweventspawn.Tag = newvengroup;
-                        foreach (Editorobject eo in importfile.EditorObjects)
-                        {
-                            if (eo.Orientation[0] < 0)
-                                eo.Orientation[0] = 360 + eo.Orientation[0];
-                            eventgroupdefGroupChild eventgroupdefGroupChild = new eventgroupdefGroupChild()
-                            {
-                                type = eo.Type,
-                                x = (decimal)(eo.Position[0]) - newpos.x,
-                                ySpecified = true,
-                                y = (decimal)(eo.Position[1]) - newpos.y,
-                                z = (decimal)(eo.Position[2]) - newpos.z,
-                                a = (decimal)(eo.Orientation[0]),
-                                delootSpecified = true,
-                                deloot = 0,
-                                lootminSpecified = true,
-                                lootmin = 1,
-                                lootmaxSpecified = true,
-                                lootmax = 3
-                            };
-                            if (eventgroupdefGroupChild.a < 0)
-                            {
-                                while (eventgroupdefGroupChild.a < 0)
-                                {
-                                    eventgroupdefGroupChild.a += 360;
-                                }
-                            }
-                            else if(eventgroupdefGroupChild.a >= 360)
-                            {
-                                while (eventgroupdefGroupChild.a >= 0)
-                                {
-                                    eventgroupdefGroupChild.a -= 360;
-                                }
-                            }
-                            TreeNode eventgroupchile = new TreeNode(eventgroupdefGroupChild.type);
-                            eventgroupchile.Tag = eventgroupdefGroupChild;
-                            neweventspawn.Nodes.Add(eventgroupchile);
-                            newvengroup.child.Add(eventgroupdefGroupChild);
-                        }
-                        eventgroupdef.group.Add(newvengroup);
-                        eventspawngroupTV.Nodes[0].Nodes.Add(neweventspawn);
-                        currentproject.cfgeventgroups.isDirty = true;
-                        //}
-                    }
-                    EventSpawnTV.SelectedNode.Nodes.Add(eventposnodes);
-                    currentproject.cfgeventspawns.isDirty = true;
                 }
+                else
+                {
+                    eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                        eventposnodes.Nodes.Clear();
+
+                    }
+                    eventposnodes.Remove();
+                }
+                switch (openFileDialog.FilterIndex)
+                {
+                    case 1:
+                        foreach (string file in openFileDialog.FileNames)
+                        {
+                            string[] fileContent = File.ReadAllLines(file);
+                            string Groupname = Path.GetFileNameWithoutExtension(file);
+                            string[] linesplit = fileContent[0].Split('|');
+                            string[] XYZ = linesplit[1].Split(' ');
+                            string[] ypr = linesplit[2].Split(' ');
+                            eventposdefEventPos newpos = new eventposdefEventPos()
+                            {
+                                x = Convert.ToDecimal(XYZ[0]),
+                                ySpecified = true,
+                                y = Convert.ToDecimal(XYZ[1]),
+                                z = Convert.ToDecimal(XYZ[2]),
+                                aSpecified = true,
+                                a = 0,
+                                group = Groupname
+
+                            };
+                            eventposdefEvent.pos.Add(newpos);
+                            TreeNode posnodes = new TreeNode(newpos.ToString());
+                            posnodes.Tag = newpos;
+                            eventposnodes.Nodes.Add(posnodes);
+                            eventgroupdefGroup newvengroup = new eventgroupdefGroup()
+                            {
+                                name = Groupname,
+                                child = new BindingList<eventgroupdefGroupChild>()
+                            };
+
+                            TreeNode neweventspawn = new TreeNode(Groupname);
+                            neweventspawn.Tag = newvengroup;
+                            for (int i = 0; i < fileContent.Length; i++)
+                            {
+                                if (fileContent[i] == "") continue;
+                                linesplit = fileContent[0].Split('|');
+                                XYZ = linesplit[1].Split(' ');
+                                ypr = linesplit[2].Split(' ');
+                                eventgroupdefGroupChild eventgroupdefGroupChild = new eventgroupdefGroupChild()
+                                {
+                                    type = linesplit[0],
+                                    x = ((decimal)(Convert.ToDecimal(XYZ[0]))) - newpos.x,
+                                    ySpecified = true,
+                                    y = ((decimal)(Convert.ToDecimal(XYZ[1]))) - newpos.y,
+                                    z = ((decimal)(Convert.ToDecimal(XYZ[2]))) - newpos.z,
+                                    a = ((decimal)(Convert.ToDecimal(ypr[0]))),
+                                    delootSpecified = true,
+                                    deloot = 0,
+                                    lootminSpecified = true,
+                                    lootmin = 1,
+                                    lootmaxSpecified = true,
+                                    lootmax = 3
+                                };
+                                if (eventgroupdefGroupChild.a < 0)
+                                {
+                                    while (eventgroupdefGroupChild.a < 0)
+                                    {
+                                        eventgroupdefGroupChild.a += 360;
+                                    }
+                                }
+                                else if (eventgroupdefGroupChild.a >= 360)
+                                {
+                                    while (eventgroupdefGroupChild.a >= 0)
+                                    {
+                                        eventgroupdefGroupChild.a -= 360;
+                                    }
+                                }
+                                TreeNode eventgroupchile = new TreeNode(eventgroupdefGroupChild.type);
+                                eventgroupchile.Tag = eventgroupdefGroupChild;
+                                neweventspawn.Nodes.Add(eventgroupchile);
+                                newvengroup.child.Add(eventgroupdefGroupChild);
+                            }
+                            eventgroupdef.group.Add(newvengroup);
+                            eventspawngroupTV.Nodes[0].Nodes.Add(neweventspawn);
+                        }
+                        currentproject.cfgeventgroups.isDirty = true;
+                        break;
+                    case 2:
+                        foreach (string file in openFileDialog.FileNames)
+                        {
+                            string Groupname = Path.GetFileNameWithoutExtension(file);
+                            ObjectSpawnerArr newobjectspawner = JsonSerializer.Deserialize<ObjectSpawnerArr>(File.ReadAllText(file));
+                            eventposdefEventPos newpos = new eventposdefEventPos()
+                            {
+                                x = Convert.ToDecimal(newobjectspawner.Objects[0].pos[0]),
+                                ySpecified = true,
+                                y = Convert.ToDecimal(newobjectspawner.Objects[0].pos[1]),
+                                z = Convert.ToDecimal(newobjectspawner.Objects[0].pos[2]),
+                                aSpecified = true,
+                                a = 0,
+                                group = Groupname
+
+                            };
+
+                            eventposdefEvent.pos.Add(newpos);
+                            TreeNode posnodes = new TreeNode(newpos.ToString());
+                            posnodes.Tag = newpos;
+                            eventposnodes.Nodes.Add(posnodes);
+                            eventgroupdefGroup newvengroup = new eventgroupdefGroup()
+                            {
+                                name = Groupname,
+                                child = new BindingList<eventgroupdefGroupChild>()
+                            };
+
+                            TreeNode neweventspawn = new TreeNode(Groupname);
+                            neweventspawn.Tag = newvengroup;
+                            foreach (SpawnObjects so in newobjectspawner.Objects)
+                            {
+                                eventgroupdefGroupChild eventgroupdefGroupChild = new eventgroupdefGroupChild()
+                                {
+                                    type = so.name,
+                                    x = (decimal)(so.pos[0]) - newpos.x,
+                                    ySpecified = true,
+                                    y = (decimal)(so.pos[1]) - newpos.y,
+                                    z = (decimal)(so.pos[2]) - newpos.z,
+                                    a = (decimal)(so.ypr[0]),
+                                    delootSpecified = true,
+                                    deloot = 0,
+                                    lootminSpecified = true,
+                                    lootmin = 1,
+                                    lootmaxSpecified = true,
+                                    lootmax = 3
+                                };
+                                if (eventgroupdefGroupChild.a < 0)
+                                {
+                                    while (eventgroupdefGroupChild.a < 0)
+                                    {
+                                        eventgroupdefGroupChild.a += 360;
+                                    }
+                                }
+                                else if (eventgroupdefGroupChild.a >= 360)
+                                {
+                                    while (eventgroupdefGroupChild.a >= 0)
+                                    {
+                                        eventgroupdefGroupChild.a -= 360;
+                                    }
+                                }
+                                TreeNode eventgroupchile = new TreeNode(eventgroupdefGroupChild.type);
+                                eventgroupchile.Tag = eventgroupdefGroupChild;
+                                neweventspawn.Nodes.Add(eventgroupchile);
+                                newvengroup.child.Add(eventgroupdefGroupChild);
+                            }
+                            eventgroupdef.group.Add(newvengroup);
+                            eventspawngroupTV.Nodes[0].Nodes.Add(neweventspawn);
+                        }
+                        currentproject.cfgeventgroups.isDirty = true;
+                        break;
+                    case 3:
+                        foreach (string file in openFileDialog.FileNames)
+                        {
+                            string filePath = file;
+                            DZE importfile = DZEHelpers.LoadFile(filePath);
+                            string Groupname = Path.GetFileNameWithoutExtension(file);
+                            eventposdefEventPos newpos = new eventposdefEventPos()
+                            {
+                                x = Convert.ToDecimal(importfile.EditorObjects[0].Position[0]),
+                                ySpecified = true,
+                                y = Convert.ToDecimal(importfile.EditorObjects[0].Position[1]),
+                                z = Convert.ToDecimal(importfile.EditorObjects[0].Position[2]),
+                                aSpecified = true,
+                                a = 0,
+                                group = Groupname
+
+                            };
+
+
+                            eventposdefEvent.pos.Add(newpos);
+                            TreeNode posnodes = new TreeNode(newpos.ToString());
+                            posnodes.Tag = newpos;
+                            eventposnodes.Nodes.Add(posnodes);
+                            eventgroupdefGroup newvengroup = new eventgroupdefGroup()
+                            {
+                                name = Groupname,
+                                child = new BindingList<eventgroupdefGroupChild>()
+                            };
+
+                            TreeNode neweventspawn = new TreeNode(Groupname);
+                            neweventspawn.Tag = newvengroup;
+                            foreach (Editorobject eo in importfile.EditorObjects)
+                            {
+                                eventgroupdefGroupChild eventgroupdefGroupChild = new eventgroupdefGroupChild()
+                                {
+                                    type = eo.Type,
+                                    x = (decimal)(eo.Position[0]) - newpos.x,
+                                    ySpecified = true,
+                                    y = (decimal)(eo.Position[1]) - newpos.y,
+                                    z = (decimal)(eo.Position[2]) - newpos.z,
+                                    a = (decimal)(eo.Orientation[0]),
+                                    delootSpecified = true,
+                                    deloot = 0,
+                                    lootminSpecified = true,
+                                    lootmin = 1,
+                                    lootmaxSpecified = true,
+                                    lootmax = 3
+                                };
+                                if (eventgroupdefGroupChild.a < 0)
+                                {
+                                    while (eventgroupdefGroupChild.a < 0)
+                                    {
+                                        eventgroupdefGroupChild.a += 360;
+                                    }
+                                }
+                                else if (eventgroupdefGroupChild.a >= 360)
+                                {
+                                    while (eventgroupdefGroupChild.a >= 0)
+                                    {
+                                        eventgroupdefGroupChild.a -= 360;
+                                    }
+                                }
+                                TreeNode eventgroupchile = new TreeNode(eventgroupdefGroupChild.type);
+                                eventgroupchile.Tag = eventgroupdefGroupChild;
+                                neweventspawn.Nodes.Add(eventgroupchile);
+                                newvengroup.child.Add(eventgroupdefGroupChild);
+                            }
+                            eventgroupdef.group.Add(newvengroup);
+                            eventspawngroupTV.Nodes[0].Nodes.Add(neweventspawn);
+                        }
+                        currentproject.cfgeventgroups.isDirty = true;
+                        break;
+                }
+                EventSpawnTV.SelectedNode.Nodes.Add(eventposnodes);
+                currentproject.cfgeventspawns.isDirty = true;
             }
         }
         private void removeAllPositionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3372,76 +3586,87 @@ namespace DayZeEditor
             eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
             currentproject.cfgeventspawns.isDirty = true;
         }
-        private void exportPositionsTomapToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exportPositionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-        private void exportPositionTodzeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-            DZE newdze = new DZE()
-            {
-                EditorObjects = new BindingList<Editorobject>(),
-                EditorHiddenObjects = new BindingList<Editordeletedobject>(),
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            string Classname = "";
-            foreach (eventscofig eventconfig in currentproject.ModEventsList)
-            {
-                if (Classname != "")
-                    break;
-                foreach (eventsEvent eve in eventconfig.events.@event)
-                {
-                    if (eve.name == eventposdefEvent.name)
-                    {
-                        Classname = eve.children[0].type;
-                        break;
-                    }
-                }
-            }
-            int m_Id = 0;
-            foreach (eventposdefEventPos array in eventposdefEvent.pos)
-            {
-                float y = 0f;
-                if (array.ySpecified)
-                {
-                    y = Convert.ToSingle(array.y);
-                }
-                else
-                {
-                    if (MapData.FileExists)
-                    {
-                        y = (float)Decimal.Round((decimal)(MapData.gethieght((float)array.x, (float)array.z)), 4);
-                    }
-                }
-                Editorobject eo = new Editorobject()
-                {
-                    Type = Classname,
-                    DisplayName = Classname,
-
-                    Position = new float[] { Convert.ToSingle(array.x), y, Convert.ToSingle(array.z) },
-                    Orientation = new float[] { 0, 0, 0 },
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                if (array.ySpecified)
-                    eo.Position[1] = Convert.ToSingle(array.y);
-                if (array.aSpecified)
-                    eo.Orientation[0] = Convert.ToSingle(array.a);
-                newdze.EditorObjects.Add(eo);
-                m_Id++;
-            }
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
-            Cursor.Current = Cursors.Default;
             SaveFileDialog save = new SaveFileDialog();
-            save.DefaultExt = "dze";
+            save.Title = "Export positions";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+            save.FileName = eventposdefEvent.name;
             if (save.ShowDialog() == DialogResult.OK)
             {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName, jsonString);
+                string Classname = "";
+                foreach (eventscofig eventconfig in currentproject.ModEventsList)
+                {
+                    if (Classname != "")
+                        break;
+                    foreach (eventsEvent eve in eventconfig.events.@event)
+                    {
+                        if (eve.name == eventposdefEvent.name)
+                        {
+                            Classname = eve.children[0].type;
+                            break;
+                        }
+                    }
+                }
+                switch (save.FilterIndex)
+                {
+                    case 1:
+                        StringBuilder SB = new StringBuilder();
+                        foreach (eventposdefEventPos array in eventposdefEvent.pos)
+                        {
+                            float y = 0f;
+                            float a = 0f;
+                            if (array.ySpecified)
+                            {
+                                y = Convert.ToSingle(array.y);
+                            }
+                            else
+                            {
+                                if (MapData.FileExists)
+                                {
+                                    y = (float)Decimal.Round((decimal)(MapData.gethieght((float)array.x, (float)array.z)), 4);
+                                }
+                            }
+                            if (array.aSpecified)
+                                a = Convert.ToSingle(array.a);
+                            SB.AppendLine(Classname + "|" + array.ToExpansionMapString(y, a));
+                        }
+                        File.WriteAllText(save.FileName, SB.ToString());
+                        break;
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+                        foreach (eventposdefEventPos array in eventposdefEvent.pos)
+                        {
+                            float y = 0f;
+                            if (array.ySpecified)
+                            {
+                                y = Convert.ToSingle(array.y);
+                            }
+                            else
+                            {
+                                if (MapData.FileExists)
+                                {
+                                    y = (float)Decimal.Round((decimal)(MapData.gethieght((float)array.x, (float)array.z)), 4);
+                                }
+                            }
+                            SpawnObjects newobject = new SpawnObjects()
+                            {
+                                name = Classname,
+                                pos = new float[] { Convert.ToSingle(array.x), y, Convert.ToSingle(array.z) },
+                                ypr = new float[] { 0, 0, 0 },
+                                scale = 1,
+                                enableCEPersistency = false
+                            };
+                            if (array.aSpecified)
+                                newobject.ypr[0] = Convert.ToSingle(array.a);
+                            newobjectspawner.Objects.Add(newobject);
+                        }
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
+                }
             }
         }
         private void addNewPosirtionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3485,49 +3710,54 @@ namespace DayZeEditor
         }
         private void exportGroupSpawnTodzeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventgroupdefGroup eventgroupdefGroup = eventgroupdef.getassociatedgroup(eventposdefEventPos.group);
-            if (eventgroupdefGroup == null) return;
-            DZE newdze = new DZE()
-            {
-                CameraPosition = new float[] { (float)eventposdefEventPos.x, (float)(eventposdefEventPos.y + 8), (float)eventposdefEventPos.z },
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath.Split('_')[0]),
-                EditorObjects = new BindingList<Editorobject>(),
-                EditorHiddenObjects = new BindingList<Editordeletedobject>()
-            };
-            int m_Id = 0;
-            foreach (eventgroupdefGroupChild eventgroupdefGroupChild in eventgroupdefGroup.child)
-            {
-                Editorobject newobject = new Editorobject()
-                {
-                    Position = new float[]
-                    {
-                       (float)(eventposdefEventPos.x + eventgroupdefGroupChild.x),
-                       (float)(eventposdefEventPos.y + eventgroupdefGroupChild.y),
-                       (float)(eventposdefEventPos.z + eventgroupdefGroupChild.z)
-                    },
-                    Orientation = new float[]
-                    {
-                        (float)(eventposdefEventPos.a + eventgroupdefGroupChild.a),
-                        0,
-                        0
-                    },
-                    DisplayName = eventgroupdefGroupChild.type,
-                    Type = eventgroupdefGroupChild.type,
-                    Scale = 1.0f,
-                    Model = "",
-                    Flags = 2147483647,
-                    m_Id = m_Id
-                };
-                newdze.EditorObjects.Add(newobject);
-                m_Id++;
-            }
             SaveFileDialog save = new SaveFileDialog();
-            save.FileName = eventgroupdefGroup.name;
+            save.Title = "Export positions";
+            save.Filter = "Expansion Map |*.map|Object Spawner|*.json";
+            save.FileName = (eventgroupdef.getassociatedgroup(eventposdefEventPos.group)).name;
             if (save.ShowDialog() == DialogResult.OK)
             {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
+                eventgroupdefGroup eventgroupdefGroup = eventgroupdef.getassociatedgroup(eventposdefEventPos.group);
+                if (eventgroupdefGroup == null)
+                {
+                    MessageBox.Show("");
+                    return;
+                }
+                switch (save.FilterIndex)
+                {
+                    case 1:
+                        StringBuilder SB = new StringBuilder();
+                        foreach (eventgroupdefGroupChild eventgroupdefGroupChild in eventgroupdefGroup.child)
+                        {
+                            SB.AppendLine(eventgroupdefGroupChild.type + "|" + (float)(eventposdefEventPos.x + eventgroupdefGroupChild.x) + " " +
+                                                                               (float)(eventposdefEventPos.y + eventgroupdefGroupChild.y) + " " +
+                                                                               (float)(eventposdefEventPos.z + eventgroupdefGroupChild.z) + "|" +
+                                                                               (float)(eventposdefEventPos.a + eventgroupdefGroupChild.a) + " 0.0 0.0");
+                        }
+                        File.WriteAllText(save.FileName, SB.ToString());
+                        break;
+
+                    case 2:
+                        ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+                        newobjectspawner.Objects = new BindingList<SpawnObjects>();
+                        foreach (eventgroupdefGroupChild eventgroupdefGroupChild in eventgroupdefGroup.child)
+                        {
+                            SpawnObjects newobject = new SpawnObjects()
+                            {
+                                name = eventgroupdefGroupChild.type,
+                                pos = new float[] {(float)(eventposdefEventPos.x + eventgroupdefGroupChild.x),
+                                                   (float)(eventposdefEventPos.y + eventgroupdefGroupChild.y),
+                                                   (float)(eventposdefEventPos.z + eventgroupdefGroupChild.z) },
+                                ypr = new float[] { (float)(eventposdefEventPos.a + eventgroupdefGroupChild.a), 0, 0 },
+                                scale = 1,
+                                enableCEPersistency = false
+                            };
+                            newobjectspawner.Objects.Add(newobject);
+                        }
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawner, options);
+                        File.WriteAllText(save.FileName, jsonString);
+                        break;
+                }
             }
         }
         #endregion eventspawns
@@ -5475,6 +5705,8 @@ namespace DayZeEditor
             displayPlayerPositionCB.Checked = cfggameplay.MapData.displayPlayerPosition;
             displayNavInfoCB.Checked = cfggameplay.MapData.displayNavInfo;
 
+            boatDecayMultiplierNUD.Value = cfggameplay.VehicleData.boatDecayMultiplier;
+
             CFGGameplayDisallowedtypesLB.DisplayMember = "DisplayName";
             CFGGameplayDisallowedtypesLB.ValueMember = "Value";
             CFGGameplayDisallowedtypesLB.DataSource = cfggameplay.BaseBuildingData.HologramData.disallowedTypesInUnderground;
@@ -5875,6 +6107,12 @@ namespace DayZeEditor
         {
             if (!isUserInteraction) { return; }
             cfggameplay.MapData.displayNavInfo = displayNavInfoCB.Checked;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void boatDecayMultiplierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.VehicleData.boatDecayMultiplier = boatDecayMultiplierNUD.Value;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void darkButton66_Click(object sender, EventArgs e)
@@ -7394,9 +7632,6 @@ namespace DayZeEditor
 
             if (currentproject.territoriesList.Count > 0)
                 populateterritorytreeview();
-
-
-
             isUserInteraction = true;
         }
         private Point _mouseLastPosition;
@@ -7460,28 +7695,28 @@ namespace DayZeEditor
 
                 if (isDoubleClick)
                 {
-                    //Console.WriteLine("Perform double click action");
                     if (currentterritorytypeTerritoryZone == null) return;
-                    //if (e is MouseEventArgs mouseEventArgs)
-                    //{
                     Cursor.Current = Cursors.WaitCursor;
+                    isUserInteraction = false;
                     decimal scalevalue = MissionMapscale * (decimal)0.05;
                     decimal mapsize = currentproject.MapSize;
                     int newsize = (int)(mapsize * scalevalue);
-                    currentterritorytypeTerritoryZone.x = Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4);
-                    currentterritorytypeTerritoryZone.z = Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4);
+                    TerritoriesZonesPOSXNUD.Value = currentterritorytypeTerritoryZone.x = Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4);
+                    TerritoriesZonesPOSZNUD.Value = currentterritorytypeTerritoryZone.z = Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4);
+                    if(currentterritorytypeTerritoryZone.ySpecified)
+                    {
+                        TerritoriesZonesPOSYNUD.Value = currentterritorytypeTerritoryZone.y = (decimal)(MapData.gethieght((float)currentterritorytypeTerritoryZone.x, (float)currentterritorytypeTerritoryZone.z));
+                    }
                     Cursor.Current = Cursors.Default;
                     currentterritoriesConfig.isDirty = true;
                     pictureBox6.Invalidate();
-                    //}
+                    isUserInteraction = true;
                 }
                 else
                 {
                     //Console.WriteLine("Perform single click action");
                     if (currentterritorytypeTerritory == null) return;
                     if (currentterritorytypeTerritoryZone == null) return;
-                    //if (e is MouseEventArgs mouseEventArgs)
-                    //{
                     decimal scalevalue = MissionMapscale * (decimal)0.05;
                     decimal mapsize = currentproject.MapSize;
                     int newsize = (int)(mapsize * scalevalue);
@@ -7496,7 +7731,6 @@ namespace DayZeEditor
                             continue;
                         }
                     }
-                    //}
                 }
 
                 // Allow the MouseDown event handler to process clicks again.
@@ -7620,7 +7854,7 @@ namespace DayZeEditor
         }
         private void DrawTerritories(object sender, PaintEventArgs e)
         {
-            if (currentterritorytypeTerritory == null) return;
+            //if (currentterritorytypeTerritory == null) return;
             decimal scalevalue = MissionMapscale * (decimal)0.05;
             if (TerritoryPaintAllCB.Checked)
             {
@@ -7639,7 +7873,7 @@ namespace DayZeEditor
                                 Point center = new Point(centerX, centerY);
                                 Pen pen = new Pen(Color.Red)
                                 {
-                                    Width = 4
+                                    Width = 1
                                 };
                                 string col = string.Format("{0:X}", t.color);
                                 pen.Color = ColorTranslator.FromHtml("#" + col.Substring(2));
@@ -7651,6 +7885,7 @@ namespace DayZeEditor
             }
             else if (TerritorieszonesCB.Checked)
             {
+                if (currentterritoriesConfig == null) return;
                 foreach (territorytypeTerritory t in currentterritoriesConfig.territorytype.territory)
                 {
                     if (!t.Equals(currentterritorytypeTerritory))
@@ -7664,7 +7899,7 @@ namespace DayZeEditor
                             Point center = new Point(centerX, centerY);
                             Pen pen = new Pen(Color.Red)
                             {
-                                Width = 4
+                                Width = 1
                             };
                             string col = string.Format("{0:X}", t.color);
                             pen.Color = ColorTranslator.FromHtml("#" + col.Substring(2));
@@ -7673,6 +7908,7 @@ namespace DayZeEditor
                     }
                 }
             }
+            if (currentterritorytypeTerritory == null) return;
             foreach (territorytypeTerritoryZone newpos in currentterritorytypeTerritory.zone)
             {
                 int centerX = (int)(Math.Round(newpos.x, 0) * scalevalue);
@@ -7682,7 +7918,7 @@ namespace DayZeEditor
                 Point center = new Point(centerX, centerY);
                 Pen pen = new Pen(Color.Red)
                 {
-                    Width = 4
+                    Width = 1
                 };
                 string col = string.Format("{0:X}", currentterritorytypeTerritory.color);
                 pen.Color = ColorTranslator.FromHtml("#" + col.Substring(2));
@@ -7748,27 +7984,69 @@ namespace DayZeEditor
         }
         private void TerritoriesTreeview_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            TerritoryZonePanel.Visible = false;
+            TerritoryEnviromentPanel.Visible = false;
             TreeNode usingtreenode = e.Node;
             if (e.Node.Tag is string)
             {
-
+                currentterritoriesConfig = null;
+                currentterritorytypeTerritory = null;
+                TerritorieszonesCB.Checked = false;
+                pictureBox6.Invalidate();
+                pictureBox3.Invalidate();
+                if (e.Button == MouseButtons.Right)
+                {
+                    if (e.Node.Tag.ToString() == "Parent")
+                    {
+                        TerritoriesTreeview.SelectedNode = usingtreenode;
+                        return;
+                    }
+                    else if (e.Node.Tag.ToString() == "Territories")
+                    {
+                        TerritoryContextMenu.Show(Cursor.Position);
+                        addNewTerritoryToolStripMenuItem.Visible = false;
+                        removeTerritoryToolStripMenuItem.Visible = false;
+                        addNewTerritoryFileToolStripMenuItem.Visible = true;
+                        removeTerritoryFileToolStripMenuItem.Visible = false;
+                    }
+                }
             }
             else if (e.Node.Tag is territoriesConfig)
             {
                 currentterritoriesConfig = e.Node.Tag as territoriesConfig;
                 currentterritorytypeTerritory = null;
+                TerritorieszonesCB.Checked = true;
+                pictureBox6.Invalidate();
+                pictureBox3.Invalidate();
+                TerritoryEnviromentPanel.Visible = true;
+                
+                string path = currentterritoriesConfig.Filename.Substring((Path.GetDirectoryName(Path.GetDirectoryName(currentterritoriesConfig.Filename)) + "\\").Count());
+                string envfilepath = path.Replace("\\", "/");
+                envTerritoriesFile filepath = currentproject.cfgenviroment.GetFilepath(envfilepath);
+                envTerritoriesTerritory territoryfile = currentproject.cfgenviroment.Getterritory(Path.GetFileNameWithoutExtension(envfilepath));
+               
+                TerritoryEnviromentPathTB.Text = filepath.path;
+                TerritoryEnviromentTypeTB.Text = territoryfile.type;
+                TerritoryEnviromentnameTB.Text = territoryfile.name;
+                TerritoryEnviromentbehavorTB.Text = territoryfile.behavior;
+                TerritoryEnviromentusableTB.Text = territoryfile.file.usable;
+
+
                 if (e.Button == MouseButtons.Right)
                 {
                     TerritoryContextMenu.Show(Cursor.Position);
                     addNewTerritoryToolStripMenuItem.Visible = true;
-                    removeTerritoryToolStripMenuItem.Visible = false;
+                    removeTerritoryToolStripMenuItem.Visible = false; 
+                    addNewTerritoryFileToolStripMenuItem.Visible = false;
+                    removeTerritoryFileToolStripMenuItem.Visible = true;
                 }
             }
             else if (e.Node.Tag is territorytypeTerritory)
             {
+                TerritoryZonePanel.Visible = true;
                 currentterritorytypeTerritory = e.Node.Tag as territorytypeTerritory;
                 currentterritoriesConfig = e.Node.Parent.Tag as territoriesConfig;
-
+                TerritorieszonesCB.Checked = false;
                 TerritoriesZonesLB.DisplayMember = "DisplayName";
                 TerritoriesZonesLB.ValueMember = "Value";
                 TerritoriesZonesLB.DataSource = currentterritorytypeTerritory.zone;
@@ -7781,6 +8059,8 @@ namespace DayZeEditor
                     TerritoryContextMenu.Show(Cursor.Position);
                     addNewTerritoryToolStripMenuItem.Visible = false;
                     removeTerritoryToolStripMenuItem.Visible = true;
+                    addNewTerritoryFileToolStripMenuItem.Visible = false;
+                    removeTerritoryFileToolStripMenuItem.Visible = false;
                 }
             }
             TerritoriesTreeview.SelectedNode = usingtreenode;
@@ -7806,6 +8086,10 @@ namespace DayZeEditor
             TerritoriesZonesStaticMaxNUD.Value = currentterritorytypeTerritoryZone.smax;
             TerritoriesZonesDynamicMinNUD.Value = currentterritorytypeTerritoryZone.dmin;
             TerritoriesZonesDynamicMaxNUD.Value = currentterritorytypeTerritoryZone.dmax;
+            TerritoriesZonesPOSXNUD.Value = currentterritorytypeTerritoryZone.x;
+            TerritoriesZonesPOSZNUD.Value = currentterritorytypeTerritoryZone.z;
+            TerritoriesZonesUseYCB.Checked = label195.Visible = TerritoriesZonesPOSYNUD.Visible = currentterritorytypeTerritoryZone.ySpecified;
+            TerritoriesZonesPOSYNUD.Value = currentterritorytypeTerritoryZone.y;
             RadioButton rb = groupBox74.Controls
                               .OfType<RadioButton>()
                               .FirstOrDefault(x => x.Text == currentterritorytypeTerritoryZone.name);
@@ -7818,6 +8102,39 @@ namespace DayZeEditor
             }
             pictureBox3.Invalidate();
             isUserInteraction = true;
+        }
+        private void TerritoriesZonesUseYCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentterritorytypeTerritoryZone.ySpecified = TerritoriesZonesUseYCB.Checked;
+            currentterritoriesConfig.isDirty = true;
+            int index = TerritoriesZonesLB.SelectedIndex;
+            TerritoriesZonesLB.SelectedIndex = -1;
+            TerritoriesZonesLB.SelectedIndex = index;
+        }
+        private void TerritoriesZonesPOSXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentterritorytypeTerritoryZone.x = TerritoriesZonesPOSXNUD.Value;
+            currentterritoriesConfig.isDirty = true;
+            pictureBox6.Invalidate();
+            TerritoriesZonesLB.Refresh();
+        }
+        private void TerritoriesZonesPOSZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentterritorytypeTerritoryZone.z = TerritoriesZonesPOSZNUD.Value;
+            currentterritoriesConfig.isDirty = true;
+            pictureBox6.Invalidate();
+            TerritoriesZonesLB.Refresh();
+        }
+        private void TerritoriesZonesPOSYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentterritorytypeTerritoryZone.y = TerritoriesZonesPOSYNUD.Value;
+            currentterritoriesConfig.isDirty = true;
+            pictureBox6.Invalidate();
+            TerritoriesZonesLB.Refresh();
         }
         private void TerritoriesZonesAIUSage_CheckedChanged(object sender, EventArgs e)
         {
@@ -7915,6 +8232,7 @@ namespace DayZeEditor
         private void darkButton65_Click(object sender, EventArgs e)
         {
             if (currentterritoriesConfig == null) { return; }
+            if (currentterritorytypeTerritory == null) { return; }
             territorytypeTerritoryZone newzone = new territorytypeTerritoryZone()
             {
                 name = "Graze",
@@ -7974,6 +8292,79 @@ namespace DayZeEditor
             TerritoriesTreeview.EndUpdate();
             TerritoriesZonesLB.Refresh();
             currentterritoriesConfig.isDirty = true;
+        }
+        private void addNewTerritoryFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddNewfileName addnewfilename = new AddNewfileName();
+            addnewfilename.SetTitle = "Add New Territory File";
+            addnewfilename.setdescription = "Eneter name for new file, _territories.xml will be added automatically";
+            DialogResult result = addnewfilename.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string newfilename = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\env\\" + addnewfilename.NewFileName + "_territories.xml";
+                territoriesConfig newtc = new territoriesConfig();
+                newtc.Filename = newfilename;
+                newtc.isDirty = true;
+
+                currentproject.territoriesList.Add(newtc);
+                TreeNode newTN =  new TreeNode(Path.GetFileNameWithoutExtension(newfilename))
+                {
+                    Tag = newtc
+                };
+                TerritoriesTreeview.SelectedNode.Nodes.Add(newTN);
+                TerritoriesTreeview.SelectedNode = newTN;
+                string path = newfilename.Substring((Path.GetDirectoryName(Path.GetDirectoryName(newfilename)) + "\\").Count());
+                string envfilepath = path.Replace("\\", "/");
+                currentproject.cfgenviroment.cfgenvironment.territories.file.Add(new envTerritoriesFile()
+                {
+                    path = envfilepath,
+                });
+                currentproject.cfgenviroment.cfgenvironment.territories.territory.Add(new envTerritoriesTerritory()
+                {
+                    type = "herd",
+                    name = Path.GetFileNameWithoutExtension(envfilepath).Split('_')[0],
+                    behavior = "DZWolfGroupBeh",
+                    file = new envTerritoriesTerritoryFile()
+                    {
+                        usable = Path.GetFileNameWithoutExtension(envfilepath)
+                    },
+                    agent = null,
+                    item = null
+                });
+                currentproject.cfgenviroment.isDirty = true;
+            }
+        }
+        private void removeTerritoryFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentterritoriesConfig.movetoremovedfolder();
+            currentproject.cfgenviroment.Remove(currentterritoriesConfig.Filename);
+            currentproject.cfgenviroment.isDirty = true;
+            currentproject.territoriesList.Remove(currentterritoriesConfig);
+            var savedExpansionState = TerritoriesTreeview.Nodes.GetExpansionState();
+            TerritoriesTreeview.BeginUpdate();
+            populateterritorytreeview();
+            TerritoriesTreeview.Nodes.SetExpansionState(savedExpansionState);
+            TerritoriesTreeview.EndUpdate();
+            TerritoriesZonesLB.Refresh();
+        }
+        private void TerritoryEnviromentnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            string path = currentterritoriesConfig.Filename.Substring((Path.GetDirectoryName(Path.GetDirectoryName(currentterritoriesConfig.Filename)) + "\\").Count());
+            string envfilepath = path.Replace("\\", "/");
+            envTerritoriesTerritory territoryfile = currentproject.cfgenviroment.Getterritory(Path.GetFileNameWithoutExtension(envfilepath));
+            territoryfile.name = TerritoryEnviromentnameTB.Text;
+            currentproject.cfgenviroment.isDirty = true;
+        }
+
+        private void TerritoryEnviromentbehavorTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            string path = currentterritoriesConfig.Filename.Substring((Path.GetDirectoryName(Path.GetDirectoryName(currentterritoriesConfig.Filename)) + "\\").Count());
+            string envfilepath = path.Replace("\\", "/");
+            envTerritoriesTerritory territoryfile = currentproject.cfgenviroment.Getterritory(Path.GetFileNameWithoutExtension(envfilepath));
+            territoryfile.behavior = TerritoryEnviromentbehavorTB.Text;
+            currentproject.cfgenviroment.isDirty = true;
         }
         #endregion territories
         #region initc
@@ -8985,6 +9376,11 @@ namespace DayZeEditor
         private void DrawMapGrouPro(object sender, PaintEventArgs e)
         {
             decimal scalevalue = mapgroupposMapscale * (decimal)0.05;
+            List<mapGroup> nodestodraw = new List<mapGroup>();
+            foreach (TreeNode tn in treeViewMS2.SelectedNodes)
+            {
+                nodestodraw.Add(tn.Tag as mapGroup);
+            }
             foreach (mapGroup MGPMG in mapgroupposmap.group)
             {
                 decimal xx = Convert.ToDecimal(MGPMG.pos.Split(' ')[0]);
@@ -8998,7 +9394,8 @@ namespace DayZeEditor
                 {
                     Width = 4
                 };
-                if (currentmapgroup == MGPMG)
+                
+                if (nodestodraw.Contains(MGPMG))
                 {
                     pen.Color = Color.LimeGreen;
                 }
@@ -9176,23 +9573,44 @@ namespace DayZeEditor
         }
         private void treeViewMS2_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            currentmapgrouptreenode = e.Node;
-            currentmapgroup = e.Node.Tag as mapGroup;
-            pictureBox4.Invalidate();
-            if (e.Button == MouseButtons.Right)
-            {
-                if (e.Node.Tag is mapGroup)
-                    mapgroupposcontextMenu.Show(Cursor.Position);
-            }
+            //currentmapgrouptreenode = e.Node;
+            //currentmapgroup = e.Node.Tag as mapGroup;
+            //pictureBox4.Invalidate();
+            //if (e.Button == MouseButtons.Right)
+            //{
+            //    if (e.Node.Tag is mapGroup)
+            //        mapgroupposcontextMenu.Show(Cursor.Position);
+            //}
         }
         private void treeViewMS2_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //this.treeViewMS2.SelectedNode = e.Node;
+            currentmapgrouptreenode = e.Node;
+            currentmapgroup = e.Node.Tag as mapGroup;
+            pictureBox4.Invalidate();
         }
         private void trackBar2_MouseUp(object sender, MouseEventArgs e)
         {
             mapgroupposMapscale = trackBar2.Value;
             SetsMapGroupposScale();
+        }
+        private void darkButton85_Click(object sender, EventArgs e)
+        {
+            List<TreeNode> nodestoremove = new List<TreeNode>();
+            foreach (TreeNode tn in treeViewMS2.SelectedNodes)
+            {
+                nodestoremove.Add(tn);
+            }
+            foreach (TreeNode tnode in nodestoremove)
+            {
+                mapGroup mapGroup = tnode.Tag as mapGroup;
+                mapgroupposmap.group.Remove(mapGroup);
+                TreeNode Parent = tnode.Parent;
+                treeViewMS2.Nodes.Remove(tnode);
+                if (Parent.Nodes.Count == 0)
+                    treeViewMS2.Nodes.Remove(Parent);
+            }
+            currentproject.mapgrouppos.isDirty = true;
+            pictureBox4.Invalidate();
         }
         private void removeMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -9616,6 +10034,13 @@ namespace DayZeEditor
 
             }
         }
+
+
+
+
+
+
+
 
 
 

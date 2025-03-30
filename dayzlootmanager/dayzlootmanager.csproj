@@ -125,6 +125,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\GitHub.cs" />
+    <Compile Include="Forms\TimedCrateManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TimedCrateManager.Designer.cs">
+      <DependentUpon>TimedCrateManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DynamicWeatherPluginManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -471,6 +477,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\TimedCrateManager.resx">
+      <DependentUpon>TimedCrateManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DynamicWeatherPluginManager.resx">
       <DependentUpon>DynamicWeatherPluginManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -662,9 +671,11 @@
     <None Include="Maps\barrington_Map.png.xyz" />
     <None Include="Maps\bearisland_Map.png.xyz" />
     <None Include="Maps\bitterroot_Map.png.xyz" />
-    <None Include="Maps\Capare_Map.png.xyz" />
-    <None Include="Maps\chernarusplus_Map.png.xyz">
+    <None Include="Maps\Capare_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\chernarusplus_Map.png.xyz">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Maps\chiemsee_Map.png.xyz" />
     <None Include="Maps\deerisle_map.png.xyz" />
@@ -676,7 +687,9 @@
     <None Include="Maps\melkart_Map.png.xyz" />
     <None Include="Maps\namalsk_Map.png.xyz" />
     <None Include="Maps\nhchernobyl_Map.png.xyz" />
+    <None Include="Maps\NorthTakistan_map.png.xyz" />
     <None Include="Maps\pripyat_Map.png.xyz" />
+    <None Include="Maps\raman_Map.png.xyz" />
     <None Include="Maps\rostow_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -740,10 +753,12 @@
     <Content Include="Maps\barrington_Map.png" />
     <Content Include="Maps\bearisland_Map.png" />
     <Content Include="Maps\bitterroot_Map.png" />
-    <Content Include="Maps\Capare_Map.png" />
+    <Content Include="Maps\Capare_Map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Maps\chiemsee_Map.png" />
     <Content Include="Maps\chernarusplus_Map.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\esseker_Map.png" />
     <Content Include="Maps\fogfall_Map.png" />
@@ -815,7 +830,9 @@
     <Content Include="Maps\melkart_Map.png" />
     <Content Include="Maps\namalsk_Map.png" />
     <Content Include="Maps\nhchernobyl_Map.png" />
+    <Content Include="Maps\NorthTakistan_map.png" />
     <Content Include="Maps\pripyat_Map.png" />
+    <Content Include="Maps\raman_Map.png" />
     <Content Include="Maps\rostow_Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
