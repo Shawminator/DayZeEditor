@@ -22,6 +22,8 @@ namespace DayZeLib
         const int currentversion = 122;
         [JsonIgnore]
         public BindingList<SpawnGearPresetFiles> SpawnGearPresetFiles { get; set; }
+        [JsonIgnore]
+        public BindingList<PlayerRestrictedFiles> RestrictedAreaFiles { get; set; }
 
         public cfggameplay()
         {
@@ -221,6 +223,7 @@ namespace DayZeLib
         public bool disableHeightPlacementCheck { get; set; }
         public bool disableIsUnderwaterCheck { get; set; }
         public bool disableIsInTerrainCheck { get; set; }
+        public bool disableColdAreaBuildingCheck { get; set; }
         public BindingList<string> disallowedTypesInUnderground { get; set; }
 
         public Hologramdata()
@@ -235,6 +238,7 @@ namespace DayZeLib
             disableHeightPlacementCheck = false;
             disableIsUnderwaterCheck = false;
             disableIsInTerrainCheck = false;
+            disableColdAreaBuildingCheck = false;
             disallowedTypesInUnderground = new BindingList<string>(new string[] { "FenceKit", "TerritoryFlagKit", "WatchtowerKit" });
         }
     }
@@ -424,4 +428,13 @@ namespace DayZeLib
         public bool enableCEPersistency { get; set; }
     }
 
+    public class PlayerRestrictedFiles
+    {
+        public string areaName { get; set; }
+        public BindingList<float[][]> PRABoxes { get; set; }
+        public BindingList<float[]> safePositions3D { get; set; }
+
+        [JsonIgnore]
+        public string Filename { get; internal set; }
+    }
 }

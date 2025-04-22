@@ -1096,6 +1096,7 @@ namespace DayZeLib
         public void SaveCFGGameplay()
         {
             SetSpawnGearFiles();
+            SetRestrictedAreaFiles();
             var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
             string jsonString = JsonSerializer.Serialize(cfggameplay, options);
             File.WriteAllText(Filename, jsonString);
@@ -1107,6 +1108,10 @@ namespace DayZeLib
             {
                 cfggameplay.PlayerData.spawnGearPresetFiles.Add(SGPF.Filename);
             }
+        }
+        public void SetRestrictedAreaFiles()
+        {
+
         }
         public void GetSpawnGearFiles(string SpawnGearPath)
         {
@@ -1144,7 +1149,42 @@ namespace DayZeLib
             }
             Console.Write("## End  SpawnGearPresets ##" + Environment.NewLine);
         }
+        internal void GetRestrictedFiles(string v)
+        {
+            cfggameplay.RestrictedAreaFiles = new BindingList<PlayerRestrictedFiles>();
+            Console.Write("## Starting Restriced Area Files ##" + Environment.NewLine);
+            foreach (string file in cfggameplay.WorldsData.playerRestrictedAreaFiles)
+            {
+                PlayerRestrictedFiles PlayerRestrictedFiles;
 
+                Console.Write("\tserializing " + file);
+                try
+                {
+                    PlayerRestrictedFiles = JsonSerializer.Deserialize<PlayerRestrictedFiles>(File.ReadAllText(v + "/" + file));
+                    if (PlayerRestrictedFiles != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("  OK....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    PlayerRestrictedFiles.Filename = file;
+                    cfggameplay.RestrictedAreaFiles.Add(PlayerRestrictedFiles);
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("  Failed....");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                }
+            }
+            Console.Write("## End Restriced Area Files ##" + Environment.NewLine);
+        }
         public void SaveSpawnGearPresetFiles(string MissionPath)
         {
             foreach (SpawnGearPresetFiles SGFP in cfggameplay.SpawnGearPresetFiles)
@@ -1164,6 +1204,8 @@ namespace DayZeLib
             cfggameplay.WorldsData.objectSpawnersArr.Add(v);
             SaveCFGGameplay();
         }
+
+
     }
     public class cfgEffectAreaConfig
     {

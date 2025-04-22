@@ -70,6 +70,7 @@ namespace DayZeEditor
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Loot = new System.Windows.Forms.TabPage();
+            this.ExpansionLootAirdropsettings = new DayZeLib.ExpansionLootControl();
             this.Infected = new System.Windows.Forms.TabPage();
             this.darkButton84 = new DarkUI.Controls.DarkButton();
             this.darkLabel217 = new DarkUI.Controls.DarkLabel();
@@ -465,6 +466,7 @@ namespace DayZeEditor
             this.darkLabel245 = new DarkUI.Controls.DarkLabel();
             this.InGameMenuLogoPathTB = new System.Windows.Forms.TextBox();
             this.groupBox69 = new System.Windows.Forms.GroupBox();
+            this.UseHUDColorsCB = new System.Windows.Forms.CheckBox();
             this.StaminaBarColorLowPB = new System.Windows.Forms.PictureBox();
             this.darkLabel251 = new DarkUI.Controls.DarkLabel();
             this.StaminaBarColorHalfPB = new System.Windows.Forms.PictureBox();
@@ -682,6 +684,7 @@ namespace DayZeEditor
             this.darkLabel267 = new DarkUI.Controls.DarkLabel();
             this.MissionFallSpeedNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel12 = new DarkUI.Controls.DarkLabel();
+            this.expansionLootControlMissions = new DayZeLib.ExpansionLootControl();
             this.numericUpDown38 = new System.Windows.Forms.NumericUpDown();
             this.darkLabel271 = new DarkUI.Controls.DarkLabel();
             this.numericUpDown37 = new System.Windows.Forms.NumericUpDown();
@@ -1369,9 +1372,6 @@ namespace DayZeEditor
             this.addNewSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UseHUDColorsCB = new System.Windows.Forms.CheckBox();
-            this.ExpansionLootAirdropsettings = new DayZeLib.ExpansionLootControl();
-            this.expansionLootControlMissions = new DayZeLib.ExpansionLootControl();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -2240,6 +2240,23 @@ namespace DayZeEditor
             this.Loot.Size = new System.Drawing.Size(838, 598);
             this.Loot.TabIndex = 0;
             this.Loot.Text = "Loot";
+            // 
+            // ExpansionLootAirdropsettings
+            // 
+            this.ExpansionLootAirdropsettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ExpansionLootAirdropsettings.currentExpansionLoot = null;
+            this.ExpansionLootAirdropsettings.currentproject = null;
+            this.ExpansionLootAirdropsettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpansionLootAirdropsettings.ForeColor = System.Drawing.SystemColors.Control;
+            this.ExpansionLootAirdropsettings.isDirty = false;
+            this.ExpansionLootAirdropsettings.Location = new System.Drawing.Point(3, 3);
+            this.ExpansionLootAirdropsettings.LootparentName = null;
+            this.ExpansionLootAirdropsettings.ModTypes = null;
+            this.ExpansionLootAirdropsettings.Name = "ExpansionLootAirdropsettings";
+            this.ExpansionLootAirdropsettings.Size = new System.Drawing.Size(832, 592);
+            this.ExpansionLootAirdropsettings.TabIndex = 102;
+            this.ExpansionLootAirdropsettings.vanillatypes = null;
+            this.ExpansionLootAirdropsettings.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.ExpansionLootAirdropsettings_IsDirtyChanged);
             // 
             // Infected
             // 
@@ -5924,7 +5941,7 @@ namespace DayZeEditor
             this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(96, 22);
+            this.toolStripButton8.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton8.Text = "General Settings";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -5943,7 +5960,7 @@ namespace DayZeEditor
             this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(73, 22);
+            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton7.Text = "Build Zones";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -7350,6 +7367,17 @@ namespace DayZeEditor
             this.groupBox69.TabStop = false;
             this.groupBox69.Text = "HUD";
             // 
+            // UseHUDColorsCB
+            // 
+            this.UseHUDColorsCB.AutoSize = true;
+            this.UseHUDColorsCB.Location = new System.Drawing.Point(9, 19);
+            this.UseHUDColorsCB.Name = "UseHUDColorsCB";
+            this.UseHUDColorsCB.Size = new System.Drawing.Size(104, 17);
+            this.UseHUDColorsCB.TabIndex = 149;
+            this.UseHUDColorsCB.Text = "Use HUD Colors";
+            this.UseHUDColorsCB.UseVisualStyleBackColor = true;
+            this.UseHUDColorsCB.CheckedChanged += new System.EventHandler(this.GeneralsettingsCB_CheckedChanged);
+            // 
             // StaminaBarColorLowPB
             // 
             this.StaminaBarColorLowPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("StaminaBarColorLowPB.BackgroundImage")));
@@ -8751,6 +8779,7 @@ namespace DayZeEditor
             this.ItemRarityLB.Size = new System.Drawing.Size(236, 394);
             this.ItemRarityLB.TabIndex = 4;
             this.ItemRarityLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.ItemRarityLB.SelectedIndexChanged += new System.EventHandler(this.ItemRarityLB_SelectedIndexChanged);
             // 
             // ItemRarityCB
             // 
@@ -8763,7 +8792,10 @@ namespace DayZeEditor
             "Epic",
             "Legendary",
             "Mythic",
-            "Exotic"});
+            "Exotic",
+            "Quest",
+            "Collectable",
+            "Ingredient"});
             this.ItemRarityCB.Location = new System.Drawing.Point(73, 21);
             this.ItemRarityCB.Name = "ItemRarityCB";
             this.ItemRarityCB.Size = new System.Drawing.Size(171, 21);
@@ -10088,6 +10120,22 @@ namespace DayZeEditor
             this.darkLabel12.Size = new System.Drawing.Size(57, 13);
             this.darkLabel12.TabIndex = 16;
             this.darkLabel12.Text = "Fall Speed";
+            // 
+            // expansionLootControlMissions
+            // 
+            this.expansionLootControlMissions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.expansionLootControlMissions.currentExpansionLoot = null;
+            this.expansionLootControlMissions.currentproject = null;
+            this.expansionLootControlMissions.ForeColor = System.Drawing.SystemColors.Control;
+            this.expansionLootControlMissions.isDirty = false;
+            this.expansionLootControlMissions.Location = new System.Drawing.Point(392, 8);
+            this.expansionLootControlMissions.LootparentName = null;
+            this.expansionLootControlMissions.ModTypes = null;
+            this.expansionLootControlMissions.Name = "expansionLootControlMissions";
+            this.expansionLootControlMissions.Size = new System.Drawing.Size(561, 690);
+            this.expansionLootControlMissions.TabIndex = 24;
+            this.expansionLootControlMissions.vanillatypes = null;
+            this.expansionLootControlMissions.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionLootControlMissions_IsDirtyChanged);
             // 
             // numericUpDown38
             // 
@@ -19241,50 +19289,6 @@ namespace DayZeEditor
             this.removeSubMenuCategoryToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.removeSubMenuCategoryToolStripMenuItem.Text = "Remove Sub Menu Category";
             this.removeSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeSubMenuCategoryToolStripMenuItem_Click);
-            // 
-            // UseHUDColorsCB
-            // 
-            this.UseHUDColorsCB.AutoSize = true;
-            this.UseHUDColorsCB.Location = new System.Drawing.Point(9, 19);
-            this.UseHUDColorsCB.Name = "UseHUDColorsCB";
-            this.UseHUDColorsCB.Size = new System.Drawing.Size(104, 17);
-            this.UseHUDColorsCB.TabIndex = 149;
-            this.UseHUDColorsCB.Text = "Use HUD Colors";
-            this.UseHUDColorsCB.UseVisualStyleBackColor = true;
-            this.UseHUDColorsCB.CheckedChanged += new System.EventHandler(this.GeneralsettingsCB_CheckedChanged);
-            // 
-            // ExpansionLootAirdropsettings
-            // 
-            this.ExpansionLootAirdropsettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ExpansionLootAirdropsettings.currentExpansionLoot = null;
-            this.ExpansionLootAirdropsettings.currentproject = null;
-            this.ExpansionLootAirdropsettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpansionLootAirdropsettings.ForeColor = System.Drawing.SystemColors.Control;
-            this.ExpansionLootAirdropsettings.isDirty = false;
-            this.ExpansionLootAirdropsettings.Location = new System.Drawing.Point(3, 3);
-            this.ExpansionLootAirdropsettings.LootparentName = null;
-            this.ExpansionLootAirdropsettings.ModTypes = null;
-            this.ExpansionLootAirdropsettings.Name = "ExpansionLootAirdropsettings";
-            this.ExpansionLootAirdropsettings.Size = new System.Drawing.Size(832, 592);
-            this.ExpansionLootAirdropsettings.TabIndex = 102;
-            this.ExpansionLootAirdropsettings.vanillatypes = null;
-            this.ExpansionLootAirdropsettings.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.ExpansionLootAirdropsettings_IsDirtyChanged);
-            // 
-            // expansionLootControlMissions
-            // 
-            this.expansionLootControlMissions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.expansionLootControlMissions.currentExpansionLoot = null;
-            this.expansionLootControlMissions.currentproject = null;
-            this.expansionLootControlMissions.ForeColor = System.Drawing.SystemColors.Control;
-            this.expansionLootControlMissions.isDirty = false;
-            this.expansionLootControlMissions.Location = new System.Drawing.Point(392, 8);
-            this.expansionLootControlMissions.LootparentName = null;
-            this.expansionLootControlMissions.ModTypes = null;
-            this.expansionLootControlMissions.Name = "expansionLootControlMissions";
-            this.expansionLootControlMissions.Size = new System.Drawing.Size(561, 690);
-            this.expansionLootControlMissions.TabIndex = 24;
-            this.expansionLootControlMissions.vanillatypes = null;
-            this.expansionLootControlMissions.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionLootControlMissions_IsDirtyChanged);
             // 
             // ExpansionSettings
             // 

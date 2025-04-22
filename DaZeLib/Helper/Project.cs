@@ -531,6 +531,7 @@ namespace DayZeEditor
         {
             CFGGameplayConfig = new CFGGameplayConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfggameplay.json");
             CFGGameplayConfig.GetSpawnGearFiles(projectFullName + "\\mpmissions\\" + mpmissionpath);
+            CFGGameplayConfig.GetRestrictedFiles(projectFullName + "\\mpmissions\\" + mpmissionpath);
         }
         public void SetcfgEffectAreaConfig()
         {

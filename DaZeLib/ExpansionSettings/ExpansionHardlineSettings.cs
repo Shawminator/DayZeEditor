@@ -73,6 +73,12 @@ namespace DayZeLib
         [JsonIgnore]
         public BindingList<string> ExoticItems { get; set; }
         [JsonIgnore]
+        public BindingList<string> QuestItems { get; set; }
+        [JsonIgnore]
+        public BindingList<string> CollectableItems { get; set; }
+        [JsonIgnore]
+        public BindingList<string> IngredientItems { get; set; }
+        [JsonIgnore]
         public BindingList<EntityReputationlevels> entityreps { get; set; }
 
         public ExpansionHardlineSettings()
@@ -130,6 +136,9 @@ namespace DayZeLib
             List<string> InitialLegendaryItems = new List<string>();
             List<string> InitialMythicItems = new List<string>();
             List<string> InitialExoticItems = new List<string>();
+            List<string> InitialQuestItems = new List<string>();
+            List<string> InitialCollectableItems = new List<string>();
+            List<string> InitialIngredientItems = new List<string>();
 
             if (ItemRarity == null)
                 ItemRarity = new Dictionary<string, int>();
@@ -169,6 +178,15 @@ namespace DayZeLib
                     case 8:
                         InitialExoticItems.Add(useitem);
                         break;
+                    case 9:
+                        InitialQuestItems.Add(useitem);
+                        break;
+                    case 10:
+                        InitialCollectableItems.Add(useitem);
+                        break;
+                    case 11:
+                        InitialIngredientItems.Add(useitem);
+                        break;
 
                 }
             }
@@ -181,6 +199,9 @@ namespace DayZeLib
             InitialLegendaryItems.Sort();
             InitialMythicItems.Sort();
             InitialExoticItems.Sort();
+            InitialQuestItems.Sort();
+            InitialCollectableItems.Sort();
+            InitialIngredientItems.Sort();
 
             PoorItems = new BindingList<string>(InitialPoorItems);
             CommonItems = new BindingList<string>(InitialCommonItems);
@@ -190,6 +211,9 @@ namespace DayZeLib
             LegendaryItems = new BindingList<string>(InitialLegendaryItems);
             MythicItems = new BindingList<string>(InitialMythicItems);
             ExoticItems = new BindingList<string>(InitialExoticItems);
+            QuestItems = new BindingList<string>(InitialQuestItems);
+            CollectableItems = new BindingList<string>(InitialCollectableItems);
+            IngredientItems = new BindingList<string>(InitialIngredientItems);
 
 
 
@@ -229,6 +253,18 @@ namespace DayZeLib
             {
                 ItemRarity.Add(item, 8);
             }
+            foreach (string item in QuestItems)
+            {
+                ItemRarity.Add(item, 9);
+            }
+            foreach (string item in CollectableItems)
+            {
+                ItemRarity.Add(item, 10);
+            }
+            foreach (string item in IngredientItems)
+            {
+                ItemRarity.Add(item, 11);
+            }
         }
         public BindingList<string> getlist(string type)
         {
@@ -250,6 +286,12 @@ namespace DayZeLib
                     return MythicItems;
                 case "Exotic":
                     return ExoticItems;
+                case "Quest":
+                    return QuestItems;
+                case "Collectable":
+                    return CollectableItems;
+                case "Ingredient":
+                    return IngredientItems;
             }
             return new BindingList<string>();
         }
@@ -271,6 +313,12 @@ namespace DayZeLib
                 return "Mythic";
             if (ExoticItems.Contains(item))
                 return "Exotic";
+            if (QuestItems.Contains(item))
+                return "Quest";
+            if (CollectableItems.Contains(item))
+                return "Collectable";
+            if (IngredientItems.Contains(item))
+                return "Ingredient";
             return "none";
 
         }

@@ -1,4 +1,8 @@
-﻿Version 0.8.3.2
+﻿Version 0.8.3.3
+[Added]
+CFGGameplay				-	Added missing Added missing disableColdAreaBuildingCheck to basebuilding hologramData.
+
+Version 0.8.3.2
 [Fixed]
 Expansion Base Building	-	Updated Version Number.
 Expansion Missions		-	Added mission DropZoneHeight,DropZoneSpeed,AirdropPlaneClassname to airdrop missions,

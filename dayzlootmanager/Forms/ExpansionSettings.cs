@@ -1,4 +1,5 @@
-﻿using Cyotek.Windows.Forms;
+﻿using BIS.PAA;
+using Cyotek.Windows.Forms;
 using DarkUI.Forms;
 using DayZeLib;
 using System;
@@ -3729,11 +3730,22 @@ namespace DayZeEditor
         private void ItemRarityCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
+            
             string Type = ItemRarityCB.GetItemText(ItemRarityCB.SelectedItem);
+            
             useraction = false;
 
-            ItemRequirementNUD.Value = HardLineSettings.getRequirment(Type);
-
+            if (Type == "Quest" || Type == "Collectable" || Type == "Ingredient")
+            {
+                ItemRequirementNUD.Visible = false;
+                ItemRequirementNUD.Value = -1;
+                ItemRequirementNUD.Controls[0].Visible = false;
+            }
+            else
+            {
+                ItemRequirementNUD.Visible = true;
+                ItemRequirementNUD.Value = HardLineSettings.getRequirment(Type);
+            }
             ItemRarityLB.DisplayMember = "DisplayName";
             ItemRarityLB.ValueMember = "Value";
             ItemRarityLB.DataSource = HardLineSettings.getlist(Type);
@@ -3782,9 +3794,12 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!HardLineSettings.getlist(Type).Contains(l))
+                    string Typelist = HardLineSettings.GetListfromitem(l.ToLower());
+                    if (Typelist != "none")
+                        HardLineSettings.getlist(Typelist).Remove(l.ToLower());
+                    if (!HardLineSettings.getlist(Type).Contains(l.ToLower()))
                     {
-                        HardLineSettings.getlist(Type).Add(l);
+                        HardLineSettings.getlist(Type).Add(l.ToLower());
                     }
                     HardLineSettings.isDirty = true;
                 }
@@ -3989,24 +4004,30 @@ namespace DayZeEditor
 
             foreach (typesType vantype in vanillatypes.types.type)
             {
+                string Typelist = HardLineSettings.GetListfromitem(vantype.name.ToLower());
+                if (Typelist != "none")
+                    HardLineSettings.getlist(Typelist).Remove(vantype.name.ToLower());
                 if (vantype.nominalSpecified && vantype.nominal > 0)
                 {
                     switch (vantype.Rarity)
                     {
                         case ITEMRARITY.Legendary:
-                            HardLineSettings.getlist("Legendary").Add(vantype.name);
+                            HardLineSettings.getlist("Legendary").Add(vantype.name.ToLower());
                             break;
                         case ITEMRARITY.Epic:
-                            HardLineSettings.getlist("Epic").Add(vantype.name);
+                            HardLineSettings.getlist("Epic").Add(vantype.name.ToLower());
                             break;
                         case ITEMRARITY.Rare:
-                            HardLineSettings.getlist("Rare").Add(vantype.name);
+                            HardLineSettings.getlist("Rare").Add(vantype.name.ToLower());
                             break;
                         case ITEMRARITY.Uncommon:
-                            HardLineSettings.getlist("Uncommon").Add(vantype.name);
+                            HardLineSettings.getlist("Uncommon").Add(vantype.name.ToLower());
                             break;
                         case ITEMRARITY.Common:
-                            HardLineSettings.getlist("Common").Add(vantype.name);
+                            HardLineSettings.getlist("Common").Add(vantype.name.ToLower());
+                            break;
+                        default:
+                            string stop = "";
                             break;
                     }
                 }
@@ -4015,31 +4036,37 @@ namespace DayZeEditor
             // Gather mod items
             foreach (TypesFile tfile in ModTypes)
             {
+                
                 foreach (typesType typesType in tfile.types.type)
                 {
+                    string Typelist = HardLineSettings.GetListfromitem(typesType.name.ToLower());
+                    if (Typelist != "none")
+                        HardLineSettings.getlist(Typelist).Remove(typesType.name.ToLower());
+
                     if (typesType.nominalSpecified && typesType.nominal > 0)
                     {
                         switch (typesType.Rarity)
                         {
                             case ITEMRARITY.Legendary:
-                                HardLineSettings.getlist("Legendary").Add(typesType.name);
+                                HardLineSettings.getlist("Legendary").Add(typesType.name.ToLower());
                                 break;
                             case ITEMRARITY.Epic:
-                                HardLineSettings.getlist("Epic").Add(typesType.name);
+                                HardLineSettings.getlist("Epic").Add(typesType.name.ToLower());
                                 break;
                             case ITEMRARITY.Rare:
-                                HardLineSettings.getlist("Rare").Add(typesType.name);
+                                HardLineSettings.getlist("Rare").Add(typesType.name.ToLower());
                                 break;
                             case ITEMRARITY.Uncommon:
-                                HardLineSettings.getlist("Uncommon").Add(typesType.name);
+                                HardLineSettings.getlist("Uncommon").Add(typesType.name.ToLower());
                                 break;
                             case ITEMRARITY.Common:
-                                HardLineSettings.getlist("Common").Add(typesType.name);
+                                HardLineSettings.getlist("Common").Add(typesType.name.ToLower());
                                 break;
                         }
                     }
                 }
             }
+            HardLineSettings.isDirty = true;
         }
         private void DefaultItemRarityCB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -9534,9 +9561,13 @@ namespace DayZeEditor
 
 
 
+
         #endregion personalstroage
 
+        private void ItemRarityLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
     public class NullToEmptyGearConverter : JsonConverter<ExpansionStartingGearItem>
     {

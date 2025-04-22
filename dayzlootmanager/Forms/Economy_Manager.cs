@@ -5686,6 +5686,7 @@ namespace DayZeEditor
             disableHeightPlacementCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableHeightPlacementCheck;
             disableIsUnderwaterCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsUnderwaterCheck;
             disableIsInTerrainCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsInTerrainCheck;
+            disableColdAreaBuildingCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableColdAreaBuildingCheck;
 
             disablePerformRoofCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disablePerformRoofCheck;
             disableIsCollidingCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disableIsCollidingCheck;
@@ -5882,6 +5883,12 @@ namespace DayZeEditor
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.HologramData.disableIsInTerrainCheck = disableIsInTerrainCheckCB.Checked;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void disableColdAreaBuildingCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.HologramData.disableColdAreaBuildingCheck = disableColdAreaBuildingCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disablePerformRoofCheckCB_CheckedChanged(object sender, EventArgs e)
@@ -10034,6 +10041,7 @@ namespace DayZeEditor
 
             }
         }
+
 
 
 

@@ -1235,6 +1235,7 @@ namespace DayZeEditor
             this.deleteDiscreetUnsortedItemSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapgroupposcontextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disableColdAreaBuildingCheckCB = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -3341,7 +3342,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
+            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -6319,7 +6320,6 @@ namespace DayZeEditor
             this.fastColoredTextBox2.DefaultMarkerSize = 8;
             this.fastColoredTextBox2.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox2.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox2.IsReplaceMode = false;
             this.fastColoredTextBox2.Location = new System.Drawing.Point(3, 3);
@@ -9692,6 +9692,7 @@ namespace DayZeEditor
             // 
             // groupBox29
             // 
+            this.groupBox29.Controls.Add(this.disableColdAreaBuildingCheckCB);
             this.groupBox29.Controls.Add(this.darkButton67);
             this.groupBox29.Controls.Add(this.darkButton66);
             this.groupBox29.Controls.Add(this.CFGGameplayDisallowedtypesLB);
@@ -9763,7 +9764,7 @@ namespace DayZeEditor
             // disableIsInTerrainCheckCB
             // 
             this.disableIsInTerrainCheckCB.AutoSize = true;
-            this.disableIsInTerrainCheckCB.Location = new System.Drawing.Point(14, 226);
+            this.disableIsInTerrainCheckCB.Location = new System.Drawing.Point(14, 208);
             this.disableIsInTerrainCheckCB.Name = "disableIsInTerrainCheckCB";
             this.disableIsInTerrainCheckCB.Size = new System.Drawing.Size(154, 17);
             this.disableIsInTerrainCheckCB.TabIndex = 10;
@@ -9774,7 +9775,7 @@ namespace DayZeEditor
             // disableIsUnderwaterCheckCB
             // 
             this.disableIsUnderwaterCheckCB.AutoSize = true;
-            this.disableIsUnderwaterCheckCB.Location = new System.Drawing.Point(14, 203);
+            this.disableIsUnderwaterCheckCB.Location = new System.Drawing.Point(14, 187);
             this.disableIsUnderwaterCheckCB.Name = "disableIsUnderwaterCheckCB";
             this.disableIsUnderwaterCheckCB.Size = new System.Drawing.Size(164, 17);
             this.disableIsUnderwaterCheckCB.TabIndex = 9;
@@ -9785,7 +9786,7 @@ namespace DayZeEditor
             // disableHeightPlacementCheckCB
             // 
             this.disableHeightPlacementCheckCB.AutoSize = true;
-            this.disableHeightPlacementCheckCB.Location = new System.Drawing.Point(14, 180);
+            this.disableHeightPlacementCheckCB.Location = new System.Drawing.Point(14, 166);
             this.disableHeightPlacementCheckCB.Name = "disableHeightPlacementCheckCB";
             this.disableHeightPlacementCheckCB.Size = new System.Drawing.Size(182, 17);
             this.disableHeightPlacementCheckCB.TabIndex = 8;
@@ -9796,7 +9797,7 @@ namespace DayZeEditor
             // disableIsPlacementPermittedCheckCB
             // 
             this.disableIsPlacementPermittedCheckCB.AutoSize = true;
-            this.disableIsPlacementPermittedCheckCB.Location = new System.Drawing.Point(14, 157);
+            this.disableIsPlacementPermittedCheckCB.Location = new System.Drawing.Point(14, 145);
             this.disableIsPlacementPermittedCheckCB.Name = "disableIsPlacementPermittedCheckCB";
             this.disableIsPlacementPermittedCheckCB.Size = new System.Drawing.Size(206, 17);
             this.disableIsPlacementPermittedCheckCB.TabIndex = 7;
@@ -9807,7 +9808,7 @@ namespace DayZeEditor
             // disableIsCollidingAngleCheckCB
             // 
             this.disableIsCollidingAngleCheckCB.AutoSize = true;
-            this.disableIsCollidingAngleCheckCB.Location = new System.Drawing.Point(14, 134);
+            this.disableIsCollidingAngleCheckCB.Location = new System.Drawing.Point(14, 124);
             this.disableIsCollidingAngleCheckCB.Name = "disableIsCollidingAngleCheckCB";
             this.disableIsCollidingAngleCheckCB.Size = new System.Drawing.Size(178, 17);
             this.disableIsCollidingAngleCheckCB.TabIndex = 6;
@@ -9818,7 +9819,7 @@ namespace DayZeEditor
             // disableIsCollidingGPlotCheckCB
             // 
             this.disableIsCollidingGPlotCheckCB.AutoSize = true;
-            this.disableIsCollidingGPlotCheckCB.Location = new System.Drawing.Point(14, 111);
+            this.disableIsCollidingGPlotCheckCB.Location = new System.Drawing.Point(14, 103);
             this.disableIsCollidingGPlotCheckCB.Name = "disableIsCollidingGPlotCheckCB";
             this.disableIsCollidingGPlotCheckCB.Size = new System.Drawing.Size(180, 17);
             this.disableIsCollidingGPlotCheckCB.TabIndex = 5;
@@ -9829,7 +9830,7 @@ namespace DayZeEditor
             // disableIsBaseViableCheckCB
             // 
             this.disableIsBaseViableCheckCB.AutoSize = true;
-            this.disableIsBaseViableCheckCB.Location = new System.Drawing.Point(14, 88);
+            this.disableIsBaseViableCheckCB.Location = new System.Drawing.Point(14, 82);
             this.disableIsBaseViableCheckCB.Name = "disableIsBaseViableCheckCB";
             this.disableIsBaseViableCheckCB.Size = new System.Drawing.Size(165, 17);
             this.disableIsBaseViableCheckCB.TabIndex = 4;
@@ -9840,7 +9841,7 @@ namespace DayZeEditor
             // disableIsClippingRoofCheckCB
             // 
             this.disableIsClippingRoofCheckCB.AutoSize = true;
-            this.disableIsClippingRoofCheckCB.Location = new System.Drawing.Point(14, 65);
+            this.disableIsClippingRoofCheckCB.Location = new System.Drawing.Point(14, 61);
             this.disableIsClippingRoofCheckCB.Name = "disableIsClippingRoofCheckCB";
             this.disableIsClippingRoofCheckCB.Size = new System.Drawing.Size(172, 17);
             this.disableIsClippingRoofCheckCB.TabIndex = 3;
@@ -9851,7 +9852,7 @@ namespace DayZeEditor
             // disableIsCollidingPlayerCheckCB
             // 
             this.disableIsCollidingPlayerCheckCB.AutoSize = true;
-            this.disableIsCollidingPlayerCheckCB.Location = new System.Drawing.Point(14, 42);
+            this.disableIsCollidingPlayerCheckCB.Location = new System.Drawing.Point(14, 40);
             this.disableIsCollidingPlayerCheckCB.Name = "disableIsCollidingPlayerCheckCB";
             this.disableIsCollidingPlayerCheckCB.Size = new System.Drawing.Size(180, 17);
             this.disableIsCollidingPlayerCheckCB.TabIndex = 2;
@@ -15869,6 +15870,7 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);
@@ -17607,6 +17609,17 @@ namespace DayZeEditor
             this.removeMapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeMapToolStripMenuItem.Text = "Remove Map Group";
             this.removeMapToolStripMenuItem.Click += new System.EventHandler(this.removeMapToolStripMenuItem_Click);
+            // 
+            // disableColdAreaBuildingCheckCB
+            // 
+            this.disableColdAreaBuildingCheckCB.AutoSize = true;
+            this.disableColdAreaBuildingCheckCB.Location = new System.Drawing.Point(14, 229);
+            this.disableColdAreaBuildingCheckCB.Name = "disableColdAreaBuildingCheckCB";
+            this.disableColdAreaBuildingCheckCB.Size = new System.Drawing.Size(184, 17);
+            this.disableColdAreaBuildingCheckCB.TabIndex = 135;
+            this.disableColdAreaBuildingCheckCB.Text = "Disable Cold Area Building Check";
+            this.disableColdAreaBuildingCheckCB.UseVisualStyleBackColor = true;
+            this.disableColdAreaBuildingCheckCB.CheckedChanged += new System.EventHandler(this.disableColdAreaBuildingCheckCB_CheckedChanged);
             // 
             // Economy_Manager
             // 
@@ -19374,5 +19387,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label198;
         private DarkUI.Controls.DarkButton darkButton85;
         private System.Windows.Forms.Label label199;
+        private System.Windows.Forms.CheckBox disableColdAreaBuildingCheckCB;
     }
 }

@@ -41,15 +41,7 @@ namespace DayZeLib
                     bool savefile = false;
                     Console.WriteLine("serializing " + file.Name);
                     Traders t = JsonSerializer.Deserialize<Traders>(File.ReadAllText(file.FullName));
-                    //if (System.IO.Path.GetFileNameWithoutExtension(file.FullName).Any(char.IsLower))
-                    //{
-                    //    t.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName).ToUpper();
-                    //    savefile = true;
-                    //}
-                    //else
-                    //{
-                        t.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
-                    //}
+                    t.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
                     Console.WriteLine("Converting Stock Dictionary to list");
                     if (t.ConvertDictToList(marketCats))
                         savefile = true;
@@ -325,7 +317,7 @@ namespace DayZeLib
                 }
                 catch
                 {
-                    MessageBox.Show(Path.GetFileName(Filename) + " Conatins and category enrty for " + results[0] + " That doesn not exist in the market folder");
+                    MessageBox.Show(Path.GetFileName(Filename) + " Conatins a category enrty for " + results[0] + " That doesn not exist in the market folder");
                 }
 
             }

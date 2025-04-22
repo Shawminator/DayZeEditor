@@ -22,6 +22,13 @@ namespace DayZeLib
         public BindingList<string> ExcludedRoamingBuildings {  get; set; }
         public BindingList<ExpansionAINoGoAreaConfig> NoGoAreas {  get; set; }
 
+        public ExpansionAILocationSettings()
+        {
+            RoamingLocations = new BindingList<ExpansionAIRoamingLocation>();
+            ExcludedRoamingBuildings = new BindingList<string>();
+            NoGoAreas = new BindingList<ExpansionAINoGoAreaConfig>();
+        }
+
         public bool checkver()
         {
             if (m_Version != CurrentVersion)
