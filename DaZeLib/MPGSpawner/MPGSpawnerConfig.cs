@@ -11,7 +11,7 @@ namespace DayZeLib
 {
     public class MPG_SPWNR_ModConfig
     {
-        const int CurrentVersion = 3;
+        const int CurrentVersion = 4;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -24,9 +24,11 @@ namespace DayZeLib
         public List<MPG_Spawner_PointsConfig> Markedfordelete { get; set; }
 
         public int configVersion { get; set; }
+        public string documentation { get; set; }
         public int isModDisabled { get; set; }
         public int isDebugEnabled { get; set; }
         public BindingList<string> pointsConfigs { get; set; }
+        public BindingList<string> admins { get; set; }
 
 
         public bool checkver()
@@ -339,7 +341,9 @@ namespace DayZeLib
         public int triggerEnterDelay { get; set; }
         public int triggerCleanupOnLeave { get; set; }
         public int triggerCleanupOnLunchTime { get; set; }
+        public int triggerCleanupImmersive { get; set; }
         public int triggerCleanupDelay { get; set; }
+        public int triggerInactiveResetDelay { get; set; }
         public string triggerWorkingTime { get; set; }
         public int triggerDisableOnWin { get; set; }
         public int triggerDisableOnLeave { get; set; }
@@ -349,6 +353,7 @@ namespace DayZeLib
         public int spawnMax { get; set; }
         public int spawnCountLimit { get; set; }
         public int spawnLoopInside { get; set; }
+        public int spawnQueueDelay { get; set; }
         public BindingList<string> spawnList { get; set; }
         public int clearDeathAnimals { get; set; }
         public int clearDeathZombies { get; set; }

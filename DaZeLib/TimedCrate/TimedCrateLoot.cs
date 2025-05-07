@@ -22,8 +22,9 @@ namespace DayZeLib
     {
         public string cratetype { get; set; }
         public int numberOfItemsToSpawn { get; set; }
-        public int IsRandom { get; set; }
+        public bool IsRandom { get; set; }
         public BindingList<List> List { get; set; }
+
     }
 
     public class List
@@ -31,6 +32,11 @@ namespace DayZeLib
         public string item { get; set; }
         public BindingList<string> attachments { get; set; }
         public int quantity { get; set; }
+
+        public override string ToString()
+        {
+            return item;
+        }
     }
 
 }

@@ -3492,7 +3492,6 @@ namespace DayZeEditor
             useraction = false;
             DebugVehiclePlayerNetworkBubbleModeNUD.Value = DebugSettings.DebugVehiclePlayerNetworkBubbleMode;
             ServerUpdateRateLimitNUD.Value = DebugSettings.ServerUpdateRateLimit;
-            EnableProneDeathHandItemDropFixCB.Checked = DebugSettings.EnableProneDeathHandItemDropFix == 1 ? true : false;
             useraction = true;
         }
         private void DebugVehiclePlayerNetworkBubbleModeNUD_ValueChanged(object sender, EventArgs e)
@@ -3507,12 +3506,6 @@ namespace DayZeEditor
 
             if (!useraction) return;
             DebugSettings.ServerUpdateRateLimit = (int)ServerUpdateRateLimitNUD.Value;
-            DebugSettings.isDirty = true;
-        }
-        private void EnableProneDeathHandItemDropFixCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            DebugSettings.EnableProneDeathHandItemDropFix = EnableProneDeathHandItemDropFixCB.Checked == true ? 1 : 0;
             DebugSettings.isDirty = true;
         }
         #endregion debugsettings
@@ -8234,9 +8227,6 @@ namespace DayZeEditor
             MasterKeyUsesNUD.Value = VehicleSettings.MasterKeyUses;
             CanPickLockCB.Checked = VehicleSettings.CanPickLock == 1 ? true : false;
 
-
-
-
             PickLockChancePercentNUD.Value = (decimal)VehicleSettings.PickLockChancePercent;
             PickLockTimeSecondsNUD.Value = (decimal)VehicleSettings.PickLockTimeSeconds;
             PickLockToolDamagePercentNUD.Value = (decimal)VehicleSettings.PickLockToolDamagePercent;
@@ -8271,6 +8261,7 @@ namespace DayZeEditor
             VehicleHeliCoverIconNameTB.Text = VehicleSettings.CFToolsHeliCoverIconName;
             VehicleBoatCoverIconNameTB.Text = VehicleSettings.CFToolsBoatCoverIconName;
             VehicleCarCoverIconNameTB.Text = VehicleSettings.CFToolsCarCoverIconName;
+            FuelConsumptionPercentNUD.Value = VehicleSettings.FuelConsumptionPercent;
 
             ChangeLockToolsLB.DisplayMember = "DisplayName";
             ChangeLockToolsLB.ValueMember = "Value";
@@ -8523,6 +8514,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             VehicleSettings.ShowVehicleOwners = ShowVehicleOwnersCB.Checked == true ? 1 : 0;
+            VehicleSettings.isDirty = true;
+        }
+        private void FuelConsumptionPercentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.FuelConsumptionPercent = FuelConsumptionPercentNUD.Value;
             VehicleSettings.isDirty = true;
         }
         #endregion VehicleSettings
@@ -9568,6 +9565,8 @@ namespace DayZeEditor
         {
 
         }
+
+
     }
     public class NullToEmptyGearConverter : JsonConverter<ExpansionStartingGearItem>
     {

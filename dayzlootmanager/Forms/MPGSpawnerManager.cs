@@ -361,7 +361,9 @@ namespace DayZeEditor
             pointConfigtriggerCleanupOnLunchTimeCB.Checked = currentSpawnerPoint.triggerCleanupOnLunchTime == 1 ? true : false;
             PointConfigtriggerDisableOnWinCB.Checked = currentSpawnerPoint.triggerDisableOnWin == 1 ? true : false;
             PointConfigtriggerDisableOnLeaveCB.Checked = currentSpawnerPoint.triggerDisableOnLeave == 1 ? true : false;
-
+            spawnQueueDelayNUD.Value = currentSpawnerPoint.spawnQueueDelay;
+            triggerInactiveResetDelayNUD.Value = currentSpawnerPoint.triggerInactiveResetDelay;
+            triggerCleanupImmersiveCB.Checked = currentSpawnerPoint.triggerCleanupImmersive == 1 ? true : false;    
             PointConfigSpawnRadiusNUD.Value = currentSpawnerPoint.spawnRadius;
             PointConfigSpawnMinNUD.Value = currentSpawnerPoint.spawnMin;
             PointConfigSpawnMaxNUD.Value = currentSpawnerPoint.spawnMax;
@@ -770,6 +772,13 @@ namespace DayZeEditor
             currentSpawnerPoint.triggerEnterDelay = (int)PointConfigtriggerEnterDelayNUD.Value;
             currentSpawnerPointsFile.isDirty = true;
         }
+
+        private void triggerInactiveResetDelayNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentSpawnerPoint.triggerInactiveResetDelay = (int)triggerInactiveResetDelayNUD.Value;
+            currentSpawnerPointsFile.isDirty = true;
+        }
         private void PointConfigtriggerCleanupDelayNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -788,6 +797,12 @@ namespace DayZeEditor
             currentSpawnerPoint.triggerCleanupOnLunchTime = pointConfigtriggerCleanupOnLunchTimeCB.Checked == true ? 1 : 0;
             currentSpawnerPointsFile.isDirty = true;
         }
+        private void triggerCleanupImmersiveCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentSpawnerPoint.triggerCleanupImmersive = triggerCleanupImmersiveCB.Checked == true ? 1 : 0;
+            currentSpawnerPointsFile.isDirty = true;
+        }
         private void PointConfigtriggerDisableOnWinCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -804,6 +819,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             currentSpawnerPoint.spawnRadius = PointConfigSpawnRadiusNUD.Value;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void spawnQueueDelayNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentSpawnerPoint.spawnQueueDelay = (int)spawnQueueDelayNUD.Value;
             currentSpawnerPointsFile.isDirty = true;
         }
         private void PointConfigSpawnMinNUD_ValueChanged(object sender, EventArgs e)
@@ -1522,5 +1543,7 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }

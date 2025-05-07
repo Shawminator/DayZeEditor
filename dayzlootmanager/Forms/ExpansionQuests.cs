@@ -549,7 +549,7 @@ namespace DayZeEditor
                     qpd.isDirty = false;
                     if (currentproject.Createbackups && File.Exists(QuestPlayerDataPath + "\\" + qpd.Filename + ".bin"))
                     {
-                        Directory.CreateDirectory(QuestsPath + "\\Backup\\" + SaveTime);
+                        Directory.CreateDirectory(QuestPlayerDataPath + "\\Backup\\" + SaveTime);
                         File.Copy(QuestPlayerDataPath + "\\" + qpd.Filename + ".bin", QuestPlayerDataPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(qpd.Filename) + ".bak", true);
                     }
                     qpd.SaveFIle(QuestPlayerDataPath);
@@ -3153,7 +3153,12 @@ namespace DayZeEditor
         private void darkButton12_Click(object sender, EventArgs e)
         {
             QuestObjectivesAction CurrentAction = CurrentTreeNodeTag as QuestObjectivesAction;
-            AddItemfromString form = new AddItemfromString();
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -3178,7 +3183,12 @@ namespace DayZeEditor
         private void darkButton14_Click(object sender, EventArgs e)
         {
             QuestObjectivesAction CurrentAction = CurrentTreeNodeTag as QuestObjectivesAction;
-            AddItemfromString form = new AddItemfromString();
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -4139,6 +4149,7 @@ namespace DayZeEditor
             ObjectivesTargetPositionYNUD.Value = (decimal)CurrentTarget.Position[1];
             ObjectivesTargetPositionZNUD.Value = (decimal)CurrentTarget.Position[2];
             ObjectivesTargetMaxDistanceNUD.Value = CurrentTarget.MaxDistance;
+            ObjectivesTargetMinDistanceNUD.Value = CurrentTarget.MinDistance;
             ObjectivesTargetAmountNUD.Value = CurrentTarget.Amount;
             ObjectivesTargetCountSelfKillCB.Checked = CurrentTarget.CountSelfKill == 1 ? true : false;
             checkBox7.Checked = CurrentTarget.CountAIPlayers == 1 ? true : false;
@@ -4211,7 +4222,12 @@ namespace DayZeEditor
         private void darkButton58_Click(object sender, EventArgs e)
         {
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
-            AddItemfromString form = new AddItemfromString();
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -4290,7 +4306,12 @@ namespace DayZeEditor
         private void darkButton62_Click(object sender, EventArgs e)
         {
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
-            AddItemfromString form = new AddItemfromString();
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {

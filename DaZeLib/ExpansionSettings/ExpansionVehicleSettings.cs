@@ -45,7 +45,7 @@ namespace DayZeLib
     }
     public class ExpansionVehicleSettings
     {
-        const int CurrentVersion = 20;
+        const int CurrentVersion = 21;
 
         public int m_Version { get; set; }
         public int VehicleSync { get; set; }
@@ -80,6 +80,7 @@ namespace DayZeLib
         public int ExplodingVehicleDropsAttachments { get; set; }
         public decimal DesyncInvulnerabilityTimeoutSeconds { get; set; }
         public decimal DamagedEngineStartupChancePercent { get; set; }
+        public decimal FuelConsumptionPercent { get;set; }
         public int EnableVehicleCovers { get; set; }
         public int AllowCoveringDEVehicles { get; set; }
         public int CanCoverWithCargo { get; set; }
@@ -137,6 +138,7 @@ namespace DayZeLib
             ExplodingVehicleDropsAttachments = 1;
             DesyncInvulnerabilityTimeoutSeconds = (decimal)3.0;
             DamagedEngineStartupChancePercent = (decimal)100.0;
+            FuelConsumptionPercent = (decimal)100.0;
             EnableVehicleCovers = 1;
             AllowCoveringDEVehicles = 0;
             CanCoverWithCargo = 1;

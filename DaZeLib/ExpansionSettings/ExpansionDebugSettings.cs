@@ -4,12 +4,11 @@ namespace DayZeLib
 {
     public class ExpansionDebugSettings
     {
-        const int CurrentVersion = 5;
+        const int CurrentVersion = 6;
 
         public int m_Version { get; set; }
         public int DebugVehiclePlayerNetworkBubbleMode { get; set; }
         public int ServerUpdateRateLimit { get; set; }
-        public int EnableProneDeathHandItemDropFix { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -21,7 +20,6 @@ namespace DayZeLib
             m_Version = CurrentVersion;
             DebugVehiclePlayerNetworkBubbleMode = 0;
             ServerUpdateRateLimit = 0;
-            EnableProneDeathHandItemDropFix = 1;
         }
 
         public bool checkver()

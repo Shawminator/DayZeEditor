@@ -125,9 +125,6 @@ namespace DayZeEditor
             this.panel20 = new System.Windows.Forms.Panel();
             this.darkLabel32 = new DarkUI.Controls.DarkLabel();
             this.QuestObjectSetFileNameTB = new System.Windows.Forms.TextBox();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.darkLabel33 = new DarkUI.Controls.DarkLabel();
-            this.QuestQuestClassNameTB = new System.Windows.Forms.TextBox();
             this.panel22 = new System.Windows.Forms.Panel();
             this.darkButton23 = new DarkUI.Controls.DarkButton();
             this.darkButton24 = new DarkUI.Controls.DarkButton();
@@ -633,7 +630,6 @@ namespace DayZeEditor
             this.panel16.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel20.SuspendLayout();
-            this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
             this.panel23.SuspendLayout();
             this.panel48.SuspendLayout();
@@ -1071,7 +1067,6 @@ namespace DayZeEditor
             this.flowLayoutPanel1.Controls.Add(this.panel16);
             this.flowLayoutPanel1.Controls.Add(this.panel17);
             this.flowLayoutPanel1.Controls.Add(this.panel20);
-            this.flowLayoutPanel1.Controls.Add(this.panel21);
             this.flowLayoutPanel1.Controls.Add(this.panel22);
             this.flowLayoutPanel1.Controls.Add(this.panel23);
             this.flowLayoutPanel1.Controls.Add(this.panel24);
@@ -1851,34 +1846,6 @@ namespace DayZeEditor
             this.QuestObjectSetFileNameTB.Size = new System.Drawing.Size(220, 20);
             this.QuestObjectSetFileNameTB.TabIndex = 106;
             this.QuestObjectSetFileNameTB.TextChanged += new System.EventHandler(this.QuestObjectSetFileNameTB_TextChanged);
-            // 
-            // panel21
-            // 
-            this.panel21.Controls.Add(this.darkLabel33);
-            this.panel21.Controls.Add(this.QuestQuestClassNameTB);
-            this.panel21.Location = new System.Drawing.Point(345, 495);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(336, 20);
-            this.panel21.TabIndex = 199;
-            // 
-            // darkLabel33
-            // 
-            this.darkLabel33.AutoSize = true;
-            this.darkLabel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel33.Location = new System.Drawing.Point(3, 3);
-            this.darkLabel33.Name = "darkLabel33";
-            this.darkLabel33.Size = new System.Drawing.Size(91, 13);
-            this.darkLabel33.TabIndex = 107;
-            this.darkLabel33.Text = "Quest ClassName";
-            // 
-            // QuestQuestClassNameTB
-            // 
-            this.QuestQuestClassNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.QuestQuestClassNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestQuestClassNameTB.Location = new System.Drawing.Point(113, 0);
-            this.QuestQuestClassNameTB.Name = "QuestQuestClassNameTB";
-            this.QuestQuestClassNameTB.Size = new System.Drawing.Size(220, 20);
-            this.QuestQuestClassNameTB.TabIndex = 106;
             // 
             // panel22
             // 
@@ -7875,8 +7842,6 @@ namespace DayZeEditor
             this.panel17.PerformLayout();
             this.panel20.ResumeLayout(false);
             this.panel20.PerformLayout();
-            this.panel21.ResumeLayout(false);
-            this.panel21.PerformLayout();
             this.panel22.ResumeLayout(false);
             this.panel22.PerformLayout();
             this.panel23.ResumeLayout(false);
@@ -8228,9 +8193,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Panel panel20;
         private DarkUI.Controls.DarkLabel darkLabel32;
         private System.Windows.Forms.TextBox QuestObjectSetFileNameTB;
-        private System.Windows.Forms.Panel panel21;
-        private DarkUI.Controls.DarkLabel darkLabel33;
-        private System.Windows.Forms.TextBox QuestQuestClassNameTB;
         private System.Windows.Forms.Panel panel22;
         private DarkUI.Controls.DarkLabel darkLabel34;
         private System.Windows.Forms.Panel panel23;

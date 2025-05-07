@@ -33,5 +33,9 @@ namespace DayZeLib
             addedtypes = richTextBox1.Lines.ToList();
         }
 
+        private void darkButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,6 +1,14 @@
 ﻿Version 0.8.3.3
 [Added]
 CFGGameplay				-	Added missing Added missing disableColdAreaBuildingCheck to basebuilding hologramData.
+Expansion Vehicles		-	Added missing fuelconsumptionpercent
+Expansion Debug			-	Removed EnableProneDeathHandItemDropFix
+MPG Spawner				-	Update to latest mod version.
+Rag BaseBuilding		-	Updated to latest mod version and added the missing options.
+Expasnion Quests		-	Fixed creating backup of player data files
+                        -	Target objective min distance fixed to show correct value.
+						-	Redmoved redundant textbox from quest form.
+Timed Crate Manager		-	Added Times Crate Manager.
 
 Version 0.8.3.2
 [Fixed]

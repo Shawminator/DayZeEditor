@@ -36,12 +36,12 @@ namespace DayZeLib
 
     public class Crateconfig
     {
-        public int StaticSpawns { get; set; }
+        public bool StaticSpawns { get; set; }
         public int ActiveCrateCount { get; set; }
-        public int AutoRefresh { get; set; }
+        public bool AutoRefresh { get; set; }
         public int RefreshInterval { get; set; }
         public string CrateType { get; set; }
-        public int UseCrateNotifications { get; set; }
+        public bool UseCrateNotifications { get; set; }
         public string CrateSpawnNotification { get; set; }
         public string CrateStartNotification { get; set; }
         public string CrateEndNotification { get; set; }
@@ -49,9 +49,9 @@ namespace DayZeLib
         public int ZombieSpawnInterval { get; set; }
         public int ZombieSpawnMin { get; set; }
         public int ZombieSpawnMax { get; set; }
-        public int ZombieSpawningEnabled { get; set; }
-        public int UseBasicMarkers { get; set; }
-        public int UseMarkersDuringCountdownOnly { get; set; }
+        public bool ZombieSpawningEnabled { get; set; }
+        public bool UseBasicMarkers { get; set; }
+        public bool UseMarkersDuringCountdownOnly { get; set; }
         public BindingList<string> ZombieClasses { get; set; }
         public BindingList<Cratelocation> CrateLocations { get; set; }
 
@@ -59,16 +59,15 @@ namespace DayZeLib
         {
             foreach(Cratelocation cl in CrateLocations)
             {
-                cl._Position = new Vec3(cl.Position);
-                cl._Rotation = new Vec3(cl.Rotation);
+                cl._POSROT = new Vec3PandR(cl.Position + "|" + cl.Rotation, true);
             }
         }
         public void GetVectorstring()
         {
             foreach (Cratelocation cl in CrateLocations)
             {
-                cl.Position = cl._Position.GetString();
-                cl.Rotation = cl._Rotation.GetString();
+                cl.Position = cl._POSROT.GetPositionString();
+                cl.Rotation = cl._POSROT.GetRotationString();
             }
         }
     }
@@ -79,9 +78,12 @@ namespace DayZeLib
         public string Rotation { get; set; }
 
         [JsonIgnore]
-        public Vec3 _Position { get; set; }
-        [JsonIgnore]
-        public Vec3 _Rotation { get; set; }
+        public Vec3PandR _POSROT { get; set; }
+
+        public override string ToString()
+        {
+            return _POSROT.GetString(); 
+        }
     }
 
 }

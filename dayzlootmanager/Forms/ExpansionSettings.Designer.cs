@@ -266,7 +266,6 @@ namespace DayZeEditor
             this.SafezoneCB = new System.Windows.Forms.CheckBox();
             this.VehicleCarKeyCB = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.EnableProneDeathHandItemDropFixCB = new System.Windows.Forms.CheckBox();
             this.darkLabel215 = new DarkUI.Controls.DarkLabel();
             this.ServerUpdateRateLimitNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel216 = new DarkUI.Controls.DarkLabel();
@@ -1372,6 +1371,8 @@ namespace DayZeEditor
             this.addNewSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FuelConsumptionPercentNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel297 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1742,6 +1743,7 @@ namespace DayZeEditor
             this.darkToolStrip22.SuspendLayout();
             this.darkToolStrip26.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FuelConsumptionPercentNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -4770,7 +4772,6 @@ namespace DayZeEditor
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.EnableProneDeathHandItemDropFixCB);
             this.groupBox7.Controls.Add(this.darkLabel215);
             this.groupBox7.Controls.Add(this.ServerUpdateRateLimitNUD);
             this.groupBox7.Controls.Add(this.darkLabel216);
@@ -4782,19 +4783,6 @@ namespace DayZeEditor
             this.groupBox7.TabIndex = 0;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Debug";
-            // 
-            // EnableProneDeathHandItemDropFixCB
-            // 
-            this.EnableProneDeathHandItemDropFixCB.AutoSize = true;
-            this.EnableProneDeathHandItemDropFixCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EnableProneDeathHandItemDropFixCB.Location = new System.Drawing.Point(6, 75);
-            this.EnableProneDeathHandItemDropFixCB.Name = "EnableProneDeathHandItemDropFixCB";
-            this.EnableProneDeathHandItemDropFixCB.Size = new System.Drawing.Size(216, 17);
-            this.EnableProneDeathHandItemDropFixCB.TabIndex = 2;
-            this.EnableProneDeathHandItemDropFixCB.Text = "Enable Prone Death Hand Item Drop Fix";
-            this.EnableProneDeathHandItemDropFixCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.EnableProneDeathHandItemDropFixCB.UseVisualStyleBackColor = true;
-            this.EnableProneDeathHandItemDropFixCB.CheckedChanged += new System.EventHandler(this.EnableProneDeathHandItemDropFixCB_CheckedChanged);
             // 
             // darkLabel215
             // 
@@ -18152,7 +18140,7 @@ namespace DayZeEditor
             this.groupBox42.Controls.Add(this.MasterKeyUsesNUD);
             this.groupBox42.Controls.Add(this.darkLabel117);
             this.groupBox42.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox42.Location = new System.Drawing.Point(8, 511);
+            this.groupBox42.Location = new System.Drawing.Point(8, 548);
             this.groupBox42.Name = "groupBox42";
             this.groupBox42.Size = new System.Drawing.Size(299, 206);
             this.groupBox42.TabIndex = 1;
@@ -18265,6 +18253,8 @@ namespace DayZeEditor
             // 
             // groupBox41
             // 
+            this.groupBox41.Controls.Add(this.FuelConsumptionPercentNUD);
+            this.groupBox41.Controls.Add(this.darkLabel297);
             this.groupBox41.Controls.Add(this.ShowVehicleOwnersCB);
             this.groupBox41.Controls.Add(this.CollisionDamageIfEngineOffCB);
             this.groupBox41.Controls.Add(this.CollisionDamageMinSpeedKmhNUD);
@@ -18294,7 +18284,7 @@ namespace DayZeEditor
             this.groupBox41.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox41.Location = new System.Drawing.Point(8, 16);
             this.groupBox41.Name = "groupBox41";
-            this.groupBox41.Size = new System.Drawing.Size(299, 489);
+            this.groupBox41.Size = new System.Drawing.Size(299, 526);
             this.groupBox41.TabIndex = 0;
             this.groupBox41.TabStop = false;
             this.groupBox41.Text = "General";
@@ -19290,6 +19280,34 @@ namespace DayZeEditor
             this.removeSubMenuCategoryToolStripMenuItem.Text = "Remove Sub Menu Category";
             this.removeSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeSubMenuCategoryToolStripMenuItem_Click);
             // 
+            // FuelConsumptionPercentNUD
+            // 
+            this.FuelConsumptionPercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FuelConsumptionPercentNUD.DecimalPlaces = 1;
+            this.FuelConsumptionPercentNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FuelConsumptionPercentNUD.Location = new System.Drawing.Point(199, 490);
+            this.FuelConsumptionPercentNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.FuelConsumptionPercentNUD.Name = "FuelConsumptionPercentNUD";
+            this.FuelConsumptionPercentNUD.Size = new System.Drawing.Size(96, 20);
+            this.FuelConsumptionPercentNUD.TabIndex = 27;
+            this.FuelConsumptionPercentNUD.Tag = "VehicleSpeedDamageMultiplier";
+            this.FuelConsumptionPercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FuelConsumptionPercentNUD.ValueChanged += new System.EventHandler(this.FuelConsumptionPercentNUD_ValueChanged);
+            // 
+            // darkLabel297
+            // 
+            this.darkLabel297.AutoSize = true;
+            this.darkLabel297.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel297.Location = new System.Drawing.Point(14, 492);
+            this.darkLabel297.Name = "darkLabel297";
+            this.darkLabel297.Size = new System.Drawing.Size(131, 13);
+            this.darkLabel297.TabIndex = 26;
+            this.darkLabel297.Text = "Fuel Consumption Percent";
+            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -19774,6 +19792,7 @@ namespace DayZeEditor
             this.darkToolStrip26.ResumeLayout(false);
             this.darkToolStrip26.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FuelConsumptionPercentNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -21059,7 +21078,6 @@ namespace DayZeEditor
         private System.Windows.Forms.GroupBox groupBox95;
         private System.Windows.Forms.ListBox SpawnLoadoutsLB;
         private System.Windows.Forms.CheckBox AuthenticateCodeLockIfTerritoryMemberTCB;
-        private System.Windows.Forms.CheckBox EnableProneDeathHandItemDropFixCB;
         private System.Windows.Forms.CheckBox EnableCraftingRecipesTabCB;
         private DayZeLib.ExpansionLootControl ExpansionLootAirdropsettings;
         private DayZeLib.ExpansionLootControl expansionLootControlMissions;
@@ -21121,5 +21139,7 @@ namespace DayZeEditor
         private System.Windows.Forms.TextBox MissionAirdropPlaneClassNameTB;
         private DarkUI.Controls.DarkLabel darkLabel296;
         private System.Windows.Forms.CheckBox UseHUDColorsCB;
+        private System.Windows.Forms.NumericUpDown FuelConsumptionPercentNUD;
+        private DarkUI.Controls.DarkLabel darkLabel297;
     }
 }

@@ -84,6 +84,8 @@ namespace DayZeEditor
             this.PointConfigtriggerCleanupDelayNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel43 = new DarkUI.Controls.DarkLabel();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.triggerCleanupImmersiveCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel62 = new DarkUI.Controls.DarkLabel();
             this.darkLabel47 = new DarkUI.Controls.DarkLabel();
             this.PointConfigtriggerDisableOnLeaveCB = new System.Windows.Forms.CheckBox();
             this.darkLabel48 = new DarkUI.Controls.DarkLabel();
@@ -248,6 +250,10 @@ namespace DayZeEditor
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.triggerInactiveResetDelayNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel71 = new DarkUI.Controls.DarkLabel();
+            this.spawnQueueDelayNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel72 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configVersionNUD)).BeginInit();
@@ -325,6 +331,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataAdddelayNUD)).BeginInit();
             this.darkToolStrip25.SuspendLayout();
             this.panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.triggerInactiveResetDelayNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spawnQueueDelayNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -947,18 +955,20 @@ namespace DayZeEditor
             this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox6.Location = new System.Drawing.Point(475, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(466, 522);
+            this.groupBox6.Size = new System.Drawing.Size(466, 558);
             this.groupBox6.TabIndex = 253;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "TriggerStuff";
             // 
             // panel16
             // 
+            this.panel16.Controls.Add(this.triggerInactiveResetDelayNUD);
+            this.panel16.Controls.Add(this.darkLabel71);
             this.panel16.Controls.Add(this.PointConfigtriggerCleanupDelayNUD);
             this.panel16.Controls.Add(this.darkLabel43);
             this.panel16.Location = new System.Drawing.Point(3, 446);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(457, 20);
+            this.panel16.Size = new System.Drawing.Size(457, 23);
             this.panel16.TabIndex = 293;
             // 
             // PointConfigtriggerCleanupDelayNUD
@@ -1000,6 +1010,8 @@ namespace DayZeEditor
             // 
             // panel14
             // 
+            this.panel14.Controls.Add(this.triggerCleanupImmersiveCB);
+            this.panel14.Controls.Add(this.darkLabel62);
             this.panel14.Controls.Add(this.darkLabel47);
             this.panel14.Controls.Add(this.PointConfigtriggerDisableOnLeaveCB);
             this.panel14.Controls.Add(this.darkLabel48);
@@ -1010,8 +1022,29 @@ namespace DayZeEditor
             this.panel14.Controls.Add(this.PointConfigtriggerCleanupOnLeaveCB);
             this.panel14.Location = new System.Drawing.Point(3, 472);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(457, 42);
+            this.panel14.Size = new System.Drawing.Size(457, 58);
             this.panel14.TabIndex = 293;
+            // 
+            // triggerCleanupImmersiveCB
+            // 
+            this.triggerCleanupImmersiveCB.AutoSize = true;
+            this.triggerCleanupImmersiveCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.triggerCleanupImmersiveCB.Location = new System.Drawing.Point(202, 43);
+            this.triggerCleanupImmersiveCB.Name = "triggerCleanupImmersiveCB";
+            this.triggerCleanupImmersiveCB.Size = new System.Drawing.Size(15, 14);
+            this.triggerCleanupImmersiveCB.TabIndex = 130;
+            this.triggerCleanupImmersiveCB.UseVisualStyleBackColor = true;
+            this.triggerCleanupImmersiveCB.CheckedChanged += new System.EventHandler(this.triggerCleanupImmersiveCB_CheckedChanged);
+            // 
+            // darkLabel62
+            // 
+            this.darkLabel62.AutoSize = true;
+            this.darkLabel62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel62.Location = new System.Drawing.Point(5, 40);
+            this.darkLabel62.Name = "darkLabel62";
+            this.darkLabel62.Size = new System.Drawing.Size(135, 13);
+            this.darkLabel62.TabIndex = 129;
+            this.darkLabel62.Text = "Trigger Cleanup Immersive ";
             // 
             // darkLabel47
             // 
@@ -2265,6 +2298,8 @@ namespace DayZeEditor
             // 
             // panel11
             // 
+            this.panel11.Controls.Add(this.spawnQueueDelayNUD);
+            this.panel11.Controls.Add(this.darkLabel72);
             this.panel11.Controls.Add(this.PointConfigSpawnRadiusNUD);
             this.panel11.Controls.Add(this.darkLabel18);
             this.panel11.Location = new System.Drawing.Point(309, 123);
@@ -3188,6 +3223,73 @@ namespace DayZeEditor
             this.panel17.Size = new System.Drawing.Size(875, 738);
             this.panel17.TabIndex = 101;
             // 
+            // triggerInactiveResetDelayNUD
+            // 
+            this.triggerInactiveResetDelayNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.triggerInactiveResetDelayNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.triggerInactiveResetDelayNUD.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.triggerInactiveResetDelayNUD.Location = new System.Drawing.Point(333, 0);
+            this.triggerInactiveResetDelayNUD.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.triggerInactiveResetDelayNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.triggerInactiveResetDelayNUD.Name = "triggerInactiveResetDelayNUD";
+            this.triggerInactiveResetDelayNUD.Size = new System.Drawing.Size(110, 20);
+            this.triggerInactiveResetDelayNUD.TabIndex = 244;
+            this.triggerInactiveResetDelayNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.triggerInactiveResetDelayNUD.ValueChanged += new System.EventHandler(this.triggerInactiveResetDelayNUD_ValueChanged);
+            // 
+            // darkLabel71
+            // 
+            this.darkLabel71.AutoSize = true;
+            this.darkLabel71.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel71.Location = new System.Drawing.Point(238, 2);
+            this.darkLabel71.Name = "darkLabel71";
+            this.darkLabel71.Size = new System.Drawing.Size(145, 13);
+            this.darkLabel71.TabIndex = 245;
+            this.darkLabel71.Text = "Trigger Inactive Reset Delay ";
+            // 
+            // spawnQueueDelayNUD
+            // 
+            this.spawnQueueDelayNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.spawnQueueDelayNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.spawnQueueDelayNUD.Location = new System.Drawing.Point(332, 0);
+            this.spawnQueueDelayNUD.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.spawnQueueDelayNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.spawnQueueDelayNUD.Name = "spawnQueueDelayNUD";
+            this.spawnQueueDelayNUD.Size = new System.Drawing.Size(112, 20);
+            this.spawnQueueDelayNUD.TabIndex = 238;
+            this.spawnQueueDelayNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.spawnQueueDelayNUD.ValueChanged += new System.EventHandler(this.spawnQueueDelayNUD_ValueChanged);
+            // 
+            // darkLabel72
+            // 
+            this.darkLabel72.AutoSize = true;
+            this.darkLabel72.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel72.Location = new System.Drawing.Point(229, 2);
+            this.darkLabel72.Name = "darkLabel72";
+            this.darkLabel72.Size = new System.Drawing.Size(105, 13);
+            this.darkLabel72.TabIndex = 239;
+            this.darkLabel72.Text = "Spawn Queue Delay";
+            // 
             // MPGSpawnerManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3305,6 +3407,8 @@ namespace DayZeEditor
             this.darkToolStrip25.ResumeLayout(false);
             this.darkToolStrip25.PerformLayout();
             this.panel17.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.triggerInactiveResetDelayNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spawnQueueDelayNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3529,5 +3633,11 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox PointConfigisDisabledCB;
         private DarkUI.Controls.DarkLabel darkLabel60;
         private System.Windows.Forms.TextBox PointConfigSpawnListTB;
+        private System.Windows.Forms.CheckBox triggerCleanupImmersiveCB;
+        private DarkUI.Controls.DarkLabel darkLabel62;
+        private System.Windows.Forms.NumericUpDown triggerInactiveResetDelayNUD;
+        private DarkUI.Controls.DarkLabel darkLabel71;
+        private System.Windows.Forms.NumericUpDown spawnQueueDelayNUD;
+        private DarkUI.Controls.DarkLabel darkLabel72;
     }
 }

@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
@@ -121,7 +122,7 @@ namespace DayZeEditor
             Projectname = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
-
+            bool needtosave = false;
             useraction = false;
             RagTysonBaseBuildingPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\RaG_BaseBuilding\\RaG_BaseBuilding.json";
             JsonSerializerOptions options = new JsonSerializerOptions
@@ -131,52 +132,82 @@ namespace DayZeEditor
             RagBasebuilding = JsonSerializer.Deserialize<RagBasebuilding>(File.ReadAllText(RagTysonBaseBuildingPath), options);
             RagBasebuilding.isDirty = false;
             RagBasebuilding.Filename = RagTysonBaseBuildingPath;
+            if (RagBasebuilding.checkver())
+                needtosave = true;
 
-            List<string> bbpbools = Helper.GetPropertiesNameOfClass<bool>(RagBasebuilding);
-            BBPBoolsLB.DisplayMember = "DisplayName";
-            BBPBoolsLB.ValueMember = "Value";
-            BBPBoolsLB.DataSource = bbpbools;
-
-            List<string> questints = Helper.GetPropertiesNameOfClass<int>(RagBasebuilding);
-            BBPIntsLB.DisplayMember = "DisplayName";
-            BBPIntsLB.ValueMember = "Value";
-            BBPIntsLB.DataSource = questints;
-
+            PropertyInfo[] properties = typeof(RagBasebuilding).GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                if (property.Name == "version" || property.Name == "Filename" || property.Name == "BaseBuildTools" || property.Name == "BaseDismantleTools" || property.Name == "BaseDestroyTools" || property.Name == "Materials" || property.Name == "Crafting")
+                    continue;
+                BBPConfigLB.Items.Add(property.Name);
+            }
+            BBPConfigLB.SelectedIndex = 0;
             List<string> bbplists = Helper.GetPropertiesNameOfClass<BindingList<string>>(RagBasebuilding);
             BBPlistsLB.DisplayMember = "DisplayName";
             BBPlistsLB.ValueMember = "Value";
             BBPlistsLB.DataSource = bbplists;
 
-            BBMaterailsLB.DisplayMember = "Value";
-            BBMaterailsLB.ValueMember = "Key";
-            BBMaterailsLB.DataSource = new BindingSource(RagBasebuilding.Materials, null);
-
+            PropertyInfo[] properties2 = typeof(RaG_BB_Materials).GetProperties();
+            foreach (PropertyInfo property in properties2)
+            {
+                BBMaterailsLB.Items.Add(property.Name);
+            }
+            BBMaterailsLB.SelectedIndex = 0;
+            PropertyInfo[] properties3 = typeof(RaG_BB_Crafting).GetProperties();
+            foreach (PropertyInfo property in properties3)
+            {
+                BBPCraftingLB.Items.Add(property.Name);
+            }
+            BBPCraftingLB.SelectedIndex = 0;
             useraction = true;
+
+            if (needtosave)
+            {
+                SaveFile();
+            }
         }
-        private void BBPBoolsLB_SelectedIndexChanged(object sender, EventArgs e)
+        private void BBPConfigLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (BBPBoolsLB.SelectedItems.Count < 1) return;
+            if (BBPConfigLB.SelectedItems.Count < 1) return;
             useraction = false;
-            BBPBoolsCB.Checked = (bool)Helper.GetPropValue(RagBasebuilding, BBPBoolsLB.GetItemText(BBPBoolsLB.SelectedItem));
+            BBPBoolsCB.Visible = false;
+            BBPIntsNUD.Visible = false;
+            BBPDecimalNUD.Visible = false;
+            if (RagBasebuilding.GetType().GetProperty(BBPConfigLB.GetItemText(BBPConfigLB.SelectedItem)).PropertyType == typeof(bool))
+            {
+                BBPBoolsCB.Visible = true;
+                BBPBoolsCB.Checked = (bool)Helper.GetPropValue(RagBasebuilding, BBPConfigLB.GetItemText(BBPConfigLB.SelectedItem));
+            }
+            else if (RagBasebuilding.GetType().GetProperty(BBPConfigLB.GetItemText(BBPConfigLB.SelectedItem)).PropertyType == typeof(int))
+            {
+                BBPIntsNUD.Visible = true;
+                BBPIntsNUD.Value = (int)Helper.GetPropValue(RagBasebuilding, BBPConfigLB.GetItemText(BBPConfigLB.SelectedItem));
+            }
+            else if (RagBasebuilding.GetType().GetProperty(BBPConfigLB.GetItemText(BBPConfigLB.SelectedItem)).PropertyType == typeof(float))
+            {
+                BBPDecimalNUD.Visible = true;
+                BBPDecimalNUD.Value = Convert.ToDecimal(Helper.GetPropValue(RagBasebuilding, BBPConfigLB.GetItemText(BBPConfigLB.SelectedItem)));
+            }
             useraction = true;
         }
         private void BBPBoolsCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helper.SetBoolValue(RagBasebuilding, BBPBoolsLB.GetItemText(BBPBoolsLB.SelectedItem), BBPBoolsCB.Checked);
+            Helper.SetBoolValue(RagBasebuilding, BBPConfigLB.GetItemText(BBPConfigLB.SelectedItem), BBPBoolsCB.Checked);
             RagBasebuilding.isDirty = true;
         }
-        private void BBPIntsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (BBPIntsLB.SelectedItems.Count < 1) return;
-            useraction = false;
-            BBPIntsNUD.Value = (int)Helper.GetPropValue(RagBasebuilding, BBPIntsLB.GetItemText(BBPIntsLB.SelectedItem));
-            useraction = true;
-        }
+
         private void BBPIntsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helper.SetIntValue(RagBasebuilding, BBPIntsLB.GetItemText(BBPIntsLB.SelectedItem), (int)BBPIntsNUD.Value);
+            Helper.SetIntValue(RagBasebuilding, BBPConfigLB.GetItemText(BBPConfigLB.SelectedItem), (int)BBPIntsNUD.Value);
+            RagBasebuilding.isDirty = true;
+        }
+        private void BBPDecimalNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Helper.SetSingleValue(RagBasebuilding, BBPConfigLB.GetItemText(BBPConfigLB.SelectedItem), Convert.ToSingle(BBPDecimalNUD.Value));
             RagBasebuilding.isDirty = true;
         }
         private void BBPlistsLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -233,17 +264,53 @@ namespace DayZeEditor
         {
             if (BBMaterailsLB.SelectedItems.Count < 1) return;
             useraction = false;
-            KeyValuePair<string, int> matpart = (KeyValuePair<string, int>)BBMaterailsLB.SelectedItem;
-            BBMaterialsNUD.Value = matpart.Value;
+            PropertyInfo[] properties = typeof(RaG_BB_Materials).GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                if (property.Name == BBMaterailsLB.GetItemText(BBMaterailsLB.SelectedItem))
+                {
+                    BBMaterialsNUD.Value = Convert.ToInt32(Helper.GetPropValue(RagBasebuilding.Materials, property.Name));
+                }
+            }
             useraction = true;
         }
-
         private void BBMaterialsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KeyValuePair<string, int> matpart = (KeyValuePair<string, int>)BBMaterailsLB.SelectedItem;
-            RagBasebuilding.Materials[matpart.Key] = (int)BBMaterialsNUD.Value;
-            BBMaterailsLB.DataSource = new BindingSource(RagBasebuilding.Materials, null);
+            Helper.SetIntValue(RagBasebuilding.Materials, BBPCraftingLB.GetItemText(BBMaterailsLB.SelectedItem), (int)BBMaterialsNUD.Value);
+            RagBasebuilding.isDirty = true;
+        }
+
+
+        private void BBPCraftingLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BBPCraftingLB.SelectedItems.Count < 1) return;
+            useraction = false;
+            BBPCraftingNUD.Visible = false;
+            BBPCraftingCB.Visible = false;
+            if (RagBasebuilding.Crafting.GetType().GetProperty(BBPCraftingLB.GetItemText(BBPCraftingLB.SelectedItem)).PropertyType == typeof(bool))
+            {
+                BBPCraftingCB.Visible = true;
+                BBPCraftingCB.Checked = (bool)Helper.GetPropValue(RagBasebuilding.Crafting, BBPCraftingLB.GetItemText(BBPCraftingLB.SelectedItem));
+            }
+            else if (RagBasebuilding.Crafting.GetType().GetProperty(BBPCraftingLB.GetItemText(BBPCraftingLB.SelectedItem)).PropertyType == typeof(float))
+            {
+                BBPCraftingNUD.Visible = true;
+                BBPCraftingNUD.Value = Convert.ToDecimal(Helper.GetPropValue(RagBasebuilding.Crafting, BBPCraftingLB.GetItemText(BBPCraftingLB.SelectedItem)));
+            }
+            useraction = true;
+        }
+        private void BBPCraftingNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Helper.SetSingleValue(RagBasebuilding.Crafting, BBPCraftingLB.GetItemText(BBPCraftingLB.SelectedItem), Convert.ToSingle(BBPCraftingNUD.Value));
+            RagBasebuilding.isDirty = true;
+        }
+
+        private void BBPCraftingCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Helper.SetBoolValue(RagBasebuilding.Crafting, BBPCraftingLB.GetItemText(BBPCraftingLB.SelectedItem), BBPCraftingCB.Checked);
             RagBasebuilding.isDirty = true;
         }
     }

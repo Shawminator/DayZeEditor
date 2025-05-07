@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -126,9 +127,20 @@ namespace DayZeEditor
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
-            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            if(tabControl1.SelectedIndex == -1) return;
+            if (tabControl1.SelectedIndex == 0)
             {
-                AddItem(tn);
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    AddItem(tn);
+                }
+            }
+            if (tabControl1.SelectedIndex == 1)
+            {
+                foreach (string line in richTextBox1.Lines)
+                {
+                    Additem(line);
+                }
             }
         }
         public void AddItem(TreeNode tn)
@@ -339,6 +351,11 @@ namespace DayZeEditor
             {
                 currentlootpart = treeViewMS1.SelectedNode.Tag as typesType;
             }
+        }
+
+        private void darkButton8_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
         }
     }
 }

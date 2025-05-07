@@ -83,6 +83,7 @@ namespace DayZeLib
             this.darkButton1.Size = new System.Drawing.Size(204, 23);
             this.darkButton1.TabIndex = 10;
             this.darkButton1.Text = "OK";
+            this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
             // darkButton2
             // 

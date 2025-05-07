@@ -66,6 +66,18 @@ namespace DayZeLib
             }
             return posrot;
         }
+        public string GetPositionString()
+        {
+            string posrot = "";
+            posrot = Position.X + " " + Position.Y + " " + Position.Z;
+            return posrot;
+        }
+        public string GetRotationString()
+        {
+            string posrot = "";
+            posrot = Rotation.X + " " + Rotation.Y + " " + Rotation.Z;
+            return posrot;
+        }
         public float[] GetPositionFloatArray()
         {
             return new float[] { (float)Position.X, (float)Position.Y, (float)Position.Z };

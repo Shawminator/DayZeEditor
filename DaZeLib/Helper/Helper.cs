@@ -312,6 +312,10 @@ namespace DayZeLib
         {
             src.GetType().GetProperty(mytype).SetValue(src, myvalue, null);
         }
+        public static void SetSingleValue(object src, string mytype, float myvalue)
+        {
+            src.GetType().GetProperty(mytype).SetValue(src, myvalue, null);
+        }
         public static void SetFakeBoolValue(object src, string mytype, bool myvalue)
         {
             int myvalueasint = myvalue == true ? 1 : 0;

@@ -33,7 +33,7 @@ namespace DayZeEditor
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
 
-        public string VersionNumber = "0.8.3.2";
+        public string VersionNumber = "0.8.3.3";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -557,11 +557,11 @@ namespace DayZeEditor
                 else
                     SearchForLootManagerButton.Visible = false;
 
-                //if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MB_TimedCrate\\CrateSettings.json") &&
-                //    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MB_TimedCrate\\CustomLootData.json"))
-                //    TimedCrateManagerButton.Visible = true;
-                //else
-                //    TimedCrateManagerButton.Visible = false;
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MB_TimedCrate\\CrateSettings.json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MB_TimedCrate\\CustomLootData.json"))
+                    TimedCrateManagerButton.Visible = true;
+                else
+                    TimedCrateManagerButton.Visible = false;
 
                 if (KillrewardStatics.Checkallfiles(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath))
                     KillRewardManagerButton.Visible = true;
