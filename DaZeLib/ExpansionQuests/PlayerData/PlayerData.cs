@@ -233,6 +233,18 @@ namespace DayZeLib
             }
             bw.Write(ActionState ? 1 : 0);
             bw.Write(TimeLimit);
+            if (ObjectiveType == QuExpansionQuestObjectiveTypeestType.COLLECT || ObjectiveType == QuExpansionQuestObjectiveTypeestType.DELIVERY)
+            {
+                bw.Write(deliveryCount);
+                for (int j = 0; j < deliveryCount; j++)
+                {
+                    foreach (ExpansionQuestDeliveryObjectiveData ddata in ExpansionQuestDeliveryObjectiveData)
+                    {
+                        bw.Write(ddata.Index);
+                        bw.Write(ddata.Count);
+                    }
+                }
+            }
         }
     }
 

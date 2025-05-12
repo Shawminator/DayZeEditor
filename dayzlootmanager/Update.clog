@@ -1,4 +1,8 @@
-﻿Version 0.8.3.3
+﻿Version 0.8.3.4
+[Fixed]
+Expansion Quests		-	Fixed writing quests player to bin file.
+
+Version 0.8.3.3
 [Added]
 CFGGameplay				-	Added missing Added missing disableColdAreaBuildingCheck to basebuilding hologramData.
 Expansion Vehicles		-	Added missing fuelconsumptionpercent

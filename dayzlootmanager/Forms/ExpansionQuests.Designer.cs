@@ -7757,7 +7757,7 @@ namespace DayZeEditor
             this.removeQuestFromPlayerToolStripMenuItem,
             this.removePlayerSaveDataToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(216, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(216, 70);
             // 
             // removeQuestFromPlayerToolStripMenuItem
             // 
