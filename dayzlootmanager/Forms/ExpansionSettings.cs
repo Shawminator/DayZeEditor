@@ -8178,6 +8178,8 @@ namespace DayZeEditor
             AuthenticateCodeLockIfTerritoryMemberTCB.Checked = TerritorySettings.AuthenticateCodeLockIfTerritoryMember == 1 ? true : false;
             TerritoryInviteCooldownNUD.Value = TerritorySettings.InviteCooldown;
             OnlyInviteGroupMemberTCB.Checked = TerritorySettings.OnlyInviteGroupMember == 1 ? true : false;
+            MaxCodeLocksOnBBPerTerritoryTNUD.Value = TerritorySettings.MaxCodeLocksOnBBPerTerritory;
+            MaxCodeLocksOnItemsPerTerritoryTNUD.Value = TerritorySettings.MaxCodeLocksOnItemsPerTerritory;
             useraction = true;
         }
         private void TerritoriesTCB_CheckedChanged(object sender, EventArgs e)

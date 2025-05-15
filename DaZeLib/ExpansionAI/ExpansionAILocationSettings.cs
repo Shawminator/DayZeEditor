@@ -11,7 +11,7 @@ namespace DayZeLib
     public class ExpansionAILocationSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 1;
+        const int CurrentVersion = 2;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]

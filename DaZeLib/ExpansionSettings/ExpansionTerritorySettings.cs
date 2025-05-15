@@ -4,7 +4,7 @@ namespace DayZeLib
 {
     public class ExpansionTerritorySettings
     {
-        const int CurrentVersion = 5;
+        const int CurrentVersion = 6;
         public int m_Version { get; set; }
         public int EnableTerritories { get; set; }
         public int UseWholeMapForInviteList { get; set; }
@@ -13,9 +13,11 @@ namespace DayZeLib
         public int MaxMembersInTerritory { get; set; }
         public int MaxTerritoryPerPlayer { get; set; }
         public decimal TerritoryInviteAcceptRadius { get; set; }
-        public int AuthenticateCodeLockIfTerritoryMember { get; set; }
-        public int InviteCooldown { get; set; }
+        public int AuthenticateCodeLockIfTerritoryMember { get; set; }//added in version 3
+        public int InviteCooldown { get; set; } //added in version 4
         public int OnlyInviteGroupMember { get; set; }
+        public int MaxCodeLocksOnBBPerTerritory { get; set; }//added version 6
+        public int MaxCodeLocksOnItemsPerTerritory { get; set; }//added version 6
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -35,6 +37,8 @@ namespace DayZeLib
             AuthenticateCodeLockIfTerritoryMember = 0; //added in version 3
             InviteCooldown = 0; //added in version 4
             OnlyInviteGroupMember = 0;
+            MaxCodeLocksOnBBPerTerritory = -1;//added version 6
+            MaxCodeLocksOnItemsPerTerritory = -1;//added version 6
         }
         public bool checkver()
         {

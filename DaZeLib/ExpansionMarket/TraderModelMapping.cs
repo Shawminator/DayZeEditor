@@ -45,6 +45,8 @@ namespace DayZeLib
                     //    savefile = true;
                     //}
                     Tradermap tmap = new Tradermap(tfilesplit);
+                    if (tmap.NPCName == null && tmap.NPCTrade == null)
+                        continue;
                     tmap.Filename = file.FullName;
                     if(tmap.needtosave == true)
                     {
@@ -154,7 +156,10 @@ namespace DayZeLib
         public Tradermap(string[] array)
         {
             Attachments = new BindingList<string>();
-            if (array[0].StartsWith("//")) { return; }
+            if (array[0].StartsWith("//"))
+            { 
+                return; 
+            }
             string[] Part1 = array[0].Split('.');
             NPCName = Part1[0];
             NPCTrade = Part1[1];

@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
+using TreeViewMS;
 using static System.Windows.Forms.Design.AxImporter;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -142,10 +143,12 @@ namespace DayZeEditor
                 Console.WriteLine("serializing " + Path.GetFileName(AIPatrolSettingsPath));
                 AIPatrolSettings = JsonSerializer.Deserialize<ExpansionAIPatrolSettings>(File.ReadAllText(AIPatrolSettingsPath));
                 AIPatrolSettings.isDirty = false;
+                AIPatrolSettings.SetLoadBalancingCategoriestoList();
                 if (AIPatrolSettings.checkver())
                     needtosave = true;
                 if (AIPatrolSettings.SetPatrolNames())
                     needtosave = true;
+
 
             }
             AIPatrolSettings.GetAIPatrolWaypoints();
@@ -373,6 +376,7 @@ namespace DayZeEditor
             if (AIPatrolSettings.isDirty)
             {
                 AIPatrolSettings.SetAIPatrolWaypoints();
+                AIPatrolSettings.SetLoadBalancingCategoriestoDictionary();
                 if (currentproject.Createbackups && File.Exists(AIPatrolSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(AIPatrolSettings.Filename) + "\\Backup\\" + SaveTime);
@@ -551,6 +555,12 @@ namespace DayZeEditor
             toolStripButton11.AutoSize = true;
             tabControl1.SelectedIndex = 3;
         }
+        private void toolStripButton18_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 5;
+            LBCGB.Visible = false;
+            nameLBCGB.Visible = false;
+        }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             toolStripButton8.Checked = false;
@@ -558,6 +568,7 @@ namespace DayZeEditor
             toolStripButton3.Checked = false;
             toolStripButton1.Checked = false;
             toolStripButton6.Checked = false;
+            toolStripButton18.Checked = false;
             switch (tabControl1.SelectedIndex)
             {
                 case 0:
@@ -574,6 +585,9 @@ namespace DayZeEditor
                     break;
                 case 4:
                     toolStripButton14.Checked = true;
+                    break;
+                case 5:
+                    toolStripButton18.Checked = true;
                     break;
             }
         }
@@ -715,6 +729,8 @@ namespace DayZeEditor
         public ExpansionAIObjectPatrol CurrentEventcrashpatrol;
         public ExpansionAIPatrol CurrentPatrol;
         public Vec3 CurrentWapypoint;
+        public Loadbalancingcategorie currentLCB;
+        public Loadbalancingcategories currentLCBC;
         private void SetupAIPatrolSettings()
         {
             useraction = false;
@@ -731,6 +747,7 @@ namespace DayZeEditor
             AIGeneralNoiseInvestigationDistanceLimitNUD.Value = AIPatrolSettings.NoiseInvestigationDistanceLimit;
             AIGeneralDanageMultiplierNUD.Value = AIPatrolSettings.DamageMultiplier;
             AIGeneralDamageReceivedMultiplierNUD.Value = AIPatrolSettings.DamageReceivedMultiplier;
+            AIGeneralFormationScaleNUD.Value = AIPatrolSettings.FormationScale;
 
             EventCrachPatrolLB.DisplayMember = "DisplayName";
             EventCrachPatrolLB.ValueMember = "Value";
@@ -743,7 +760,159 @@ namespace DayZeEditor
             StaticPatrolLB.DataSource = AIPatrolSettings.Patrols;
 
             ResumeLayout();
+
+            SetupLoadBalancing();
             useraction = true;
+        }
+
+        private void SetupLoadBalancing()
+        {
+            useraction = false;
+            LoadBalancingTV.Nodes.Clear();
+            TreeNode root = new TreeNode("Load Blanacing Categories")
+            {
+                Tag = "Parent"
+            };
+            foreach (Loadbalancingcategorie cat in AIPatrolSettings._LoadBalancingCategories)
+            {
+                TreeNode LBCategroy = new TreeNode($"Category Name : - {cat.name}")
+                {
+                    Tag = cat,
+                    Name = "LoadBalancingCategory"
+                };
+                for (int i = 0; i < cat.Categorieslist.Count; i++)
+                {
+                    LBCategroy.Nodes.Add(new TreeNode($"Load Balancing : {i.ToString()}")
+                    {
+                        Tag = cat.Categorieslist[i],
+                        Name = "Loadbalancingcategories"
+                    });
+                }
+                root.Nodes.Add(LBCategroy);
+            }
+            LoadBalancingTV.Nodes.Add(root);
+
+        }
+        private void LoadBalancingTV_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            currenmttreenode = e.Node;
+            LBCGB.Visible = false;
+            nameLBCGB.Visible = false;
+            if(e.Node.Tag is Loadbalancingcategorie)
+            {
+                nameLBCGB.Visible = true;
+                currentLCB = e.Node.Tag as Loadbalancingcategorie;
+                useraction = false;
+                NameLBCTB.Text = currentLCB.name;
+                useraction = true;
+            }
+            else if (e.Node.Tag is DayZeLib.Loadbalancingcategories)
+            {
+                LBCGB.Visible = true;
+                currentLCBC = e.Node.Tag as Loadbalancingcategories;
+                useraction = false;
+                MinPlayersLBCNUD.Value = currentLCBC.MinPlayers;
+                MaxPlayersLBCNUD.Value = currentLCBC.MaxPlayers;
+                MaxPatrolsLBCNUD.Value = currentLCBC.MaxPatrols;
+                useraction = true;
+            }
+            
+        }
+        private void NameLBCTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentLCB.name = NameLBCTB.Text;
+            currenmttreenode.Text = $"Category Name : - {currentLCB.name}";
+            AIPatrolSettings.isDirty = true;
+        }
+        private void MinPlayersLBCNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentLCBC.MinPlayers = (int)MinPlayersLBCNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void MaxPlayersLBCNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentLCBC.MaxPlayers = (int)MaxPlayersLBCNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void MaxPatrolsLBCNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentLCBC.MaxPatrols = (int)MaxPatrolsLBCNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void LoadBalancingTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            currenmttreenode = e.Node;
+            LoadBalancingTV.SelectedNode = e.Node;
+            if (e.Button == MouseButtons.Right)
+            {
+                addNewGroupToolStripMenuItem.Visible = false;
+                removeGroupToolStripMenuItem.Visible = false;
+                addNewLoadBlancingToolStripMenuItem.Visible = false;
+                removeLoadBalancingToolStripMenuItem.Visible = false;
+                if (e.Node.Tag.ToString() == "Parent")
+                {
+                    addNewGroupToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is Loadbalancingcategorie)
+                {
+                    removeGroupToolStripMenuItem.Visible = true;
+                    addNewLoadBlancingToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is DayZeLib.Loadbalancingcategories)
+                {
+                    removeLoadBalancingToolStripMenuItem.Visible = true;
+                }
+                contextMenuStrip1.Show(Cursor.Position);
+            }
+        }
+        private void addNewGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Loadbalancingcategorie newcat = new Loadbalancingcategorie()
+            {
+                name = "New Category - Change Me",
+                Categorieslist = new BindingList<Loadbalancingcategories>()
+            };
+            AIPatrolSettings._LoadBalancingCategories.Add(newcat);
+            currenmttreenode.Nodes.Add(new TreeNode($"Category Name : - {newcat.name}")
+            {
+                Tag = newcat,
+                Name = "LoadBalancingCategory"
+            });
+            LoadBalancingTV.SelectedNode = currenmttreenode.Nodes[currenmttreenode.Nodes.Count - 1];
+            AIPatrolSettings.isDirty = true;
+        }
+        private void removeGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AIPatrolSettings._LoadBalancingCategories.Remove(currentLCB);
+            currenmttreenode.Parent.Nodes.Remove(currenmttreenode);
+            AIPatrolSettings.isDirty = true;
+
+        }
+        private void addNewLoadBlancingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentLCB.Categorieslist.Add(new Loadbalancingcategories()
+            {
+                MinPlayers = 0,
+                MaxPlayers = 255,
+                MaxPatrols = -1
+            });
+            currenmttreenode.Nodes.Add(new TreeNode($"Load Balancing : {(currentLCB.Categorieslist.Count -1).ToString()}")
+            {
+                Tag = currentLCB.Categorieslist.Last(),
+                Name = "Loadbalancingcategories"
+            });
+            LoadBalancingTV.SelectedNode = currenmttreenode.Nodes[currenmttreenode.Nodes.Count - 1];
+            AIPatrolSettings.isDirty = true;
+        }
+        private void removeLoadBalancingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (currenmttreenode.Parent.Tag as Loadbalancingcategorie).Categorieslist.Remove(currentLCBC);
+            currenmttreenode.Parent.Nodes.Remove(currenmttreenode);
+            AIPatrolSettings.isDirty = true;
         }
         private void AIGeneralDamageReceivedMultiplierNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -811,6 +980,12 @@ namespace DayZeEditor
             AIPatrolSettings.DamageMultiplier = AIGeneralDanageMultiplierNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void AIGeneralFormationScaleNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AIPatrolSettings.FormationScale = AIGeneralFormationScaleNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
         private void NoiseInvestigationDistanceLimitNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -826,15 +1001,16 @@ namespace DayZeEditor
         private void EventCrachPatrolLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (EventCrachPatrolLB.SelectedItems.Count < 1) return;
-            CurrentEventcrashpatrol = EventCrachPatrolLB.SelectedItem as ExpansionAIObjectPatrol;
             useraction = false;
+            CurrentEventcrashpatrol = EventCrachPatrolLB.SelectedItem as ExpansionAIObjectPatrol;
+            CrashLoadBalancingCategoryCB.DataSource = new BindingSource( AIPatrolSettings._LoadBalancingCategories, null);
             CrashEventNameTB.Text = CurrentEventcrashpatrol.Name;
             CrashEventClassNameTB.Text = CurrentEventcrashpatrol.ClassName;
             CrashPersistCB.Checked = CurrentEventcrashpatrol.Persist == 1 ? true : false;
             CrashFactionCB.SelectedIndex = CrashFactionCB.FindStringExact(CurrentEventcrashpatrol.Faction);
             CrashNumberOfAINUD.Value = CurrentEventcrashpatrol.NumberOfAI;
             CrashBehaviourCB.SelectedIndex = CrashBehaviourCB.FindStringExact(CurrentEventcrashpatrol.Behaviour);
-            CrashLootingBehaviourCB.SelectedIndex = CrashLootingBehaviourCB.FindStringExact(CurrentEventcrashpatrol.LootingBehaviour);
+            CrashLoadBalancingCategoryCB.SelectedIndex = CrashLoadBalancingCategoryCB.FindStringExact(CurrentEventcrashpatrol.LoadBalancingCategory);
             CrashSpeedCB.SelectedIndex = CrashSpeedCB.FindStringExact(CurrentEventcrashpatrol.Speed);
             CrashUnderThreatSpeedCB.SelectedIndex = CrashUnderThreatSpeedCB.FindStringExact(CurrentEventcrashpatrol.UnderThreatSpeed);
             CrashAccuracyMinNud.Value = CurrentEventcrashpatrol.AccuracyMin;
@@ -858,6 +1034,7 @@ namespace DayZeEditor
             CrashFormationCB.SelectedIndex = CrashFormationCB.FindStringExact(CurrentEventcrashpatrol.Formation);
             CrashWaypointInterpolationCB.SelectedIndex = CrashWaypointInterpolationCB.FindStringExact(CurrentEventcrashpatrol.WaypointInterpolation);
             crashFormationLoosenessNUD.Value = CurrentEventcrashpatrol.FormationLooseness;
+            crashFormationScaleNUD.Value = CurrentEventcrashpatrol.FormationScale;
             int CrashUnlimitedReloadBitmask = CurrentEventcrashpatrol.UnlimitedReload;
             if (CrashUnlimitedReloadBitmask == 1)
                 CrashUnlimitedReloadBitmask = 30;
@@ -865,12 +1042,106 @@ namespace DayZeEditor
             CrashURInfectedCB.Checked = ((CrashUnlimitedReloadBitmask & 4) != 0) ? true : false;
             CrashURPlayersCB.Checked = ((CrashUnlimitedReloadBitmask & 8) != 0) ? true : false;
             CrashURVehiclesCB.Checked = ((CrashUnlimitedReloadBitmask & 16) != 0) ? true : false;
+            for (int i = 0; i < crashLootingBehaviousCLB.Items.Count; i++)
+            {
+                crashLootingBehaviousCLB.SetItemChecked(i, false);
+            }
+            foreach (string s in CurrentEventcrashpatrol.LootingBehaviour.Split('|'))
+            {
+                if (s == "") continue;
+                crashLootingBehaviousCLB.SetItemChecked(crashLootingBehaviousCLB.Items.IndexOf(s.Trim()), true);
+            }
+
 
             CrashUnitsLB.DisplayMember = "DisplayName";
             CrashUnitsLB.ValueMember = "Value";
             CrashUnitsLB.DataSource = CurrentEventcrashpatrol.Units;
 
             useraction = true;
+        }
+        private void crashLootingBehaviousCLB_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (!useraction) return;
+            var list = (CheckedListBox)sender;
+            string changedItem = list.Items[e.Index].ToString();
+            bool willBeChecked = e.NewValue == CheckState.Checked;
+
+            // Temporarily remove the event handler to avoid recursion
+            list.ItemCheck -= crashLootingBehaviousCLB_ItemCheck;
+
+            if (changedItem == "ALL" && willBeChecked)
+            {
+                // Uncheck everything else
+                for (int i = 0; i < list.Items.Count; i++)
+                {
+                    if (i != e.Index)
+                        list.SetItemChecked(i, false);
+                }
+            }
+            else
+            {
+                // Uncheck "ALL" if anything else is checked
+                int allIndex = list.Items.IndexOf("ALL");
+                if (allIndex >= 0)
+                    list.SetItemChecked(allIndex, false);
+
+                if (changedItem == "WEAPONS" && willBeChecked)
+                {
+                    for (int i = 0; i < list.Items.Count; i++)
+                    {
+                        if (list.Items[i].ToString().StartsWith("WEAPONS_"))
+                            list.SetItemChecked(i, false);
+                    }
+                }
+                else if (changedItem.StartsWith("WEAPONS_") && willBeChecked)
+                {
+                    int weaponsIndex = list.Items.IndexOf("WEAPONS");
+                    if (weaponsIndex >= 0)
+                        list.SetItemChecked(weaponsIndex, false);
+                }
+
+                if (changedItem == "CLOTHING" && willBeChecked)
+                {
+                    for (int i = 0; i < list.Items.Count; i++)
+                    {
+                        if (list.Items[i].ToString().StartsWith("CLOTHING_"))
+                            list.SetItemChecked(i, false);
+                    }
+                }
+                else if (changedItem.StartsWith("CLOTHING_") && willBeChecked)
+                {
+                    int clothingIndex = list.Items.IndexOf("CLOTHING");
+                    if (clothingIndex >= 0)
+                        list.SetItemChecked(clothingIndex, false);
+                }
+            }
+
+            // Reattach the event handler
+            list.ItemCheck += crashLootingBehaviousCLB_ItemCheck;
+
+            // Finally, update the checked items string (now safely updated)
+            
+            CurrentEventcrashpatrol.LootingBehaviour = UpdateCheckedItemsString(list, e.Index, e.NewValue);
+            AIPatrolSettings.isDirty = true;
+        }
+        private string UpdateCheckedItemsString(CheckedListBox list, int changingIndex, CheckState newState)
+        {
+            List<string> selected = new List<string>();
+            for (int i = 0; i < list.Items.Count; i++)
+            {
+                bool isChecked = (i == changingIndex) ? (newState == CheckState.Checked) : list.GetItemChecked(i);
+                if (isChecked)
+                {
+                    selected.Add(list.Items[i].ToString());
+                }
+            }
+            return string.Join(" | ", selected);
+        }
+        private void CrashLoadBalancingCategoryCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.LoadBalancingCategory = CrashLoadBalancingCategoryCB.GetItemText(CrashLoadBalancingCategoryCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
         }
         private void darkButton7_Click(object sender, EventArgs e)
         {
@@ -960,12 +1231,6 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentEventcrashpatrol.Behaviour = CrashBehaviourCB.GetItemText(CrashBehaviourCB.SelectedItem);
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashLootingBehaviourCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.LootingBehaviour = CrashLootingBehaviourCB.GetItemText(CrashLootingBehaviourCB.SelectedItem);
             AIPatrolSettings.isDirty = true;
         }
         private void CrashSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -1088,6 +1353,12 @@ namespace DayZeEditor
             CurrentEventcrashpatrol.FormationLooseness = crashFormationLoosenessNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void crashFormationScaleNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.FormationScale = crashFormationScaleNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
         private void CrashDamageReceivedMultiplierNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -1142,14 +1413,14 @@ namespace DayZeEditor
         private void StaticPatrolLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (StaticPatrolLB.SelectedItems.Count < 1) return;
-            CurrentPatrol = StaticPatrolLB.SelectedItem as ExpansionAIPatrol;
             useraction = false;
+            CurrentPatrol = StaticPatrolLB.SelectedItem as ExpansionAIPatrol;
+            StaticPatrolLoadBalancingCategoryCB.DataSource = new BindingSource(AIPatrolSettings._LoadBalancingCategories, null);
             StaticPatrolNameTB.Text = CurrentPatrol.Name;
             StaticPatrolPersistCB.Checked = CurrentPatrol.Persist == 1 ? true : false;
             StaticPatrolFactionCB.SelectedIndex = StaticPatrolFactionCB.FindStringExact(CurrentPatrol.Faction);
             StaticPatrolNumberOfAINUD.Value = CurrentPatrol.NumberOfAI;
             StaticPatrolBehaviorCB.SelectedIndex = StaticPatrolBehaviorCB.FindStringExact(CurrentPatrol.Behaviour);
-            StaticPatrolLootingBehaviorCB.SelectedIndex = StaticPatrolLootingBehaviorCB.FindStringExact(CurrentPatrol.LootingBehaviour);
             StaticPatrolSpeedCB.SelectedIndex = StaticPatrolSpeedCB.FindStringExact(CurrentPatrol.Speed);
             StaticPatrolUnderThreatSpeedCB.SelectedIndex = StaticPatrolUnderThreatSpeedCB.FindStringExact(CurrentPatrol.UnderThreatSpeed);
             StaticPatrolRespawnTimeNUD.Value = CurrentPatrol.RespawnTime;
@@ -1170,10 +1441,12 @@ namespace DayZeEditor
             StaticPatrolMaxSpreadRadiusNUD.Value = CurrentPatrol.MaxSpreadRadius;
             StaticPatrolFormationCB.SelectedIndex = StaticPatrolFormationCB.FindStringExact(CurrentPatrol.Formation);
             StaticPatrolFormationLoosenessNUD.Value = CurrentPatrol.FormationLooseness;
+            StaticPatrolLoadBalancingCategoryCB.SelectedIndex = StaticPatrolLoadBalancingCategoryCB.FindStringExact(CurrentPatrol.LoadBalancingCategory);
             StaticPatrolWaypointInterpolationCB.SelectedIndex = StaticPatrolWaypointInterpolationCB.FindStringExact(CurrentPatrol.WaypointInterpolation);
             StaticPatrolUseRandomWaypointAsStartPointCB.Checked = CurrentPatrol.UseRandomWaypointAsStartPoint == 1 ? true : false;
             StaticPatrolCanBeTriggeredByAICB.Checked = CurrentPatrol.CanBeTriggeredByAI == 1 ? true : false;
             StaticPatrolNoiseInvestigationDistanceLimitNUD.Value = CurrentPatrol.NoiseInvestigationDistanceLimit;
+            StaticPatrolFormationScaleNUD.Value = CurrentPatrol.FormationScale;
             int StaticPatrolUnlimitedReloadBitmask = CurrentPatrol.UnlimitedReload;
             if (StaticPatrolUnlimitedReloadBitmask == 1)
                 StaticPatrolUnlimitedReloadBitmask = 30;
@@ -1181,6 +1454,16 @@ namespace DayZeEditor
             StaticPatrolURInfectedCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 4) != 0) ? true : false;
             StaticPatrolURPlayersCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 8) != 0) ? true : false;
             StaticPatrolURVehiclesCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 16) != 0) ? true : false;
+
+            for (int i = 0; i < StaticPatrolLootingBehaviousCLB.Items.Count; i++)
+            {
+                StaticPatrolLootingBehaviousCLB.SetItemChecked(i, false);
+            }
+            foreach (string s in CurrentPatrol.LootingBehaviour.Split('|'))
+            {
+                if (s == "") continue;
+                StaticPatrolLootingBehaviousCLB.SetItemChecked(StaticPatrolLootingBehaviousCLB.Items.IndexOf(s.Trim()), true);
+            }
 
             StaticPatrolUnitsLB.DisplayMember = "DisplayName";
             StaticPatrolUnitsLB.ValueMember = "Value";
@@ -1339,17 +1622,17 @@ namespace DayZeEditor
             CurrentPatrol.Behaviour = StaticPatrolBehaviorCB.GetItemText(StaticPatrolBehaviorCB.SelectedItem);
             AIPatrolSettings.isDirty = true;
         }
-        private void StaticPatrolLootingBehaviorCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentPatrol.LootingBehaviour = StaticPatrolLootingBehaviorCB.GetItemText(StaticPatrolLootingBehaviorCB.SelectedItem);
-            AIPatrolSettings.isDirty = true;
-
-        }
         private void StaticPatrolSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             CurrentPatrol.Speed = StaticPatrolSpeedCB.GetItemText(StaticPatrolSpeedCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
+        }
+
+        private void StaticPatrolLoadBalancingCategoryCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.LoadBalancingCategory = StaticPatrolLoadBalancingCategoryCB.GetItemText(StaticPatrolLoadBalancingCategoryCB.SelectedItem);
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolUnderThreatSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -1513,6 +1796,82 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentPatrol.CanBeTriggeredByAI = StaticPatrolCanBeTriggeredByAICB.Checked == true ? 1 : 0;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolLootingBehaviousCLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ((CheckedListBox)sender).ClearSelected();
+        }
+        private void StaticPatrolLootingBehaviousCLB_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (!useraction) return;
+            var list = (CheckedListBox)sender;
+            string changedItem = list.Items[e.Index].ToString();
+            bool willBeChecked = e.NewValue == CheckState.Checked;
+
+            // Temporarily remove the event handler to avoid recursion
+            list.ItemCheck -= StaticPatrolLootingBehaviousCLB_ItemCheck;
+
+            if (changedItem == "ALL" && willBeChecked)
+            {
+                // Uncheck everything else
+                for (int i = 0; i < list.Items.Count; i++)
+                {
+                    if (i != e.Index)
+                        list.SetItemChecked(i, false);
+                }
+            }
+            else
+            {
+                // Uncheck "ALL" if anything else is checked
+                int allIndex = list.Items.IndexOf("ALL");
+                if (allIndex >= 0)
+                    list.SetItemChecked(allIndex, false);
+
+                if (changedItem == "WEAPONS" && willBeChecked)
+                {
+                    for (int i = 0; i < list.Items.Count; i++)
+                    {
+                        if (list.Items[i].ToString().StartsWith("WEAPONS_"))
+                            list.SetItemChecked(i, false);
+                    }
+                }
+                else if (changedItem.StartsWith("WEAPONS_") && willBeChecked)
+                {
+                    int weaponsIndex = list.Items.IndexOf("WEAPONS");
+                    if (weaponsIndex >= 0)
+                        list.SetItemChecked(weaponsIndex, false);
+                }
+
+                if (changedItem == "CLOTHING" && willBeChecked)
+                {
+                    for (int i = 0; i < list.Items.Count; i++)
+                    {
+                        if (list.Items[i].ToString().StartsWith("CLOTHING_"))
+                            list.SetItemChecked(i, false);
+                    }
+                }
+                else if (changedItem.StartsWith("CLOTHING_") && willBeChecked)
+                {
+                    int clothingIndex = list.Items.IndexOf("CLOTHING");
+                    if (clothingIndex >= 0)
+                        list.SetItemChecked(clothingIndex, false);
+                }
+            }
+
+            // Reattach the event handler
+            list.ItemCheck += StaticPatrolLootingBehaviousCLB_ItemCheck;
+
+            // Finally, update the checked items string (now safely updated)
+
+            CurrentPatrol.LootingBehaviour = UpdateCheckedItemsString(list, e.Index, e.NewValue);
+            AIPatrolSettings.isDirty = true;
+        }
+
+        private void StaticPatrolFormationScaleNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.FormationScale = StaticPatrolFormationScaleNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void darkButton4_Click(object sender, EventArgs e)
@@ -1999,7 +2358,7 @@ namespace DayZeEditor
             ThreatDistanceLimitNUD.Value = AISettings.ThreatDistanceLimit;
             NoiseInvestigationDistanceLimitNUD.Value = AISettings.NoiseInvestigationDistanceLimit;
             DamageMultiplierNUD.Value = AISettings.DamageMultiplier;
-            MaximumDynamicPatrolsNUD.Value = AISettings.MaximumDynamicPatrols;
+            FormationScaleNUD.Value = AISettings.FormationScale;
             SniperProneDistanceThresholdNUD.Value = AISettings.SniperProneDistanceThreshold;
             DamageReceivedMultiplierNUD.Value = AISettings.DamageReceivedMultiplier;
             VaultingCB.Checked = AISettings.Vaulting == 1 ? true : false;
@@ -2046,10 +2405,10 @@ namespace DayZeEditor
             AISettings.DamageMultiplier = DamageMultiplierNUD.Value;
             AISettings.isDirty = true;
         }
-        private void MaximumDynamicPatrolsNUD_ValueChanged(object sender, EventArgs e)
+        private void FormationScaleNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            AISettings.MaximumDynamicPatrols = (int)MaximumDynamicPatrolsNUD.Value;
+            AISettings.FormationScale = FormationScaleNUD.Value;
             AISettings.isDirty = true;
         }
         private void DamageReceivedMultiplierNUD_ValueChanged(object sender, EventArgs e)
@@ -3262,6 +3621,8 @@ namespace DayZeEditor
         #endregion dynamic AI Spatial groups
         #region draw AI Spatial Groups
         public int DynamicAIPatrolScale = 1;
+        private TreeNode currenmttreenode;
+
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
             DynamicAIPatrolScale = trackBar1.Value;
@@ -4363,6 +4724,15 @@ namespace DayZeEditor
 
         }
 
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void crashLootingBehaviousCLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ((CheckedListBox)sender).ClearSelected();
+        }
 
     }
 }

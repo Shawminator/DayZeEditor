@@ -1,4 +1,5 @@
-﻿Civilian
+﻿Brawlers
+Civilian
 East
 Guards
 InvincibleGuards
@@ -8,6 +9,7 @@ Mercenaries
 Observers
 Passive
 Raiders
+RANDOM
 Shamans
 West
 YeetBrigade

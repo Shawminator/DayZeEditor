@@ -6,7 +6,7 @@ namespace DayZeLib
     public class ExpansionAISettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 12;
+        const int CurrentVersion = 13;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -20,7 +20,7 @@ namespace DayZeLib
         public decimal DamageMultiplier { get; set; }
         public decimal DamageReceivedMultiplier { get; set; }
         public BindingList<string> Admins { get; set; }
-        public int MaximumDynamicPatrols { get; set; }
+        //public int MaximumDynamicPatrols { get; set; } removed in version 13
         public int Vaulting { get; set; }
         public decimal SniperProneDistanceThreshold { get; set; }
         public int Manners { get; set; }
@@ -28,6 +28,7 @@ namespace DayZeLib
         public int CanRecruitFriendly { get; set; }
         public int CanRecruitGuards { get; set; }
         public BindingList<string> PreventClimb { get; set; }
+        public decimal FormationScale { get; set; } //added in version 13
         public BindingList<string> PlayerFactions { get; set; }
         public int LogAIHitBy { get; set; }
         public int LogAIKilled { get; set; }
@@ -52,7 +53,6 @@ namespace DayZeLib
             NoiseInvestigationDistanceLimit = (decimal)500.0;
             DamageMultiplier = (decimal)1.0;
             Admins = new BindingList<string>();
-            MaximumDynamicPatrols = -1;
             Vaulting = 1;
             SniperProneDistanceThreshold = (decimal)0.0;
             Manners = 0;
@@ -60,6 +60,7 @@ namespace DayZeLib
             CanRecruitFriendly = 1;
             CanRecruitGuards = 0;
             PreventClimb = new BindingList<string>();
+            FormationScale = (decimal)1.0;
             PlayerFactions = new BindingList<string>();
             LogAIHitBy = 1;
             LogAIKilled = 1;
