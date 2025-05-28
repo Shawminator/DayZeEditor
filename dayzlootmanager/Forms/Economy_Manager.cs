@@ -147,6 +147,7 @@ namespace DayZeEditor
             LoadTerritories();
             loadinitC();
             SetSummarytiers();
+            LoadUndergroundTrioggers();
 
 
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
@@ -431,6 +432,14 @@ namespace DayZeEditor
                     }
                 }
                 currentproject.CFGGameplayConfig.SaveSpawnGearPresetFiles(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\");
+                foreach (PlayerRestrictedFiles PRF in currentproject.CFGGameplayConfig.cfggameplay.RestrictedAreaFiles)
+                {
+                    if (PRF.isDirty)
+                    {
+                        midifiedfiles.Add(PRF.Filename + " Saved....");
+                    }
+                }
+                currentproject.CFGGameplayConfig.SavePlayerRestrictedAreaFiles(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\");
             }
             if (currentproject.cfgenviroment != null)
             {
@@ -762,6 +771,12 @@ namespace DayZeEditor
             if (EconomyTabPage.SelectedIndex == 19)
                 UserDefsButton.Checked = true;
         }
+        private void UnderGgoundtriggerButton_Click(object sender, EventArgs e)
+        {
+            EconomyTabPage.SelectedIndex = 21;
+            if (EconomyTabPage.SelectedIndex == 21)
+                UnderGroundtriggerButton.Checked = true;
+        }
         private void EconomyCorePreviewTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 5;
@@ -875,6 +890,7 @@ namespace DayZeEditor
             SpawnGearTabButton.Checked = false;
             MapGroupPosTabButton.Checked = false;
             UserDefsButton.Checked = false;
+            UnderGroundtriggerButton.Checked = false;
             toolStripButton1.Visible = false;
             toolStripButton2.Visible = false;
             toolStripTextBox1.Visible = false;
@@ -10042,22 +10058,28 @@ namespace DayZeEditor
             }
         }
 
+        #endregion
+        #region UndergroundTriggers
+
+        public void LoadUndergroundTrioggers()
+        {
+            Console.WriteLine("Loading Underground Triggers");
+            isUserInteraction = false;
+            UndergroundTriggerTV.Nodes.Clear();
+            TreeNode rootNode = new TreeNode("UnderGround Triggers")
+            {
+                Tag = "ParentRoot"
+            };
+            
 
 
 
-
-
-
-
-
-
-
-
-
+            UndergroundTriggerTV.Nodes.Add(rootNode);
+            isUserInteraction = true;
+        }
 
 
         #endregion
-
 
     }
 }

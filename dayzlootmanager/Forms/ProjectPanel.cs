@@ -6,6 +6,7 @@ using System.Data.Odbc;
 using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Runtime.Remoting.Contexts;
 using System.Text.Json;
 using System.Threading;
 using System.Windows.Forms;
@@ -210,7 +211,7 @@ namespace DayZeEditor
                 LoadProjectstoList();
                 MessageBox.Show("Project created, Please Close the editor and populate the missions files before trying to load this project if not using existing files...");
             }
-            else if (projecttype == "Create Local from FT / SFTP")
+            else if (projecttype == "Create Local from FTP/SFTP")
             {
                 try
                 {
@@ -298,7 +299,7 @@ namespace DayZeEditor
                     load.Abort();
                 }
             }
-            else if (projecttype == "Connect Direct to FTP / SFTP through Mapped Drive")
+            else if (projecttype == "Connect Direct to FTP/SFTP")
             {
                 try
                 {
@@ -402,7 +403,7 @@ namespace DayZeEditor
         private void ProjectTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string projecttype = ProjectTypeComboBox.GetItemText(ProjectTypeComboBox.SelectedItem);
-            if (projecttype == "Create Local from FT / SFTP")
+            if (projecttype == "Create Local from FT/SFTP" || projecttype == "Connect Direct to FTP/SFTP")
             {
                 darkLabel12.Visible = false;
                 darkLabel6.Visible = false;
@@ -455,6 +456,7 @@ namespace DayZeEditor
             projects.getActiveProject().setuserdefinitions();
             projects.getActiveProject().setplayerspawns();
             projects.getActiveProject().SetCFGGameplayConfig();
+            projects.getActiveProject().SetCFGUndergroundTriggerConfig();
             projects.getActiveProject().SetcfgEffectAreaConfig();
             projects.getActiveProject().SetEvents();
             projects.getActiveProject().seteventspawns();
@@ -871,7 +873,16 @@ namespace DayZeEditor
         }
         private void uploadFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            session.PutFilesToDirectory(FocusedProjectDirectory.FullName, CurrentRemoteDirectory.FullName + "//" + Path.GetFileNameWithoutExtension(FocusedProjectDirectory.FullName));
+            if (session.FileExists(CurrentRemoteDirectory.FullName + "//" + Path.GetFileNameWithoutExtension(FocusedProjectDirectory.FullName)))
+            {
+                Console.WriteLine("That path exists already.");
+            }
+            else
+            {
+                session.CreateDirectory(CurrentRemoteDirectory.FullName + "//" + Path.GetFileNameWithoutExtension(FocusedProjectDirectory.FullName));
+                Console.WriteLine("The directory was created successfully");
+            }
+            session.PutFilesToDirectory(FocusedProjectDirectory.FullName, CurrentRemoteDirectory.FullName + "//" + Path.GetFileNameWithoutExtension(FocusedProjectDirectory.FullName)).Check();
             DisplayFTPLayout(CurrentRemoteDirectory);
         }
         private void deleteFIleToolStripMenuItem1_Click(object sender, EventArgs e)

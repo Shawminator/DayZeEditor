@@ -33,7 +33,7 @@ namespace DayZeEditor
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
 
-        public string VersionNumber = "0.8.3.5";
+        public string VersionNumber = "0.8.3.6";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -178,6 +178,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().SetSpawnabletypes();
                     Projects.getActiveProject().setplayerspawns();
                     Projects.getActiveProject().SetCFGGameplayConfig();
+                    Projects.getActiveProject().SetCFGUndergroundTriggerConfig();
                     Projects.getActiveProject().SetcfgEffectAreaConfig();
                     Projects.getActiveProject().SetEvents();
                     Projects.getActiveProject().seteventspawns();

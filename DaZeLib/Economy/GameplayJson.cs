@@ -435,6 +435,8 @@ namespace DayZeLib
         public BindingList<float[]> safePositions3D { get; set; }
 
         [JsonIgnore]
+        public bool isDirty;
+        [JsonIgnore]
         public string Filename { get; internal set; }
     }
 }

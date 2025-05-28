@@ -143,7 +143,8 @@ namespace DayZeEditor
                 Console.WriteLine("serializing " + Path.GetFileName(AIPatrolSettingsPath));
                 AIPatrolSettings = JsonSerializer.Deserialize<ExpansionAIPatrolSettings>(File.ReadAllText(AIPatrolSettingsPath));
                 AIPatrolSettings.isDirty = false;
-                AIPatrolSettings.SetLoadBalancingCategoriestoList();
+                if(AIPatrolSettings.SetLoadBalancingCategoriestoList())
+                    needtosave= true;
                 if (AIPatrolSettings.checkver())
                     needtosave = true;
                 if (AIPatrolSettings.SetPatrolNames())

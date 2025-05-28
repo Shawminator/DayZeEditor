@@ -149,13 +149,15 @@
 
 -Setup Type:                 Blank/Existing when manaully copying files from server or setting up for existing files,   
                                      Create Local from FT / SFTP to download files from host server to local 
-                                     Connect Direct to FTP / SFTP through Mapped Drive, uses additional software to map drive to ftp/sftp
 
 -Profile Name:               This we use to setup the profile folder, If you Use Omega Manager the profile folder is called profiles.  GTX Hosting
                                      default profile is Called "SC". the profiles folder is what ever folder is used to store all the mod jsons and script logs etc......
 
 -Mission folder to use:   This is where you put the name of the mission you are planning to work on, eg dayzOffline.chernarusplus</value>
   </data>
+  <metadata name="darkToolStrip22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>565, 17</value>
+  </metadata>
   <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>300, 17</value>
   </metadata>
@@ -164,7 +166,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABm
-        BgAAAk1TRnQBSQFMAgEBAgEAAUgBAQFIAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        BgAAAk1TRnQBSQFMAgEBAgEAAVABAQFQAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABEAMAAQEBAAEgBgABEP8ASwAEAhQAAwIBAwMCAQMDAgEDAwIBAwMCAQMDAgEDAwIBAwMCAQOYAAQC
         AysBQQMrAUEDKwFBAysBQQMrAUEDKwFBAysBQQMrAUEDKwFBAysBQQMSARcUAAMTARkDYAHoHP8BwwHA
         AbwB/5QAAdkBtAGJAf8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1
@@ -176,7 +178,7 @@
         AbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/
         AfMB2AG1Af8B8wHYAbUB/wNTAacQAAHKAccBwwX/AdABwAGnAf8ByQGwAY4B/wHLAbABjgH/AcsBsAGO
         Af8BywGwAY4B/wHLAa8Bjwn/kAAEAQHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1
-        Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wGC
+        Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wF/
         AX4BegH8EAABygHHAcMF/wHQAcABpwH/AckBsAGPAf8BywGwAY4B/wHLAbABjgH/AcsBsAGOAf8BywGv
         AY8J/5AABAEB8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHY
         AbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B+wHaAbQB/xAAAcoBxwHD
@@ -267,6 +269,6 @@
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>99</value>
   </metadata>
 </root>

@@ -148,6 +148,8 @@ namespace DayZeEditor
         [JsonIgnore]
         public CFGGameplayConfig CFGGameplayConfig { get; set; }
         [JsonIgnore]
+        public CFGUndergroundTriggersConfig CFGUndergroundTriggersConfig { get; set; }
+        [JsonIgnore]
         public cfgEffectAreaConfig cfgEffectAreaConfig { get; set; }
         [JsonIgnore]
         public weatherconfig weatherconfig { get; set; }
@@ -532,6 +534,10 @@ namespace DayZeEditor
             CFGGameplayConfig = new CFGGameplayConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfggameplay.json");
             CFGGameplayConfig.GetSpawnGearFiles(projectFullName + "\\mpmissions\\" + mpmissionpath);
             CFGGameplayConfig.GetRestrictedFiles(projectFullName + "\\mpmissions\\" + mpmissionpath);
+        }
+        public void SetCFGUndergroundTriggerConfig()
+        {
+            CFGUndergroundTriggersConfig = new CFGUndergroundTriggersConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgundergroundtriggers.json");
         }
         public void SetcfgEffectAreaConfig()
         {

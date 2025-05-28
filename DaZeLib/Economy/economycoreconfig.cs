@@ -1038,6 +1038,64 @@ namespace DayZeLib
             return Path.GetFileNameWithoutExtension(Filename);
         }
     }
+    public class CFGUndergroundTriggersConfig
+    {
+        public cfgundergroundtriggers cfgundergroundtriggers { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty { get; set; }
+        
+        public CFGUndergroundTriggersConfig(string filename)
+        {
+            Filename = filename;
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+            customCulture.NumberFormat.NumberGroupSeparator = "";
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+            if (File.Exists(Filename))
+            {
+                Console.Write("serializing " + Path.GetFileName(Filename));
+                try
+                {
+                    var options = new JsonSerializerOptions
+                    {
+                        Converters = { new BoolConverter() },
+                    };
+                    cfgundergroundtriggers = JsonSerializer.Deserialize<cfgundergroundtriggers>(File.ReadAllText(Filename), options);
+                    if (cfgundergroundtriggers != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("  OK....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("  Failed....");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....");
+                cfgundergroundtriggers = new cfgundergroundtriggers();
+                SaveCFGUndergroundTriggers();
+            }
+
+        }
+        public void SaveCFGUndergroundTriggers()
+        {
+            var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            string jsonString = JsonSerializer.Serialize(cfgundergroundtriggers, options);
+            File.WriteAllText(Filename, jsonString);
+        }
+    }
     public class CFGGameplayConfig
     {
         public cfggameplay cfggameplay { get; set; }
@@ -1111,7 +1169,11 @@ namespace DayZeLib
         }
         public void SetRestrictedAreaFiles()
         {
-
+            cfggameplay.WorldsData.playerRestrictedAreaFiles = new BindingList<string>();
+            foreach (PlayerRestrictedFiles PRF in cfggameplay.RestrictedAreaFiles)
+            {
+                cfggameplay.WorldsData.playerRestrictedAreaFiles.Add(PRF.Filename);
+            }
         }
         public void GetSpawnGearFiles(string SpawnGearPath)
         {
@@ -1198,7 +1260,19 @@ namespace DayZeLib
                 }
             }
         }
-
+        public void SavePlayerRestrictedAreaFiles(string MissionPath)
+        {
+            foreach (PlayerRestrictedFiles RPP in cfggameplay.RestrictedAreaFiles)
+            {
+                if (RPP.isDirty == true)
+                {
+                    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                    string jsonString = JsonSerializer.Serialize(RPP, options);
+                    File.WriteAllText(MissionPath + RPP.Filename, jsonString);
+                    RPP.isDirty = false;
+                }
+            }
+        }
         public void AddnewObjectSpawner(string v)
         {
             cfggameplay.WorldsData.objectSpawnersArr.Add(v);

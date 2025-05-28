@@ -148,6 +148,7 @@
     <Compile Include="Economy\cfglimitsdefinition.cs" />
     <Compile Include="Economy\cfglimitsdefinitionuser.cs" />
     <Compile Include="Economy\cfgrandompresetsXML.cs" />
+    <Compile Include="Economy\cfgundergroundtriggers.cs" />
     <Compile Include="Economy\economycoreconfig.cs" />
     <Compile Include="Economy\EventgroupsXML.cs" />
     <Compile Include="Economy\EventSpawnsXML.cs" />

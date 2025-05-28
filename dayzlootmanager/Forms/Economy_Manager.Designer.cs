@@ -188,8 +188,10 @@ namespace DayZeEditor
             this.SpawnabletypesTabButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.RandomPresetsTabButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.UserDefsButton = new System.Windows.Forms.ToolStripButton();
+            this.UnderGroundtriggerButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.EconomyTabPage = new System.Windows.Forms.TabControl();
             this.EventsTab = new System.Windows.Forms.TabPage();
             this.darkButton20 = new DarkUI.Controls.DarkButton();
@@ -646,6 +648,7 @@ namespace DayZeEditor
             this.disableIsCollidingCheckCB = new System.Windows.Forms.CheckBox();
             this.disablePerformRoofCheckCB = new System.Windows.Forms.CheckBox();
             this.groupBox29 = new System.Windows.Forms.GroupBox();
+            this.disableColdAreaBuildingCheckCB = new System.Windows.Forms.CheckBox();
             this.darkButton67 = new DarkUI.Controls.DarkButton();
             this.darkButton66 = new DarkUI.Controls.DarkButton();
             this.CFGGameplayDisallowedtypesLB = new System.Windows.Forms.ListBox();
@@ -1157,6 +1160,9 @@ namespace DayZeEditor
             this.listBox9 = new System.Windows.Forms.ListBox();
             this.listBox7 = new System.Windows.Forms.ListBox();
             this.listBox11 = new System.Windows.Forms.ListBox();
+            this.playerRestrictedAreaFilesTab = new System.Windows.Forms.TabPage();
+            this.cfgundergroundtriggersTab = new System.Windows.Forms.TabPage();
+            this.UndergroundTriggerTV = new TreeViewMS.TreeViewMS();
             this.TypesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
@@ -1235,7 +1241,6 @@ namespace DayZeEditor
             this.deleteDiscreetUnsortedItemSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapgroupposcontextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disableColdAreaBuildingCheckCB = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1659,6 +1664,7 @@ namespace DayZeEditor
             this.UserDefsTab.SuspendLayout();
             this.groupBox80.SuspendLayout();
             this.groupBox79.SuspendLayout();
+            this.cfgundergroundtriggersTab.SuspendLayout();
             this.TypesContextMenu.SuspendLayout();
             this.EventSpawnContextMenu.SuspendLayout();
             this.EventgroupContextMenu.SuspendLayout();
@@ -3410,8 +3416,10 @@ namespace DayZeEditor
             this.SpawnabletypesTabButton,
             this.toolStripSeparator5,
             this.RandomPresetsTabButton,
+            this.toolStripSeparator18,
+            this.UserDefsButton,
             this.toolStripSeparator12,
-            this.UserDefsButton});
+            this.UnderGroundtriggerButton});
             this.darkToolStrip22.Location = new System.Drawing.Point(0, 45);
             this.darkToolStrip22.Name = "darkToolStrip22";
             this.darkToolStrip22.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
@@ -3571,13 +3579,13 @@ namespace DayZeEditor
             this.RandomPresetsTabButton.Text = "Random Presets";
             this.RandomPresetsTabButton.Click += new System.EventHandler(this.RandomPresetsTabButton_Click);
             // 
-            // toolStripSeparator12
+            // toolStripSeparator18
             // 
-            this.toolStripSeparator12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripSeparator12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripSeparator12.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator18.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator18.Name = "toolStripSeparator18";
+            this.toolStripSeparator18.Size = new System.Drawing.Size(6, 25);
             // 
             // UserDefsButton
             // 
@@ -3590,6 +3598,26 @@ namespace DayZeEditor
             this.UserDefsButton.Size = new System.Drawing.Size(94, 22);
             this.UserDefsButton.Text = "User Definitions";
             this.UserDefsButton.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // UnderGroundtriggerButton
+            // 
+            this.UnderGroundtriggerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.UnderGroundtriggerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.UnderGroundtriggerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.UnderGroundtriggerButton.Image = ((System.Drawing.Image)(resources.GetObject("UnderGroundtriggerButton.Image")));
+            this.UnderGroundtriggerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UnderGroundtriggerButton.Name = "UnderGroundtriggerButton";
+            this.UnderGroundtriggerButton.Size = new System.Drawing.Size(127, 22);
+            this.UnderGroundtriggerButton.Text = "UnderGround Triggers";
+            this.UnderGroundtriggerButton.Click += new System.EventHandler(this.UnderGgoundtriggerButton_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator12.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 25);
             // 
             // EconomyTabPage
             // 
@@ -3614,6 +3642,8 @@ namespace DayZeEditor
             this.EconomyTabPage.Controls.Add(this.SpawnGearTab);
             this.EconomyTabPage.Controls.Add(this.MapGroupPosTab);
             this.EconomyTabPage.Controls.Add(this.UserDefsTab);
+            this.EconomyTabPage.Controls.Add(this.playerRestrictedAreaFilesTab);
+            this.EconomyTabPage.Controls.Add(this.cfgundergroundtriggersTab);
             this.EconomyTabPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EconomyTabPage.Location = new System.Drawing.Point(0, 95);
             this.EconomyTabPage.Name = "EconomyTabPage";
@@ -9714,6 +9744,17 @@ namespace DayZeEditor
             this.groupBox29.TabIndex = 1;
             this.groupBox29.TabStop = false;
             this.groupBox29.Text = "Hologram Data";
+            // 
+            // disableColdAreaBuildingCheckCB
+            // 
+            this.disableColdAreaBuildingCheckCB.AutoSize = true;
+            this.disableColdAreaBuildingCheckCB.Location = new System.Drawing.Point(14, 229);
+            this.disableColdAreaBuildingCheckCB.Name = "disableColdAreaBuildingCheckCB";
+            this.disableColdAreaBuildingCheckCB.Size = new System.Drawing.Size(184, 17);
+            this.disableColdAreaBuildingCheckCB.TabIndex = 135;
+            this.disableColdAreaBuildingCheckCB.Text = "Disable Cold Area Building Check";
+            this.disableColdAreaBuildingCheckCB.UseVisualStyleBackColor = true;
+            this.disableColdAreaBuildingCheckCB.CheckedChanged += new System.EventHandler(this.disableColdAreaBuildingCheckCB_CheckedChanged);
             // 
             // darkButton67
             // 
@@ -16898,6 +16939,41 @@ namespace DayZeEditor
             this.listBox11.TabIndex = 100;
             this.listBox11.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
+            // playerRestrictedAreaFilesTab
+            // 
+            this.playerRestrictedAreaFilesTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.playerRestrictedAreaFilesTab.ForeColor = System.Drawing.SystemColors.Control;
+            this.playerRestrictedAreaFilesTab.Location = new System.Drawing.Point(4, 25);
+            this.playerRestrictedAreaFilesTab.Name = "playerRestrictedAreaFilesTab";
+            this.playerRestrictedAreaFilesTab.Size = new System.Drawing.Size(1218, 596);
+            this.playerRestrictedAreaFilesTab.TabIndex = 20;
+            this.playerRestrictedAreaFilesTab.Text = "playerRestrictedAreaFiles";
+            // 
+            // cfgundergroundtriggersTab
+            // 
+            this.cfgundergroundtriggersTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.cfgundergroundtriggersTab.Controls.Add(this.UndergroundTriggerTV);
+            this.cfgundergroundtriggersTab.ForeColor = System.Drawing.SystemColors.Control;
+            this.cfgundergroundtriggersTab.Location = new System.Drawing.Point(4, 25);
+            this.cfgundergroundtriggersTab.Name = "cfgundergroundtriggersTab";
+            this.cfgundergroundtriggersTab.Size = new System.Drawing.Size(1218, 596);
+            this.cfgundergroundtriggersTab.TabIndex = 21;
+            this.cfgundergroundtriggersTab.Text = "cfgundergroundtriggers";
+            // 
+            // UndergroundTriggerTV
+            // 
+            this.UndergroundTriggerTV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.UndergroundTriggerTV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.UndergroundTriggerTV.ForeColor = System.Drawing.SystemColors.Control;
+            this.UndergroundTriggerTV.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.UndergroundTriggerTV.Location = new System.Drawing.Point(8, 12);
+            this.UndergroundTriggerTV.Name = "UndergroundTriggerTV";
+            this.UndergroundTriggerTV.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("UndergroundTriggerTV.SelectedNodes")));
+            this.UndergroundTriggerTV.SetMultiselect = true;
+            this.UndergroundTriggerTV.Size = new System.Drawing.Size(361, 576);
+            this.UndergroundTriggerTV.TabIndex = 217;
+            // 
             // TypesContextMenu
             // 
             this.TypesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -17610,17 +17686,6 @@ namespace DayZeEditor
             this.removeMapToolStripMenuItem.Text = "Remove Map Group";
             this.removeMapToolStripMenuItem.Click += new System.EventHandler(this.removeMapToolStripMenuItem_Click);
             // 
-            // disableColdAreaBuildingCheckCB
-            // 
-            this.disableColdAreaBuildingCheckCB.AutoSize = true;
-            this.disableColdAreaBuildingCheckCB.Location = new System.Drawing.Point(14, 229);
-            this.disableColdAreaBuildingCheckCB.Name = "disableColdAreaBuildingCheckCB";
-            this.disableColdAreaBuildingCheckCB.Size = new System.Drawing.Size(184, 17);
-            this.disableColdAreaBuildingCheckCB.TabIndex = 135;
-            this.disableColdAreaBuildingCheckCB.Text = "Disable Cold Area Building Check";
-            this.disableColdAreaBuildingCheckCB.UseVisualStyleBackColor = true;
-            this.disableColdAreaBuildingCheckCB.CheckedChanged += new System.EventHandler(this.disableColdAreaBuildingCheckCB_CheckedChanged);
-            // 
             // Economy_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -18167,6 +18232,7 @@ namespace DayZeEditor
             this.groupBox80.PerformLayout();
             this.groupBox79.ResumeLayout(false);
             this.groupBox79.PerformLayout();
+            this.cfgundergroundtriggersTab.ResumeLayout(false);
             this.TypesContextMenu.ResumeLayout(false);
             this.EventSpawnContextMenu.ResumeLayout(false);
             this.EventgroupContextMenu.ResumeLayout(false);
@@ -19388,5 +19454,10 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton85;
         private System.Windows.Forms.Label label199;
         private System.Windows.Forms.CheckBox disableColdAreaBuildingCheckCB;
+        private System.Windows.Forms.TabPage playerRestrictedAreaFilesTab;
+        private System.Windows.Forms.TabPage cfgundergroundtriggersTab;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
+        private System.Windows.Forms.ToolStripButton UnderGroundtriggerButton;
+        private TreeViewMS.TreeViewMS UndergroundTriggerTV;
     }
 }

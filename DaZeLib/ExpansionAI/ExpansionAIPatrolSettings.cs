@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Security.Policy;
 using System.Text.Json.Serialization;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace DayZeLib
 {
@@ -109,6 +111,7 @@ namespace DayZeLib
         {
             m_Version = CurrentVersion;
             Enabled = 1;
+            FormationScale = (decimal)-1.0;
             DespawnTime = (decimal)600.0;
             RespawnTime = (decimal)-1.0;
             MinDistRadius = (decimal)400.0;
@@ -121,12 +124,70 @@ namespace DayZeLib
             NoiseInvestigationDistanceLimit = (decimal)-1.0;
             DamageReceivedMultiplier = (decimal)-1.0;
             LoadBalancingCategories = new Dictionary<string, BindingList<Loadbalancingcategories>>();
+            _LoadBalancingCategories = new BindingList<Loadbalancingcategorie>();
             ObjectPatrols = new BindingList<ExpansionAIObjectPatrol>();
             Patrols = new BindingList<ExpansionAIPatrol>();
+            DefaultLoadBalancing();
             DefaultCrashPatrols();
             DefaultPatrols();
         }
-
+        private void DefaultLoadBalancing()
+        {
+            LoadBalancingCategories.Add(
+                "Global",
+                new BindingList<Loadbalancingcategories>()
+                {
+                    new Loadbalancingcategories(){MinPlayers = 0, MaxPlayers = 10, MaxPatrols = 10},
+                    new Loadbalancingcategories(){MinPlayers = 11, MaxPlayers = 20, MaxPatrols = 8},
+                    new Loadbalancingcategories(){MinPlayers = 21, MaxPlayers = 30, MaxPatrols = 6},
+                    new Loadbalancingcategories(){MinPlayers = 31, MaxPlayers = 40, MaxPatrols = 4},
+                    new Loadbalancingcategories(){MinPlayers = 41, MaxPlayers = 50, MaxPatrols = 2},
+                    new Loadbalancingcategories(){MinPlayers = 51, MaxPlayers = 255, MaxPatrols = 0},
+                }
+            ); 
+            LoadBalancingCategories.Add(
+                "ObjectPatrol",
+                new BindingList<Loadbalancingcategories>()
+                {
+                    new Loadbalancingcategories(){MinPlayers = 0, MaxPlayers = 255, MaxPatrols = 5}
+                }
+            );
+            LoadBalancingCategories.Add(
+                "Patrol",
+                new BindingList<Loadbalancingcategories>()
+                {
+                    new Loadbalancingcategories(){MinPlayers = 0, MaxPlayers = 255, MaxPatrols = 5}
+                }
+            );
+            LoadBalancingCategories.Add(
+                "Quest",
+                new BindingList<Loadbalancingcategories>()
+                {
+                    new Loadbalancingcategories(){MinPlayers = 0, MaxPlayers = 255, MaxPatrols = -1}
+                }
+            );
+            LoadBalancingCategories.Add(
+                "HelicopterWreck",
+                new BindingList<Loadbalancingcategories>()
+                {
+                    new Loadbalancingcategories(){MinPlayers = 0, MaxPlayers = 255, MaxPatrols = 3}
+                }
+            );
+            LoadBalancingCategories.Add(
+                "ContaminatedArea",
+                new BindingList<Loadbalancingcategories>()
+                {
+                    new Loadbalancingcategories(){MinPlayers = 0, MaxPlayers = 255, MaxPatrols = 3}
+                }
+            );
+            LoadBalancingCategories.Add(
+                "Example",
+                new BindingList<Loadbalancingcategories>()
+                {
+                    new Loadbalancingcategories(){MinPlayers = 0, MaxPlayers = 255, MaxPatrols = -1}
+                }
+            );
+        }
         private void DefaultPatrols()
         {
             Patrols.Add(new ExpansionAIPatrol(3, "WALK", "SPRINT", "ALTERNATE", "West", "", true, false, (decimal)1.0, -2, -2, -2, -100, new List<float[]>() { new float[] { 4211.222656f, 109.023384f, 6382.064453f }, new float[] { 4151.662598f, 105.450653f, 6080.294434f }, new float[] { 4160.971680f, 105.412598f, 6035.103027f }, new float[] { 4160.699219f, 106.251480f, 5906.830078f }, new float[] { 4107.862793f, 108.930527f, 5898.482910f }, new float[] { 4057.258057f, 114.174736f, 5584.595703f }, new float[] { 4084.560059f, 113.232422f, 5494.540039f }, new float[] { 4079f, .308105f, 113.801163f, 5435.953125f }, new float[] { 4081.735840f, 113.402504f, 5385.576172f }, new float[] { 4067.266113f, 109.788383f, 4904.508789f }, new float[] { 4126.504883f, 107.371178f, 4647.128906f } }));
@@ -142,12 +203,12 @@ namespace DayZeLib
         }
         private void DefaultCrashPatrols()
         {
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "West", "", true, false, (decimal)1.0, -1, -1, "Wreck_UH1Y"));
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "", true, false, (decimal)1.0, -1, -1, "Wreck_Mi8_Crashed"));
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "PoliceLoadout", true, false, (decimal)1.0, -1, -1, "Land_Wreck_sed01_aban1_police"));
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "PoliceLoadout", true, false, (decimal)1.0, -1, -1, "Land_Wreck_sed01_aban2_police"));
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "JOG", "SPRINT", "HALT_OR_ALTERNATE", "West", "NBCLoadout", true, false, (decimal)1.0, -1, -1, "ContaminatedArea_Static"));
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "JOG", "SPRINT", "HALT_OR_ALTERNATE", "West", "NBCLoadout", true, false, (decimal)1.0, -1, -1, "ContaminatedArea_Dynamic"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "West", "", true, 0, 1.0f, -1, -1, "Wreck_UH1Y"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "", true, 0, 1.0f, -1, -1, "Wreck_Mi8_Crashed"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "PoliceLoadout", true, 0, 1.0f, -1, -1, "Land_Wreck_sed01_aban1_police"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "PoliceLoadout", true, 0, 1.0f, -1, -1, "Land_Wreck_sed01_aban2_police"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "JOG", "SPRINT", "HALT_OR_ALTERNATE", "West", "NBCLoadout", true, 0, 1.0f, - 1, -1, "ContaminatedArea_Static"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "JOG", "SPRINT", "HALT_OR_ALTERNATE", "West", "NBCLoadout", true, 0, 1.0f, -1, -1, "ContaminatedArea_Dynamic"));
         }
         public bool checkver()
         {
@@ -170,12 +231,24 @@ namespace DayZeLib
                     needtosave = true;
                     isDirty = true;
                 }
+                if (Patrols[i].LoadBalancingCategory == null)
+                {
+                    Patrols[i].LoadBalancingCategory = "";
+                    needtosave = true;
+                    isDirty = true;
+                }
             }
             for (int j = 0; j < ObjectPatrols.Count; j++)
             {
                 if (ObjectPatrols[j].Name == "" || ObjectPatrols[j].Name == null)
                 {
                     ObjectPatrols[j].Name = "Object Patrol " + j.ToString();
+                    needtosave = true;
+                    isDirty = true;
+                }
+                if (ObjectPatrols[j].LoadBalancingCategory == null)
+                {
+                    ObjectPatrols[j].LoadBalancingCategory = "";
                     needtosave = true;
                     isDirty = true;
                 }
@@ -205,10 +278,17 @@ namespace DayZeLib
             }
         }
 
-        public void SetLoadBalancingCategoriestoList()
+        public bool SetLoadBalancingCategoriestoList()
         {
+            bool needtosave = false;
             _LoadBalancingCategories = new BindingList<Loadbalancingcategorie>();
-            foreach(KeyValuePair<string, BindingList<Loadbalancingcategories>> keyValuePair in LoadBalancingCategories)
+            if (LoadBalancingCategories.Count == 0)
+            {
+                DefaultLoadBalancing();
+                needtosave = true;
+                isDirty=true;
+            }
+            foreach (KeyValuePair<string, BindingList<Loadbalancingcategories>> keyValuePair in LoadBalancingCategories)
             {
                 _LoadBalancingCategories.Add(new Loadbalancingcategorie()
                 {
@@ -216,6 +296,7 @@ namespace DayZeLib
                     Categorieslist = keyValuePair.Value
                 });
             }
+            return needtosave;
         }
         public void SetLoadBalancingCategoriestoDictionary()
         {
@@ -281,25 +362,75 @@ namespace DayZeLib
         public string ClassName { get; set; }
         
 
-        public ExpansionAIObjectPatrol() { }
-        public ExpansionAIObjectPatrol(int bod = 1, string spd = "JOG", string threatspd = "SPRINT", string beh = "ALTERNATE", string fac = "WEST", string loa = "", bool canbelooted = true, bool unlimitedreload = false, decimal chance = (decimal)1.0, decimal mindistradius = -1, decimal maxdistradius = -1, string classname = "Wreck_UH1Y")
+        public ExpansionAIObjectPatrol() 
         {
-            NumberOfAI = bod;
-            Speed = spd;
-            UnderThreatSpeed = threatspd;
-            Behaviour = beh;
-            LootingBehaviour = "DEFAULT";
-            Faction = fac;
-            Loadout = loa;
-            CanBeLooted = canbelooted == true ? 1 : 0; ;
-            UnlimitedReload = unlimitedreload == true ? 1 : 0;
+            Name = "";
+            Persist = 0;
+            Faction = "";
+            Formation = "";
+            FormationScale = (decimal)-1.0;
+            FormationLooseness = (decimal)0.0;
+            Loadout = "";
+            NumberOfAI = 0;
+            Units = new BindingList<string>();
+            Behaviour = "";
+            LootingBehaviour = "";
+            Speed = "";
+            UnderThreatSpeed = "";
+            CanBeLooted = 0;
+            UnlimitedReload = 0;
+            SniperProneDistanceThreshold = (decimal)0.0;
             AccuracyMin = -1;
             AccuracyMax = -1;
             ThreatDistanceLimit = -1;
+            NoiseInvestigationDistanceLimit = -1;
             DamageMultiplier = -1;
             DamageReceivedMultiplier = -1;
             CanBeTriggeredByAI = 0;
+            MinDistRadius = -1;
+            MaxDistRadius = -1;
+            DespawnRadius = -1;
+            Chance = 1;
+            WaypointInterpolation = "";
+            DespawnTime = -1;
+            RespawnTime = -2;
+            LoadBalancingCategory = "";
+            ClassName = "";
+            DefaultSpread();
+        }
+        public ExpansionAIObjectPatrol(int bod = 1, string spd = "JOG", string threatspd = "SPRINT", string beh = "ALTERNATE", string fac = "West", string loa = "", bool canbelooted = true, int unlimitedreload = 0, float chance = 1.0f, float mindistradius = -1, float maxdistradius = -1, string classname = "Wreck_UH1Y")
+        {
+            Name = "";
+            Persist = 0;
+            Faction = fac;
+            Formation = "";
+            FormationScale = (decimal)-1.0;
+            FormationLooseness = (decimal)0.0;
+            Loadout = loa;
+            NumberOfAI = bod;
+            Units = new BindingList<string>();
+            Behaviour = beh;
+            LootingBehaviour = "";
+            Speed = spd;
+            UnderThreatSpeed = threatspd;
+            CanBeLooted = canbelooted == true ? 1 : 0;
+            UnlimitedReload = unlimitedreload;
             SniperProneDistanceThreshold = (decimal)0.0;
+            AccuracyMin = -1;
+            AccuracyMax = -1;
+            ThreatDistanceLimit = -1;
+            NoiseInvestigationDistanceLimit = -1;
+            DamageMultiplier = -1;
+            DamageReceivedMultiplier = -1;
+            CanBeTriggeredByAI = 0;
+            MinDistRadius = -1;
+            MaxDistRadius = -1;
+            DespawnRadius = -1;
+            Chance = 1;
+            WaypointInterpolation = "";
+            DespawnTime = -1;
+            RespawnTime = -2;
+            LoadBalancingCategory = "";
             ClassName = classname;
             DefaultSpread();
         }
@@ -380,12 +511,51 @@ namespace DayZeLib
         public int UseRandomWaypointAsStartPoint { get; set; }
         public BindingList<float[]> Waypoints { get; set; }
 
-        public ExpansionAIPatrol() { }
+        public ExpansionAIPatrol() 
+        {
+            Name = "";
+            Persist = 0;
+            Faction = "";
+            Formation = "";
+            FormationScale = (decimal)-1.0;
+            FormationLooseness = (decimal)0.0;
+            Loadout = "";
+            Units = new BindingList<string>();
+            NumberOfAI = -3;
+            Behaviour = "";
+            LootingBehaviour = "DEFAULT";
+            Speed = "";
+            UnderThreatSpeed = "";
+            CanBeLooted = 1;
+            UnlimitedReload = 0;
+            SniperProneDistanceThreshold = (decimal)0.0;
+            AccuracyMin = -1;
+            AccuracyMax = -1;
+            ThreatDistanceLimit = -1;
+            NoiseInvestigationDistanceLimit = -1;
+            DamageMultiplier = -1;
+            DamageReceivedMultiplier = (decimal)-1.0;
+            CanBeTriggeredByAI = 0;
+            MinDistRadius = -1;
+            MaxDistRadius = -1;
+            DespawnRadius = -1;
+            MinSpreadRadius = 1;
+            MaxSpreadRadius = 0;
+            Chance = 1;
+            WaypointInterpolation = "";
+            DespawnTime = -1;
+            RespawnTime = -2;
+            LoadBalancingCategory = "";
+            UseRandomWaypointAsStartPoint = 1;
+            Waypoints = new BindingList<float[]>();
+        }
         public ExpansionAIPatrol(int bod = 1, string spd = "JOG", string threatspd = "SPRINT", string beh = "ALTERNATE", string fac = "WEST", string loa = "HumanLoadout", bool canbelooted = true, bool unlimitedreload = false, decimal chance = (decimal)1.0, float mindistradius = -2, float maxdistradius = -2, decimal respawntime = -2, decimal wprnd = 0, List<float[]> way = null)
         {
             Name = "";
+            Persist = 0;
             Faction = fac;
             Formation = "";
+            FormationScale = (decimal)-1.0;
             FormationLooseness = (decimal)0.0;
             Loadout = loa;
             Units = new BindingList<string>();
@@ -413,6 +583,7 @@ namespace DayZeLib
             WaypointInterpolation = "";
             DespawnTime = -1;
             RespawnTime = respawntime;
+            LoadBalancingCategory = "";
             UseRandomWaypointAsStartPoint = 1;
             Waypoints = new BindingList<float[]>(way);
         }

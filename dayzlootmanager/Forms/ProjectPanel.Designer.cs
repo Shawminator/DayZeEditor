@@ -110,6 +110,7 @@ namespace DayZeEditor
             this.FTPPasswordTB = new System.Windows.Forms.ToolStripTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.darkButton4 = new DarkUI.Controls.DarkButton();
             this.listView3 = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -128,7 +129,6 @@ namespace DayZeEditor
             this.ProjectTSB = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.FTPTSB = new System.Windows.Forms.ToolStripButton();
-            this.darkButton4 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -197,7 +197,7 @@ namespace DayZeEditor
             this.ProjectTypeComboBox.FormattingEnabled = true;
             this.ProjectTypeComboBox.Items.AddRange(new object[] {
             "Create Blank / Use Exisitng Files",
-            "Create Local from FT / SFTP"});
+            "Create Local from FTP/SFTP"});
             this.ProjectTypeComboBox.Location = new System.Drawing.Point(123, 19);
             this.ProjectTypeComboBox.Name = "ProjectTypeComboBox";
             this.ProjectTypeComboBox.Size = new System.Drawing.Size(657, 21);
@@ -677,7 +677,7 @@ namespace DayZeEditor
             this.darkLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel7.Location = new System.Drawing.Point(5, 21);
             this.darkLabel7.Name = "darkLabel7";
-            this.darkLabel7.Size = new System.Drawing.Size(762, 169);
+            this.darkLabel7.Size = new System.Drawing.Size(762, 156);
             this.darkLabel7.TabIndex = 54;
             this.darkLabel7.Text = resources.GetString("darkLabel7.Text");
             // 
@@ -1007,6 +1007,16 @@ namespace DayZeEditor
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Available Maps";
             // 
+            // darkButton4
+            // 
+            this.darkButton4.Location = new System.Drawing.Point(164, 526);
+            this.darkButton4.Name = "darkButton4";
+            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton4.Size = new System.Drawing.Size(142, 23);
+            this.darkButton4.TabIndex = 55;
+            this.darkButton4.Text = "Update Map Sizes";
+            this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
+            // 
             // listView3
             // 
             this.listView3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -1056,28 +1066,28 @@ namespace DayZeEditor
             // UploadFileToolStripMenuItem
             // 
             this.UploadFileToolStripMenuItem.Name = "UploadFileToolStripMenuItem";
-            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.UploadFileToolStripMenuItem.Text = "Upload File";
             this.UploadFileToolStripMenuItem.Click += new System.EventHandler(this.UploadFileToolStripMenuItem_Click);
             // 
             // uploadFolderToolStripMenuItem
             // 
             this.uploadFolderToolStripMenuItem.Name = "uploadFolderToolStripMenuItem";
-            this.uploadFolderToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.uploadFolderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uploadFolderToolStripMenuItem.Text = "Upload Folder";
             this.uploadFolderToolStripMenuItem.Click += new System.EventHandler(this.uploadFolderToolStripMenuItem_Click);
             // 
             // deleteFIleToolStripMenuItem1
             // 
             this.deleteFIleToolStripMenuItem1.Name = "deleteFIleToolStripMenuItem1";
-            this.deleteFIleToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.deleteFIleToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.deleteFIleToolStripMenuItem1.Text = "Delete FIle";
             this.deleteFIleToolStripMenuItem1.Click += new System.EventHandler(this.deleteFIleToolStripMenuItem1_Click);
             // 
             // deleteFolderToolStripMenuItem1
             // 
             this.deleteFolderToolStripMenuItem1.Name = "deleteFolderToolStripMenuItem1";
-            this.deleteFolderToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.deleteFolderToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.deleteFolderToolStripMenuItem1.Text = "Delete Folder";
             this.deleteFolderToolStripMenuItem1.Click += new System.EventHandler(this.deleteFolderToolStripMenuItem1_Click);
             // 
@@ -1170,16 +1180,6 @@ namespace DayZeEditor
             this.FTPTSB.Size = new System.Drawing.Size(60, 22);
             this.FTPTSB.Text = "FTP/SFTP";
             this.FTPTSB.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // darkButton4
-            // 
-            this.darkButton4.Location = new System.Drawing.Point(164, 526);
-            this.darkButton4.Name = "darkButton4";
-            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton4.Size = new System.Drawing.Size(142, 23);
-            this.darkButton4.TabIndex = 55;
-            this.darkButton4.Text = "Update Map Sizes";
-            this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
             // 
             // ProjectPanel
             // 
