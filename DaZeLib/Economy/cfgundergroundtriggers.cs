@@ -19,28 +19,61 @@ namespace DayZeLib
 
     public class Trigger
     {
-        public float[] Position { get; set; }
-        public int[] Orientation { get; set; }
-        public float[] Size { get; set; }
-        public int EyeAccommodation { get; set; }
+        public decimal[] Position { get; set; }
+        public decimal[] Orientation { get; set; }
+        public decimal[] Size { get; set; }
+        public decimal EyeAccommodation { get; set; }
         public BindingList<Breadcrumb> Breadcrumbs { get; set; }
-        public int InterpolationSpeed { get; set; }
+        public decimal? InterpolationSpeed { get; set; }
 
         public Trigger()
         {
 
         }
+
+        public string gettriggertype()
+        {
+            if (EyeAccommodation == 1 && Breadcrumbs.Count == 0)
+            {
+                if (InterpolationSpeed == null)
+                    InterpolationSpeed = 1;
+                return "Outer";
+            }
+            else if (EyeAccommodation == 0 && Breadcrumbs.Count == 0)
+            {
+                if (InterpolationSpeed == null)
+                    InterpolationSpeed = 1;
+                return "Inner";
+            }
+            else
+            {
+                InterpolationSpeed = null;
+                return "Transition";
+            }
+        }
     }
 
     public class Breadcrumb
     {
-        public float[] Position { get; set; }
-        public float EyeAccommodation { get; set; }
+        public decimal[] Position { get; set; }
+        public decimal EyeAccommodation { get; set; }
         public int UseRaycast { get; set; }
-        public int Radius { get; set; }
+        public decimal Radius { get; set; }
 
         public Breadcrumb() 
         { 
+        }
+        public string getbreadcrumbtype()
+        {
+            switch (EyeAccommodation)
+            {
+                case 0:
+                    return "Inner";
+                case 1:
+                    return "Outer";
+                default:
+                    return "Transition";
+            }
         }
     }
 

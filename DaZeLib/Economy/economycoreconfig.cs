@@ -1089,12 +1089,18 @@ namespace DayZeLib
             }
 
         }
-        public void SaveCFGUndergroundTriggers()
+        public void SaveCFGUndergroundTriggers(string saveTime = null)
         {
-            var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
+            var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping, DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
             string jsonString = JsonSerializer.Serialize(cfgundergroundtriggers, options);
             File.WriteAllText(Filename, jsonString);
         }
+
     }
     public class CFGGameplayConfig
     {

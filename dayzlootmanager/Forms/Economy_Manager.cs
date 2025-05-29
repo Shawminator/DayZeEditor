@@ -549,6 +549,19 @@ namespace DayZeEditor
                 }
             }
 
+            if (currentproject.CFGUndergroundTriggersConfig != null)
+            {
+                if (currentproject.CFGUndergroundTriggersConfig.isDirty)
+                {
+                    if (currentproject.Createbackups)
+                        currentproject.CFGUndergroundTriggersConfig.SaveCFGUndergroundTriggers(SaveTime);
+                    else
+                        currentproject.CFGUndergroundTriggersConfig.SaveCFGUndergroundTriggers();
+                    currentproject.CFGUndergroundTriggersConfig.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.CFGUndergroundTriggersConfig.Filename));
+                }
+            }
+
             string message = "The Following Files were saved....\n";
             int i = 0;
             foreach (string l in midifiedfiles)
@@ -10060,7 +10073,6 @@ namespace DayZeEditor
 
         #endregion
         #region UndergroundTriggers
-
         public void LoadUndergroundTrioggers()
         {
             Console.WriteLine("Loading Underground Triggers");
@@ -10070,16 +10082,273 @@ namespace DayZeEditor
             {
                 Tag = "ParentRoot"
             };
-            
-
-
-
+            foreach(Trigger t in currentproject.CFGUndergroundTriggersConfig.cfgundergroundtriggers.Triggers)
+            {
+                string triggeryype = t.gettriggertype();
+                TreeNode triggernode = new TreeNode($"{triggeryype}")
+                {
+                    Tag = t
+                };
+                for (int i = 0; i < t.Breadcrumbs.Count; i++)
+                {
+                    TreeNode bredcrumb = new TreeNode($"BreadCrumb:{i}")
+                    {
+                        Tag = t.Breadcrumbs[i]
+                    };
+                    triggernode.Nodes.Add(bredcrumb);
+                }
+                rootNode.Nodes.Add(triggernode);
+            }
             UndergroundTriggerTV.Nodes.Add(rootNode);
             isUserInteraction = true;
         }
+        private void UndergroundTriggerTV_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            CFGUTriggerGB.Visible = false;
+            CFGUBreadCrumbGB.Visible = false;
+            UndergroundTriggerTV.SelectedNode = e.Node;
+            isUserInteraction = false;
+            if (e.Node.Tag is Trigger)
+            {
+                CFGUTriggerGB.Visible = true;
+                Trigger t = e.Node.Tag as Trigger;
+                SetTrigger(t);
+            }
+            else if (e.Node.Tag is Breadcrumb)
+            {
+                CFGUBreadCrumbGB.Visible = true;
+                Breadcrumb b = e.Node.Tag as Breadcrumb;
+                CFGUBreadCrumbPositionXNUD.Value = (decimal)b.Position[0];
+                CFGUBreadCrumbPositionYNUD.Value = (decimal)b.Position[1];
+                CFGUBreadCrumbPositionZNUD.Value = (decimal)b.Position[2];
+                CFGUBreadCrumbEyeAccommodationNUD.Value = (decimal)b.EyeAccommodation;
+                CFGUBreadCrumbUseRayCastCB.Checked = b.UseRaycast == 1 ? true : false;
+                CFGUBreadCrumbRadiusNUD.Value = (decimal)b.Radius;
+            }
+            isUserInteraction = true;
+        }
+        private void SetTrigger(Trigger t)
+        {
+            CFGUTriggerPositionXNUD.Value = (decimal)t.Position[0];
+            CFGUTriggerPositionYNUD.Value = (decimal)t.Position[1];
+            CFGUTriggerPositionZNUD.Value = (decimal)t.Position[2];
+            CFGUTriggerOrientationXNUD.Value = (decimal)t.Orientation[0];
+            CFGUTriggerOrientationYNUD.Value = (decimal)t.Orientation[1];
+            CFGUTriggerOrientationZNUD.Value = (decimal)t.Orientation[2];
+            CFGUTriggerSizeXNUD.Value = (decimal)t.Size[0];
+            CFGUTriggerSizeYNUD.Value = (decimal)t.Size[1];
+            CFGUTriggerSizeZNUD.Value = (decimal)t.Size[2];
+            CFGUTriggerEyeAccommodationNUD.Value = (decimal)t.EyeAccommodation;
+            if (t.InterpolationSpeed != null)
+            {
+                CFGUTriggerInterpolationSpeedNUD.Visible = true;
+                CFGUTriggerInterpolationSpeedNUD.Value = (decimal)t.InterpolationSpeed;
+            }
+            else
+            {
+                CFGUTriggerInterpolationSpeedNUD.Visible = false;
+            }
+        }
+        private void UndergroundTriggerTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            UndergroundTriggerTV.SelectedNode = e.Node;
+            addNewTriggerToolStripMenuItem.Visible = false;
+            addNewBreadCrumbToolStripMenuItem.Visible = false;
+            removeTriggerToolStripMenuItem.Visible = false;
+            removeBreadCrumbToolStripMenuItem.Visible = false;
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.Node.Tag != null && e.Node.Tag is string)
+                {
+                    addNewTriggerToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is Trigger)
+                {
+                    removeTriggerToolStripMenuItem.Visible = true;
+                    addNewBreadCrumbToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is Breadcrumb)
+                {
+                    removeBreadCrumbToolStripMenuItem.Visible = true;
+                }
+                CFGUndergroundContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void addNewTriggerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Trigger newtrigger = new Trigger()
+            {
+                Position = new decimal[] { 0, 0, 0 },
+                Orientation = new decimal[] { 0, 0, 0 },
+                Size = new decimal[] { 0, 0, 0 },
+                EyeAccommodation = 1,
+                Breadcrumbs = new BindingList<Breadcrumb>(),
+                InterpolationSpeed = 1
+            };
+            TreeNode triggernode = new TreeNode($"{newtrigger.gettriggertype()}")
+            {
+                Tag = newtrigger
+            };
+            currentproject.CFGUndergroundTriggersConfig.cfgundergroundtriggers.Triggers.Add(newtrigger);
+            UndergroundTriggerTV.SelectedNode.Nodes.Add(triggernode);
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void addNewBreadCrumbToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Breadcrumb newbreadcrumb = new Breadcrumb()
+            {
+                Position = new decimal[] { 0,0,0},
+                EyeAccommodation = 1,
+                UseRaycast = 0,
+                Radius = -1
+            };
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
+            t.InterpolationSpeed = null;
+            TreeNode triggernode = new TreeNode($"BreadCrumb:{t.Breadcrumbs.Count}")
+            {
+                Tag = newbreadcrumb
+            };
+            t.Breadcrumbs.Add(newbreadcrumb);
+            UndergroundTriggerTV.SelectedNode.Text = t.gettriggertype();
+            UndergroundTriggerTV.SelectedNode.Nodes.Add(triggernode);
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+            SetTrigger(t);
+        }
+        private void removeTriggerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentproject.CFGUndergroundTriggersConfig.cfgundergroundtriggers.Triggers.Remove(UndergroundTriggerTV.SelectedNode.Tag as Trigger);
+            UndergroundTriggerTV.SelectedNode.Remove();
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void removeBreadCrumbToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.Breadcrumbs.Remove(UndergroundTriggerTV.SelectedNode.Tag as Breadcrumb);
+            UndergroundTriggerTV.SelectedNode.Parent.Text = t.gettriggertype();
+            UndergroundTriggerTV.SelectedNode.Remove();
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+            SetTrigger(t);
+        }
+        private void CFGUTriggerPositionXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.Position[0] = (decimal)CFGUTriggerPositionXNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUTriggerPositionYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.Position[1] = (decimal)CFGUTriggerPositionYNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUTriggerPositionZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.Position[2] = (decimal)CFGUTriggerPositionZNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUTriggerOrientationXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.Orientation[0] = (decimal)CFGUTriggerOrientationXNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUTriggerOrientationYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.Orientation[1] = (decimal)CFGUTriggerOrientationYNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUTriggerOrientationZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.Orientation[2] = (decimal)CFGUTriggerOrientationZNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUTriggerSizeXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.Size[0] = (decimal)CFGUTriggerSizeXNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUTriggerSizeYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.Size[1] = (decimal)CFGUTriggerSizeYNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUTriggerSizeZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.Size[2] = (decimal)CFGUTriggerSizeZNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUTriggerEyeAccommodationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.EyeAccommodation = (decimal)CFGUBreadCrumbEyeAccommodationNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUTriggerInterpolationSpeedNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            t.InterpolationSpeed = CFGUTriggerInterpolationSpeedNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
 
-
+        }
+        private void CFGUBreadCrumbPositionXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Breadcrumb b = UndergroundTriggerTV.SelectedNode.Tag as Breadcrumb;
+            b.Position[0] = (decimal)CFGUBreadCrumbPositionXNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUBreadCrumbPositionYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Breadcrumb b = UndergroundTriggerTV.SelectedNode.Tag as Breadcrumb;
+            b.Position[1] = (decimal)CFGUBreadCrumbPositionYNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUBreadCrumbPositionZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Breadcrumb b = UndergroundTriggerTV.SelectedNode.Tag as Breadcrumb;
+            b.Position[2] = (decimal)CFGUBreadCrumbPositionZNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUBreadCrumbEyeAccommodationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Breadcrumb b = UndergroundTriggerTV.SelectedNode.Tag as Breadcrumb;
+            b.EyeAccommodation = (decimal)CFGUBreadCrumbEyeAccommodationNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUBreadCrumbUseRayCastCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Breadcrumb b = UndergroundTriggerTV.SelectedNode.Tag as Breadcrumb;
+            b.UseRaycast = CFGUBreadCrumbUseRayCastCB.Checked == true ? 1 : 0;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
+        private void CFGUBreadCrumbRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Breadcrumb b = UndergroundTriggerTV.SelectedNode.Tag as Breadcrumb;
+            b.Radius = (decimal)CFGUBreadCrumbRadiusNUD.Value;
+            currentproject.CFGUndergroundTriggersConfig.isDirty = true;
+        }
         #endregion
-
     }
 }

@@ -671,9 +671,7 @@
     <None Include="Maps\barrington_Map.png.xyz" />
     <None Include="Maps\bearisland_Map.png.xyz" />
     <None Include="Maps\bitterroot_Map.png.xyz" />
-    <None Include="Maps\Capare_Map.png.xyz">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Maps\Capare_Map.png.xyz" />
     <None Include="Maps\chernarusplus_Map.png.xyz">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -753,9 +751,7 @@
     <Content Include="Maps\barrington_Map.png" />
     <Content Include="Maps\bearisland_Map.png" />
     <Content Include="Maps\bitterroot_Map.png" />
-    <Content Include="Maps\Capare_Map.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Maps\Capare_Map.png" />
     <Content Include="Maps\chiemsee_Map.png" />
     <Content Include="Maps\chernarusplus_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
