@@ -107,6 +107,7 @@ namespace DayZeEditor
             if(save) { SaveProject(false, false); }
         }
     }
+
     public class Project
     {
         public string ProjectName { get; set; }
@@ -119,7 +120,6 @@ namespace DayZeEditor
         public int MapSize { get; set; }
         public string mpmissionpath { get; set; }
         public bool Createbackups { get; set; }
-
 
         [JsonIgnore]
         public bool haswarnings { get; set; }

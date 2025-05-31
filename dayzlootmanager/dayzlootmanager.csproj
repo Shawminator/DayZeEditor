@@ -99,6 +99,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
@@ -671,7 +672,9 @@
     <None Include="Maps\barrington_Map.png.xyz" />
     <None Include="Maps\bearisland_Map.png.xyz" />
     <None Include="Maps\bitterroot_Map.png.xyz" />
-    <None Include="Maps\Capare_Map.png.xyz" />
+    <None Include="Maps\Capare_Map.png.xyz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Maps\chernarusplus_Map.png.xyz">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -751,7 +754,9 @@
     <Content Include="Maps\barrington_Map.png" />
     <Content Include="Maps\bearisland_Map.png" />
     <Content Include="Maps\bitterroot_Map.png" />
-    <Content Include="Maps\Capare_Map.png" />
+    <Content Include="Maps\Capare_Map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Maps\chiemsee_Map.png" />
     <Content Include="Maps\chernarusplus_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -108,6 +108,7 @@ namespace DayZeEditor
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.FTPPasswordTB = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.darkButton4 = new DarkUI.Controls.DarkButton();
@@ -828,7 +829,8 @@ namespace DayZeEditor
             this.FTPUSernameTB,
             this.toolStripSeparator4,
             this.toolStripLabel4,
-            this.FTPPasswordTB});
+            this.FTPPasswordTB,
+            this.toolStripButton2});
             this.darkToolStrip22.Location = new System.Drawing.Point(3, 3);
             this.darkToolStrip22.Name = "darkToolStrip22";
             this.darkToolStrip22.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
@@ -982,6 +984,20 @@ namespace DayZeEditor
             this.FTPPasswordTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.FTPPasswordTB.Name = "FTPPasswordTB";
             this.FTPPasswordTB.Size = new System.Drawing.Size(150, 28);
+            this.FTPPasswordTB.Click += new System.EventHandler(this.FTPPasswordTB_Click);
+            this.FTPPasswordTB.TextChanged += new System.EventHandler(this.FTPPasswordTB_TextChanged);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(106, 25);
+            this.toolStripButton2.Text = "Save Login Details";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click_1);
             // 
             // tabPage3
             // 
@@ -1066,28 +1082,28 @@ namespace DayZeEditor
             // UploadFileToolStripMenuItem
             // 
             this.UploadFileToolStripMenuItem.Name = "UploadFileToolStripMenuItem";
-            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.UploadFileToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.UploadFileToolStripMenuItem.Text = "Upload File";
             this.UploadFileToolStripMenuItem.Click += new System.EventHandler(this.UploadFileToolStripMenuItem_Click);
             // 
             // uploadFolderToolStripMenuItem
             // 
             this.uploadFolderToolStripMenuItem.Name = "uploadFolderToolStripMenuItem";
-            this.uploadFolderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.uploadFolderToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.uploadFolderToolStripMenuItem.Text = "Upload Folder";
             this.uploadFolderToolStripMenuItem.Click += new System.EventHandler(this.uploadFolderToolStripMenuItem_Click);
             // 
             // deleteFIleToolStripMenuItem1
             // 
             this.deleteFIleToolStripMenuItem1.Name = "deleteFIleToolStripMenuItem1";
-            this.deleteFIleToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.deleteFIleToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.deleteFIleToolStripMenuItem1.Text = "Delete FIle";
             this.deleteFIleToolStripMenuItem1.Click += new System.EventHandler(this.deleteFIleToolStripMenuItem1_Click);
             // 
             // deleteFolderToolStripMenuItem1
             // 
             this.deleteFolderToolStripMenuItem1.Name = "deleteFolderToolStripMenuItem1";
-            this.deleteFolderToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.deleteFolderToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.deleteFolderToolStripMenuItem1.Text = "Delete Folder";
             this.deleteFolderToolStripMenuItem1.Click += new System.EventHandler(this.deleteFolderToolStripMenuItem1_Click);
             // 
@@ -1326,5 +1342,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private DarkUI.Controls.DarkButton darkButton4;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }

@@ -2,12 +2,20 @@
 using SevenZipExtractor;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Odbc;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Runtime.Remoting.Contexts;
+using System.Security;
+using System.Security.Cryptography;
+using System.Security.Policy;
+using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Windows.Forms;
 using WinSCP;
@@ -49,6 +57,10 @@ namespace DayZeEditor
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
+            if (FTPPasswordTB.Text == null || FTPPasswordTB.Text == "")
+                toolStripButton2.Visible = false;
+            else
+                toolStripButton2.Visible = true;
         }
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
@@ -85,6 +97,7 @@ namespace DayZeEditor
             LoadProjectstoList();
             LoadFileExplorer();
             LoadMappAddons();
+            LoadFTPInfo();
             tabControl1.ItemSize = new Size(0, 1);
 
         }
@@ -438,6 +451,7 @@ namespace DayZeEditor
             string profilename = listBox1.GetItemText(listBox1.SelectedItem);
             Project p = listBox1.SelectedItem as Project;
             SetActiveProject(p);
+            LoadFTPInfo();
             Console.WriteLine("The Current Active Project is " + projects.ActiveProject);
             Console.WriteLine("Please click the select section to get the pop out menu");
         }
@@ -1022,7 +1036,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton4_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Updating MapSizes.txt");
@@ -1034,5 +1047,134 @@ namespace DayZeEditor
                 client.DownloadFile(ass.browser_download_url, "Maps/MapSizes.txt");
             }
         }
+        private void LoadFTPInfo()
+        {
+            string infostring = Properties.Settings.Default.SFTPINFO;
+            if (infostring == "") return;
+            SecureString password = DecryptString(infostring);
+            string readable = ToInsecureString(password);
+            SFTPInfoList ftpinfolist = JsonSerializer.Deserialize<SFTPInfoList>(readable);
+            SFTPInfo info = ftpinfolist.infolist.FirstOrDefault(x => x.projectname == ActiveProject.ToString());
+            if (info != null)
+            {
+                FTPHostNameTB.Text = info.url;
+                FTPPortTB.Text = info.port;
+                FTPUSernameTB.Text = info.login;
+                FTPPasswordTB.Text = info.password;
+            }
+            else
+            {
+                FTPHostNameTB.Text = "";
+                FTPPortTB.Text = "";
+                FTPUSernameTB.Text = "";
+                FTPPasswordTB.Text = "";
+            }
+        }
+        private void toolStripButton2_Click_1(object sender, EventArgs e)
+        {
+            SFTPInfo ftpInfo = new SFTPInfo()
+            {
+                projectname = ActiveProject.ToString(),
+                url = FTPHostNameTB.Text,
+                port = FTPPortTB.Text,
+                login = FTPUSernameTB.Text,
+                password = FTPPasswordTB.Text,
+            };
+            string infostring = Properties.Settings.Default.SFTPINFO;
+            SFTPInfoList ftpinfolist = new SFTPInfoList()
+            {
+                infolist = new BindingList<SFTPInfo>()
+            };
+            if (infostring != "")
+            {
+                SecureString password = DecryptString(infostring);
+                string readable = ToInsecureString(password);
+                ftpinfolist = JsonSerializer.Deserialize<SFTPInfoList>(readable);
+                SFTPInfo info = ftpinfolist.infolist.FirstOrDefault(x => x.projectname == ftpInfo.ToString());
+                if (info != null)
+                {
+                    ftpinfolist.infolist.Remove(info);
+                }
+                ftpinfolist.infolist.Add(ftpInfo);
+            }
+            else
+            {
+                ftpinfolist.infolist.Add(ftpInfo);
+            }
+            var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            string newinfolist = JsonSerializer.Serialize(ftpinfolist, options);
+            Properties.Settings.Default.SFTPINFO = EncryptString(ToSecureString(newinfolist));
+            Properties.Settings.Default.Save();
+        }
+        static byte[] entropy = Encoding.Unicode.GetBytes("Sh4wm1nat0r5 3d1t0r 15 4he B3st");
+        public static string EncryptString(SecureString input)
+        {
+            byte[] encryptedData = ProtectedData.Protect(Encoding.Unicode.GetBytes(ToInsecureString(input)), entropy, DataProtectionScope.CurrentUser);
+            return Convert.ToBase64String(encryptedData);
+        }
+
+        public static SecureString DecryptString(string encryptedData)
+        {
+            try
+            {
+                byte[] decryptedData = ProtectedData.Unprotect(Convert.FromBase64String(encryptedData), entropy, DataProtectionScope.CurrentUser);
+                return ToSecureString(Encoding.Unicode.GetString(decryptedData));
+            }
+            catch
+            {
+                return new SecureString();
+            }
+        }
+
+        public static SecureString ToSecureString(string input)
+        {
+            SecureString secure = new SecureString();
+            foreach (char c in input)
+            {
+                secure.AppendChar(c);
+            }
+            secure.MakeReadOnly();
+            return secure;
+        }
+        public static string ToInsecureString(SecureString input)
+        {
+            string returnValue = string.Empty;
+            IntPtr ptr = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(input);
+            try
+            {
+                returnValue = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(ptr);
+            }
+            finally
+            {
+                System.Runtime.InteropServices.Marshal.ZeroFreeBSTR(ptr);
+            }
+            return returnValue;
+        }
+
+        private void FTPPasswordTB_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void FTPPasswordTB_TextChanged(object sender, EventArgs e)
+        {
+            if(FTPPasswordTB.Text == "")
+                toolStripButton2.Visible = false;
+            else
+                toolStripButton2.Visible = true;
+        }
+    }
+    public class SFTPInfoList
+    {
+        public BindingList<SFTPInfo> infolist { get; set; }
+
+    }
+    public class SFTPInfo
+    {
+        public string projectname { get; set; }
+        public string url { get; set; }
+        public string login { get; set; }
+        public string port { get; set; }
+        public string password { get; set; }
     }
 }

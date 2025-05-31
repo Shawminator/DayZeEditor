@@ -33,7 +33,7 @@ namespace DayZeEditor
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
 
-        public string VersionNumber = "0.8.3.6";
+        public string VersionNumber = "0.8.3.7";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -65,6 +65,8 @@ namespace DayZeEditor
                 DialogResult result = cl.ShowDialog();
                 Projects.ShowChangeLog = false;
                 Projects.SaveProject(false, false);
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -122,7 +124,6 @@ namespace DayZeEditor
                 Application.Exit();
                 return;
             }
-
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Current Version : " + VersionNumber);
             var culture = CultureInfo.GetCultureInfo("en-GB");

@@ -45,6 +45,11 @@ namespace DayZeLib
                     InterpolationSpeed = 1;
                 return "Inner";
             }
+            else if (Breadcrumbs.Count == 0)
+            {
+                InterpolationSpeed = 1;
+                return "Transition";
+            }
             else
             {
                 InterpolationSpeed = null;

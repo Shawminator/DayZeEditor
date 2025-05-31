@@ -10232,77 +10232,79 @@ namespace DayZeEditor
         private void CFGUTriggerPositionXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
             t.Position[0] = (decimal)CFGUTriggerPositionXNUD.Value;
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
         }
         private void CFGUTriggerPositionYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
             t.Position[1] = (decimal)CFGUTriggerPositionYNUD.Value;
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
         }
         private void CFGUTriggerPositionZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
             t.Position[2] = (decimal)CFGUTriggerPositionZNUD.Value;
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
         }
         private void CFGUTriggerOrientationXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
             t.Orientation[0] = (decimal)CFGUTriggerOrientationXNUD.Value;
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
         }
         private void CFGUTriggerOrientationYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
             t.Orientation[1] = (decimal)CFGUTriggerOrientationYNUD.Value;
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
         }
         private void CFGUTriggerOrientationZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
             t.Orientation[2] = (decimal)CFGUTriggerOrientationZNUD.Value;
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
         }
         private void CFGUTriggerSizeXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
             t.Size[0] = (decimal)CFGUTriggerSizeXNUD.Value;
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
         }
         private void CFGUTriggerSizeYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
             t.Size[1] = (decimal)CFGUTriggerSizeYNUD.Value;
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
         }
         private void CFGUTriggerSizeZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
             t.Size[2] = (decimal)CFGUTriggerSizeZNUD.Value;
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
         }
         private void CFGUTriggerEyeAccommodationNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
-            t.EyeAccommodation = (decimal)CFGUBreadCrumbEyeAccommodationNUD.Value;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
+            t.EyeAccommodation = (decimal)CFGUTriggerEyeAccommodationNUD.Value;
+            UndergroundTriggerTV.SelectedNode.Text = t.gettriggertype();
+            SetTrigger(t);
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
         }
         private void CFGUTriggerInterpolationSpeedNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            Trigger t = UndergroundTriggerTV.SelectedNode.Parent.Tag as Trigger;
+            Trigger t = UndergroundTriggerTV.SelectedNode.Tag as Trigger;
             t.InterpolationSpeed = CFGUTriggerInterpolationSpeedNUD.Value;
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
 

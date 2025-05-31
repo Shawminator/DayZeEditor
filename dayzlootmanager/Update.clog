@@ -1,4 +1,9 @@
-﻿Version 0.8.3.6
+﻿Version 0.8.3.7
+[Fixed]
+Economy Manager			-	Added CFGUnderground trigger tab
+ftp/sftp				-	Added option to save logon details.
+
+Version 0.8.3.6
 [Fixed]
 Expansion AI			-	Fixed updating of new ai patrol settings.
 
