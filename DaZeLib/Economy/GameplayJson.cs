@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
 
 namespace DayZeLib
@@ -19,7 +20,7 @@ namespace DayZeLib
         public VehicleData VehicleData { get; set; }
 
         [JsonIgnore]
-        const int currentversion = 122;
+        const int currentversion = 123;
         [JsonIgnore]
         public BindingList<SpawnGearPresetFiles> SpawnGearPresetFiles { get; set; }
         [JsonIgnore]
@@ -36,6 +37,7 @@ namespace DayZeLib
             MapData = new CFGGameplayMapData();
             VehicleData = new VehicleData();
             SpawnGearPresetFiles = new BindingList<SpawnGearPresetFiles>();
+            RestrictedAreaFiles = new BindingList<PlayerRestrictedFiles>();
         }
 
         public void Addnewspawngearfile(string filename)
@@ -89,6 +91,7 @@ namespace DayZeLib
         public Shockhandlingdata ShockHandlingData { get; set; }
         public MovementData MovementData { get; set; }
         public DrowningData DrowningData { get; set; }
+        public WeaponObstructionData WeaponObstructionData { get; set; }
 
         public Playerdata()
         {
@@ -98,6 +101,7 @@ namespace DayZeLib
             ShockHandlingData = new Shockhandlingdata();
             MovementData = new MovementData();
             DrowningData = new DrowningData();
+            WeaponObstructionData = new WeaponObstructionData();
         }
     }
     public class Staminadata
@@ -175,6 +179,18 @@ namespace DayZeLib
         }
     }
 
+    public class WeaponObstructionData
+    {
+        public int staticMode { get; set; }
+        public int dynamicMode { get; set; }
+
+        public WeaponObstructionData()
+        {
+            staticMode = 1;
+            dynamicMode = 1;
+        }
+
+    }
     public class Worldsdata
     {
         public int lightingConfig { get; set; }

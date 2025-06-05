@@ -5671,6 +5671,9 @@ namespace DayZeEditor
             healthDepletionSpeedNUD.Value = cfggameplay.PlayerData.DrowningData.healthDepletionSpeed;
             shockDepletionSpeedNUD.Value = cfggameplay.PlayerData.DrowningData.shockDepletionSpeed;
 
+            staticModeCB.SelectedIndex = cfggameplay.PlayerData.WeaponObstructionData.staticMode;
+            dynamicModeCB.SelectedIndex = cfggameplay.PlayerData.WeaponObstructionData.dynamicMode;
+
             lightingConfigNUD.Value = cfggameplay.WorldsData.lightingConfig;
             JanMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[0];
             FebMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[1];
@@ -6149,6 +6152,19 @@ namespace DayZeEditor
         {
             if (!isUserInteraction) { return; }
             cfggameplay.VehicleData.boatDecayMultiplier = boatDecayMultiplierNUD.Value;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void staticModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.WeaponObstructionData.staticMode = staticModeCB.SelectedIndex;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+
+        private void dynamicModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.WeaponObstructionData.dynamicMode = dynamicModeCB.SelectedIndex;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void darkButton66_Click(object sender, EventArgs e)
@@ -10352,5 +10368,12 @@ namespace DayZeEditor
             currentproject.CFGUndergroundTriggersConfig.isDirty = true;
         }
         #endregion
+
+        private void groupBox30_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

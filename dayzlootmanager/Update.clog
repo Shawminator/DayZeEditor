@@ -1,4 +1,9 @@
-﻿Version 0.8.3.7
+﻿Version 0.8.3.8
+[Fixed]
+Economy Manager			-	Updated CFGGameplay to latest 1.23 config
+						-	Updated areatriggers to allow for null values as of 1.28
+
+Version 0.8.3.7
 [Fixed]
 Economy Manager			-	Added CFGUnderground trigger tab
 ftp/sftp				-	Added option to save logon details.
