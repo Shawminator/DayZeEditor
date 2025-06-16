@@ -753,10 +753,10 @@ namespace DayZeEditor
         }
         private void darkButton14_Click(object sender, EventArgs e)
         {
-            List<spawnabletypesType> ST = new List<spawnabletypesType>();
+            List<SpawnableType> ST = new List<SpawnableType>();
             foreach (Spawnabletypesconfig stc in currentproject.spawnabletypesList)
             {
-                foreach (spawnabletypesType sp in stc.spawnabletypes.type)
+                foreach (SpawnableType sp in stc.spawnabletypes.type)
                 {
                     if (sp.name == currentRHPredefineditems.Item)
                     {
@@ -764,7 +764,7 @@ namespace DayZeEditor
                     }
                 }
             }
-            spawnabletypesType useablespantypes = ST.Last();
+            SpawnableType useablespantypes = ST.Last();
 
             foreach (var item in useablespantypes.Items)
             {
@@ -809,10 +809,10 @@ namespace DayZeEditor
         }
         private void darkButton21_Click(object sender, EventArgs e)
         {
-            List<spawnabletypesType> ST = new List<spawnabletypesType>();
+            List<SpawnableType> ST = new List<SpawnableType>();
             foreach (Spawnabletypesconfig stc in currentproject.spawnabletypesList)
             {
-                foreach (spawnabletypesType sp in stc.spawnabletypes.type)
+                foreach (SpawnableType sp in stc.spawnabletypes.type)
                 {
                     if (sp.name.ToLower().StartsWith("zmb"))
                         continue;
@@ -822,7 +822,7 @@ namespace DayZeEditor
                         {
                             if (ST.Any(x => x.name == sp.name))
                             {
-                                spawnabletypesType remove = ST.FirstOrDefault(x => x.name == sp.name);
+                                SpawnableType remove = ST.FirstOrDefault(x => x.name == sp.name);
                                 ST.Remove(remove);
 
                             }
@@ -831,7 +831,7 @@ namespace DayZeEditor
                     }
                 }
             }
-            foreach (spawnabletypesType sp in ST)
+            foreach (SpawnableType sp in ST)
             {
                 capareLPdefinedItems newitem = new capareLPdefinedItems()
                 {

@@ -5,7 +5,7 @@ namespace DayZeLib
 {
     public class ExpansionAirdropSettings
     {
-        const int CurrentVersion = 7;
+        const int CurrentVersion = 8;
 
         public int m_Version { get; set; }
         public int ServerMarkerOnDropLocation { get; set; }
@@ -24,6 +24,7 @@ namespace DayZeLib
         public int ItemCount { get; set; }
         public string AirdropPlaneClassName { get; set; }
         public decimal DropZoneProximityDistance { get; set; }
+        public int ExplodeAirVehiclesOnCollision { get; set; }
         public BindingList<ExpansionLootContainer> Containers { get; set; }
 
         [JsonIgnore]
@@ -46,6 +47,9 @@ namespace DayZeLib
             InfectedSpawnRadius = 50;
             InfectedSpawnInterval = 250;
             ItemCount = 50;
+            AirdropPlaneClassName = "";
+            DropZoneProximityDistance = (decimal)1500.0;
+            ExplodeAirVehiclesOnCollision = 0;
             Containers = new BindingList<ExpansionLootContainer>();
             DefaultRegular();
             DefaultMedical();
@@ -427,6 +431,7 @@ namespace DayZeLib
         public int ItemCount { get; set; }
         public int InfectedCount { get; set; }
         public int SpawnInfectedForPlayerCalledDrops { get; set; }
+        public int ExplodeAirVehiclesOnCollision { get; set; }
         public BindingList<ExpansionLoot> Loot { get; set; }
 
         public ExpansionLootContainer(string container, int usage, decimal weight, BindingList<ExpansionLoot> loot, BindingList<string> infected, int itemCount, int infectedCount, bool spawnInfectedForPlayerCalledDrops = false, decimal fallSpeed = (decimal)4.5)
@@ -439,6 +444,7 @@ namespace DayZeLib
             ItemCount = itemCount;
             InfectedCount = infectedCount;
             SpawnInfectedForPlayerCalledDrops = spawnInfectedForPlayerCalledDrops == true ? 1 : 0;
+            ExplodeAirVehiclesOnCollision = -1;
             FallSpeed = fallSpeed;
         }
 
@@ -453,6 +459,7 @@ namespace DayZeLib
             ItemCount = 0;
             InfectedCount = 0;
             SpawnInfectedForPlayerCalledDrops = 0;
+            ExplodeAirVehiclesOnCollision = -1;
         }
 
         public override string ToString()
@@ -465,12 +472,12 @@ namespace DayZeLib
         public string Name { get; set; }
         public BindingList<ExpansionLootVariant> Attachments { get; set; }
         public decimal Chance { get; set; }
-        public int QuantityPercent { get; set; }
+        public decimal QuantityPercent { get; set; }
         public int Max { get; set; }
         public int Min { get; set; }
         public BindingList<ExpansionLootVariant> Variants { get; set; }
 
-        public ExpansionLoot(string name, BindingList<ExpansionLootVariant> attachments = null, decimal chance = 1, int quantityPercent = -1, BindingList<ExpansionLootVariant> variants = null, int max = -1, int min = 0)
+        public ExpansionLoot(string name, BindingList<ExpansionLootVariant> attachments = null, decimal chance = 1, decimal quantityPercent = -1, BindingList<ExpansionLootVariant> variants = null, int max = -1, int min = 0)
         {
             Name = name;
             if (attachments != null)

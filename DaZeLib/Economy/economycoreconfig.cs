@@ -107,6 +107,10 @@ namespace DayZeLib
                     newfile.name = filename;
                     newfile.type = "spawnabletypes";
                     break;
+                case "randompresets":
+                    newfile.name = filename;
+                    newfile.type = "randompresets";
+                    break;
                 default:
                     break;
             }
@@ -158,7 +162,7 @@ namespace DayZeLib
     }
     public class Spawnabletypesconfig
     {
-        public spawnabletypes spawnabletypes { get; set; }
+        public SpawnableTypes spawnabletypes { get; set; }
         public string Filename { get; set; }
         public bool isDirty = false;
         public Spawnabletypesconfig(string filename)
@@ -166,7 +170,7 @@ namespace DayZeLib
             Filename = filename;
             if (File.Exists(Filename))
             {
-                var mySerializer = new XmlSerializer(typeof(spawnabletypes));
+                var mySerializer = new XmlSerializer(typeof(SpawnableTypes));
                 StringBuilder sb = new StringBuilder();
                 List<string> filearray = File.ReadAllLines(Filename).ToList();
                 foreach (String line in filearray)
@@ -183,7 +187,7 @@ namespace DayZeLib
                     Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
-                        spawnabletypes = (spawnabletypes)mySerializer.Deserialize(ms);
+                        spawnabletypes = (SpawnableTypes)mySerializer.Deserialize(ms);
                         if (spawnabletypes != null)
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
@@ -208,7 +212,7 @@ namespace DayZeLib
             else
             {
                 Console.WriteLine(Path.GetFileName(Filename) + "Does not exist, Creating new empty file.");
-                spawnabletypes = new spawnabletypes();
+                spawnabletypes = new SpawnableTypes();
                 Savespawnabletypes();
             }
         }
@@ -219,7 +223,7 @@ namespace DayZeLib
                 Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
                 File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
             }
-            var serializer = new XmlSerializer(typeof(spawnabletypes));
+            var serializer = new XmlSerializer(typeof(SpawnableTypes));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
             var sw = new StringWriter();
@@ -1306,7 +1310,8 @@ namespace DayZeLib
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions()
                     {
-                        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
+                        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+                        Converters = { new BoolConverter() }
                     };
                     cfgEffectArea = JsonSerializer.Deserialize<cfgEffectArea>(File.ReadAllText(Filename), options);
                     cfgEffectArea.convertpositionstolist();
@@ -1343,7 +1348,13 @@ namespace DayZeLib
         public void SavecfgEffectArea()
         {
             cfgEffectArea.convertlisttopositions();
-            var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping, DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
+            var options = new JsonSerializerOptions 
+            { 
+                WriteIndented = true, 
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping, 
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                Converters = {new BoolConverter()}
+            };
             string jsonString = JsonSerializer.Serialize(cfgEffectArea, options);
             File.WriteAllText(Filename, jsonString);
         }

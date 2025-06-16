@@ -10,6 +10,10 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Mail;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -246,20 +250,35 @@ namespace DayZeEditor
         }
         private void SetuprandomPresetsForSpawnabletypes()
         {
-            foreach (var item in currentproject.cfgrandompresetsconfig.randompresets.Items)
+            foreach (cfgrandompresetsconfig rpc in currentproject.RandomPresetList)
             {
-                if (item is randompresetsAttachments)
+                foreach (var item in rpc.randompresets.Items)
                 {
-                    cargoAttachments.Add(item as randompresetsAttachments);
-                }
-                else if (item is randompresetsCargo)
-                {
-                    cargoItems.Add(item as randompresetsCargo);
+                    if (item is randompresetsAttachments)
+                    {
+                        cargoAttachments.Add(item as randompresetsAttachments);
+                    }
+                    else if (item is randompresetsCargo)
+                    {
+                        cargoItems.Add(item as randompresetsCargo);
+                    }
                 }
             }
 
             CargoPresetComboBox.DataSource = cargoItems;
             AttachmentPresetComboBox.DataSource = cargoAttachments;
+            List<string> presets = new List<string>();
+            foreach (Spawnabletypesconfig ctc in currentproject.spawnabletypesList)
+            {
+                foreach (SpawnableType SP in ctc.spawnabletypes.type)
+                {
+                    if (!presets.Contains(SP.name))
+                    {
+                        presets.Add(SP.name);
+                    }
+                }
+            }
+            ItemPresetCB.DataSource = presets;
         }
         private void populateEconmyTreeview()
         {
@@ -390,16 +409,19 @@ namespace DayZeEditor
                     }
                 }
             }
-            if (currentproject.cfgrandompresetsconfig != null)
+            if (currentproject.RandomPresetList != null)
             {
-                if (currentproject.cfgrandompresetsconfig.isDirty)
+                foreach (cfgrandompresetsconfig cfgrandompresetsconfig in currentproject.RandomPresetList)
                 {
-                    if (currentproject.Createbackups)
-                        currentproject.cfgrandompresetsconfig.SaveRandomPresets(SaveTime);
-                    else
-                        currentproject.cfgrandompresetsconfig.SaveRandomPresets();
-                    currentproject.cfgrandompresetsconfig.isDirty = false;
-                    midifiedfiles.Add(Path.GetFileName(currentproject.cfgrandompresetsconfig.Filename));
+                    if (cfgrandompresetsconfig.isDirty)
+                    {
+                        if (currentproject.Createbackups)
+                            cfgrandompresetsconfig.SaveRandomPresets(SaveTime);
+                        else
+                            cfgrandompresetsconfig.SaveRandomPresets();
+                        cfgrandompresetsconfig.isDirty = false;
+                        midifiedfiles.Add(Path.GetFileName(cfgrandompresetsconfig.Filename));
+                    }
                 }
             }
 
@@ -640,11 +662,14 @@ namespace DayZeEditor
                 }
             }
             //randompresets
-            if (currentproject.cfgrandompresetsconfig != null)
+            if (currentproject.RandomPresetList != null)
             {
-                if (currentproject.cfgrandompresetsconfig.isDirty)
+                foreach (cfgrandompresetsconfig cfgrandompresetsconfig in currentproject.RandomPresetList)
                 {
-                    needtosave = true;
+                    if (cfgrandompresetsconfig.isDirty)
+                    {
+                        needtosave = true;
+                    }
                 }
             }
             //globals
@@ -4081,344 +4106,374 @@ namespace DayZeEditor
        #endregion eventgroups
         #region spawnabletypes
         public Spawnabletypesconfig currentspawnabletypesfile;
-        public spawnabletypesType CurrentspawnabletypesType;
-        public object CurrentspawnabletypesTypetype;
+        public TreeNode currentSPTreeNode;
         private void LoadSpawnableTypes()
         {
             Console.WriteLine("Loading SpawnableTypes");
             isUserInteraction = false;
-            SpawnabletypeslistLB.DisplayMember = "DisplayName";
-            SpawnabletypeslistLB.ValueMember = "Value";
-            SpawnabletypeslistLB.DataSource = currentproject.spawnabletypesList;
+            SpawnableTypesTV.Nodes.Clear();
+
+            TreeNode SPRoot = new TreeNode("Spawnable types")
+            {
+                Tag = "Root"
+            };
+            foreach(Spawnabletypesconfig ctc in currentproject.spawnabletypesList)
+            {
+                SPRoot.Nodes.Add(CreateNodes(ctc));
+            }
+            SpawnableTypesTV.Nodes.Add(SPRoot);
             isUserInteraction = true;
         }
-        private void SpawnabletypeslistLB_SelectedIndexChanged(object sender, EventArgs e)
+        private TreeNode CreateNodes(Spawnabletypesconfig ctc)
         {
-            if (SpawnabletypeslistLB.SelectedItem as Spawnabletypesconfig == currentspawnabletypesfile) { return; }
-            if (SpawnabletypeslistLB.SelectedIndex == -1) { return; }
-            currentspawnabletypesfile = SpawnabletypeslistLB.SelectedItem as Spawnabletypesconfig;
-            isUserInteraction = false;
-
-            SpawnabletpesLB.DisplayMember = "DisplayName";
-            SpawnabletpesLB.ValueMember = "Value";
-            SpawnabletpesLB.DataSource = currentspawnabletypesfile.spawnabletypes.type;
-            isUserInteraction = true;
+            TreeNode ConfigRoot = new TreeNode(Path.GetFileNameWithoutExtension(ctc.Filename))
+            {
+                Tag = ctc
+            };
+            if (ctc.spawnabletypes.damage != null)
+            {
+                ConfigRoot.Nodes.Add(CreateDamageNode(ctc.spawnabletypes.damage));
+            }
+            foreach(SpawnableType SP in ctc.spawnabletypes.type)
+            {
+                TreeNode IN = new TreeNode(SP.name)
+                {
+                    Tag = SP
+                };
+                foreach(var item in SP.Items)
+                {
+                    IN.Nodes.Add(CrteateTypeNodes(item));
+                }
+                ConfigRoot.Nodes.Add(IN);
+            }
+            return ConfigRoot;
         }
-        private void SetDamange()
+        private TreeNode CrteateTypeNodes(object item)
         {
-            //if (CurrentspawnabletypesType != null)
-            //{
-            //    label24.Visible = true;
-            //    label25.Visible = true;
-            //    HasDamageCB.Checked = true;
-            //    DamageMinNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.min;
-            //    DamageMaxNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.max;
-            //    DamageMinNUD.Visible = true;
-            //    DamageMaxNUD.Visible = true;
-            //}
-            //else
-            //{
-            //    label25.Visible = false;
-            //    label24.Visible = false;
-            //    HasDamageCB.Checked = false;
-            //    DamageMinNUD.Visible = false;
-            //    DamageMaxNUD.Visible = false;
-            //}
+            if (item is spawnableTypesHoarder)
+            {
+                return new TreeNode("hoarder")
+                {
+                    Tag = item as spawnableTypesHoarder
+                };
+            }
+            else if (item is spawnableTypeTag)
+            {
+                return new TreeNode(getTagString(item as spawnableTypeTag))
+                {
+                    Tag = item as spawnableTypeTag
+                };
+            }
+            else if (item is spawnableTypeDamage)
+            {
+                spawnableTypeDamage damage = item as spawnableTypeDamage;
+                return CreateDamageNode(damage);
+            }
+            else if (item is spawnableTypeCargo)
+            {
+                spawnableTypeCargo cargo = item as spawnableTypeCargo;
+                return createCargoNopdes(cargo);
+            }
+            else if (item is spawnableTypeAttachment)
+            {
+                spawnableTypeAttachment attachment = item as spawnableTypeAttachment;
+                return createattachmentnodes(attachment);
+            }
+            return null;
         }
-        private void SpawnabletpesLB_SelectedIndexChanged(object sender, EventArgs e)
+        private string getTagString(spawnableTypeTag spawnableTypeTag)
         {
-            ClearInfo();
-
-            //if (SpawnabletpesLB.SelectedItem as spawnabletypesType == CurrentspawnabletypesType) { return; }
-            if (SpawnabletpesLB.SelectedIndex == -1) { return; }
-            CurrentspawnabletypesType = SpawnabletpesLB.SelectedItem as spawnabletypesType;
-            isUserInteraction = false;
-            listBox6.DisplayMember = "DisplayName";
-            listBox6.ValueMember = "Value";
-            listBox6.DataSource = CurrentspawnabletypesType.Items;
-            listBox6.SelectedIndex = -1;
-            if (listBox6.Items.Count > 0)
-            {
-                listBox6.SelectedIndex = 0;
-            }
-            isUserInteraction = true;
+            return $"tag : {spawnableTypeTag.name}";
         }
-        private void listBox6_SelectedIndexChanged(object sender, EventArgs e)
+        private TreeNode createattachmentnodes(spawnableTypeAttachment attachment)
         {
-            //if (listBox6.SelectedItem as object == CurrentspawnabletypesTypetype) { return; }
-            if (listBox6.SelectedIndex == -1) { return; }
-            isUserInteraction = false;
-            CurrentspawnabletypesTypetype = listBox6.SelectedItem as object;
-            ClearInfo();
-            if (CurrentspawnabletypesTypetype is spawnabletypesTypeHoarder)
+            TreeNode attachmentnode = new TreeNode(getAttachmentString(attachment))
             {
+                Tag = attachment
+            };
+            if (attachment.damage != null)
+            {
+                attachmentnode.Nodes.Add(CreateDamageNode(attachment.damage));
+            }
+            if (attachment.item.Count > 0)
+            {
+                foreach (spawnableTypeItem STI in attachment.item)
+                {
+                    attachmentnode.Nodes.Add(CreateItemNode(STI));
+                }
+            }
+            return attachmentnode;
+        }
+        private string getAttachmentString(spawnableTypeAttachment attachment)
+        {
+            string attachmentstring = "Attachments :";
+            if (attachment.preset != null)
+            {
+                attachmentstring += " Preset = " + attachment.preset;
+            }
+            if (attachment.chanceSpecified)
+            {
+                attachmentstring += " Chance = " + attachment.chance;
+            }
 
-            }
-            else if (CurrentspawnabletypesTypetype is spawnabletypesTypeDamage)
+            return attachmentstring;
+        }
+        private TreeNode createCargoNopdes(spawnableTypeCargo cargo)
+        {
+            
+            TreeNode cargonode = new TreeNode(Getcargostring(cargo))
             {
-                spawnabletypesTypeDamage currentdamage = CurrentspawnabletypesTypetype as spawnabletypesTypeDamage;
-                groupBox78.Visible = true;
-                DamageMinNUD.Value = currentdamage.min;
-                DamageMaxNUD.Value = currentdamage.max;
-            }
-            else if (CurrentspawnabletypesTypetype is spawnabletypesTypeTag)
+                Tag = cargo
+            };
+            if (cargo.damage != null)
             {
-                spawnabletypesTypeTag currenttag = CurrentspawnabletypesTypetype as spawnabletypesTypeTag;
-                Spaenabletypestagbox.Visible = true;
-                textBox2.Text = currenttag.name;
+                cargonode.Nodes.Add(CreateDamageNode(cargo.damage));
             }
-            else if (CurrentspawnabletypesTypetype is spawnabletypesTypeCargo)
+            if (cargo.item.Count > 0)
             {
+                foreach (spawnableTypeItem STI in cargo.item)
+                {
+                    cargonode.Nodes.Add(CreateItemNode(STI));
+                }
+            }
+            return cargonode;
+        }
+        private string Getcargostring(spawnableTypeCargo cargo)
+        {
+            string cargostring = "Cargo :";
+            if (cargo.preset != null)
+            {
+                cargostring += " Preset = " + cargo.preset;
+            }
+            if (cargo.chanceSpecified)
+            {
+                cargostring += " Chance = " + cargo.chance;
+            }
+            return cargostring;
+        }
+        private TreeNode CreateDamageNode(spawnableTypeDamage damage)
+        {
+            TreeNode damagenode = new TreeNode(GetDamageString(damage))
+            {
+                Tag = damage
+            };
+            return damagenode;
+        }
+        private string GetDamageString(spawnableTypeDamage damage)
+        {
+            return $"damage : quantmin={damage.min} quamtmax={damage.max}";
+        }
+        private TreeNode CreateItemNode(spawnableTypeItem sTI)
+        {
+            TreeNode treeNode = new TreeNode(GetItemString(sTI))
+            {
+                Tag = sTI
+            };
+            if (sTI.damage != null)
+            {
+                treeNode.Nodes.Add(CreateDamageNode(sTI.damage));
+            }
+            if (sTI.attachments.Count > 0)
+            {
+                foreach (spawnableTypeAttachment attachment in sTI.attachments)
+                {
+                    treeNode.Nodes.Add(createattachmentnodes(attachment));
+                }
+            }
+            if (sTI.cargo.Count > 0)
+            {
+                foreach (spawnableTypeCargo cargo in sTI.cargo)
+                {
+                    treeNode.Nodes.Add(createCargoNopdes(cargo));
+                }
+            }
+
+            return treeNode;
+        }
+        private string GetItemString(spawnableTypeItem sTI)
+        {
+            string itemstring = $"Item = {sTI.name}";
+            if (sTI.equipSpecified)
+            {
+                itemstring += " equip = " + sTI.equip;
+            }
+            if (sTI.chanceSpecified)
+            {
+                itemstring += " Chance = " + sTI.chance;
+            }
+            if (sTI.quantminSpecified && sTI.quantmaxSpecified)
+            {
+                itemstring += " quantMin = " + sTI.quantmin + " quantMax = " + sTI.quantmax;
+            }
+
+            return itemstring;
+        }
+        private void SpawnableTypesTV_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            SpawnableTypeGB.Visible = false;
+            DamageGB.Visible = false;
+            SpawnabletypestagGB.Visible = false;
+            CargoGB.Visible = false;
+            AttachmentGB.Visible = false;
+            CargoPresetGB.Visible = false;
+            groupBox34.Visible = false;
+            isUserInteraction = false;
+            SpawnableTypesTV.SelectedNode = e.Node;
+            currentSPTreeNode = e.Node;
+            TreeNode config = FindParentWithTagOfType<Spawnabletypesconfig>(currentSPTreeNode);
+            if(config != null)
+                currentspawnabletypesfile = config.Tag as Spawnabletypesconfig;
+            if (e.Node.Tag is Spawnabletypesconfig)
+            {
+                currentspawnabletypesfile = e.Node.Tag as Spawnabletypesconfig;
+            }
+            else if(e.Node.Tag is SpawnableType)
+            {
+                SpawnableType type = currentSPTreeNode.Tag as SpawnableType;
+                SpawnableTypeTB.Text = type.name;
+                SpawnableTypeGB.Visible = true;
+            }
+            else if(e.Node.Tag is spawnableTypeTag)
+            {
+                SpawnabletypestagGB.Visible = true;
+                spawnableTypeTag tag = currentSPTreeNode.Tag as spawnableTypeTag;
+                textBox2.Text = tag.name;
+            }
+            else if (e.Node.Tag is spawnableTypeDamage)
+            {
+                spawnableTypeDamage damage = currentSPTreeNode.Tag as spawnableTypeDamage;
+                DamageGB.Visible = true;
+                SetDamange(damage);
+            }
+            else if (e.Node.Tag is spawnableTypeCargo)
+            {
+                spawnableTypeCargo currentcargo = currentSPTreeNode.Tag as spawnableTypeCargo;
                 CargoGB.Visible = true;
-                spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
-                CargochanceCB.Checked = !currentcargo.chanceSpecified;
-                SetCargo();
+                CarcgoChanceNUD.Visible = UseCargoChanceCB.Checked = currentcargo.chanceSpecified;
+                CarcgoChanceNUD.Value = currentcargo.chance;
+                if (CargoPresetGB.Visible = CargoPresetTB.Visible = IsCargoPresetCB.Checked = currentcargo.preset != null)
+                {
+                    CargoPresetTB.Text = currentcargo.preset;
+                }
             }
-            else if (CurrentspawnabletypesTypetype is spawnabletypesTypeAttachments)
+            else if (e.Node.Tag is spawnableTypeAttachment)
             {
-
+                spawnableTypeAttachment attachment = currentSPTreeNode.Tag as spawnableTypeAttachment;
                 AttachmentGB.Visible = true;
-                spawnabletypesTypeAttachments currentAttchment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
-                AttchmentIsPresetCB.Checked = !currentAttchment.chanceSpecified;
-                setattchments();
+                AttachmentchanceNUD.Visible = UseAttachmentchanceCB.Checked = attachment.chanceSpecified;
+                AttachmentchanceNUD.Value = attachment.chance;
+                if (AttachmentPresetGB.Visible = AttachemntTB.Visible = isAttchmentIsPresetCB.Checked = attachment.preset != null)
+                {
+                    AttachemntTB.Text = attachment.preset;
+                }
+            }
+            else if( e.Node.Tag is spawnableTypeItem)
+            {
+                spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+                groupBox34.Visible = true;
+                ItemNameTB.Text = item.name;
+                ItemChanceNUD.Visible = UseItemchanceCB.Checked = item.chanceSpecified;
+                ItemChanceNUD.Value = item.chance;
+                ItemPresetGB.Visible = isItemEquipCB.Checked = item.equipSpecified;
+                if(itemQuantGB.Visible = checkBox49.Checked = (item.quantmaxSpecified && item.quantminSpecified))
+                {
+                    numericUpDown4.Value = item.quantmin;
+                    numericUpDown3.Value = item.quantmax;
+                }
             }
             isUserInteraction = true;
         }
-        private void CargochanceCB_CheckedChanged(object sender, EventArgs e)
+        TreeNode FindParentWithTagOfType<T>(TreeNode node)
+        {
+            TreeNode current = node.Parent;
+
+            while (current != null)
+            {
+                if (current.Tag is T)
+                {
+                    return current;
+                }
+                current = current.Parent;
+            }
+            return null;
+        }
+        private void SetDamange(spawnableTypeDamage damage)
+        {
+            DamageMinNUD.Value = damage.min;
+            DamageMaxNUD.Value = damage.max;
+        }
+        private void DamageMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            spawnableTypeDamage currentDamage = currentSPTreeNode.Tag as spawnableTypeDamage;
+            currentDamage.min = DamageMinNUD.Value;
+            currentSPTreeNode.Text = GetDamageString(currentDamage);
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void DamageMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            spawnableTypeDamage currentDamage = currentSPTreeNode.Tag as spawnableTypeDamage;
+            currentDamage.max = DamageMaxNUD.Value;
+            currentSPTreeNode.Text = GetDamageString(currentDamage);
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void IsCargoPresetCB_CheckedChanged(object sender, EventArgs e)
         {
             if (isUserInteraction)
             {
-                spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
-                currentcargo.chanceSpecified = !CargochanceCB.Checked;
-                if (currentcargo.chanceSpecified)
+                spawnableTypeCargo currentcargo = currentSPTreeNode.Tag as spawnableTypeCargo;
+                if(CargoPresetTB.Visible = CargoPresetGB.Visible = IsCargoPresetCB.Checked)
+                {
+                    CargoPresetTB.Text = currentcargo.preset;
+                }
+                else
                 {
                     currentcargo.preset = null;
-                    currentcargo.chance = 1;
-
                 }
-                else
-                {
-                    currentcargo.item = new BindingList<spawnabletypesTypeCargoItem>();
-                    currentcargo.chance = 0;
-
-                }
+                currentSPTreeNode.Text = Getcargostring(currentcargo);
+                currentspawnabletypesfile.isDirty = true;
             }
-            SetCargo();
         }
-        private void AttchmentIsPresetCB_CheckedChanged(object sender, EventArgs e)
+        private void isAttchmentIsPresetCB_CheckedChanged(object sender, EventArgs e)
         {
             if (isUserInteraction)
             {
-                spawnabletypesTypeAttachments currentAttchment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
-                currentAttchment.chanceSpecified = !AttchmentIsPresetCB.Checked;
-                if (currentAttchment.chanceSpecified)
+                spawnableTypeAttachment currentattachment = currentSPTreeNode.Tag as spawnableTypeAttachment;
+                if (AttachemntTB.Visible = AttachmentPresetGB.Visible = isAttchmentIsPresetCB.Checked)
                 {
-                    currentAttchment.preset = null;
-                    currentAttchment.chance = 1;
-                    AttachemntTB.Text = "";
-                    currentAttchment.item = new BindingList<spawnabletypesTypeAttachmentsItem>();
+                    AttachemntTB.Text = currentattachment.preset;
                 }
                 else
                 {
-                    currentAttchment.item = new BindingList<spawnabletypesTypeAttachmentsItem>();
-                    currentAttchment.chance = 0;
-                    AttachemntTB.Text = "";
+                    currentattachment.preset = null;
                 }
-            }
-            setattchments();
-        }
-        private void setattchments()
-        {
-            spawnabletypesTypeAttachments currentAttchment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
-            if (currentAttchment.chanceSpecified)
-            {
-                AttachmentItemLB.Visible = true;
-                CargoAttachmentRemoveButton.Visible = true;
-                cargoattachemntAddButton.Visible = true;
-                chancAttachmentselabel.Visible = true;
-                AttachmentChangeItemButton.Visible = true;
-                AttachmentPresetGB.Visible = false;
-                ItemAttachmentchanceNUD.Visible = true;
-                AttachmemtItemChanceLabel.Visible = true;
-                AttachmentchanceNUD.Visible = true;
-                AttachemntTB.Visible = false;
-                AttachmentchanceNUD.Value = currentAttchment.chance;
-                AttachmentItemLB.DisplayMember = "DisplayName";
-                AttachmentItemLB.ValueMember = "Value";
-                AttachmentItemLB.DataSource = currentAttchment.item;
-            }
-            else
-            {
-                AttachmentItemLB.Visible = false;
-                CargoAttachmentRemoveButton.Visible = false;
-                cargoattachemntAddButton.Visible = false;
-                chancAttachmentselabel.Visible = false;
-                AttachmentchanceNUD.Visible = false;
-                ItemAttachmentchanceNUD.Visible = false;
-                AttachemntTB.Visible = true;
-                AttachmemtItemChanceLabel.Visible = false;
-                AttachmentChangeItemButton.Visible = false;
-                AttachmentPresetGB.Visible = true;
-                if (currentAttchment.preset != null)
-                    AttachemntTB.Text = currentAttchment.preset;
-                else
-                    AttachemntTB.Text = "";
-            }
-        }
-        private void SetCargo()
-        {
-            spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
-            if (currentcargo.chanceSpecified)
-            {
-                cargoItemRemoveButton.Visible = true;
-                CargoItemAddButton.Visible = true;
-                CargoPresetTB.Visible = false;
-                CargoItemchanceNUD.Visible = true;
-                CargoItemLB.Visible = true;
-                cargochanceLabel.Visible = true;
-                CargoChangeItemButton.Visible = true;
-                CargoPresetGB.Visible = false;
-                CarcgoChanceNUD.Visible = true;
-                CarcgoChanceNUD.Value = currentcargo.chance;
-                CargoItemLB.DisplayMember = "DisplayName";
-                CargoItemLB.ValueMember = "Value";
-                CargoItemLB.DataSource = currentcargo.item;
-                checkBox49.Visible = true;
-            }
-            else
-            {
-                cargoItemRemoveButton.Visible = false;
-                CargoItemAddButton.Visible = false;
-                CargoPresetTB.Visible = true;
-                CargoItemchanceNUD.Visible = false;
-                CargoItemLB.Visible = false;
-                CarcgoChanceNUD.Visible = false;
-                cargochanceLabel.Visible = false;
-                CargoChangeItemButton.Visible = false;
-                CargoPresetGB.Visible = true;
-                checkBox49.Visible = false;
-                if (currentcargo.preset != null)
-                    CargoPresetTB.Text = currentcargo.preset;
-                else
-                    CargoPresetTB.Text = "";
+                currentSPTreeNode.Text = getAttachmentString(currentattachment);
+                currentspawnabletypesfile.isDirty = true;
             }
         }
         private void darkButton36_Click(object sender, EventArgs e)
         {
             randompresetsCargo newcargopreset = CargoPresetComboBox.SelectedItem as randompresetsCargo;
-            spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
-            currentcargo.preset = newcargopreset.name;
-            SetCargo();
+            spawnableTypeCargo currentcargo = currentSPTreeNode.Tag as spawnableTypeCargo;
+            CargoPresetTB.Text = currentcargo.preset = newcargopreset.name;
+            currentSPTreeNode.Text = Getcargostring(currentcargo);
             currentspawnabletypesfile.isDirty = true;
         }
         private void darkButton37_Click(object sender, EventArgs e)
         {
             randompresetsAttachments newattachmentpreset = AttachmentPresetComboBox.SelectedItem as randompresetsAttachments;
-            spawnabletypesTypeAttachments currentattchemnt = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
-            currentattchemnt.preset = newattachmentpreset.name;
-            setattchments();
-            currentspawnabletypesfile.isDirty = true;
-        }
-        private void ClearInfo()
-        {
-            textBox2.Text = null;
-            groupBox78.Visible = false;
-            Spaenabletypestagbox.Visible = false;
-            AttachmentGB.Visible = false;
-            CargoGB.Visible = false;
-        }
-        private void darkButton34_Click(object sender, EventArgs e)
-        {
-            if (listBox6.SelectedItems == null) { return; }
-            int index = listBox6.SelectedIndex;
-            CurrentspawnabletypesType.Items.Remove(CurrentspawnabletypesTypetype);
-            currentspawnabletypesfile.isDirty = true;
-            listBox6.SelectedIndex = -1;
-            if (index == 0 && listBox6.Items.Count > 0)
-                listBox6.SelectedIndex = index;
-            else
-                listBox6.SelectedIndex = index - 1;
-        }
-        private void darkButton30_Click(object sender, EventArgs e)
-        {
-            if (SpawnabletpesLB.SelectedItem == null) { return; }
-            if (CurrentspawnabletypesType.Items == null)
-            {
-                CurrentspawnabletypesType.Items = new BindingList<object>
-                {
-                    new spawnabletypesTypeHoarder()
-                };
-            }
-            else
-                CurrentspawnabletypesType.Items.Insert(0, new spawnabletypesTypeHoarder());
-            listBox6.SelectedIndex = -1;
-            listBox6.SelectedIndex = 0;
-            currentspawnabletypesfile.isDirty = true;
-
-        }
-        private void darkButton26_Click(object sender, EventArgs e)
-        {
-            if (SpawnabletpesLB.SelectedItem == null) { return; }
-            if (CurrentspawnabletypesType.Items == null)
-            {
-                CurrentspawnabletypesType.Items = new BindingList<object>
-                {
-                    new spawnabletypesTypeDamage()
-                };
-            }
-            else
-                CurrentspawnabletypesType.Items.Insert(0, new spawnabletypesTypeDamage());
-            listBox6.SelectedIndex = -1;
-            listBox6.SelectedIndex = 0;
-            currentspawnabletypesfile.isDirty = true;
-        }
-        private void darkButton31_Click(object sender, EventArgs e)
-        {
-            if (SpawnabletpesLB.SelectedItem == null) { return; }
-            if (CurrentspawnabletypesType.Items == null)
-            {
-                CurrentspawnabletypesType.Items = new BindingList<object>
-                {
-                     new spawnabletypesTypeTag()
-                };
-            }
-            else
-                CurrentspawnabletypesType.Items.Insert(0, new spawnabletypesTypeTag());
-            listBox6.SelectedIndex = -1;
-            listBox6.SelectedIndex = 0;
-            currentspawnabletypesfile.isDirty = true;
-        }
-        private void darkButton32_Click(object sender, EventArgs e)
-        {
-            if (SpawnabletpesLB.SelectedItem == null) { return; }
-            spawnabletypesTypeCargo newcargo = new spawnabletypesTypeCargo()
-            {
-                item = new BindingList<spawnabletypesTypeCargoItem>()
-            };
-            if (CurrentspawnabletypesType.Items == null)
-                CurrentspawnabletypesType.Items = new BindingList<object>();
-            CurrentspawnabletypesType.Items.Add(newcargo);
-            listBox6.SelectedIndex = -1;
-            listBox6.SelectedIndex = 0;
-            currentspawnabletypesfile.isDirty = true;
-        }
-        private void darkButton33_Click(object sender, EventArgs e)
-        {
-            if (SpawnabletpesLB.SelectedItem == null) { return; }
-            spawnabletypesTypeAttachments newspawnabletypesTypeAttachments = new spawnabletypesTypeAttachments();
-            if (CurrentspawnabletypesType.Items == null)
-                CurrentspawnabletypesType.Items = new BindingList<object>();
-            CurrentspawnabletypesType.Items.Add(newspawnabletypesTypeAttachments);
-            listBox6.SelectedIndex = -1;
-            listBox6.SelectedIndex = 0;
+            spawnableTypeAttachment currentattchemnt = currentSPTreeNode.Tag as spawnableTypeAttachment;
+            AttachemntTB.Text = currentattchemnt.preset = newattachmentpreset.name;
+            currentSPTreeNode.Text = getAttachmentString(currentattchemnt);
             currentspawnabletypesfile.isDirty = true;
         }
         private void darkButton29_Click(object sender, EventArgs e)
         {
-            typesTypeTag t = comboBox5.SelectedItem as typesTypeTag;
-            spawnabletypesTypeTag currenttag = CurrentspawnabletypesTypetype as spawnabletypesTypeTag;
-            currenttag.name = t.name;
-            textBox2.Text = currenttag.name;
+            listsTag t = comboBox5.SelectedItem as listsTag;
+            spawnableTypeTag currenttag = currentSPTreeNode.Tag as spawnableTypeTag;
+            textBox2.Text = currenttag.name = t.name;
+            currentSPTreeNode.Text = getTagString(currenttag);
             currentspawnabletypesfile.isDirty = true;
         }
         private void AttachmentChangeItemButton_Click(object sender, EventArgs e)
@@ -4431,23 +4486,23 @@ namespace DayZeEditor
                 UseOnlySingleitem = true
             };
             DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    spawnabletypesTypeAttachmentsItem currentcargoitem = AttachmentItemLB.SelectedItem as spawnabletypesTypeAttachmentsItem;
-                    currentcargoitem.name = l;
-                    AttachmentItemLB.Refresh();
-                    currentspawnabletypesfile.isDirty = true;
-                    setattchments();
-                }
+            //if (result == DialogResult.OK)
+            //{
+            //    List<string> addedtypes = form.addedtypes.ToList();
+            //    foreach (string l in addedtypes)
+            //    {
+            //        spawnabletypesTypeAttachmentsItem currentcargoitem = AttachmentItemLB.SelectedItem as spawnabletypesTypeAttachmentsItem;
+            //        currentcargoitem.name = l;
+            //        AttachmentItemLB.Refresh();
+            //        currentspawnabletypesfile.isDirty = true;
+            //        setattchments();
+            //    }
 
-            }
-            else if (result == DialogResult.Cancel)
-            {
-                return;
-            }
+            //}
+            //else if (result == DialogResult.Cancel)
+            //{
+            //    return;
+            //}
         }
         private void CargoChangeItemButton_Click(object sender, EventArgs e)
         {
@@ -4464,13 +4519,11 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
-                    currentcargoitem.name = l;
-                    CargoItemLB.Refresh();
+                    spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+                    ItemNameTB.Text = item.name = l;
+                    currentSPTreeNode.Text = GetItemString(item);
                     currentspawnabletypesfile.isDirty = true;
-                    SetCargo();
                 }
-
             }
             else if (result == DialogResult.Cancel)
             {
@@ -4480,124 +4533,120 @@ namespace DayZeEditor
         private void AttachmentchanceNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            spawnabletypesTypeAttachments currentattachment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
+            spawnableTypeAttachment currentattachment = currentSPTreeNode.Tag as spawnableTypeAttachment;
             currentattachment.chance = AttachmentchanceNUD.Value;
+            currentSPTreeNode.Text = getAttachmentString(currentattachment);
             currentspawnabletypesfile.isDirty = true;
         }
         private void CarcgoChanceNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
+            spawnableTypeCargo currentcargo = currentSPTreeNode.Tag as spawnableTypeCargo;
             currentcargo.chance = CarcgoChanceNUD.Value;
+            currentSPTreeNode.Text = Getcargostring(currentcargo);
             currentspawnabletypesfile.isDirty = true;
         }
-        private void listBox7_SelectedIndexChanged(object sender, EventArgs e)
+        private void UseCargoChanceCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (CargoItemLB.SelectedItems.Count == 0) return;
-            spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
-            isUserInteraction = false;
-            if (currentcargoitem.chanceSpecified)
-            {
-                checkBox49.Checked = currentcargoitem.chanceSpecified;
-                CargoItemchanceNUD.Value = currentcargoitem.chance;
-            }
-            isUserInteraction = true;
-        }
-        private void checkBox49_CheckedChanged(object sender, EventArgs e)
-        {
-            CargoItemchanceNUD.Visible = checkBox49.Checked;
             if (!isUserInteraction) return;
-            spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
-            currentcargoitem.chanceSpecified = checkBox49.Checked;
-            if (currentcargoitem.chanceSpecified)
-            {
-                CargoItemchanceNUD.Value = currentcargoitem.chance = 1;
-            }
-            else
-            {
-
-            }
+            spawnableTypeCargo currentcargo = currentSPTreeNode.Tag as spawnableTypeCargo;
+            CarcgoChanceNUD.Visible = currentcargo.chanceSpecified = UseCargoChanceCB.Checked;
+            currentSPTreeNode.Text = Getcargostring(currentcargo);
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void UseAttachmentchanceCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            spawnableTypeAttachment currentattachment = currentSPTreeNode.Tag as spawnableTypeAttachment;
+            AttachmentchanceNUD.Visible = currentattachment.chanceSpecified = UseAttachmentchanceCB.Checked;
+            currentSPTreeNode.Text = getAttachmentString(currentattachment);
             currentspawnabletypesfile.isDirty = true;
         }
         private void AttachmentItemLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (AttachmentItemLB.SelectedItems.Count == 0) return;
-            spawnabletypesTypeAttachmentsItem currentAttachmentitem = AttachmentItemLB.SelectedItem as spawnabletypesTypeAttachmentsItem;
-            isUserInteraction = false;
-            ItemAttachmentchanceNUD.Value = currentAttachmentitem.chance;
-            isUserInteraction = true;
-        }
-        private void darkButton35_Click_1(object sender, EventArgs e)
-        {
-            spawnabletypesTypeCargoItem newitem = new spawnabletypesTypeCargoItem()
-            {
-                name = "New Item, Please change me...",
-                chance = 1
-            };
-            spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
-            currentcargo.item.Add(newitem);
-            currentspawnabletypesfile.isDirty = true;
-        }
-        private void darkButton39_Click(object sender, EventArgs e)
-        {
-            if (CargoItemLB.SelectedItems == null) { return; }
-            int index = CargoItemLB.SelectedIndex;
-            spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
-            spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
-            currentcargo.item.Remove(currentcargoitem);
-            currentspawnabletypesfile.isDirty = true;
-            CargoItemLB.SelectedIndex = -1;
-            if (index == 0 && CargoItemLB.Items.Count > 0)
-                CargoItemLB.SelectedIndex = index;
-            else
-                CargoItemLB.SelectedIndex = index - 1;
+
         }
         private void CargoItemchanceNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
-            currentcargoitem.chance = CargoItemchanceNUD.Value;
+
             currentspawnabletypesfile.isDirty = true;
         }
-        private void ItemAttachmentchanceNUD_ValueChanged(object sender, EventArgs e)
+        private void UseItemchanceCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            spawnabletypesTypeAttachmentsItem currentattachmentitem = AttachmentItemLB.SelectedItem as spawnabletypesTypeAttachmentsItem;
-            currentattachmentitem.chance = ItemAttachmentchanceNUD.Value;
+            spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+            ItemChanceNUD.Visible = item.chanceSpecified = UseItemchanceCB.Checked;
+            currentSPTreeNode.Text = GetItemString(item);
             currentspawnabletypesfile.isDirty = true;
         }
-        private void darkButton38_Click_1(object sender, EventArgs e)
+        private void ItemChanceNUD_ValueChanged(object sender, EventArgs e)
         {
-            spawnabletypesTypeAttachmentsItem newitem = new spawnabletypesTypeAttachmentsItem()
+            if (!isUserInteraction) return;
+            spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+            item.chance = ItemChanceNUD.Value;
+            currentSPTreeNode.Text = GetItemString(item);
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void checkBox49_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+            itemQuantGB.Visible = item.quantminSpecified = item.quantmaxSpecified = checkBox49.Checked;
+            numericUpDown4.Value = item.quantmin;
+            numericUpDown3.Value = item.quantmax;
+            currentSPTreeNode.Text = GetItemString(item);
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+            item.quantmin = (int)numericUpDown4.Value;
+            currentSPTreeNode.Text = GetItemString(item);
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+            item.quantmax = (int)numericUpDown3.Value;
+            currentSPTreeNode.Text = GetItemString(item);
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void isItemEquipCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isUserInteraction)
             {
-                name = "New Item, Please change me...",
-                chance = 1
-            };
-            spawnabletypesTypeAttachments currentattachment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
-            currentattachment.item.Add(newitem);
-            currentspawnabletypesfile.isDirty = true;
+                spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+                if(ItemPresetGB.Visible = item.equipSpecified = item.equip = isItemEquipCB.Checked)
+                {
+
+                }
+                else
+                {
+
+                }
+                currentSPTreeNode.Text = GetItemString(item);
+                currentspawnabletypesfile.isDirty = true;
+            }
         }
-        private void darkButton35_Click_2(object sender, EventArgs e)
+        private void darkButton26_Click(object sender, EventArgs e)
         {
-            if (AttachmentItemLB.SelectedItems == null) { return; }
-            int index = AttachmentItemLB.SelectedIndex;
-            spawnabletypesTypeAttachmentsItem currentAttachmentitem = AttachmentItemLB.SelectedItem as spawnabletypesTypeAttachmentsItem;
-            spawnabletypesTypeAttachments currentAttachment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
-            currentAttachment.item.Remove(currentAttachmentitem);
+            string newitem = ItemPresetCB.GetItemText(ItemPresetCB.SelectedItem);
+            spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+            item.name = ItemNameTB.Text = newitem;
+            currentSPTreeNode.Text = GetItemString(item);
             currentspawnabletypesfile.isDirty = true;
-            AttachmentItemLB.SelectedIndex = -1;
-            if (index == 0 && AttachmentItemLB.Items.Count > 0)
-                AttachmentItemLB.SelectedIndex = index;
-            else
-                AttachmentItemLB.SelectedIndex = index - 1;
         }
-        private void darkButton35_Click_3(object sender, EventArgs e)
+        private void darkButton30_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject
+                currentproject = currentproject,
+                UseOnlySingleitem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -4605,29 +4654,81 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    spawnabletypesType newspawnabletypesType = new spawnabletypesType()
-                    {
-                        name = l,
-                        Items = new BindingList<object>()
-
-                    };
-                    currentspawnabletypesfile.spawnabletypes.type.Add(newspawnabletypesType);
+                    SpawnableType type = currentSPTreeNode.Tag as SpawnableType;
+                    SpawnableTypeTB.Text = type.name = l;
+                    currentSPTreeNode.Text = type.name;
                     currentspawnabletypesfile.isDirty = true;
                 }
-
             }
             else if (result == DialogResult.Cancel)
             {
                 return;
             }
-
         }
-        private void darkButton38_Click_2(object sender, EventArgs e)
+        private void SpawnableTypesTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            currentspawnabletypesfile.spawnabletypes.type.Remove(SpawnabletpesLB.SelectedItem as spawnabletypesType);
-            currentspawnabletypesfile.isDirty = true;
+            isUserInteraction = false;
+            SpawnableTypesTV.SelectedNode = e.Node;
+            currentSPTreeNode = e.Node;
+            foreach (ToolStripItem item in SpawnableTypescontextMenu.Items)
+            {
+                item.Visible = false;
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                if(e.Node.Tag.ToString() == "Root")
+                {
+                    addNewSpawnableTypesFileToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is Spawnabletypesconfig)
+                {
+                    addNewDamageToolStripMenuItem.Visible = true;
+                    addNewSpawnableTypeToolStripMenuItem.Visible = true;
+                    removeSelectedToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is SpawnableType)
+                {
+                    addNewHoarderToolStripMenuItem.Visible = true;
+                    addNewDamageToolStripMenuItem.Visible = true;
+                    addNewTagToolStripMenuItem.Visible = true;
+                    addNewCargoToolStripMenuItem.Visible = true;
+                    addNewAttachmentToolStripMenuItem.Visible = true;
+                    removeSelectedToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is spawnableTypesHoarder)
+                {
+                    removeSelectedToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is spawnableTypeTag)
+                {
+                    removeSelectedToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is spawnableTypeDamage)
+                {
+                    removeSelectedToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is spawnableTypeCargo)
+                {
+                    addNewDamageToolStripMenuItem.Visible = true;
+                    addNewItemToolStripMenuItem.Visible = true;
+                    removeSelectedToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is spawnableTypeAttachment)
+                {
+                    addNewDamageToolStripMenuItem.Visible = true;
+                    addNewItemToolStripMenuItem.Visible = true;
+                    removeSelectedToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is spawnableTypeItem)
+                {
+                    addNewDamageToolStripMenuItem.Visible = true;
+                    removeSelectedToolStripMenuItem.Visible = true;
+                }
+                SpawnableTypescontextMenu.Show(Cursor.Position);
+            }
+            isUserInteraction = true;
         }
-        private void darkButton39_Click_1(object sender, EventArgs e)
+        private void addNewSpawnableTypesFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddNeweventFile form = new AddNeweventFile
             {
@@ -4635,7 +4736,7 @@ namespace DayZeEditor
                 newlocation = true,
                 setbuttontest = "Add Spawnabletype File",
                 SetTitle = "Add New Spawnabletypes File",
-                settype = "Spawnabletype file Name (Use ModName.. eg. DorTags)"
+                settype = "Spawnabletype file Name (Use ModName.. eg. DogTags)"
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -4657,56 +4758,292 @@ namespace DayZeEditor
                 currentproject.SetSpawnabletypes();
                 LoadSpawnableTypes();
                 populateEconmyTreeview();
+                SpawnableTypesTV.Nodes[0].Expand();
             }
         }
-        private void darkButton40_Click(object sender, EventArgs e)
+        private void addNewSpawnableTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string Modname = Path.GetFileNameWithoutExtension(currentspawnabletypesfile.Filename);
-            currentproject.EconomyCore.RemoveCe(Modname, out string foflderpath, out string filename, out bool deletedirectory);
-            File.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath + "\\" + filename);
-            if (deletedirectory)
-                Directory.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath, true);
-            currentproject.EconomyCore.SaveEconomycore();
-            currentproject.removeSpawnabletype(currentspawnabletypesfile.Filename);
-            currentproject.SetSpawnabletypes();
-            populateEconmyTreeview();
+            currentspawnabletypesfile = currentSPTreeNode.Tag as Spawnabletypesconfig;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    SpawnableType newtype = new SpawnableType()
+                    {
+                        name = l,
+                        Items = new BindingList<object>()
+                    };
+                    currentspawnabletypesfile.spawnabletypes.type.Add(newtype);
+                    TreeNode IN = new TreeNode(newtype.name)
+                    {
+                        Tag = newtype
+                    };
+                    currentSPTreeNode.Nodes.Add(IN);
+                }
+                SpawnableTypesTV.SelectedNode = currentSPTreeNode.LastNode;
+                currentspawnabletypesfile.isDirty = true;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
         }
-        private void HasDamageCB_CheckedChanged(object sender, EventArgs e)
+        private void addNewHoarderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (!isUserInteraction) return;
-            //if (HasDamageCB.Checked)
-            //{
-            //    if (currentspawnabletypesfile.spawnabletypes.damage == null)
-            //    {
-            //        currentspawnabletypesfile.spawnabletypes.damage = new spawnabletypesDamage()
-            //        {
-            //            min = 0,
-            //            max = 0
-            //        };
-            //    }
-            //}
-            //else
-            //{
-            //    if (currentspawnabletypesfile.spawnabletypes.damage != null)
-            //    {
-            //        currentspawnabletypesfile.spawnabletypes.damage = null;
-            //    }
-            //}
-            //currentspawnabletypesfile.isDirty = true;
-            //SetDamange();
-        }
-        private void DamageMinNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!isUserInteraction) return;
-            spawnabletypesTypeDamage currentDamage = CurrentspawnabletypesTypetype as spawnabletypesTypeDamage;
-            currentDamage.min = DamageMinNUD.Value;
+            SpawnableType type = currentSPTreeNode.Tag as SpawnableType;
+            spawnableTypesHoarder newhoarder = new spawnableTypesHoarder();
+            type.Items.Add(newhoarder);
+            currentSPTreeNode.Nodes.Add( new TreeNode("hoarder")
+            {
+                Tag = newhoarder
+            });
             currentspawnabletypesfile.isDirty = true;
         }
-        private void DamageMaxNUD_ValueChanged(object sender, EventArgs e)
+        private void addNewTagToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!isUserInteraction) return;
-            spawnabletypesTypeDamage currentDamage = CurrentspawnabletypesTypetype as spawnabletypesTypeDamage;
-            currentDamage.max = DamageMaxNUD.Value;
+            if (currentSPTreeNode.Tag is SpawnableType)
+            {
+                SpawnableType type = currentSPTreeNode.Tag as SpawnableType;
+                spawnableTypeTag newtag = new spawnableTypeTag();
+                type.Items.Add(newtag);
+                TreeNode newTagNode = new TreeNode(getTagString(newtag))
+                {
+                    Tag = newtag
+                };
+                currentSPTreeNode.Nodes.Add(newTagNode);
+                currentspawnabletypesfile.isDirty = true;
+            }
+        }
+        private void addNewDamageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            spawnableTypeDamage newdamage = new spawnableTypeDamage();
+            if (currentSPTreeNode.Tag is SpawnableType)
+            {
+                SpawnableType type = currentSPTreeNode.Tag as SpawnableType;
+                type.Items.Insert(0, newdamage);
+               
+            }
+            else if (currentSPTreeNode.Tag is spawnableTypeCargo)
+            {
+                spawnableTypeCargo cargo = currentSPTreeNode.Tag as spawnableTypeCargo;
+                cargo.damage = newdamage;
+            }
+            else if (currentSPTreeNode.Tag is spawnableTypeAttachment)
+            {
+                spawnableTypeAttachment attachment = currentSPTreeNode.Tag as spawnableTypeAttachment;
+                attachment.damage = newdamage;
+            }
+            else if (currentSPTreeNode.Tag is spawnableTypeItem)
+            {
+                spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+                item.damage = newdamage;
+            }
+            else if (currentSPTreeNode.Tag is Spawnabletypesconfig)
+            {
+                currentspawnabletypesfile = currentSPTreeNode.Tag as Spawnabletypesconfig;
+                currentspawnabletypesfile.spawnabletypes.damage = newdamage;
+            }
+            TreeNode newdamageNode = CreateDamageNode(newdamage);
+            currentSPTreeNode.Nodes.Insert(0, newdamageNode);
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void addNewItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    spawnableTypeItem newitem = new spawnableTypeItem()
+                    {
+                        name = l,
+                        cargo = new BindingList<spawnableTypeCargo>(),
+                        attachments = new BindingList<spawnableTypeAttachment>()
+                    };
+                    if (currentSPTreeNode.Tag is spawnableTypeCargo)
+                    {
+                        spawnableTypeCargo cargo = currentSPTreeNode.Tag as spawnableTypeCargo;
+                        cargo.item.Add(newitem);
+                    }
+                    else if (currentSPTreeNode.Tag is spawnableTypeAttachment)
+                    {
+                        spawnableTypeAttachment attachments = currentSPTreeNode.Tag as spawnableTypeAttachment;
+                        attachments.item.Add(newitem);
+                    }
+                    currentSPTreeNode.Nodes.Add(CreateItemNode(newitem));
+                }
+                SpawnableTypesTV.SelectedNode = currentSPTreeNode.LastNode;
+                currentspawnabletypesfile.isDirty = true;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void addNewCargoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            spawnableTypeCargo newcargo = new spawnableTypeCargo()
+            {
+                item = new BindingList<spawnableTypeItem>()
+            };
+            if (currentSPTreeNode.Tag is SpawnableType)
+            {
+                SpawnableType type = currentSPTreeNode.Tag as SpawnableType;
+                type.Items.Add(newcargo);
+            }
+            else if (currentSPTreeNode.Tag is spawnableTypeItem)
+            {
+                spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+                item.cargo.Add(newcargo);
+            }
+            currentSPTreeNode.Nodes.Add(createCargoNopdes(newcargo));
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void addNewAttachmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            spawnableTypeAttachment newattchemnts = new spawnableTypeAttachment()
+            {
+                item = new BindingList<spawnableTypeItem>()
+            };
+            if (currentSPTreeNode.Tag is SpawnableType)
+            {
+                SpawnableType type = currentSPTreeNode.Tag as SpawnableType;
+                type.Items.Add(newattchemnts);
+            }
+            else if (currentSPTreeNode.Tag is spawnableTypeItem)
+            {
+                spawnableTypeItem item = currentSPTreeNode.Tag as spawnableTypeItem;
+                item.attachments.Add(newattchemnts);
+            }
+            currentSPTreeNode.Nodes.Add(createattachmentnodes(newattchemnts));
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void removeSelectedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentSPTreeNode.Tag is Spawnabletypesconfig)
+            {
+                string Modname = Path.GetFileNameWithoutExtension(currentspawnabletypesfile.Filename);
+                currentproject.EconomyCore.RemoveCe(Modname, out string foflderpath, out string filename, out bool deletedirectory);
+                File.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath + "\\" + filename);
+                if (deletedirectory)
+                    Directory.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath, true);
+                currentproject.EconomyCore.SaveEconomycore();
+                currentproject.removeSpawnabletype(currentspawnabletypesfile.Filename);
+                currentproject.SetSpawnabletypes();
+                LoadSpawnableTypes();
+                populateEconmyTreeview();
+                SpawnableTypesTV.Nodes[0].Expand();
+                return;
+            }
+            else if (currentSPTreeNode.Tag is SpawnableType)
+            {
+                SpawnableType type = currentSPTreeNode.Tag as SpawnableType;
+                currentspawnabletypesfile.spawnabletypes.type.Remove(type);
+            }
+            else if (currentSPTreeNode.Tag is spawnableTypesHoarder)
+            {
+                spawnableTypesHoarder Hoarder = currentSPTreeNode.Tag as spawnableTypesHoarder;
+                SpawnableType type = currentSPTreeNode.Parent.Tag as SpawnableType;
+                type.Items.Remove(Hoarder);
+            }
+            else if (currentSPTreeNode.Tag is spawnableTypeTag)
+            {
+                spawnableTypeTag Tag = currentSPTreeNode.Tag as spawnableTypeTag;
+                if (currentSPTreeNode.Parent.Tag is SpawnableType)
+                {
+                    SpawnableType type = currentSPTreeNode.Parent.Tag as SpawnableType;
+                    type.Items.Remove(Tag);
+                }
+            }
+            else if (currentSPTreeNode.Tag is spawnableTypeDamage)
+            {
+                spawnableTypeDamage damage = currentSPTreeNode.Tag as spawnableTypeDamage;
+                if (currentSPTreeNode.Parent.Tag is Spawnabletypesconfig)
+                {
+                    currentspawnabletypesfile = currentSPTreeNode.Parent.Tag as Spawnabletypesconfig;
+                    currentspawnabletypesfile.spawnabletypes.damage = null;
+                }
+                else if(currentSPTreeNode.Parent.Tag is SpawnableType)
+                {
+                    SpawnableType type = currentSPTreeNode.Parent.Tag as SpawnableType;
+                    type.Items.Remove(damage);
+                }
+                else if (currentSPTreeNode.Parent.Tag is spawnableTypeItem)
+                {
+                    spawnableTypeItem item = currentSPTreeNode.Parent.Tag as spawnableTypeItem;
+                    item.damage = null;
+                }
+                else if (currentSPTreeNode.Parent.Tag is spawnableTypeCargo)
+                {
+                    spawnableTypeCargo cargo = currentSPTreeNode.Parent.Tag as spawnableTypeCargo;
+                    cargo.damage = null;
+                }
+                else if (currentSPTreeNode.Parent.Tag is spawnableTypeAttachment)
+                {
+                    spawnableTypeAttachment attachment = currentSPTreeNode.Parent.Tag as spawnableTypeAttachment;
+                    attachment.damage = null;
+                }
+            }
+            else if (currentSPTreeNode.Tag is spawnableTypeCargo)
+            {
+                spawnableTypeCargo cargo = currentSPTreeNode.Tag as spawnableTypeCargo;
+                if (currentSPTreeNode.Parent.Tag is SpawnableType)
+                {
+                    SpawnableType type = currentSPTreeNode.Parent.Tag as SpawnableType;
+                    type.Items.Remove(cargo);
+                }
+                else if (currentSPTreeNode.Parent.Tag is spawnableTypeItem)
+                {
+                    spawnableTypeItem type = currentSPTreeNode.Parent.Tag as spawnableTypeItem;
+                    type.cargo.Remove(cargo);
+                    
+                }
+            }
+            else if (currentSPTreeNode.Tag is spawnableTypeAttachment)
+            {
+                spawnableTypeAttachment attachment = currentSPTreeNode.Tag as spawnableTypeAttachment;
+                if (currentSPTreeNode.Parent.Tag is SpawnableType)
+                {
+                    SpawnableType type = currentSPTreeNode.Parent.Tag as SpawnableType;
+                    type.Items.Remove(attachment);
+                }
+                else if (currentSPTreeNode.Parent.Tag is spawnableTypeItem)
+                {
+                    spawnableTypeItem type = currentSPTreeNode.Parent.Tag as spawnableTypeItem;
+                    type.attachments.Remove(attachment);
+
+                }
+            }
+            else if (currentSPTreeNode.Tag is spawnableTypeItem)
+            {
+                spawnableTypeItem type = currentSPTreeNode.Tag as spawnableTypeItem;
+                if (currentSPTreeNode.Parent.Tag is spawnableTypeCargo)
+                {
+                    spawnableTypeCargo cargo = currentSPTreeNode.Parent.Tag as spawnableTypeCargo;
+                    cargo.item.Remove(type);
+                }
+                else if (currentSPTreeNode.Parent.Tag is spawnableTypeAttachment)
+                {
+                    spawnableTypeAttachment attachment = currentSPTreeNode.Parent.Tag as spawnableTypeAttachment;
+                    attachment.item.Remove(type);
+                }
+            }
+            currentSPTreeNode.Parent.Nodes.Remove(currentSPTreeNode);
             currentspawnabletypesfile.isDirty = true;
         }
         #endregion spawnabletypes
@@ -5165,6 +5502,7 @@ namespace DayZeEditor
             generatorparamsmax_dist_staticNUD.Value = (decimal)Currentplayerspawnpointssection.generator_params.max_dist_static;
             generatorparamsmin_steepnessNUD.Value = (decimal)Currentplayerspawnpointssection.generator_params.min_steepness;
             generatorparamsmax_steepnessNUD.Value = (decimal)Currentplayerspawnpointssection.generator_params.max_steepness;
+            generatorparamsallow_in_waterCB.Checked = Currentplayerspawnpointssection.generator_params.allow_in_water;
 
             GroupParamsenablegroupsCB.Checked = Currentplayerspawnpointssection.group_params.enablegroups;
             GroupParamgroups_as_regularCB.Checked = Currentplayerspawnpointssection.group_params.groups_as_regular;
@@ -5376,7 +5714,6 @@ namespace DayZeEditor
             if (Currentplayerspawnpointssection.spawn_params.min_dist_triggerSpecified == false)
                 Currentplayerspawnpointssection.spawn_params.min_dist_triggerSpecified = true;
         }
-
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
@@ -5425,6 +5762,12 @@ namespace DayZeEditor
         {
             if (!isUserInteraction) return;
             Currentplayerspawnpointssection.generator_params.max_steepness = (int)generatorparamsmax_steepnessNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+        }
+        private void generatorparamsallow_in_waterCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Currentplayerspawnpointssection.generator_params.allow_in_water = generatorparamsallow_in_waterCB.Checked;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void GroupParamsenablegroupsCB_CheckedChanged(object sender, EventArgs e)
@@ -6199,152 +6542,233 @@ namespace DayZeEditor
         }
         #endregion cfggameplayconfig
         #region cfgrandompresets
-        public object currentRandomPreset;
+        public cfgrandompresetsconfig currentcfgrandompresetsconfig;
+        public TreeNode currentRPTreeNode;
         private void LoadRandomPresets()
         {
             Console.WriteLine("Loading Random presets");
             isUserInteraction = false;
-            PresetItemListLB.DisplayMember = "DisplayName";
-            PresetItemListLB.ValueMember = "Value";
-            PresetItemListLB.DataSource = currentproject.cfgrandompresetsconfig.randompresets.Items;
+
+            RandomPresetTV.Nodes.Clear();
+
+            TreeNode RPRoot = new TreeNode("Random Presets")
+            {
+                Tag = "Root"
+            };
+            foreach (cfgrandompresetsconfig rpc in currentproject.RandomPresetList)
+            {
+                RPRoot.Nodes.Add(CreateRPNodes(rpc));
+            }
+            RandomPresetTV.Nodes.Add(RPRoot);
+
+
             isUserInteraction = true;
         }
-        private void PresetItemListLB_SelectedIndexChanged(object sender, EventArgs e)
+        private TreeNode CreateRPNodes(cfgrandompresetsconfig rcp)
         {
-            if (PresetItemListLB.SelectedIndex == -1) { return; }
-            isUserInteraction = false;
-            currentRandomPreset = PresetItemListLB.SelectedItem as object;
-            ClearInfo();
-            if (currentRandomPreset is randompresetsAttachments)
+            TreeNode ConfigRoot = new TreeNode(Path.GetFileNameWithoutExtension(rcp.Filename))
             {
-                randompresetsAttachments currentAttachments = currentRandomPreset as randompresetsAttachments;
-                RandompresetCargoGB.Visible = false;
+                Tag = rcp
+            };
+            TreeNode Attatchnode = new TreeNode("Attachments")
+            {
+                Tag = "Attachments"
+            };
+            TreeNode CargoNode = new TreeNode("Cargo")
+            {
+                Tag = "Cargo"
+            };
+            foreach (var RP in rcp.randompresets.Items)
+            {
+                if (RP is randompresetsAttachments)
+                {
+                    randompresetsAttachments RPA = RP as randompresetsAttachments;
+                    TreeNode IN = new TreeNode(GetpresetString(RP))
+                    {
+                        Tag = RPA
+                    };
+                    foreach (randompresetsItem RPI in RPA.item)
+                    {
+                        IN.Nodes.Add(CreateRPItem(RPI));
+                    }
+                    Attatchnode.Nodes.Add(IN);
+                }
+                else if (RP is randompresetsCargo)
+                {
+                    randompresetsCargo RPC = RP as randompresetsCargo;
+                    TreeNode IN = new TreeNode(GetpresetString(RP))
+                    {
+                        Tag = RPC
+                    };
+                    foreach (randompresetsItem RPI in RPC.item)
+                    {
+                        IN.Nodes.Add(CreateRPItem(RPI));
+                    }
+                    CargoNode.Nodes.Add(IN);
+                }
+                
+            }
+            ConfigRoot.Nodes.Add(Attatchnode);
+            ConfigRoot.Nodes.Add(CargoNode);
+            return ConfigRoot;
+        }
+        private string GetpresetString(object Preset)
+        {
+            if (Preset is randompresetsAttachments)
+            {
+                randompresetsAttachments RPA = Preset as randompresetsAttachments;
+                return "Name = " + RPA.name + " Chance = " + RPA.chance;
+            }
+            else if (Preset is randompresetsCargo)
+            {
+                randompresetsCargo RPC = Preset as randompresetsCargo;
+                return "Name = " + RPC.name + " Chance = " + RPC.chance;
+            }
+            return null;
+        }
+        private TreeNode CreateRPItem(randompresetsItem item)
+        {
+            TreeNode treeNode = new TreeNode(GetRPItemString(item))
+            {
+                Tag = item
+            };
+            return treeNode;
+        }
+        private string GetRPItemString(randompresetsItem item)
+        {
+            return "name = " + item.name + " chance = " + item.chance;
+        }
+        private void RandomPresetTV_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            RandompreseAttachmentGB.Visible = false;
+            RandompresetCargoGB.Visible = false;
+            RandomPresetItemGB.Visible = false;
+            isUserInteraction = false;
+            RandomPresetTV.SelectedNode = e.Node;
+            currentRPTreeNode = e.Node;
+            TreeNode config = FindParentWithTagOfType<cfgrandompresetsconfig>(currentRPTreeNode);
+            if(config != null)
+                currentcfgrandompresetsconfig = config.Tag as cfgrandompresetsconfig;
+            if (e.Node.Tag is cfgrandompresetsconfig)
+            {
+                currentcfgrandompresetsconfig = e.Node.Tag as cfgrandompresetsconfig;
+            }
+            else if (e.Node.Tag is randompresetsAttachments)
+            {
                 RandompreseAttachmentGB.Visible = true;
-                setRandompresetAttachemnt();
+                randompresetsAttachments RPA = currentRPTreeNode.Tag as randompresetsAttachments;
+                RandomPresetAttchemntNameTB.Text = RPA.name;
+                RandomPresetAttachmentChanceNUD.Value = RPA.chance;
             }
-            else if (currentRandomPreset is randompresetsCargo)
+            else if (e.Node.Tag is randompresetsCargo)
             {
-                randompresetsCargo currentCargo = currentRandomPreset as randompresetsCargo;
                 RandompresetCargoGB.Visible = true;
-                RandompreseAttachmentGB.Visible = false;
-                SetRandomPresetCargo();
+                randompresetsCargo RPC = currentRPTreeNode.Tag as randompresetsCargo;
+                RandomPresetNameTB.Text = RPC.name;
+                RandomPresetCargoChanceNUD.Value = RPC.chance;
+            }
+            else if (e.Node.Tag is randompresetsItem)
+            {
+                RandomPresetItemGB.Visible = true;
+                randompresetsItem item = currentRPTreeNode.Tag as randompresetsItem;
+                RandomPresetItemNameTB.Text = item.name;
+                RandomPresetItemChanceNUD.Value = item.chance;
+            }
+
+            isUserInteraction = true;
+        }
+        private void RandomPresetTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            isUserInteraction = false;
+            RandomPresetTV.SelectedNode = e.Node;
+            currentRPTreeNode = e.Node;
+            foreach (ToolStripItem item in RandomPresetcontextMenu.Items)
+            {
+                item.Visible = false;
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.Node.Tag.ToString() == "Root")
+                {
+                    addNewRandomPresetConfigToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag.ToString() == "Attachments")
+                {
+                    addNewAttachmentToolStripMenuItem1.Visible = true;
+                }
+                else if (e.Node.Tag.ToString() == "Cargo")
+                {
+                    addNewCargoToolStripMenuItem1.Visible = true;
+                }
+                else if (e.Node.Tag is cfgrandompresetsconfig)
+                {
+                    removeSelectedToolStripMenuItem1.Visible = true;
+                }
+                else if (e.Node.Tag is randompresetsAttachments)
+                {
+                    addNewItemToolStripMenuItem1.Visible = true;
+                    removeSelectedToolStripMenuItem1.Visible = true;
+                }
+                else if (e.Node.Tag is randompresetsCargo)
+                {
+                    addNewItemToolStripMenuItem1.Visible = true;
+                    removeSelectedToolStripMenuItem1.Visible = true;
+                }
+                else if (e.Node.Tag is randompresetsItem)
+                {
+                    removeSelectedToolStripMenuItem1.Visible = true;
+                }
+                RandomPresetcontextMenu.Show(Cursor.Position);
             }
             isUserInteraction = true;
         }
-        private void setRandompresetAttachemnt()
+        private void RandomPresetNameTB_TextChanged(object sender, EventArgs e)
         {
-            randompresetsAttachments currentAttachments = currentRandomPreset as randompresetsAttachments;
-            RandomPresetAttachmentChanceNUD.Value = currentAttachments.chance;
-            RandomPresetAttchemntNameTB.Text = currentAttachments.name;
-            PresetAttachmentsItemsLB.DisplayMember = "DisplayName";
-            PresetAttachmentsItemsLB.ValueMember = "Value";
-            PresetAttachmentsItemsLB.DataSource = currentAttachments.item;
-        }
-        private void SetRandomPresetCargo()
-        {
-            randompresetsCargo currentcargo = currentRandomPreset as randompresetsCargo;
-            RandomPresetCargoChanceNUD.Value = currentcargo.chance;
-            RandomPresetNameTB.Text = currentcargo.name;
-            PresetCargoItemsLB.DisplayMember = "DisplayName";
-            PresetCargoItemsLB.ValueMember = "Value";
-            PresetCargoItemsLB.DataSource = currentcargo.item;
-        }
-        private void PresetCArgoItemsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (PresetCargoItemsLB.SelectedItems.Count == 0) return;
-            randompresetsCargoItem currentcargoitem = PresetCargoItemsLB.SelectedItem as randompresetsCargoItem;
-            isUserInteraction = false;
-            RandomPresetCargoItemchanceNUD.Value = currentcargoitem.chance;
-            isUserInteraction = true;
-        }
-        private void PresetAttachmentsItemsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (PresetAttachmentsItemsLB.SelectedItems.Count == 0) return;
-            randompresetsAttachmentsItem currentattachmentitem = PresetAttachmentsItemsLB.SelectedItem as randompresetsAttachmentsItem;
-            isUserInteraction = false;
-            RandomPresetAttachmentItemchanceNUD.Value = currentattachmentitem.chance;
-            isUserInteraction = true;
+            if (!isUserInteraction) return;
+            randompresetsCargo currentCargo = currentRPTreeNode.Tag as randompresetsCargo;
+            currentCargo.name = RandomPresetNameTB.Text;
+            currentRPTreeNode.Text = GetpresetString(currentCargo);
+            currentcfgrandompresetsconfig.isDirty = true;
         }
         private void RandomPresetCargoChanceNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            randompresetsCargo currentCargo = currentRandomPreset as randompresetsCargo;
+            randompresetsCargo currentCargo = currentRPTreeNode.Tag as randompresetsCargo;
             currentCargo.chance = RandomPresetCargoChanceNUD.Value;
-            currentproject.cfgrandompresetsconfig.isDirty = true;
+            currentRPTreeNode.Text = GetpresetString(currentCargo);
+            currentcfgrandompresetsconfig.isDirty = true;
         }
-        private void RandomPresetCargoItemchanceNUD_ValueChanged(object sender, EventArgs e)
+        private void RandomPresetAttchemntNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            randompresetsCargoItem currentcargoitem = PresetCargoItemsLB.SelectedItem as randompresetsCargoItem;
-            currentcargoitem.chance = RandomPresetCargoItemchanceNUD.Value;
-            currentproject.cfgrandompresetsconfig.isDirty = true;
+            randompresetsAttachments currentAttachment = currentRPTreeNode.Tag as randompresetsAttachments;
+            currentAttachment.name = RandomPresetAttchemntNameTB.Text;
+            currentRPTreeNode.Text = GetpresetString(currentAttachment);
+            currentcfgrandompresetsconfig.isDirty = true;
         }
         private void RandomPresetAttachmentChanceNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            randompresetsAttachments currentAttachments = currentRandomPreset as randompresetsAttachments;
+            randompresetsAttachments currentAttachments = currentRPTreeNode.Tag as randompresetsAttachments;
             currentAttachments.chance = RandomPresetAttachmentChanceNUD.Value;
-            currentproject.cfgrandompresetsconfig.isDirty = true;
+            currentRPTreeNode.Text = GetpresetString(currentAttachments);
+            currentcfgrandompresetsconfig.isDirty = true;
         }
-        private void RandomPresetAttachmentItemchanceNUD_ValueChanged(object sender, EventArgs e)
+        private void RandomPresetItemNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            randompresetsAttachmentsItem currentAttachmentitem = PresetAttachmentsItemsLB.SelectedItem as randompresetsAttachmentsItem;
-            currentAttachmentitem.chance = RandomPresetAttachmentItemchanceNUD.Value;
-            currentproject.cfgrandompresetsconfig.isDirty = true;
+            randompresetsItem currentitem = currentRPTreeNode.Tag as randompresetsItem;
+            currentitem.name = RandomPresetItemNameTB.Text;
+            currentRPTreeNode.Text = GetRPItemString(currentitem);
+            currentcfgrandompresetsconfig.isDirty = true;
         }
-        private void darkButton48_Click(object sender, EventArgs e)
+        private void RandomPresetItemChanceNUD_ValueChanged(object sender, EventArgs e)
         {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseOnlySingleitem = true
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    randompresetsCargoItem currentcargoitem = PresetCargoItemsLB.SelectedItem as randompresetsCargoItem;
-                    currentcargoitem.name = l;
-                    PresetCargoItemsLB.Refresh();
-                    currentproject.cfgrandompresetsconfig.isDirty = true;
-                    SetRandomPresetCargo();
-                }
-
-            }
-            else if (result == DialogResult.Cancel)
-            {
-                return;
-            }
-        }
-        private void darkButton47_Click(object sender, EventArgs e)
-        {
-            randompresetsCargoItem newitem = new randompresetsCargoItem()
-            {
-                name = "New Item, Please change me...",
-                chance = 1
-            };
-            randompresetsCargo currentcargo = currentRandomPreset as randompresetsCargo;
-            currentcargo.item.Add(newitem);
-            currentproject.cfgrandompresetsconfig.isDirty = true;
-        }
-        private void darkButton46_Click(object sender, EventArgs e)
-        {
-            if (PresetCargoItemsLB.SelectedItems == null) { return; }
-            int index = PresetCargoItemsLB.SelectedIndex;
-            randompresetsCargoItem currentcargoitem = PresetCargoItemsLB.SelectedItem as randompresetsCargoItem;
-            randompresetsCargo currentcargo = currentRandomPreset as randompresetsCargo;
-            currentcargo.item.Remove(currentcargoitem);
-            currentproject.cfgrandompresetsconfig.isDirty = true;
-            PresetCargoItemsLB.SelectedIndex = -1;
-            if (index == 0 && PresetCargoItemsLB.Items.Count > 0)
-                PresetCargoItemsLB.SelectedIndex = index;
-            else
-                PresetCargoItemsLB.SelectedIndex = index - 1;
+            if (!isUserInteraction) return;
+            randompresetsItem currentitem = currentRPTreeNode.Tag as randompresetsItem;
+            currentitem.chance = RandomPresetItemChanceNUD.Value;
+            currentRPTreeNode.Text = GetRPItemString(currentitem);
+            currentcfgrandompresetsconfig.isDirty = true;
         }
         private void darkButton49_Click(object sender, EventArgs e)
         {
@@ -6361,11 +6785,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    randompresetsAttachmentsItem currentAttachemntitem = PresetAttachmentsItemsLB.SelectedItem as randompresetsAttachmentsItem;
-                    currentAttachemntitem.name = l;
-                    PresetAttachmentsItemsLB.Refresh();
-                    currentproject.cfgrandompresetsconfig.isDirty = true;
-                    setRandompresetAttachemnt();
+                    RandomPresetItemNameTB.Text = l;
                 }
 
             }
@@ -6374,95 +6794,158 @@ namespace DayZeEditor
                 return;
             }
         }
-        private void darkButton42_Click(object sender, EventArgs e)
+        private void addNewRandomPresetConfigToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            randompresetsAttachmentsItem newitem = new randompresetsAttachmentsItem()
+            AddNeweventFile form = new AddNeweventFile
             {
-                name = "New Item, Please change me...",
-                chance = 1
+                currentproject = currentproject,
+                newlocation = true,
+                setbuttontest = "Add Random Preset File",
+                SetTitle = "Add New Random Preset File",
+                settype = "Random Preset file Name (Use ModName.. eg. DogTags)"
             };
-            randompresetsAttachments currentAttachemnt = currentRandomPreset as randompresetsAttachments;
-            currentAttachemnt.item.Add(newitem);
-            currentproject.cfgrandompresetsconfig.isDirty = true;
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string path = form.CustomLocation;
+                string modname = form.TypesName;
+                Directory.CreateDirectory(path);
+                List<string> RandomPresetfile = new List<string>
+                {
+                    "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>",
+                    "<randompresets>",
+                    "</randompresets>"
+                };
+                File.WriteAllLines(path + "\\" + modname + "_randompresets.xml", RandomPresetfile);
+                cfgrandompresetsconfig test = new cfgrandompresetsconfig(path + "\\" + modname + "_randompresets.xml");
+                test.SaveRandomPresets();
+                currentproject.EconomyCore.AddCe(path.Replace(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\", ""), modname + "_randompresets.xml", "randompresets");
+                currentproject.EconomyCore.SaveEconomycore();
+                currentproject.SetRandompresets();
+                LoadRandomPresets();
+                populateEconmyTreeview();
+                RandomPresetTV.Nodes[0].Expand();
+            }
         }
-        private void darkButton41_Click(object sender, EventArgs e)
+        private void addNewAttachmentToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (PresetAttachmentsItemsLB.SelectedItems == null) { return; }
-            int index = PresetAttachmentsItemsLB.SelectedIndex;
-            randompresetsAttachmentsItem currentAttachemntitem = PresetAttachmentsItemsLB.SelectedItem as randompresetsAttachmentsItem;
-            randompresetsAttachments currentAttachent = currentRandomPreset as randompresetsAttachments;
-            currentAttachent.item.Remove(currentAttachemntitem);
-            currentproject.cfgrandompresetsconfig.isDirty = true;
-            PresetAttachmentsItemsLB.SelectedIndex = -1;
-            if (index == 0 && PresetAttachmentsItemsLB.Items.Count > 0)
-                PresetAttachmentsItemsLB.SelectedIndex = index;
-            else
-                PresetAttachmentsItemsLB.SelectedIndex = index - 1;
+            randompresetsAttachments newattachment = new randompresetsAttachments()
+            {
+                name = "New Attachment, Change Me!!!!",
+                chance = (decimal)1.0,
+                item = new BindingList<randompresetsItem>()
+            };
+            TreeNode IN = new TreeNode(GetpresetString(newattachment))
+            {
+                Tag = newattachment
+            };
+            currentcfgrandompresetsconfig.randompresets.Items.Add(newattachment);
+            currentRPTreeNode.Nodes.Add(IN);
+            RandomPresetTV.SelectedNode = currentRPTreeNode.LastNode;
+            currentcfgrandompresetsconfig.isDirty = true;
         }
-        private void darkButton43_Click(object sender, EventArgs e)
+        private void addNewCargoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (PresetItemListLB.SelectedItems == null) { return; }
-            int index = PresetItemListLB.SelectedIndex;
-            currentproject.cfgrandompresetsconfig.randompresets.Items.Remove(currentRandomPreset);
-            currentproject.cfgrandompresetsconfig.isDirty = true;
-            PresetItemListLB.SelectedIndex = -1;
-            if (index == 0 && PresetItemListLB.Items.Count > 0)
-                PresetItemListLB.SelectedIndex = index;
-            else
-                PresetItemListLB.SelectedIndex = index - 1;
-            SetuprandomPresetsForSpawnabletypes();
-        }
-        private void darkButton45_Click(object sender, EventArgs e)
-        {
-            if (PresetItemListLB.SelectedItem == null) { return; }
             randompresetsCargo newcargo = new randompresetsCargo()
             {
-                name = "NewCargoList",
-                chance = 1,
-                item = new BindingList<randompresetsCargoItem>()
+                name = "New Cargo Change Me!!!!",
+                chance = (decimal)1.0,
+                item = new BindingList<randompresetsItem>()
             };
-            if (currentproject.cfgrandompresetsconfig.randompresets.Items == null)
-                currentproject.cfgrandompresetsconfig.randompresets.Items = new BindingList<object>();
-            currentproject.cfgrandompresetsconfig.randompresets.Items.Add(newcargo);
-            currentproject.cfgrandompresetsconfig.isDirty = true;
-            SetuprandomPresetsForSpawnabletypes();
-            PresetItemListLB.SelectedIndex = PresetItemListLB.Items.Count - 1;
-        }
-        private void darkButton44_Click(object sender, EventArgs e)
-        {
-            if (PresetItemListLB.SelectedItem == null) { return; }
-            randompresetsAttachments newspawnabletypesTypeAttachments = new randompresetsAttachments()
+            TreeNode IN = new TreeNode(GetpresetString(newcargo))
             {
-                name = "NewAttachmentList",
-                chance = 1,
-                item = new BindingList<randompresetsAttachmentsItem>()
-
+                Tag = newcargo
             };
-            if (currentproject.cfgrandompresetsconfig.randompresets.Items == null)
-                currentproject.cfgrandompresetsconfig.randompresets.Items = new BindingList<object>();
-            currentproject.cfgrandompresetsconfig.randompresets.Items.Add(newspawnabletypesTypeAttachments);
-            currentproject.cfgrandompresetsconfig.isDirty = true;
-            SetuprandomPresetsForSpawnabletypes();
-            PresetItemListLB.SelectedIndex = PresetItemListLB.Items.Count - 1;
+            currentcfgrandompresetsconfig.randompresets.Items.Add(newcargo);
+            currentRPTreeNode.Nodes.Add(IN);
+            RandomPresetTV.SelectedNode = currentRPTreeNode.LastNode;
+            currentcfgrandompresetsconfig.isDirty = true;
         }
-        private void RandomPresetNameTB_TextChanged(object sender, EventArgs e)
+        private void addNewItemToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (!isUserInteraction) return;
-            randompresetsCargo currentCargo = currentRandomPreset as randompresetsCargo;
-            currentCargo.name = RandomPresetNameTB.Text;
-            PresetItemListLB.Refresh();
-            currentproject.cfgrandompresetsconfig.isDirty = true;
-            SetuprandomPresetsForSpawnabletypes();
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    randompresetsItem newitem = new randompresetsItem()
+                    {
+                        name = l,
+                        chance = (decimal)1.0
+                    };
+                    if (currentRPTreeNode.Tag is randompresetsAttachments)
+                    {
+                        randompresetsAttachments attachments = currentRPTreeNode.Tag as randompresetsAttachments;
+                        attachments.item.Add(newitem);
+                    }
+                    else if (currentRPTreeNode.Tag is randompresetsCargo)
+                    {
+                        randompresetsCargo cargo = currentRPTreeNode.Tag as randompresetsCargo;
+                        cargo.item.Add(newitem);
+                    }
+                    currentRPTreeNode.Nodes.Add(CreateRPItem(newitem));
+                }
+                RandomPresetTV.SelectedNode = currentRPTreeNode.LastNode;
+                currentcfgrandompresetsconfig.isDirty = true;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
         }
-        private void RandomPresetAttchemntNameTB_TextChanged(object sender, EventArgs e)
+        private void removeSelectedToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (!isUserInteraction) return;
-            randompresetsAttachments currentAttachment = currentRandomPreset as randompresetsAttachments;
-            currentAttachment.name = RandomPresetAttchemntNameTB.Text;
-            PresetItemListLB.Refresh();
-            currentproject.cfgrandompresetsconfig.isDirty = true;
-            SetuprandomPresetsForSpawnabletypes();
+            if (currentRPTreeNode.Tag is cfgrandompresetsconfig)
+            {
+                string Modname = Path.GetFileNameWithoutExtension(currentcfgrandompresetsconfig.Filename);
+                currentproject.EconomyCore.RemoveCe(Modname, out string foflderpath, out string filename, out bool deletedirectory);
+                File.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath + "\\" + filename);
+                if (deletedirectory)
+                    Directory.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath, true);
+                currentproject.EconomyCore.SaveEconomycore();
+                currentproject.removerandompreset(currentcfgrandompresetsconfig.Filename);
+                currentproject.SetRandompresets();
+                LoadRandomPresets();
+                populateEconmyTreeview();
+                RandomPresetTV.Nodes[0].Expand();
+                return;
+            }
+            else if (currentRPTreeNode.Tag is randompresetsAttachments)
+            {
+                randompresetsAttachments currentattchment = currentRPTreeNode.Tag as randompresetsAttachments;
+                currentcfgrandompresetsconfig.randompresets.Items.Remove(currentattchment);
+            }
+            else if (currentRPTreeNode.Tag is randompresetsCargo)
+            {
+                randompresetsCargo currentcargo = currentRPTreeNode.Tag as randompresetsCargo;
+                currentcfgrandompresetsconfig.randompresets.Items.Remove(currentcargo);
+            }
+            else if (currentRPTreeNode.Tag is randompresetsItem)
+            {
+                randompresetsItem currentitem = currentRPTreeNode.Tag as randompresetsItem;
+                if (currentRPTreeNode.Parent.Tag is randompresetsAttachments)
+                {
+                    randompresetsAttachments currentattchment = currentRPTreeNode.Parent.Tag as randompresetsAttachments;
+                    currentattchment.item.Remove(currentitem);
+                }
+                else if (currentRPTreeNode.Parent.Tag is randompresetsCargo)
+                {
+                    randompresetsCargo currentcargo = currentRPTreeNode.Parent.Tag as randompresetsCargo;
+                    currentcargo.item.Remove(currentitem);
+                }
+            }
+            currentRPTreeNode.Parent.Nodes.Remove(currentRPTreeNode);
+            currentcfgrandompresetsconfig.isDirty = true;
         }
+
         #endregion cfgrandompresets
         #region CFGAreaEffects
         public cfgEffectArea cfgEffectArea;
@@ -6499,6 +6982,7 @@ namespace DayZeEditor
             CurrentToxicArea = AreasLB.SelectedItem as Areas;
             isUserInteraction = false;
 
+            //Required
             AreaNameTB.Text = CurrentToxicArea.AreaName;
             TypeTB.Text = CurrentToxicArea.Type;
             TriggerTypeTB.Text = CurrentToxicArea.TriggerType;
@@ -6508,23 +6992,32 @@ namespace DayZeEditor
             RadiusNUD.Value = (decimal)CurrentToxicArea.Data.Radius;
             PosHeightNUD.Value = (decimal)CurrentToxicArea.Data.PosHeight;
             NegHeightNUD.Value = (decimal)CurrentToxicArea.Data.NegHeight;
-            if(CurrentToxicArea.Data.InnerRingCount!=null)
+
+
+            if(UseInnerRingCountCB.Checked = CurrentToxicArea.Data.InnerRingCount!=null)
                 InnerRingCountNUD.Value = (decimal)CurrentToxicArea.Data.InnerRingCount;
-            if(CurrentToxicArea.Data.InnerPartDist!=null)
+            if(UseInnerPartDistCB.Checked =  CurrentToxicArea.Data.InnerPartDist!=null)
                 InnerPartDistNUD.Value = (decimal)CurrentToxicArea.Data.InnerPartDist;
-            if (CurrentToxicArea.Data.OuterRingToggle != null)
-                OuterRingToggleCB.Checked = CurrentToxicArea.Data.OuterRingToggle == 1 ? true : false;
-            if(CurrentToxicArea.Data.OuterPartDist!=null)
+            if (UseOuterRingToggleCB.Checked = CurrentToxicArea.Data.OuterRingToggle != null)
+                OuterRingToggleCB.Checked = (bool)CurrentToxicArea.Data.OuterRingToggle;
+            if(UseOuterPartDistCB.Checked = CurrentToxicArea.Data.OuterPartDist!=null)
                 OuterPartDistNUD.Value = (decimal)CurrentToxicArea.Data.OuterPartDist;
-            if(CurrentToxicArea.Data.OuterOffset!=null)
+            if(UseOuterOffsetCB.Checked= CurrentToxicArea.Data.OuterOffset!=null)
                 OuterOffsetNUD.Value = (decimal)CurrentToxicArea.Data.OuterOffset;
-            if(CurrentToxicArea.Data.VerticalLayers!=null)
+            if(UseVerticalLayersCB.Checked = CurrentToxicArea.Data.VerticalLayers!=null)
                 VerticalLayersNUD.Value = (decimal)CurrentToxicArea.Data.VerticalLayers;
-            if(CurrentToxicArea.Data.VerticalOffset!=null)
+            if(UseVerticalOffsetCB.Checked = CurrentToxicArea.Data.VerticalOffset!=null)
                 VerticalOffsetNUD.Value = (decimal)CurrentToxicArea.Data.VerticalOffset;
-            if(CurrentToxicArea.Data.ParticleName!=null)
+            if(UseParticleNameCB.Checked = CurrentToxicArea.Data.ParticleName!=null)
                 ParticleNameTB.Text = CurrentToxicArea.Data.ParticleName;
-            if (CurrentToxicArea.PlayerData != null)
+            if (UseEffectIntervalCB.Checked = CurrentToxicArea.Data.EffectInterval != null)
+                EffectIntervalNUD.Value = (decimal)CurrentToxicArea.Data.EffectInterval;
+            if (UseEffectDurationCB.Checked = CurrentToxicArea.Data.EffectDuration != null)
+                EffectDurationNUD.Value = (decimal)CurrentToxicArea.Data.EffectDuration;
+            if (UseEffectModifierCB.Checked = CurrentToxicArea.Data.EffectModifier != null)
+                EffectModifierCB.Checked = (bool)CurrentToxicArea.Data.EffectModifier;
+
+            if (PlayerDataCB.Checked = CurrentToxicArea.PlayerData != null)
             {
                 AroundPartNameTB.Text = CurrentToxicArea.PlayerData.AroundPartName;
                 TinyPartNameTB.Text = CurrentToxicArea.PlayerData.TinyPartName;
@@ -6532,6 +7025,136 @@ namespace DayZeEditor
             }
 
             isUserInteraction = true;
+        }
+
+        private void PlayerDataCB_CheckedChanged(object sender, EventArgs e)
+        {
+            PlayerdataGB.Visible = PlayerDataCB.Checked;
+            if (!isUserInteraction) { return; }
+            if (PlayerDataCB.Checked)
+            {
+                CurrentToxicArea.PlayerData = new PlayerData()
+                {
+                    AroundPartName = "",
+                    TinyPartName = "",
+                    PPERequesterType = ""
+                };
+            }
+            else
+            {
+                CurrentToxicArea.PlayerData = null;
+            }
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void UseInnerRingCountCB_CheckedChanged(object sender, EventArgs e)
+        {
+            InnerRingCountNUD.Visible = UseInnerRingCountCB.Checked;
+            if (!isUserInteraction) { return; }
+            if (UseInnerRingCountCB.Checked)
+                CurrentToxicArea.Data.InnerRingCount = 0;
+            else
+                CurrentToxicArea.Data.InnerRingCount = null;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void UseInnerPartDistCB_CheckedChanged(object sender, EventArgs e)
+        {
+            InnerPartDistNUD.Visible = UseInnerPartDistCB.Checked;
+            if (!isUserInteraction) { return; }
+            if (UseInnerPartDistCB.Checked)
+                CurrentToxicArea.Data.InnerPartDist = 0;
+            else
+                CurrentToxicArea.Data.InnerPartDist = null;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void UseOuterRingToggleCB_CheckedChanged(object sender, EventArgs e)
+        {
+            OuterRingToggleCB.Visible = UseOuterRingToggleCB.Checked;
+            if (!isUserInteraction) { return; }
+            if (UseOuterRingToggleCB.Checked)
+                CurrentToxicArea.Data.OuterRingToggle = false;
+            else
+                CurrentToxicArea.Data.OuterRingToggle = null;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void UseOuterPartDistCB_CheckedChanged(object sender, EventArgs e)
+        {
+            OuterPartDistNUD.Visible = UseOuterPartDistCB.Checked;
+            if (!isUserInteraction) { return; }
+            if (UseOuterPartDistCB.Checked)
+                CurrentToxicArea.Data.OuterPartDist = 0;
+            else
+                CurrentToxicArea.Data.OuterPartDist = null;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void UseOuterOffsetCB_CheckedChanged(object sender, EventArgs e)
+        {
+            OuterOffsetNUD.Visible = UseOuterOffsetCB.Checked;
+            if (!isUserInteraction) { return; }
+            if (UseOuterOffsetCB.Checked)
+                CurrentToxicArea.Data.OuterOffset = 0;
+            else
+                CurrentToxicArea.Data.OuterOffset = null;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void UseVerticalLayersCB_CheckedChanged(object sender, EventArgs e)
+        {
+            VerticalLayersNUD.Visible = UseVerticalLayersCB.Checked;
+            if (!isUserInteraction) { return; }
+            if (UseVerticalLayersCB.Checked)
+                CurrentToxicArea.Data.VerticalLayers = 0;
+            else
+                CurrentToxicArea.Data.VerticalLayers = null;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void UseVerticalOffsetCB_CheckedChanged(object sender, EventArgs e)
+        {
+            VerticalOffsetNUD.Visible = UseVerticalOffsetCB.Checked;
+            if (!isUserInteraction) { return; }
+            if (UseVerticalOffsetCB.Checked)
+                CurrentToxicArea.Data.VerticalOffset = 0;
+            else
+                CurrentToxicArea.Data.VerticalOffset = null;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void UseParticleNameCB_CheckedChanged(object sender, EventArgs e)
+        {
+            ParticleNameTB.Visible = UseParticleNameCB.Checked;
+            if (!isUserInteraction) { return; }
+            if(UseParticleNameCB.Checked)
+                CurrentToxicArea.Data.ParticleName = "";
+            else
+                CurrentToxicArea.Data.ParticleName = null;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void UseEffectIntervalCB_CheckedChanged(object sender, EventArgs e)
+        {
+            EffectIntervalNUD.Visible = UseEffectIntervalCB.Checked;
+            if (!isUserInteraction) { return; }
+            if (UseEffectIntervalCB.Checked)
+                CurrentToxicArea.Data.EffectInterval = 0;
+            else
+                CurrentToxicArea.Data.EffectInterval = null;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void UseEffectDurationCB_CheckedChanged(object sender, EventArgs e)
+        {
+            EffectDurationNUD.Visible = UseEffectDurationCB.Checked;
+            if (!isUserInteraction) { return; }
+            if (UseEffectDurationCB.Checked)
+                CurrentToxicArea.Data.EffectDuration = 0;
+            else
+                CurrentToxicArea.Data.EffectDuration = null;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void UseEffectModifierCB_CheckedChanged(object sender, EventArgs e)
+        {
+            EffectModifierCB.Visible = UseEffectModifierCB.Checked;
+            if (!isUserInteraction) { return; }
+            if (UseEffectModifierCB.Checked)
+                CurrentToxicArea.Data.EffectModifier = false;
+            else
+                CurrentToxicArea.Data.EffectModifier = null;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
         }
         private void AreaNameTB_TextChanged(object sender, EventArgs e)
         {
@@ -6554,26 +7177,47 @@ namespace DayZeEditor
         private void PosNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            CurrentToxicArea.Data.Pos = new float[] { (float)PosXNUD.Value, (float)posYNUD.Value, (float)posZNUD.Value };
+            CurrentToxicArea.Data.Pos = new decimal[] { (decimal)PosXNUD.Value, (decimal)posYNUD.Value, (decimal)posZNUD.Value };
             currentproject.cfgEffectAreaConfig.isDirty = true;
         }
         private void AreaNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
-            CurrentToxicArea.Data.SetIntValue(nud.Name.Substring(0, nud.Name.Length - 3), (int)nud.Value);
+            if (nud.DecimalPlaces > 0)
+                CurrentToxicArea.Data.SetdecimalValue(nud.Name.Substring(0, nud.Name.Length - 3), (decimal)nud.Value);
+            else
+                CurrentToxicArea.Data.SetIntValue(nud.Name.Substring(0, nud.Name.Length - 3), (int)nud.Value);
             currentproject.cfgEffectAreaConfig.isDirty = true;
         }
         private void OuterRingToggleCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            CurrentToxicArea.Data.OuterRingToggle = OuterRingToggleCB.Checked == true ? 1 : 0;
+            CurrentToxicArea.Data.OuterRingToggle = OuterRingToggleCB.Checked;
             currentproject.cfgEffectAreaConfig.isDirty = true;
         }
         private void ParticleNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             CurrentToxicArea.Data.ParticleName = ParticleNameTB.Text;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void EffectIntervalNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.Data.EffectInterval = (int)EffectIntervalNUD.Value;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void EffectDurationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.Data.EffectDuration = (int)EffectDurationNUD.Value;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void EffectModifierCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.Data.EffectModifier = EffectModifierCB.Checked;
             currentproject.cfgEffectAreaConfig.isDirty = true;
         }
         private void AroundPartNameTB_TextChanged(object sender, EventArgs e)
@@ -6597,9 +7241,9 @@ namespace DayZeEditor
         private void SafePositionNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            currentsafeposition.X = (int)SafePositionXNUD.Value;
-            currentsafeposition.Z = (int)SafePositionZNUD.Value;
-            currentsafeposition.Name = currentsafeposition.X.ToString() + "," + currentsafeposition.Z.ToString();
+            currentsafeposition.X = (decimal)SafePositionXNUD.Value;
+            currentsafeposition.Z = (decimal)SafePositionZNUD.Value;
+            currentsafeposition.Name = currentsafeposition.X.ToString("0.##") + "," + currentsafeposition.Z.ToString("0.##");
             SafePositionsLB.Invalidate();
             currentproject.cfgEffectAreaConfig.isDirty = true;
         }
@@ -6607,32 +7251,17 @@ namespace DayZeEditor
         {
             Data newdata = new Data()
             {
-                Pos = new float[] { 0, 0, 0 },
+                Pos = new decimal[] { 0, 0, 0 },
                 Radius = 0,
                 PosHeight = 0,
                 NegHeight = 0,
-                InnerRingCount = 0,
-                InnerPartDist = 0,
-                OuterRingToggle = 1,
-                OuterPartDist = 0,
-                OuterOffset = 0,
-                VerticalLayers = 0,
-                VerticalOffset = 0,
-                ParticleName = "graphics/particles/contaminated_area_gas_bigass"
-            };
-            PlayerData newplayerData = new PlayerData()
-            {
-                AroundPartName = "graphics/particles/contaminated_area_gas_around",
-                TinyPartName = "graphics/particles/contaminated_area_gas_around_tiny",
-                PPERequesterType = "PPERequester_ContaminatedAreaTint"
             };
             cfgEffectArea.Areas.Add(new Areas()
             {
-                AreaName = "New-Toxic-Area",
-                Type = "ContaminatedArea_Static",
-                TriggerType = "ContaminatedTrigger",
-                Data = newdata,
-                PlayerData = newplayerData
+                AreaName = "New-Trigger-Area",
+                Type = "",
+                TriggerType = "",
+                Data = newdata
             }
             );
             currentproject.cfgEffectAreaConfig.isDirty = true;

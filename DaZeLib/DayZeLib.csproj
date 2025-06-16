@@ -156,6 +156,7 @@
     <Compile Include="Economy\GameplayJson.cs" />
     <Compile Include="Economy\mapgroupposxml.cs" />
     <Compile Include="Economy\mapgrouprotoXML.cs" />
+    <Compile Include="Economy\NestedspawnableTypes.cs" />
     <Compile Include="Economy\PlayerDB.cs" />
     <Compile Include="Economy\PlayerSpawnsXML.cs" />
     <Compile Include="Economy\SpawnabletypesXML.cs" />
@@ -337,7 +338,6 @@
       <Name>TreeViewMS</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

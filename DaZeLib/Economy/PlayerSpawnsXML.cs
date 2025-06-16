@@ -294,6 +294,7 @@ namespace DayZeLib
         private decimal max_dist_staticField;
         private decimal min_steepnessField;
         private decimal max_steepnessField;
+        private bool allow_in_waterfield;
 
         /// <remarks/>
         public decimal grid_density
@@ -383,6 +384,19 @@ namespace DayZeLib
             set
             {
                 this.max_steepnessField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool allow_in_water
+        {
+            get
+            {
+                return this.allow_in_waterfield;
+            }
+            set
+            {
+                this.allow_in_waterfield = value;
             }
         }
     }

@@ -6,7 +6,7 @@ namespace DayZeLib
     public class cfgEffectArea
     {
         public BindingList<Areas> Areas { get; set; }
-        public BindingList<float[]> SafePositions { get; set; }
+        public BindingList<decimal[]> SafePositions { get; set; }
 
         public cfgEffectArea()
         {
@@ -26,7 +26,7 @@ namespace DayZeLib
                     {
                         X = SafePositions[i][0],
                         Z = SafePositions[i][1],
-                        Name = SafePositions[i][0].ToString() + "," + SafePositions[i][1]
+                        Name = SafePositions[i][0].ToString("0.##") + "," + SafePositions[i][1].ToString("0.##")
                     }
                     );
                 }
@@ -37,10 +37,10 @@ namespace DayZeLib
         {
             if (_positions != null)
             {
-                SafePositions = new BindingList<float[]>();
+                SafePositions = new BindingList<decimal[]>();
                 foreach (Position pos in _positions)
                 {
-                    SafePositions.Add(new float[] { pos.X, pos.Z });
+                    SafePositions.Add(new decimal[] { pos.X, pos.Z });
                 }
             }
             else
@@ -51,8 +51,8 @@ namespace DayZeLib
     }
     public class Position
     {
-        public float X { get; set; }
-        public float Z { get; set; }
+        public decimal X { get; set; }
+        public decimal Z { get; set; }
         public string Name { get; set; }
         public override string ToString()
         {
@@ -74,20 +74,27 @@ namespace DayZeLib
     }
     public class Data
     {
-        public float[] Pos { get; set; }
-        public float Radius { get; set; }
-        public float PosHeight { get; set; }
-        public float NegHeight { get; set; }
+        public decimal[] Pos { get; set; }
+        public decimal Radius { get; set; }
+        public decimal PosHeight { get; set; }
+        public decimal NegHeight { get; set; }
         public int? InnerRingCount { get; set; }
         public int? InnerPartDist { get; set; }
-        public int? OuterRingToggle { get; set; }
+        public bool? OuterRingToggle { get; set; }
         public int? OuterPartDist { get; set; }
         public int? OuterOffset { get; set; }
         public int? VerticalLayers { get; set; }
         public int? VerticalOffset { get; set; }
         public string ParticleName { get; set; }
+        public int? EffectInterval { get; set; }
+        public int? EffectDuration { get; set; }
+        public bool? EffectModifier { get; set; }
 
         public void SetIntValue(string mytype, int myvalue)
+        {
+            GetType().GetProperty(mytype).SetValue(this, myvalue, null);
+        }
+        public void SetdecimalValue(string mytype, decimal myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }

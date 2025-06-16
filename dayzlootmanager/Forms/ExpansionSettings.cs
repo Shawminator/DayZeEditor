@@ -1918,6 +1918,7 @@ namespace DayZeEditor
             numericUpDown12.Value = (decimal)AirdropsettingsJson.DropZoneHeight;
             numericUpDown31.Value = (decimal)AirdropsettingsJson.DropZoneSpeed;
             numericUpDown33.Value = (decimal)AirdropsettingsJson.DropZoneProximityDistance;
+            checkBox11.Checked = AirdropsettingsJson.ExplodeAirVehiclesOnCollision == 1 ? true : false;
             PopelateContainerList();
             useraction = true;
         }
@@ -1941,6 +1942,19 @@ namespace DayZeEditor
             checkBox5.Checked = CurrentAirdropContainer.SpawnInfectedForPlayerCalledDrops.Equals(1) ? true : false;
             darkLabel19.Text = "Number of Loot Items = " + CurrentAirdropContainer.Loot.Count.ToString();
             darkLabel20.Text = "Number of Infected = " + CurrentAirdropContainer.Infected.Count.ToString();
+            switch (CurrentAirdropContainer.ExplodeAirVehiclesOnCollision)
+            {
+                case -1:
+                    radioButton6.Checked = true;
+                    break;
+                case 0:
+                    radioButton5.Checked = true;
+                    break;
+                case 1:
+                    radioButton4.Checked = true;
+                    break;
+            }
+            
             populatelistbox();
             populateZombies();
             useraction = true;
@@ -2144,6 +2158,14 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = true;
             }
         }
+        private void checkBox11_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                AirdropsettingsJson.ExplodeAirVehiclesOnCollision = checkBox11.Checked == true ? 1 : 0;
+                AirdropsettingsJson.isDirty = true;
+            }
+        }
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -2262,7 +2284,6 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = true;
             }
         }
-
         private void numericUpDown31_ValueChanged(object sender, EventArgs e)
         {
             if (useraction)
@@ -2271,7 +2292,6 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = true;
             }
         }
-
         private void numericUpDown33_ValueChanged(object sender, EventArgs e)
         {
             if (useraction)
@@ -2284,6 +2304,24 @@ namespace DayZeEditor
         {
             AirdropsettingsJson.isDirty = ExpansionLootAirdropsettings.isDirty;
         }
+        private void ExplodeAirVehiclesOnCollision_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                RadioButton rb = sender as RadioButton;
+                if(rb.Checked)
+                {
+                    if (rb.Name == "radioButton6")
+                        CurrentAirdropContainer.ExplodeAirVehiclesOnCollision = -1;
+                    else if (rb.Name == "radioButton4")
+                        CurrentAirdropContainer.ExplodeAirVehiclesOnCollision = 1;
+                    else if (rb.Name == "radioButton5")
+                        CurrentAirdropContainer.ExplodeAirVehiclesOnCollision = 0;
+                }
+                AirdropsettingsJson.isDirty = true;
+            }
+        }
+
         #endregion Airdropsettings
 
         #region basebuildingsettings
@@ -9567,7 +9605,6 @@ namespace DayZeEditor
         {
 
         }
-
 
     }
     public class NullToEmptyGearConverter : JsonConverter<ExpansionStartingGearItem>

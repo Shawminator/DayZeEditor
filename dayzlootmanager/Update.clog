@@ -1,4 +1,13 @@
-﻿Version 0.8.3.8
+﻿Version 0.8.3.9
+[Updatd]
+Expansion Loot			-	updated  quant Percent to a float.
+Expasnion Airdrops		-	Updated to expansion config 8
+Economy Spawnabletypes	-	Updated to handle nested classes introduced in dayz 1.28
+Economy Random Presets	-	Updated to handle Additon files loaded from economy core intoduced in dayz 1.28
+Economy EffectArea		-	Updated to Latest config version from dayz 1.28
+Economy Player Spawn	-	Added allow in water to gen_params in player spawns added in dayz 1.28
+
+Version 0.8.3.8
 [Fixed]
 Economy Manager			-	Updated CFGGameplay to latest 1.23 config
 						-	Updated areatriggers to allow for null values as of 1.28

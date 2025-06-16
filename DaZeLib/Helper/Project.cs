@@ -144,7 +144,7 @@ namespace DayZeEditor
         [JsonIgnore]
         public BindingList<Spawnabletypesconfig> spawnabletypesList { get; set; }
         [JsonIgnore]
-        public cfgrandompresetsconfig cfgrandompresetsconfig { get; set; }
+        public BindingList<cfgrandompresetsconfig> RandomPresetList { get; set; }
         [JsonIgnore]
         public CFGGameplayConfig CFGGameplayConfig { get; set; }
         [JsonIgnore]
@@ -257,6 +257,10 @@ namespace DayZeEditor
         {
             return spawnabletypesList.FirstOrDefault(x => x.Filename == filename);
         }
+        private cfgrandompresetsconfig getrandompresetbyname(string filename)
+        {
+            return RandomPresetList.FirstOrDefault(x => x.Filename == filename);
+        }
         public void SetModListtypes()
         {
             bool needsave = false;
@@ -313,6 +317,10 @@ namespace DayZeEditor
         public void removeSpawnabletype(string filename)
         {
             spawnabletypesList.Remove(getspawnablwetyprbyname(filename));
+        }
+        public void removerandompreset(string filename)
+        {
+            RandomPresetList.Remove(getrandompresetbyname(filename));
         }
         public void seteconomycore()
         {
@@ -430,6 +438,7 @@ namespace DayZeEditor
         }
         public void SetRandompresets()
         {
+            RandomPresetList = new BindingList<cfgrandompresetsconfig>();
             if (!File.Exists(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgrandompresets.xml"))
             {
                 XDocument xmlFile = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
@@ -437,7 +446,37 @@ namespace DayZeEditor
                 xmlFile.Save(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgrandompresets.xml");
                 Console.WriteLine("Vanilla cfgrandompresets.xml File not found.... Creating blank XML");
             }
-            cfgrandompresetsconfig = new cfgrandompresetsconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgrandompresets.xml");
+            RandomPresetList.Add(new cfgrandompresetsconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgrandompresets.xml"));
+            if (EconomyCore.economycore == null) return;
+            foreach (economycoreCE mods in EconomyCore.economycore.ce)
+            {
+                string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
+                if (!Directory.Exists(path))
+                {
+                    haswarnings = true;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(Environment.NewLine + "### Warning ### ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(path + " Does not exist. please remove full ce section from economycore" + Environment.NewLine);
+                    continue;
+                }
+                foreach (economycoreCEFile file in mods.file)
+                {
+                    if (file.type == "randompresets")
+                    {
+                        if (!File.Exists(path + "\\" + file.name))
+                        {
+                            haswarnings = true;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine(Environment.NewLine + "### Warning ### ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine(path + "\\" + file.name + "\\" + file.name + " Does not exist, please remove from economy core." + Environment.NewLine);
+                            continue;
+                        }
+                        RandomPresetList.Add(new cfgrandompresetsconfig(path + "\\" + file.name));
+                    }
+                }
+            }
         }
         public void setuserdefinitions()
         {
