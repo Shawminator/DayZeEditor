@@ -296,7 +296,7 @@ namespace DayZeEditor
             this.addNewSafeZoneToolStripMenuItem,
             this.removeSelectedSafeZoneToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(235, 158);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(235, 136);
             // 
             // addNewToolStripMenuItem
             // 

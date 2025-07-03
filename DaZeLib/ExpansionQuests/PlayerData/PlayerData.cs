@@ -103,6 +103,7 @@ namespace DayZeLib
                 bw.Write(ExpansionQuestPersistentQuestDataCount);
                 for (int i = 0; i < ExpansionQuestPersistentQuestDataCount; i++)
                 {
+                    long pos = bw.BaseStream.Position;
                     QuestDatas[i].WriteBin(bw);
                 }
             }
@@ -233,16 +234,15 @@ namespace DayZeLib
             }
             bw.Write(ActionState ? 1 : 0);
             bw.Write(TimeLimit);
+            long pos = bw.BaseStream.Position;
             if (ObjectiveType == QuExpansionQuestObjectiveTypeestType.COLLECT || ObjectiveType == QuExpansionQuestObjectiveTypeestType.DELIVERY)
             {
                 bw.Write(deliveryCount);
                 for (int j = 0; j < deliveryCount; j++)
                 {
-                    foreach (ExpansionQuestDeliveryObjectiveData ddata in ExpansionQuestDeliveryObjectiveData)
-                    {
-                        bw.Write(ddata.Index);
-                        bw.Write(ddata.Count);
-                    }
+                    ExpansionQuestDeliveryObjectiveData ddata = ExpansionQuestDeliveryObjectiveData[j];
+                    bw.Write(ddata.Index);
+                    bw.Write(ddata.Count);
                 }
             }
         }

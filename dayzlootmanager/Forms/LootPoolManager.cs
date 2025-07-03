@@ -768,12 +768,12 @@ namespace DayZeEditor
 
             foreach (var item in useablespantypes.Items)
             {
-                if (item is spawnabletypesTypeAttachments)
+                if (item is spawnableTypeAttachment)
                 {
-                    spawnabletypesTypeAttachments attachments = item as spawnabletypesTypeAttachments;
+                    spawnableTypeAttachment attachments = item as spawnableTypeAttachment;
                     capareLPAttachment NEWLIST = new capareLPAttachment();
                     NEWLIST.attachments = new BindingList<string>();
-                    foreach (spawnabletypesTypeAttachmentsItem attitem in attachments.item)
+                    foreach (spawnableTypeItem attitem in attachments.item)
                     {
                         if (attitem.name.ToLower().Contains("mag"))
                         {
@@ -790,12 +790,12 @@ namespace DayZeEditor
                         currentRHPredefineditems.attachments.Add(NEWLIST);
                     }
                 }
-                else if (item is spawnabletypesTypeCargo)
+                else if (item is spawnableTypeCargo)
                 {
-                    spawnabletypesTypeCargo attachments = item as spawnabletypesTypeCargo;
+                    spawnableTypeCargo attachments = item as spawnableTypeCargo;
                     capareLPAttachment NEWLIST = new capareLPAttachment();
                     NEWLIST.attachments = new BindingList<string>();
-                    foreach (spawnabletypesTypeCargoItem attitem in attachments.item)
+                    foreach (spawnableTypeItem attitem in attachments.item)
                     {
                         NEWLIST.attachments.Add(attitem.name);
                     }
@@ -844,12 +844,12 @@ namespace DayZeEditor
                     continue;
                 foreach (var item in sp.Items)
                 {
-                    if (item is spawnabletypesTypeAttachments)
+                    if (item is spawnableTypeAttachment)
                     {
-                        spawnabletypesTypeAttachments attachments = item as spawnabletypesTypeAttachments;
+                        spawnableTypeAttachment attachments = item as spawnableTypeAttachment;
                         capareLPAttachment NEWLIST = new capareLPAttachment();
                         NEWLIST.attachments = new BindingList<string>();
-                        foreach (spawnabletypesTypeAttachmentsItem attitem in attachments.item)
+                        foreach (spawnableTypeItem attitem in attachments.item)
                         {
                             if (attitem.name.ToLower().Contains("mag"))
                             {
@@ -866,12 +866,12 @@ namespace DayZeEditor
                             newitem.attachments.Add(NEWLIST);
                         }
                     }
-                    else if (item is spawnabletypesTypeCargo)
+                    else if (item is spawnableTypeCargo)
                     {
-                        spawnabletypesTypeCargo attachments = item as spawnabletypesTypeCargo;
+                        spawnableTypeCargo attachments = item as spawnableTypeCargo;
                         capareLPAttachment NEWLIST = new capareLPAttachment();
                         NEWLIST.attachments = new BindingList<string>();
-                        foreach (spawnabletypesTypeCargoItem attitem in attachments.item)
+                        foreach (spawnableTypeItem attitem in attachments.item)
                         {
                             NEWLIST.attachments.Add(attitem.name);
                         }

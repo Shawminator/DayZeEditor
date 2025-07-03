@@ -7174,6 +7174,7 @@ namespace DayZeEditor
             this.checkBox3.Size = new System.Drawing.Size(15, 14);
             this.checkBox3.TabIndex = 112;
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // panel57
             // 
@@ -7203,6 +7204,7 @@ namespace DayZeEditor
             this.checkBox2.Size = new System.Drawing.Size(15, 14);
             this.checkBox2.TabIndex = 112;
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // panel56
             // 
@@ -7272,7 +7274,6 @@ namespace DayZeEditor
             this.numericUpDown3.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown3.TabIndex = 101;
             this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged_1);
             // 
             // QuestInfoGB
             // 
@@ -7370,7 +7371,6 @@ namespace DayZeEditor
             this.numericUpDown13.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown13.TabIndex = 101;
             this.numericUpDown13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown13.ValueChanged += new System.EventHandler(this.numericUpDown13_ValueChanged);
             // 
             // panel51
             // 
@@ -7480,6 +7480,7 @@ namespace DayZeEditor
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(237, 21);
             this.comboBox1.TabIndex = 173;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // darkLabel75
             // 
@@ -7757,7 +7758,7 @@ namespace DayZeEditor
             this.removeQuestFromPlayerToolStripMenuItem,
             this.removePlayerSaveDataToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(216, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(216, 48);
             // 
             // removeQuestFromPlayerToolStripMenuItem
             // 

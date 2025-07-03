@@ -148,7 +148,18 @@ namespace DayZeLib
             Z = Convert.ToSingle(possplit[2]);
         }
         public Vec3() { }
+        public static Vec3 Parse(string input)
+        {
+            var parts = input.Split(' ');
+            if (parts.Length != 3)
+                throw new FormatException("Position must have 3 float components.");
 
+            return new Vec3(
+                float.Parse(parts[0], CultureInfo.InvariantCulture),
+                float.Parse(parts[1], CultureInfo.InvariantCulture),
+                float.Parse(parts[2], CultureInfo.InvariantCulture)
+            );
+        }
         public override string ToString()
         {
             return X.ToString() + "," + Y.ToString() + "," + Z.ToString();

@@ -159,7 +159,6 @@
     <Compile Include="Economy\NestedspawnableTypes.cs" />
     <Compile Include="Economy\PlayerDB.cs" />
     <Compile Include="Economy\PlayerSpawnsXML.cs" />
-    <Compile Include="Economy\SpawnabletypesXML.cs" />
     <Compile Include="Economy\Territories.cs" />
     <Compile Include="Economy\TypesXML.cs" />
     <Compile Include="Economy\variables.cs" />
@@ -286,6 +285,15 @@
     <Compile Include="RHLootBoxes\RHLootBoxes.cs" />
     <Compile Include="SearchForLoot\SFLConfig.cs" />
     <Compile Include="SpawnerBubaku\SpawnerBubaku.cs" />
+    <Compile Include="Terje\TerjeCFGFile.cs" />
+    <Compile Include="Terje\TerjeCFGLine.cs" />
+    <Compile Include="Terje\TerjeScriptableAreas.cs" />
+    <Compile Include="Terje\TerjeFaces.cs" />
+    <Compile Include="Terje\TerjeGeneral.cs" />
+    <Compile Include="Terje\TerjeLoadouts.cs" />
+    <Compile Include="Terje\TerjeProtectionIDs.cs" />
+    <Compile Include="Terje\TerjeRecipes.cs" />
+    <Compile Include="Terje\TerjeRespawns.cs" />
     <Compile Include="TimedCrate\TimedCrateLoot.cs" />
     <Compile Include="TimedCrate\TimedCrates.cs" />
     <Compile Include="TraderPlus\TraderPlusBankingConfig.cs" />

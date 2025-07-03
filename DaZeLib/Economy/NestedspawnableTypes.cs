@@ -579,7 +579,4 @@ namespace DayZeLib
 
 
     }
-
-    /// <remarks/>
-
 }

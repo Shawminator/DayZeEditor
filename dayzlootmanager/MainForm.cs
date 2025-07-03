@@ -570,10 +570,15 @@ namespace DayZeEditor
                 else
                     KillRewardManagerButton.Visible = false;
                 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\mpmissions\\" + Projects.getActiveProject().mpmissionpath + "\\weather.json"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\mpmissions\\" + Projects.getActiveProject().mpmissionpath + "\\TerjeSettings"))
                     DynamicWeatherManagerButton.Visible = true;
                 else
                     DynamicWeatherManagerButton.Visible = false;
+
+                if (Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MB_TimedCrate"))
+                    TerjeManagerButton.Visible = true;
+                else
+                    TerjeManagerButton.Visible = false;
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -1315,6 +1320,33 @@ namespace DayZeEditor
                 _TM.Show();
                 Console.WriteLine("loading capareWorkBenchManager manager....");
                 label1.Text = "Capare Workbench manager";
+            }
+            timer1.Start();
+        }
+        private void TerjeManagerButton_Click(object sender, EventArgs e)
+        {
+            TerjeManager _TM = Application.OpenForms["TerjeManager"] as TerjeManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new TerjeManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+
+                };
+                _TM.Show();
+                Console.WriteLine("loading Terje Manager manager....");
+                label1.Text = "Terje Manager";
             }
             timer1.Start();
         }

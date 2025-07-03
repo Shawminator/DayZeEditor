@@ -3419,7 +3419,7 @@ namespace DayZeEditor
             this.NomCountLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.NomCountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.NomCountLabel.Name = "NomCountLabel";
-            this.NomCountLabel.Size = new System.Drawing.Size(131, 42);
+            this.NomCountLabel.Size = new System.Drawing.Size(132, 42);
             this.NomCountLabel.Text = "Total Nominal Count :- ";
             // 
             // economySearchNextButton
@@ -3430,7 +3430,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
+            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -3577,7 +3577,7 @@ namespace DayZeEditor
             this.TypesTabButton.Image = ((System.Drawing.Image)(resources.GetObject("TypesTabButton.Image")));
             this.TypesTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TypesTabButton.Name = "TypesTabButton";
-            this.TypesTabButton.Size = new System.Drawing.Size(40, 22);
+            this.TypesTabButton.Size = new System.Drawing.Size(41, 22);
             this.TypesTabButton.Text = "Types";
             this.TypesTabButton.Click += new System.EventHandler(this.TypesTabButton_Click);
             // 
@@ -3597,7 +3597,7 @@ namespace DayZeEditor
             this.TypesSummaryTabButton.Image = ((System.Drawing.Image)(resources.GetObject("TypesSummaryTabButton.Image")));
             this.TypesSummaryTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TypesSummaryTabButton.Name = "TypesSummaryTabButton";
-            this.TypesSummaryTabButton.Size = new System.Drawing.Size(94, 22);
+            this.TypesSummaryTabButton.Size = new System.Drawing.Size(95, 22);
             this.TypesSummaryTabButton.Text = "Types Summary";
             this.TypesSummaryTabButton.Click += new System.EventHandler(this.TypesSummaryTabButton_Click);
             // 
@@ -3697,7 +3697,7 @@ namespace DayZeEditor
             this.UnderGroundtriggerButton.Image = ((System.Drawing.Image)(resources.GetObject("UnderGroundtriggerButton.Image")));
             this.UnderGroundtriggerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.UnderGroundtriggerButton.Name = "UnderGroundtriggerButton";
-            this.UnderGroundtriggerButton.Size = new System.Drawing.Size(127, 22);
+            this.UnderGroundtriggerButton.Size = new System.Drawing.Size(128, 22);
             this.UnderGroundtriggerButton.Text = "UnderGround Triggers";
             this.UnderGroundtriggerButton.Click += new System.EventHandler(this.UnderGgoundtriggerButton_Click);
             // 
@@ -17651,47 +17651,47 @@ namespace DayZeEditor
             this.exportAllToExcelToolStripMenuItem,
             this.updateTypesFromFileToolStripMenuItem});
             this.TypesContextMenu.Name = "TypesContextMenu";
-            this.TypesContextMenu.Size = new System.Drawing.Size(211, 136);
+            this.TypesContextMenu.Size = new System.Drawing.Size(212, 136);
             // 
             // DeleteTypesTSMI
             // 
             this.DeleteTypesTSMI.Name = "DeleteTypesTSMI";
-            this.DeleteTypesTSMI.Size = new System.Drawing.Size(210, 22);
+            this.DeleteTypesTSMI.Size = new System.Drawing.Size(211, 22);
             this.DeleteTypesTSMI.Text = "Delete Types";
             this.DeleteTypesTSMI.Click += new System.EventHandler(this.DeleteTypesTSMI_Click);
             // 
             // AddTypesTSMI
             // 
             this.AddTypesTSMI.Name = "AddTypesTSMI";
-            this.AddTypesTSMI.Size = new System.Drawing.Size(210, 22);
+            this.AddTypesTSMI.Size = new System.Drawing.Size(211, 22);
             this.AddTypesTSMI.Text = "Add New Types";
             this.AddTypesTSMI.Click += new System.EventHandler(this.AddtypesTSMI_Click);
             // 
             // DeleteSpecificTypeTSMI
             // 
             this.DeleteSpecificTypeTSMI.Name = "DeleteSpecificTypeTSMI";
-            this.DeleteSpecificTypeTSMI.Size = new System.Drawing.Size(210, 22);
+            this.DeleteSpecificTypeTSMI.Size = new System.Drawing.Size(211, 22);
             this.DeleteSpecificTypeTSMI.Text = "Delete Specific Type";
             this.DeleteSpecificTypeTSMI.Click += new System.EventHandler(this.DeleteSpecificTypeTSMI_Click);
             // 
             // checkForDuplicateTypesTSMI
             // 
             this.checkForDuplicateTypesTSMI.Name = "checkForDuplicateTypesTSMI";
-            this.checkForDuplicateTypesTSMI.Size = new System.Drawing.Size(210, 22);
+            this.checkForDuplicateTypesTSMI.Size = new System.Drawing.Size(211, 22);
             this.checkForDuplicateTypesTSMI.Text = "Check for Duplicate Types";
             this.checkForDuplicateTypesTSMI.Click += new System.EventHandler(this.checkForDuplicateTypesToolStripMenuItem_Click);
             // 
             // exportAllToExcelToolStripMenuItem
             // 
             this.exportAllToExcelToolStripMenuItem.Name = "exportAllToExcelToolStripMenuItem";
-            this.exportAllToExcelToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.exportAllToExcelToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.exportAllToExcelToolStripMenuItem.Text = "Export All to CSV";
             this.exportAllToExcelToolStripMenuItem.Click += new System.EventHandler(this.exportAllToExcelToolStripMenuItem_Click);
             // 
             // updateTypesFromFileToolStripMenuItem
             // 
             this.updateTypesFromFileToolStripMenuItem.Name = "updateTypesFromFileToolStripMenuItem";
-            this.updateTypesFromFileToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.updateTypesFromFileToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.updateTypesFromFileToolStripMenuItem.Text = "Update Types from File";
             this.updateTypesFromFileToolStripMenuItem.Click += new System.EventHandler(this.updateTypesFromFileToolStripMenuItem_Click);
             // 
@@ -17972,7 +17972,7 @@ namespace DayZeEditor
             this.ContaminatoedAreaTabButton.Image = ((System.Drawing.Image)(resources.GetObject("ContaminatoedAreaTabButton.Image")));
             this.ContaminatoedAreaTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ContaminatoedAreaTabButton.Name = "ContaminatoedAreaTabButton";
-            this.ContaminatoedAreaTabButton.Size = new System.Drawing.Size(79, 22);
+            this.ContaminatoedAreaTabButton.Size = new System.Drawing.Size(80, 22);
             this.ContaminatoedAreaTabButton.Text = "Trigger Areas";
             this.ContaminatoedAreaTabButton.Click += new System.EventHandler(this.ContaminatoedAreaTabButton_Click);
             // 
@@ -18072,7 +18072,7 @@ namespace DayZeEditor
             this.TerritoriesTabButton.Image = ((System.Drawing.Image)(resources.GetObject("TerritoriesTabButton.Image")));
             this.TerritoriesTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TerritoriesTabButton.Name = "TerritoriesTabButton";
-            this.TerritoriesTabButton.Size = new System.Drawing.Size(62, 22);
+            this.TerritoriesTabButton.Size = new System.Drawing.Size(63, 22);
             this.TerritoriesTabButton.Text = "Territories";
             this.TerritoriesTabButton.Click += new System.EventHandler(this.TerritoriesTabButton_Click);
             // 
@@ -18104,33 +18104,33 @@ namespace DayZeEditor
             this.addNewTerritoryFileToolStripMenuItem,
             this.removeTerritoryFileToolStripMenuItem});
             this.TerritoryContextMenu.Name = "TerritoryContextMenu";
-            this.TerritoryContextMenu.Size = new System.Drawing.Size(191, 92);
+            this.TerritoryContextMenu.Size = new System.Drawing.Size(192, 92);
             // 
             // addNewTerritoryToolStripMenuItem
             // 
             this.addNewTerritoryToolStripMenuItem.Name = "addNewTerritoryToolStripMenuItem";
-            this.addNewTerritoryToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.addNewTerritoryToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.addNewTerritoryToolStripMenuItem.Text = "Add new Territory";
             this.addNewTerritoryToolStripMenuItem.Click += new System.EventHandler(this.addNewTerritoryToolStripMenuItem_Click);
             // 
             // removeTerritoryToolStripMenuItem
             // 
             this.removeTerritoryToolStripMenuItem.Name = "removeTerritoryToolStripMenuItem";
-            this.removeTerritoryToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.removeTerritoryToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.removeTerritoryToolStripMenuItem.Text = "Remove Territory";
             this.removeTerritoryToolStripMenuItem.Click += new System.EventHandler(this.removeTerritoryToolStripMenuItem_Click);
             // 
             // addNewTerritoryFileToolStripMenuItem
             // 
             this.addNewTerritoryFileToolStripMenuItem.Name = "addNewTerritoryFileToolStripMenuItem";
-            this.addNewTerritoryFileToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.addNewTerritoryFileToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.addNewTerritoryFileToolStripMenuItem.Text = "Add New Territory File";
             this.addNewTerritoryFileToolStripMenuItem.Click += new System.EventHandler(this.addNewTerritoryFileToolStripMenuItem_Click);
             // 
             // removeTerritoryFileToolStripMenuItem
             // 
             this.removeTerritoryFileToolStripMenuItem.Name = "removeTerritoryFileToolStripMenuItem";
-            this.removeTerritoryFileToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.removeTerritoryFileToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.removeTerritoryFileToolStripMenuItem.Text = "Remove Territory File";
             this.removeTerritoryFileToolStripMenuItem.Click += new System.EventHandler(this.removeTerritoryFileToolStripMenuItem_Click);
             // 
@@ -18404,68 +18404,68 @@ namespace DayZeEditor
             this.addNewAttachmentToolStripMenuItem,
             this.removeSelectedToolStripMenuItem});
             this.SpawnableTypescontextMenu.Name = "SpawnableTypescontextMenu";
-            this.SpawnableTypescontextMenu.Size = new System.Drawing.Size(237, 202);
+            this.SpawnableTypescontextMenu.Size = new System.Drawing.Size(238, 202);
             // 
             // addNewSpawnableTypesFileToolStripMenuItem
             // 
             this.addNewSpawnableTypesFileToolStripMenuItem.Name = "addNewSpawnableTypesFileToolStripMenuItem";
-            this.addNewSpawnableTypesFileToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.addNewSpawnableTypesFileToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.addNewSpawnableTypesFileToolStripMenuItem.Text = "Add New Spawnable Types File";
             this.addNewSpawnableTypesFileToolStripMenuItem.Click += new System.EventHandler(this.addNewSpawnableTypesFileToolStripMenuItem_Click);
             // 
             // addNewSpawnableTypeToolStripMenuItem
             // 
             this.addNewSpawnableTypeToolStripMenuItem.Name = "addNewSpawnableTypeToolStripMenuItem";
-            this.addNewSpawnableTypeToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.addNewSpawnableTypeToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.addNewSpawnableTypeToolStripMenuItem.Text = "Add New Spawnable Type";
             this.addNewSpawnableTypeToolStripMenuItem.Click += new System.EventHandler(this.addNewSpawnableTypeToolStripMenuItem_Click);
             // 
             // addNewHoarderToolStripMenuItem
             // 
             this.addNewHoarderToolStripMenuItem.Name = "addNewHoarderToolStripMenuItem";
-            this.addNewHoarderToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.addNewHoarderToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.addNewHoarderToolStripMenuItem.Text = "Add New Hoarder";
             this.addNewHoarderToolStripMenuItem.Click += new System.EventHandler(this.addNewHoarderToolStripMenuItem_Click);
             // 
             // addNewTagToolStripMenuItem
             // 
             this.addNewTagToolStripMenuItem.Name = "addNewTagToolStripMenuItem";
-            this.addNewTagToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.addNewTagToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.addNewTagToolStripMenuItem.Text = "Add New Tag";
             this.addNewTagToolStripMenuItem.Click += new System.EventHandler(this.addNewTagToolStripMenuItem_Click);
             // 
             // addNewDamageToolStripMenuItem
             // 
             this.addNewDamageToolStripMenuItem.Name = "addNewDamageToolStripMenuItem";
-            this.addNewDamageToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.addNewDamageToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.addNewDamageToolStripMenuItem.Text = "Add New Damage";
             this.addNewDamageToolStripMenuItem.Click += new System.EventHandler(this.addNewDamageToolStripMenuItem_Click);
             // 
             // addNewItemToolStripMenuItem
             // 
             this.addNewItemToolStripMenuItem.Name = "addNewItemToolStripMenuItem";
-            this.addNewItemToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.addNewItemToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.addNewItemToolStripMenuItem.Text = "Add New item";
             this.addNewItemToolStripMenuItem.Click += new System.EventHandler(this.addNewItemToolStripMenuItem_Click);
             // 
             // addNewCargoToolStripMenuItem
             // 
             this.addNewCargoToolStripMenuItem.Name = "addNewCargoToolStripMenuItem";
-            this.addNewCargoToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.addNewCargoToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.addNewCargoToolStripMenuItem.Text = "Add New Cargo";
             this.addNewCargoToolStripMenuItem.Click += new System.EventHandler(this.addNewCargoToolStripMenuItem_Click);
             // 
             // addNewAttachmentToolStripMenuItem
             // 
             this.addNewAttachmentToolStripMenuItem.Name = "addNewAttachmentToolStripMenuItem";
-            this.addNewAttachmentToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.addNewAttachmentToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.addNewAttachmentToolStripMenuItem.Text = "Add New Attachment";
             this.addNewAttachmentToolStripMenuItem.Click += new System.EventHandler(this.addNewAttachmentToolStripMenuItem_Click);
             // 
             // removeSelectedToolStripMenuItem
             // 
             this.removeSelectedToolStripMenuItem.Name = "removeSelectedToolStripMenuItem";
-            this.removeSelectedToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.removeSelectedToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.removeSelectedToolStripMenuItem.Text = "Remove Selected";
             this.removeSelectedToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedToolStripMenuItem_Click);
             // 
@@ -18478,7 +18478,7 @@ namespace DayZeEditor
             this.addNewItemToolStripMenuItem1,
             this.removeSelectedToolStripMenuItem1});
             this.RandomPresetcontextMenu.Name = "RandomPresetMenuStrip";
-            this.RandomPresetcontextMenu.Size = new System.Drawing.Size(243, 136);
+            this.RandomPresetcontextMenu.Size = new System.Drawing.Size(243, 114);
             // 
             // addNewRandomPresetConfigToolStripMenuItem
             // 

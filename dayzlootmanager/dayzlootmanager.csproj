@@ -126,6 +126,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\GitHub.cs" />
+    <Compile Include="Forms\TerjeManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TerjeManager.Designer.cs">
+      <DependentUpon>TerjeManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TimedCrateManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +287,12 @@
     </Compile>
     <Compile Include="Forms\RHLootBoxManager.Designer.cs">
       <DependentUpon>RHLootBoxManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelperForms\AddnewTerjeScriptableArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelperForms\AddnewTerjeScriptableArea.Designer.cs">
+      <DependentUpon>AddnewTerjeScriptableArea.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperForms\AddFromLoadoutsList.cs">
       <SubType>Form</SubType>
@@ -478,6 +490,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\TerjeManager.resx">
+      <DependentUpon>TerjeManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TimedCrateManager.resx">
       <DependentUpon>TimedCrateManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -556,6 +571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RHLootBoxManager.resx">
       <DependentUpon>RHLootBoxManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelperForms\AddnewTerjeScriptableArea.resx">
+      <DependentUpon>AddnewTerjeScriptableArea.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\AddFromLoadoutsList.resx">
       <DependentUpon>AddFromLoadoutsList.cs</DependentUpon>
@@ -882,6 +900,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TraderNPCs\QuestStaticObject.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TraderNPCs\skills_and_perks.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TraderNPCs\Vanilla_Quest_Actions.txt">

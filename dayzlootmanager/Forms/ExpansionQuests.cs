@@ -4841,13 +4841,26 @@ namespace DayZeEditor
             QuestPlayerDataList.deletePlayerData(currentplayer);
             File.Delete(currentplayer.Filename);
         }
-        private void numericUpDown13_ValueChanged(object sender, EventArgs e)
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) { return; }
+            QuestPlayerData currentplayer = treeViewMS2.SelectedNode.Parent.Tag as QuestPlayerData;
+            currentExpansionQuestObjectiveData.IsCompleted = checkBox2.Checked;
+            currentplayer.isDirty = true;
         }
-        private void numericUpDown3_ValueChanged_1(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) { return; }
+            QuestPlayerData currentplayer = treeViewMS2.SelectedNode.Parent.Tag as QuestPlayerData;
+            currentExpansionQuestPersistentQuestData.State = (ExpansionQuestState)comboBox1.SelectedItem;
+            currentplayer.isDirty = true;
+        }
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            QuestPlayerData currentplayer = treeViewMS2.SelectedNode.Parent.Tag as QuestPlayerData;
+            currentExpansionQuestObjectiveData.IsActive = checkBox3.Checked;
+            currentplayer.isDirty = true;
         }
 
 
