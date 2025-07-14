@@ -1,6 +1,5 @@
 ﻿using DarkUI.Forms;
 using DayZeLib;
-using DayZeLib.DynamicWeatherPlugin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,7 +44,6 @@ namespace DayZeEditor
         {
             SaveFile();
         }
-
         private void SaveFile()
         {
             List<string> midifiedfiles = new List<string>();
@@ -58,7 +56,7 @@ namespace DayZeEditor
                     File.Copy(DynamicWeatherPlugin.Filename, Path.GetDirectoryName(DynamicWeatherPlugin.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(DynamicWeatherPlugin.Filename) + ".bak", true);
                 }
                 DynamicWeatherPlugin.isDirty = false;
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping, Converters = { new BoolConverter() }};
                 string jsonString = JsonSerializer.Serialize(DynamicWeatherPlugin.m_Dynamics, options);
                 File.WriteAllText(DynamicWeatherPlugin.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(DynamicWeatherPlugin.Filename));
@@ -84,7 +82,6 @@ namespace DayZeEditor
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath);
@@ -132,15 +129,14 @@ namespace DayZeEditor
             useraction = true;
 
         }
-
         private void WeatherLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (WeatherLB.SelectedItems.Count <= 0) return;
             useraction = false;
             CurrentDynamicWeather = WeatherLB.SelectedItem as WeatherDynamic;
 
-            chat_messageCB.Checked = CurrentDynamicWeather.chat_message == 1 ? true : false;
-            notify_messageCB.Checked = CurrentDynamicWeather.notify_message == 1 ? true : false;
+            chat_messageCB.Checked = CurrentDynamicWeather.chat_message;
+            notify_messageCB.Checked = CurrentDynamicWeather.notify_message;
             nameTB.Text = CurrentDynamicWeather.name;
             transition_minNUD.Value = CurrentDynamicWeather.transition_min;
             transition_maxNUD.Value = CurrentDynamicWeather.transition_max;
@@ -160,26 +156,30 @@ namespace DayZeEditor
             fog_maxNUD.Value = CurrentDynamicWeather.fog_max;
             rain_minNUD.Value = CurrentDynamicWeather.rain_min;
             rain_maxNUD.Value = CurrentDynamicWeather.rain_max;
-            wind_minNUD.Value = CurrentDynamicWeather.wind_min;
-            wind_maxNUD.Value = CurrentDynamicWeather.wind_max;
+            wind_speed_minNUD.Value = CurrentDynamicWeather.wind_speed_min;
+            wind_speed_maxNUD.Value = CurrentDynamicWeather.wind_speed_max;
+            wind_dir_minNUD.Value = CurrentDynamicWeather.wind_dir_min;
+            wind_dir_maxNUD.Value = CurrentDynamicWeather.wind_dir_max;
             snowfall_minNUD.Value = CurrentDynamicWeather.snowfall_min;
             snowfall_maxNUD.Value= CurrentDynamicWeather.snowfall_max;
             use_snowflake_scaleCB.Checked = CurrentDynamicWeather.use_snowflake_scale;
             snowflake_scale_minNUD.Value = CurrentDynamicWeather.snowflake_scale_min;
             snowflake_scale_maxNUD.Value = CurrentDynamicWeather.snowflake_scale_max;
 
-            stormCB.Checked = CurrentDynamicWeather.storm == 1 ? true : false;
+            stormCB.Checked = CurrentDynamicWeather.storm;
             thunder_timeoutNUD.Value = CurrentDynamicWeather.thunder_timeout;
+
+            use_global_temperatureCB.Checked = CurrentDynamicWeather.use_global_temperature;
+            global_temperature_overrideNUD.Value = CurrentDynamicWeather.global_temperature_override;
 
             useraction = true;
         }
-
         private void darkButton5_Click(object sender, EventArgs e)
         {
             WeatherDynamic newweather = new WeatherDynamic()
             {
-                chat_message = 1,
-                notify_message = 1,
+                chat_message = true,
+                notify_message = true,
                 name = "TEMPLATE",
                 transition_min = 1.0m,
                 transition_max = 2.0m,
@@ -196,8 +196,10 @@ namespace DayZeEditor
                 dyn_vol_fog_height_max = 0.3m,
                 dyn_vol_fog_bias = 10.0m,
                 fog_transition_time = 60.0m,
-                wind_min = 0.0m,
-                wind_max = 1.0m,
+                wind_speed_min = 0.0m,
+                wind_speed_max = 1.0m,
+                wind_dir_min = 0.0m, 
+                wind_dir_max =360.0m,
                 rain_min = 0.0m,
                 rain_max = 1.0m,
                 snowfall_min = 0.0m,
@@ -205,14 +207,15 @@ namespace DayZeEditor
                 snowflake_scale_min = 0.5m,
                 snowflake_scale_max = 2.0m,
                 use_snowflake_scale = true,
-                storm = 0,
-                thunder_timeout = 0.0m
+                storm = true,
+                thunder_timeout = 0.0m,
+                use_global_temperature = true,
+                global_temperature_override = 35.0m
             };
             DynamicWeatherPlugin.m_Dynamics.Add(newweather);
             DynamicWeatherPlugin.isDirty = true;
             WeatherLB.SelectedIndex = WeatherLB.Items.Count - 1;
         }
-
         private void darkButton6_Click(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -238,13 +241,6 @@ namespace DayZeEditor
             if (!useraction) return;
             CheckBox chk = sender as CheckBox;
             Helper.SetBoolValue(CurrentDynamicWeather, chk.Name.Substring(0, chk.Name.Length - 2), chk.Checked);
-            DynamicWeatherPlugin.isDirty = true;
-        }
-        private void DWPFaketBoolsCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CheckBox chk = sender as CheckBox;
-            Helper.SetFakeBoolValue(CurrentDynamicWeather, chk.Name.Substring(0, chk.Name.Length - 2), chk.Checked);
             DynamicWeatherPlugin.isDirty = true;
         }
         private void DWPDecimalsNUD_ValueChanged(object sender, EventArgs e)

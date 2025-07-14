@@ -44,16 +44,14 @@ namespace DayZeEditor
             this.removeIngredientItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewSteamIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSteamIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addTimeoutConditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addSkillLevelConditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addSkillPerkConditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addSpecificPlayerConditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCustomConditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeConditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addConditionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeConditionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewScriptableAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeScriptableAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewLoadoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeLoadoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addLootItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewLootCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +70,7 @@ namespace DayZeEditor
             this.IntNUD = new System.Windows.Forms.NumericUpDown();
             this.FloatNUD = new System.Windows.Forms.NumericUpDown();
             this.CommentRTB = new System.Windows.Forms.RichTextBox();
+            this.StringTB = new System.Windows.Forms.TextBox();
             this.CIngrdientGB = new System.Windows.Forms.GroupBox();
             this.CIAddQuantitySpecifiedCB = new System.Windows.Forms.CheckBox();
             this.CISetHealthSpecifiedCB = new System.Windows.Forms.CheckBox();
@@ -217,13 +216,55 @@ namespace DayZeEditor
             this.SCLItemsquickbarNUD = new System.Windows.Forms.NumericUpDown();
             this.SCLItemsammoTypeTB = new System.Windows.Forms.TextBox();
             this.SCLItemscostNUD = new System.Windows.Forms.NumericUpDown();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.CRSPhideOwnerWhenFalseCB = new System.Windows.Forms.CheckBox();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.CRSLhideOwnerWhenFalseCB = new System.Windows.Forms.CheckBox();
-            this.CRSLhideOwnerWhenFalseSpecifiedCB = new System.Windows.Forms.CheckBox();
-            this.StringTB = new System.Windows.Forms.TextBox();
+            this.SCLSelectorGB = new System.Windows.Forms.GroupBox();
+            this.SCLSelectorMultipleGB = new System.Windows.Forms.GroupBox();
+            this.SCLSelectorpointsIconSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCLSelectorpointsCountSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCLSelectorpointsHandlerSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCLSelectorpointsCountNUD = new System.Windows.Forms.NumericUpDown();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.SCLSelectorpointsHandlerTB = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.SCLSelectorpointsIconTB = new System.Windows.Forms.TextBox();
+            this.SCLSelectordisplayNameSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCLSelectordisplayNameTB = new System.Windows.Forms.TextBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.SCLSelectortypeCB = new System.Windows.Forms.ComboBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.SCLGroupGB = new System.Windows.Forms.GroupBox();
+            this.SCLGroupcostSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCLGroupcostNUD = new System.Windows.Forms.NumericUpDown();
+            this.label61 = new System.Windows.Forms.Label();
+            this.SCLtimeoutGB = new System.Windows.Forms.GroupBox();
+            this.SCLTimeouthoursSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCLTimeoutminutesSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCLTimeoutsecondsSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.SCLTimeoutsecondsNUD = new System.Windows.Forms.NumericUpDown();
+            this.label64 = new System.Windows.Forms.Label();
+            this.SCLTimeoutminutesNUD = new System.Windows.Forms.NumericUpDown();
+            this.label63 = new System.Windows.Forms.Label();
+            this.SCLTimeoutidTB = new System.Windows.Forms.TextBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.SCLTimeouthoursNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCLConditionCustomConditionGB = new System.Windows.Forms.GroupBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.SCLConditionCustomConditionclassnameTB = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.CONDExtraOptionsGB = new System.Windows.Forms.GroupBox();
+            this.CONDExtraOptionsdisplayTextSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.CONDExtraOptionssuccessTextSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.CONDExtraOptionsfailTextSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.CONDExtraOptionsdisplayTextTB = new System.Windows.Forms.TextBox();
+            this.label72 = new System.Windows.Forms.Label();
+            this.CONDExtraOptionshideOwnerWhenFalseCB = new System.Windows.Forms.CheckBox();
+            this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.CONDExtraOptionssuccessTextTB = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.CONDExtraOptionsfailTextTB = new System.Windows.Forms.TextBox();
             this.darkToolStrip21.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -260,6 +301,18 @@ namespace DayZeEditor
             this.SCLItemsGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SCLItemsquickbarNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCLItemscostNUD)).BeginInit();
+            this.SCLSelectorGB.SuspendLayout();
+            this.SCLSelectorMultipleGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLSelectorpointsCountNUD)).BeginInit();
+            this.SCLGroupGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLGroupcostNUD)).BeginInit();
+            this.SCLtimeoutGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLTimeoutsecondsNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLTimeoutminutesNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLTimeouthoursNUD)).BeginInit();
+            this.SCLConditionCustomConditionGB.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.CONDExtraOptionsGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -334,25 +387,23 @@ namespace DayZeEditor
             this.removeIngredientItemToolStripMenuItem,
             this.addNewSteamIDToolStripMenuItem,
             this.removeSteamIDToolStripMenuItem,
-            this.addTimeoutConditionToolStripMenuItem,
-            this.addSkillLevelConditionToolStripMenuItem,
-            this.addSkillPerkConditionToolStripMenuItem,
-            this.addSpecificPlayerConditionToolStripMenuItem,
             this.addCustomConditionToolStripMenuItem,
             this.removeConditionToolStripMenuItem,
             this.addConditionsToolStripMenuItem,
             this.removeConditionsToolStripMenuItem,
             this.addNewScriptableAreaToolStripMenuItem,
-            this.removeScriptableAreaToolStripMenuItem});
+            this.removeScriptableAreaToolStripMenuItem,
+            this.addNewLoadoutToolStripMenuItem,
+            this.removeLoadoutToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(207, 400);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 356);
             // 
             // addNewCraftingRecipeToolStripMenuItem
             // 
             this.addNewCraftingRecipeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.addNewCraftingRecipeToolStripMenuItem.Name = "addNewCraftingRecipeToolStripMenuItem";
-            this.addNewCraftingRecipeToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.addNewCraftingRecipeToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.addNewCraftingRecipeToolStripMenuItem.Text = "Add New Crafting Recipe";
             this.addNewCraftingRecipeToolStripMenuItem.Click += new System.EventHandler(this.addNewCraftingRecipeToolStripMenuItem_Click);
             // 
@@ -360,7 +411,7 @@ namespace DayZeEditor
             // 
             this.removeSelectedRecipeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.removeSelectedRecipeToolStripMenuItem.Name = "removeSelectedRecipeToolStripMenuItem";
-            this.removeSelectedRecipeToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.removeSelectedRecipeToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.removeSelectedRecipeToolStripMenuItem.Text = "Remove Selected Recipe";
             this.removeSelectedRecipeToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedRecipeToolStripMenuItem_Click);
             // 
@@ -368,7 +419,7 @@ namespace DayZeEditor
             // 
             this.addCraftingResultToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.addCraftingResultToolStripMenuItem.Name = "addCraftingResultToolStripMenuItem";
-            this.addCraftingResultToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.addCraftingResultToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.addCraftingResultToolStripMenuItem.Text = "Add Crafting Result";
             this.addCraftingResultToolStripMenuItem.Click += new System.EventHandler(this.addCraftingResultToolStripMenuItem_Click);
             // 
@@ -376,7 +427,7 @@ namespace DayZeEditor
             // 
             this.removeCraftingResultToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.removeCraftingResultToolStripMenuItem.Name = "removeCraftingResultToolStripMenuItem";
-            this.removeCraftingResultToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.removeCraftingResultToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.removeCraftingResultToolStripMenuItem.Text = "Remove Crafting Result";
             this.removeCraftingResultToolStripMenuItem.Click += new System.EventHandler(this.removeCraftingResultToolStripMenuItem_Click);
             // 
@@ -384,7 +435,7 @@ namespace DayZeEditor
             // 
             this.addIngredientItemToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.addIngredientItemToolStripMenuItem.Name = "addIngredientItemToolStripMenuItem";
-            this.addIngredientItemToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.addIngredientItemToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.addIngredientItemToolStripMenuItem.Text = "Add Ingredient item";
             this.addIngredientItemToolStripMenuItem.Click += new System.EventHandler(this.addIngredientItemToolStripMenuItem_Click);
             // 
@@ -392,7 +443,7 @@ namespace DayZeEditor
             // 
             this.removeIngredientItemToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.removeIngredientItemToolStripMenuItem.Name = "removeIngredientItemToolStripMenuItem";
-            this.removeIngredientItemToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.removeIngredientItemToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.removeIngredientItemToolStripMenuItem.Text = "Remove Ingredient Item";
             this.removeIngredientItemToolStripMenuItem.Click += new System.EventHandler(this.removeIngredientItemToolStripMenuItem_Click);
             // 
@@ -400,7 +451,7 @@ namespace DayZeEditor
             // 
             this.addNewSteamIDToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.addNewSteamIDToolStripMenuItem.Name = "addNewSteamIDToolStripMenuItem";
-            this.addNewSteamIDToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.addNewSteamIDToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.addNewSteamIDToolStripMenuItem.Text = "Add New Steam ID";
             this.addNewSteamIDToolStripMenuItem.Click += new System.EventHandler(this.addNewSteamIDToolStripMenuItem_Click);
             // 
@@ -408,55 +459,23 @@ namespace DayZeEditor
             // 
             this.removeSteamIDToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.removeSteamIDToolStripMenuItem.Name = "removeSteamIDToolStripMenuItem";
-            this.removeSteamIDToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.removeSteamIDToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.removeSteamIDToolStripMenuItem.Text = "Remove Steam ID";
             this.removeSteamIDToolStripMenuItem.Click += new System.EventHandler(this.removeSteamIDToolStripMenuItem_Click);
-            // 
-            // addTimeoutConditionToolStripMenuItem
-            // 
-            this.addTimeoutConditionToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.addTimeoutConditionToolStripMenuItem.Name = "addTimeoutConditionToolStripMenuItem";
-            this.addTimeoutConditionToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.addTimeoutConditionToolStripMenuItem.Text = "Add Timeout Condition";
-            this.addTimeoutConditionToolStripMenuItem.Click += new System.EventHandler(this.addTimeoutConditionToolStripMenuItem_Click);
-            // 
-            // addSkillLevelConditionToolStripMenuItem
-            // 
-            this.addSkillLevelConditionToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.addSkillLevelConditionToolStripMenuItem.Name = "addSkillLevelConditionToolStripMenuItem";
-            this.addSkillLevelConditionToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.addSkillLevelConditionToolStripMenuItem.Text = "Add Skill Level Condition";
-            this.addSkillLevelConditionToolStripMenuItem.Click += new System.EventHandler(this.addSkillLevelConditionToolStripMenuItem_Click);
-            // 
-            // addSkillPerkConditionToolStripMenuItem
-            // 
-            this.addSkillPerkConditionToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.addSkillPerkConditionToolStripMenuItem.Name = "addSkillPerkConditionToolStripMenuItem";
-            this.addSkillPerkConditionToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.addSkillPerkConditionToolStripMenuItem.Text = "Add Skill Perk Condition";
-            this.addSkillPerkConditionToolStripMenuItem.Click += new System.EventHandler(this.addSkillPerkConditionToolStripMenuItem_Click);
-            // 
-            // addSpecificPlayerConditionToolStripMenuItem
-            // 
-            this.addSpecificPlayerConditionToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.addSpecificPlayerConditionToolStripMenuItem.Name = "addSpecificPlayerConditionToolStripMenuItem";
-            this.addSpecificPlayerConditionToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.addSpecificPlayerConditionToolStripMenuItem.Text = "Add Specific Player Condition";
-            this.addSpecificPlayerConditionToolStripMenuItem.Click += new System.EventHandler(this.addSpecificPlayerConditionToolStripMenuItem_Click);
             // 
             // addCustomConditionToolStripMenuItem
             // 
             this.addCustomConditionToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.addCustomConditionToolStripMenuItem.Name = "addCustomConditionToolStripMenuItem";
-            this.addCustomConditionToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.addCustomConditionToolStripMenuItem.Text = "Add Custom Condition";
+            this.addCustomConditionToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addCustomConditionToolStripMenuItem.Text = "Add Condition";
             this.addCustomConditionToolStripMenuItem.Click += new System.EventHandler(this.addCustomConditionToolStripMenuItem_Click);
             // 
             // removeConditionToolStripMenuItem
             // 
             this.removeConditionToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.removeConditionToolStripMenuItem.Name = "removeConditionToolStripMenuItem";
-            this.removeConditionToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.removeConditionToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.removeConditionToolStripMenuItem.Text = "Remove Condition";
             this.removeConditionToolStripMenuItem.Click += new System.EventHandler(this.removeConditionToolStripMenuItem_Click);
             // 
@@ -464,7 +483,7 @@ namespace DayZeEditor
             // 
             this.addConditionsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.addConditionsToolStripMenuItem.Name = "addConditionsToolStripMenuItem";
-            this.addConditionsToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.addConditionsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.addConditionsToolStripMenuItem.Text = "Add Conditions";
             this.addConditionsToolStripMenuItem.Click += new System.EventHandler(this.addConditionsToolStripMenuItem_Click);
             // 
@@ -472,7 +491,7 @@ namespace DayZeEditor
             // 
             this.removeConditionsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.removeConditionsToolStripMenuItem.Name = "removeConditionsToolStripMenuItem";
-            this.removeConditionsToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.removeConditionsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.removeConditionsToolStripMenuItem.Text = "Remove Conditions";
             this.removeConditionsToolStripMenuItem.Click += new System.EventHandler(this.removeConditionsToolStripMenuItem_Click);
             // 
@@ -480,7 +499,7 @@ namespace DayZeEditor
             // 
             this.addNewScriptableAreaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.addNewScriptableAreaToolStripMenuItem.Name = "addNewScriptableAreaToolStripMenuItem";
-            this.addNewScriptableAreaToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.addNewScriptableAreaToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.addNewScriptableAreaToolStripMenuItem.Text = "Add New Scriptable Area";
             this.addNewScriptableAreaToolStripMenuItem.Click += new System.EventHandler(this.addNewScriptableAreaToolStripMenuItem_Click);
             // 
@@ -488,9 +507,25 @@ namespace DayZeEditor
             // 
             this.removeScriptableAreaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.removeScriptableAreaToolStripMenuItem.Name = "removeScriptableAreaToolStripMenuItem";
-            this.removeScriptableAreaToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.removeScriptableAreaToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.removeScriptableAreaToolStripMenuItem.Text = "Remove Scriptable Area";
             this.removeScriptableAreaToolStripMenuItem.Click += new System.EventHandler(this.removeScriptableAreaToolStripMenuItem_Click);
+            // 
+            // addNewLoadoutToolStripMenuItem
+            // 
+            this.addNewLoadoutToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addNewLoadoutToolStripMenuItem.Name = "addNewLoadoutToolStripMenuItem";
+            this.addNewLoadoutToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addNewLoadoutToolStripMenuItem.Text = "Add New Loadout";
+            this.addNewLoadoutToolStripMenuItem.Click += new System.EventHandler(this.addNewLoadoutToolStripMenuItem_Click);
+            // 
+            // removeLoadoutToolStripMenuItem
+            // 
+            this.removeLoadoutToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeLoadoutToolStripMenuItem.Name = "removeLoadoutToolStripMenuItem";
+            this.removeLoadoutToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeLoadoutToolStripMenuItem.Text = "Remove Loadout";
+            this.removeLoadoutToolStripMenuItem.Click += new System.EventHandler(this.removeLoadoutToolStripMenuItem_Click);
             // 
             // addLootItemsToolStripMenuItem
             // 
@@ -561,7 +596,7 @@ namespace DayZeEditor
             this.groupBox1.Controls.Add(this.CommentRTB);
             this.groupBox1.Controls.Add(this.StringTB);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Location = new System.Drawing.Point(404, 48);
+            this.groupBox1.Location = new System.Drawing.Point(3, 194);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(427, 135);
             this.groupBox1.TabIndex = 282;
@@ -643,6 +678,16 @@ namespace DayZeEditor
             this.CommentRTB.TabIndex = 204;
             this.CommentRTB.Text = "";
             // 
+            // StringTB
+            // 
+            this.StringTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StringTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StringTB.Location = new System.Drawing.Point(13, 19);
+            this.StringTB.Name = "StringTB";
+            this.StringTB.Size = new System.Drawing.Size(253, 20);
+            this.StringTB.TabIndex = 207;
+            this.StringTB.TextChanged += new System.EventHandler(this.StringTB_TextChanged);
+            // 
             // CIngrdientGB
             // 
             this.CIngrdientGB.Controls.Add(this.CIAddQuantitySpecifiedCB);
@@ -670,7 +715,7 @@ namespace DayZeEditor
             this.CIngrdientGB.Controls.Add(this.CIDeleteRequiredCB);
             this.CIngrdientGB.Controls.Add(this.CIMinQuantityNUD);
             this.CIngrdientGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CIngrdientGB.Location = new System.Drawing.Point(404, 48);
+            this.CIngrdientGB.Location = new System.Drawing.Point(3, 1911);
             this.CIngrdientGB.Name = "CIngrdientGB";
             this.CIngrdientGB.Size = new System.Drawing.Size(427, 241);
             this.CIngrdientGB.TabIndex = 283;
@@ -1008,9 +1053,9 @@ namespace DayZeEditor
             this.CResultCB.Controls.Add(this.CRSetFullQuantityCB);
             this.CResultCB.Controls.Add(this.CRSetQuantityNUD);
             this.CResultCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CResultCB.Location = new System.Drawing.Point(404, 48);
+            this.CResultCB.Location = new System.Drawing.Point(3, 335);
             this.CResultCB.Name = "CResultCB";
-            this.CResultCB.Size = new System.Drawing.Size(427, 241);
+            this.CResultCB.Size = new System.Drawing.Size(427, 209);
             this.CResultCB.TabIndex = 284;
             this.CResultCB.TabStop = false;
             this.CResultCB.Text = "Result";
@@ -1276,7 +1321,7 @@ namespace DayZeEditor
             this.CRecipeGB.Controls.Add(this.label18);
             this.CRecipeGB.Controls.Add(this.CRAnimationLengthNUD);
             this.CRecipeGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CRecipeGB.Location = new System.Drawing.Point(404, 48);
+            this.CRecipeGB.Location = new System.Drawing.Point(3, 550);
             this.CRecipeGB.Name = "CRecipeGB";
             this.CRecipeGB.Size = new System.Drawing.Size(427, 124);
             this.CRecipeGB.TabIndex = 285;
@@ -1365,17 +1410,14 @@ namespace DayZeEditor
             // 
             // CRSLGB
             // 
-            this.CRSLGB.Controls.Add(this.label55);
-            this.CRSLGB.Controls.Add(this.CRSLhideOwnerWhenFalseCB);
-            this.CRSLGB.Controls.Add(this.CRSLhideOwnerWhenFalseSpecifiedCB);
             this.CRSLGB.Controls.Add(this.CRSLskillIdCB);
             this.CRSLGB.Controls.Add(this.label20);
             this.CRSLGB.Controls.Add(this.label21);
             this.CRSLGB.Controls.Add(this.CRSLrequiredlevelNUD);
             this.CRSLGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CRSLGB.Location = new System.Drawing.Point(404, 48);
+            this.CRSLGB.Location = new System.Drawing.Point(3, 2158);
             this.CRSLGB.Name = "CRSLGB";
-            this.CRSLGB.Size = new System.Drawing.Size(427, 118);
+            this.CRSLGB.Size = new System.Drawing.Size(427, 93);
             this.CRSLGB.TabIndex = 286;
             this.CRSLGB.TabStop = false;
             this.CRSLGB.Text = "Skill Level";
@@ -1427,9 +1469,6 @@ namespace DayZeEditor
             // 
             // CRSPGB
             // 
-            this.CRSPGB.Controls.Add(this.label54);
-            this.CRSPGB.Controls.Add(this.CRSPhideOwnerWhenFalseCB);
-            this.CRSPGB.Controls.Add(this.checkBox1);
             this.CRSPGB.Controls.Add(this.CRSPperkIDCB);
             this.CRSPGB.Controls.Add(this.label24);
             this.CRSPGB.Controls.Add(this.CRSPskillIDCB);
@@ -1437,9 +1476,9 @@ namespace DayZeEditor
             this.CRSPGB.Controls.Add(this.label22);
             this.CRSPGB.Controls.Add(this.CRSPrequiredlevelNUD);
             this.CRSPGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CRSPGB.Location = new System.Drawing.Point(404, 48);
+            this.CRSPGB.Location = new System.Drawing.Point(3, 2257);
             this.CRSPGB.Name = "CRSPGB";
-            this.CRSPGB.Size = new System.Drawing.Size(427, 151);
+            this.CRSPGB.Size = new System.Drawing.Size(427, 117);
             this.CRSPGB.TabIndex = 287;
             this.CRSPGB.TabStop = false;
             this.CRSPGB.Text = "Skill Perk";
@@ -1526,7 +1565,7 @@ namespace DayZeEditor
             this.SAGB.Controls.Add(this.SAActiveCB);
             this.SAGB.Controls.Add(this.SASpawnChanceNUD);
             this.SAGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SAGB.Location = new System.Drawing.Point(404, 48);
+            this.SAGB.Location = new System.Drawing.Point(3, 1595);
             this.SAGB.Name = "SAGB";
             this.SAGB.Size = new System.Drawing.Size(427, 310);
             this.SAGB.TabIndex = 284;
@@ -1734,7 +1773,7 @@ namespace DayZeEditor
             this.SADGB.Controls.Add(this.label38);
             this.SADGB.Controls.Add(this.SADPowerNUD);
             this.SADGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SADGB.Location = new System.Drawing.Point(404, 48);
+            this.SADGB.Location = new System.Drawing.Point(3, 1438);
             this.SADGB.Name = "SADGB";
             this.SADGB.Size = new System.Drawing.Size(427, 151);
             this.SADGB.TabIndex = 288;
@@ -1883,7 +1922,7 @@ namespace DayZeEditor
             this.SSLGB.Controls.Add(this.label37);
             this.SSLGB.Controls.Add(this.SSLdisplayNameTB);
             this.SSLGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SSLGB.Location = new System.Drawing.Point(404, 48);
+            this.SSLGB.Location = new System.Drawing.Point(3, 680);
             this.SSLGB.Name = "SSLGB";
             this.SSLGB.Size = new System.Drawing.Size(427, 78);
             this.SSLGB.TabIndex = 286;
@@ -1976,7 +2015,7 @@ namespace DayZeEditor
             this.SCLItemsGB.Controls.Add(this.SCLItemsammoTypeTB);
             this.SCLItemsGB.Controls.Add(this.SCLItemscostNUD);
             this.SCLItemsGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SCLItemsGB.Location = new System.Drawing.Point(404, 48);
+            this.SCLItemsGB.Location = new System.Drawing.Point(3, 764);
             this.SCLItemsGB.Name = "SCLItemsGB";
             this.SCLItemsGB.Size = new System.Drawing.Size(427, 409);
             this.SCLItemsGB.TabIndex = 289;
@@ -2469,95 +2508,598 @@ namespace DayZeEditor
             this.SCLItemscostNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.SCLItemscostNUD.ValueChanged += new System.EventHandler(this.SCLItemsCostNUD_ValueChanged);
             // 
-            // checkBox1
+            // SCLSelectorGB
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(32, 111);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 240;
-            this.checkBox1.Tag = "SCLItemscostNUD";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.SCLSelectorGB.Controls.Add(this.SCLSelectorMultipleGB);
+            this.SCLSelectorGB.Controls.Add(this.SCLSelectordisplayNameSpecifiedCB);
+            this.SCLSelectorGB.Controls.Add(this.SCLSelectordisplayNameTB);
+            this.SCLSelectorGB.Controls.Add(this.label57);
+            this.SCLSelectorGB.Controls.Add(this.SCLSelectortypeCB);
+            this.SCLSelectorGB.Controls.Add(this.label58);
+            this.SCLSelectorGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLSelectorGB.Location = new System.Drawing.Point(3, 1179);
+            this.SCLSelectorGB.Name = "SCLSelectorGB";
+            this.SCLSelectorGB.Size = new System.Drawing.Size(427, 192);
+            this.SCLSelectorGB.TabIndex = 288;
+            this.SCLSelectorGB.TabStop = false;
+            this.SCLSelectorGB.Text = "Selector";
             // 
-            // CRSPhideOwnerWhenFalseCB
+            // SCLSelectorMultipleGB
             // 
-            this.CRSPhideOwnerWhenFalseCB.AutoSize = true;
-            this.CRSPhideOwnerWhenFalseCB.Location = new System.Drawing.Point(252, 111);
-            this.CRSPhideOwnerWhenFalseCB.Name = "CRSPhideOwnerWhenFalseCB";
-            this.CRSPhideOwnerWhenFalseCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CRSPhideOwnerWhenFalseCB.Size = new System.Drawing.Size(15, 14);
-            this.CRSPhideOwnerWhenFalseCB.TabIndex = 241;
-            this.CRSPhideOwnerWhenFalseCB.Tag = "SCLItemscostNUD";
-            this.CRSPhideOwnerWhenFalseCB.UseVisualStyleBackColor = true;
+            this.SCLSelectorMultipleGB.Controls.Add(this.SCLSelectorpointsIconSpecifiedCB);
+            this.SCLSelectorMultipleGB.Controls.Add(this.SCLSelectorpointsCountSpecifiedCB);
+            this.SCLSelectorMultipleGB.Controls.Add(this.SCLSelectorpointsHandlerSpecifiedCB);
+            this.SCLSelectorMultipleGB.Controls.Add(this.SCLSelectorpointsCountNUD);
+            this.SCLSelectorMultipleGB.Controls.Add(this.label59);
+            this.SCLSelectorMultipleGB.Controls.Add(this.label56);
+            this.SCLSelectorMultipleGB.Controls.Add(this.SCLSelectorpointsHandlerTB);
+            this.SCLSelectorMultipleGB.Controls.Add(this.label60);
+            this.SCLSelectorMultipleGB.Controls.Add(this.SCLSelectorpointsIconTB);
+            this.SCLSelectorMultipleGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLSelectorMultipleGB.Location = new System.Drawing.Point(13, 81);
+            this.SCLSelectorMultipleGB.Name = "SCLSelectorMultipleGB";
+            this.SCLSelectorMultipleGB.Size = new System.Drawing.Size(408, 100);
+            this.SCLSelectorMultipleGB.TabIndex = 249;
+            this.SCLSelectorMultipleGB.TabStop = false;
+            this.SCLSelectorMultipleGB.Text = "Multiple Options";
             // 
-            // label54
+            // SCLSelectorpointsIconSpecifiedCB
             // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(57, 111);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(123, 13);
-            this.label54.TabIndex = 242;
-            this.label54.Text = "Hide Owner When False";
+            this.SCLSelectorpointsIconSpecifiedCB.AutoSize = true;
+            this.SCLSelectorpointsIconSpecifiedCB.Location = new System.Drawing.Point(17, 72);
+            this.SCLSelectorpointsIconSpecifiedCB.Name = "SCLSelectorpointsIconSpecifiedCB";
+            this.SCLSelectorpointsIconSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCLSelectorpointsIconSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCLSelectorpointsIconSpecifiedCB.TabIndex = 251;
+            this.SCLSelectorpointsIconSpecifiedCB.Tag = "SCLSelectorpointsIconTB";
+            this.SCLSelectorpointsIconSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCLSelectorpointsIconSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCLSelectorSpecifiedCB_CheckedChanged);
             // 
-            // label55
+            // SCLSelectorpointsCountSpecifiedCB
             // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(55, 87);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(123, 13);
-            this.label55.TabIndex = 245;
-            this.label55.Text = "Hide Owner When False";
+            this.SCLSelectorpointsCountSpecifiedCB.AutoSize = true;
+            this.SCLSelectorpointsCountSpecifiedCB.Location = new System.Drawing.Point(17, 19);
+            this.SCLSelectorpointsCountSpecifiedCB.Name = "SCLSelectorpointsCountSpecifiedCB";
+            this.SCLSelectorpointsCountSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCLSelectorpointsCountSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCLSelectorpointsCountSpecifiedCB.TabIndex = 249;
+            this.SCLSelectorpointsCountSpecifiedCB.Tag = "SCLSelectorpointsCountNUD";
+            this.SCLSelectorpointsCountSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCLSelectorpointsCountSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCLSelectorSpecifiedCB_CheckedChanged);
             // 
-            // CRSLhideOwnerWhenFalseCB
+            // SCLSelectorpointsHandlerSpecifiedCB
             // 
-            this.CRSLhideOwnerWhenFalseCB.AutoSize = true;
-            this.CRSLhideOwnerWhenFalseCB.Location = new System.Drawing.Point(250, 87);
-            this.CRSLhideOwnerWhenFalseCB.Name = "CRSLhideOwnerWhenFalseCB";
-            this.CRSLhideOwnerWhenFalseCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CRSLhideOwnerWhenFalseCB.Size = new System.Drawing.Size(15, 14);
-            this.CRSLhideOwnerWhenFalseCB.TabIndex = 244;
-            this.CRSLhideOwnerWhenFalseCB.Tag = "SCLItemscostNUD";
-            this.CRSLhideOwnerWhenFalseCB.UseVisualStyleBackColor = true;
+            this.SCLSelectorpointsHandlerSpecifiedCB.AutoSize = true;
+            this.SCLSelectorpointsHandlerSpecifiedCB.Location = new System.Drawing.Point(17, 46);
+            this.SCLSelectorpointsHandlerSpecifiedCB.Name = "SCLSelectorpointsHandlerSpecifiedCB";
+            this.SCLSelectorpointsHandlerSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCLSelectorpointsHandlerSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCLSelectorpointsHandlerSpecifiedCB.TabIndex = 250;
+            this.SCLSelectorpointsHandlerSpecifiedCB.Tag = "SCLSelectorpointsHandlerTB";
+            this.SCLSelectorpointsHandlerSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCLSelectorpointsHandlerSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCLSelectorSpecifiedCB_CheckedChanged);
             // 
-            // CRSLhideOwnerWhenFalseSpecifiedCB
+            // SCLSelectorpointsCountNUD
             // 
-            this.CRSLhideOwnerWhenFalseSpecifiedCB.AutoSize = true;
-            this.CRSLhideOwnerWhenFalseSpecifiedCB.Location = new System.Drawing.Point(30, 87);
-            this.CRSLhideOwnerWhenFalseSpecifiedCB.Name = "CRSLhideOwnerWhenFalseSpecifiedCB";
-            this.CRSLhideOwnerWhenFalseSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CRSLhideOwnerWhenFalseSpecifiedCB.Size = new System.Drawing.Size(15, 14);
-            this.CRSLhideOwnerWhenFalseSpecifiedCB.TabIndex = 243;
-            this.CRSLhideOwnerWhenFalseSpecifiedCB.Tag = "SCLItemscostNUD";
-            this.CRSLhideOwnerWhenFalseSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCLSelectorpointsCountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLSelectorpointsCountNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLSelectorpointsCountNUD.Location = new System.Drawing.Point(149, 17);
+            this.SCLSelectorpointsCountNUD.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.SCLSelectorpointsCountNUD.Name = "SCLSelectorpointsCountNUD";
+            this.SCLSelectorpointsCountNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCLSelectorpointsCountNUD.TabIndex = 210;
+            this.SCLSelectorpointsCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCLSelectorpointsCountNUD.ValueChanged += new System.EventHandler(this.SCLSelectorpointsCountNUD_ValueChanged);
             // 
-            // StringTB
+            // label59
             // 
-            this.StringTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StringTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StringTB.Location = new System.Drawing.Point(13, 19);
-            this.StringTB.Name = "StringTB";
-            this.StringTB.Size = new System.Drawing.Size(253, 20);
-            this.StringTB.TabIndex = 207;
-            this.StringTB.TextChanged += new System.EventHandler(this.StringTB_TextChanged);
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(41, 19);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(63, 13);
+            this.label59.TabIndex = 217;
+            this.label59.Text = "pointsCount";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(41, 46);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(76, 13);
+            this.label56.TabIndex = 244;
+            this.label56.Text = "Points Handler";
+            // 
+            // SCLSelectorpointsHandlerTB
+            // 
+            this.SCLSelectorpointsHandlerTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLSelectorpointsHandlerTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLSelectorpointsHandlerTB.Location = new System.Drawing.Point(148, 43);
+            this.SCLSelectorpointsHandlerTB.Name = "SCLSelectorpointsHandlerTB";
+            this.SCLSelectorpointsHandlerTB.Size = new System.Drawing.Size(253, 20);
+            this.SCLSelectorpointsHandlerTB.TabIndex = 245;
+            this.SCLSelectorpointsHandlerTB.TextChanged += new System.EventHandler(this.SCLSelectorpointsHandlerTB_TextChanged);
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(42, 70);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(60, 13);
+            this.label60.TabIndex = 246;
+            this.label60.Text = "Points Icon";
+            // 
+            // SCLSelectorpointsIconTB
+            // 
+            this.SCLSelectorpointsIconTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLSelectorpointsIconTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLSelectorpointsIconTB.Location = new System.Drawing.Point(148, 69);
+            this.SCLSelectorpointsIconTB.Name = "SCLSelectorpointsIconTB";
+            this.SCLSelectorpointsIconTB.Size = new System.Drawing.Size(253, 20);
+            this.SCLSelectorpointsIconTB.TabIndex = 247;
+            this.SCLSelectorpointsIconTB.TextChanged += new System.EventHandler(this.SCLSelectorpointsIconTB_TextChanged);
+            // 
+            // SCLSelectordisplayNameSpecifiedCB
+            // 
+            this.SCLSelectordisplayNameSpecifiedCB.AutoSize = true;
+            this.SCLSelectordisplayNameSpecifiedCB.Location = new System.Drawing.Point(30, 61);
+            this.SCLSelectordisplayNameSpecifiedCB.Name = "SCLSelectordisplayNameSpecifiedCB";
+            this.SCLSelectordisplayNameSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCLSelectordisplayNameSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCLSelectordisplayNameSpecifiedCB.TabIndex = 248;
+            this.SCLSelectordisplayNameSpecifiedCB.Tag = "SCLSelectordisplayNameTB";
+            this.SCLSelectordisplayNameSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCLSelectordisplayNameSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCLSelectorSpecifiedCB_CheckedChanged);
+            // 
+            // SCLSelectordisplayNameTB
+            // 
+            this.SCLSelectordisplayNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLSelectordisplayNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLSelectordisplayNameTB.Location = new System.Drawing.Point(162, 58);
+            this.SCLSelectordisplayNameTB.Name = "SCLSelectordisplayNameTB";
+            this.SCLSelectordisplayNameTB.Size = new System.Drawing.Size(253, 20);
+            this.SCLSelectordisplayNameTB.TabIndex = 243;
+            this.SCLSelectordisplayNameTB.TextChanged += new System.EventHandler(this.SCLSelectordisplayNameTB_TextChanged);
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(54, 61);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(72, 13);
+            this.label57.TabIndex = 225;
+            this.label57.Text = "Dispaly Name";
+            // 
+            // SCLSelectortypeCB
+            // 
+            this.SCLSelectortypeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLSelectortypeCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLSelectortypeCB.FormattingEnabled = true;
+            this.SCLSelectortypeCB.Items.AddRange(new object[] {
+            "RANDOM",
+            "SINGLE",
+            "MULTIPLE"});
+            this.SCLSelectortypeCB.Location = new System.Drawing.Point(162, 31);
+            this.SCLSelectortypeCB.Name = "SCLSelectortypeCB";
+            this.SCLSelectortypeCB.Size = new System.Drawing.Size(187, 21);
+            this.SCLSelectortypeCB.TabIndex = 224;
+            this.SCLSelectortypeCB.SelectedIndexChanged += new System.EventHandler(this.SCLSelectortypeCB_SelectedIndexChanged);
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(54, 31);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(31, 13);
+            this.label58.TabIndex = 223;
+            this.label58.Text = "Type";
+            // 
+            // SCLGroupGB
+            // 
+            this.SCLGroupGB.Controls.Add(this.SCLGroupcostSpecifiedCB);
+            this.SCLGroupGB.Controls.Add(this.SCLGroupcostNUD);
+            this.SCLGroupGB.Controls.Add(this.label61);
+            this.SCLGroupGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLGroupGB.Location = new System.Drawing.Point(3, 1377);
+            this.SCLGroupGB.Name = "SCLGroupGB";
+            this.SCLGroupGB.Size = new System.Drawing.Size(427, 55);
+            this.SCLGroupGB.TabIndex = 289;
+            this.SCLGroupGB.TabStop = false;
+            this.SCLGroupGB.Text = "Group";
+            // 
+            // SCLGroupcostSpecifiedCB
+            // 
+            this.SCLGroupcostSpecifiedCB.AutoSize = true;
+            this.SCLGroupcostSpecifiedCB.Location = new System.Drawing.Point(30, 19);
+            this.SCLGroupcostSpecifiedCB.Name = "SCLGroupcostSpecifiedCB";
+            this.SCLGroupcostSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCLGroupcostSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCLGroupcostSpecifiedCB.TabIndex = 249;
+            this.SCLGroupcostSpecifiedCB.Tag = "SCLSelectorpointsCountNUD";
+            this.SCLGroupcostSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCLGroupcostSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCLGroupcostSpecifiedCB_CheckedChanged);
+            // 
+            // SCLGroupcostNUD
+            // 
+            this.SCLGroupcostNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLGroupcostNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLGroupcostNUD.Location = new System.Drawing.Point(165, 17);
+            this.SCLGroupcostNUD.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.SCLGroupcostNUD.Name = "SCLGroupcostNUD";
+            this.SCLGroupcostNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCLGroupcostNUD.TabIndex = 210;
+            this.SCLGroupcostNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCLGroupcostNUD.ValueChanged += new System.EventHandler(this.SCLGroupcostNUD_ValueChanged);
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(53, 20);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(63, 13);
+            this.label61.TabIndex = 217;
+            this.label61.Text = "pointsCount";
+            // 
+            // SCLtimeoutGB
+            // 
+            this.SCLtimeoutGB.Controls.Add(this.SCLTimeouthoursSpecifiedCB);
+            this.SCLtimeoutGB.Controls.Add(this.SCLTimeoutminutesSpecifiedCB);
+            this.SCLtimeoutGB.Controls.Add(this.SCLTimeoutsecondsSpecifiedCB);
+            this.SCLtimeoutGB.Controls.Add(this.label66);
+            this.SCLtimeoutGB.Controls.Add(this.SCLTimeoutsecondsNUD);
+            this.SCLtimeoutGB.Controls.Add(this.label64);
+            this.SCLtimeoutGB.Controls.Add(this.SCLTimeoutminutesNUD);
+            this.SCLtimeoutGB.Controls.Add(this.label63);
+            this.SCLtimeoutGB.Controls.Add(this.SCLTimeoutidTB);
+            this.SCLtimeoutGB.Controls.Add(this.label65);
+            this.SCLtimeoutGB.Controls.Add(this.SCLTimeouthoursNUD);
+            this.SCLtimeoutGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLtimeoutGB.Location = new System.Drawing.Point(3, 60);
+            this.SCLtimeoutGB.Name = "SCLtimeoutGB";
+            this.SCLtimeoutGB.Size = new System.Drawing.Size(427, 128);
+            this.SCLtimeoutGB.TabIndex = 288;
+            this.SCLtimeoutGB.TabStop = false;
+            this.SCLtimeoutGB.Text = "TimeOut";
+            // 
+            // SCLTimeouthoursSpecifiedCB
+            // 
+            this.SCLTimeouthoursSpecifiedCB.AutoSize = true;
+            this.SCLTimeouthoursSpecifiedCB.Location = new System.Drawing.Point(30, 47);
+            this.SCLTimeouthoursSpecifiedCB.Name = "SCLTimeouthoursSpecifiedCB";
+            this.SCLTimeouthoursSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCLTimeouthoursSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCLTimeouthoursSpecifiedCB.TabIndex = 251;
+            this.SCLTimeouthoursSpecifiedCB.Tag = "SCLTimeouthoursNUD";
+            this.SCLTimeouthoursSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCLTimeouthoursSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCLTimeoutSpecifiedCB_CheckedChanged);
+            // 
+            // SCLTimeoutminutesSpecifiedCB
+            // 
+            this.SCLTimeoutminutesSpecifiedCB.AutoSize = true;
+            this.SCLTimeoutminutesSpecifiedCB.Location = new System.Drawing.Point(30, 73);
+            this.SCLTimeoutminutesSpecifiedCB.Name = "SCLTimeoutminutesSpecifiedCB";
+            this.SCLTimeoutminutesSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCLTimeoutminutesSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCLTimeoutminutesSpecifiedCB.TabIndex = 250;
+            this.SCLTimeoutminutesSpecifiedCB.Tag = "SCLTimeoutminutesNUD";
+            this.SCLTimeoutminutesSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCLTimeoutminutesSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCLTimeoutSpecifiedCB_CheckedChanged);
+            // 
+            // SCLTimeoutsecondsSpecifiedCB
+            // 
+            this.SCLTimeoutsecondsSpecifiedCB.AutoSize = true;
+            this.SCLTimeoutsecondsSpecifiedCB.Location = new System.Drawing.Point(30, 99);
+            this.SCLTimeoutsecondsSpecifiedCB.Name = "SCLTimeoutsecondsSpecifiedCB";
+            this.SCLTimeoutsecondsSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCLTimeoutsecondsSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCLTimeoutsecondsSpecifiedCB.TabIndex = 249;
+            this.SCLTimeoutsecondsSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCLTimeoutsecondsSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCLTimeoutsecondsSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCLTimeoutSpecifiedCB_CheckedChanged);
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(57, 99);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(49, 13);
+            this.label66.TabIndex = 248;
+            this.label66.Text = "Seconds";
+            // 
+            // SCLTimeoutsecondsNUD
+            // 
+            this.SCLTimeoutsecondsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLTimeoutsecondsNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLTimeoutsecondsNUD.Location = new System.Drawing.Point(165, 97);
+            this.SCLTimeoutsecondsNUD.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.SCLTimeoutsecondsNUD.Name = "SCLTimeoutsecondsNUD";
+            this.SCLTimeoutsecondsNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCLTimeoutsecondsNUD.TabIndex = 247;
+            this.SCLTimeoutsecondsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCLTimeoutsecondsNUD.ValueChanged += new System.EventHandler(this.SCLTimeoutsecondsNUD_ValueChanged);
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(57, 73);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(44, 13);
+            this.label64.TabIndex = 246;
+            this.label64.Text = "Minutes";
+            // 
+            // SCLTimeoutminutesNUD
+            // 
+            this.SCLTimeoutminutesNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLTimeoutminutesNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLTimeoutminutesNUD.Location = new System.Drawing.Point(165, 71);
+            this.SCLTimeoutminutesNUD.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.SCLTimeoutminutesNUD.Name = "SCLTimeoutminutesNUD";
+            this.SCLTimeoutminutesNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCLTimeoutminutesNUD.TabIndex = 245;
+            this.SCLTimeoutminutesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCLTimeoutminutesNUD.ValueChanged += new System.EventHandler(this.SCLTimeoutminutesNUD_ValueChanged);
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(56, 21);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(18, 13);
+            this.label63.TabIndex = 244;
+            this.label63.Text = "ID";
+            // 
+            // SCLTimeoutidTB
+            // 
+            this.SCLTimeoutidTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLTimeoutidTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLTimeoutidTB.Location = new System.Drawing.Point(165, 19);
+            this.SCLTimeoutidTB.Name = "SCLTimeoutidTB";
+            this.SCLTimeoutidTB.Size = new System.Drawing.Size(253, 20);
+            this.SCLTimeoutidTB.TabIndex = 243;
+            this.SCLTimeoutidTB.TextChanged += new System.EventHandler(this.SCLTimeoutidTB_TextChanged);
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(57, 47);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(35, 13);
+            this.label65.TabIndex = 217;
+            this.label65.Text = "Hours";
+            // 
+            // SCLTimeouthoursNUD
+            // 
+            this.SCLTimeouthoursNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLTimeouthoursNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLTimeouthoursNUD.Location = new System.Drawing.Point(165, 45);
+            this.SCLTimeouthoursNUD.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.SCLTimeouthoursNUD.Name = "SCLTimeouthoursNUD";
+            this.SCLTimeouthoursNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCLTimeouthoursNUD.TabIndex = 210;
+            this.SCLTimeouthoursNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCLTimeouthoursNUD.ValueChanged += new System.EventHandler(this.SCLTimeouthoursNUD_ValueChanged);
+            // 
+            // SCLConditionCustomConditionGB
+            // 
+            this.SCLConditionCustomConditionGB.Controls.Add(this.label69);
+            this.SCLConditionCustomConditionGB.Controls.Add(this.SCLConditionCustomConditionclassnameTB);
+            this.SCLConditionCustomConditionGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLConditionCustomConditionGB.Location = new System.Drawing.Point(3, 3);
+            this.SCLConditionCustomConditionGB.Name = "SCLConditionCustomConditionGB";
+            this.SCLConditionCustomConditionGB.Size = new System.Drawing.Size(427, 51);
+            this.SCLConditionCustomConditionGB.TabIndex = 289;
+            this.SCLConditionCustomConditionGB.TabStop = false;
+            this.SCLConditionCustomConditionGB.Text = "Custom Condition";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(56, 21);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(61, 13);
+            this.label69.TabIndex = 244;
+            this.label69.Text = "Class name";
+            // 
+            // SCLConditionCustomConditionclassnameTB
+            // 
+            this.SCLConditionCustomConditionclassnameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLConditionCustomConditionclassnameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLConditionCustomConditionclassnameTB.Location = new System.Drawing.Point(165, 19);
+            this.SCLConditionCustomConditionclassnameTB.Name = "SCLConditionCustomConditionclassnameTB";
+            this.SCLConditionCustomConditionclassnameTB.Size = new System.Drawing.Size(253, 20);
+            this.SCLConditionCustomConditionclassnameTB.TabIndex = 243;
+            this.SCLConditionCustomConditionclassnameTB.TextChanged += new System.EventHandler(this.SCLConditionCustomConditionclassnameTB_TextChanged);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.SCLConditionCustomConditionGB);
+            this.flowLayoutPanel1.Controls.Add(this.SCLtimeoutGB);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox1);
+            this.flowLayoutPanel1.Controls.Add(this.CResultCB);
+            this.flowLayoutPanel1.Controls.Add(this.CRecipeGB);
+            this.flowLayoutPanel1.Controls.Add(this.SSLGB);
+            this.flowLayoutPanel1.Controls.Add(this.SCLItemsGB);
+            this.flowLayoutPanel1.Controls.Add(this.SCLSelectorGB);
+            this.flowLayoutPanel1.Controls.Add(this.SCLGroupGB);
+            this.flowLayoutPanel1.Controls.Add(this.SADGB);
+            this.flowLayoutPanel1.Controls.Add(this.SAGB);
+            this.flowLayoutPanel1.Controls.Add(this.CIngrdientGB);
+            this.flowLayoutPanel1.Controls.Add(this.CRSLGB);
+            this.flowLayoutPanel1.Controls.Add(this.CRSPGB);
+            this.flowLayoutPanel1.Controls.Add(this.CONDExtraOptionsGB);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(404, 48);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(804, 596);
+            this.flowLayoutPanel1.TabIndex = 290;
+            // 
+            // CONDExtraOptionsGB
+            // 
+            this.CONDExtraOptionsGB.Controls.Add(this.label70);
+            this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionsfailTextTB);
+            this.CONDExtraOptionsGB.Controls.Add(this.label68);
+            this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionssuccessTextTB);
+            this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionsdisplayTextSpecifiedCB);
+            this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionssuccessTextSpecifiedCB);
+            this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionsfailTextSpecifiedCB);
+            this.CONDExtraOptionsGB.Controls.Add(this.label71);
+            this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionsdisplayTextTB);
+            this.CONDExtraOptionsGB.Controls.Add(this.label72);
+            this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionshideOwnerWhenFalseCB);
+            this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB);
+            this.CONDExtraOptionsGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraOptionsGB.Location = new System.Drawing.Point(3, 2380);
+            this.CONDExtraOptionsGB.Name = "CONDExtraOptionsGB";
+            this.CONDExtraOptionsGB.Size = new System.Drawing.Size(427, 128);
+            this.CONDExtraOptionsGB.TabIndex = 290;
+            this.CONDExtraOptionsGB.TabStop = false;
+            this.CONDExtraOptionsGB.Text = "Condition Extra Options";
+            // 
+            // CONDExtraOptionsdisplayTextSpecifiedCB
+            // 
+            this.CONDExtraOptionsdisplayTextSpecifiedCB.AutoSize = true;
+            this.CONDExtraOptionsdisplayTextSpecifiedCB.Location = new System.Drawing.Point(30, 47);
+            this.CONDExtraOptionsdisplayTextSpecifiedCB.Name = "CONDExtraOptionsdisplayTextSpecifiedCB";
+            this.CONDExtraOptionsdisplayTextSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CONDExtraOptionsdisplayTextSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.CONDExtraOptionsdisplayTextSpecifiedCB.TabIndex = 251;
+            this.CONDExtraOptionsdisplayTextSpecifiedCB.Tag = "SCLTimeouthoursNUD";
+            this.CONDExtraOptionsdisplayTextSpecifiedCB.UseVisualStyleBackColor = true;
+            // 
+            // CONDExtraOptionssuccessTextSpecifiedCB
+            // 
+            this.CONDExtraOptionssuccessTextSpecifiedCB.AutoSize = true;
+            this.CONDExtraOptionssuccessTextSpecifiedCB.Location = new System.Drawing.Point(30, 73);
+            this.CONDExtraOptionssuccessTextSpecifiedCB.Name = "CONDExtraOptionssuccessTextSpecifiedCB";
+            this.CONDExtraOptionssuccessTextSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CONDExtraOptionssuccessTextSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.CONDExtraOptionssuccessTextSpecifiedCB.TabIndex = 250;
+            this.CONDExtraOptionssuccessTextSpecifiedCB.Tag = "SCLTimeoutminutesNUD";
+            this.CONDExtraOptionssuccessTextSpecifiedCB.UseVisualStyleBackColor = true;
+            // 
+            // CONDExtraOptionsfailTextSpecifiedCB
+            // 
+            this.CONDExtraOptionsfailTextSpecifiedCB.AutoSize = true;
+            this.CONDExtraOptionsfailTextSpecifiedCB.Location = new System.Drawing.Point(30, 99);
+            this.CONDExtraOptionsfailTextSpecifiedCB.Name = "CONDExtraOptionsfailTextSpecifiedCB";
+            this.CONDExtraOptionsfailTextSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CONDExtraOptionsfailTextSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.CONDExtraOptionsfailTextSpecifiedCB.TabIndex = 249;
+            this.CONDExtraOptionsfailTextSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.CONDExtraOptionsfailTextSpecifiedCB.UseVisualStyleBackColor = true;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(59, 47);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(65, 13);
+            this.label71.TabIndex = 244;
+            this.label71.Text = "Display Text";
+            // 
+            // CONDExtraOptionsdisplayTextTB
+            // 
+            this.CONDExtraOptionsdisplayTextTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CONDExtraOptionsdisplayTextTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraOptionsdisplayTextTB.Location = new System.Drawing.Point(161, 44);
+            this.CONDExtraOptionsdisplayTextTB.Name = "CONDExtraOptionsdisplayTextTB";
+            this.CONDExtraOptionsdisplayTextTB.Size = new System.Drawing.Size(253, 20);
+            this.CONDExtraOptionsdisplayTextTB.TabIndex = 243;
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(57, 24);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(123, 13);
+            this.label72.TabIndex = 242;
+            this.label72.Text = "Hide Owner When False";
+            // 
+            // CONDExtraOptionshideOwnerWhenFalseCB
+            // 
+            this.CONDExtraOptionshideOwnerWhenFalseCB.AutoSize = true;
+            this.CONDExtraOptionshideOwnerWhenFalseCB.Location = new System.Drawing.Point(255, 24);
+            this.CONDExtraOptionshideOwnerWhenFalseCB.Name = "CONDExtraOptionshideOwnerWhenFalseCB";
+            this.CONDExtraOptionshideOwnerWhenFalseCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CONDExtraOptionshideOwnerWhenFalseCB.Size = new System.Drawing.Size(15, 14);
+            this.CONDExtraOptionshideOwnerWhenFalseCB.TabIndex = 241;
+            this.CONDExtraOptionshideOwnerWhenFalseCB.Tag = "SCLItemscostNUD";
+            this.CONDExtraOptionshideOwnerWhenFalseCB.UseVisualStyleBackColor = true;
+            // 
+            // CONDExtraOptionshideOwnerWhenFalseSpecifiedCB
+            // 
+            this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.AutoSize = true;
+            this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Location = new System.Drawing.Point(30, 23);
+            this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Name = "CONDExtraOptionshideOwnerWhenFalseSpecifiedCB";
+            this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.TabIndex = 240;
+            this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Tag = "SCLTimeouthideOwnerWhenFalseCB";
+            this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.UseVisualStyleBackColor = true;
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(59, 73);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(72, 13);
+            this.label68.TabIndex = 253;
+            this.label68.Text = "Success Text";
+            // 
+            // CONDExtraOptionssuccessTextTB
+            // 
+            this.CONDExtraOptionssuccessTextTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CONDExtraOptionssuccessTextTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraOptionssuccessTextTB.Location = new System.Drawing.Point(161, 70);
+            this.CONDExtraOptionssuccessTextTB.Name = "CONDExtraOptionssuccessTextTB";
+            this.CONDExtraOptionssuccessTextTB.Size = new System.Drawing.Size(253, 20);
+            this.CONDExtraOptionssuccessTextTB.TabIndex = 252;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(59, 99);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(47, 13);
+            this.label70.TabIndex = 255;
+            this.label70.Text = "Fail Text";
+            // 
+            // CONDExtraOptionsfailTextTB
+            // 
+            this.CONDExtraOptionsfailTextTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CONDExtraOptionsfailTextTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraOptionsfailTextTB.Location = new System.Drawing.Point(161, 96);
+            this.CONDExtraOptionsfailTextTB.Name = "CONDExtraOptionsfailTextTB";
+            this.CONDExtraOptionsfailTextTB.Size = new System.Drawing.Size(253, 20);
+            this.CONDExtraOptionsfailTextTB.TabIndex = 254;
             // 
             // TerjeManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1220, 656);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.TerjeTV);
             this.Controls.Add(this.darkToolStrip21);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.CRSPGB);
-            this.Controls.Add(this.CRSLGB);
-            this.Controls.Add(this.CIngrdientGB);
-            this.Controls.Add(this.SAGB);
-            this.Controls.Add(this.SADGB);
-            this.Controls.Add(this.SCLItemsGB);
-            this.Controls.Add(this.SSLGB);
-            this.Controls.Add(this.CRecipeGB);
-            this.Controls.Add(this.CResultCB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TerjeManager";
             this.Text = "BaseBuildingPlus";
@@ -2610,6 +3152,24 @@ namespace DayZeEditor
             this.SCLItemsGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SCLItemsquickbarNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCLItemscostNUD)).EndInit();
+            this.SCLSelectorGB.ResumeLayout(false);
+            this.SCLSelectorGB.PerformLayout();
+            this.SCLSelectorMultipleGB.ResumeLayout(false);
+            this.SCLSelectorMultipleGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLSelectorpointsCountNUD)).EndInit();
+            this.SCLGroupGB.ResumeLayout(false);
+            this.SCLGroupGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLGroupcostNUD)).EndInit();
+            this.SCLtimeoutGB.ResumeLayout(false);
+            this.SCLtimeoutGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLTimeoutsecondsNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLTimeoutminutesNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLTimeouthoursNUD)).EndInit();
+            this.SCLConditionCustomConditionGB.ResumeLayout(false);
+            this.SCLConditionCustomConditionGB.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.CONDExtraOptionsGB.ResumeLayout(false);
+            this.CONDExtraOptionsGB.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2707,9 +3267,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.NumericUpDown CRSLrequiredlevelNUD;
         private System.Windows.Forms.ComboBox CRSLskillIdCB;
-        private System.Windows.Forms.ToolStripMenuItem addSkillLevelConditionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addSkillPerkConditionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addSpecificPlayerConditionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeConditionToolStripMenuItem;
         private System.Windows.Forms.GroupBox CRSPGB;
         private System.Windows.Forms.ComboBox CRSPperkIDCB;
@@ -2799,15 +3356,59 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox SCLItemsammoTypeSpecifiedCB;
         private System.Windows.Forms.CheckBox SCLItemsammoCountSpecifiedCB;
         private System.Windows.Forms.CheckBox SCLItemscostSpecifiedCB;
-        private System.Windows.Forms.ToolStripMenuItem addTimeoutConditionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addCustomConditionToolStripMenuItem;
         private DarkUI.Controls.DarkButton darkButton2;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.CheckBox CRSPhideOwnerWhenFalseCB;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.CheckBox CRSLhideOwnerWhenFalseCB;
-        private System.Windows.Forms.CheckBox CRSLhideOwnerWhenFalseSpecifiedCB;
         private System.Windows.Forms.TextBox StringTB;
+        private System.Windows.Forms.GroupBox SCLSelectorGB;
+        private System.Windows.Forms.TextBox SCLSelectordisplayNameTB;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.ComboBox SCLSelectortypeCB;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.NumericUpDown SCLSelectorpointsCountNUD;
+        private System.Windows.Forms.CheckBox SCLSelectordisplayNameSpecifiedCB;
+        private System.Windows.Forms.TextBox SCLSelectorpointsIconTB;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.TextBox SCLSelectorpointsHandlerTB;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.GroupBox SCLSelectorMultipleGB;
+        private System.Windows.Forms.CheckBox SCLSelectorpointsIconSpecifiedCB;
+        private System.Windows.Forms.CheckBox SCLSelectorpointsCountSpecifiedCB;
+        private System.Windows.Forms.CheckBox SCLSelectorpointsHandlerSpecifiedCB;
+        private System.Windows.Forms.GroupBox SCLGroupGB;
+        private System.Windows.Forms.CheckBox SCLGroupcostSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCLGroupcostNUD;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.GroupBox SCLtimeoutGB;
+        private System.Windows.Forms.CheckBox SCLTimeouthoursSpecifiedCB;
+        private System.Windows.Forms.CheckBox SCLTimeoutminutesSpecifiedCB;
+        private System.Windows.Forms.CheckBox SCLTimeoutsecondsSpecifiedCB;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.NumericUpDown SCLTimeoutsecondsNUD;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.NumericUpDown SCLTimeoutminutesNUD;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.TextBox SCLTimeoutidTB;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.NumericUpDown SCLTimeouthoursNUD;
+        private System.Windows.Forms.GroupBox SCLConditionCustomConditionGB;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.TextBox SCLConditionCustomConditionclassnameTB;
+        private System.Windows.Forms.ToolStripMenuItem addNewLoadoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeLoadoutToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.GroupBox CONDExtraOptionsGB;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox CONDExtraOptionsfailTextTB;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.TextBox CONDExtraOptionssuccessTextTB;
+        private System.Windows.Forms.CheckBox CONDExtraOptionsdisplayTextSpecifiedCB;
+        private System.Windows.Forms.CheckBox CONDExtraOptionssuccessTextSpecifiedCB;
+        private System.Windows.Forms.CheckBox CONDExtraOptionsfailTextSpecifiedCB;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox CONDExtraOptionsdisplayTextTB;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.CheckBox CONDExtraOptionshideOwnerWhenFalseCB;
+        private System.Windows.Forms.CheckBox CONDExtraOptionshideOwnerWhenFalseSpecifiedCB;
     }
 }

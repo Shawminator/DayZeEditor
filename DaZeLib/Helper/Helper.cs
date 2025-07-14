@@ -7,11 +7,69 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace DayZeLib
 {
     public static class Helper
     {
+        public static T DeserializeWithDebug<T>(string xml)
+        {
+            T result = default;
+
+            var serializer = new XmlSerializer(typeof(T));
+
+            using (var reader = new StringReader(xml))
+            {
+                var settings = new XmlReaderSettings
+                {
+                    IgnoreWhitespace = true
+                };
+
+                using (var xmlReader = XmlReader.Create(reader, settings))
+                {
+                    serializer.UnknownElement += (s, e) =>
+                    {
+                        Console.WriteLine($"[UnknownElement] {e.Element.Name} in {e.ObjectBeingDeserialized?.GetType().Name}");
+                    };
+
+                    serializer.UnknownAttribute += (s, e) =>
+                    {
+                        Console.WriteLine($"[UnknownAttribute] {e.Attr.Name} = {e.Attr.Value} in {e.ObjectBeingDeserialized?.GetType().Name}");
+                    };
+
+                    serializer.UnreferencedObject += (s, e) =>
+                    {
+                        Console.WriteLine($"[UnreferencedObject] ID: {e.UnreferencedId}, Object: {e.UnreferencedObject}");
+                    };
+
+                    try
+                    {
+                        result = (T)serializer.Deserialize(xmlReader);
+                        Console.WriteLine("[DeserializeWithDebug] Success");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"[DeserializeWithDebug] Exception: {ex.Message}");
+                    }
+                }
+            }
+
+            return result;
+        }
+        public static string Serialize<T>(T obj)
+        {
+            var serializer = new XmlSerializer(typeof(T));
+            var sb = new StringBuilder();
+
+            using (var writer = new StringWriter(sb))
+            {
+                serializer.Serialize(writer, obj);
+            }
+
+            return sb.ToString();
+        }
         public static Color longToColor(long dec)
         {
             return Color.FromArgb((int)(dec & 0xFF), (int)((dec >> 24) & 0xFF), (int)((dec >> 16) & 0xFF), (int)((dec >> 8) & 0xFF));

@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace DayZeLib.DynamicWeatherPlugin
+namespace DayZeLib
 {
     public class DynamicWeatherPlugin
     {
@@ -21,8 +21,8 @@ namespace DayZeLib.DynamicWeatherPlugin
     }
     public class WeatherDynamic
     {
-        public int chat_message { get; set; }
-        public int notify_message { get; set; }
+        public bool chat_message { get; set; }
+        public bool notify_message { get; set; }
         public string name { get; set; }
         public decimal transition_min { get; set; }
         public decimal transition_max { get; set; }
@@ -39,8 +39,10 @@ namespace DayZeLib.DynamicWeatherPlugin
         public decimal fog_transition_time { get; set; }
         public decimal fog_min { get; set; }
         public decimal fog_max { get; set; }
-        public decimal wind_min { get; set; }
-        public decimal wind_max { get; set; }
+        public decimal wind_speed_min { get; set; }
+        public decimal wind_speed_max { get; set; }
+        public decimal wind_dir_min { get; set; }
+        public decimal wind_dir_max { get; set; }
         public decimal rain_min { get; set; }
         public decimal rain_max { get; set; }
         public decimal snowfall_min { get; set; }
@@ -48,13 +50,14 @@ namespace DayZeLib.DynamicWeatherPlugin
         public decimal snowflake_scale_min { get; set; }
         public decimal snowflake_scale_max { get; set; }
         public bool use_snowflake_scale { get; set; }
-        public int storm { get; set; }
+        public bool storm { get; set; }
         public decimal thunder_timeout { get; set; }
+        public bool use_global_temperature { get; set; }
+        public decimal global_temperature_override { get; set; }
 
         public override string ToString()
         {
             return name;
         }
     }
-
 }

@@ -46,9 +46,21 @@ namespace DayZeLib
         public TerjeRecipeIngredient FirstIngredient { get; set; }
         public TerjeRecipeIngredient SecondIngredient { get; set; }
         public TerjeCraftingResults CraftingResults { get; set; }
-        public TerjeConditions Conditions { get; set; }
-    }
 
+        private TerjeConditions ConditionsField;
+        [System.Xml.Serialization.XmlElementAttribute("Conditions")]
+        public TerjeConditions Conditions
+        {
+            get
+            {
+                return this.ConditionsField;
+            }
+            set
+            {
+                this.ConditionsField = value;
+            }
+        }
+    }
     public class TerjeRecipeIngredient
     {
         [XmlAttribute("singleUse")]

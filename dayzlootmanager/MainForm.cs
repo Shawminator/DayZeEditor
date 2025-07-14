@@ -33,7 +33,7 @@ namespace DayZeEditor
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
 
-        public string VersionNumber = "0.8.3.9";
+        public string VersionNumber = "0.8.4.0";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -570,12 +570,12 @@ namespace DayZeEditor
                 else
                     KillRewardManagerButton.Visible = false;
                 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\mpmissions\\" + Projects.getActiveProject().mpmissionpath + "\\TerjeSettings"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\mpmissions\\" + Projects.getActiveProject().mpmissionpath + "\\weather.json"))
                     DynamicWeatherManagerButton.Visible = true;
                 else
                     DynamicWeatherManagerButton.Visible = false;
 
-                if (Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MB_TimedCrate"))
+                if (Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\TerjeSettings"))
                     TerjeManagerButton.Visible = true;
                 else
                     TerjeManagerButton.Visible = false;

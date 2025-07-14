@@ -287,6 +287,7 @@
     <Compile Include="SpawnerBubaku\SpawnerBubaku.cs" />
     <Compile Include="Terje\TerjeCFGFile.cs" />
     <Compile Include="Terje\TerjeCFGLine.cs" />
+    <Compile Include="Terje\TerjeConditions.cs" />
     <Compile Include="Terje\TerjeScriptableAreas.cs" />
     <Compile Include="Terje\TerjeFaces.cs" />
     <Compile Include="Terje\TerjeGeneral.cs" />

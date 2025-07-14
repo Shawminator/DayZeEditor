@@ -1,6 +1,5 @@
 ﻿using DarkUI.Forms;
 using DayZeLib;
-using DayZeLib.DynamicWeatherPlugin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -36,7 +36,7 @@ namespace DayZeLib
         private TerjeRespawnOptions optionsField;
         private BindingList<TerjeRespawnObject> objectsField;
         private BindingList<TerjeRespawnPoint> pointsField;
-        private TerjeConditions conditionsField;
+        private TerjeConditions ConditionsField;
 
         private string idField;
         private string displayNameField;
@@ -64,11 +64,17 @@ namespace DayZeLib
             set => pointsField = value;
         }
 
-        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Conditions")]
         public TerjeConditions Conditions
         {
-            get => conditionsField;
-            set => conditionsField = value;
+            get
+            {
+                return this.ConditionsField;
+            }
+            set
+            {
+                this.ConditionsField = value;
+            }
         }
 
         /// <remarks/>

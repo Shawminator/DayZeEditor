@@ -3,6 +3,7 @@ using DarkUI.Controls;
 using DarkUI.Forms;
 using DayZeLib;
 using FastColoredTextBoxNS;
+using Microsoft.VisualBasic;
 using OpenTK.Graphics.OpenGL;
 using PVZ.DarkHorde.Other.EventManager;
 using System;
@@ -18,6 +19,7 @@ using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -84,15 +86,19 @@ namespace DayZeEditor
                 }
                 cfgfiles.Add(newcfgfile);
             }
-            if(File.Exists(TerjeSettingsPath + "CustomCrafting\\Recipes.xml"))
+            if (File.Exists(TerjeSettingsPath + "CustomCrafting\\Recipes.xml"))
             {
                 Console.Write("serializing " + Path.GetFileName(TerjeSettingsPath + "CustomCrafting\\Recipes.xml"));
-                XmlSerializer serializer = new XmlSerializer(typeof(TerjeRecipes));
-                using (StreamReader reader = new StreamReader(TerjeSettingsPath + "CustomCrafting\\Recipes.xml"))
-                {
-                    TerjeCraftingFiles = (TerjeRecipes)serializer.Deserialize(reader);
-                    TerjeCraftingFiles.Filename = TerjeSettingsPath + "CustomCrafting\\Recipes.xml";
-                }
+                string xml = File.ReadAllText(TerjeSettingsPath + "CustomCrafting\\Recipes.xml");
+                TerjeCraftingFiles = Helper.DeserializeWithDebug<TerjeRecipes>(xml);
+                TerjeCraftingFiles.Filename = TerjeSettingsPath + "CustomCrafting\\Recipes.xml";
+
+                //XmlSerializer serializer = new XmlSerializer(typeof(TerjeRecipes));
+                //using (StreamReader reader = new StreamReader(TerjeSettingsPath + "CustomCrafting\\Recipes.xml"))
+                //{
+                //    TerjeCraftingFiles = (TerjeRecipes)serializer.Deserialize(reader);
+                //    TerjeCraftingFiles.Filename = TerjeSettingsPath + "CustomCrafting\\Recipes.xml";
+                //}
                 if (TerjeCraftingFiles != null)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -100,7 +106,7 @@ namespace DayZeEditor
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
-            if(Directory.Exists(TerjeSettingsPath + "CustomProtection"))
+            if (Directory.Exists(TerjeSettingsPath + "CustomProtection"))
             {
                 DirectoryInfo dir = new DirectoryInfo(TerjeSettingsPath + "CustomProtection"); //Assuming Test is your Folder
                 FileInfo[] protectionfiles = dir.GetFiles("*.txt"); //Getting Text files
@@ -123,12 +129,23 @@ namespace DayZeEditor
                 if (File.Exists(TerjeSettingsPath + "StartScreen\\Loadouts.xml"))
                 {
                     Console.Write("serializing " + Path.GetFileName(TerjeSettingsPath + "StartScreen\\Loadouts.xml"));
-                    XmlSerializer mySerializer = new XmlSerializer(typeof(TerjeLoadouts));
-                    using (StreamReader reader = new StreamReader(TerjeSettingsPath + "StartScreen\\Loadouts.xml"))
-                    {
-                        TerjeLoadouts = (TerjeLoadouts)mySerializer.Deserialize(reader);
-                        TerjeLoadouts.Filename = TerjeSettingsPath + "StartScreen\\Loadouts.xml";
-                    }
+                    string xml = File.ReadAllText(TerjeSettingsPath + "StartScreen\\Loadouts.xml");
+                    TerjeLoadouts = Helper.DeserializeWithDebug<TerjeLoadouts>(xml);
+                    TerjeLoadouts.Filename = TerjeSettingsPath + "StartScreen\\Loadouts.xml";
+
+                    //try
+                    //{
+                    //    XmlSerializer mySerializer = new XmlSerializer(typeof(TerjeLoadouts));
+                    //    using (StreamReader reader = new StreamReader(TerjeSettingsPath + "StartScreen\\Loadouts.xml"))
+                    //    {
+                    //        TerjeLoadouts = (TerjeLoadouts)mySerializer.Deserialize(reader);
+                    //        TerjeLoadouts.Filename = TerjeSettingsPath + "StartScreen\\Loadouts.xml";
+                    //    }
+                    //}
+                    //catch (InvalidOperationException ex)
+                    //{
+                    //    Console.WriteLine("Deserialization failed: " + ex.InnerException?.Message);
+                    //}
                     if (TerjeLoadouts != null)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -139,12 +156,16 @@ namespace DayZeEditor
                 if (File.Exists(TerjeSettingsPath + "StartScreen\\Respawns.xml"))
                 {
                     Console.Write("serializing " + Path.GetFileName(TerjeSettingsPath + "StartScreen\\Respawns.xml"));
-                    XmlSerializer mySerializer = new XmlSerializer(typeof(TerjeRespawns));
-                    using (StreamReader reader = new StreamReader(TerjeSettingsPath + "StartScreen\\Respawns.xml"))
-                    {
-                        TerjeRespawns = (TerjeRespawns)mySerializer.Deserialize(reader);
-                        TerjeRespawns.Filename = TerjeSettingsPath + "StartScreen\\Respawns.xml";
-                    }
+                    string xml = File.ReadAllText(TerjeSettingsPath + "StartScreen\\Respawns.xml");
+                    TerjeRespawns = Helper.DeserializeWithDebug<TerjeRespawns>(xml);
+                    TerjeRespawns.Filename = TerjeSettingsPath + "StartScreen\\Respawns.xml";
+
+                    //XmlSerializer mySerializer = new XmlSerializer(typeof(TerjeRespawns));
+                    //using (StreamReader reader = new StreamReader(TerjeSettingsPath + "StartScreen\\Respawns.xml"))
+                    //{
+                    //    TerjeRespawns = (TerjeRespawns)mySerializer.Deserialize(reader);
+                    //    TerjeRespawns.Filename = TerjeSettingsPath + "StartScreen\\Respawns.xml";
+                    //}
                     if (TerjeRespawns != null)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -217,7 +238,6 @@ namespace DayZeEditor
                 { label11, "(required) skill identifier (you can see all skills identifiers in config.cpp CfgTerjeSkills section." },
                 { label24, "(required) perk identifier (you can see all perks identifiers in config.cpp CfgTerjeSkills section." },
                 { label22, "(required) perk level must be equal to or higher than this value to have access to this loadout/respawn/recipe." },
-                { label54, "(optional, default \"false\") when this attribute is set to \"true\", the loadout/respawn will be hidden for players who do not equal this condition." },
                 { label37, "(required) loadout identifier,\nMust be short and unique for each individual loadout." },
                 { label36, "(required) name of loadout that the player will see in the game UI.\nCan be used key from stringtable.csv for localication to all supported languages." },
                 { label39, "(required) item classname" },
@@ -382,20 +402,6 @@ namespace DayZeEditor
                 {
                     if (tc is TerjeRecipe)
                         TerjeCraftingNodes.Nodes.Add(GetRecipeNodes(tc as TerjeRecipe));
-                    else if (tc is TerjeConditions)
-                    {
-                        TreeNode ConditionsNode = new TreeNode("Conditions")
-                        {
-                            Tag = tc as TerjeConditions
-                        };
-                        TerjeConditions cond = tc as TerjeConditions;
-                        if (cond != null)
-                        {
-                            getConditionNodes(cond, ConditionsNode);
-                        }
-                        TerjeCraftingNodes.Nodes.Add(ConditionsNode);
-                    }
-
                 }
             }
             RootNode.Nodes.Add(TerjeCraftingNodes);
@@ -584,36 +590,7 @@ namespace DayZeEditor
                 {
                     Tag = ta.Conditions
                 };
-                TerjeConditions conditions = ta.Conditions as TerjeConditions;
-                if(conditions.Timeout != null)
-                {
-                    ConditionsNode.Nodes.Add(new TreeNode("Time Out")
-                    {
-                        Tag = conditions.Timeout
-                    });
-                }
-                if(conditions.SkillLevel != null)
-                {
-                    ConditionsNode.Nodes.Add(new TreeNode("Skill Level")
-                    {
-                        Tag = conditions.SkillLevel
-                    });
-                }
-                if (conditions.SkillPerk != null)
-                {
-                    ConditionsNode.Nodes.Add(new TreeNode("Skill Perk")
-                    {
-                        Tag = conditions.SkillPerk
-                    });
-                }
-                if( conditions.SpecificPlayers != null)
-                {
-                    ConditionsNode.Nodes.Add(GetSpecificLoadoutPlayers(conditions.SpecificPlayers));
-                }
-                if(conditions.CustomCondition != null)
-                {
-                    
-                }
+                getConditionNodes(ta.Conditions, ConditionsNode);
                 loadoutnode.Nodes.Add(ConditionsNode);
             }
 
@@ -707,36 +684,7 @@ namespace DayZeEditor
                 {
                     Tag = ta.Conditions
                 };
-                PropertyInfo[] properties = typeof(TerjeConditions).GetProperties();
-                foreach (var property in properties)
-                {
-                    var value = property.GetValue(ta.Conditions);
-                    if (value != null)
-                    {
-                        TreeNode propertyNode = new TreeNode(property.Name)
-                        {
-                            Tag = value
-                        };
-                        if(value is TerjeSpecificPlayers)
-                        {
-                            TerjeSpecificPlayers players = (TerjeSpecificPlayers)value;
-                            foreach (TerjeSpecificPlayer player in players.SpecificPlayer)
-                            {
-                                propertyNode.Nodes.Add(new TreeNode(player.steamGUID)
-                                {
-                                    Tag = player
-                                });
-                            }
-                        }
-
-                        SpawnConditionsNode.Nodes.Add(propertyNode);
-                    }
-                    else if (value != null)
-                    {
-                        // Handle unknown type
-                        Console.WriteLine($"Unknown type for {property.Name}");
-                    }
-                }
+                getConditionNodes(ta.Conditions, SpawnConditionsNode);
                 Spawnnode.Nodes.Add(SpawnConditionsNode);
             }
 
@@ -814,42 +762,42 @@ namespace DayZeEditor
         }
         private static void getConditionNodes(TerjeConditions recipe, TreeNode ConditionsNode)
         {
-            if (recipe.SkillLevel != null)
+            foreach(var condition in recipe.items)
             {
-                ConditionsNode.Nodes.Add(new TreeNode("Skill Level")
+                if (condition is TerjeSpecificPlayers)
                 {
-                    Tag = recipe.SkillLevel
-                });
-            }
-            if (recipe.SkillPerk != null)
-            {
-                ConditionsNode.Nodes.Add(new TreeNode("Skill Perk")
+                    ConditionsNode.Nodes.Add(GetSpecificPlayers(condition as TerjeSpecificPlayers));
+                }
+                else if (condition is TerjeSpecialConditionsAny || condition is TerjeSpecialConditionsOne || condition is TerjeSpecialConditionsAll)
                 {
-                    Tag = recipe.SkillPerk
-                });
-            }
-            if (recipe.SpecificPlayers != null)
-            {
-                ConditionsNode.Nodes.Add(GetSpecificPlayers(recipe.SpecificPlayers));
+                    ConditionsNode.Nodes.Add(GetSpecialNodes(condition as TerjeSpecialConditions));
+                }
+                else
+                {
+                    ConditionsNode.Nodes.Add(new TreeNode(condition.GetType().Name)
+                    {
+                        Tag = condition
+                    });
+                }
             }
         }
-        private static TreeNode GetSpecificPlayers(TerjeSpecificPlayers players)
+        private static TreeNode GetSpecialNodes(TerjeSpecialConditions condition)
         {
-            TreeNode Playernode = new TreeNode("Specific Players")
+            TreeNode AllNode = new TreeNode(condition.GetType().Name)
             {
-                Tag = players
+                Tag = condition
             };
-            foreach (TerjeSpecificPlayer sp in players.SpecificPlayer)
+            foreach(var item in condition.Items)
             {
-                Playernode.Nodes.Add(new TreeNode(sp.steamGUID)
+                AllNode.Nodes.Add(new TreeNode(item.GetType().Name)
                 {
-                    Tag = sp
+                    Tag = item
                 });
             }
 
-            return Playernode;
+            return AllNode;
         }
-        private static TreeNode GetSpecificLoadoutPlayers(TerjeSpecificPlayers players)
+        private static TreeNode GetSpecificPlayers(TerjeSpecificPlayers players)
         {
             TreeNode Playernode = new TreeNode("Specific Players")
             {
@@ -1089,21 +1037,14 @@ namespace DayZeEditor
         private void TerjeTV_AfterSelect(object sender, TreeViewEventArgs e)
         {
             currentTreeNode = e.Node;
-            groupBox1.Visible = false;
-            FloatNUD.Visible = false;
-            IntNUD.Visible = false;
-            BoolCB.Visible = false;
+            foreach (Control c in flowLayoutPanel1.Controls)
+            {
+                c.Visible = false;
+            }
             StringTB.Visible = false;
-            CIngrdientGB.Visible = false;
-            CResultCB.Visible = false;
-            CRecipeGB.Visible = false;
-            CRSLGB.Visible = false;
-            CRSPGB.Visible = false;
-            SAGB.Visible = false;
-            SADGB.Visible = false;
-            SAFGB.Visible = false;
-            SSLGB.Visible = false;
-            SCLItemsGB.Visible = false;
+            IntNUD.Visible = false;
+            FloatNUD.Visible = false;
+            BoolCB.Visible = false;
             useraction = false;
 
             if (e.Node.Tag.ToString() == "Root" || e.Node.Tag.ToString() == "CFGFiles")
@@ -1201,6 +1142,9 @@ namespace DayZeEditor
                 TerjeSkillLevel SL = e.Node.Tag as TerjeSkillLevel;
                 CRSLskillIdCB.SelectedItem = SelectComboBoxByValue(CRSLskillIdCB, SL.skillId);
                 CRSLrequiredlevelNUD.Value = (int)SL.requiredLevel;
+                CONDExtraOptionsGB.Visible = true;
+                if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = SL.hideOwnerWhenFalseSpecified)
+                    CONDExtraOptionshideOwnerWhenFalseCB.Checked = SL.hideOwnerWhenFalse == 1 ? true : false;
             }
             else if (e.Node.Tag is TerjeSkillPerk)
             {
@@ -1209,6 +1153,41 @@ namespace DayZeEditor
                 CRSPskillIDCB.SelectedItem = SelectComboBoxByValue(CRSPskillIDCB, SP.skillId);
                 CRSPperkIDCB.SelectedItem = SelectComboBoxByValue(CRSPperkIDCB, SP.perkId);
                 CRSPrequiredlevelNUD.Value = (int)SP.requiredLevel;
+                CONDExtraOptionsGB.Visible = true;
+                if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = SP.hideOwnerWhenFalseSpecified)
+                    CONDExtraOptionshideOwnerWhenFalseCB.Checked = SP.hideOwnerWhenFalse == 1 ? true : false;
+
+            }
+            else if (e.Node.Tag is TerjeTimeout)
+            {
+                SCLtimeoutGB.Visible = true;
+                TerjeTimeout timeout = e.Node.Tag as TerjeTimeout;
+                SCLTimeoutidTB.Text = timeout.id;
+                if(SCLTimeouthoursSpecifiedCB.Checked = SCLTimeouthoursNUD.Visible = timeout.hoursSpecified)
+                    SCLTimeouthoursNUD.Value = timeout.hours; 
+                if (SCLTimeoutminutesSpecifiedCB.Checked = SCLTimeoutminutesNUD.Visible = timeout.minutesSpecified)
+                    SCLTimeoutminutesNUD.Value = timeout.minutes;
+                if (SCLTimeoutsecondsSpecifiedCB.Checked = SCLTimeoutsecondsNUD.Visible = timeout.secondsSpecified)
+                    SCLTimeoutsecondsNUD.Value = timeout.hours;
+                CONDExtraOptionsGB.Visible = true;
+                if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = timeout.hideOwnerWhenFalseSpecified)
+                    CONDExtraOptionshideOwnerWhenFalseCB.Checked = timeout.hideOwnerWhenFalse == 1 ? true : false;
+            }
+            else if (e.Node.Tag is TerjeSpecificPlayers)
+            {
+                TerjeSpecificPlayers players = e.Node.Tag as TerjeSpecificPlayers;
+                CONDExtraOptionsGB.Visible = true;
+                if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = players.hideOwnerWhenFalseSpecified)
+                    CONDExtraOptionshideOwnerWhenFalseCB.Checked = players.hideOwnerWhenFalse == 1 ? true : false;
+            }
+            else if (e.Node.Tag is TerjeCustomCondition)
+            {
+                SCLConditionCustomConditionGB.Visible = true;
+                TerjeCustomCondition custcon = e.Node.Tag as TerjeCustomCondition;
+                SCLConditionCustomConditionclassnameTB.Text = custcon.classname;
+                CONDExtraOptionsGB.Visible = true;
+                if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = custcon.hideOwnerWhenFalseSpecified)
+                    CONDExtraOptionshideOwnerWhenFalseCB.Checked = custcon.hideOwnerWhenFalse == 1 ? true : false;
             }
             else if (e.Node.Tag is TerjeScriptableArea)
             {
@@ -1220,7 +1199,7 @@ namespace DayZeEditor
                 SAPosYNUD.Value = (decimal)SA.PositionVec3.Y;
                 SAPosZNUD.Value = (decimal)SA.PositionVec3.Z;
                 SASpawnChanceNUD.Value = (decimal)SA.SpawnChance;
-                if(SA.FilterSpecified)
+                if (SA.FilterSpecified)
                 {
                     SAFGB.Visible = true;
                     // Split the input string into a list of skill IDs
@@ -1238,7 +1217,7 @@ namespace DayZeEditor
                         }
                     }
                 }
-                
+
             }
             else if (e.Node.Tag is TerjeScriptableAreaData)
             {
@@ -1275,7 +1254,7 @@ namespace DayZeEditor
                 SSLdisplayNameTB.Text = loadout.displayName;
                 SSLidTB.Text = loadout.id;
             }
-            else if (e.Node.Tag is TerjeLoadoutItem) 
+            else if (e.Node.Tag is TerjeLoadoutItem)
             {
                 TerjeLoadoutItem item = e.Node.Tag as TerjeLoadoutItem;
                 SCLItemsGB.Visible = true;
@@ -1336,7 +1315,37 @@ namespace DayZeEditor
                 if ((SCLItemscostSpecifiedCB.Checked = SCLItemscostNUD.Visible = item.costSpecified))
                     SCLItemscostNUD.Value = item.cost;
 
-               
+
+            }
+            else if (e.Node.Tag is TerjeLoadoutSelector)
+            {
+                SCLSelectorGB.Visible = true;
+                TerjeLoadoutSelector selector = e.Node.Tag as TerjeLoadoutSelector;
+                SCLSelectortypeCB.SelectedItem = selector.type;
+                if (SCLSelectorMultipleGB.Visible = selector.type == "MULTIPLE")
+                {
+                    if (SCLSelectorpointsCountSpecifiedCB.Checked = SCLSelectorpointsCountNUD.Visible = selector.pointsCountSpecified)
+                        SCLSelectorpointsCountNUD.Value = selector.pointsCount;
+                    if (SCLSelectorpointsHandlerSpecifiedCB.Checked = SCLSelectorpointsHandlerTB.Visible = selector.pointsHandlerSpecified)
+                        SCLSelectorpointsHandlerTB.Text = selector.pointsHandler;
+                    if (SCLSelectorpointsIconSpecifiedCB.Checked = SCLSelectorpointsIconTB.Visible = selector.pointsIconSpecified)
+                        SCLSelectorpointsIconTB.Text = selector.pointsIcon;
+                }
+                else
+                {
+                    SCLSelectorpointsCountNUD.Visible = SCLSelectorpointsHandlerTB.Visible = SCLSelectorpointsIconTB.Visible = false;
+                }
+                if (SCLSelectordisplayNameSpecifiedCB.Checked = SCLSelectordisplayNameTB.Visible = selector.displayNameSpecified)
+                    SCLSelectordisplayNameTB.Text = selector.displayName;
+
+
+            }
+            else if (e.Node.Tag is TerjeLoadoutGroup)
+            {
+                SCLGroupGB.Visible = true;
+                TerjeLoadoutGroup group = e.Node.Tag as TerjeLoadoutGroup;
+                if (SCLGroupcostSpecifiedCB.Checked = SCLGroupcostNUD.Visible = group.costSpecified)
+                    SCLGroupcostNUD.Value = group.cost;
             }
             useraction = true;
         }
@@ -1373,10 +1382,6 @@ namespace DayZeEditor
                     if (recipe.Conditions == null)
                         addConditionsToolStripMenuItem.Visible = true;
                 }
-                else if (e.Node.Tag is TerjeLoadout)
-                {
-                    addConditionsToolStripMenuItem.Visible = true;
-                }
                 else if (e.Node.Tag.ToString() == "CraftingResults")
                 {
                     addCraftingResultToolStripMenuItem.Visible = true;
@@ -1403,27 +1408,7 @@ namespace DayZeEditor
                 }
                 else if (e.Node.Tag is TerjeConditions)
                 {
-                    TerjeConditions conditions = e.Node.Tag as TerjeConditions;
-                    if (conditions.SkillLevel == null)
-                    {
-                        addSkillLevelConditionToolStripMenuItem.Visible = true;
-                    }
-                    if (conditions.SkillPerk == null)
-                    {
-                        addSkillPerkConditionToolStripMenuItem.Visible = true;
-                    }
-                    if (conditions.SpecificPlayers == null)
-                    {
-                        addSpecificPlayerConditionToolStripMenuItem.Visible = true;
-                    }
-                    if (conditions.Timeout == null && (e.Node.Parent.Tag is TerjeRespawn || e.Node.Parent.Tag is TerjeLoadout))
-                    {
-                        addTimeoutConditionToolStripMenuItem.Visible = true;
-                    }
-                    if (conditions.CustomCondition == null && (e.Node.Parent.Tag is TerjeRespawn || e.Node.Parent.Tag is TerjeLoadout))
-                    {
-                        addCustomConditionToolStripMenuItem.Visible = true;
-                    }
+                    addCustomConditionToolStripMenuItem.Visible = true;
                     removeConditionsToolStripMenuItem.Visible = true;
                 }
                 else if (e.Node.Tag is TerjeSpecificPlayers)
@@ -1442,6 +1427,15 @@ namespace DayZeEditor
                 else if (e.Node.Tag is TerjeScriptableArea)
                 {
                     removeScriptableAreaToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is TerjeLoadouts)
+                {
+                    addNewLoadoutToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is TerjeLoadout)
+                {
+                    addConditionsToolStripMenuItem.Visible = true;
+                    removeLoadoutToolStripMenuItem.Visible = true;
                 }
                 contextMenuStrip1.Show(Cursor.Position);
             }
@@ -1966,116 +1960,14 @@ namespace DayZeEditor
             else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn)
                 TerjeRespawns.isDirty = true;
         }
-        private void addTimeoutConditionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TerjeTimeout timeout = new TerjeTimeout()
-            {
-                id = "Change me to somthing short",
-                minutes = 15
-            };
-            TerjeConditions conditions = currentTreeNode.Tag as TerjeConditions;
-            conditions.Timeout = timeout;
-            if (currentTreeNode.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
-
-            currentTreeNode.Nodes.Add(new TreeNode("Time Out")
-            {
-                Tag = conditions.Timeout
-            });
-            currentTreeNode.Expand();
-            TerjeTV.SelectedNode = currentTreeNode.LastNode;
-        }
-        private void addSkillLevelConditionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TerjeSkillLevel SL = new TerjeSkillLevel()
-            {
-                skillId = "immunity",
-                requiredLevel = 100
-            };
-            TerjeConditions conditions = currentTreeNode.Tag as TerjeConditions;
-            conditions.SkillLevel = SL;
-            if (currentTreeNode.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
-
-            currentTreeNode.Nodes.Add(new TreeNode("Skill Level")
-            {
-                Tag = conditions.SkillLevel
-            });
-            currentTreeNode.Expand();
-            TerjeTV.SelectedNode = currentTreeNode.LastNode;
-        }
-        private void addSkillPerkConditionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TerjeSkillPerk SL = new TerjeSkillPerk()
-            {
-                skillId = "immunity",
-                perkId = "coldres",
-                requiredLevel = 100
-            };
-            TerjeConditions conditions = currentTreeNode.Tag as TerjeConditions;
-            if (conditions.SkillPerk != null)
-            {
-                MessageBox.Show("Conditions allready contains a skill Perk");
-                return;
-            }
-            conditions.SkillPerk = SL;
-            if (currentTreeNode.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
-            currentTreeNode.Nodes.Add(new TreeNode("Skill Perk")
-            {
-                Tag = conditions.SkillPerk
-            });
-            currentTreeNode.Expand();
-            TerjeTV.SelectedNode = currentTreeNode.LastNode;
-        }
-        private void addSpecificPlayerConditionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TerjeSpecificPlayers SP = new TerjeSpecificPlayers()
-            {
-                SpecificPlayer = new BindingList<TerjeSpecificPlayer>()
-            };
-            TerjeConditions conditions = currentTreeNode.Tag as TerjeConditions;
-            if (conditions.SpecificPlayers != null)
-            {
-                MessageBox.Show("Conditions allready contains Specific Players");
-                return;
-            }
-            conditions.SpecificPlayers = SP;
-            if (currentTreeNode.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Tag is TerjeLoadout)
-            {
-                SP.hideOwnerWhenFalseSpecified = true;
-                SP.hideOwnerWhenFalse = 1;
-                TerjeLoadouts.isDirty = true;
-            }
-            else if (currentTreeNode.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
-
-            currentTreeNode.Nodes.Add(GetSpecificPlayers(SP));
-            currentTreeNode.Expand();
-            TerjeTV.SelectedNode = currentTreeNode.LastNode;
-        }
         private void addCustomConditionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TerjeCustomCondition custcon = new TerjeCustomCondition()
             {
                 classname = "Change me to your custom class"
             };
-            TerjeConditions conditions = currentTreeNode.Tag as TerjeConditions;
-            conditions.CustomCondition = custcon;
+            TerjeConditions condition = currentTreeNode.Tag as TerjeConditions;
+            condition.items.Add(custcon);
 
             if (currentTreeNode.Parent.Tag is TerjeRecipe)
                 TerjeCraftingFiles.isDirty = true;
@@ -2086,31 +1978,22 @@ namespace DayZeEditor
 
             currentTreeNode.Nodes.Add(new TreeNode("Custom Condition")
             {
-                Tag = conditions.CustomCondition
+                Tag = custcon
             });
             currentTreeNode.Expand();
             TerjeTV.SelectedNode = currentTreeNode.LastNode;
         }
         private void removeConditionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TerjeConditions conditions = currentTreeNode.Parent.Tag as TerjeConditions;
+            TerjeConditions condition = currentTreeNode.Parent.Tag as TerjeConditions;
             if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe)
                 TerjeCraftingFiles.isDirty = true;
             else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout)
                 TerjeLoadouts.isDirty = true;
             else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn)
                 TerjeRespawns.isDirty = true;
-            if (currentTreeNode.Tag is TerjeSkillLevel)
-                conditions.SkillLevel = null;
-            else if (currentTreeNode.Tag is TerjeSkillPerk)
-                conditions.SkillPerk = null;
-            else if (currentTreeNode.Tag is TerjeSpecificPlayers)
-                conditions.SpecificPlayers = null;
-            else if (currentTreeNode.Tag is TerjeTimeout)
-                conditions.Timeout = null;
-            else if (currentTreeNode.Tag is TerjeCustomCondition)
-                conditions.CustomCondition = null;
-            
+            condition.items.Remove(condition);
+           
             currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
         }
         private void CRSPSkillIDCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -2163,9 +2046,9 @@ namespace DayZeEditor
         {
             TerjeConditions tc = new TerjeConditions()
             {
-
+                items = new BindingList<object>()
             };
-            if(currentTreeNode.Tag is TerjeLoadout)
+            if (currentTreeNode.Tag is TerjeLoadout)
             {
                 TerjeLoadout loadout = currentTreeNode.Tag as TerjeLoadout;
                 loadout.Conditions = tc;
@@ -2542,6 +2425,69 @@ namespace DayZeEditor
             }
             TerjeLoadouts.isDirty = true;
         }
+        private void SCLSelectorSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CheckBox check = sender as CheckBox;
+            string namespecified = check.Name;
+            string name = check.Tag.ToString();
+            GetControls(SCLSelectorGB, check, namespecified, name);
+            TerjeLoadouts.isDirty = true;
+        }
+        private void GetControls(GroupBox groupbox, CheckBox check, string namespecified, string name)
+        {
+            foreach (Control control in groupbox.Controls)
+            {
+                if (control is GroupBox)
+                {
+                    GroupBox box = control as GroupBox;
+                    GetControls(box, check, namespecified, name);
+                }
+                else if (control.Name == name)
+                {
+                    TerjeLoadoutSelector selector = currentTreeNode.Tag as TerjeLoadoutSelector;
+                    SetPropertyValue(selector, namespecified.Substring(11, namespecified.Length - 11 - 2), control.Visible = check.Checked);
+                    if (control is TextBox)
+                    {
+                        TextBox tb = control as TextBox;
+                        string n = name.Substring(11, name.Length - 11 - 2);
+                        object value = GetPropertyValue(selector, n);
+                        if (value == null)
+                            tb.Text = "Change Me";
+                        else
+                            tb.Text = value.ToString();
+
+                    }
+                    else if (control is NumericUpDown)
+                    {
+                        NumericUpDown nud = control as NumericUpDown;
+                        string n = name.Substring(11, name.Length - 11 - 3);
+                        object value = GetPropertyValue(selector, n);
+                        nud.Value = (int)value;
+                    }
+                    else if (control is CheckBox)
+                    {
+                        CheckBox cb = control as CheckBox;
+                        string n = name.Substring(11, name.Length - 11 - 2);
+                        object value = GetPropertyValue(selector, n);
+                        if (value == null)
+                            cb.Checked = true;
+                        else
+                            cb.Checked = (int)value == 1 ? true : false;
+                    }
+                    else if (control is ComboBox)
+                    {
+                        ComboBox cb = control as ComboBox;
+                        string n = name.Substring(11, name.Length - 11 - 2);
+                        object value = GetPropertyValue(selector, n);
+                        if (value == null)
+                            cb.SelectedIndex = 0;
+                        else
+                            cb.SelectedItem = value.ToString();
+                    }
+                }
+            }
+        }
         static object GetPropertyValue(object obj, string propertyName)
         {
             if (obj == null || string.IsNullOrEmpty(propertyName))
@@ -2564,8 +2510,181 @@ namespace DayZeEditor
 
             prop.SetValue(obj, value);
         }
+        private void SCLSelectortypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeLoadoutSelector selector = currentTreeNode.Tag as TerjeLoadoutSelector;
+            selector.type = SCLSelectortypeCB.GetItemText(SCLSelectortypeCB.SelectedItem);
+            if (SCLSelectorMultipleGB.Visible = selector.type == "MULTIPLE")
+            {
+                if (SCLSelectorpointsCountSpecifiedCB.Checked = SCLSelectorpointsCountNUD.Visible = selector.pointsCountSpecified)
+                    SCLSelectorpointsCountNUD.Value = selector.pointsCount;
+                if (SCLSelectorpointsHandlerSpecifiedCB.Checked = SCLSelectorpointsHandlerTB.Visible = selector.pointsHandlerSpecified)
+                    SCLSelectorpointsHandlerTB.Text = selector.pointsHandler;
+                if (SCLSelectorpointsIconSpecifiedCB.Checked = SCLSelectorpointsIconTB.Visible = selector.pointsIconSpecified)
+                    SCLSelectorpointsIconTB.Text = selector.pointsIcon;
+            }
+            else
+            {
+                SCLSelectorpointsCountSpecifiedCB.Checked = SCLSelectorpointsCountNUD.Visible = SCLSelectorpointsHandlerTB.Visible = SCLSelectorpointsIconTB.Visible = false;
+            }
+            currentTreeNode.Text = $"Selector Type:{selector.type} , Display Name:{selector.displayName}";
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLSelectordisplayNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeLoadoutSelector selector = currentTreeNode.Tag as TerjeLoadoutSelector;
+            selector.displayName = SCLSelectordisplayNameTB.Text;
+            currentTreeNode.Text = $"Selector Type:{selector.type} , Display Name:{selector.displayName}";
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLSelectorpointsCountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeLoadoutSelector selector = currentTreeNode.Tag as TerjeLoadoutSelector;
+            selector.pointsCount = (int)SCLSelectorpointsCountNUD.Value;
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLSelectorpointsHandlerTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeLoadoutSelector selector = currentTreeNode.Tag as TerjeLoadoutSelector;
+            selector.pointsHandler = SCLSelectorpointsHandlerTB.Text;
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLSelectorpointsIconTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeLoadoutSelector selector = currentTreeNode.Tag as TerjeLoadoutSelector;
+            selector.pointsIcon = SCLSelectorpointsIconTB.Text;
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLGroupcostSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeLoadoutGroup group = currentTreeNode.Tag as TerjeLoadoutGroup;
+            group.costSpecified = SCLGroupcostNUD.Visible = SCLGroupcostSpecifiedCB.Checked;
+            SCLGroupcostNUD.Value = group.cost;
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLGroupcostNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeLoadoutGroup group = currentTreeNode.Tag as TerjeLoadoutGroup;
+            group.cost = (int)SCLGroupcostNUD.Value;
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLTimeoutidTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
+            timeout.id = SCLTimeoutidTB.Text;
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLTimeouthoursNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
+            timeout.hours = (int)SCLTimeouthoursNUD.Value;
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLTimeoutminutesNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
+            timeout.minutes = (int)SCLTimeoutminutesNUD.Value;
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLTimeoutsecondsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
+            timeout.seconds = (int)SCLTimeoutsecondsNUD.Value;
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLTimeoutSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CheckBox check = sender as CheckBox;
+            string namespecified = check.Name;
+            string name = check.Tag.ToString();
+            foreach (Control control in SCLtimeoutGB.Controls)
+            {
+                if (control.Name == name)
+                {
+                    TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
+                    SetPropertyValue(timeout, namespecified.Substring(10, namespecified.Length - 10 - 2), control.Visible = check.Checked);
+                    if (control is TextBox)
+                    {
+                        TextBox tb = control as TextBox;
+                        string n = name.Substring(10, name.Length - 10 - 2);
+                        object value = GetPropertyValue(timeout, n);
+                        if (value == null)
+                            tb.Text = "Change Me";
+                        else
+                            tb.Text = value.ToString();
+                    }
+                    else if (control is NumericUpDown)
+                    {
+                        NumericUpDown nud = control as NumericUpDown;
+                        string n = name.Substring(10, name.Length - 10 - 3);
+                        object value = GetPropertyValue(timeout, n);
+                        nud.Value = (int)value;
+                    }
+                    else if (control is CheckBox)
+                    {
+                        CheckBox cb = control as CheckBox;
+                        string n = name.Substring(10, name.Length - 10 - 2);
+                        object value = GetPropertyValue(timeout, n);
+                        if (value == null)
+                            cb.Checked = true;
+                        else
+                            cb.Checked = (int)value == 1 ? true : false;
+                    }
+                    else if (control is ComboBox)
+                    {
+                        ComboBox cb = control as ComboBox;
+                        string n = name.Substring(10, name.Length - 10 - 2);
+                        object value = GetPropertyValue(timeout, n);
+                        if (value == null)
+                            cb.SelectedIndex = 0;
+                        else
+                            cb.SelectedItem = value.ToString();
+                    }
+                }
+            }
+            TerjeLoadouts.isDirty = true;
+        }
+        private void SCLConditionCustomConditionclassnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeCustomCondition custcon = currentTreeNode.Tag as TerjeCustomCondition;
+            custcon.classname = SCLConditionCustomConditionclassnameTB.Text;
+            TerjeLoadouts.isDirty = true;
+        }
 
-
+        private void addNewLoadoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeLoadout loadout = new TerjeLoadout()
+            {
+                id = "New Loadout, Change me to something short and unique",
+                displayName = "New Loadout, Change Me",
+                Items = new TerjeLoadoutItems()
+                {
+                    Items = new BindingList<object>()
+                },
+            };
+            TerjeLoadouts.Loadout.Add(loadout);
+            TerjeLoadouts.isDirty = true;
+            currentTreeNode.Nodes.Add(GetLoadoutNodes(loadout));
+        }
+        private void removeLoadoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeLoadouts.Loadout.Remove(currentTreeNode.Tag as TerjeLoadout);
+            currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            TerjeLoadouts.isDirty = true;
+        }
     }
     public class ComboBoxItem
     {

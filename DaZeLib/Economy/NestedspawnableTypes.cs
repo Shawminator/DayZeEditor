@@ -8,10 +8,6 @@ using System.Xml.Serialization;
 
 namespace DayZeLib
 {
-    //[System.SerializableAttribute()]
-    //[System.ComponentModel.DesignerCategoryAttribute("code")]
-    //[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    //[System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
     [XmlRoot("spawnabletypes")]
     public partial class SpawnableTypes
     {

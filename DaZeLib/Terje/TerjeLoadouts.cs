@@ -35,7 +35,7 @@ namespace DayZeLib
     {
         //Elelments
         private TerjeLoadoutItems itemsField;
-        private TerjeConditions conditionsField;
+        private TerjeConditions ConditionsField;
 
         //Attributes
         private string idField;
@@ -52,15 +52,16 @@ namespace DayZeLib
                 this.itemsField = value;
             }
         }
+        [System.Xml.Serialization.XmlElementAttribute("Conditions")]
         public TerjeConditions Conditions
         {
             get
             {
-                return this.conditionsField;
+                return this.ConditionsField;
             }
             set
             {
-                this.conditionsField = value;
+                this.ConditionsField = value;
             }
         }
 
@@ -165,6 +166,9 @@ namespace DayZeLib
 
         private int costField;
         private bool costFieldSpecified;
+
+        private string handlerField;
+        private bool handlerFieldSpecified;
 
         // Properties
 
@@ -384,6 +388,20 @@ namespace DayZeLib
             get { return this.costFieldSpecified; }
             set { this.costFieldSpecified = value; }
         }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string handler
+        {
+            get { return this.handlerField; }
+            set { this.handlerField = value; }
+        }
+
+        [System.Xml.Serialization.XmlIgnore]
+        public bool handlerSpecified
+        {
+            get { return this.handlerFieldSpecified; }
+            set { this.handlerFieldSpecified = value; }
+        }
     }
 
     [System.SerializableAttribute()]
@@ -395,10 +413,13 @@ namespace DayZeLib
         private BindingList<TerjeLoadoutGroup> groupField;
         private string typeField;
         private string displayNameField;
+        private bool displayNameFieldSepcified;
         private int pointsCountField;
         private bool pointsCountFieldSpecified;
         private string pointsHandlerField;
+        private bool pointsHandlerFieldSpecified;
         private string pointsIconField;
+        private bool pointsIconFielddSpecified;
 
         [System.Xml.Serialization.XmlElementAttribute("Item")]
         public BindingList<TerjeLoadoutItem> Item
@@ -427,6 +448,14 @@ namespace DayZeLib
             get { return this.displayNameField; }
             set { this.displayNameField = value; }
         }
+        
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool displayNameSpecified
+        {
+            get { return this.displayNameFieldSepcified; }
+            set { this.displayNameFieldSepcified = value; }
+        }
+
 
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int pointsCount
@@ -442,7 +471,7 @@ namespace DayZeLib
             set { this.pointsCountFieldSpecified = value; }
         }
 
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string pointsHandler
         {
             get { return this.pointsHandlerField; }
@@ -450,10 +479,24 @@ namespace DayZeLib
         }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool pointsHandlerSpecified
+        {
+            get { return this.pointsHandlerFieldSpecified; }
+            set { this.pointsHandlerFieldSpecified = value; }
+        }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string pointsIcon
         {
             get { return this.pointsIconField; }
             set { this.pointsIconField = value; }
+        }
+
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool pointsIconSpecified
+        {
+            get { return this.pointsIconFielddSpecified; }
+            set { this.pointsIconFielddSpecified = value; }
         }
     }
 
@@ -466,6 +509,8 @@ namespace DayZeLib
         private BindingList<TerjeLoadoutItem> itemField;
         private int costField;
         private bool costFieldSpecified;
+        private string handlerField;
+        private bool handlerFieldSpecified;
 
         [System.Xml.Serialization.XmlElementAttribute("Item")]
         public BindingList<TerjeLoadoutItem> Item
@@ -487,303 +532,23 @@ namespace DayZeLib
             get { return this.costFieldSpecified; }
             set { this.costFieldSpecified = value; }
         }
-    }
-
-
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class TerjeConditions
-    {
-        private TerjeTimeout timeoutField;
-        private TerjeSkillLevel skillLevelField;
-        private TerjeSkillPerk skillPerkField;
-        private TerjeSpecificPlayers specificPlayersField;
-        private TerjeCustomCondition CustomConditionField;
-
-        public TerjeTimeout Timeout
-        {
-            get
-            {
-                return this.timeoutField;
-            }
-            set
-            {
-                this.timeoutField = value;
-            }
-        }
-        public TerjeSkillLevel SkillLevel
-        {
-            get
-            {
-                return this.skillLevelField;
-            }
-            set
-            {
-                this.skillLevelField = value;
-            }
-        }
-        public TerjeSkillPerk SkillPerk
-        {
-            get
-            {
-                return this.skillPerkField;
-            }
-            set
-            {
-                this.skillPerkField = value;
-            }
-        }
-        public TerjeSpecificPlayers SpecificPlayers
-        {
-            get
-            {
-                return this.specificPlayersField;
-            }
-            set
-            {
-                this.specificPlayersField = value;
-            }
-        }
-        public TerjeCustomCondition CustomCondition
-        {
-            get
-            {
-                return this.CustomConditionField;
-            }
-            set
-            {
-                this.CustomConditionField = value;
-            }
-        }
-    }
-
-    public partial class TerjeTimeout
-    {
-        private string idField;
-        private int hoursField;
-        private bool hoursFieldSpecified;
-        private int minutesField;
-        private bool minutesFieldSpecified;
-        private int secondsField;
-        private bool secondsFieldSpecified;
-        private int hideOwnerWhenFalseField;
-        private bool hideOwnerWhenFalseFieldSpecified;
 
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string id
+        public string handler
         {
-            get { return this.idField; }
-            set { this.idField = value; }
+            get { return this.handlerField; }
+            set { this.handlerField = value; }
         }
 
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int hours
+        [System.Xml.Serialization.XmlIgnore]
+        public bool handlerSpecified
         {
-            get { return this.hoursField; }
-            set { this.hoursField = value; }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool hoursSpecified
-        {
-            get { return this.hoursFieldSpecified; }
-            set { this.hoursFieldSpecified = value; }
-        }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int minutes
-        {
-            get { return this.minutesField; }
-            set { this.minutesField = value; }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool minutesSpecified
-        {
-            get { return this.minutesFieldSpecified; }
-            set { this.minutesFieldSpecified = value; }
-        }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int seconds
-        {
-            get { return this.secondsField; }
-            set { this.secondsField = value; }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool secondsSpecified
-        {
-            get { return this.secondsFieldSpecified; }
-            set { this.secondsFieldSpecified = value; }
-        }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int hideOwnerWhenFalse
-        {
-            get { return this.hideOwnerWhenFalseField; }
-            set { this.hideOwnerWhenFalseField = value; }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool hideOwnerWhenFalseSpecified
-        {
-            get { return this.hideOwnerWhenFalseFieldSpecified; }
-            set { this.hideOwnerWhenFalseFieldSpecified = value; }
+            get { return this.handlerFieldSpecified; }
+            set { this.handlerFieldSpecified = value; }
         }
     }
 
 
-    public partial class TerjeSkillLevel
-    {
-        private string skillIdField;
-        private int requiredLevelField;
-        private int hideOwnerWhenFalseField;
-        private bool hideOwnerWhenFalseFieldSpecified;
 
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string skillId
-        {
-            get { return this.skillIdField; }
-            set { this.skillIdField = value; }
-        }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int requiredLevel
-        {
-            get { return this.requiredLevelField; }
-            set { this.requiredLevelField = value; }
-        }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int hideOwnerWhenFalse
-        {
-            get { return this.hideOwnerWhenFalseField; }
-            set { this.hideOwnerWhenFalseField = value; }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool hideOwnerWhenFalseSpecified
-        {
-            get { return this.hideOwnerWhenFalseFieldSpecified; }
-            set { this.hideOwnerWhenFalseFieldSpecified = value; }
-        }
-    }
-
-
-    public partial class TerjeSkillPerk
-    {
-        private string skillIdField;
-        private string perkIdField;
-        private int requiredLevelField;
-        private int hideOwnerWhenFalseField;
-        private bool hideOwnerWhenFalseFieldSpecified;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string skillId
-        {
-            get { return this.skillIdField; }
-            set { this.skillIdField = value; }
-        }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string perkId
-        {
-            get { return this.perkIdField; }
-            set { this.perkIdField = value; }
-        }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int requiredLevel
-        {
-            get { return this.requiredLevelField; }
-            set { this.requiredLevelField = value; }
-        }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int hideOwnerWhenFalse
-        {
-            get { return this.hideOwnerWhenFalseField; }
-            set { this.hideOwnerWhenFalseField = value; }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool hideOwnerWhenFalseSpecified
-        {
-            get { return this.hideOwnerWhenFalseFieldSpecified; }
-            set { this.hideOwnerWhenFalseFieldSpecified = value; }
-        }
-    }
-
-
-    public partial class TerjeSpecificPlayers
-    {
-        private BindingList<TerjeSpecificPlayer> specificPlayerField;
-        private int hideOwnerWhenFalseField;
-        private bool hideOwnerWhenFalseFieldSpecified;
-
-        [System.Xml.Serialization.XmlElementAttribute("SpecificPlayer")]
-        public BindingList<TerjeSpecificPlayer> SpecificPlayer
-        {
-            get { return this.specificPlayerField; }
-            set { this.specificPlayerField = value; }
-        }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int hideOwnerWhenFalse
-        {
-            get { return this.hideOwnerWhenFalseField; }
-            set { this.hideOwnerWhenFalseField = value; }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool hideOwnerWhenFalseSpecified
-        {
-            get { return this.hideOwnerWhenFalseFieldSpecified; }
-            set { this.hideOwnerWhenFalseFieldSpecified = value; }
-        }
-    }
-
-    public partial class TerjeSpecificPlayer
-    {
-        private string steamGUIDField;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string steamGUID
-        {
-            get { return this.steamGUIDField; }
-            set { this.steamGUIDField = value; }
-        }
-    }
-
-
-    public partial class TerjeCustomCondition
-    {
-        private string classnameField;
-        private int hideOwnerWhenFalseField;
-        private bool hideOwnerWhenFalseFieldSpecified;
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string classname
-        {
-            get { return this.classnameField; }
-            set { this.classnameField = value; }
-        }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int hideOwnerWhenFalse
-        {
-            get { return this.hideOwnerWhenFalseField; }
-            set { this.hideOwnerWhenFalseField = value; }
-        }
-
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool hideOwnerWhenFalseSpecified
-        {
-            get { return this.hideOwnerWhenFalseFieldSpecified; }
-            set { this.hideOwnerWhenFalseFieldSpecified = value; }
-        }
-    }
 
 }

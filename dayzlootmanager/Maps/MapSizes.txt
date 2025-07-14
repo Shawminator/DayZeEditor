@@ -34,3 +34,4 @@ raman:32768
 NorthTakistan:12288
 GreenCounty:10240
 hashima:5120
+Deadfall:10240

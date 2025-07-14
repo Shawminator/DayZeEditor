@@ -1026,7 +1026,6 @@ namespace DayZeEditor
                     Console.WriteLine("Updating MapSizes.txt");
                     using (var client = new WebClient())
                     {
-                        Console.WriteLine("Downloading Zip file......");
                         GitHub info = getavaiableMapAddons();
                         Asset ass = info.assets.Find(x => x.name == "MapSizes.txt");
                         client.DownloadFile(ass.browser_download_url, "Maps/MapSizes.txt");

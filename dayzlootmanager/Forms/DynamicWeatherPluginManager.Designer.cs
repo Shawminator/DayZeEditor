@@ -38,6 +38,8 @@ namespace DayZeEditor
             this.darkButton6 = new DarkUI.Controls.DarkButton();
             this.WeatherLB = new System.Windows.Forms.ListBox();
             this.groupBox37 = new System.Windows.Forms.GroupBox();
+            this.darkLabel33 = new DarkUI.Controls.DarkLabel();
+            this.nameTB = new System.Windows.Forms.TextBox();
             this.notify_messageCB = new System.Windows.Forms.CheckBox();
             this.chat_messageCB = new System.Windows.Forms.CheckBox();
             this.groupBox42 = new System.Windows.Forms.GroupBox();
@@ -55,22 +57,20 @@ namespace DayZeEditor
             this.transition_minNUD = new System.Windows.Forms.NumericUpDown();
             this.label67 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
-            this.darkLabel33 = new DarkUI.Controls.DarkLabel();
-            this.nameTB = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dyn_vol_fog_dist_maxNUD = new System.Windows.Forms.NumericUpDown();
-            this.dyn_vol_fog_dist_minNUD = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.use_dyn_vol_fogCB = new System.Windows.Forms.CheckBox();
+            this.dyn_vol_fog_biasNUD = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.dyn_vol_fog_height_maxNUD = new System.Windows.Forms.NumericUpDown();
             this.dyn_vol_fog_height_minNUD = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dyn_vol_fog_biasNUD = new System.Windows.Forms.NumericUpDown();
+            this.use_dyn_vol_fogCB = new System.Windows.Forms.CheckBox();
+            this.dyn_vol_fog_dist_maxNUD = new System.Windows.Forms.NumericUpDown();
+            this.dyn_vol_fog_dist_minNUD = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.fog_transition_timeNUD = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.fog_maxNUD = new System.Windows.Forms.NumericUpDown();
@@ -79,8 +79,8 @@ namespace DayZeEditor
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.wind_maxNUD = new System.Windows.Forms.NumericUpDown();
-            this.wind_minNUD = new System.Windows.Forms.NumericUpDown();
+            this.wind_speed_maxNUD = new System.Windows.Forms.NumericUpDown();
+            this.wind_speed_minNUD = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -94,15 +94,23 @@ namespace DayZeEditor
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.use_snowflake_scaleCB = new System.Windows.Forms.CheckBox();
             this.snowflake_scale_maxNUD = new System.Windows.Forms.NumericUpDown();
             this.snowflake_scale_minNUD = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.use_snowflake_scaleCB = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.stormCB = new System.Windows.Forms.CheckBox();
             this.thunder_timeoutNUD = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
-            this.stormCB = new System.Windows.Forms.CheckBox();
+            this.wind_dir_maxNUD = new System.Windows.Forms.NumericUpDown();
+            this.wind_dir_minNUD = new System.Windows.Forms.NumericUpDown();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.use_global_temperatureCB = new System.Windows.Forms.CheckBox();
+            this.global_temperature_overrideNUD = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox37.SuspendLayout();
@@ -116,18 +124,18 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.transition_maxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transition_minNUD)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_dist_maxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_dist_minNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_biasNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_height_maxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_height_minNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_biasNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_dist_maxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_dist_minNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fog_transition_timeNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fog_maxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fog_minNUD)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wind_maxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wind_minNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_speed_maxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_speed_minNUD)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rain_maxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rain_minNUD)).BeginInit();
@@ -139,6 +147,10 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.snowflake_scale_minNUD)).BeginInit();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.thunder_timeoutNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_maxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_minNUD)).BeginInit();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.global_temperature_overrideNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -250,6 +262,26 @@ namespace DayZeEditor
             this.groupBox37.TabStop = false;
             this.groupBox37.Text = "General";
             // 
+            // darkLabel33
+            // 
+            this.darkLabel33.AutoSize = true;
+            this.darkLabel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel33.Location = new System.Drawing.Point(17, 57);
+            this.darkLabel33.Name = "darkLabel33";
+            this.darkLabel33.Size = new System.Drawing.Size(35, 13);
+            this.darkLabel33.TabIndex = 121;
+            this.darkLabel33.Text = "Name";
+            // 
+            // nameTB
+            // 
+            this.nameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.nameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.nameTB.Location = new System.Drawing.Point(58, 54);
+            this.nameTB.Name = "nameTB";
+            this.nameTB.Size = new System.Drawing.Size(215, 20);
+            this.nameTB.TabIndex = 120;
+            this.nameTB.TextChanged += new System.EventHandler(this.DWPstringTB_TextChanged);
+            // 
             // notify_messageCB
             // 
             this.notify_messageCB.AutoSize = true;
@@ -259,7 +291,7 @@ namespace DayZeEditor
             this.notify_messageCB.TabIndex = 0;
             this.notify_messageCB.Text = "Notify Message Enabled";
             this.notify_messageCB.UseVisualStyleBackColor = true;
-            this.notify_messageCB.CheckedChanged += new System.EventHandler(this.DWPFaketBoolsCB_CheckedChanged);
+            this.notify_messageCB.CheckedChanged += new System.EventHandler(this.DWPBoolsCB_CheckedChanged);
             // 
             // chat_messageCB
             // 
@@ -270,7 +302,7 @@ namespace DayZeEditor
             this.chat_messageCB.TabIndex = 1;
             this.chat_messageCB.Text = "Chat Message Enabled";
             this.chat_messageCB.UseVisualStyleBackColor = true;
-            this.chat_messageCB.CheckedChanged += new System.EventHandler(this.DWPFaketBoolsCB_CheckedChanged);
+            this.chat_messageCB.CheckedChanged += new System.EventHandler(this.DWPBoolsCB_CheckedChanged);
             // 
             // groupBox42
             // 
@@ -500,26 +532,6 @@ namespace DayZeEditor
             this.label68.TabIndex = 0;
             this.label68.Text = "min";
             // 
-            // darkLabel33
-            // 
-            this.darkLabel33.AutoSize = true;
-            this.darkLabel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel33.Location = new System.Drawing.Point(17, 57);
-            this.darkLabel33.Name = "darkLabel33";
-            this.darkLabel33.Size = new System.Drawing.Size(35, 13);
-            this.darkLabel33.TabIndex = 121;
-            this.darkLabel33.Text = "Name";
-            // 
-            // nameTB
-            // 
-            this.nameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.nameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.nameTB.Location = new System.Drawing.Point(58, 54);
-            this.nameTB.Name = "nameTB";
-            this.nameTB.Size = new System.Drawing.Size(215, 20);
-            this.nameTB.TabIndex = 120;
-            this.nameTB.TextChanged += new System.EventHandler(this.DWPstringTB_TextChanged);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dyn_vol_fog_biasNUD);
@@ -543,78 +555,54 @@ namespace DayZeEditor
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dyn Vol Fog";
             // 
-            // dyn_vol_fog_dist_maxNUD
+            // dyn_vol_fog_biasNUD
             // 
-            this.dyn_vol_fog_dist_maxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.dyn_vol_fog_dist_maxNUD.DecimalPlaces = 3;
-            this.dyn_vol_fog_dist_maxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.dyn_vol_fog_dist_maxNUD.Increment = new decimal(new int[] {
+            this.dyn_vol_fog_biasNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.dyn_vol_fog_biasNUD.DecimalPlaces = 3;
+            this.dyn_vol_fog_biasNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.dyn_vol_fog_biasNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.dyn_vol_fog_dist_maxNUD.Location = new System.Drawing.Point(179, 55);
-            this.dyn_vol_fog_dist_maxNUD.Maximum = new decimal(new int[] {
-            1,
+            this.dyn_vol_fog_biasNUD.Location = new System.Drawing.Point(95, 124);
+            this.dyn_vol_fog_biasNUD.Maximum = new decimal(new int[] {
+            100000,
             0,
             0,
             0});
-            this.dyn_vol_fog_dist_maxNUD.Name = "dyn_vol_fog_dist_maxNUD";
-            this.dyn_vol_fog_dist_maxNUD.Size = new System.Drawing.Size(78, 20);
-            this.dyn_vol_fog_dist_maxNUD.TabIndex = 72;
-            this.dyn_vol_fog_dist_maxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.dyn_vol_fog_dist_maxNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            this.dyn_vol_fog_biasNUD.Name = "dyn_vol_fog_biasNUD";
+            this.dyn_vol_fog_biasNUD.Size = new System.Drawing.Size(78, 20);
+            this.dyn_vol_fog_biasNUD.TabIndex = 81;
+            this.dyn_vol_fog_biasNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.dyn_vol_fog_biasNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
             // 
-            // dyn_vol_fog_dist_minNUD
+            // label7
             // 
-            this.dyn_vol_fog_dist_minNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.dyn_vol_fog_dist_minNUD.DecimalPlaces = 3;
-            this.dyn_vol_fog_dist_minNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.dyn_vol_fog_dist_minNUD.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.dyn_vol_fog_dist_minNUD.Location = new System.Drawing.Point(95, 55);
-            this.dyn_vol_fog_dist_minNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.dyn_vol_fog_dist_minNUD.Name = "dyn_vol_fog_dist_minNUD";
-            this.dyn_vol_fog_dist_minNUD.Size = new System.Drawing.Size(78, 20);
-            this.dyn_vol_fog_dist_minNUD.TabIndex = 71;
-            this.dyn_vol_fog_dist_minNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.dyn_vol_fog_dist_minNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 126);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(27, 13);
+            this.label7.TabIndex = 80;
+            this.label7.Text = "Bias";
             // 
-            // label1
+            // label6
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(199, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "max";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 95);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 79;
+            this.label6.Text = "Height";
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(121, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "min";
-            // 
-            // use_dyn_vol_fogCB
-            // 
-            this.use_dyn_vol_fogCB.AutoSize = true;
-            this.use_dyn_vol_fogCB.Location = new System.Drawing.Point(11, 19);
-            this.use_dyn_vol_fogCB.Name = "use_dyn_vol_fogCB";
-            this.use_dyn_vol_fogCB.Size = new System.Drawing.Size(106, 17);
-            this.use_dyn_vol_fogCB.TabIndex = 73;
-            this.use_dyn_vol_fogCB.Text = "Use Dyn Vol Fog";
-            this.use_dyn_vol_fogCB.UseVisualStyleBackColor = true;
-            this.use_dyn_vol_fogCB.CheckedChanged += new System.EventHandler(this.DWPBoolsCB_CheckedChanged);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.TabIndex = 78;
+            this.label5.Text = "Distance";
             // 
             // dyn_vol_fog_height_maxNUD
             // 
@@ -678,54 +666,78 @@ namespace DayZeEditor
             this.label4.TabIndex = 74;
             this.label4.Text = "min";
             // 
-            // label5
+            // use_dyn_vol_fogCB
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 57);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
-            this.label5.TabIndex = 78;
-            this.label5.Text = "Distance";
+            this.use_dyn_vol_fogCB.AutoSize = true;
+            this.use_dyn_vol_fogCB.Location = new System.Drawing.Point(11, 19);
+            this.use_dyn_vol_fogCB.Name = "use_dyn_vol_fogCB";
+            this.use_dyn_vol_fogCB.Size = new System.Drawing.Size(106, 17);
+            this.use_dyn_vol_fogCB.TabIndex = 73;
+            this.use_dyn_vol_fogCB.Text = "Use Dyn Vol Fog";
+            this.use_dyn_vol_fogCB.UseVisualStyleBackColor = true;
+            this.use_dyn_vol_fogCB.CheckedChanged += new System.EventHandler(this.DWPBoolsCB_CheckedChanged);
             // 
-            // label6
+            // dyn_vol_fog_dist_maxNUD
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 95);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 79;
-            this.label6.Text = "Height";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 126);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(27, 13);
-            this.label7.TabIndex = 80;
-            this.label7.Text = "Bias";
-            // 
-            // dyn_vol_fog_biasNUD
-            // 
-            this.dyn_vol_fog_biasNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.dyn_vol_fog_biasNUD.DecimalPlaces = 3;
-            this.dyn_vol_fog_biasNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.dyn_vol_fog_biasNUD.Increment = new decimal(new int[] {
+            this.dyn_vol_fog_dist_maxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.dyn_vol_fog_dist_maxNUD.DecimalPlaces = 3;
+            this.dyn_vol_fog_dist_maxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.dyn_vol_fog_dist_maxNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.dyn_vol_fog_biasNUD.Location = new System.Drawing.Point(95, 124);
-            this.dyn_vol_fog_biasNUD.Maximum = new decimal(new int[] {
-            100000,
+            this.dyn_vol_fog_dist_maxNUD.Location = new System.Drawing.Point(179, 55);
+            this.dyn_vol_fog_dist_maxNUD.Maximum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.dyn_vol_fog_biasNUD.Name = "dyn_vol_fog_biasNUD";
-            this.dyn_vol_fog_biasNUD.Size = new System.Drawing.Size(78, 20);
-            this.dyn_vol_fog_biasNUD.TabIndex = 81;
-            this.dyn_vol_fog_biasNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.dyn_vol_fog_biasNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            this.dyn_vol_fog_dist_maxNUD.Name = "dyn_vol_fog_dist_maxNUD";
+            this.dyn_vol_fog_dist_maxNUD.Size = new System.Drawing.Size(78, 20);
+            this.dyn_vol_fog_dist_maxNUD.TabIndex = 72;
+            this.dyn_vol_fog_dist_maxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.dyn_vol_fog_dist_maxNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            // 
+            // dyn_vol_fog_dist_minNUD
+            // 
+            this.dyn_vol_fog_dist_minNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.dyn_vol_fog_dist_minNUD.DecimalPlaces = 3;
+            this.dyn_vol_fog_dist_minNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.dyn_vol_fog_dist_minNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.dyn_vol_fog_dist_minNUD.Location = new System.Drawing.Point(95, 55);
+            this.dyn_vol_fog_dist_minNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dyn_vol_fog_dist_minNUD.Name = "dyn_vol_fog_dist_minNUD";
+            this.dyn_vol_fog_dist_minNUD.Size = new System.Drawing.Size(78, 20);
+            this.dyn_vol_fog_dist_minNUD.TabIndex = 71;
+            this.dyn_vol_fog_dist_minNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.dyn_vol_fog_dist_minNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(199, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "max";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(121, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "min";
             // 
             // fog_transition_timeNUD
             // 
@@ -838,61 +850,65 @@ namespace DayZeEditor
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.wind_maxNUD);
-            this.groupBox3.Controls.Add(this.wind_minNUD);
+            this.groupBox3.Controls.Add(this.wind_dir_maxNUD);
+            this.groupBox3.Controls.Add(this.wind_dir_minNUD);
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.wind_speed_maxNUD);
+            this.groupBox3.Controls.Add(this.wind_speed_minNUD);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox3.Location = new System.Drawing.Point(564, 52);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(279, 66);
+            this.groupBox3.Size = new System.Drawing.Size(279, 108);
             this.groupBox3.TabIndex = 80;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Wind";
             // 
-            // wind_maxNUD
+            // wind_speed_maxNUD
             // 
-            this.wind_maxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.wind_maxNUD.DecimalPlaces = 3;
-            this.wind_maxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.wind_maxNUD.Increment = new decimal(new int[] {
+            this.wind_speed_maxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.wind_speed_maxNUD.DecimalPlaces = 3;
+            this.wind_speed_maxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.wind_speed_maxNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.wind_maxNUD.Location = new System.Drawing.Point(95, 32);
-            this.wind_maxNUD.Maximum = new decimal(new int[] {
+            this.wind_speed_maxNUD.Location = new System.Drawing.Point(95, 32);
+            this.wind_speed_maxNUD.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.wind_maxNUD.Name = "wind_maxNUD";
-            this.wind_maxNUD.Size = new System.Drawing.Size(78, 20);
-            this.wind_maxNUD.TabIndex = 72;
-            this.wind_maxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.wind_maxNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            this.wind_speed_maxNUD.Name = "wind_speed_maxNUD";
+            this.wind_speed_maxNUD.Size = new System.Drawing.Size(78, 20);
+            this.wind_speed_maxNUD.TabIndex = 72;
+            this.wind_speed_maxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.wind_speed_maxNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
             // 
-            // wind_minNUD
+            // wind_speed_minNUD
             // 
-            this.wind_minNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.wind_minNUD.DecimalPlaces = 3;
-            this.wind_minNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.wind_minNUD.Increment = new decimal(new int[] {
+            this.wind_speed_minNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.wind_speed_minNUD.DecimalPlaces = 3;
+            this.wind_speed_minNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.wind_speed_minNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.wind_minNUD.Location = new System.Drawing.Point(11, 32);
-            this.wind_minNUD.Maximum = new decimal(new int[] {
+            this.wind_speed_minNUD.Location = new System.Drawing.Point(11, 32);
+            this.wind_speed_minNUD.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.wind_minNUD.Name = "wind_minNUD";
-            this.wind_minNUD.Size = new System.Drawing.Size(78, 20);
-            this.wind_minNUD.TabIndex = 71;
-            this.wind_minNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.wind_minNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            this.wind_speed_minNUD.Name = "wind_speed_minNUD";
+            this.wind_speed_minNUD.Size = new System.Drawing.Size(78, 20);
+            this.wind_speed_minNUD.TabIndex = 71;
+            this.wind_speed_minNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.wind_speed_minNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
             // 
             // label11
             // 
@@ -919,7 +935,7 @@ namespace DayZeEditor
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox4.Location = new System.Drawing.Point(564, 124);
+            this.groupBox4.Location = new System.Drawing.Point(564, 166);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(279, 66);
             this.groupBox4.TabIndex = 76;
@@ -995,7 +1011,7 @@ namespace DayZeEditor
             this.groupBox6.Controls.Add(this.label15);
             this.groupBox6.Controls.Add(this.label16);
             this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox6.Location = new System.Drawing.Point(564, 196);
+            this.groupBox6.Location = new System.Drawing.Point(564, 238);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(279, 62);
             this.groupBox6.TabIndex = 77;
@@ -1072,12 +1088,23 @@ namespace DayZeEditor
             this.groupBox7.Controls.Add(this.label17);
             this.groupBox7.Controls.Add(this.label18);
             this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox7.Location = new System.Drawing.Point(564, 264);
+            this.groupBox7.Location = new System.Drawing.Point(564, 306);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(279, 81);
             this.groupBox7.TabIndex = 81;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Snowfall";
+            // 
+            // use_snowflake_scaleCB
+            // 
+            this.use_snowflake_scaleCB.AutoSize = true;
+            this.use_snowflake_scaleCB.Location = new System.Drawing.Point(11, 16);
+            this.use_snowflake_scaleCB.Name = "use_snowflake_scaleCB";
+            this.use_snowflake_scaleCB.Size = new System.Drawing.Size(128, 17);
+            this.use_snowflake_scaleCB.TabIndex = 74;
+            this.use_snowflake_scaleCB.Text = "Use Snowflake Scale";
+            this.use_snowflake_scaleCB.UseVisualStyleBackColor = true;
+            this.use_snowflake_scaleCB.CheckedChanged += new System.EventHandler(this.DWPBoolsCB_CheckedChanged);
             // 
             // snowflake_scale_maxNUD
             // 
@@ -1131,29 +1158,29 @@ namespace DayZeEditor
             this.label18.TabIndex = 0;
             this.label18.Text = "min";
             // 
-            // use_snowflake_scaleCB
-            // 
-            this.use_snowflake_scaleCB.AutoSize = true;
-            this.use_snowflake_scaleCB.Location = new System.Drawing.Point(11, 16);
-            this.use_snowflake_scaleCB.Name = "use_snowflake_scaleCB";
-            this.use_snowflake_scaleCB.Size = new System.Drawing.Size(128, 17);
-            this.use_snowflake_scaleCB.TabIndex = 74;
-            this.use_snowflake_scaleCB.Text = "Use Snowflake Scale";
-            this.use_snowflake_scaleCB.UseVisualStyleBackColor = true;
-            this.use_snowflake_scaleCB.CheckedChanged += new System.EventHandler(this.DWPBoolsCB_CheckedChanged);
-            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.stormCB);
             this.groupBox8.Controls.Add(this.thunder_timeoutNUD);
             this.groupBox8.Controls.Add(this.label19);
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox8.Location = new System.Drawing.Point(564, 350);
+            this.groupBox8.Location = new System.Drawing.Point(564, 392);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(279, 70);
             this.groupBox8.TabIndex = 82;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Storm";
+            // 
+            // stormCB
+            // 
+            this.stormCB.AutoSize = true;
+            this.stormCB.Location = new System.Drawing.Point(11, 19);
+            this.stormCB.Name = "stormCB";
+            this.stormCB.Size = new System.Drawing.Size(75, 17);
+            this.stormCB.TabIndex = 75;
+            this.stormCB.Text = "Use Storm";
+            this.stormCB.UseVisualStyleBackColor = true;
+            this.stormCB.CheckedChanged += new System.EventHandler(this.DWPBoolsCB_CheckedChanged);
             // 
             // thunder_timeoutNUD
             // 
@@ -1180,22 +1207,118 @@ namespace DayZeEditor
             this.label19.TabIndex = 1;
             this.label19.Text = "Thunder Timeout";
             // 
-            // stormCB
+            // wind_dir_maxNUD
             // 
-            this.stormCB.AutoSize = true;
-            this.stormCB.Location = new System.Drawing.Point(11, 19);
-            this.stormCB.Name = "stormCB";
-            this.stormCB.Size = new System.Drawing.Size(75, 17);
-            this.stormCB.TabIndex = 75;
-            this.stormCB.Text = "Use Storm";
-            this.stormCB.UseVisualStyleBackColor = true;
-            this.stormCB.CheckedChanged += new System.EventHandler(this.DWPFaketBoolsCB_CheckedChanged);
+            this.wind_dir_maxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.wind_dir_maxNUD.DecimalPlaces = 3;
+            this.wind_dir_maxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.wind_dir_maxNUD.Location = new System.Drawing.Point(95, 71);
+            this.wind_dir_maxNUD.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.wind_dir_maxNUD.Name = "wind_dir_maxNUD";
+            this.wind_dir_maxNUD.Size = new System.Drawing.Size(78, 20);
+            this.wind_dir_maxNUD.TabIndex = 76;
+            this.wind_dir_maxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.wind_dir_maxNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            // 
+            // wind_dir_minNUD
+            // 
+            this.wind_dir_minNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.wind_dir_minNUD.DecimalPlaces = 3;
+            this.wind_dir_minNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.wind_dir_minNUD.Location = new System.Drawing.Point(11, 71);
+            this.wind_dir_minNUD.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.wind_dir_minNUD.Name = "wind_dir_minNUD";
+            this.wind_dir_minNUD.Size = new System.Drawing.Size(78, 20);
+            this.wind_dir_minNUD.TabIndex = 75;
+            this.wind_dir_minNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.wind_dir_minNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(106, 54);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(40, 13);
+            this.label20.TabIndex = 74;
+            this.label20.Text = "dir max";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(31, 55);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(37, 13);
+            this.label21.TabIndex = 73;
+            this.label21.Text = "dir min";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.use_global_temperatureCB);
+            this.groupBox9.Controls.Add(this.global_temperature_overrideNUD);
+            this.groupBox9.Controls.Add(this.label22);
+            this.groupBox9.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox9.Location = new System.Drawing.Point(564, 468);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(279, 70);
+            this.groupBox9.TabIndex = 83;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Global Temp";
+            // 
+            // use_global_temperatureCB
+            // 
+            this.use_global_temperatureCB.AutoSize = true;
+            this.use_global_temperatureCB.Location = new System.Drawing.Point(11, 19);
+            this.use_global_temperatureCB.Name = "use_global_temperatureCB";
+            this.use_global_temperatureCB.Size = new System.Drawing.Size(108, 17);
+            this.use_global_temperatureCB.TabIndex = 75;
+            this.use_global_temperatureCB.Text = "Use Global Temp";
+            this.use_global_temperatureCB.UseVisualStyleBackColor = true;
+            this.use_global_temperatureCB.CheckedChanged += new System.EventHandler(this.DWPBoolsCB_CheckedChanged);
+            // 
+            // global_temperature_overrideNUD
+            // 
+            this.global_temperature_overrideNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.global_temperature_overrideNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.global_temperature_overrideNUD.Location = new System.Drawing.Point(95, 39);
+            this.global_temperature_overrideNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.global_temperature_overrideNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.global_temperature_overrideNUD.Name = "global_temperature_overrideNUD";
+            this.global_temperature_overrideNUD.Size = new System.Drawing.Size(78, 20);
+            this.global_temperature_overrideNUD.TabIndex = 72;
+            this.global_temperature_overrideNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.global_temperature_overrideNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(8, 41);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(47, 13);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Override";
             // 
             // DynamicWeatherPluginManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 620);
+            this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
@@ -1233,11 +1356,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.transition_minNUD)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_dist_maxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_dist_minNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_biasNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_height_maxNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_height_minNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_biasNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_dist_maxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dyn_vol_fog_dist_minNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fog_transition_timeNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fog_maxNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fog_minNUD)).EndInit();
@@ -1245,8 +1368,8 @@ namespace DayZeEditor
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wind_maxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wind_minNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_speed_maxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_speed_minNUD)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rain_maxNUD)).EndInit();
@@ -1262,6 +1385,11 @@ namespace DayZeEditor
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.thunder_timeoutNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_maxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_minNUD)).EndInit();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.global_temperature_overrideNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1317,8 +1445,8 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.NumericUpDown wind_maxNUD;
-        private System.Windows.Forms.NumericUpDown wind_minNUD;
+        private System.Windows.Forms.NumericUpDown wind_speed_maxNUD;
+        private System.Windows.Forms.NumericUpDown wind_speed_minNUD;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -1341,5 +1469,13 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown thunder_timeoutNUD;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.CheckBox stormCB;
+        private System.Windows.Forms.NumericUpDown wind_dir_maxNUD;
+        private System.Windows.Forms.NumericUpDown wind_dir_minNUD;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.CheckBox use_global_temperatureCB;
+        private System.Windows.Forms.NumericUpDown global_temperature_overrideNUD;
+        private System.Windows.Forms.Label label22;
     }
 }
