@@ -33,28 +33,14 @@ namespace DayZeLib
     [XmlTypeAttribute(AnonymousType = true)]
     public partial class TerjeRespawn
     {
-        private TerjeRespawnOptions optionsField;
-        private BindingList<TerjeRespawnObject> objectsField;
         private BindingList<TerjeRespawnPoint> pointsField;
+        private BindingList<TerjeRespawnObject> objectsField;
+        private TerjeDeathPoint DeathPointField;
+        private TerjeRespawnOptions optionsField;
         private TerjeConditions ConditionsField;
 
         private string idField;
         private string displayNameField;
-
-        /// <remarks/>
-        public TerjeRespawnOptions Options
-        {
-            get => optionsField;
-            set => optionsField = value;
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute("Object")]
-        public BindingList<TerjeRespawnObject> Objects
-        {
-            get => objectsField;
-            set => objectsField = value;
-        }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("Point")]
@@ -63,7 +49,27 @@ namespace DayZeLib
             get => pointsField;
             set => pointsField = value;
         }
-
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("Object")]
+        public BindingList<TerjeRespawnObject> Objects
+        {
+            get => objectsField;
+            set => objectsField = value;
+        }
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("DeathPoint")]
+        public TerjeDeathPoint DeathPoint
+        {
+            get => DeathPointField;
+            set => DeathPointField = value;
+        }
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Options")]
+        public TerjeRespawnOptions Options
+        {
+            get => optionsField;
+            set => optionsField = value;
+        }
         [System.Xml.Serialization.XmlElementAttribute("Conditions")]
         public TerjeConditions Conditions
         {
@@ -182,13 +188,16 @@ namespace DayZeLib
     }
 
 
+
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class TerjeRespawnObject
     {
         private string classnameField;
-        private string handlerfield;
+        private int singleBindField;
+        private bool singleBindFieldSpecified;
+        private string handlerField;
         private bool handlerFieldSpecified;
 
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -199,10 +208,24 @@ namespace DayZeLib
         }
 
         [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int singleBind
+        {
+            get => singleBindField;
+            set => singleBindField = value;
+        }
+
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool singleBindSpecified
+        {
+            get => singleBindFieldSpecified;
+            set => singleBindFieldSpecified = value;
+        }
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public string handler
         {
-            get => handlerfield;
-            set => handlerfield = value;
+            get => handlerField;
+            set => handlerField = value;
         }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -213,6 +236,20 @@ namespace DayZeLib
         }
     }
 
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class TerjeDeathPoint
+    {
+        private int requireBodyField;
+        
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int requireBody
+        {
+            get => requireBodyField;
+            set => requireBodyField = value;
+        }
+    }
 
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -642,99 +679,109 @@ namespace DayZeLib
         private int heatBufferField;
         private bool heatBufferFieldSpecified;
 
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public int health
         {
             get { return this.healthField; }
             set { this.healthField = value; }
         }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool healthSpecified
         {
             get { return this.healthFieldSpecified; }
             set { this.healthFieldSpecified = value; }
         }
-
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public int blood
         {
             get { return this.bloodField; }
             set { this.bloodField = value; }
         }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool bloodSpecified
         {
             get { return this.bloodFieldSpecified; }
             set { this.bloodFieldSpecified = value; }
         }
-
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public int shock
         {
             get { return this.shockField; }
             set { this.shockField = value; }
         }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool shockSpecified
         {
             get { return this.shockFieldSpecified; }
             set { this.shockFieldSpecified = value; }
         }
-
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public int energy
         {
             get { return this.energyField; }
             set { this.energyField = value; }
         }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool energySpecified
         {
             get { return this.energyFieldSpecified; }
             set { this.energyFieldSpecified = value; }
         }
-
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public int water
         {
             get { return this.waterField; }
             set { this.waterField = value; }
         }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool waterSpecified
         {
             get { return this.waterFieldSpecified; }
             set { this.waterFieldSpecified = value; }
         }
-
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public int sleep
         {
             get { return this.sleepField; }
             set { this.sleepField = value; }
         }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool sleepSpecified
         {
             get { return this.sleepFieldSpecified; }
             set { this.sleepFieldSpecified = value; }
         }
-
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public int mind
         {
             get { return this.mindField; }
             set { this.mindField = value; }
         }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool mindSpecified
         {
             get { return this.mindFieldSpecified; }
             set { this.mindFieldSpecified = value; }
         }
-
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public int heatComfort
         {
             get { return this.heatComfortField; }
             set { this.heatComfortField = value; }
         }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool heatComfortSpecified
         {
             get { return this.heatComfortFieldSpecified; }
             set { this.heatComfortFieldSpecified = value; }
         }
-
+        [System.Xml.Serialization.XmlAttributeAttribute()]
         public int heatBuffer
         {
             get { return this.heatBufferField; }
             set { this.heatBufferField = value; }
         }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool heatBufferSpecified
         {
             get { return this.heatBufferFieldSpecified; }

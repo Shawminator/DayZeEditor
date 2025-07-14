@@ -288,6 +288,12 @@
     <Compile Include="Forms\RHLootBoxManager.Designer.cs">
       <DependentUpon>RHLootBoxManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperForms\AddnewTerjeCondition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelperForms\AddnewTerjeCondition.Designer.cs">
+      <DependentUpon>AddnewTerjeCondition.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperForms\AddnewTerjeScriptableArea.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -571,6 +577,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RHLootBoxManager.resx">
       <DependentUpon>RHLootBoxManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelperForms\AddnewTerjeCondition.resx">
+      <DependentUpon>AddnewTerjeCondition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\AddnewTerjeScriptableArea.resx">
       <DependentUpon>AddnewTerjeScriptableArea.cs</DependentUpon>

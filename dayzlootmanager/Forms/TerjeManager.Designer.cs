@@ -252,7 +252,33 @@ namespace DayZeEditor
             this.label69 = new System.Windows.Forms.Label();
             this.SCLConditionCustomConditionclassnameTB = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.CONDExtraVariablesGB = new System.Windows.Forms.GroupBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.CONDExtraVariablesPersistCB = new System.Windows.Forms.CheckBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.CONDExtraVariablesPersistSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.CONDExtraVariablesvalueNUD = new System.Windows.Forms.NumericUpDown();
+            this.CONDExtraVariablesnameTB = new System.Windows.Forms.TextBox();
+            this.CONDExtraVariablesMathGB = new System.Windows.Forms.GroupBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.CONDExtraMathminSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.CONDExtraMathmaxSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.CONDExtraMathmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.CONDExtraMathminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
+            this.CONDExtraMathPersistCB = new System.Windows.Forms.CheckBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.CONDExtraMathPersistSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.CONDExtraMathvalueNUD = new System.Windows.Forms.NumericUpDown();
+            this.CONDExtraMathnameTB = new System.Windows.Forms.TextBox();
             this.CONDExtraOptionsGB = new System.Windows.Forms.GroupBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.CONDExtraOptionsfailTextTB = new System.Windows.Forms.TextBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.CONDExtraOptionssuccessTextTB = new System.Windows.Forms.TextBox();
             this.CONDExtraOptionsdisplayTextSpecifiedCB = new System.Windows.Forms.CheckBox();
             this.CONDExtraOptionssuccessTextSpecifiedCB = new System.Windows.Forms.CheckBox();
             this.CONDExtraOptionsfailTextSpecifiedCB = new System.Windows.Forms.CheckBox();
@@ -261,10 +287,14 @@ namespace DayZeEditor
             this.label72 = new System.Windows.Forms.Label();
             this.CONDExtraOptionshideOwnerWhenFalseCB = new System.Windows.Forms.CheckBox();
             this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB = new System.Windows.Forms.CheckBox();
-            this.label68 = new System.Windows.Forms.Label();
-            this.CONDExtraOptionssuccessTextTB = new System.Windows.Forms.TextBox();
-            this.label70 = new System.Windows.Forms.Label();
-            this.CONDExtraOptionsfailTextTB = new System.Windows.Forms.TextBox();
+            this.addItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSelectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeSelectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip21.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -312,6 +342,12 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.SCLTimeouthoursNUD)).BeginInit();
             this.SCLConditionCustomConditionGB.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.CONDExtraVariablesGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CONDExtraVariablesvalueNUD)).BeginInit();
+            this.CONDExtraVariablesMathGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathminNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathvalueNUD)).BeginInit();
             this.CONDExtraOptionsGB.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -394,10 +430,18 @@ namespace DayZeEditor
             this.addNewScriptableAreaToolStripMenuItem,
             this.removeScriptableAreaToolStripMenuItem,
             this.addNewLoadoutToolStripMenuItem,
-            this.removeLoadoutToolStripMenuItem});
+            this.removeLoadoutToolStripMenuItem,
+            this.addItemsToolStripMenuItem,
+            this.removeItemsToolStripMenuItem,
+            this.addItemToolStripMenuItem,
+            this.removeItemToolStripMenuItem,
+            this.addSelectorToolStripMenuItem,
+            this.removeSelectorToolStripMenuItem,
+            this.addGroupToolStripMenuItem,
+            this.removeGroupToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 356);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 532);
             // 
             // addNewCraftingRecipeToolStripMenuItem
             // 
@@ -2743,9 +2787,9 @@ namespace DayZeEditor
             this.label61.AutoSize = true;
             this.label61.Location = new System.Drawing.Point(53, 20);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(63, 13);
+            this.label61.Size = new System.Drawing.Size(28, 13);
             this.label61.TabIndex = 217;
-            this.label61.Text = "pointsCount";
+            this.label61.Text = "Cost";
             // 
             // SCLtimeoutGB
             // 
@@ -2946,11 +2990,302 @@ namespace DayZeEditor
             this.flowLayoutPanel1.Controls.Add(this.CIngrdientGB);
             this.flowLayoutPanel1.Controls.Add(this.CRSLGB);
             this.flowLayoutPanel1.Controls.Add(this.CRSPGB);
+            this.flowLayoutPanel1.Controls.Add(this.CONDExtraVariablesGB);
+            this.flowLayoutPanel1.Controls.Add(this.CONDExtraVariablesMathGB);
             this.flowLayoutPanel1.Controls.Add(this.CONDExtraOptionsGB);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(404, 48);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(804, 596);
             this.flowLayoutPanel1.TabIndex = 290;
+            // 
+            // CONDExtraVariablesGB
+            // 
+            this.CONDExtraVariablesGB.Controls.Add(this.label62);
+            this.CONDExtraVariablesGB.Controls.Add(this.label55);
+            this.CONDExtraVariablesGB.Controls.Add(this.CONDExtraVariablesPersistCB);
+            this.CONDExtraVariablesGB.Controls.Add(this.label54);
+            this.CONDExtraVariablesGB.Controls.Add(this.CONDExtraVariablesPersistSpecifiedCB);
+            this.CONDExtraVariablesGB.Controls.Add(this.CONDExtraVariablesvalueNUD);
+            this.CONDExtraVariablesGB.Controls.Add(this.CONDExtraVariablesnameTB);
+            this.CONDExtraVariablesGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraVariablesGB.Location = new System.Drawing.Point(3, 2380);
+            this.CONDExtraVariablesGB.Name = "CONDExtraVariablesGB";
+            this.CONDExtraVariablesGB.Size = new System.Drawing.Size(427, 104);
+            this.CONDExtraVariablesGB.TabIndex = 291;
+            this.CONDExtraVariablesGB.TabStop = false;
+            this.CONDExtraVariablesGB.Text = "Variables";
+            this.CONDExtraVariablesGB.Enter += new System.EventHandler(this.CONDExtraVariablesGB_Enter);
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(59, 22);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(35, 13);
+            this.label62.TabIndex = 260;
+            this.label62.Text = "Name";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(59, 47);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(34, 13);
+            this.label55.TabIndex = 259;
+            this.label55.Text = "Value";
+            // 
+            // CONDExtraVariablesPersistCB
+            // 
+            this.CONDExtraVariablesPersistCB.AutoSize = true;
+            this.CONDExtraVariablesPersistCB.Location = new System.Drawing.Point(251, 73);
+            this.CONDExtraVariablesPersistCB.Name = "CONDExtraVariablesPersistCB";
+            this.CONDExtraVariablesPersistCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CONDExtraVariablesPersistCB.Size = new System.Drawing.Size(15, 14);
+            this.CONDExtraVariablesPersistCB.TabIndex = 258;
+            this.CONDExtraVariablesPersistCB.Tag = "SCLItemscostNUD";
+            this.CONDExtraVariablesPersistCB.UseVisualStyleBackColor = true;
+            this.CONDExtraVariablesPersistCB.CheckedChanged += new System.EventHandler(this.CONDExtraVariablesPersistCB_CheckedChanged);
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(59, 73);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(38, 13);
+            this.label54.TabIndex = 257;
+            this.label54.Text = "Persist";
+            // 
+            // CONDExtraVariablesPersistSpecifiedCB
+            // 
+            this.CONDExtraVariablesPersistSpecifiedCB.AutoSize = true;
+            this.CONDExtraVariablesPersistSpecifiedCB.Location = new System.Drawing.Point(30, 73);
+            this.CONDExtraVariablesPersistSpecifiedCB.Name = "CONDExtraVariablesPersistSpecifiedCB";
+            this.CONDExtraVariablesPersistSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CONDExtraVariablesPersistSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.CONDExtraVariablesPersistSpecifiedCB.TabIndex = 256;
+            this.CONDExtraVariablesPersistSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.CONDExtraVariablesPersistSpecifiedCB.UseVisualStyleBackColor = true;
+            this.CONDExtraVariablesPersistSpecifiedCB.CheckedChanged += new System.EventHandler(this.CONDExtraVariablesPersistSpecifiedCB_CheckedChanged);
+            // 
+            // CONDExtraVariablesvalueNUD
+            // 
+            this.CONDExtraVariablesvalueNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CONDExtraVariablesvalueNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraVariablesvalueNUD.Location = new System.Drawing.Point(162, 45);
+            this.CONDExtraVariablesvalueNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.CONDExtraVariablesvalueNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.CONDExtraVariablesvalueNUD.Name = "CONDExtraVariablesvalueNUD";
+            this.CONDExtraVariablesvalueNUD.Size = new System.Drawing.Size(105, 20);
+            this.CONDExtraVariablesvalueNUD.TabIndex = 203;
+            this.CONDExtraVariablesvalueNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CONDExtraVariablesvalueNUD.ValueChanged += new System.EventHandler(this.CONDExtraVariablesvalueNUD_ValueChanged);
+            // 
+            // CONDExtraVariablesnameTB
+            // 
+            this.CONDExtraVariablesnameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CONDExtraVariablesnameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraVariablesnameTB.Location = new System.Drawing.Point(161, 19);
+            this.CONDExtraVariablesnameTB.Name = "CONDExtraVariablesnameTB";
+            this.CONDExtraVariablesnameTB.Size = new System.Drawing.Size(253, 20);
+            this.CONDExtraVariablesnameTB.TabIndex = 207;
+            this.CONDExtraVariablesnameTB.TextChanged += new System.EventHandler(this.CONDExtraVariablesnameTB_TextChanged);
+            // 
+            // CONDExtraVariablesMathGB
+            // 
+            this.CONDExtraVariablesMathGB.Controls.Add(this.label76);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.CONDExtraMathminSpecifiedCB);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.label75);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.CONDExtraMathmaxSpecifiedCB);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.CONDExtraMathmaxNUD);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.CONDExtraMathminNUD);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.label67);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.label73);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.CONDExtraMathPersistCB);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.label74);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.CONDExtraMathPersistSpecifiedCB);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.CONDExtraMathvalueNUD);
+            this.CONDExtraVariablesMathGB.Controls.Add(this.CONDExtraMathnameTB);
+            this.CONDExtraVariablesMathGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraVariablesMathGB.Location = new System.Drawing.Point(3, 2490);
+            this.CONDExtraVariablesMathGB.Name = "CONDExtraVariablesMathGB";
+            this.CONDExtraVariablesMathGB.Size = new System.Drawing.Size(427, 151);
+            this.CONDExtraVariablesMathGB.TabIndex = 292;
+            this.CONDExtraVariablesMathGB.TabStop = false;
+            this.CONDExtraVariablesMathGB.Text = "Variables";
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(59, 73);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(24, 13);
+            this.label76.TabIndex = 266;
+            this.label76.Text = "Min";
+            // 
+            // CONDExtraMathminSpecifiedCB
+            // 
+            this.CONDExtraMathminSpecifiedCB.AutoSize = true;
+            this.CONDExtraMathminSpecifiedCB.Location = new System.Drawing.Point(30, 73);
+            this.CONDExtraMathminSpecifiedCB.Name = "CONDExtraMathminSpecifiedCB";
+            this.CONDExtraMathminSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CONDExtraMathminSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.CONDExtraMathminSpecifiedCB.TabIndex = 265;
+            this.CONDExtraMathminSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.CONDExtraMathminSpecifiedCB.UseVisualStyleBackColor = true;
+            this.CONDExtraMathminSpecifiedCB.CheckedChanged += new System.EventHandler(this.CONDExtraMathminSpecifiedCB_CheckedChanged);
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(59, 99);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(27, 13);
+            this.label75.TabIndex = 264;
+            this.label75.Text = "Max";
+            // 
+            // CONDExtraMathmaxSpecifiedCB
+            // 
+            this.CONDExtraMathmaxSpecifiedCB.AutoSize = true;
+            this.CONDExtraMathmaxSpecifiedCB.Location = new System.Drawing.Point(30, 99);
+            this.CONDExtraMathmaxSpecifiedCB.Name = "CONDExtraMathmaxSpecifiedCB";
+            this.CONDExtraMathmaxSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CONDExtraMathmaxSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.CONDExtraMathmaxSpecifiedCB.TabIndex = 263;
+            this.CONDExtraMathmaxSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.CONDExtraMathmaxSpecifiedCB.UseVisualStyleBackColor = true;
+            this.CONDExtraMathmaxSpecifiedCB.CheckedChanged += new System.EventHandler(this.CONDExtraMathmaxSpecifiedCB_CheckedChanged);
+            // 
+            // CONDExtraMathmaxNUD
+            // 
+            this.CONDExtraMathmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CONDExtraMathmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraMathmaxNUD.Location = new System.Drawing.Point(162, 97);
+            this.CONDExtraMathmaxNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.CONDExtraMathmaxNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.CONDExtraMathmaxNUD.Name = "CONDExtraMathmaxNUD";
+            this.CONDExtraMathmaxNUD.Size = new System.Drawing.Size(105, 20);
+            this.CONDExtraMathmaxNUD.TabIndex = 262;
+            this.CONDExtraMathmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CONDExtraMathmaxNUD.ValueChanged += new System.EventHandler(this.CONDExtraMathmaxNUD_ValueChanged);
+            // 
+            // CONDExtraMathminNUD
+            // 
+            this.CONDExtraMathminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CONDExtraMathminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraMathminNUD.Location = new System.Drawing.Point(162, 71);
+            this.CONDExtraMathminNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.CONDExtraMathminNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.CONDExtraMathminNUD.Name = "CONDExtraMathminNUD";
+            this.CONDExtraMathminNUD.Size = new System.Drawing.Size(105, 20);
+            this.CONDExtraMathminNUD.TabIndex = 261;
+            this.CONDExtraMathminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CONDExtraMathminNUD.ValueChanged += new System.EventHandler(this.CONDExtraMathminNUD_ValueChanged);
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(59, 22);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(35, 13);
+            this.label67.TabIndex = 260;
+            this.label67.Text = "Name";
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(59, 47);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(34, 13);
+            this.label73.TabIndex = 259;
+            this.label73.Text = "Value";
+            // 
+            // CONDExtraMathPersistCB
+            // 
+            this.CONDExtraMathPersistCB.AutoSize = true;
+            this.CONDExtraMathPersistCB.Location = new System.Drawing.Point(255, 123);
+            this.CONDExtraMathPersistCB.Name = "CONDExtraMathPersistCB";
+            this.CONDExtraMathPersistCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CONDExtraMathPersistCB.Size = new System.Drawing.Size(15, 14);
+            this.CONDExtraMathPersistCB.TabIndex = 258;
+            this.CONDExtraMathPersistCB.Tag = "SCLItemscostNUD";
+            this.CONDExtraMathPersistCB.UseVisualStyleBackColor = true;
+            this.CONDExtraMathPersistCB.CheckedChanged += new System.EventHandler(this.CONDExtraMathPersistCB_CheckedChanged);
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(59, 123);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(38, 13);
+            this.label74.TabIndex = 257;
+            this.label74.Text = "Persist";
+            // 
+            // CONDExtraMathPersistSpecifiedCB
+            // 
+            this.CONDExtraMathPersistSpecifiedCB.AutoSize = true;
+            this.CONDExtraMathPersistSpecifiedCB.Location = new System.Drawing.Point(30, 123);
+            this.CONDExtraMathPersistSpecifiedCB.Name = "CONDExtraMathPersistSpecifiedCB";
+            this.CONDExtraMathPersistSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CONDExtraMathPersistSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.CONDExtraMathPersistSpecifiedCB.TabIndex = 256;
+            this.CONDExtraMathPersistSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.CONDExtraMathPersistSpecifiedCB.UseVisualStyleBackColor = true;
+            this.CONDExtraMathPersistSpecifiedCB.CheckedChanged += new System.EventHandler(this.CONDExtraMathPersistSpecifiedCB_CheckedChanged);
+            // 
+            // CONDExtraMathvalueNUD
+            // 
+            this.CONDExtraMathvalueNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CONDExtraMathvalueNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraMathvalueNUD.Location = new System.Drawing.Point(162, 45);
+            this.CONDExtraMathvalueNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.CONDExtraMathvalueNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.CONDExtraMathvalueNUD.Name = "CONDExtraMathvalueNUD";
+            this.CONDExtraMathvalueNUD.Size = new System.Drawing.Size(105, 20);
+            this.CONDExtraMathvalueNUD.TabIndex = 203;
+            this.CONDExtraMathvalueNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CONDExtraMathvalueNUD.ValueChanged += new System.EventHandler(this.CONDExtraMathvalueNUD_ValueChanged);
+            // 
+            // CONDExtraMathnameTB
+            // 
+            this.CONDExtraMathnameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CONDExtraMathnameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraMathnameTB.Location = new System.Drawing.Point(161, 19);
+            this.CONDExtraMathnameTB.Name = "CONDExtraMathnameTB";
+            this.CONDExtraMathnameTB.Size = new System.Drawing.Size(253, 20);
+            this.CONDExtraMathnameTB.TabIndex = 207;
+            this.CONDExtraMathnameTB.TextChanged += new System.EventHandler(this.CONDExtraMathnameTB_TextChanged);
             // 
             // CONDExtraOptionsGB
             // 
@@ -2967,12 +3302,50 @@ namespace DayZeEditor
             this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionshideOwnerWhenFalseCB);
             this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB);
             this.CONDExtraOptionsGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CONDExtraOptionsGB.Location = new System.Drawing.Point(3, 2380);
+            this.CONDExtraOptionsGB.Location = new System.Drawing.Point(3, 2647);
             this.CONDExtraOptionsGB.Name = "CONDExtraOptionsGB";
             this.CONDExtraOptionsGB.Size = new System.Drawing.Size(427, 128);
             this.CONDExtraOptionsGB.TabIndex = 290;
             this.CONDExtraOptionsGB.TabStop = false;
             this.CONDExtraOptionsGB.Text = "Condition Extra Options";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(59, 99);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(47, 13);
+            this.label70.TabIndex = 255;
+            this.label70.Text = "Fail Text";
+            // 
+            // CONDExtraOptionsfailTextTB
+            // 
+            this.CONDExtraOptionsfailTextTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CONDExtraOptionsfailTextTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraOptionsfailTextTB.Location = new System.Drawing.Point(161, 96);
+            this.CONDExtraOptionsfailTextTB.Name = "CONDExtraOptionsfailTextTB";
+            this.CONDExtraOptionsfailTextTB.Size = new System.Drawing.Size(253, 20);
+            this.CONDExtraOptionsfailTextTB.TabIndex = 254;
+            this.CONDExtraOptionsfailTextTB.TextChanged += new System.EventHandler(this.CONDExtraOptionsfailTextTB_TextChanged);
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(59, 73);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(72, 13);
+            this.label68.TabIndex = 253;
+            this.label68.Text = "Success Text";
+            // 
+            // CONDExtraOptionssuccessTextTB
+            // 
+            this.CONDExtraOptionssuccessTextTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CONDExtraOptionssuccessTextTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CONDExtraOptionssuccessTextTB.Location = new System.Drawing.Point(161, 70);
+            this.CONDExtraOptionssuccessTextTB.Name = "CONDExtraOptionssuccessTextTB";
+            this.CONDExtraOptionssuccessTextTB.Size = new System.Drawing.Size(253, 20);
+            this.CONDExtraOptionssuccessTextTB.TabIndex = 252;
+            this.CONDExtraOptionssuccessTextTB.TextChanged += new System.EventHandler(this.CONDExtraOptionssuccessTextTB_TextChanged);
             // 
             // CONDExtraOptionsdisplayTextSpecifiedCB
             // 
@@ -2984,6 +3357,7 @@ namespace DayZeEditor
             this.CONDExtraOptionsdisplayTextSpecifiedCB.TabIndex = 251;
             this.CONDExtraOptionsdisplayTextSpecifiedCB.Tag = "SCLTimeouthoursNUD";
             this.CONDExtraOptionsdisplayTextSpecifiedCB.UseVisualStyleBackColor = true;
+            this.CONDExtraOptionsdisplayTextSpecifiedCB.CheckedChanged += new System.EventHandler(this.CONDExtraOptionsdisplayTextSpecifiedCB_CheckedChanged);
             // 
             // CONDExtraOptionssuccessTextSpecifiedCB
             // 
@@ -2995,6 +3369,7 @@ namespace DayZeEditor
             this.CONDExtraOptionssuccessTextSpecifiedCB.TabIndex = 250;
             this.CONDExtraOptionssuccessTextSpecifiedCB.Tag = "SCLTimeoutminutesNUD";
             this.CONDExtraOptionssuccessTextSpecifiedCB.UseVisualStyleBackColor = true;
+            this.CONDExtraOptionssuccessTextSpecifiedCB.CheckedChanged += new System.EventHandler(this.CONDExtraOptionssuccessTextSpecifiedCB_CheckedChanged);
             // 
             // CONDExtraOptionsfailTextSpecifiedCB
             // 
@@ -3006,6 +3381,7 @@ namespace DayZeEditor
             this.CONDExtraOptionsfailTextSpecifiedCB.TabIndex = 249;
             this.CONDExtraOptionsfailTextSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
             this.CONDExtraOptionsfailTextSpecifiedCB.UseVisualStyleBackColor = true;
+            this.CONDExtraOptionsfailTextSpecifiedCB.CheckedChanged += new System.EventHandler(this.CONDExtraOptionsfailTextSpecifiedCB_CheckedChanged);
             // 
             // label71
             // 
@@ -3024,6 +3400,7 @@ namespace DayZeEditor
             this.CONDExtraOptionsdisplayTextTB.Name = "CONDExtraOptionsdisplayTextTB";
             this.CONDExtraOptionsdisplayTextTB.Size = new System.Drawing.Size(253, 20);
             this.CONDExtraOptionsdisplayTextTB.TabIndex = 243;
+            this.CONDExtraOptionsdisplayTextTB.TextChanged += new System.EventHandler(this.CONDExtraOptionsdisplayTextTB_TextChanged);
             // 
             // label72
             // 
@@ -3044,6 +3421,7 @@ namespace DayZeEditor
             this.CONDExtraOptionshideOwnerWhenFalseCB.TabIndex = 241;
             this.CONDExtraOptionshideOwnerWhenFalseCB.Tag = "SCLItemscostNUD";
             this.CONDExtraOptionshideOwnerWhenFalseCB.UseVisualStyleBackColor = true;
+            this.CONDExtraOptionshideOwnerWhenFalseCB.CheckedChanged += new System.EventHandler(this.CONDExtraOptionshideOwnerWhenFalseCB_CheckedChanged);
             // 
             // CONDExtraOptionshideOwnerWhenFalseSpecifiedCB
             // 
@@ -3055,42 +3433,71 @@ namespace DayZeEditor
             this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.TabIndex = 240;
             this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Tag = "SCLTimeouthideOwnerWhenFalseCB";
             this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.UseVisualStyleBackColor = true;
+            this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.CheckedChanged += new System.EventHandler(this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB_CheckedChanged);
             // 
-            // label68
+            // addItemsToolStripMenuItem
             // 
-            this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(59, 73);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(72, 13);
-            this.label68.TabIndex = 253;
-            this.label68.Text = "Success Text";
+            this.addItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addItemsToolStripMenuItem.Name = "addItemsToolStripMenuItem";
+            this.addItemsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addItemsToolStripMenuItem.Text = "Add Items";
+            this.addItemsToolStripMenuItem.Click += new System.EventHandler(this.addItemsToolStripMenuItem_Click);
             // 
-            // CONDExtraOptionssuccessTextTB
+            // removeItemsToolStripMenuItem
             // 
-            this.CONDExtraOptionssuccessTextTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CONDExtraOptionssuccessTextTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CONDExtraOptionssuccessTextTB.Location = new System.Drawing.Point(161, 70);
-            this.CONDExtraOptionssuccessTextTB.Name = "CONDExtraOptionssuccessTextTB";
-            this.CONDExtraOptionssuccessTextTB.Size = new System.Drawing.Size(253, 20);
-            this.CONDExtraOptionssuccessTextTB.TabIndex = 252;
+            this.removeItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeItemsToolStripMenuItem.Name = "removeItemsToolStripMenuItem";
+            this.removeItemsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeItemsToolStripMenuItem.Text = "Remove Items";
+            this.removeItemsToolStripMenuItem.Click += new System.EventHandler(this.removeItemsToolStripMenuItem_Click);
             // 
-            // label70
+            // addItemToolStripMenuItem
             // 
-            this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(59, 99);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(47, 13);
-            this.label70.TabIndex = 255;
-            this.label70.Text = "Fail Text";
+            this.addItemToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addItemToolStripMenuItem.Name = "addItemToolStripMenuItem";
+            this.addItemToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addItemToolStripMenuItem.Text = "Add Item";
+            this.addItemToolStripMenuItem.Click += new System.EventHandler(this.addItemToolStripMenuItem_Click);
             // 
-            // CONDExtraOptionsfailTextTB
+            // removeItemToolStripMenuItem
             // 
-            this.CONDExtraOptionsfailTextTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CONDExtraOptionsfailTextTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CONDExtraOptionsfailTextTB.Location = new System.Drawing.Point(161, 96);
-            this.CONDExtraOptionsfailTextTB.Name = "CONDExtraOptionsfailTextTB";
-            this.CONDExtraOptionsfailTextTB.Size = new System.Drawing.Size(253, 20);
-            this.CONDExtraOptionsfailTextTB.TabIndex = 254;
+            this.removeItemToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeItemToolStripMenuItem.Name = "removeItemToolStripMenuItem";
+            this.removeItemToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeItemToolStripMenuItem.Text = "Remove Item";
+            this.removeItemToolStripMenuItem.Click += new System.EventHandler(this.removeItemToolStripMenuItem_Click);
+            // 
+            // addSelectorToolStripMenuItem
+            // 
+            this.addSelectorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addSelectorToolStripMenuItem.Name = "addSelectorToolStripMenuItem";
+            this.addSelectorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addSelectorToolStripMenuItem.Text = "Add Selector";
+            this.addSelectorToolStripMenuItem.Click += new System.EventHandler(this.addSelectorToolStripMenuItem_Click);
+            // 
+            // removeSelectorToolStripMenuItem
+            // 
+            this.removeSelectorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeSelectorToolStripMenuItem.Name = "removeSelectorToolStripMenuItem";
+            this.removeSelectorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeSelectorToolStripMenuItem.Text = "Remove Selector";
+            this.removeSelectorToolStripMenuItem.Click += new System.EventHandler(this.removeSelectorToolStripMenuItem_Click);
+            // 
+            // addGroupToolStripMenuItem
+            // 
+            this.addGroupToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addGroupToolStripMenuItem.Name = "addGroupToolStripMenuItem";
+            this.addGroupToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addGroupToolStripMenuItem.Text = "Add Group";
+            this.addGroupToolStripMenuItem.Click += new System.EventHandler(this.addGroupToolStripMenuItem_Click);
+            // 
+            // removeGroupToolStripMenuItem
+            // 
+            this.removeGroupToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeGroupToolStripMenuItem.Name = "removeGroupToolStripMenuItem";
+            this.removeGroupToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeGroupToolStripMenuItem.Text = "Remove Group";
+            this.removeGroupToolStripMenuItem.Click += new System.EventHandler(this.removeGroupToolStripMenuItem_Click);
             // 
             // TerjeManager
             // 
@@ -3168,6 +3575,14 @@ namespace DayZeEditor
             this.SCLConditionCustomConditionGB.ResumeLayout(false);
             this.SCLConditionCustomConditionGB.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.CONDExtraVariablesGB.ResumeLayout(false);
+            this.CONDExtraVariablesGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CONDExtraVariablesvalueNUD)).EndInit();
+            this.CONDExtraVariablesMathGB.ResumeLayout(false);
+            this.CONDExtraVariablesMathGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathminNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathvalueNUD)).EndInit();
             this.CONDExtraOptionsGB.ResumeLayout(false);
             this.CONDExtraOptionsGB.PerformLayout();
             this.ResumeLayout(false);
@@ -3410,5 +3825,35 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.CheckBox CONDExtraOptionshideOwnerWhenFalseCB;
         private System.Windows.Forms.CheckBox CONDExtraOptionshideOwnerWhenFalseSpecifiedCB;
+        private System.Windows.Forms.GroupBox CONDExtraVariablesGB;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.CheckBox CONDExtraVariablesPersistCB;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.CheckBox CONDExtraVariablesPersistSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown CONDExtraVariablesvalueNUD;
+        private System.Windows.Forms.TextBox CONDExtraVariablesnameTB;
+        private System.Windows.Forms.GroupBox CONDExtraVariablesMathGB;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.CheckBox CONDExtraMathPersistCB;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.CheckBox CONDExtraMathPersistSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown CONDExtraMathvalueNUD;
+        private System.Windows.Forms.TextBox CONDExtraMathnameTB;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.CheckBox CONDExtraMathminSpecifiedCB;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.CheckBox CONDExtraMathmaxSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown CONDExtraMathmaxNUD;
+        private System.Windows.Forms.NumericUpDown CONDExtraMathminNUD;
+        private System.Windows.Forms.ToolStripMenuItem addItemsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeItemsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addItemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeItemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addSelectorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeSelectorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addGroupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeGroupToolStripMenuItem;
     }
 }

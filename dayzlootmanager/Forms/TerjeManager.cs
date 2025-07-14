@@ -23,6 +23,8 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace DayZeEditor
 {
@@ -93,12 +95,6 @@ namespace DayZeEditor
                 TerjeCraftingFiles = Helper.DeserializeWithDebug<TerjeRecipes>(xml);
                 TerjeCraftingFiles.Filename = TerjeSettingsPath + "CustomCrafting\\Recipes.xml";
 
-                //XmlSerializer serializer = new XmlSerializer(typeof(TerjeRecipes));
-                //using (StreamReader reader = new StreamReader(TerjeSettingsPath + "CustomCrafting\\Recipes.xml"))
-                //{
-                //    TerjeCraftingFiles = (TerjeRecipes)serializer.Deserialize(reader);
-                //    TerjeCraftingFiles.Filename = TerjeSettingsPath + "CustomCrafting\\Recipes.xml";
-                //}
                 if (TerjeCraftingFiles != null)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -133,19 +129,6 @@ namespace DayZeEditor
                     TerjeLoadouts = Helper.DeserializeWithDebug<TerjeLoadouts>(xml);
                     TerjeLoadouts.Filename = TerjeSettingsPath + "StartScreen\\Loadouts.xml";
 
-                    //try
-                    //{
-                    //    XmlSerializer mySerializer = new XmlSerializer(typeof(TerjeLoadouts));
-                    //    using (StreamReader reader = new StreamReader(TerjeSettingsPath + "StartScreen\\Loadouts.xml"))
-                    //    {
-                    //        TerjeLoadouts = (TerjeLoadouts)mySerializer.Deserialize(reader);
-                    //        TerjeLoadouts.Filename = TerjeSettingsPath + "StartScreen\\Loadouts.xml";
-                    //    }
-                    //}
-                    //catch (InvalidOperationException ex)
-                    //{
-                    //    Console.WriteLine("Deserialization failed: " + ex.InnerException?.Message);
-                    //}
                     if (TerjeLoadouts != null)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -159,13 +142,6 @@ namespace DayZeEditor
                     string xml = File.ReadAllText(TerjeSettingsPath + "StartScreen\\Respawns.xml");
                     TerjeRespawns = Helper.DeserializeWithDebug<TerjeRespawns>(xml);
                     TerjeRespawns.Filename = TerjeSettingsPath + "StartScreen\\Respawns.xml";
-
-                    //XmlSerializer mySerializer = new XmlSerializer(typeof(TerjeRespawns));
-                    //using (StreamReader reader = new StreamReader(TerjeSettingsPath + "StartScreen\\Respawns.xml"))
-                    //{
-                    //    TerjeRespawns = (TerjeRespawns)mySerializer.Deserialize(reader);
-                    //    TerjeRespawns.Filename = TerjeSettingsPath + "StartScreen\\Respawns.xml";
-                    //}
                     if (TerjeRespawns != null)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -529,60 +505,7 @@ namespace DayZeEditor
             };
             if(ta.Items != null)
             {
-                TreeNode itemsnode = new TreeNode("Items")
-                {
-                    Tag = ta.Items
-                };
-                foreach(object item in ta.Items.Items)
-                {
-                    if(item is TerjeLoadoutItem)
-                    {
-                        itemsnode.Nodes.Add(GetLoadoutitem(item as TerjeLoadoutItem));
-                    }
-                    else if (item is TerjeLoadoutSelector)
-                    {
-                        TerjeLoadoutSelector selector = item as TerjeLoadoutSelector;
-                        TreeNode selectorNode = new TreeNode($"Selector Type:{selector.type} , Display Name:{selector.displayName}")
-                        {
-                            Tag = selector
-                        };
-                        if(selector.Item.Count > 0)
-                        {
-                            foreach(TerjeLoadoutItem litem in selector.Item)
-                            {
-                                TreeNode itemnode = new TreeNode($"Classname:{litem.classname}")
-                                {
-                                    Tag = litem
-                                };
-                                selectorNode.Nodes.Add(itemnode);
-                            }
-                        }
-                        if(selector.Group.Count > 0)
-                        {
-                            foreach (TerjeLoadoutGroup litem in selector.Group)
-                            {
-                                TreeNode itemnode = new TreeNode($"Group")
-                                {
-                                    Tag = litem
-                                };
-                                if (litem.Item.Count > 0)
-                                {
-                                    foreach (TerjeLoadoutItem Gitem in litem.Item)
-                                    {
-                                        TreeNode gitemnode = new TreeNode($"Classname:{Gitem.classname}")
-                                        {
-                                            Tag = Gitem
-                                        };
-                                        itemnode.Nodes.Add(gitemnode);
-                                    }
-                                }
-                                selectorNode.Nodes.Add(itemnode);
-                            }
-                        }
-                        itemsnode.Nodes.Add(selectorNode);
-                    }
-                }
-                loadoutnode.Nodes.Add(itemsnode);
+                loadoutnode.Nodes.Add(GetLoadoutItems(ta));
             }
             if (ta.Conditions != null)
             {
@@ -596,6 +519,78 @@ namespace DayZeEditor
 
             return loadoutnode;
         }
+
+        private TreeNode GetLoadoutItems(TerjeLoadout ta)
+        {
+            TreeNode itemsnode = new TreeNode("Items")
+            {
+                Tag = ta.Items
+            };
+            foreach (object item in ta.Items.Items)
+            {
+                if (item is TerjeLoadoutItem)
+                {
+                    itemsnode.Nodes.Add(GetLoadoutitem(item as TerjeLoadoutItem));
+                }
+                else if (item is TerjeLoadoutSelector)
+                {
+                    TerjeLoadoutSelector selector = item as TerjeLoadoutSelector;
+                    itemsnode.Nodes.Add(GetloadoutSleector(selector));
+                }
+            }
+
+            return itemsnode;
+        }
+
+        private static TreeNode GetloadoutSleector(TerjeLoadoutSelector selector)
+        {
+            TreeNode selectorNode = new TreeNode($"Selector Type:{selector.type} , Display Name:{selector.displayName}")
+            {
+                Tag = selector
+            };
+            if (selector.Item != null && selector.Item.Count > 0)
+            {
+                foreach (TerjeLoadoutItem litem in selector.Item)
+                {
+                    TreeNode itemnode = new TreeNode($"Classname:{litem.classname}")
+                    {
+                        Tag = litem
+                    };
+                    selectorNode.Nodes.Add(itemnode);
+                }
+            }
+            if (selector.Group != null && selector.Group.Count > 0)
+            {
+                foreach (TerjeLoadoutGroup litem in selector.Group)
+                {
+                    selectorNode.Nodes.Add(GetLoadoutGroups(litem));
+                }
+            }
+
+            return selectorNode;
+        }
+
+        private static TreeNode GetLoadoutGroups(TerjeLoadoutGroup litem)
+        {
+            TreeNode itemnode = new TreeNode($"Group")
+            {
+                Tag = litem
+            };
+            if (litem.Item != null && litem.Item.Count > 0)
+            {
+                foreach (TerjeLoadoutItem Gitem in litem.Item)
+                {
+                    TreeNode gitemnode = new TreeNode($"Classname:{Gitem.classname}")
+                    {
+                        Tag = Gitem
+                    };
+                    itemnode.Nodes.Add(gitemnode);
+                }
+            }
+
+            return itemnode;
+        }
+
         private TreeNode GetLoadoutitem(TerjeLoadoutItem item)
         {
             TerjeLoadoutItem litem = item as TerjeLoadoutItem;
@@ -603,7 +598,7 @@ namespace DayZeEditor
             {
                 Tag = item
             };
-            if(litem.Item.Count > 0)
+            if(litem.Item != null && litem.Item.Count > 0)
             {
                 foreach(TerjeLoadoutItem iitem in litem.Item)
                 {
@@ -1045,6 +1040,7 @@ namespace DayZeEditor
             IntNUD.Visible = false;
             FloatNUD.Visible = false;
             BoolCB.Visible = false;
+            SAFGB.Visible = false;
             useraction = false;
 
             if (e.Node.Tag.ToString() == "Root" || e.Node.Tag.ToString() == "CFGFiles")
@@ -1145,6 +1141,13 @@ namespace DayZeEditor
                 CONDExtraOptionsGB.Visible = true;
                 if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = SL.hideOwnerWhenFalseSpecified)
                     CONDExtraOptionshideOwnerWhenFalseCB.Checked = SL.hideOwnerWhenFalse == 1 ? true : false;
+                if (CONDExtraOptionsdisplayTextSpecifiedCB.Checked = CONDExtraOptionsdisplayTextTB.Visible = SL.displayTextSpecified)
+                    CONDExtraOptionsdisplayTextTB.Text = SL.displayText;
+                if (CONDExtraOptionssuccessTextSpecifiedCB.Checked = CONDExtraOptionssuccessTextTB.Visible = SL.successTextSpecified)
+                    CONDExtraOptionssuccessTextTB.Text = SL.successText;
+                if (CONDExtraOptionsfailTextSpecifiedCB.Checked = CONDExtraOptionsfailTextTB.Visible = SL.failTextSpecified)
+                    CONDExtraOptionsfailTextTB.Text = SL.failText;
+
             }
             else if (e.Node.Tag is TerjeSkillPerk)
             {
@@ -1156,6 +1159,12 @@ namespace DayZeEditor
                 CONDExtraOptionsGB.Visible = true;
                 if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = SP.hideOwnerWhenFalseSpecified)
                     CONDExtraOptionshideOwnerWhenFalseCB.Checked = SP.hideOwnerWhenFalse == 1 ? true : false;
+                if (CONDExtraOptionsdisplayTextSpecifiedCB.Checked = CONDExtraOptionsdisplayTextTB.Visible = SP.displayTextSpecified)
+                    CONDExtraOptionsdisplayTextTB.Text = SP.displayText;
+                if (CONDExtraOptionssuccessTextSpecifiedCB.Checked = CONDExtraOptionssuccessTextTB.Visible = SP.successTextSpecified)
+                    CONDExtraOptionssuccessTextTB.Text = SP.successText;
+                if (CONDExtraOptionsfailTextSpecifiedCB.Checked = CONDExtraOptionsfailTextTB.Visible = SP.failTextSpecified)
+                    CONDExtraOptionsfailTextTB.Text = SP.failText;
 
             }
             else if (e.Node.Tag is TerjeTimeout)
@@ -1172,6 +1181,12 @@ namespace DayZeEditor
                 CONDExtraOptionsGB.Visible = true;
                 if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = timeout.hideOwnerWhenFalseSpecified)
                     CONDExtraOptionshideOwnerWhenFalseCB.Checked = timeout.hideOwnerWhenFalse == 1 ? true : false;
+                if (CONDExtraOptionsdisplayTextSpecifiedCB.Checked = CONDExtraOptionsdisplayTextTB.Visible = timeout.displayTextSpecified)
+                    CONDExtraOptionsdisplayTextTB.Text = timeout.displayText;
+                if (CONDExtraOptionssuccessTextSpecifiedCB.Checked = CONDExtraOptionssuccessTextTB.Visible = timeout.successTextSpecified)
+                    CONDExtraOptionssuccessTextTB.Text = timeout.successText;
+                if (CONDExtraOptionsfailTextSpecifiedCB.Checked = CONDExtraOptionsfailTextTB.Visible = timeout.failTextSpecified)
+                    CONDExtraOptionsfailTextTB.Text = timeout.failText;
             }
             else if (e.Node.Tag is TerjeSpecificPlayers)
             {
@@ -1179,6 +1194,12 @@ namespace DayZeEditor
                 CONDExtraOptionsGB.Visible = true;
                 if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = players.hideOwnerWhenFalseSpecified)
                     CONDExtraOptionshideOwnerWhenFalseCB.Checked = players.hideOwnerWhenFalse == 1 ? true : false;
+                if (CONDExtraOptionsdisplayTextSpecifiedCB.Checked = CONDExtraOptionsdisplayTextTB.Visible = players.displayTextSpecified)
+                    CONDExtraOptionsdisplayTextTB.Text = players.displayText;
+                if (CONDExtraOptionssuccessTextSpecifiedCB.Checked = CONDExtraOptionssuccessTextTB.Visible = players.successTextSpecified)
+                    CONDExtraOptionssuccessTextTB.Text = players.successText;
+                if (CONDExtraOptionsfailTextSpecifiedCB.Checked = CONDExtraOptionsfailTextTB.Visible = players.failTextSpecified)
+                    CONDExtraOptionsfailTextTB.Text = players.failText;
             }
             else if (e.Node.Tag is TerjeCustomCondition)
             {
@@ -1188,6 +1209,65 @@ namespace DayZeEditor
                 CONDExtraOptionsGB.Visible = true;
                 if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = custcon.hideOwnerWhenFalseSpecified)
                     CONDExtraOptionshideOwnerWhenFalseCB.Checked = custcon.hideOwnerWhenFalse == 1 ? true : false;
+                if (CONDExtraOptionsdisplayTextSpecifiedCB.Checked = CONDExtraOptionsdisplayTextTB.Visible = custcon.displayTextSpecified)
+                    CONDExtraOptionsdisplayTextTB.Text = custcon.displayText;
+                if (CONDExtraOptionssuccessTextSpecifiedCB.Checked = CONDExtraOptionssuccessTextTB.Visible = custcon.successTextSpecified)
+                    CONDExtraOptionssuccessTextTB.Text = custcon.successText;
+                if (CONDExtraOptionsfailTextSpecifiedCB.Checked = CONDExtraOptionsfailTextTB.Visible = custcon.failTextSpecified)
+                    CONDExtraOptionsfailTextTB.Text = custcon.failText;
+            }
+            else if (e.Node.Tag is TerjeSetUserVariable)
+            {
+                CONDExtraVariablesGB.Visible = true;
+                TerjeSetUserVariable SetUserCond = e.Node.Tag as TerjeSetUserVariable;
+                CONDExtraVariablesnameTB.Text = SetUserCond.name;
+                CONDExtraVariablesvalueNUD.Value = SetUserCond.value;
+                if (CONDExtraVariablesPersistSpecifiedCB.Checked = CONDExtraVariablesPersistCB.Visible = SetUserCond.persistSpecified)
+                    CONDExtraVariablesPersistCB.Checked = SetUserCond.persist == 1 ? true : false;
+            }
+            else if (e.Node.Tag is TerjeComapreUserVariables)
+            {
+                CONDExtraVariablesGB.Visible = true;
+                TerjeComapreUserVariables custcon = e.Node.Tag as TerjeComapreUserVariables;
+                CONDExtraVariablesnameTB.Text = custcon.name;
+                CONDExtraVariablesvalueNUD.Value = custcon.value;
+                if (CONDExtraVariablesPersistSpecifiedCB.Checked = CONDExtraVariablesPersistCB.Visible = custcon.persistSpecified)
+                    CONDExtraVariablesPersistCB.Checked = custcon.persist == 1 ? true : false;
+                CONDExtraOptionsGB.Visible = true;
+                if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = custcon.hideOwnerWhenFalseSpecified)
+                    CONDExtraOptionshideOwnerWhenFalseCB.Checked = custcon.hideOwnerWhenFalse == 1 ? true : false;
+                if (CONDExtraOptionsdisplayTextSpecifiedCB.Checked = CONDExtraOptionsdisplayTextTB.Visible = custcon.displayTextSpecified)
+                    CONDExtraOptionsdisplayTextTB.Text = custcon.displayText;
+                if (CONDExtraOptionssuccessTextSpecifiedCB.Checked = CONDExtraOptionssuccessTextTB.Visible = custcon.successTextSpecified)
+                    CONDExtraOptionssuccessTextTB.Text = custcon.successText;
+                if (CONDExtraOptionsfailTextSpecifiedCB.Checked = CONDExtraOptionsfailTextTB.Visible = custcon.failTextSpecified)
+                    CONDExtraOptionsfailTextTB.Text = custcon.failText;
+            }
+            else if (e.Node.Tag is TerjeMathWithUserVariable)
+            {
+                CONDExtraVariablesMathGB.Visible = true;
+                TerjeMathWithUserVariable custcon = e.Node.Tag as TerjeMathWithUserVariable;
+                CONDExtraMathnameTB.Text = custcon.name;
+                CONDExtraMathvalueNUD.Value = custcon.value;
+                if (CONDExtraMathminSpecifiedCB.Checked = CONDExtraMathminNUD.Visible = custcon.minSpecified)
+                    CONDExtraMathminNUD.Value = custcon.min;
+                if (CONDExtraMathmaxSpecifiedCB.Checked = CONDExtraMathmaxNUD.Visible = custcon.maxSpecified)
+                    CONDExtraMathmaxNUD.Value = custcon.min;
+                if (CONDExtraMathPersistSpecifiedCB.Checked = CONDExtraMathPersistCB.Visible = custcon.persistSpecified)
+                    CONDExtraMathPersistCB.Checked = custcon.persist == 1 ? true : false;
+            }
+            else if (e.Node.Tag is TerjeSpecialConditions)
+            {
+                TerjeSpecialConditions custcon = e.Node.Tag as TerjeSpecialConditions;
+                CONDExtraOptionsGB.Visible = true;
+                if (CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked = CONDExtraOptionshideOwnerWhenFalseCB.Visible = custcon.hideOwnerWhenFalseSpecified)
+                    CONDExtraOptionshideOwnerWhenFalseCB.Checked = custcon.hideOwnerWhenFalse == 1 ? true : false;
+                if (CONDExtraOptionsdisplayTextSpecifiedCB.Checked = CONDExtraOptionsdisplayTextTB.Visible = custcon.displayTextSpecified)
+                    CONDExtraOptionsdisplayTextTB.Text = custcon.displayText;
+                if (CONDExtraOptionssuccessTextSpecifiedCB.Checked = CONDExtraOptionssuccessTextTB.Visible = custcon.successTextSpecified)
+                    CONDExtraOptionssuccessTextTB.Text = custcon.successText;
+                if (CONDExtraOptionsfailTextSpecifiedCB.Checked = CONDExtraOptionsfailTextTB.Visible = custcon.failTextSpecified)
+                    CONDExtraOptionsfailTextTB.Text = custcon.failText;
             }
             else if (e.Node.Tag is TerjeScriptableArea)
             {
@@ -1416,9 +1496,13 @@ namespace DayZeEditor
                     addNewSteamIDToolStripMenuItem.Visible = true;
                     removeConditionToolStripMenuItem.Visible = true;
                 }
-                else if (e.Node.Tag is TerjeSkillLevel || e.Node.Tag is TerjeSkillPerk || e.Node.Tag is TerjeTimeout || e.Node.Tag is TerjeCustomCondition)
+                else if (e.Node.Tag is TerjeConditionBase || e.Node.Tag is TerjeSetUserVariable)
                 {
                     removeConditionToolStripMenuItem.Visible = true;
+                    if(e.Node.Tag is TerjeSpecialConditions)
+                    {
+                        addCustomConditionToolStripMenuItem.Visible = true;
+                    }
                 }
                 else if(e.Node.Tag is TerjeScriptableAreas)
                 {
@@ -1434,7 +1518,40 @@ namespace DayZeEditor
                 }
                 else if (e.Node.Tag is TerjeLoadout)
                 {
-                    addConditionsToolStripMenuItem.Visible = true;
+                    TerjeLoadout loadout = e.Node.Tag as TerjeLoadout;
+                    if(loadout.Items == null)
+                        addItemsToolStripMenuItem.Visible = true;
+                    if(loadout.Conditions == null)
+                        addConditionsToolStripMenuItem.Visible = true;
+                    removeLoadoutToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is TerjeLoadoutItems)
+                {
+                    addItemToolStripMenuItem.Visible = true;
+                    addSelectorToolStripMenuItem.Visible = true;
+                    removeItemsToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is TerjeLoadoutItem)
+                {
+                    addItemToolStripMenuItem.Visible = true;
+                    removeItemToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is TerjeLoadoutGroup)
+                {
+                    addItemToolStripMenuItem.Visible = true;
+                    removeGroupToolStripMenuItem.Visible = true;
+                }
+                else if(e.Node.Tag is TerjeLoadoutSelector)
+                {
+                    addItemToolStripMenuItem.Visible = true;
+                    addGroupToolStripMenuItem.Visible = true;
+                    removeSelectorToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is TerjeRespawn)
+                {
+                    TerjeRespawn respawn = e.Node.Tag as TerjeRespawn;
+                    if (respawn.Conditions == null)
+                        addConditionsToolStripMenuItem.Visible = true;
                     removeLoadoutToolStripMenuItem.Visible = true;
                 }
                 contextMenuStrip1.Show(Cursor.Position);
@@ -1962,26 +2079,494 @@ namespace DayZeEditor
         }
         private void addCustomConditionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TerjeCustomCondition custcon = new TerjeCustomCondition()
+            AddnewTerjeCondition form = new AddnewTerjeCondition();
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                classname = "Change me to your custom class"
-            };
-            TerjeConditions condition = currentTreeNode.Tag as TerjeConditions;
-            condition.items.Add(custcon);
+                if (currentTreeNode.Tag is TerjeConditions)
+                {
+                    TerjeConditions condition = currentTreeNode.Tag as TerjeConditions;
+                    switch (form.Selectedcondition)
+                    {
+                        case "Timeout":
+                            TerjeTimeout newtimeout = new TerjeTimeout()
+                            {
+                                id = "Test",
+                            };
+                            condition.items.Add(newtimeout);
+                            currentTreeNode.Nodes.Add(new TreeNode(newtimeout.GetType().Name)
+                            {
+                                Tag = newtimeout
+                            });
+                            break;
+                        case "Skill Level":
+                            TerjeSkillLevel terjeSkillLevel = new TerjeSkillLevel()
+                            {
+                                skillId = "hunt",
+                                requiredLevel = 25,
+                            };
+                            condition.items.Add(terjeSkillLevel);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeSkillLevel.GetType().Name)
+                            {
+                                Tag = terjeSkillLevel
+                            });
+                            break;
 
-            if (currentTreeNode.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+                        case "Perk Level":
+                            TerjeSkillPerk terjeSkillPerk = new TerjeSkillPerk()
+                            {
+                                skillId = "hunt",
+                                perkId = "exphunter",
+                                requiredLevel = 25,
+                            };
+                            condition.items.Add(terjeSkillPerk);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeSkillPerk.GetType().Name)
+                            {
+                                Tag = terjeSkillPerk
+                            });
+                            break;
 
-            currentTreeNode.Nodes.Add(new TreeNode("Custom Condition")
-            {
-                Tag = custcon
-            });
-            currentTreeNode.Expand();
-            TerjeTV.SelectedNode = currentTreeNode.LastNode;
+                        case "Specific Players":
+                            TerjeSpecificPlayers terjeSpecificPlayers = new TerjeSpecificPlayers()
+                            {
+                                SpecificPlayer = new BindingList<TerjeSpecificPlayer>()
+                            };
+                            condition.items.Add(terjeSpecificPlayers);
+                            currentTreeNode.Nodes.Add(GetSpecificPlayers(terjeSpecificPlayers));
+                            break;
+
+                        case "Custom Condition":
+                            TerjeCustomCondition terjeCustomCondition = new TerjeCustomCondition()
+                            {
+                                classname = "Change Me",
+                            };
+                            condition.items.Add(terjeCustomCondition);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeCustomCondition.GetType().Name)
+                            {
+                                Tag = terjeCustomCondition
+                            });
+                            break;
+
+                        case "Set user variable":
+                            TerjeSetUserVariable terjeSetUserVariable = new TerjeSetUserVariable()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.items.Add(terjeSetUserVariable);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeSetUserVariable.GetType().Name)
+                            {
+                                Tag = terjeSetUserVariable
+                            });
+                            break;
+
+                        case "Compare user variables : Equal":
+                            TerjeComapreUserVariablesEqual terjeComapreUserVariablesEqual = new TerjeComapreUserVariablesEqual()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.items.Add(terjeComapreUserVariablesEqual);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesEqual.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesEqual
+                            });
+                            break;
+
+                        case "Compare user variables : NotEqual":
+                            TerjeComapreUserVariablesNotEqual terjeComapreUserVariablesNotEqual = new TerjeComapreUserVariablesNotEqual()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.items.Add(terjeComapreUserVariablesNotEqual);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesNotEqual.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesNotEqual
+                            });
+                            break;
+
+                        case "Compare user variables : LessThen":
+                            TerjeComapreUserVariablesLessThen terjeComapreUserVariablesLessThen = new TerjeComapreUserVariablesLessThen()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.items.Add(terjeComapreUserVariablesLessThen);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesLessThen.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesLessThen
+                            });
+                            break;
+
+                        case "Compare user variables : GreaterThen":
+                            TerjeComapreUserVariablesGreaterThen terjeComapreUserVariablesGreaterThen = new TerjeComapreUserVariablesGreaterThen()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.items.Add(terjeComapreUserVariablesGreaterThen);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesGreaterThen.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesGreaterThen
+                            });
+                            break;
+
+                        case "Compare user variables : LessOrEqual":
+                            TerjeComapreUserVariablesLessOrEqual terjeComapreUserVariablesLessOrEqual = new TerjeComapreUserVariablesLessOrEqual()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.items.Add(terjeComapreUserVariablesLessOrEqual);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesLessOrEqual.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesLessOrEqual
+                            });
+                            break;
+
+                        case "Compare user variables : GreaterOrEqual":
+                            TerjeComapreUserVariablesGreaterOrEqual terjeComapreUserVariablesGreaterOrEqual = new TerjeComapreUserVariablesGreaterOrEqual()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.items.Add(terjeComapreUserVariablesGreaterOrEqual);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesGreaterOrEqual.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesGreaterOrEqual
+                            });
+                            break;
+
+                        case "Math with user variables : Sum":
+                            TerjeMathWithUserVariableSum terjeMathWithUserVariableSum = new TerjeMathWithUserVariableSum()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.items.Add(terjeMathWithUserVariableSum);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeMathWithUserVariableSum.GetType().Name)
+                            {
+                                Tag = terjeMathWithUserVariableSum
+                            });
+                            break;
+
+                        case "Math with user variables : Subtract":
+                            TerjeMathWithUserVariableSubtract terjeMathWithUserVariableSubtract = new TerjeMathWithUserVariableSubtract()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.items.Add(terjeMathWithUserVariableSubtract);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeMathWithUserVariableSubtract.GetType().Name)
+                            {
+                                Tag = terjeMathWithUserVariableSubtract
+                            });
+                            break;
+
+                        case "Math with user variables : Multiply":
+                            TerjeMathWithUserVariableMultiply terjeMathWithUserVariableMultiply = new TerjeMathWithUserVariableMultiply()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.items.Add(terjeMathWithUserVariableMultiply);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeMathWithUserVariableMultiply.GetType().Name)
+                            {
+                                Tag = terjeMathWithUserVariableMultiply
+                            });
+                            break;
+
+                        case "Math with user variables : Divide":
+                            TerjeMathWithUserVariableDivide terjeMathWithUserVariableDivide = new TerjeMathWithUserVariableDivide()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.items.Add(terjeMathWithUserVariableDivide);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeMathWithUserVariableDivide.GetType().Name)
+                            {
+                                Tag = terjeMathWithUserVariableDivide
+                            });
+                            break;
+
+                        case "Special conditions: All":
+                            TerjeSpecialConditionsAll terjeSpecialConditionsAll = new TerjeSpecialConditionsAll()
+                            {
+                                Items = new BindingList<object>()
+                            };
+                            condition.items.Add(terjeSpecialConditionsAll);
+                            currentTreeNode.Nodes.Add(GetSpecialNodes(terjeSpecialConditionsAll as TerjeSpecialConditions));
+                            break;
+
+                        case "Special conditions: Any":
+                            TerjeSpecialConditionsAny terjeSpecialConditionsAny = new TerjeSpecialConditionsAny()
+                            {
+                                Items = new BindingList<object>()
+                            };
+                            condition.items.Add(terjeSpecialConditionsAny);
+                            currentTreeNode.Nodes.Add(GetSpecialNodes(terjeSpecialConditionsAny as TerjeSpecialConditions));
+                            break;
+
+                        case "Special conditions: One":
+                            TerjeSpecialConditionsOne terjeSpecialConditionsOne = new TerjeSpecialConditionsOne()
+                            {
+                                Items = new BindingList<object>()
+                            };
+                            condition.items.Add(terjeSpecialConditionsOne);
+                            currentTreeNode.Nodes.Add(GetSpecialNodes(terjeSpecialConditionsOne as TerjeSpecialConditions));
+                            break;
+
+                        default:
+
+                            break;
+                    }
+                }
+                else if (currentTreeNode.Tag is TerjeSpecialConditions)
+                {
+                    TerjeSpecialConditions condition = currentTreeNode.Tag as TerjeSpecialConditions;
+                    switch (form.Selectedcondition)
+                    {
+                        case "Timeout":
+                            TerjeTimeout newtimeout = new TerjeTimeout()
+                            {
+                                id = "Test",
+                            };
+                            condition.Items.Add(newtimeout);
+                            currentTreeNode.Nodes.Add(new TreeNode(newtimeout.GetType().Name)
+                            {
+                                Tag = newtimeout
+                            });
+                            break;
+                        case "Skill Level":
+                            TerjeSkillLevel terjeSkillLevel = new TerjeSkillLevel()
+                            {
+                                skillId = "hunt",
+                                requiredLevel = 25,
+                            };
+                            condition.Items.Add(terjeSkillLevel);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeSkillLevel.GetType().Name)
+                            {
+                                Tag = terjeSkillLevel
+                            });
+                            break;
+
+                        case "Perk Level":
+                            TerjeSkillPerk terjeSkillPerk = new TerjeSkillPerk()
+                            {
+                                skillId = "hunt",
+                                perkId = "exphunter",
+                                requiredLevel = 25,
+                            };
+                            condition.Items.Add(terjeSkillPerk);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeSkillPerk.GetType().Name)
+                            {
+                                Tag = terjeSkillPerk
+                            });
+                            break;
+
+                        case "Specific Players":
+                            TerjeSpecificPlayers terjeSpecificPlayers = new TerjeSpecificPlayers()
+                            {
+                                SpecificPlayer = new BindingList<TerjeSpecificPlayer>()
+                            };
+                            condition.Items.Add(terjeSpecificPlayers);
+                            currentTreeNode.Nodes.Add(GetSpecificPlayers(terjeSpecificPlayers));
+                            break;
+
+                        case "Custom Condition":
+                            TerjeCustomCondition terjeCustomCondition = new TerjeCustomCondition()
+                            {
+                                classname = "Change Me",
+                            };
+                            condition.Items.Add(terjeCustomCondition);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeCustomCondition.GetType().Name)
+                            {
+                                Tag = terjeCustomCondition
+                            });
+                            break;
+
+                        case "Set user variable":
+                            TerjeSetUserVariable terjeSetUserVariable = new TerjeSetUserVariable()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.Items.Add(terjeSetUserVariable);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeSetUserVariable.GetType().Name)
+                            {
+                                Tag = terjeSetUserVariable
+                            });
+                            break;
+
+                        case "Compare user variables : Equal":
+                            TerjeComapreUserVariablesEqual terjeComapreUserVariablesEqual = new TerjeComapreUserVariablesEqual()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.Items.Add(terjeComapreUserVariablesEqual);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesEqual.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesEqual
+                            });
+                            break;
+
+                        case "Compare user variables : NotEqual":
+                            TerjeComapreUserVariablesNotEqual terjeComapreUserVariablesNotEqual = new TerjeComapreUserVariablesNotEqual()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.Items.Add(terjeComapreUserVariablesNotEqual);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesNotEqual.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesNotEqual
+                            });
+                            break;
+
+                        case "Compare user variables : LessThen":
+                            TerjeComapreUserVariablesLessThen terjeComapreUserVariablesLessThen = new TerjeComapreUserVariablesLessThen()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.Items.Add(terjeComapreUserVariablesLessThen);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesLessThen.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesLessThen
+                            });
+                            break;
+
+                        case "Compare user variables : GreaterThen":
+                            TerjeComapreUserVariablesGreaterThen terjeComapreUserVariablesGreaterThen = new TerjeComapreUserVariablesGreaterThen()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.Items.Add(terjeComapreUserVariablesGreaterThen);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesGreaterThen.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesGreaterThen
+                            });
+                            break;
+
+                        case "Compare user variables : LessOrEqual":
+                            TerjeComapreUserVariablesLessOrEqual terjeComapreUserVariablesLessOrEqual = new TerjeComapreUserVariablesLessOrEqual()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.Items.Add(terjeComapreUserVariablesLessOrEqual);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesLessOrEqual.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesLessOrEqual
+                            });
+                            break;
+
+                        case "Compare user variables : GreaterOrEqual":
+                            TerjeComapreUserVariablesGreaterOrEqual terjeComapreUserVariablesGreaterOrEqual = new TerjeComapreUserVariablesGreaterOrEqual()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.Items.Add(terjeComapreUserVariablesGreaterOrEqual);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeComapreUserVariablesGreaterOrEqual.GetType().Name)
+                            {
+                                Tag = terjeComapreUserVariablesGreaterOrEqual
+                            });
+                            break;
+
+                        case "Math with user variables : Sum":
+                            TerjeMathWithUserVariableSum terjeMathWithUserVariableSum = new TerjeMathWithUserVariableSum()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.Items.Add(terjeMathWithUserVariableSum);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeMathWithUserVariableSum.GetType().Name)
+                            {
+                                Tag = terjeMathWithUserVariableSum
+                            });
+                            break;
+
+                        case "Math with user variables : Subtract":
+                            TerjeMathWithUserVariableSubtract terjeMathWithUserVariableSubtract = new TerjeMathWithUserVariableSubtract()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.Items.Add(terjeMathWithUserVariableSubtract);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeMathWithUserVariableSubtract.GetType().Name)
+                            {
+                                Tag = terjeMathWithUserVariableSubtract
+                            });
+                            break;
+
+                        case "Math with user variables : Multiply":
+                            TerjeMathWithUserVariableMultiply terjeMathWithUserVariableMultiply = new TerjeMathWithUserVariableMultiply()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.Items.Add(terjeMathWithUserVariableMultiply);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeMathWithUserVariableMultiply.GetType().Name)
+                            {
+                                Tag = terjeMathWithUserVariableMultiply
+                            });
+                            break;
+
+                        case "Math with user variables : Divide":
+                            TerjeMathWithUserVariableDivide terjeMathWithUserVariableDivide = new TerjeMathWithUserVariableDivide()
+                            {
+                                name = "myVar1",
+                                value = 1
+                            };
+                            condition.Items.Add(terjeMathWithUserVariableDivide);
+                            currentTreeNode.Nodes.Add(new TreeNode(terjeMathWithUserVariableDivide.GetType().Name)
+                            {
+                                Tag = terjeMathWithUserVariableDivide
+                            });
+                            break;
+
+                        case "Special conditions: All":
+                            TerjeSpecialConditionsAll terjeSpecialConditionsAll = new TerjeSpecialConditionsAll()
+                            {
+                                Items = new BindingList<object>()
+                            };
+                            condition.Items.Add(terjeSpecialConditionsAll);
+                            currentTreeNode.Nodes.Add(GetSpecialNodes(terjeSpecialConditionsAll as TerjeSpecialConditions));
+                            break;
+
+                        case "Special conditions: Any":
+                            TerjeSpecialConditionsAny terjeSpecialConditionsAny = new TerjeSpecialConditionsAny()
+                            {
+                                Items = new BindingList<object>()
+                            };
+                            condition.Items.Add(terjeSpecialConditionsAny);
+                            currentTreeNode.Nodes.Add(GetSpecialNodes(terjeSpecialConditionsAny as TerjeSpecialConditions));
+                            break;
+
+                        case "Special conditions: One":
+                            TerjeSpecialConditionsOne terjeSpecialConditionsOne = new TerjeSpecialConditionsOne()
+                            {
+                                Items = new BindingList<object>()
+                            };
+                            condition.Items.Add(terjeSpecialConditionsOne);
+                            currentTreeNode.Nodes.Add(GetSpecialNodes(terjeSpecialConditionsOne as TerjeSpecialConditions));
+                            break;
+
+                        default:
+
+                            break;
+                    }
+                }
+                if (currentTreeNode.Parent.Tag is TerjeRecipe)
+                    TerjeCraftingFiles.isDirty = true;
+                else if (currentTreeNode.Parent.Tag is TerjeLoadout)
+                    TerjeLoadouts.isDirty = true;
+                else if (currentTreeNode.Parent.Tag is TerjeRespawn)
+                    TerjeRespawns.isDirty = true;
+            }
         }
         private void removeConditionToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1992,7 +2577,8 @@ namespace DayZeEditor
                 TerjeLoadouts.isDirty = true;
             else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn)
                 TerjeRespawns.isDirty = true;
-            condition.items.Remove(condition);
+            
+            condition.items.Remove(currentTreeNode.Tag);
            
             currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
         }
@@ -2083,6 +2669,12 @@ namespace DayZeEditor
                 TerjeLoadout loadout = currentTreeNode.Parent.Tag as TerjeLoadout;
                 loadout.Conditions = null;
                 TerjeLoadouts.isDirty = true;
+            }
+            else if (currentTreeNode.Parent.Tag is TerjeRespawn)
+            {
+                TerjeRespawn respawn = currentTreeNode.Parent.Tag as TerjeRespawn;
+                respawn.Conditions = null;
+                TerjeRespawns.isDirty = true;
             }
             currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
         }
@@ -2580,28 +3172,48 @@ namespace DayZeEditor
             if (!useraction) return;
             TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
             timeout.id = SCLTimeoutidTB.Text;
-            TerjeLoadouts.isDirty = true;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true; ;
         }
         private void SCLTimeouthoursNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
             timeout.hours = (int)SCLTimeouthoursNUD.Value;
-            TerjeLoadouts.isDirty = true;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
         }
         private void SCLTimeoutminutesNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
             timeout.minutes = (int)SCLTimeoutminutesNUD.Value;
-            TerjeLoadouts.isDirty = true;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
         }
         private void SCLTimeoutsecondsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
             timeout.seconds = (int)SCLTimeoutsecondsNUD.Value;
-            TerjeLoadouts.isDirty = true;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
         }
         private void SCLTimeoutSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -2654,26 +3266,31 @@ namespace DayZeEditor
                     }
                 }
             }
-            TerjeLoadouts.isDirty = true;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
         }
         private void SCLConditionCustomConditionclassnameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeCustomCondition custcon = currentTreeNode.Tag as TerjeCustomCondition;
             custcon.classname = SCLConditionCustomConditionclassnameTB.Text;
-            TerjeLoadouts.isDirty = true;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
         }
-
         private void addNewLoadoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TerjeLoadout loadout = new TerjeLoadout()
             {
                 id = "New Loadout, Change me to something short and unique",
-                displayName = "New Loadout, Change Me",
-                Items = new TerjeLoadoutItems()
-                {
-                    Items = new BindingList<object>()
-                },
+                displayName = "New Loadout, Change Me"
             };
             TerjeLoadouts.Loadout.Add(loadout);
             TerjeLoadouts.isDirty = true;
@@ -2682,6 +3299,487 @@ namespace DayZeEditor
         private void removeLoadoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TerjeLoadouts.Loadout.Remove(currentTreeNode.Tag as TerjeLoadout);
+            currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            TerjeLoadouts.isDirty = true;
+        }
+        private void CONDExtraOptionshideOwnerWhenFalseCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeConditionBase condbase = currentTreeNode.Tag as TerjeConditionBase;
+            condbase.hideOwnerWhenFalse = CONDExtraOptionshideOwnerWhenFalseCB.Checked == true?1:0;
+
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true; ;
+        }
+        private void CONDExtraOptionsdisplayTextTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeConditionBase condbase = currentTreeNode.Tag as TerjeConditionBase;
+            condbase.displayText = CONDExtraOptionsdisplayTextTB.Text;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraOptionssuccessTextTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeConditionBase condbase = currentTreeNode.Tag as TerjeConditionBase;
+            condbase.successText = CONDExtraOptionssuccessTextTB.Text;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraOptionsfailTextTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeConditionBase condbase = currentTreeNode.Tag as TerjeConditionBase;
+            condbase.failText = CONDExtraOptionsfailTextTB.Text;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraOptionshideOwnerWhenFalseSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeConditionBase condition = currentTreeNode.Tag as TerjeConditionBase;
+            condition.hideOwnerWhenFalseSpecified = CONDExtraOptionshideOwnerWhenFalseCB.Visible = CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked;
+            CONDExtraOptionshideOwnerWhenFalseCB.Checked = condition.hideOwnerWhenFalse == 1 ? true : false;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraOptionsdisplayTextSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeConditionBase condition = currentTreeNode.Tag as TerjeConditionBase;
+            condition.displayTextSpecified = CONDExtraOptionsdisplayTextTB.Visible = CONDExtraOptionsdisplayTextSpecifiedCB.Checked;
+            if (condition.displayText == null)
+                condition.displayText = CONDExtraOptionsdisplayTextTB.Text = "Change Me";
+            else
+                CONDExtraOptionsdisplayTextTB.Text = condition.displayText;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraOptionssuccessTextSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeConditionBase condition = currentTreeNode.Tag as TerjeConditionBase;
+            condition.successTextSpecified = CONDExtraOptionssuccessTextTB.Visible = CONDExtraOptionssuccessTextSpecifiedCB.Checked;
+            if (condition.successText == null)
+                condition.successText = CONDExtraOptionssuccessTextTB.Text = "Change Me";
+            else
+                CONDExtraOptionssuccessTextTB.Text = condition.successText;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraOptionsfailTextSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeConditionBase condition = currentTreeNode.Tag as TerjeConditionBase;
+            condition.failTextSpecified = CONDExtraOptionsfailTextTB.Visible = CONDExtraOptionsfailTextSpecifiedCB.Checked;
+            if (condition.failText == null)
+                condition.failText = CONDExtraOptionsfailTextTB.Text = "Change Me";
+            else
+                CONDExtraOptionsfailTextTB.Text = condition.failText;
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraVariablesGB_Enter(object sender, EventArgs e)
+        {
+           
+        }
+        private void CONDExtraVariablesnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (currentTreeNode.Tag is TerjeSetUserVariable)
+            {
+                TerjeSetUserVariable condition = currentTreeNode.Tag as TerjeSetUserVariable;
+                condition.name = CONDExtraVariablesnameTB.Text;
+            }
+            else if (currentTreeNode.Tag is TerjeComapreUserVariables)
+            {
+                TerjeComapreUserVariables condition = currentTreeNode.Tag as TerjeComapreUserVariables;
+                condition.name = CONDExtraVariablesnameTB.Text;
+            }
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraVariablesvalueNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (currentTreeNode.Tag is TerjeSetUserVariable)
+            {
+                TerjeSetUserVariable condition = currentTreeNode.Tag as TerjeSetUserVariable;
+                condition.value = (int)CONDExtraVariablesvalueNUD.Value;
+            }
+            else if (currentTreeNode.Tag is TerjeComapreUserVariables)
+            {
+                TerjeComapreUserVariables condition = currentTreeNode.Tag as TerjeComapreUserVariables;
+                condition.value = (int)CONDExtraVariablesvalueNUD.Value;
+            }
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraVariablesPersistCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (currentTreeNode.Tag is TerjeSetUserVariable)
+            {
+                TerjeSetUserVariable condition = currentTreeNode.Tag as TerjeSetUserVariable;
+                condition.persist = CONDExtraVariablesPersistCB.Checked == true ? 1 : 0;
+            }
+            else if (currentTreeNode.Tag is TerjeComapreUserVariables)
+            {
+                TerjeComapreUserVariables condition = currentTreeNode.Tag as TerjeComapreUserVariables;
+                condition.persist = CONDExtraVariablesPersistCB.Checked == true ? 1 : 0;
+            }
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraVariablesPersistSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (currentTreeNode.Tag is TerjeSetUserVariable)
+            {
+                TerjeSetUserVariable condition = currentTreeNode.Tag as TerjeSetUserVariable;
+                condition.persistSpecified = CONDExtraVariablesPersistCB.Visible = CONDExtraVariablesPersistSpecifiedCB.Checked;
+                CONDExtraVariablesPersistCB.Checked = condition.persist == 1 ? true : false;
+            }
+            else if(currentTreeNode.Tag is TerjeComapreUserVariables)
+            {
+                TerjeComapreUserVariables condition = currentTreeNode.Tag as TerjeComapreUserVariables;
+                condition.persistSpecified = CONDExtraVariablesPersistCB.Visible = CONDExtraVariablesPersistSpecifiedCB.Checked;
+                CONDExtraVariablesPersistCB.Checked = condition.persist == 1 ? true : false;
+            }
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraMathnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+
+            TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
+            condition.name = CONDExtraVariablesnameTB.Text;
+
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+
+        }
+        private void CONDExtraMathvalueNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+
+            TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
+            condition.value = (int)CONDExtraVariablesvalueNUD.Value;
+
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraMathminSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
+            condition.minSpecified = CONDExtraMathminNUD.Visible = CONDExtraMathminSpecifiedCB.Checked;
+            CONDExtraMathminNUD.Value = condition.min;
+
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraMathminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+
+            TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
+            condition.min = (int)CONDExtraMathminNUD.Value;
+
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraMathmaxSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
+            condition.maxSpecified = CONDExtraMathmaxNUD.Visible = CONDExtraMathmaxSpecifiedCB.Checked;
+            CONDExtraMathmaxNUD.Value = condition.max;
+
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraMathmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+
+            TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
+            condition.max = (int)CONDExtraMathmaxNUD.Value;
+
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraMathPersistCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+
+            TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
+            condition.persist = CONDExtraMathPersistCB.Checked == true ? 1 : 0;
+
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void CONDExtraMathPersistSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
+            condition.persistSpecified = CONDExtraMathPersistCB.Visible = CONDExtraMathPersistSpecifiedCB.Checked;
+            CONDExtraMathPersistCB.Checked = condition.persist == 1 ? true : false;
+
+            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
+                TerjeCraftingFiles.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
+                TerjeLoadouts.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
+                TerjeRespawns.isDirty = true;
+        }
+        private void addItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeLoadout loadout = currentTreeNode.Tag as TerjeLoadout;
+            loadout.Items = new TerjeLoadoutItems()
+            {
+                Items = new BindingList<object>()
+            };
+            currentTreeNode.Nodes.Add(GetLoadoutItems(loadout));
+            TerjeLoadouts.isDirty = true;
+
+        }
+        private void removeItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeLoadout loadout = currentTreeNode.Parent.Tag as TerjeLoadout;
+            loadout.Items = null;
+            currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            TerjeLoadouts.isDirty = true;
+        }
+        private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                if (currentTreeNode.Tag is TerjeLoadoutItems)
+                {
+                    TerjeLoadoutItems itemlist = currentTreeNode.Tag as TerjeLoadoutItems;
+                    foreach (string l in addedtypes)
+                    {
+                        TerjeLoadoutItem newitem = new TerjeLoadoutItem()
+                        {
+                            classname = l,
+                            classnameSpecified = true
+
+                        };
+                        itemlist.Items.Add(newitem);
+                        currentTreeNode.Nodes.Add(GetLoadoutitem(newitem));
+                    }
+                }
+                else if (currentTreeNode.Tag is TerjeLoadoutItem)
+                {
+                    TerjeLoadoutItem currentitem = currentTreeNode.Tag as TerjeLoadoutItem;
+                    if (currentitem.Item == null)
+                        currentitem.Item = new BindingList<TerjeLoadoutItem>();
+                    foreach (string l in addedtypes)
+                    {
+                        TerjeLoadoutItem newitem = new TerjeLoadoutItem()
+                        {
+                            classname = l,
+                            classnameSpecified = true
+
+                        };
+                        currentitem.Item.Add(newitem);
+                        currentTreeNode.Nodes.Add(GetLoadoutitem(newitem));
+                    }
+                }
+                else if (currentTreeNode.Tag is TerjeLoadoutGroup)
+                {
+                    TerjeLoadoutGroup group = currentTreeNode.Tag as TerjeLoadoutGroup;
+                    if (group.Item == null)
+                        group.Item = new BindingList<TerjeLoadoutItem>();
+                    foreach (string l in addedtypes)
+                    {
+                        TerjeLoadoutItem newitem = new TerjeLoadoutItem()
+                        {
+                            classname = l,
+                            classnameSpecified = true
+
+                        };
+                        group.Item.Add(newitem);
+                        currentTreeNode.Nodes.Add(GetLoadoutitem(newitem));
+                    }
+                }
+                else if (currentTreeNode.Tag is TerjeLoadoutSelector)
+                {
+                    TerjeLoadoutSelector selector = currentTreeNode.Tag as TerjeLoadoutSelector;
+                    if (selector.Item == null)
+                        selector.Item = new BindingList<TerjeLoadoutItem>();
+                    foreach (string l in addedtypes)
+                    {
+                        TerjeLoadoutItem newitem = new TerjeLoadoutItem()
+                        {
+                            classname = l,
+                            classnameSpecified = true
+
+                        };
+                        selector.Item.Add(newitem);
+                        currentTreeNode.Nodes.Add(GetLoadoutitem(newitem));
+                    }
+                }
+                TerjeLoadouts.isDirty = true;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+        }
+        private void removeItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeLoadoutItem currentitem = currentTreeNode.Tag as TerjeLoadoutItem;
+            if(currentTreeNode.Parent.Tag is TerjeLoadoutItems)
+            {
+                TerjeLoadoutItems items = currentTreeNode.Parent.Tag as TerjeLoadoutItems;
+                items.Items.Remove(currentitem);
+            }
+            else if(currentTreeNode.Parent.Tag is TerjeLoadoutItem)
+            {
+                TerjeLoadoutItem items = currentTreeNode.Parent.Tag as TerjeLoadoutItem;
+                items.Item.Remove(currentitem);
+            }
+            else if(currentTreeNode.Parent.Tag is TerjeLoadoutSelector)
+            {
+                TerjeLoadoutSelector items = currentTreeNode.Parent.Tag as TerjeLoadoutSelector;
+                items.Item.Remove(currentitem);
+            }
+            else if (currentTreeNode.Parent.Tag is TerjeLoadoutGroup)
+            {
+                TerjeLoadoutGroup items = currentTreeNode.Parent.Tag as TerjeLoadoutGroup;
+                items.Item.Remove(currentitem);
+            }
+            currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            TerjeLoadouts.isDirty = true;
+        }
+        private void addSelectorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeLoadoutItems items = currentTreeNode.Tag as TerjeLoadoutItems;
+            TerjeLoadoutSelector selector = new TerjeLoadoutSelector()
+            {
+                type = "SINGLE"
+            };
+            if (items.Items == null)
+                items.Items = new BindingList<object>();
+            items.Items.Add(selector);
+            currentTreeNode.Nodes.Add(GetloadoutSleector(selector));
+            TerjeLoadouts.isDirty = true;
+        }
+        private void removeSelectorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeLoadoutSelector selector = currentTreeNode.Tag as TerjeLoadoutSelector;
+            TerjeLoadoutItems item = currentTreeNode.Parent.Tag as TerjeLoadoutItems;
+            item.Items.Remove(selector);
+            currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            TerjeLoadouts.isDirty = true;
+        }
+        private void addGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeLoadoutSelector selector = currentTreeNode.Tag as TerjeLoadoutSelector;
+            if (selector.Group == null)
+                selector.Group = new BindingList<TerjeLoadoutGroup>();
+            TerjeLoadoutGroup newgroup = new TerjeLoadoutGroup();
+            selector.Group.Add(newgroup);
+            currentTreeNode.Nodes.Add(GetLoadoutGroups(newgroup));
+            TerjeLoadouts.isDirty = true;
+        }
+        private void removeGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeLoadoutGroup group = currentTreeNode.Tag as TerjeLoadoutGroup;
+            TerjeLoadoutSelector selector = currentTreeNode.Parent.Tag as TerjeLoadoutSelector;
+            selector.Group.Remove(group);
+            if (selector.Group.Count < 1)
+                selector.Group = null;
             currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
             TerjeLoadouts.isDirty = true;
         }

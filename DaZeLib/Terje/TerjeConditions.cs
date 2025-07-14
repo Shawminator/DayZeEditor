@@ -11,7 +11,7 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class ConditionBase
+    public partial class TerjeConditionBase
     {
         private int hideOwnerWhenFalseField;
         private bool hideOwnerWhenFalseSpecifiedField;
@@ -122,7 +122,7 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class TerjeTimeout : ConditionBase
+    public partial class TerjeTimeout : TerjeConditionBase
     {
         private string idField;
         private int hoursField;
@@ -182,7 +182,7 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class TerjeSkillLevel : ConditionBase
+    public partial class TerjeSkillLevel : TerjeConditionBase
     {
         private string skillIdField;
         private int requiredLevelField;
@@ -205,7 +205,7 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class TerjeSkillPerk : ConditionBase
+    public partial class TerjeSkillPerk : TerjeConditionBase
     {
         private string skillIdField;
         private string perkIdField;
@@ -236,7 +236,7 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class TerjeSpecificPlayers : ConditionBase
+    public partial class TerjeSpecificPlayers : TerjeConditionBase
     {
         private BindingList<TerjeSpecificPlayer> specificPlayerField;
 
@@ -264,7 +264,7 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class TerjeCustomCondition : ConditionBase
+    public partial class TerjeCustomCondition : TerjeConditionBase
     {
         private string classnameField;
 
@@ -303,7 +303,7 @@ namespace DayZeLib
             get { return this.persistField; }
             set { this.persistField = value; }
         }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool persistSpecified
         {
             get { return this.persistFieldSpecified; }
@@ -313,7 +313,7 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class TerjeComapreUserVariables : ConditionBase
+    public partial class TerjeComapreUserVariables : TerjeConditionBase
     {
         private string nameField;
         private int valueField;
@@ -338,7 +338,7 @@ namespace DayZeLib
             get { return this.persistField; }
             set { this.persistField = value; }
         }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool persistSpecified
         {
             get { return this.persistFieldSpecified; }
@@ -403,7 +403,7 @@ namespace DayZeLib
             get { return this.minField; }
             set { this.minField = value; }
         }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool minSpecified
         {
             get { return this.minFieldSpecified; }
@@ -416,7 +416,7 @@ namespace DayZeLib
             get { return this.maxField; }
             set { this.maxField = value; }
         }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool maxSpecified
         {
             get { return this.maxFieldSpecified; }
@@ -429,7 +429,7 @@ namespace DayZeLib
             get { return this.persistField; }
             set { this.persistField = value; }
         }
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool persistSpecified
         {
             get { return this.persistFieldSpecified; }
@@ -455,7 +455,7 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class TerjeSpecialConditions : ConditionBase
+    public partial class TerjeSpecialConditions : TerjeConditionBase
     {
         private BindingList<object> itemsField;
 
