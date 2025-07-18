@@ -6,21 +6,24 @@ namespace DayZeLib
     public class ExpansionAISettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 13;
+        const int CurrentVersion = 14;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
 
         public int m_Version { get; set; }
+
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
+
         public decimal ThreatDistanceLimit { get; set; }
         public decimal NoiseInvestigationDistanceLimit { get; set; }
         public decimal DamageMultiplier { get; set; }
         public decimal DamageReceivedMultiplier { get; set; }
+        
         public BindingList<string> Admins { get; set; }
-        //public int MaximumDynamicPatrols { get; set; } removed in version 13
+        
         public int Vaulting { get; set; }
         public decimal SniperProneDistanceThreshold { get; set; }
         public int Manners { get; set; }
@@ -32,6 +35,9 @@ namespace DayZeLib
         public BindingList<string> PlayerFactions { get; set; }
         public int LogAIHitBy { get; set; }
         public int LogAIKilled { get; set; }
+
+        public int EnableZombieVehicleAttackHandler;
+        public int EnableZombieVehicleAttackPhysics;
 
         public bool checkver()
         {
@@ -64,6 +70,8 @@ namespace DayZeLib
             PlayerFactions = new BindingList<string>();
             LogAIHitBy = 1;
             LogAIKilled = 1;
+            EnableZombieVehicleAttackHandler = 0;
+            EnableZombieVehicleAttackPhysics - 0;
         }
     }
 
