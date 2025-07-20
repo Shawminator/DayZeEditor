@@ -48,6 +48,16 @@ namespace DayZeEditor
         public TerjeCFGLine currentCFGline { get; set; }
         private Dictionary<string, List<ComboBoxItem>> perkMap = new Dictionary<string, List<ComboBoxItem>>();
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
         public TerjeManager()
         {
             InitializeComponent();
@@ -204,8 +214,209 @@ namespace DayZeEditor
 
             SetToolTips();
             LoadCFGtoTreeview();
+            pictureBox1.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
+            pictureBox1.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+            pictureBox1.Paint += new PaintEventHandler(DrawSpawns);
+            trackBar1.Value = 1;
+            SetSpawnScale();
             useraction = true;
         }
+        
+        public int terjeSpawnScale = 1;
+        private Point _mouseLastPosition;
+        private Point _newscrollPosition;
+        private void trackBar1_MouseUp(object sender, MouseEventArgs e)
+        {
+            terjeSpawnScale = trackBar1.Value;
+            SetSpawnScale();
+        }
+        private void SetSpawnScale()
+        {
+            float scalevalue = terjeSpawnScale * 0.05f;
+            float mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox1.Size = new Size(newsize, newsize);
+        }
+        private void checkBox9_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBox1.Invalidate();
+        }
+        private void DrawSpawns(object sender, PaintEventArgs e)
+        {
+            if(checkBox9.Checked)
+            {
+                if (currentTreeNode.Tag is TerjeRespawnPoint)
+                {
+                    foreach (TerjeRespawnPoint point in currentTreeNode.Parent.Tag as BindingList<TerjeRespawnPoint>)
+                    {
+                        float scalevalue = terjeSpawnScale * 0.05f;
+                        int centerX = 0;
+                        int centerY = 0;
+                        int eventradius = (int)(Math.Round(5f, 0) * scalevalue);
+                        if (point.posSpecified)
+                        {
+                            centerX = (int)(Math.Round(Convert.ToSingle(point.pos.Split(',')[0])) * scalevalue);
+                            centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Convert.ToSingle(point.pos.Split(' ')[1]), 0) * scalevalue);
+
+                        }
+                        else
+                        {
+
+                        }
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if (currentTreeNode.Tag as TerjeRespawnPoint == point)
+                            pen.Color = Color.LimeGreen;
+                        else
+                            pen.Color = Color.Red;
+                        getCircle(e.Graphics, pen, center, eventradius);
+                    }
+                }
+                else if (currentTreeNode.Tag is BindingList<TerjeRespawnPoint>)
+                {
+                    foreach (TerjeRespawnPoint point in currentTreeNode.Tag as BindingList<TerjeRespawnPoint>)
+                    {
+                        float scalevalue = terjeSpawnScale * 0.05f;
+                        int centerX = 0;
+                        int centerY = 0;
+                        int eventradius = (int)(Math.Round(5f, 0) * scalevalue);
+                        if (point.posSpecified)
+                        {
+                            centerX = (int)(Math.Round(Convert.ToSingle(point.pos.Split(',')[0])) * scalevalue);
+                            centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Convert.ToSingle(point.pos.Split(' ')[1]), 0) * scalevalue);
+
+                        }
+                        else
+                        {
+
+                        }
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if (currentTreeNode.Tag as TerjeRespawnPoint == point)
+                            pen.Color = Color.LimeGreen;
+                        else
+                            pen.Color = Color.Red;
+                        getCircle(e.Graphics, pen, center, eventradius);
+                    }
+                }
+                    
+            }
+            else
+            {
+
+            }
+        }
+        private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius)
+        {
+            Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
+            drawingArea.DrawEllipse(penToUse, rect);
+            Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            drawingArea.DrawEllipse(penToUse, rect2);
+        }
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox1.Focused == false)
+            {
+                pictureBox1.Focus();
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+        }
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Cursor.Current = Cursors.SizeAll;
+                _mouseLastPosition = e.Location;
+            }
+        }
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panelEx1.AutoScrollPosition.X - changePoint.X, -panelEx1.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+            decimal scalevalue = terjeSpawnScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label2.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox1_ZoomOut();
+            }
+            else
+            {
+                pictureBox1_ZoomIn();
+            }
+
+        }
+        private void pictureBox1_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panelEx1.AutoScrollPosition;
+            int tbv = trackBar1.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar1.Value = newval;
+            terjeSpawnScale = trackBar1.Value;
+            SetSpawnScale();
+            if (pictureBox1.Height > panelEx1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panelEx1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
+        }
+        private void pictureBox1_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panelEx1.AutoScrollPosition;
+            int tbv = trackBar1.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar1.Value = newval;
+            terjeSpawnScale = trackBar1.Value;
+            SetSpawnScale();
+            if (pictureBox1.Height > panelEx1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panelEx1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
+        }
+
 
         private void SetToolTips()
         {
@@ -519,7 +730,6 @@ namespace DayZeEditor
 
             return loadoutnode;
         }
-
         private TreeNode GetLoadoutItems(TerjeLoadout ta)
         {
             TreeNode itemsnode = new TreeNode("Items")
@@ -541,7 +751,6 @@ namespace DayZeEditor
 
             return itemsnode;
         }
-
         private static TreeNode GetloadoutSleector(TerjeLoadoutSelector selector)
         {
             TreeNode selectorNode = new TreeNode($"Selector Type:{selector.type} , Display Name:{selector.displayName}")
@@ -569,7 +778,6 @@ namespace DayZeEditor
 
             return selectorNode;
         }
-
         private static TreeNode GetLoadoutGroups(TerjeLoadoutGroup litem)
         {
             TreeNode itemnode = new TreeNode($"Group")
@@ -590,7 +798,6 @@ namespace DayZeEditor
 
             return itemnode;
         }
-
         private TreeNode GetLoadoutitem(TerjeLoadoutItem item)
         {
             TerjeLoadoutItem litem = item as TerjeLoadoutItem;
@@ -1032,6 +1239,7 @@ namespace DayZeEditor
         private void TerjeTV_AfterSelect(object sender, TreeViewEventArgs e)
         {
             currentTreeNode = e.Node;
+            MapPanel.Visible = false;
             foreach (Control c in flowLayoutPanel1.Controls)
             {
                 c.Visible = false;
@@ -1172,8 +1380,8 @@ namespace DayZeEditor
                 SCLtimeoutGB.Visible = true;
                 TerjeTimeout timeout = e.Node.Tag as TerjeTimeout;
                 SCLTimeoutidTB.Text = timeout.id;
-                if(SCLTimeouthoursSpecifiedCB.Checked = SCLTimeouthoursNUD.Visible = timeout.hoursSpecified)
-                    SCLTimeouthoursNUD.Value = timeout.hours; 
+                if (SCLTimeouthoursSpecifiedCB.Checked = SCLTimeouthoursNUD.Visible = timeout.hoursSpecified)
+                    SCLTimeouthoursNUD.Value = timeout.hours;
                 if (SCLTimeoutminutesSpecifiedCB.Checked = SCLTimeoutminutesNUD.Visible = timeout.minutesSpecified)
                     SCLTimeoutminutesNUD.Value = timeout.minutes;
                 if (SCLTimeoutsecondsSpecifiedCB.Checked = SCLTimeoutsecondsNUD.Visible = timeout.secondsSpecified)
@@ -1427,7 +1635,16 @@ namespace DayZeEditor
                 if (SCLGroupcostSpecifiedCB.Checked = SCLGroupcostNUD.Visible = group.costSpecified)
                     SCLGroupcostNUD.Value = group.cost;
             }
-            useraction = true;
+            else if (e.Node.Tag is TerjeRespawnPoint)
+            {
+                MapPanel.Visible = true;
+            }
+            else if (e.Node.Tag is BindingList<TerjeRespawnPoint>)
+            {
+                MapPanel.Visible = true;
+            }
+
+                useraction = true;
         }
         public ComboBoxItem SelectComboBoxByValue(ComboBox comboBox, string value)
         {
@@ -3783,6 +4000,8 @@ namespace DayZeEditor
             currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
             TerjeLoadouts.isDirty = true;
         }
+
+
     }
     public class ComboBoxItem
     {

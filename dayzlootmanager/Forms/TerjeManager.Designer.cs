@@ -52,6 +52,14 @@ namespace DayZeEditor
             this.removeScriptableAreaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewLoadoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeLoadoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSelectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeSelectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addLootItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewLootCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -287,14 +295,12 @@ namespace DayZeEditor
             this.label72 = new System.Windows.Forms.Label();
             this.CONDExtraOptionshideOwnerWhenFalseCB = new System.Windows.Forms.CheckBox();
             this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB = new System.Windows.Forms.CheckBox();
-            this.addItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addSelectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeSelectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label77 = new System.Windows.Forms.Label();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.panelEx1 = new TreeViewMS.PanelEx();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.MapPanel = new System.Windows.Forms.Panel();
             this.darkToolStrip21.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -349,6 +355,10 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathminNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathvalueNUD)).BeginInit();
             this.CONDExtraOptionsGB.SuspendLayout();
+            this.panelEx1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.MapPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -571,6 +581,70 @@ namespace DayZeEditor
             this.removeLoadoutToolStripMenuItem.Text = "Remove Loadout";
             this.removeLoadoutToolStripMenuItem.Click += new System.EventHandler(this.removeLoadoutToolStripMenuItem_Click);
             // 
+            // addItemsToolStripMenuItem
+            // 
+            this.addItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addItemsToolStripMenuItem.Name = "addItemsToolStripMenuItem";
+            this.addItemsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addItemsToolStripMenuItem.Text = "Add Items";
+            this.addItemsToolStripMenuItem.Click += new System.EventHandler(this.addItemsToolStripMenuItem_Click);
+            // 
+            // removeItemsToolStripMenuItem
+            // 
+            this.removeItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeItemsToolStripMenuItem.Name = "removeItemsToolStripMenuItem";
+            this.removeItemsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeItemsToolStripMenuItem.Text = "Remove Items";
+            this.removeItemsToolStripMenuItem.Click += new System.EventHandler(this.removeItemsToolStripMenuItem_Click);
+            // 
+            // addItemToolStripMenuItem
+            // 
+            this.addItemToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addItemToolStripMenuItem.Name = "addItemToolStripMenuItem";
+            this.addItemToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addItemToolStripMenuItem.Text = "Add Item";
+            this.addItemToolStripMenuItem.Click += new System.EventHandler(this.addItemToolStripMenuItem_Click);
+            // 
+            // removeItemToolStripMenuItem
+            // 
+            this.removeItemToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeItemToolStripMenuItem.Name = "removeItemToolStripMenuItem";
+            this.removeItemToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeItemToolStripMenuItem.Text = "Remove Item";
+            this.removeItemToolStripMenuItem.Click += new System.EventHandler(this.removeItemToolStripMenuItem_Click);
+            // 
+            // addSelectorToolStripMenuItem
+            // 
+            this.addSelectorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addSelectorToolStripMenuItem.Name = "addSelectorToolStripMenuItem";
+            this.addSelectorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addSelectorToolStripMenuItem.Text = "Add Selector";
+            this.addSelectorToolStripMenuItem.Click += new System.EventHandler(this.addSelectorToolStripMenuItem_Click);
+            // 
+            // removeSelectorToolStripMenuItem
+            // 
+            this.removeSelectorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeSelectorToolStripMenuItem.Name = "removeSelectorToolStripMenuItem";
+            this.removeSelectorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeSelectorToolStripMenuItem.Text = "Remove Selector";
+            this.removeSelectorToolStripMenuItem.Click += new System.EventHandler(this.removeSelectorToolStripMenuItem_Click);
+            // 
+            // addGroupToolStripMenuItem
+            // 
+            this.addGroupToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addGroupToolStripMenuItem.Name = "addGroupToolStripMenuItem";
+            this.addGroupToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addGroupToolStripMenuItem.Text = "Add Group";
+            this.addGroupToolStripMenuItem.Click += new System.EventHandler(this.addGroupToolStripMenuItem_Click);
+            // 
+            // removeGroupToolStripMenuItem
+            // 
+            this.removeGroupToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeGroupToolStripMenuItem.Name = "removeGroupToolStripMenuItem";
+            this.removeGroupToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeGroupToolStripMenuItem.Text = "Remove Group";
+            this.removeGroupToolStripMenuItem.Click += new System.EventHandler(this.removeGroupToolStripMenuItem_Click);
+            // 
             // addLootItemsToolStripMenuItem
             // 
             this.addLootItemsToolStripMenuItem.Name = "addLootItemsToolStripMenuItem";
@@ -759,7 +833,7 @@ namespace DayZeEditor
             this.CIngrdientGB.Controls.Add(this.CIDeleteRequiredCB);
             this.CIngrdientGB.Controls.Add(this.CIMinQuantityNUD);
             this.CIngrdientGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CIngrdientGB.Location = new System.Drawing.Point(3, 1911);
+            this.CIngrdientGB.Location = new System.Drawing.Point(1735, 319);
             this.CIngrdientGB.Name = "CIngrdientGB";
             this.CIngrdientGB.Size = new System.Drawing.Size(427, 241);
             this.CIngrdientGB.TabIndex = 283;
@@ -1365,7 +1439,7 @@ namespace DayZeEditor
             this.CRecipeGB.Controls.Add(this.label18);
             this.CRecipeGB.Controls.Add(this.CRAnimationLengthNUD);
             this.CRecipeGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CRecipeGB.Location = new System.Drawing.Point(3, 550);
+            this.CRecipeGB.Location = new System.Drawing.Point(436, 3);
             this.CRecipeGB.Name = "CRecipeGB";
             this.CRecipeGB.Size = new System.Drawing.Size(427, 124);
             this.CRecipeGB.TabIndex = 285;
@@ -1459,7 +1533,7 @@ namespace DayZeEditor
             this.CRSLGB.Controls.Add(this.label21);
             this.CRSLGB.Controls.Add(this.CRSLrequiredlevelNUD);
             this.CRSLGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CRSLGB.Location = new System.Drawing.Point(3, 2158);
+            this.CRSLGB.Location = new System.Drawing.Point(2168, 3);
             this.CRSLGB.Name = "CRSLGB";
             this.CRSLGB.Size = new System.Drawing.Size(427, 93);
             this.CRSLGB.TabIndex = 286;
@@ -1520,7 +1594,7 @@ namespace DayZeEditor
             this.CRSPGB.Controls.Add(this.label22);
             this.CRSPGB.Controls.Add(this.CRSPrequiredlevelNUD);
             this.CRSPGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CRSPGB.Location = new System.Drawing.Point(3, 2257);
+            this.CRSPGB.Location = new System.Drawing.Point(2168, 102);
             this.CRSPGB.Name = "CRSPGB";
             this.CRSPGB.Size = new System.Drawing.Size(427, 117);
             this.CRSPGB.TabIndex = 287;
@@ -1609,7 +1683,7 @@ namespace DayZeEditor
             this.SAGB.Controls.Add(this.SAActiveCB);
             this.SAGB.Controls.Add(this.SASpawnChanceNUD);
             this.SAGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SAGB.Location = new System.Drawing.Point(3, 1595);
+            this.SAGB.Location = new System.Drawing.Point(1735, 3);
             this.SAGB.Name = "SAGB";
             this.SAGB.Size = new System.Drawing.Size(427, 310);
             this.SAGB.TabIndex = 284;
@@ -1817,7 +1891,7 @@ namespace DayZeEditor
             this.SADGB.Controls.Add(this.label38);
             this.SADGB.Controls.Add(this.SADPowerNUD);
             this.SADGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SADGB.Location = new System.Drawing.Point(3, 1438);
+            this.SADGB.Location = new System.Drawing.Point(1302, 262);
             this.SADGB.Name = "SADGB";
             this.SADGB.Size = new System.Drawing.Size(427, 151);
             this.SADGB.TabIndex = 288;
@@ -1966,7 +2040,7 @@ namespace DayZeEditor
             this.SSLGB.Controls.Add(this.label37);
             this.SSLGB.Controls.Add(this.SSLdisplayNameTB);
             this.SSLGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SSLGB.Location = new System.Drawing.Point(3, 680);
+            this.SSLGB.Location = new System.Drawing.Point(436, 133);
             this.SSLGB.Name = "SSLGB";
             this.SSLGB.Size = new System.Drawing.Size(427, 78);
             this.SSLGB.TabIndex = 286;
@@ -2059,7 +2133,7 @@ namespace DayZeEditor
             this.SCLItemsGB.Controls.Add(this.SCLItemsammoTypeTB);
             this.SCLItemsGB.Controls.Add(this.SCLItemscostNUD);
             this.SCLItemsGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SCLItemsGB.Location = new System.Drawing.Point(3, 764);
+            this.SCLItemsGB.Location = new System.Drawing.Point(869, 3);
             this.SCLItemsGB.Name = "SCLItemsGB";
             this.SCLItemsGB.Size = new System.Drawing.Size(427, 409);
             this.SCLItemsGB.TabIndex = 289;
@@ -2561,7 +2635,7 @@ namespace DayZeEditor
             this.SCLSelectorGB.Controls.Add(this.SCLSelectortypeCB);
             this.SCLSelectorGB.Controls.Add(this.label58);
             this.SCLSelectorGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SCLSelectorGB.Location = new System.Drawing.Point(3, 1179);
+            this.SCLSelectorGB.Location = new System.Drawing.Point(1302, 3);
             this.SCLSelectorGB.Name = "SCLSelectorGB";
             this.SCLSelectorGB.Size = new System.Drawing.Size(427, 192);
             this.SCLSelectorGB.TabIndex = 288;
@@ -2747,7 +2821,7 @@ namespace DayZeEditor
             this.SCLGroupGB.Controls.Add(this.SCLGroupcostNUD);
             this.SCLGroupGB.Controls.Add(this.label61);
             this.SCLGroupGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SCLGroupGB.Location = new System.Drawing.Point(3, 1377);
+            this.SCLGroupGB.Location = new System.Drawing.Point(1302, 201);
             this.SCLGroupGB.Name = "SCLGroupGB";
             this.SCLGroupGB.Size = new System.Drawing.Size(427, 55);
             this.SCLGroupGB.TabIndex = 289;
@@ -2975,6 +3049,9 @@ namespace DayZeEditor
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Controls.Add(this.SCLConditionCustomConditionGB);
             this.flowLayoutPanel1.Controls.Add(this.SCLtimeoutGB);
@@ -2993,6 +3070,7 @@ namespace DayZeEditor
             this.flowLayoutPanel1.Controls.Add(this.CONDExtraVariablesGB);
             this.flowLayoutPanel1.Controls.Add(this.CONDExtraVariablesMathGB);
             this.flowLayoutPanel1.Controls.Add(this.CONDExtraOptionsGB);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(404, 48);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(804, 596);
@@ -3008,7 +3086,7 @@ namespace DayZeEditor
             this.CONDExtraVariablesGB.Controls.Add(this.CONDExtraVariablesvalueNUD);
             this.CONDExtraVariablesGB.Controls.Add(this.CONDExtraVariablesnameTB);
             this.CONDExtraVariablesGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CONDExtraVariablesGB.Location = new System.Drawing.Point(3, 2380);
+            this.CONDExtraVariablesGB.Location = new System.Drawing.Point(2168, 225);
             this.CONDExtraVariablesGB.Name = "CONDExtraVariablesGB";
             this.CONDExtraVariablesGB.Size = new System.Drawing.Size(427, 104);
             this.CONDExtraVariablesGB.TabIndex = 291;
@@ -3114,7 +3192,7 @@ namespace DayZeEditor
             this.CONDExtraVariablesMathGB.Controls.Add(this.CONDExtraMathvalueNUD);
             this.CONDExtraVariablesMathGB.Controls.Add(this.CONDExtraMathnameTB);
             this.CONDExtraVariablesMathGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CONDExtraVariablesMathGB.Location = new System.Drawing.Point(3, 2490);
+            this.CONDExtraVariablesMathGB.Location = new System.Drawing.Point(2168, 335);
             this.CONDExtraVariablesMathGB.Name = "CONDExtraVariablesMathGB";
             this.CONDExtraVariablesMathGB.Size = new System.Drawing.Size(427, 151);
             this.CONDExtraVariablesMathGB.TabIndex = 292;
@@ -3302,7 +3380,7 @@ namespace DayZeEditor
             this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionshideOwnerWhenFalseCB);
             this.CONDExtraOptionsGB.Controls.Add(this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB);
             this.CONDExtraOptionsGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CONDExtraOptionsGB.Location = new System.Drawing.Point(3, 2647);
+            this.CONDExtraOptionsGB.Location = new System.Drawing.Point(2601, 3);
             this.CONDExtraOptionsGB.Name = "CONDExtraOptionsGB";
             this.CONDExtraOptionsGB.Size = new System.Drawing.Size(427, 128);
             this.CONDExtraOptionsGB.TabIndex = 290;
@@ -3435,78 +3513,88 @@ namespace DayZeEditor
             this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.UseVisualStyleBackColor = true;
             this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.CheckedChanged += new System.EventHandler(this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB_CheckedChanged);
             // 
-            // addItemsToolStripMenuItem
+            // label77
             // 
-            this.addItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.addItemsToolStripMenuItem.Name = "addItemsToolStripMenuItem";
-            this.addItemsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.addItemsToolStripMenuItem.Text = "Add Items";
-            this.addItemsToolStripMenuItem.Click += new System.EventHandler(this.addItemsToolStripMenuItem_Click);
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(156, 3);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(0, 13);
+            this.label77.TabIndex = 126;
             // 
-            // removeItemsToolStripMenuItem
+            // checkBox9
             // 
-            this.removeItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.removeItemsToolStripMenuItem.Name = "removeItemsToolStripMenuItem";
-            this.removeItemsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.removeItemsToolStripMenuItem.Text = "Remove Items";
-            this.removeItemsToolStripMenuItem.Click += new System.EventHandler(this.removeItemsToolStripMenuItem_Click);
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox9.Location = new System.Drawing.Point(295, 4);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(67, 17);
+            this.checkBox9.TabIndex = 125;
+            this.checkBox9.Text = "Show All";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
             // 
-            // addItemToolStripMenuItem
+            // panelEx1
             // 
-            this.addItemToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.addItemToolStripMenuItem.Name = "addItemToolStripMenuItem";
-            this.addItemToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.addItemToolStripMenuItem.Text = "Add Item";
-            this.addItemToolStripMenuItem.Click += new System.EventHandler(this.addItemToolStripMenuItem_Click);
+            this.panelEx1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelEx1.AutoScroll = true;
+            this.panelEx1.Controls.Add(this.pictureBox1);
+            this.panelEx1.Location = new System.Drawing.Point(0, 26);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Size = new System.Drawing.Size(804, 570);
+            this.panelEx1.TabIndex = 123;
             // 
-            // removeItemToolStripMenuItem
+            // pictureBox1
             // 
-            this.removeItemToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.removeItemToolStripMenuItem.Name = "removeItemToolStripMenuItem";
-            this.removeItemToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.removeItemToolStripMenuItem.Text = "Remove Item";
-            this.removeItemToolStripMenuItem.Click += new System.EventHandler(this.removeItemToolStripMenuItem_Click);
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(512, 512);
+            this.pictureBox1.TabIndex = 62;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);
             // 
-            // addSelectorToolStripMenuItem
+            // trackBar1
             // 
-            this.addSelectorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.addSelectorToolStripMenuItem.Name = "addSelectorToolStripMenuItem";
-            this.addSelectorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.addSelectorToolStripMenuItem.Text = "Add Selector";
-            this.addSelectorToolStripMenuItem.Click += new System.EventHandler(this.addSelectorToolStripMenuItem_Click);
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.LargeChange = 1;
+            this.trackBar1.Location = new System.Drawing.Point(3, -1);
+            this.trackBar1.Maximum = 20;
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(134, 24);
+            this.trackBar1.TabIndex = 124;
+            this.trackBar1.Value = 1;
+            this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseUp);
             // 
-            // removeSelectorToolStripMenuItem
+            // MapPanel
             // 
-            this.removeSelectorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.removeSelectorToolStripMenuItem.Name = "removeSelectorToolStripMenuItem";
-            this.removeSelectorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.removeSelectorToolStripMenuItem.Text = "Remove Selector";
-            this.removeSelectorToolStripMenuItem.Click += new System.EventHandler(this.removeSelectorToolStripMenuItem_Click);
-            // 
-            // addGroupToolStripMenuItem
-            // 
-            this.addGroupToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.addGroupToolStripMenuItem.Name = "addGroupToolStripMenuItem";
-            this.addGroupToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.addGroupToolStripMenuItem.Text = "Add Group";
-            this.addGroupToolStripMenuItem.Click += new System.EventHandler(this.addGroupToolStripMenuItem_Click);
-            // 
-            // removeGroupToolStripMenuItem
-            // 
-            this.removeGroupToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.removeGroupToolStripMenuItem.Name = "removeGroupToolStripMenuItem";
-            this.removeGroupToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.removeGroupToolStripMenuItem.Text = "Remove Group";
-            this.removeGroupToolStripMenuItem.Click += new System.EventHandler(this.removeGroupToolStripMenuItem_Click);
+            this.MapPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MapPanel.Controls.Add(this.panelEx1);
+            this.MapPanel.Controls.Add(this.label77);
+            this.MapPanel.Controls.Add(this.trackBar1);
+            this.MapPanel.Controls.Add(this.checkBox9);
+            this.MapPanel.Location = new System.Drawing.Point(404, 48);
+            this.MapPanel.Name = "MapPanel";
+            this.MapPanel.Size = new System.Drawing.Size(804, 596);
+            this.MapPanel.TabIndex = 291;
             // 
             // TerjeManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1220, 656);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.TerjeTV);
             this.Controls.Add(this.darkToolStrip21);
+            this.Controls.Add(this.MapPanel);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TerjeManager";
             this.Text = "BaseBuildingPlus";
@@ -3585,6 +3673,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathvalueNUD)).EndInit();
             this.CONDExtraOptionsGB.ResumeLayout(false);
             this.CONDExtraOptionsGB.PerformLayout();
+            this.panelEx1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.MapPanel.ResumeLayout(false);
+            this.MapPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3855,5 +3948,11 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem removeSelectorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addGroupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeGroupToolStripMenuItem;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.CheckBox checkBox9;
+        private TreeViewMS.PanelEx panelEx1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Panel MapPanel;
     }
 }
