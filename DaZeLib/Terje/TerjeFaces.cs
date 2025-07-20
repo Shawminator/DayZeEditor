@@ -30,6 +30,10 @@ namespace DayZeLib
     {
         private string classnameField;
         private string iconField;
+        private string backgroundField;
+        private bool backgroundFieldSpecified;
+
+        private TerjeConditions ConditionsField;
 
         [XmlAttributeAttribute()]
         public string classname
@@ -43,6 +47,32 @@ namespace DayZeLib
         {
             get => iconField;
             set => iconField = value;
+        }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string background
+        {
+            get { return this.backgroundField; }
+            set { this.backgroundField = value; }
+        }
+
+        [System.Xml.Serialization.XmlIgnore]
+        public bool backgroundSpecified
+        {
+            get { return this.backgroundFieldSpecified; }
+            set { this.backgroundFieldSpecified = value; }
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute("Conditions")]
+        public TerjeConditions Conditions
+        {
+            get
+            {
+                return this.ConditionsField;
+            }
+            set
+            {
+                this.ConditionsField = value;
+            }
         }
     }
 }

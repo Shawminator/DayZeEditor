@@ -33,37 +33,48 @@ namespace DayZeLib
     [XmlTypeAttribute(AnonymousType = true)]
     public partial class TerjeRespawn
     {
+        private string idField;
+        private string displayNameField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string id
+        {
+            get => idField;
+            set => idField = value;
+        }
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string displayName
+        {
+            get => displayNameField;
+            set => displayNameField = value;
+        }
+
+
         private BindingList<TerjeRespawnPoint> pointsField;
         private BindingList<TerjeRespawnObject> objectsField;
         private TerjeDeathPoint DeathPointField;
         private TerjeRespawnOptions optionsField;
         private TerjeConditions ConditionsField;
 
-        private string idField;
-        private string displayNameField;
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("Point")]
         public BindingList<TerjeRespawnPoint> Points
         {
             get => pointsField;
             set => pointsField = value;
         }
-        /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("Object")]
         public BindingList<TerjeRespawnObject> Objects
         {
             get => objectsField;
             set => objectsField = value;
         }
-        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("DeathPoint")]
         public TerjeDeathPoint DeathPoint
         {
             get => DeathPointField;
             set => DeathPointField = value;
         }
-        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Options")]
         public TerjeRespawnOptions Options
         {
@@ -81,22 +92,6 @@ namespace DayZeLib
             {
                 this.ConditionsField = value;
             }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string id
-        {
-            get => idField;
-            set => idField = value;
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string displayName
-        {
-            get => displayNameField;
-            set => displayNameField = value;
         }
     }
 
@@ -242,12 +237,19 @@ namespace DayZeLib
     public partial class TerjeDeathPoint
     {
         private int requireBodyField;
+        private bool requireBodyFieldSpecified;
         
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int requireBody
         {
             get => requireBodyField;
             set => requireBodyField = value;
+        }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool requireBodySpecified
+        {
+            get => requireBodyFieldSpecified;
+            set => requireBodyFieldSpecified = value;
         }
     }
 

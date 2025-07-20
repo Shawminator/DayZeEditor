@@ -36,8 +36,8 @@ namespace DayZeLib
         public int LogAIHitBy { get; set; }
         public int LogAIKilled { get; set; }
 
-        public int EnableZombieVehicleAttackHandler;
-        public int EnableZombieVehicleAttackPhysics;
+        public int EnableZombieVehicleAttackHandler { get; set; }
+        public int EnableZombieVehicleAttackPhysics { get; set; }
 
         public bool checkver()
         {
@@ -71,7 +71,7 @@ namespace DayZeLib
             LogAIHitBy = 1;
             LogAIKilled = 1;
             EnableZombieVehicleAttackHandler = 0;
-            EnableZombieVehicleAttackPhysics - 0;
+            EnableZombieVehicleAttackPhysics = 0;
         }
     }
 

@@ -2368,6 +2368,10 @@ namespace DayZeEditor
             CanRecruitFriendlyCB.Checked = AISettings.CanRecruitFriendly == 1 ? true : false;
             LogAIHitByCB.Checked = AISettings.LogAIHitBy == 1 ? true : false;
             LogAIKilledCB.Checked = AISettings.LogAIKilled == 1 ? true : false;
+
+            EnableZombieVehicleAttackHandlerCB.Checked = AISettings.EnableZombieVehicleAttackHandler == 1 ? true : false;
+            EnableZombieVehicleAttackPhysicsCB.Checked = AISettings.EnableZombieVehicleAttackPhysics == 1 ? true : false;
+
             AISettingsAdminsLB.DisplayMember = "DisplayName";
             AISettingsAdminsLB.ValueMember = "Value";
             AISettingsAdminsLB.DataSource = AISettings.Admins;
@@ -2511,6 +2515,18 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             AISettings.NoiseInvestigationDistanceLimit = NoiseInvestigationDistanceLimitNUD.Value;
+            AISettings.isDirty = true;
+        }
+        private void EnableZombieVehicleAttackHandlerCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.EnableZombieVehicleAttackHandler = EnableZombieVehicleAttackHandlerCB.Checked == true ? 1 : 0;
+            AISettings.isDirty = true;
+        }
+        private void EnableZombieVehicleAttackPhysicsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.EnableZombieVehicleAttackPhysics = EnableZombieVehicleAttackPhysicsCB.Checked == true ? 1 : 0;
             AISettings.isDirty = true;
         }
         #endregion AISettings
@@ -4734,6 +4750,7 @@ namespace DayZeEditor
         {
             ((CheckedListBox)sender).ClearSelected();
         }
+
 
     }
 }

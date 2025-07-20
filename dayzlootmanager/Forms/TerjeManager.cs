@@ -1,11 +1,6 @@
-﻿using BIS.Core;
-using DarkUI.Controls;
-using DarkUI.Forms;
+﻿using DarkUI.Forms;
 using DayZeLib;
-using FastColoredTextBoxNS;
-using Microsoft.VisualBasic;
-using OpenTK.Graphics.OpenGL;
-using PVZ.DarkHorde.Other.EventManager;
+using SevenZipExtractor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,17 +9,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace DayZeEditor
 {
@@ -44,6 +31,7 @@ namespace DayZeEditor
         public TerjeFaces TerjeFaces;
         public TerjeGeneral TerjeGeneral;
         public TerjeScriptableAreas TerjeScriptableAreas;
+        public MapData MapData { get; private set; }
         public TerjeCFGFIle currentCFGFIle { get; set; }
         public TerjeCFGLine currentCFGline { get; set; }
         private Dictionary<string, List<ComboBoxItem>> perkMap = new Dictionary<string, List<ComboBoxItem>>();
@@ -74,6 +62,9 @@ namespace DayZeEditor
             ModTypes = currentproject.getModList();
 
             useraction = false;
+
+            doubleClickTimer.Interval = 100;
+            doubleClickTimer.Tick += new EventHandler(doubleClickTimer_Tick);
 
             LoadSkillsAndPerksFromSingleFile();
             PopulateSkillsCheckBoxes(SAFLP);
@@ -214,6 +205,7 @@ namespace DayZeEditor
 
             SetToolTips();
             LoadCFGtoTreeview();
+            MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz", currentproject.MapSize);
             pictureBox1.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
             pictureBox1.Size = new Size(currentproject.MapSize, currentproject.MapSize);
             pictureBox1.Paint += new PaintEventHandler(DrawSpawns);
@@ -225,6 +217,12 @@ namespace DayZeEditor
         public int terjeSpawnScale = 1;
         private Point _mouseLastPosition;
         private Point _newscrollPosition;
+        private Rectangle doubleClickRectangle = new Rectangle();
+        private Timer doubleClickTimer = new Timer();
+        private bool isFirstClick = true;
+        private bool isDoubleClick = false;
+        private int milliseconds = 0;
+        private MouseEventArgs mouseeventargs;
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
             terjeSpawnScale = trackBar1.Value;
@@ -243,7 +241,7 @@ namespace DayZeEditor
         }
         private void DrawSpawns(object sender, PaintEventArgs e)
         {
-            if(checkBox9.Checked)
+            if (checkBox9.Checked)
             {
                 if (currentTreeNode.Tag is TerjeRespawnPoint)
                 {
@@ -256,7 +254,7 @@ namespace DayZeEditor
                         if (point.posSpecified)
                         {
                             centerX = (int)(Math.Round(Convert.ToSingle(point.pos.Split(',')[0])) * scalevalue);
-                            centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Convert.ToSingle(point.pos.Split(' ')[1]), 0) * scalevalue);
+                            centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Convert.ToSingle(point.pos.Split(',')[1]), 0) * scalevalue);
 
                         }
                         else
@@ -272,38 +270,76 @@ namespace DayZeEditor
                         getCircle(e.Graphics, pen, center, eventradius);
                     }
                 }
-                else if (currentTreeNode.Tag is BindingList<TerjeRespawnPoint>)
+                else if (currentTreeNode.Parent.Tag is TerjeScriptableArea)
                 {
-                    foreach (TerjeRespawnPoint point in currentTreeNode.Tag as BindingList<TerjeRespawnPoint>)
+                    TerjeScriptableArea area = currentTreeNode.Parent.Tag as TerjeScriptableArea;
+                    foreach(TerjeScriptableArea areas in TerjeScriptableAreas.Area)
                     {
                         float scalevalue = terjeSpawnScale * 0.05f;
                         int centerX = 0;
                         int centerY = 0;
-                        int eventradius = (int)(Math.Round(5f, 0) * scalevalue);
-                        if (point.posSpecified)
-                        {
-                            centerX = (int)(Math.Round(Convert.ToSingle(point.pos.Split(',')[0])) * scalevalue);
-                            centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Convert.ToSingle(point.pos.Split(' ')[1]), 0) * scalevalue);
-
-                        }
+                        int eventradius = 0;
+                        if (areas.Data.OuterRadiusSpecified)
+                            eventradius = (int)(areas.Data.OuterRadius * scalevalue);
                         else
-                        {
-
-                        }
+                            eventradius = (int)(areas.Data.Radius * scalevalue);
+                        centerX = (int)(Math.Round(areas.PositionVec3.X) * scalevalue);
+                        centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(areas.PositionVec3.Z) * scalevalue);
                         Point center = new Point(centerX, centerY);
-                        Pen pen = new Pen(Color.Red, 4);
-                        if (currentTreeNode.Tag as TerjeRespawnPoint == point)
+                        Pen pen = new Pen(Color.Red, 2);
+                        if (area == areas)
                             pen.Color = Color.LimeGreen;
                         else
                             pen.Color = Color.Red;
                         getCircle(e.Graphics, pen, center, eventradius);
                     }
                 }
-                    
             }
             else
             {
+                if (currentTreeNode.Tag is TerjeRespawnPoint)
+                {
+                    TerjeRespawnPoint point = currentTreeNode.Tag as TerjeRespawnPoint;
+                    float scalevalue = terjeSpawnScale * 0.05f;
+                    int centerX = 0;
+                    int centerY = 0;
+                    int eventradius = (int)(Math.Round(5f, 0) * scalevalue);
+                    if (point.posSpecified)
+                    {
+                        centerX = (int)(Math.Round(Convert.ToSingle(point.pos.Split(',')[0])) * scalevalue);
+                        centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Convert.ToSingle(point.pos.Split(',')[1]), 0) * scalevalue);
 
+                    }
+                    else
+                    {
+
+                    }
+                    Point center = new Point(centerX, centerY);
+                    Pen pen = new Pen(Color.Red, 4);
+                    if (currentTreeNode.Tag as TerjeRespawnPoint == point)
+                        pen.Color = Color.LimeGreen;
+                    else
+                        pen.Color = Color.Red;
+                    getCircle(e.Graphics, pen, center, eventradius);
+                }
+                else if (currentTreeNode.Parent.Tag is TerjeScriptableArea)
+                {
+                    TerjeScriptableArea area = currentTreeNode.Parent.Tag as TerjeScriptableArea;
+
+                    float scalevalue = terjeSpawnScale * 0.05f;
+                    int centerX = 0;
+                    int centerY = 0;
+                    int eventradius = 0;
+                    if (area.Data.OuterRadiusSpecified)
+                        eventradius = (int)(area.Data.OuterRadius * scalevalue);
+                    else
+                        eventradius = (int)(area.Data.Radius * scalevalue);
+                    centerX = (int)(Math.Round(area.PositionVec3.X) * scalevalue);
+                    centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(area.PositionVec3.Z) * scalevalue);
+                    Point center = new Point(centerX, centerY);
+                    Pen pen = new Pen(Color.LimeGreen, 4);
+                    getCircle(e.Graphics, pen, center, eventradius);
+                }
             }
         }
         private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius)
@@ -329,6 +365,180 @@ namespace DayZeEditor
                 Cursor.Current = Cursors.SizeAll;
                 _mouseLastPosition = e.Location;
             }
+            else if (e.Button == MouseButtons.Left)
+            {
+                mouseeventargs = e;
+                // This is the first mouse click.
+                if (isFirstClick)
+                {
+                    isFirstClick = false;
+
+                    // Determine the location and size of the double click
+                    // rectangle area to draw around the cursor point.
+                    doubleClickRectangle = new Rectangle(
+                        e.X - (SystemInformation.DoubleClickSize.Width / 2),
+                        e.Y - (SystemInformation.DoubleClickSize.Height / 2),
+                        SystemInformation.DoubleClickSize.Width,
+                        SystemInformation.DoubleClickSize.Height);
+                    Invalidate();
+
+                    // Start the double click timer.
+                    doubleClickTimer.Start();
+                }
+
+                // This is the second mouse click.
+                else
+                {
+                    // Verify that the mouse click is within the double click
+                    // rectangle and is within the system-defined double
+                    // click period.
+                    if (doubleClickRectangle.Contains(e.Location) &&
+                        milliseconds < SystemInformation.DoubleClickTime)
+                    {
+                        isDoubleClick = true;
+                    }
+                }
+            }
+        }
+        void doubleClickTimer_Tick(object sender, EventArgs e)
+        {
+            milliseconds += 100;
+
+            // The timer has reached the double click time limit.
+            if (milliseconds >= SystemInformation.DoubleClickTime)
+            {
+                doubleClickTimer.Stop();
+
+                if (isDoubleClick)
+                {
+                    if (currentTreeNode.Tag is TerjeRespawnPoint)
+                    {
+                        Cursor.Current = Cursors.WaitCursor;
+                        TerjeRespawnPoint spoint = currentTreeNode.Tag as TerjeRespawnPoint;
+                        decimal scalevalue = terjeSpawnScale * (decimal)0.05;
+                        decimal mapsize = currentproject.MapSize;
+                        int newsize = (int)(mapsize * scalevalue);
+                        if (spoint.posSpecified)
+                        {
+                            spoint.pos = ((float)(Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4))).ToString() + "," + ((float)(Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4))).ToString();
+                            currentTreeNode.Text = spoint.pos;
+                        }
+                        else
+                        {
+                            spoint.x = (Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4));
+                            spoint.z = (Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4));
+                            if (spoint.ySpecified && MapData.FileExists)
+                            {
+                                spoint.y = (decimal)(MapData.gethieght((float)spoint.x, (float)spoint.z));
+                            }
+                        }
+
+                        Cursor.Current = Cursors.Default;
+                        TerjeRespawns.isDirty = true;
+                        pictureBox1.Invalidate();
+                    }
+                    else if (currentTreeNode.Parent.Tag is TerjeScriptableArea)
+                    {
+                        Cursor.Current = Cursors.WaitCursor;
+                        TerjeScriptableArea area = currentTreeNode.Parent.Tag as TerjeScriptableArea;
+                        decimal scalevalue = terjeSpawnScale * (decimal)0.05;
+                        decimal mapsize = currentproject.MapSize;
+                        int newsize = (int)(mapsize * scalevalue);
+                        area.PositionVec3.X = (float)(Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4));
+                        area.PositionVec3.Z = (float)(Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4));
+                        if (MapData.FileExists)
+                        {
+                            area.PositionVec3.Y = (float)((decimal)(MapData.gethieght(area.PositionVec3.X, area.PositionVec3.Z)));
+                        }
+
+                        Cursor.Current = Cursors.Default;
+                        TerjeScriptableAreas.isDirty = true;
+                        pictureBox1.Invalidate();
+                    }
+                }
+                else
+                {
+                    decimal scalevalue = terjeSpawnScale * (decimal)0.05;
+                    decimal mapsize = currentproject.MapSize;
+                    int newsize = (int)(mapsize * scalevalue);
+                    PointF pC = new PointF((float)Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4), (float)Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4));
+                    if (currentTreeNode.Tag is TerjeRespawnPoint)
+                    {
+                        TerjeRespawnPoint point = currentTreeNode.Tag as TerjeRespawnPoint;
+                        foreach (TerjeRespawnPoint waypoint in currentTreeNode.Parent.Tag as BindingList<TerjeRespawnPoint>)
+                        {
+                            float centerX = 0;
+                            float centerY = 0;
+                            if (point.posSpecified)
+                            {
+                                centerX = Convert.ToSingle(waypoint.pos.Split(',')[0]);
+                                centerY = Convert.ToSingle(waypoint.pos.Split(',')[1]);
+
+                            }
+                            else
+                            {
+                                centerX = Convert.ToSingle(waypoint.x);
+                                centerY = Convert.ToSingle(waypoint.y);
+                            }
+                            PointF pP = new PointF(centerX, centerY);
+                            if (IsWithinCircle(pC, pP, (float)5))
+                            {
+                                foreach (TreeNode node in currentTreeNode.Parent.Nodes)
+                                {
+                                    if (node.Tag as TerjeRespawnPoint == waypoint)
+                                    {
+                                        TerjeTV.SelectedNode = node;
+                                    }
+                                }
+
+                            }
+                            pictureBox1.Invalidate();
+                            continue;
+                        }
+                    }
+                    else if (currentTreeNode.Parent.Tag is TerjeScriptableArea)
+                    {
+                        foreach (TerjeScriptableArea waypoints in TerjeScriptableAreas.Area)
+                        {
+                            PointF pP = new PointF((float)waypoints.PositionVec3.X, (float)waypoints.PositionVec3.Z);
+                            int eventradius = 0;
+                            if (waypoints.Data.OuterRadiusSpecified)
+                                eventradius = (int)(waypoints.Data.OuterRadius);
+                            else
+                                eventradius = (int)(waypoints.Data.Radius);
+                            if (IsWithinCircle(pC, pP, (float)eventradius))
+                            {
+                                foreach (TreeNode node in currentTreeNode.Parent.Parent.Nodes)
+                                {
+                                    if (node.Tag as TerjeScriptableArea == waypoints)
+                                    {
+                                        TerjeTV.SelectedNode = node.Nodes[0];
+                                    }
+                                }
+                                pictureBox1.Invalidate();
+                                continue;
+                            }
+                        }
+                    }
+                }
+
+                // Allow the MouseDown event handler to process clicks again.
+                isFirstClick = true;
+                isDoubleClick = false;
+                milliseconds = 0;
+            }
+        }
+        public bool IsWithinCircle(PointF pC, PointF pP, Single fRadius)
+        {
+            return Distance(pC, pP) <= fRadius;
+        }
+        public Single Distance(PointF p1, PointF p2)
+        {
+            Single dX = p1.X - p2.X;
+            Single dY = p1.Y - p2.Y;
+            Single multi = dX * dX + dY * dY;
+            Single dist = (Single)Math.Round((Single)Math.Sqrt(multi), 3);
+            return (Single)dist;
         }
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -417,7 +627,6 @@ namespace DayZeEditor
             pictureBox1.Invalidate();
         }
 
-
         private void SetToolTips()
         {
             var toolTips = new Dictionary<Control, string>
@@ -452,7 +661,6 @@ namespace DayZeEditor
             }
 
         }
-
         private void LoadSkillsAndPerksFromSingleFile()
         {
             var skills = new List<ComboBoxItem>();
@@ -618,10 +826,20 @@ namespace DayZeEditor
                 };
                 foreach(TerjeFace face in TerjeFaces.Face)
                 {
-                    TerjeFacesNode.Nodes.Add(new TreeNode(face.classname)
+                    TreeNode faceNode = new TreeNode(face.classname)
                     {
                         Tag = face
-                    });
+                    };
+                    if (face.Conditions != null)
+                    {
+                        TreeNode SpawnConditionsNode = new TreeNode("Conditions")
+                        {
+                            Tag = face.Conditions
+                        };
+                        getConditionNodes(face.Conditions, SpawnConditionsNode);
+                        faceNode.Nodes.Add(SpawnConditionsNode);
+                    }
+                    TerjeFacesNode.Nodes.Add(faceNode);
                 }
                 rootNode.Nodes.Add(TerjeFacesNode);
             }
@@ -643,7 +861,7 @@ namespace DayZeEditor
                     {
                         TreeNode propertyNode = new TreeNode(property.Name)
                         {
-                            Tag = value
+                            Tag = property.Name
                         };
                         if (value is TerjeValueString)
                         {
@@ -821,33 +1039,6 @@ namespace DayZeEditor
             {
                 Tag = ta
             };
-            if(ta.Options != null)
-            {
-                TreeNode SpawnOptionsNode = new TreeNode("Options")
-                {
-                    Tag = ta.Options
-                };
-                PropertyInfo[] properties = typeof(TerjeRespawnOptions).GetProperties();
-                foreach (var property in properties)
-                {
-                    var value = property.GetValue(ta.Options);
-                    if (value != null)
-                    {
-                        TreeNode propertyNode = new TreeNode(property.Name)
-                        {
-                            Tag = value
-                        };
-
-                        SpawnOptionsNode.Nodes.Add(propertyNode);
-                    }
-                    else if (value != null)
-                    {
-                        Console.WriteLine($"Property {property.Name} has a null value.");
-                    }
-                }
-
-                Spawnnode.Nodes.Add(SpawnOptionsNode);
-            }
             if(ta.Points.Count > 0)
             {
                 TreeNode SpawnPointsNode = new TreeNode("Points")
@@ -880,7 +1071,42 @@ namespace DayZeEditor
                 }
                 Spawnnode.Nodes.Add(SpawnObjectNode);
             }
-            if(ta.Conditions != null)
+            if(ta.DeathPoint != null)
+            {
+                TreeNode SpawnDeathPointNode = new TreeNode("Death Point")
+                {
+                    Tag = ta.DeathPoint
+                };
+                Spawnnode.Nodes.Add(SpawnDeathPointNode);
+            }
+            if (ta.Options != null)
+            {
+                TreeNode SpawnOptionsNode = new TreeNode("Options")
+                {
+                    Tag = ta.Options
+                };
+                PropertyInfo[] properties = typeof(TerjeRespawnOptions).GetProperties();
+                foreach (var property in properties)
+                {
+                    var value = property.GetValue(ta.Options);
+                    if (value != null)
+                    {
+                        TreeNode propertyNode = new TreeNode(property.Name)
+                        {
+                            Tag = value
+                        };
+
+                        SpawnOptionsNode.Nodes.Add(propertyNode);
+                    }
+                    else if (value != null)
+                    {
+                        Console.WriteLine($"Property {property.Name} has a null value.");
+                    }
+                }
+
+                Spawnnode.Nodes.Add(SpawnOptionsNode);
+            }
+            if (ta.Conditions != null)
             {
                 TreeNode SpawnConditionsNode = new TreeNode("Conditions")
                 {
@@ -898,6 +1124,11 @@ namespace DayZeEditor
             {
                 Tag = ta
             };
+            TreeNode pos = new TreeNode("Map View")
+            {
+                Tag = "MapView"
+            };
+            na.Nodes.Add(pos);
             na.Nodes.Add(new TreeNode("Data")
             {
                 Tag = ta.Data
@@ -1638,12 +1869,35 @@ namespace DayZeEditor
             else if (e.Node.Tag is TerjeRespawnPoint)
             {
                 MapPanel.Visible = true;
+                pictureBox1.Invalidate();
+            }
+            else  if (e.Node.Tag.ToString() == "MapView")
+            {
+                MapPanel.Visible = true;
+                pictureBox1.Invalidate();
             }
             else if (e.Node.Tag is BindingList<TerjeRespawnPoint>)
             {
                 MapPanel.Visible = true;
             }
-
+            else if (e.Node.Tag is TerjeValueString)
+            {
+                TerjeValueString vs = e.Node.Tag as TerjeValueString;
+                groupBox1.Visible = true;
+                CommentRTB.Text = "";
+                groupBox1.Text = "String";
+                StringTB.Visible = true;
+                StringTB.Text = vs.value.ToString();
+            }
+            else if (e.Node.Tag is TerjeFace)
+            {
+                SCFaceGB.Visible = true;
+                TerjeFace face = currentTreeNode.Tag as TerjeFace;
+                SCFaceclassnameTB.Text = face.classname;
+                SCFaceiconTB.Text = face.icon;
+                if (SCFacebackgroundSpecifiedCB.Checked = SCFacebackgroundTB.Visible = face.backgroundSpecified)
+                    SCFacebackgroundTB.Text = face.background;
+            }
                 useraction = true;
         }
         public ComboBoxItem SelectComboBoxByValue(ComboBox comboBox, string value)
@@ -1771,6 +2025,12 @@ namespace DayZeEditor
                         addConditionsToolStripMenuItem.Visible = true;
                     removeLoadoutToolStripMenuItem.Visible = true;
                 }
+                else if (e.Node.Tag is TerjeFace)
+                {
+                    TerjeFace face = e.Node.Tag as TerjeFace;
+                    if (face.Conditions == null)
+                        addConditionsToolStripMenuItem.Visible = true;
+                }
                 contextMenuStrip1.Show(Cursor.Position);
             }
             useraction = true;
@@ -1792,16 +2052,33 @@ namespace DayZeEditor
         private void IntNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentCFGline.cfgVariable = (int)IntNUD.Value;
-            currentTreeNode.Text = $"{currentCFGline.cfgvariablename} = {currentCFGline.cfgVariable.ToString()}";
-            currentCFGFIle.isDirty = true;
+            if (currentTreeNode.Tag is TerjeCFGLine)
+            {
+                currentCFGline.cfgVariable = (int)IntNUD.Value;
+                currentTreeNode.Text = $"{currentCFGline.cfgvariablename} = {currentCFGline.cfgVariable.ToString()}";
+                currentCFGFIle.isDirty = true;
+            }
+            else if (currentTreeNode.Tag is TerjeValueString)
+            {
+
+            }
         }
         private void StringTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentCFGline.cfgVariable = StringTB.Text;
-            currentTreeNode.Text = $"{currentCFGline.cfgvariablename} = {currentCFGline.cfgVariable.ToString()}";
-            currentCFGFIle.isDirty = true;
+            if (currentTreeNode.Tag is TerjeCFGLine)
+            {
+                currentCFGline.cfgVariable = StringTB.Text;
+                currentTreeNode.Text = $"{currentCFGline.cfgvariablename} = {currentCFGline.cfgVariable.ToString()}";
+                currentCFGFIle.isDirty = true;
+            }
+            else if (currentTreeNode.Tag is TerjeValueString)
+            {
+                TerjeValueString sv = currentTreeNode.Tag as TerjeValueString;
+                sv.value = StringTB.Text;
+                currentTreeNode.Text = $"{sv.value}";
+                TerjeGeneral.isDirty = true;
+            }
         }
         private void addNewCraftingRecipeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2209,12 +2486,7 @@ namespace DayZeEditor
                         Tag = terjeCraftingSpecificPlayer
                     };
                     currentTreeNode.Nodes.Add(newTN);
-                    if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe)
-                        TerjeCraftingFiles.isDirty = true;
-                    else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout)
-                        TerjeLoadouts.isDirty = true;
-                    else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn)
-                        TerjeLoadouts.isDirty = true;
+                    SetCorrectFileasDirty();
                     currentTreeNode.Expand();
                     TerjeTV.SelectedNode = newTN;
                     
@@ -2235,13 +2507,8 @@ namespace DayZeEditor
             {
                 TerjeSpecificPlayers SP = currentTreeNode.Parent.Tag as TerjeSpecificPlayers;
                 SP.SpecificPlayer.Remove(currentTreeNode.Tag as TerjeSpecificPlayer);
-                
-                if (currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                    TerjeCraftingFiles.isDirty = true;
-                else if (currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                    TerjeLoadouts.isDirty = true;
-                else if (currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                    TerjeRespawns.isDirty = true;
+
+                SetCorrectFileasDirty();
 
                 currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
             }
@@ -2275,24 +2542,14 @@ namespace DayZeEditor
             TerjeSkillLevel SL = currentTreeNode.Tag as TerjeSkillLevel;
             var selectedSkill = CRSLskillIdCB.SelectedItem as ComboBoxItem;
             SL.skillId = selectedSkill.Value;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CRSLRequiredlevelNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeSkillLevel SL = currentTreeNode.Tag as TerjeSkillLevel;
             SL.requiredLevel = (int)CRSLrequiredlevelNUD.Value;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void addCustomConditionToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2777,26 +3034,22 @@ namespace DayZeEditor
                             break;
                     }
                 }
-                if (currentTreeNode.Parent.Tag is TerjeRecipe)
-                    TerjeCraftingFiles.isDirty = true;
-                else if (currentTreeNode.Parent.Tag is TerjeLoadout)
-                    TerjeLoadouts.isDirty = true;
-                else if (currentTreeNode.Parent.Tag is TerjeRespawn)
-                    TerjeRespawns.isDirty = true;
+                SetCorrectFileasDirty();
             }
         }
         private void removeConditionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TerjeConditions condition = currentTreeNode.Parent.Tag as TerjeConditions;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
-            
-            condition.items.Remove(currentTreeNode.Tag);
-           
+            if (currentTreeNode.Parent.Tag is TerjeConditions)
+            {
+                TerjeConditions condition = currentTreeNode.Parent.Tag as TerjeConditions;
+                condition.items.Remove(currentTreeNode.Tag);
+            }
+            else if (currentTreeNode.Parent.Tag is TerjeSpecialConditions)
+            {
+                TerjeSpecialConditions sconditions = currentTreeNode.Parent.Tag as TerjeSpecialConditions;
+                sconditions.Items.Remove(currentTreeNode.Tag);
+            }
+            SetCorrectFileasDirty();
             currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
         }
         private void CRSPSkillIDCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -2819,6 +3072,8 @@ namespace DayZeEditor
                 TerjeLoadouts.isDirty = true;
             else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn)
                 TerjeRespawns.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeFace)
+                TerjeFaces.isDirty = true;
         }
         private void CRSPPerkIDCB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2832,6 +3087,8 @@ namespace DayZeEditor
                 TerjeLoadouts.isDirty = true;
             else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn)
                 TerjeRespawns.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeFace)
+                TerjeFaces.isDirty = true;
         }
         private void CRSPRequiredlevelNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -2844,6 +3101,8 @@ namespace DayZeEditor
                 TerjeLoadouts.isDirty = true;
             else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn)
                 TerjeRespawns.isDirty = true;
+            else if (currentTreeNode.Parent.Parent.Tag is TerjeFace)
+                TerjeFaces.isDirty = true;
         }
         private void addConditionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2862,6 +3121,12 @@ namespace DayZeEditor
                 TerjeRecipe tr = currentTreeNode.Tag as TerjeRecipe;
                 tr.Conditions = tc;
                 TerjeCraftingFiles.isDirty = true;
+            }
+            else if (currentTreeNode.Tag is TerjeFace)
+            {
+                TerjeFace face = currentTreeNode.Tag as TerjeFace;
+                face.Conditions = tc;
+                TerjeFaces.isDirty = true;
             }
             TreeNode ConditionsNode = new TreeNode("Conditions")
             {
@@ -2892,6 +3157,12 @@ namespace DayZeEditor
                 TerjeRespawn respawn = currentTreeNode.Parent.Tag as TerjeRespawn;
                 respawn.Conditions = null;
                 TerjeRespawns.isDirty = true;
+            }
+            else if (currentTreeNode.Parent.Tag is TerjeFace)
+            {
+                TerjeFace face = currentTreeNode.Parent.Tag as TerjeFace;
+                face.Conditions = null;
+                TerjeFaces.isDirty = true;
             }
             currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
         }
@@ -3389,48 +3660,28 @@ namespace DayZeEditor
             if (!useraction) return;
             TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
             timeout.id = SCLTimeoutidTB.Text;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true; ;
+            SetCorrectFileasDirty();
         }
         private void SCLTimeouthoursNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
             timeout.hours = (int)SCLTimeouthoursNUD.Value;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void SCLTimeoutminutesNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
             timeout.minutes = (int)SCLTimeoutminutesNUD.Value;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void SCLTimeoutsecondsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeTimeout timeout = currentTreeNode.Tag as TerjeTimeout;
             timeout.seconds = (int)SCLTimeoutsecondsNUD.Value;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void SCLTimeoutSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3483,24 +3734,15 @@ namespace DayZeEditor
                     }
                 }
             }
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void SCLConditionCustomConditionclassnameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeCustomCondition custcon = currentTreeNode.Tag as TerjeCustomCondition;
             custcon.classname = SCLConditionCustomConditionclassnameTB.Text;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
+
         }
         private void addNewLoadoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3524,49 +3766,28 @@ namespace DayZeEditor
             if (!useraction) return;
             TerjeConditionBase condbase = currentTreeNode.Tag as TerjeConditionBase;
             condbase.hideOwnerWhenFalse = CONDExtraOptionshideOwnerWhenFalseCB.Checked == true?1:0;
-
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true; ;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraOptionsdisplayTextTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeConditionBase condbase = currentTreeNode.Tag as TerjeConditionBase;
             condbase.displayText = CONDExtraOptionsdisplayTextTB.Text;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraOptionssuccessTextTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeConditionBase condbase = currentTreeNode.Tag as TerjeConditionBase;
             condbase.successText = CONDExtraOptionssuccessTextTB.Text;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraOptionsfailTextTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             TerjeConditionBase condbase = currentTreeNode.Tag as TerjeConditionBase;
             condbase.failText = CONDExtraOptionsfailTextTB.Text;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraOptionshideOwnerWhenFalseSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3574,12 +3795,7 @@ namespace DayZeEditor
             TerjeConditionBase condition = currentTreeNode.Tag as TerjeConditionBase;
             condition.hideOwnerWhenFalseSpecified = CONDExtraOptionshideOwnerWhenFalseCB.Visible = CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.Checked;
             CONDExtraOptionshideOwnerWhenFalseCB.Checked = condition.hideOwnerWhenFalse == 1 ? true : false;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraOptionsdisplayTextSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3590,12 +3806,7 @@ namespace DayZeEditor
                 condition.displayText = CONDExtraOptionsdisplayTextTB.Text = "Change Me";
             else
                 CONDExtraOptionsdisplayTextTB.Text = condition.displayText;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraOptionssuccessTextSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3606,12 +3817,7 @@ namespace DayZeEditor
                 condition.successText = CONDExtraOptionssuccessTextTB.Text = "Change Me";
             else
                 CONDExtraOptionssuccessTextTB.Text = condition.successText;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraOptionsfailTextSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3622,12 +3828,7 @@ namespace DayZeEditor
                 condition.failText = CONDExtraOptionsfailTextTB.Text = "Change Me";
             else
                 CONDExtraOptionsfailTextTB.Text = condition.failText;
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraVariablesGB_Enter(object sender, EventArgs e)
         {
@@ -3646,12 +3847,7 @@ namespace DayZeEditor
                 TerjeComapreUserVariables condition = currentTreeNode.Tag as TerjeComapreUserVariables;
                 condition.name = CONDExtraVariablesnameTB.Text;
             }
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraVariablesvalueNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -3666,12 +3862,7 @@ namespace DayZeEditor
                 TerjeComapreUserVariables condition = currentTreeNode.Tag as TerjeComapreUserVariables;
                 condition.value = (int)CONDExtraVariablesvalueNUD.Value;
             }
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraVariablesPersistCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3686,12 +3877,7 @@ namespace DayZeEditor
                 TerjeComapreUserVariables condition = currentTreeNode.Tag as TerjeComapreUserVariables;
                 condition.persist = CONDExtraVariablesPersistCB.Checked == true ? 1 : 0;
             }
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraVariablesPersistSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3708,12 +3894,7 @@ namespace DayZeEditor
                 condition.persistSpecified = CONDExtraVariablesPersistCB.Visible = CONDExtraVariablesPersistSpecifiedCB.Checked;
                 CONDExtraVariablesPersistCB.Checked = condition.persist == 1 ? true : false;
             }
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraMathnameTB_TextChanged(object sender, EventArgs e)
         {
@@ -3721,13 +3902,7 @@ namespace DayZeEditor
 
             TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
             condition.name = CONDExtraVariablesnameTB.Text;
-
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
 
         }
         private void CONDExtraMathvalueNUD_ValueChanged(object sender, EventArgs e)
@@ -3736,13 +3911,7 @@ namespace DayZeEditor
 
             TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
             condition.value = (int)CONDExtraVariablesvalueNUD.Value;
-
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraMathminSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3750,13 +3919,7 @@ namespace DayZeEditor
             TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
             condition.minSpecified = CONDExtraMathminNUD.Visible = CONDExtraMathminSpecifiedCB.Checked;
             CONDExtraMathminNUD.Value = condition.min;
-
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraMathminNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -3764,13 +3927,7 @@ namespace DayZeEditor
 
             TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
             condition.min = (int)CONDExtraMathminNUD.Value;
-
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraMathmaxSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3778,13 +3935,7 @@ namespace DayZeEditor
             TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
             condition.maxSpecified = CONDExtraMathmaxNUD.Visible = CONDExtraMathmaxSpecifiedCB.Checked;
             CONDExtraMathmaxNUD.Value = condition.max;
-
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraMathmaxNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -3792,13 +3943,7 @@ namespace DayZeEditor
 
             TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
             condition.max = (int)CONDExtraMathmaxNUD.Value;
-
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraMathPersistCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3806,13 +3951,7 @@ namespace DayZeEditor
 
             TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
             condition.persist = CONDExtraMathPersistCB.Checked == true ? 1 : 0;
-
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void CONDExtraMathPersistSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3820,13 +3959,7 @@ namespace DayZeEditor
             TerjeMathWithUserVariable condition = currentTreeNode.Tag as TerjeMathWithUserVariable;
             condition.persistSpecified = CONDExtraMathPersistCB.Visible = CONDExtraMathPersistSpecifiedCB.Checked;
             CONDExtraMathPersistCB.Checked = condition.persist == 1 ? true : false;
-
-            if (currentTreeNode.Parent.Parent.Tag is TerjeRecipe || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRecipe)
-                TerjeCraftingFiles.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeLoadout || currentTreeNode.Parent.Parent.Parent.Tag is TerjeLoadout)
-                TerjeLoadouts.isDirty = true;
-            else if (currentTreeNode.Parent.Parent.Tag is TerjeRespawn || currentTreeNode.Parent.Parent.Parent.Tag is TerjeRespawn)
-                TerjeRespawns.isDirty = true;
+            SetCorrectFileasDirty();
         }
         private void addItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -4000,8 +4133,75 @@ namespace DayZeEditor
             currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
             TerjeLoadouts.isDirty = true;
         }
+        private void SCFaceclassnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeFace face = currentTreeNode.Tag as TerjeFace;
+            face.classname = SCFaceclassnameTB.Text;
+            TerjeFaces.isDirty = true;
+        }
+        private void SCFaceiconTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeFace face = currentTreeNode.Tag as TerjeFace;
+            face.icon = SCFaceiconTB.Text;
+            TerjeFaces.isDirty = true;
+        }
+        private void SCFacebackgroundTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeFace face = currentTreeNode.Tag as TerjeFace;
+            face.background = SCFacebackgroundTB.Text;
+            TerjeFaces.isDirty = true;
+        }
+        private void SCFacebackgroundSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeFace face = currentTreeNode.Tag as TerjeFace;
+            face.backgroundSpecified = SCFacebackgroundTB.Visible = SCFacebackgroundSpecifiedCB.Checked;
+            if (face.background == null)
+                face.background = SCFacebackgroundTB.Text = "Change Me";
+            else
+                SCFacebackgroundTB.Text = face.background;
+            TerjeFaces.isDirty = true;
+        }
+        private void SetCorrectFileasDirty()
+        {
+            TreeNode node = currentTreeNode;
+            while (node != null)
+            {
+                if (node.Tag is string tagStr && tagStr == "Root")
+                {
+                    break;
+                }
 
+                if (node.Tag is TerjeRecipe)
+                {
+                    TerjeCraftingFiles.isDirty = true;
+                    return;
+                }
 
+                if (node.Tag is TerjeLoadout)
+                {
+                    TerjeLoadouts.isDirty = true;
+                    return;
+                }
+
+                if (node.Tag is TerjeRespawn)
+                {
+                    TerjeRespawns.isDirty = true;
+                    return;
+                }
+
+                if (node.Tag is TerjeFace)
+                {
+                    TerjeFaces.isDirty = true;
+                    return;
+                }
+
+                node = node.Parent;
+            }
+        }
     }
     public class ComboBoxItem
     {

@@ -301,6 +301,14 @@ namespace DayZeEditor
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.MapPanel = new System.Windows.Forms.Panel();
+            this.SCFaceGB = new System.Windows.Forms.GroupBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.SCFaceiconTB = new System.Windows.Forms.TextBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.SCFaceclassnameTB = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.SCFacebackgroundTB = new System.Windows.Forms.TextBox();
+            this.SCFacebackgroundSpecifiedCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -359,6 +367,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.MapPanel.SuspendLayout();
+            this.SCFaceGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -3070,6 +3079,7 @@ namespace DayZeEditor
             this.flowLayoutPanel1.Controls.Add(this.CONDExtraVariablesGB);
             this.flowLayoutPanel1.Controls.Add(this.CONDExtraVariablesMathGB);
             this.flowLayoutPanel1.Controls.Add(this.CONDExtraOptionsGB);
+            this.flowLayoutPanel1.Controls.Add(this.SCFaceGB);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(404, 48);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -3586,6 +3596,92 @@ namespace DayZeEditor
             this.MapPanel.Size = new System.Drawing.Size(804, 596);
             this.MapPanel.TabIndex = 291;
             // 
+            // SCFaceGB
+            // 
+            this.SCFaceGB.Controls.Add(this.SCFacebackgroundSpecifiedCB);
+            this.SCFaceGB.Controls.Add(this.label80);
+            this.SCFaceGB.Controls.Add(this.SCFacebackgroundTB);
+            this.SCFaceGB.Controls.Add(this.label78);
+            this.SCFaceGB.Controls.Add(this.SCFaceiconTB);
+            this.SCFaceGB.Controls.Add(this.label79);
+            this.SCFaceGB.Controls.Add(this.SCFaceclassnameTB);
+            this.SCFaceGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCFaceGB.Location = new System.Drawing.Point(2601, 137);
+            this.SCFaceGB.Name = "SCFaceGB";
+            this.SCFaceGB.Size = new System.Drawing.Size(427, 101);
+            this.SCFaceGB.TabIndex = 293;
+            this.SCFaceGB.TabStop = false;
+            this.SCFaceGB.Text = "Face";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(53, 46);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(28, 13);
+            this.label78.TabIndex = 225;
+            this.label78.Text = "Icon";
+            // 
+            // SCFaceiconTB
+            // 
+            this.SCFaceiconTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCFaceiconTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCFaceiconTB.Location = new System.Drawing.Point(161, 42);
+            this.SCFaceiconTB.Name = "SCFaceiconTB";
+            this.SCFaceiconTB.Size = new System.Drawing.Size(259, 20);
+            this.SCFaceiconTB.TabIndex = 224;
+            this.SCFaceiconTB.TextChanged += new System.EventHandler(this.SCFaceiconTB_TextChanged);
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(54, 20);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(58, 13);
+            this.label79.TabIndex = 223;
+            this.label79.Text = "Classname";
+            // 
+            // SCFaceclassnameTB
+            // 
+            this.SCFaceclassnameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCFaceclassnameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCFaceclassnameTB.Location = new System.Drawing.Point(162, 16);
+            this.SCFaceclassnameTB.Name = "SCFaceclassnameTB";
+            this.SCFaceclassnameTB.Size = new System.Drawing.Size(259, 20);
+            this.SCFaceclassnameTB.TabIndex = 222;
+            this.SCFaceclassnameTB.TextChanged += new System.EventHandler(this.SCFaceclassnameTB_TextChanged);
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(53, 72);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(64, 13);
+            this.label80.TabIndex = 227;
+            this.label80.Text = "background";
+            // 
+            // SCFacebackgroundTB
+            // 
+            this.SCFacebackgroundTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCFacebackgroundTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCFacebackgroundTB.Location = new System.Drawing.Point(161, 68);
+            this.SCFacebackgroundTB.Name = "SCFacebackgroundTB";
+            this.SCFacebackgroundTB.Size = new System.Drawing.Size(259, 20);
+            this.SCFacebackgroundTB.TabIndex = 226;
+            this.SCFacebackgroundTB.TextChanged += new System.EventHandler(this.SCFacebackgroundTB_TextChanged);
+            // 
+            // SCFacebackgroundSpecifiedCB
+            // 
+            this.SCFacebackgroundSpecifiedCB.AutoSize = true;
+            this.SCFacebackgroundSpecifiedCB.Location = new System.Drawing.Point(32, 71);
+            this.SCFacebackgroundSpecifiedCB.Name = "SCFacebackgroundSpecifiedCB";
+            this.SCFacebackgroundSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCFacebackgroundSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCFacebackgroundSpecifiedCB.TabIndex = 250;
+            this.SCFacebackgroundSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCFacebackgroundSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCFacebackgroundSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCFacebackgroundSpecifiedCB_CheckedChanged);
+            // 
             // TerjeManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3593,8 +3689,8 @@ namespace DayZeEditor
             this.ClientSize = new System.Drawing.Size(1220, 656);
             this.Controls.Add(this.TerjeTV);
             this.Controls.Add(this.darkToolStrip21);
-            this.Controls.Add(this.MapPanel);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.MapPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TerjeManager";
             this.Text = "BaseBuildingPlus";
@@ -3678,6 +3774,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.MapPanel.ResumeLayout(false);
             this.MapPanel.PerformLayout();
+            this.SCFaceGB.ResumeLayout(false);
+            this.SCFaceGB.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3954,5 +4052,13 @@ namespace DayZeEditor
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Panel MapPanel;
+        private System.Windows.Forms.GroupBox SCFaceGB;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.TextBox SCFacebackgroundTB;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.TextBox SCFaceiconTB;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.TextBox SCFaceclassnameTB;
+        private System.Windows.Forms.CheckBox SCFacebackgroundSpecifiedCB;
     }
 }
