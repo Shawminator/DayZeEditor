@@ -281,9 +281,31 @@ namespace DayZeEditor
                             UserName = FTPUSernameTB.Text,
                             Password = FTPPasswordTB.Text,
                         };
-                        session = new Session();
-                        session.FileTransferProgress += SessionFileTransferProgress;
-                        session.Open(sessionOptions);
+                        try
+                        {
+                            Console.WriteLine("Attemptimg FTP First");
+                            session = new Session();
+                            session.FileTransferProgress += SessionFileTransferProgress;
+                            session.Open(sessionOptions);
+                            Console.WriteLine("FTP Session Open.....");
+                        }
+                        catch 
+                        {
+                            Console.WriteLine("Now Attemptimg SFTP");
+                            sessionOptions = new SessionOptions
+                            {
+                                Protocol = Protocol.Sftp,
+                                HostName = FTPHostNameTB.Text,
+                                PortNumber = Convert.ToInt32(FTPPortTB.Text),
+                                SshHostKeyPolicy = SshHostKeyPolicy.GiveUpSecurityAndAcceptAny,
+                                UserName = FTPUSernameTB.Text,
+                                Password = FTPPasswordTB.Text
+                            };
+                            session = new Session();
+                            session.FileTransferProgress += SessionFileTransferProgress;
+                            session.Open(sessionOptions);
+                            Console.WriteLine("SFTP Session Open.....");
+                        }
                     }
                 }
                 catch
@@ -301,7 +323,7 @@ namespace DayZeEditor
                 }
                 string ProjectPath = ProjectFolder + "\\" + ProjectName;
                 Directory.CreateDirectory(ProjectPath);
-
+                Console.WriteLine("Directory Created:" + ProjectPath);
                 NewProjectFTP ftpproject = new NewProjectFTP();
                 ftpproject.SetTitle = "New Project from FTP";
                 ftpproject.session = session;
@@ -333,10 +355,17 @@ namespace DayZeEditor
                         string mpmissionpath = Path.GetFileName(mpmissiondirectory);
                         string profile = Path.GetFileName(profiledir);
 
+                        TransferOptions transferoptions = new TransferOptions()
+                        {
+                            FileMask = "|*.log;*.ADM,*.RPT"
+                        };
+
                         Directory.CreateDirectory(ProjectPath + "\\" + profile);
+                        Console.WriteLine("Directory Created:" + ProjectPath + "\\" + profile);
                         Directory.CreateDirectory(ProjectPath + "\\mpmissions\\" + mpmissionpath);
-                        session.GetFilesToDirectory(profiledir, ProjectPath + "\\" + profile);
-                        session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
+                        Console.WriteLine("Directory Created:" + ProjectPath + "\\mpmissions\\" + mpmissionpath);
+                        session.GetFilesToDirectory(profiledir, ProjectPath + "\\" + profile, null, false, transferoptions);
+                        session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath, null, false, transferoptions);
 
                         project.AddNames(ProjectName, ProjectPath);
                         project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
