@@ -1,8 +1,10 @@
 ﻿Version 0.8.4.0
 [Updated]
+Project					-	Added option to create project for exisitng server(exmaple hook nto live server files on dedicated machine.)
 Dynamoc Weather Plugin	-	Update to latest version.
 TerjeMod				-	Added support for All Components.
 Expansion				-	Update for latest Expansion Update.
+
 
 Version 0.8.3.9
 [Updatd]
