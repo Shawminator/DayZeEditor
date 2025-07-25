@@ -1,5 +1,7 @@
-﻿using DarkUI.Forms;
+﻿using Cyotek.Windows.Forms;
+using DarkUI.Forms;
 using DayZeLib;
+using FastColoredTextBoxNS;
 using SevenZipExtractor;
 using System;
 using System.Collections.Generic;
@@ -11,7 +13,9 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace DayZeEditor
 {
@@ -66,6 +70,7 @@ namespace DayZeEditor
             doubleClickTimer.Interval = 100;
             doubleClickTimer.Tick += new EventHandler(doubleClickTimer_Tick);
 
+            flowLayoutPanel1.SendToBack();
             LoadSkillsAndPerksFromSingleFile();
             PopulateSkillsCheckBoxes(SAFLP);
             //loading cfg files.
@@ -148,6 +153,13 @@ namespace DayZeEditor
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("  OK....");
                         Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    foreach(TerjeRespawn respawn in TerjeRespawns.Respawn)
+                    {
+                        if (respawn.Points.Count == 0)
+                            respawn.Points = null;
+                        if (respawn.Objects.Count == 0)
+                            respawn.Objects = null;
                     }
                 }
                 if (File.Exists(TerjeSettingsPath + "StartScreen\\Faces.xml"))
@@ -259,10 +271,11 @@ namespace DayZeEditor
                         }
                         else
                         {
-
+                            centerX = (int)(Math.Round(Convert.ToSingle(point.x)) * scalevalue);
+                            centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Convert.ToSingle(point.z), 0) * scalevalue);
                         }
                         Point center = new Point(centerX, centerY);
-                        Pen pen = new Pen(Color.Red, 4);
+                        Pen pen = new Pen(Color.Red, 2);
                         if (currentTreeNode.Tag as TerjeRespawnPoint == point)
                             pen.Color = Color.LimeGreen;
                         else
@@ -312,10 +325,11 @@ namespace DayZeEditor
                     }
                     else
                     {
-
+                        centerX = (int)(Math.Round(Convert.ToSingle(point.x)) * scalevalue);
+                        centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Convert.ToSingle(point.z), 0) * scalevalue);
                     }
                     Point center = new Point(centerX, centerY);
-                    Pen pen = new Pen(Color.Red, 4);
+                    Pen pen = new Pen(Color.Red, 2);
                     if (currentTreeNode.Tag as TerjeRespawnPoint == point)
                         pen.Color = Color.LimeGreen;
                     else
@@ -337,7 +351,7 @@ namespace DayZeEditor
                     centerX = (int)(Math.Round(area.PositionVec3.X) * scalevalue);
                     centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(area.PositionVec3.Z) * scalevalue);
                     Point center = new Point(centerX, centerY);
-                    Pen pen = new Pen(Color.LimeGreen, 4);
+                    Pen pen = new Pen(Color.LimeGreen, 2);
                     getCircle(e.Graphics, pen, center, eventradius);
                 }
             }
@@ -431,6 +445,7 @@ namespace DayZeEditor
                             {
                                 spoint.y = (decimal)(MapData.gethieght((float)spoint.x, (float)spoint.z));
                             }
+                            currentTreeNode.Text = GetPointText(spoint);
                         }
 
                         Cursor.Current = Cursors.Default;
@@ -473,15 +488,14 @@ namespace DayZeEditor
                             {
                                 centerX = Convert.ToSingle(waypoint.pos.Split(',')[0]);
                                 centerY = Convert.ToSingle(waypoint.pos.Split(',')[1]);
-
                             }
                             else
                             {
                                 centerX = Convert.ToSingle(waypoint.x);
-                                centerY = Convert.ToSingle(waypoint.y);
+                                centerY = Convert.ToSingle(waypoint.z);
                             }
                             PointF pP = new PointF(centerX, centerY);
-                            if (IsWithinCircle(pC, pP, (float)5))
+                            if (IsWithinCircle(pC, pP, (float)10))
                             {
                                 foreach (TreeNode node in currentTreeNode.Parent.Nodes)
                                 {
@@ -1039,23 +1053,8 @@ namespace DayZeEditor
             {
                 Tag = ta
             };
-            if(ta.Points.Count > 0)
-            {
-                TreeNode SpawnPointsNode = new TreeNode("Points")
-                {
-                    Tag = ta.Points
-                };
-                foreach(TerjeRespawnPoint point in ta.Points)
-                {
-                    TreeNode propertyNode = new TreeNode(point.pos)
-                    {
-                        Tag = point
-                    };
-                    SpawnPointsNode.Nodes.Add(propertyNode);
-                }
-                Spawnnode.Nodes.Add(SpawnPointsNode);
-            }
-            if(ta.Objects.Count > 0)
+            GetRespawnPoints(ta, Spawnnode);
+            if (ta.Objects != null && ta.Objects.Count > 0)
             {
                 TreeNode SpawnObjectNode = new TreeNode("Objects")
                 {
@@ -1071,7 +1070,7 @@ namespace DayZeEditor
                 }
                 Spawnnode.Nodes.Add(SpawnObjectNode);
             }
-            if(ta.DeathPoint != null)
+            if (ta.DeathPoint != null)
             {
                 TreeNode SpawnDeathPointNode = new TreeNode("Death Point")
                 {
@@ -1117,6 +1116,55 @@ namespace DayZeEditor
             }
 
             return Spawnnode;
+        }
+        private static void GetRespawnPoints(TerjeRespawn ta, TreeNode Spawnnode)
+        {
+            if (ta.Points != null && ta.Points.Count > 0)
+            {
+                TreeNode SpawnPointsNode = new TreeNode("Points")
+                {
+                    Tag = ta.Points
+                };
+                foreach (TerjeRespawnPoint point in ta.Points)
+                {
+                    TreeNode propertyNode = GetPointNode(point);
+                    SpawnPointsNode.Nodes.Add(propertyNode);
+                }
+                Spawnnode.Nodes.Add(SpawnPointsNode);
+            }
+        }
+        private static TreeNode GetPointNode(TerjeRespawnPoint point)
+        {
+            string ntext = GetPointText(point);
+            TreeNode propertyNode = new TreeNode(ntext)
+            {
+                Tag = point
+            };
+            return propertyNode;
+        }
+        private static string GetPointText(TerjeRespawnPoint point)
+        {
+            string ntext = "";
+            if (point.posSpecified)
+                ntext = "Pos:" + point.pos;
+            else
+            {
+                if (point.xSpecified)
+                {
+                    ntext += "X:" + point.x + " ";
+                }
+                if (point.ySpecified)
+                {
+                    ntext += " Y:" + point.y;
+                }
+                if (point.zSpecified)
+                {
+                    ntext += " Z:" + point.z;
+                }
+            }
+            if (point.angleSpecified)
+                ntext += " A:" + point.angle;
+            return ntext;
         }
         private TreeNode getScriptablearea(TerjeScriptableArea ta)
         {
@@ -1770,6 +1818,7 @@ namespace DayZeEditor
             {
                 TerjeLoadout loadout = e.Node.Tag as TerjeLoadout;
                 SSLGB.Visible = true;
+                SSLGB.Text = "Loadount Name";
                 SSLdisplayNameTB.Text = loadout.displayName;
                 SSLidTB.Text = loadout.id;
             }
@@ -1866,9 +1915,20 @@ namespace DayZeEditor
                 if (SCLGroupcostSpecifiedCB.Checked = SCLGroupcostNUD.Visible = group.costSpecified)
                     SCLGroupcostNUD.Value = group.cost;
             }
+            else if (e.Node.Tag is TerjeRespawn)
+            {
+                TerjeRespawn respawn = e.Node.Tag as TerjeRespawn;
+                SSLGB.Visible = true;
+                SSLGB.Text = "Respawn Name";
+                SSLdisplayNameTB.Text = respawn.displayName;
+                SSLidTB.Text = respawn.id;
+            }
             else if (e.Node.Tag is TerjeRespawnPoint)
             {
+                TerjeRespawnPoint point = currentTreeNode.Tag as TerjeRespawnPoint;
                 MapPanel.Visible = true;
+                if (SCPointsangleSpecifiedCB.Checked = SCPointsangleNUD.Visible = point.angleSpecified)
+                    SCPointsangleNUD.Value = point.angle;
                 pictureBox1.Invalidate();
             }
             else  if (e.Node.Tag.ToString() == "MapView")
@@ -1878,7 +1938,7 @@ namespace DayZeEditor
             }
             else if (e.Node.Tag is BindingList<TerjeRespawnPoint>)
             {
-                MapPanel.Visible = true;
+                
             }
             else if (e.Node.Tag is TerjeValueString)
             {
@@ -1898,7 +1958,106 @@ namespace DayZeEditor
                 if (SCFacebackgroundSpecifiedCB.Checked = SCFacebackgroundTB.Visible = face.backgroundSpecified)
                     SCFacebackgroundTB.Text = face.background;
             }
-                useraction = true;
+            else if (e.Node.Tag is TerjeDeathPoint)
+            {
+                SCDeathPointGB.Visible = true;
+                TerjeDeathPoint deathpoint = currentTreeNode.Tag as TerjeDeathPoint;
+                if (SCDeathPointRequireBodySpecifiedCB.Checked = SCDeathPointRequireBodyCB.Visible = deathpoint.requireBodySpecified)
+                    SCDeathPointRequireBodyCB.Checked = deathpoint.requireBody == 1 ? true : false;
+            }
+            else if (e.Node.Tag is TerjeRespawnObject)
+            {
+                SCobjectGB.Visible = true;
+                TerjeRespawnObject obj = currentTreeNode.Tag as TerjeRespawnObject;
+                SCobjectclassnameTB.Text = obj.classname;
+                if (SCobjectSingleBindSpecifiedCB.Checked = SCobjectSingleBindCB.Visible = obj.singleBindSpecified)
+                    SCobjectSingleBindCB.Checked = obj.singleBind == 1 ? true : false;
+                if (SCobjectHandlerSpecifiedCB.Checked = SCobjectHandlerTB.Visible = obj.handlerSpecified)
+                    SCobjectHandlerTB.Text = obj.handler;
+            }
+            else if (e.Node.Tag is TerjeSafeRadius)
+            {
+                SCOptionsSafeRadiusGB.Visible = true;
+                TerjeSafeRadius sf = currentTreeNode.Tag as TerjeSafeRadius;
+                if (SCSafeRadiusZombieSpecifiedCB.Checked = SCSafeRadiusZombieNUD.Visible = sf.zombieSpecified)
+                    SCSafeRadiusZombieNUD.Value = sf.zombie;
+                if (SCSafeRadiusAnimalSpecifiedCB.Checked = SCSafeRadiusAnimalNUD.Visible = sf.animalSpecified)
+                    SCSafeRadiusAnimalNUD.Value = sf.animal;
+                if (SCSafeRadiusPlayerSpecifiedCB.Checked = SCSafeRadiusPlayerNUD.Visible = sf.playerSpecified)
+                    SCSafeRadiusPlayerNUD.Value = sf.player;
+                if (SCSafeRadiusOtherSpecifiedCB.Checked = SCSafeRadiusOtherNUD.Visible = sf.otherSpecified)
+                    SCSafeRadiusOtherNUD.Value = sf.other;
+            }
+            else if (e.Node.Tag is TerjeMapImage)
+            {
+                SCOptionMapImageGB.Visible = true;
+                TerjeMapImage mi = currentTreeNode.Tag as TerjeMapImage;
+                SCoptionsMapImagePathTB.Text = mi.path;
+            }
+            else if (e.Node.Tag is TerjeMapRender)
+            {
+                SCMapRendererGB.Visible = true;
+                TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+
+                if (SCMapRendererPOSSpecifiedCB.Checked = SCMapRendererPOSXNUD.Visible = SCMapRendererPOSZNUD.Visible = label115.Visible = label116.Visible= ren.posSpecified)
+                {
+                    SCMapRendererPOSXNUD.Value = Convert.ToDecimal(ren.pos.Split(',')[0]);
+                    SCMapRendererPOSZNUD.Value = Convert.ToDecimal(ren.pos.Split(',')[1]);
+                }
+                if(SCMapRendererXSpecifiedCB.Checked = SCMapRendererXNUD.Visible = ren.xSpecified)
+                    SCMapRendererXNUD.Value = Convert.ToDecimal(ren.x);
+                if (SCMapRendererYSpecifiedCB.Checked = SCMapRendererYNUD.Visible = ren.ySpecified)
+                    SCMapRendererYNUD.Value = Convert.ToDecimal(ren.y);
+                if (SCMapRendererZSpecifiedCB.Checked = SCMapRendererZNUD.Visible = ren.zSpecified)
+                    SCMapRendererZNUD.Value = Convert.ToDecimal(ren.z);
+                if (SCMapRendererZoomSpecifiedCB.Checked = SCMapRendererZoomNUD.Visible = ren.zoomSpecified)
+                    SCMapRendererZoomNUD.Value = Convert.ToDecimal(ren.zoom);
+                if (SCMapRendererShowPointsSpecifiedCB.Checked = SCMapRendererShowPointsCB.Visible = ren.showPointsSpecified)
+                    SCMapRendererShowPointsCB.SelectedIndex = SCMapRendererShowPointsCB.FindStringExact(ren.showPoints);
+                if (SCMapRendererShowMarkerSpecifiedCB.Checked = SCMapRendererShowMarkerCB.Visible = ren.showMarkerSpecified)
+                    SCMapRendererShowMarkerCB.SelectedIndex = SCMapRendererShowPointsCB.FindStringExact(ren.showMarker);
+                if (SCMapRendererShowMarkerNameSpecifiedCB.Checked = SCMapRendererShowMarkerNameCB.Visible = ren.showMarkerSpecified)
+                    SCMapRendererShowMarkerNameCB.Checked = ren.showMarkerName == 1 ? true : false;
+                if (SCMapRendererAllowInteractionSpecifiedCB.Checked = SCMapRendererAllowInteractionCB.Visible = ren.allowInteractionSpecified)
+                    SCMapRendererAllowInteractionCB.Checked = ren.allowInteraction == 1 ? true : false;
+                if (SCMapRendererMarkerPathSpecifiedCB.Checked = SCMapRendererMarkerPathTB.Visible = ren.markerPathSpecified)
+                    SCMapRendererMarkerPathTB.Text = ren.markerPath;
+                if (SCMapRendererPointsPathSpecifiedCB.Checked = SCMapRendererPointsPathTB.Visible = ren.pointsPathSpecified)
+                    SCMapRendererPointsPathTB.Text = ren.pointsPath;
+                if (SCMapRendererActivePointsColorSpecifiedCB.Checked = SCMapRendererActivePointsColorPB.Visible = ren.activePointsColorSpecified)
+                    SCMapRendererActivePointsColorPB.Invalidate();
+                if (SCMapRendererInnactivePointsColorSpecifiedCB.Checked = SCMapRendererInnactivePointsColorPB.Visible = ren.inactivePointsColorSpecified)
+                    SCMapRendererInnactivePointsColorPB.Invalidate();
+                if (SCMapRendererActiveMarkerColorSpecifiedCB.Checked = SCMapRendererActiveMarkerColorPB.Visible = ren.inactiveMarkerColorSpecified)
+                    SCMapRendererActiveMarkerColorPB.Invalidate();
+                if (SCMapRendererInactiveMarkerColorSpecifiedCB.Checked = SCMapRendererInactiveMarkerColorPB.Visible = ren.inactiveMarkerColorSpecified)
+                    SCMapRendererInactiveMarkerColorPB.Invalidate();
+            }
+            else if (e.Node.Tag is TerjePlayerStats)
+            {
+                SCPlayerStatsGB.Visible = true;
+                TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+
+                if (SCPlayerStatsHealthSpecifiedCB.Checked = SCPlayerStatsHealthNUD.Visible = ps.healthSpecified)
+                    SCPlayerStatsHealthNUD.Value = ps.health;
+                if (SCPlayerStatsBloodSpecifiedCB.Checked = SCPlayerStatsBloodNUD.Visible = ps.bloodSpecified)
+                    SCPlayerStatsBloodNUD.Value = ps.blood;
+                if (SCPlayerStatsShockSpecifiedCB.Checked = SCPlayerStatsShockNUD.Visible = ps.shockSpecified)
+                    SCPlayerStatsShockNUD.Value = ps.shock;
+                if (SCPlayerStatsEnergySpecifiedCB.Checked = SCPlayerStatsEnergyNUD.Visible = ps.energySpecified)
+                    SCPlayerStatsEnergyNUD.Value = ps.energy;
+                if (SCPlayerStatsWaterSpecifiedCB.Checked = SCPlayerStatsWaterNUD.Visible = ps.waterSpecified)
+                    SCPlayerStatsWaterNUD.Value = ps.water;
+                if (SCPlayerStatsSleepSpecifiedCB.Checked = SCPlayerStatsSleepNUD.Visible = ps.sleepSpecified)
+                    SCPlayerStatsSleepNUD.Value = ps.sleep;
+                if (SCPlayerStatsMindSpecifiedCB.Checked = SCPlayerStatsMindNUD.Visible = ps.mindSpecified)
+                    SCPlayerStatsMindNUD.Value = ps.mind;
+                if (SCPlayerStatsHeatComfortSpecifiedCB.Checked = SCPlayerStatsHeatComfortNUD.Visible = ps.heatComfortSpecified)
+                    SCPlayerStatsHeatComfortNUD.Value = ps.heatComfort;
+                if (SCPlayerStatsHeatBufferSpecifiedCB.Checked = SCPlayerStatsHeatBufferNUD.Visible = ps.heatBufferSpecified)
+                    SCPlayerStatsHeatBufferNUD.Value = ps.heatBuffer;
+            }
+            useraction = true;
         }
         public ComboBoxItem SelectComboBoxByValue(ComboBox comboBox, string value)
         {
@@ -2018,18 +2177,83 @@ namespace DayZeEditor
                     addGroupToolStripMenuItem.Visible = true;
                     removeSelectorToolStripMenuItem.Visible = true;
                 }
+                else if (e.Node.Tag is TerjeRespawns)
+                {
+                    addNewRespawnToolStripMenuItem.Visible = true;
+                }
                 else if (e.Node.Tag is TerjeRespawn)
                 {
                     TerjeRespawn respawn = e.Node.Tag as TerjeRespawn;
+                       
                     if (respawn.Conditions == null)
                         addConditionsToolStripMenuItem.Visible = true;
-                    removeLoadoutToolStripMenuItem.Visible = true;
+                      
+                    if ((respawn.Objects == null || respawn.Objects.Count <= 0)  && respawn.DeathPoint == null &&(respawn.Points == null || respawn.Points.Count <= 0))
+                    {
+                        addDeathPintToolStripMenuItem.Visible = true;
+                        addNewObjectToolStripMenuItem.Visible = true;
+                        addNewPointsToolStripMenuItem.Visible = true;
+                    }
+                    if (respawn.Options == null)
+                        addOptionsToolStripMenuItem.Visible = true;
+                    removeRespawnToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is BindingList<TerjeRespawnPoint>)
+                {
+                    AddNewPointtoolStripMenuItem.Visible = true;
+                    ConvertPointstoPOStoolStripMenuItem.Visible = true;
+                    ConvertPointstoPOStoolStripMenuItem.Text = "Convert Points to POS";
+                    ConvertPointstoXYZtoolStripMenuItem.Visible = true;
+                    ConvertPointstoXYZtoolStripMenuItem.Text = "Convert Points to XYZ";
+                    RemovePointtoolStripMenuItem.Visible = true;
+                    RemovePointtoolStripMenuItem.Text = "Remove All Points";
+
+                }
+                else if (e.Node.Tag is TerjeRespawnPoint)
+                {
+                    TerjeRespawnPoint point = currentTreeNode.Tag as TerjeRespawnPoint;
+                    if (point.posSpecified)
+                    {
+                        ConvertPointstoXYZtoolStripMenuItem.Visible = true;
+                        ConvertPointstoXYZtoolStripMenuItem.Text = "Convert Point to XYZ";
+                    }
+                    else if (point.xSpecified && point.zSpecified)
+                    {
+                        ConvertPointstoPOStoolStripMenuItem.Visible = true;
+                        ConvertPointstoPOStoolStripMenuItem.Text = "Convert Point to POS";
+                    }
+                    RemovePointtoolStripMenuItem.Visible = true;
+                    RemovePointtoolStripMenuItem.Text = "Remove Point";
+                }
+                else if (e.Node.Tag is TerjeRespawnOptions)
+                {
+                    addSafeRadiusToolStripMenuItem.Visible = true;
+                    removeOptionsToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Parent.Tag is TerjeRespawnOptions)
+                {
+                    RemoveSafeRadiusToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is BindingList<TerjeRespawnObject>)
+                {
+                    addNewObjectToolStripMenuItem.Visible = true;
+                    removeObjectToolStripMenuItem.Visible = true;
+                    removeObjectToolStripMenuItem.Text = "Remove All Objects";
+                }
+                else if (e.Node.Tag is TerjeRespawnObject)
+                {
+                    removeObjectToolStripMenuItem.Visible = true;
+                    removeObjectToolStripMenuItem.Text = "Remove Object";
                 }
                 else if (e.Node.Tag is TerjeFace)
                 {
                     TerjeFace face = e.Node.Tag as TerjeFace;
                     if (face.Conditions == null)
                         addConditionsToolStripMenuItem.Visible = true;
+                }
+                else if (e.Node.Tag is TerjeDeathPoint)
+                {
+                    removeDeathPointToolStripMenuItem.Visible = true;
                 }
                 contextMenuStrip1.Show(Cursor.Position);
             }
@@ -3128,6 +3352,12 @@ namespace DayZeEditor
                 face.Conditions = tc;
                 TerjeFaces.isDirty = true;
             }
+            else if (currentTreeNode.Tag is TerjeRespawn)
+            {
+                TerjeRespawn respawn = currentTreeNode.Tag as TerjeRespawn;
+                respawn.Conditions = tc;
+                TerjeRespawns.isDirty = true;
+            }
             TreeNode ConditionsNode = new TreeNode("Conditions")
             {
                 Tag = tc
@@ -3311,17 +3541,36 @@ namespace DayZeEditor
         private void SSLdisplayNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            TerjeLoadout loadout = currentTreeNode.Tag as TerjeLoadout;
-            loadout.displayName = SSLdisplayNameTB.Text;
-            currentTreeNode.Text = loadout.displayName;
-            TerjeLoadouts.isDirty = true;
+            if (currentTreeNode.Tag is TerjeLoadout)
+            {
+                TerjeLoadout loadout = currentTreeNode.Tag as TerjeLoadout;
+                loadout.displayName = SSLdisplayNameTB.Text;
+                currentTreeNode.Text = loadout.displayName;
+                TerjeLoadouts.isDirty = true;
+            }
+            else if (currentTreeNode.Tag is TerjeRespawn)
+            {
+                TerjeRespawn respawn = currentTreeNode.Tag as TerjeRespawn;
+                respawn.displayName = SSLdisplayNameTB.Text;
+                currentTreeNode.Text = respawn.displayName;
+                TerjeRespawns.isDirty = true;
+            }
         }
         private void SSLidTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            TerjeLoadout loadout = currentTreeNode.Tag as TerjeLoadout;
-            loadout.id = SSLidTB.Text;
-            TerjeLoadouts.isDirty = true;
+            if (currentTreeNode.Tag is TerjeLoadout)
+            {
+                TerjeLoadout loadout = currentTreeNode.Tag as TerjeLoadout;
+                loadout.id = SSLidTB.Text;
+                TerjeLoadouts.isDirty = true;
+            }
+            else if (currentTreeNode.Tag is TerjeRespawn)
+            {
+                TerjeRespawn respawn = currentTreeNode.Tag as TerjeRespawn;
+                respawn.id = SSLidTB.Text;
+                TerjeRespawns.isDirty = true;
+            }
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
@@ -4201,6 +4450,1204 @@ namespace DayZeEditor
 
                 node = node.Parent;
             }
+        }
+
+        private void addNewObjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                if (currentTreeNode.Tag is TerjeRespawn)
+                {
+                    TerjeRespawn itemlist = currentTreeNode.Tag as TerjeRespawn;
+                    itemlist.Objects = new BindingList<TerjeRespawnObject>();
+                    foreach (string l in addedtypes)
+                    {
+                        TerjeRespawnObject newitem = new TerjeRespawnObject()
+                        {
+                            classname = l,
+                            singleBind = 0,
+                            singleBindSpecified = false,
+                            handler = "",
+                            handlerSpecified = false
+                        };
+                        itemlist.Objects.Add(newitem);
+                        
+                    }
+                    TreeNode SpawnObjectNode = new TreeNode("Objects")
+                    {
+                        Tag = itemlist.Objects
+                    };
+                    foreach (TerjeRespawnObject objects in itemlist.Objects)
+                    {
+                        TreeNode propertyNode = new TreeNode(objects.classname)
+                        {
+                            Tag = objects
+                        };
+                        SpawnObjectNode.Nodes.Add(propertyNode);
+                    }
+                    currentTreeNode.Nodes.Add(SpawnObjectNode);
+                }
+                else if (currentTreeNode.Tag is BindingList<TerjeRespawnObject>)
+                {
+                    TerjeRespawn itemlist = currentTreeNode.Parent.Tag as TerjeRespawn;
+                    foreach (string l in addedtypes)
+                    {
+                        TerjeRespawnObject newitem = new TerjeRespawnObject()
+                        {
+                            classname = l,
+                            singleBind = 0,
+                            singleBindSpecified = false,
+                            handler = "",
+                            handlerSpecified = false
+                        };
+                        itemlist.Objects.Add(newitem);
+                        TreeNode propertyNode = new TreeNode(newitem.classname)
+                        {
+                            Tag = newitem
+                        };
+                        currentTreeNode.Nodes.Add(propertyNode);
+                    }
+                }
+                TerjeRespawns.isDirty = true;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void removeObjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentTreeNode.Tag is TerjeRespawnObject)
+            {
+                TerjeRespawnObject obj = currentTreeNode.Tag as TerjeRespawnObject;
+                TreeNode parent = currentTreeNode.Parent;
+                (currentTreeNode.Parent.Tag as BindingList<TerjeRespawnObject>).Remove(obj);
+                if ((parent.Tag as BindingList<TerjeRespawnObject>).Count == 0)
+                {
+                    TerjeRespawn respawn = currentTreeNode.Parent.Parent.Tag as TerjeRespawn;
+                    respawn.Objects = null;
+                    parent.Parent.Nodes.Remove(parent);
+                }
+                else
+                    parent.Nodes.Remove(currentTreeNode);
+            }
+            else if (currentTreeNode.Tag is BindingList<TerjeRespawnObject>)
+            {
+                TerjeRespawn respawn = currentTreeNode.Parent.Tag as TerjeRespawn;
+                respawn.Objects = null;
+                currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            }
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCobjectclassnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeRespawnObject obj = currentTreeNode.Tag as TerjeRespawnObject;
+            obj.classname = SCobjectclassnameTB.Text;
+            currentTreeNode.Text = obj.classname;
+            TerjeRespawns.isDirty = true;
+        }
+        private void darkButton3_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    SCobjectclassnameTB.Text = l;
+                }
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void SCobjectSingleBindSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeRespawnObject dp = currentTreeNode.Tag as TerjeRespawnObject;
+            dp.singleBindSpecified = SCobjectSingleBindCB.Visible = SCobjectSingleBindSpecifiedCB.Checked;
+            SCobjectSingleBindCB.Checked = dp.singleBind == 1 ? true : false;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCobjectSingleBindCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeRespawnObject dp = currentTreeNode.Tag as TerjeRespawnObject;
+            dp.singleBind = SCobjectSingleBindCB.Checked == true ? 1 : 0;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCobjectHandlerSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeRespawnObject dp = currentTreeNode.Tag as TerjeRespawnObject;
+            dp.handlerSpecified = SCobjectHandlerTB.Visible = SCobjectHandlerSpecifiedCB.Checked;
+            if (dp.handler == null)
+                dp.handler = SCobjectHandlerTB.Text = "Change Me";
+            else
+                SCobjectHandlerTB.Text = dp.handler;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCobjectHandlerTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeRespawnObject dp = currentTreeNode.Tag as TerjeRespawnObject;
+            dp.handler = SCobjectHandlerTB.Text;
+            TerjeRespawns.isDirty = true;
+        }
+
+        private void addDeathPintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeDeathPoint dp = new TerjeDeathPoint()
+            {
+                requireBody = 1
+            };
+            TerjeRespawn respawn = currentTreeNode.Tag as TerjeRespawn;
+            respawn.DeathPoint = dp;
+            currentTreeNode.Nodes.Add(new TreeNode("Death Point")
+            {
+                Tag = dp
+            });
+            TerjeRespawns.isDirty = true;
+        }
+        private void removeDeathPointToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (currentTreeNode.Parent.Tag as TerjeRespawn).DeathPoint = null;
+            currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCDeathPointRequireBodySpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeDeathPoint dp = currentTreeNode.Tag as TerjeDeathPoint;
+            dp.requireBodySpecified = SCDeathPointRequireBodyCB.Visible = SCDeathPointRequireBodySpecifiedCB.Checked;
+            SCDeathPointRequireBodyCB.Checked = dp.requireBody == 1 ? true : false;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCDeathPointRequireBodyCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeDeathPoint dp = currentTreeNode.Tag as TerjeDeathPoint;
+            dp.requireBody = SCDeathPointRequireBodyCB.Checked == true?1:0;
+            TerjeRespawns.isDirty = true;
+        }
+
+
+        private void addOptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeRespawnOptions opt = new TerjeRespawnOptions();
+            (currentTreeNode.Tag as TerjeRespawn).Options = opt;
+            currentTreeNode.Nodes.Add(new TreeNode("Options")
+            {
+                Tag = opt
+            });
+            TerjeRespawns.isDirty = true;
+        }
+        private void removeOptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeRespawn respawn = currentTreeNode.Parent.Tag as TerjeRespawn;
+            respawn.Options = null;
+            currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            TerjeRespawns.isDirty = true;
+        }
+        private void addSafeRadiusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeRespawnOptions options = currentTreeNode.Tag as TerjeRespawnOptions;
+            AddnewTerjeRespawnOption form = new AddnewTerjeRespawnOption();
+            form.options = options;
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                if (currentTreeNode.Tag is TerjeRespawnOptions)
+                {
+                   
+                    switch (form.Selectedcondition)
+                    {
+                        case "Safe Radius":
+                            if (options.SafeRadius != null) return;
+                            TerjeSafeRadius sf = new TerjeSafeRadius() 
+                            { 
+                            };
+                            options.SafeRadius = sf;
+                            currentTreeNode.Nodes.Add(new TreeNode("Safe Radius")
+                            {
+                                Tag = sf
+                            });
+                            break;
+                        case "Map Image":
+                            if (options.MapImage != null) return;
+                            TerjeMapImage mi = new TerjeMapImage
+                            {
+                                path = "Change Me"
+                            };
+                            options.MapImage = mi;
+                            currentTreeNode.Nodes.Add(new TreeNode("Map Image")
+                            {
+                                Tag = mi
+                            });
+                            break;
+
+                        case "Map Render":
+                            if (options.MapRender != null) return;
+                            TerjeMapRender mr = new TerjeMapRender()
+                            {
+                                
+                            };
+                            options.MapRender = mr;
+                            currentTreeNode.Nodes.Add(new TreeNode("Map Render")
+                            {
+                                Tag = mr
+                            });
+                            break;
+
+                        case "Player Stats":
+                            if (options.PlayerStats != null) return;
+                            TerjePlayerStats ps = new TerjePlayerStats()
+                            {
+                               
+                            };
+                            options.PlayerStats = ps;
+                            currentTreeNode.Nodes.Add(new TreeNode("Player Stats")
+                            {
+                                Tag = ps
+                            });
+                            break;
+
+                        default:
+
+                            break;
+                    }
+                }
+                TerjeRespawns.isDirty = true;
+            }
+        }
+        private void RemoveSafeRadiusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeRespawnOptions options = currentTreeNode.Parent.Tag as TerjeRespawnOptions;
+            
+            if (currentTreeNode.Tag is TerjeSafeRadius)
+            {
+                options.SafeRadius = null;
+            }
+            else if (currentTreeNode.Tag is TerjeMapImage)
+            {
+                options.MapImage = null;
+
+            }
+            else if (currentTreeNode.Tag is TerjeMapRender)
+            {
+                options.MapRender = null;
+            }
+            else if (currentTreeNode.Tag is TerjePlayerStats)
+            {
+                options.PlayerStats = null;
+            }
+            if (options.SafeRadius == null && options.MapImage == null && options.MapRender == null && options.PlayerStats == null)
+            {
+                TerjeRespawn respawn = currentTreeNode.Parent.Parent.Tag as TerjeRespawn;
+                respawn.Options = null;
+                currentTreeNode.Parent.Parent.Nodes.Remove(currentTreeNode.Parent);
+            }
+            else
+                currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCSafeRadiusZombieSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeSafeRadius sf = currentTreeNode.Tag as TerjeSafeRadius;
+            sf.zombieSpecified = SCSafeRadiusZombieNUD.Visible = SCSafeRadiusZombieSpecifiedCB.Checked;
+            SCSafeRadiusZombieNUD.Value = sf.zombie;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCSafeRadiusZombieNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeSafeRadius sf = currentTreeNode.Tag as TerjeSafeRadius;
+            sf.zombie = (int)SCSafeRadiusZombieNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCSafeRadiusAnimalSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeSafeRadius sf = currentTreeNode.Tag as TerjeSafeRadius;
+            sf.animalSpecified = SCSafeRadiusAnimalNUD.Visible = SCSafeRadiusAnimalSpecifiedCB.Checked;
+            SCSafeRadiusAnimalNUD.Value = sf.zombie;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCSafeRadiusAnimalNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeSafeRadius sf = currentTreeNode.Tag as TerjeSafeRadius;
+            sf.animal = (int)SCSafeRadiusAnimalNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCSafeRadiusPlayerSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeSafeRadius sf = currentTreeNode.Tag as TerjeSafeRadius;
+            sf.playerSpecified = SCSafeRadiusPlayerNUD.Visible = SCSafeRadiusPlayerSpecifiedCB.Checked;
+            SCSafeRadiusPlayerNUD.Value = sf.player;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCSafeRadiusPlayerNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeSafeRadius sf = currentTreeNode.Tag as TerjeSafeRadius;
+            sf.player = (int)SCSafeRadiusPlayerNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCSafeRadiusOtherSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeSafeRadius sf = currentTreeNode.Tag as TerjeSafeRadius;
+            sf.otherSpecified = SCSafeRadiusOtherNUD.Visible = SCSafeRadiusOtherSpecifiedCB.Checked;
+            SCSafeRadiusOtherNUD.Value = sf.other;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCSafeRadiusOtherNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeSafeRadius sf = currentTreeNode.Tag as TerjeSafeRadius;
+            sf.other = (int)SCSafeRadiusOtherNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+
+        private void SCoptionsMapImagePathTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapImage dp = currentTreeNode.Tag as TerjeMapImage;
+            dp.path = SCoptionsMapImagePathTB.Text;
+            TerjeRespawns.isDirty = true;
+        }
+
+        private void SCPlayerStatsHealthSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.healthSpecified = SCPlayerStatsHealthNUD.Visible = SCPlayerStatsHealthSpecifiedCB.Checked;
+            if (ps.health == 0)
+                ps.health = 1;
+            SCPlayerStatsHealthNUD.Value = ps.health;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsHealthNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.health = (int)SCPlayerStatsHealthNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsBloodSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.bloodSpecified = SCPlayerStatsBloodNUD.Visible = SCPlayerStatsBloodSpecifiedCB.Checked;
+            if (ps.blood == 0)
+                ps.blood = 2500;
+            SCPlayerStatsBloodNUD.Value = ps.blood;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsBloodNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.blood = (int)SCPlayerStatsBloodNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsShockSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.shockSpecified = SCPlayerStatsShockNUD.Visible = SCPlayerStatsShockSpecifiedCB.Checked;
+            SCPlayerStatsShockNUD.Value = ps.shock;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsShockNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.shock = (int)SCPlayerStatsShockNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsEnergySpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.energySpecified = SCPlayerStatsEnergyNUD.Visible = SCPlayerStatsEnergySpecifiedCB.Checked;
+            SCPlayerStatsEnergyNUD.Value = ps.energy;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsEnergyNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.energy = (int)SCPlayerStatsEnergyNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsWaterSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.waterSpecified = SCPlayerStatsWaterNUD.Visible = SCPlayerStatsWaterSpecifiedCB.Checked;
+            SCPlayerStatsWaterNUD.Value = ps.water;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsWaterNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.water = (int)SCPlayerStatsWaterNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsSleepSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.sleepSpecified = SCPlayerStatsSleepNUD.Visible = SCPlayerStatsSleepSpecifiedCB.Checked;
+            SCPlayerStatsSleepNUD.Value = ps.sleep;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsSleepNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.sleep = (int)SCPlayerStatsSleepNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsMindSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.mindSpecified = SCPlayerStatsMindNUD.Visible = SCPlayerStatsMindSpecifiedCB.Checked;
+            SCPlayerStatsMindNUD.Value = ps.mind;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsMindNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.mind = (int)SCPlayerStatsMindNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsHeatComfortSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.heatComfortSpecified = SCPlayerStatsHeatComfortNUD.Visible = SCPlayerStatsHeatComfortSpecifiedCB.Checked;
+            SCPlayerStatsHeatComfortNUD.Value = ps.heatComfort;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsHeatComfortNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.heatComfort = (int)SCPlayerStatsHeatComfortNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsHeatBufferSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.heatBufferSpecified = SCPlayerStatsHeatBufferNUD.Visible = SCPlayerStatsHeatBufferSpecifiedCB.Checked;
+            SCPlayerStatsHeatBufferNUD.Value = ps.heatBuffer;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPlayerStatsHeatBufferNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjePlayerStats ps = currentTreeNode.Tag as TerjePlayerStats;
+            ps.heatBuffer = (int)SCPlayerStatsHeatBufferNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+
+        private void pictureBox5_Paint(object sender, PaintEventArgs e)
+        {
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            if (ren.activePointsColorSpecified)
+            {
+                PictureBox pb = sender as PictureBox;
+                Rectangle region;
+                region = pb.ClientRectangle;
+                string col = ren.activePointsColor;
+                Color colour = ColorTranslator.FromHtml(col);
+                using (Brush brush = new SolidBrush(colour))
+                {
+                    e.Graphics.FillRectangle(brush, region);
+                }
+                e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+            }
+        }
+        private void pictureBox2_Paint(object sender, PaintEventArgs e)
+        {
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            if (ren.inactivePointsColorSpecified)
+            {
+                PictureBox pb = sender as PictureBox;
+                Rectangle region;
+                region = pb.ClientRectangle;
+                string col = ren.inactivePointsColor;
+                Color colour = ColorTranslator.FromHtml(col);
+                using (Brush brush = new SolidBrush(colour))
+                {
+                    e.Graphics.FillRectangle(brush, region);
+                }
+                e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+            }
+        }
+        private void pictureBox4_Paint(object sender, PaintEventArgs e)
+        {
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            if (ren.activeMarkerColorSpecified)
+            {
+                PictureBox pb = sender as PictureBox;
+                Rectangle region;
+                region = pb.ClientRectangle;
+                string col = ren.activeMarkerColor;
+                Color colour = ColorTranslator.FromHtml(col);
+                using (Brush brush = new SolidBrush(colour))
+                {
+                    e.Graphics.FillRectangle(brush, region);
+                }
+                e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+            }
+        }
+        private void pictureBox3_Paint(object sender, PaintEventArgs e)
+        {
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            if (ren.inactiveMarkerColorSpecified)
+            {
+                PictureBox pb = sender as PictureBox;
+                Rectangle region;
+                region = pb.ClientRectangle;
+                string col = ren.inactiveMarkerColor;
+                Color colour = ColorTranslator.FromHtml(col);
+                using (Brush brush = new SolidBrush(colour))
+                {
+                    e.Graphics.FillRectangle(brush, region);
+                }
+                e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+            }
+        }
+
+        private void SCMapRendererPOSSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+
+            if ((ren.xSpecified || ren.zSpecified || ren.ySpecified) && SCMapRendererPOSSpecifiedCB.Checked)
+            {
+                DialogResult result = MessageBox.Show(
+                    "This will be used instead of X/Y/Z attributes...\nDo you want me to disable X and Z and enable Pos instead?",
+                    "X/Y/Z Specified",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    SCMapRendererXSpecifiedCB.Checked = false;
+                    SCMapRendererYSpecifiedCB.Checked = false;
+                    SCMapRendererZSpecifiedCB.Checked = false;
+
+                    ren.posSpecified = SCMapRendererPOSSpecifiedCB.Checked;
+                    label115.Visible = label116.Visible = SCMapRendererPOSXNUD.Visible = SCMapRendererPOSZNUD.Visible = true;
+
+                    SCMapRendererPOSXNUD.Value = Convert.ToDecimal(ren.x);
+                    SCMapRendererPOSZNUD.Value = Convert.ToDecimal(ren.z);
+                    TerjeRespawns.isDirty = true;
+                }
+                else
+                {
+                    SCMapRendererPOSSpecifiedCB.Checked = false;
+                }
+            }
+            else
+            {
+                ren.posSpecified = SCMapRendererPOSSpecifiedCB.Checked;
+                label115.Visible = label116.Visible = SCMapRendererPOSXNUD.Visible = SCMapRendererPOSZNUD.Visible = SCMapRendererPOSSpecifiedCB.Checked;
+                SCMapRendererPOSXNUD.Value = Convert.ToDecimal(ren.pos.Split(',')[0]);
+                SCMapRendererPOSZNUD.Value = Convert.ToDecimal(ren.pos.Split(',')[1]);
+                TerjeRespawns.isDirty = true;
+            }
+        }
+        private void SCMapRendererPOSXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.pos = $"{SCMapRendererPOSXNUD.Value},{SCMapRendererPOSZNUD.Value}";
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererPOSZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.pos = $"{SCMapRendererPOSXNUD.Value},{SCMapRendererPOSZNUD.Value}";
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererXSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+
+            if (ren.posSpecified && SCMapRendererXSpecifiedCB.Checked)
+            {
+                DialogResult result = MessageBox.Show(
+                    "This will be used instead of Pos points...\nDo you want me to disable the Pos attribute and enable X, Y, Z instead?",
+                    "Pos Specified",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    SCMapRendererPOSSpecifiedCB.Checked = false;
+                    SCMapRendererYSpecifiedCB.Checked = true;
+                    SCMapRendererZSpecifiedCB.Checked = true;
+
+                    ren.xSpecified = ren.ySpecified = ren.zSpecified = true;
+
+                    SCMapRendererXNUD.Visible = SCMapRendererYNUD.Visible = SCMapRendererZNUD.Visible = true;
+                    SCMapRendererXNUD.Value = Convert.ToDecimal(ren.pos.Split(',')[0]);
+                    SCMapRendererZNUD.Value = Convert.ToDecimal(ren.pos.Split(',')[1]);
+                    if (MapData.FileExists)
+                    {
+                        SCMapRendererYNUD.Value = (decimal)(MapData.gethieght((float)SCMapRendererXNUD.Value, (float)SCMapRendererZNUD.Value));
+                    }
+                    else
+                    {
+                        SCMapRendererYNUD.Value = ren.y;
+                    }
+                    
+
+                    TerjeRespawns.isDirty = true;
+                }
+                else
+                {
+                    SCMapRendererXSpecifiedCB.Checked = false;
+                }
+            }
+            else
+            {
+                ren.xSpecified = SCMapRendererXNUD.Visible = SCMapRendererXSpecifiedCB.Checked;
+                SCMapRendererXNUD.Value = Convert.ToDecimal(ren.x);
+                TerjeRespawns.isDirty = true;
+            }
+        }
+        private void SCMapRendererXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.x = SCMapRendererXNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererYSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+
+            if (ren.posSpecified && SCMapRendererYSpecifiedCB.Checked)
+            {
+                DialogResult result = MessageBox.Show(
+                    "This will be used instead of Pos points...\nDo you want me to disable the Pos attribute and enable X, Y, Z instead?",
+                    "Pos Specified",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    SCMapRendererPOSSpecifiedCB.Checked = false;
+                    SCMapRendererXSpecifiedCB.Checked = true;
+                    SCMapRendererZSpecifiedCB.Checked = true;
+
+                    ren.xSpecified = ren.ySpecified = ren.zSpecified = true;
+
+                    SCMapRendererXNUD.Visible = SCMapRendererYNUD.Visible = SCMapRendererZNUD.Visible = true;
+                    SCMapRendererXNUD.Value = Convert.ToDecimal(ren.pos.Split(',')[0]);
+                    SCMapRendererZNUD.Value = Convert.ToDecimal(ren.pos.Split(',')[1]);
+                    if (MapData.FileExists)
+                    {
+                        SCMapRendererYNUD.Value = (decimal)(MapData.gethieght((float)SCMapRendererXNUD.Value, (float)SCMapRendererZNUD.Value));
+                    }
+                    else
+                    {
+                        SCMapRendererYNUD.Value = ren.y;
+                    }
+
+                    TerjeRespawns.isDirty = true;
+                }
+                else
+                {
+                    SCMapRendererYSpecifiedCB.Checked = false;
+                }
+            }
+            else
+            {
+                ren.ySpecified = SCMapRendererYNUD.Visible = SCMapRendererYSpecifiedCB.Checked;
+                SCMapRendererYNUD.Value = ren.y;
+                TerjeRespawns.isDirty = true;
+            }
+        }
+        private void SCMapRendererYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.y = SCMapRendererYNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererZSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+
+            if (ren.posSpecified && SCMapRendererZSpecifiedCB.Checked)
+            {
+                DialogResult result = MessageBox.Show(
+                    "This will be used instead of Pos points...\nDo you want me to disable the Pos attribute and enable X, Y, Z instead?",
+                    "Pos Specified",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    SCMapRendererPOSSpecifiedCB.Checked = false;
+                    SCMapRendererXSpecifiedCB.Checked = true;
+                    SCMapRendererYSpecifiedCB.Checked = true;
+
+                    ren.xSpecified = ren.ySpecified = ren.zSpecified = true;
+
+                    SCMapRendererXNUD.Visible = SCMapRendererYNUD.Visible = SCMapRendererZNUD.Visible = true;
+                    SCMapRendererXNUD.Value = Convert.ToDecimal(ren.pos.Split(',')[0]);
+                    SCMapRendererZNUD.Value = Convert.ToDecimal(ren.pos.Split(',')[1]);
+                    if (MapData.FileExists)
+                    {
+                        SCMapRendererYNUD.Value = (decimal)(MapData.gethieght((float)SCMapRendererXNUD.Value, (float)SCMapRendererZNUD.Value));
+                    }
+                    else
+                    {
+                        SCMapRendererYNUD.Value = ren.y;
+                    }
+
+                    TerjeRespawns.isDirty = true;
+                }
+                else
+                {
+                    SCMapRendererZSpecifiedCB.Checked = false;
+                }
+            }
+            else
+            {
+                ren.zSpecified = SCMapRendererZNUD.Visible = SCMapRendererZSpecifiedCB.Checked;
+                SCMapRendererZNUD.Value = Convert.ToDecimal(ren.z);
+                TerjeRespawns.isDirty = true;
+            }
+        }
+        private void SCMapRendererZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.z = SCMapRendererZNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererZoomSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.zoomSpecified = SCMapRendererZoomNUD.Visible = SCMapRendererZoomSpecifiedCB.Checked;
+            if(ren.zoom < 0.1f)
+                ren.zoom = 0.1f;
+            SCMapRendererZoomNUD.Value = (decimal)ren.zoom;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererZoomNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.zoom = (float)SCMapRendererZoomNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererShowPointsSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.showPointsSpecified = SCMapRendererShowPointsCB.Visible = SCMapRendererShowPointsSpecifiedCB.Checked;
+            if (ren.showPoints == null ||ren.showPoints == "")
+                ren.showPoints = "always";
+            SCMapRendererShowPointsCB.SelectedIndex = SCMapRendererShowPointsCB.FindStringExact(ren.showPoints);
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererShowPointsCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.showPoints = SCMapRendererShowPointsCB.GetItemText(SCMapRendererShowPointsCB.SelectedItem);
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererShowMarkerSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.showMarkerSpecified = SCMapRendererShowMarkerCB.Visible = SCMapRendererShowMarkerSpecifiedCB.Checked;
+            if (ren.showMarker == null || ren.showMarker == "")
+                ren.showMarker = "always";
+            SCMapRendererShowMarkerCB.SelectedIndex = SCMapRendererShowMarkerCB.FindStringExact(ren.showMarker);
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererShowMarkerCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.showMarker = SCMapRendererShowMarkerCB.GetItemText(SCMapRendererShowMarkerCB.SelectedItem);
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererShowMarkerNameSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.showMarkerNameSpecified = SCMapRendererShowMarkerNameCB.Visible = SCMapRendererShowMarkerNameSpecifiedCB.Checked;
+            SCMapRendererShowMarkerNameCB.Checked = ren.showMarkerName == 1 ? true : false;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererShowMarkerNameCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.showMarkerName = SCMapRendererShowMarkerNameCB.Checked == true?1:0;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererAllowInteractionSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.allowInteractionSpecified = SCMapRendererAllowInteractionCB.Visible = SCMapRendererAllowInteractionSpecifiedCB.Checked;
+            SCMapRendererAllowInteractionCB.Checked = ren.allowInteraction == 1 ? true : false;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererAllowInteractionCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.allowInteraction = SCMapRendererAllowInteractionCB.Checked == true?1:0;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererMarkerPathSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.markerPathSpecified = SCMapRendererMarkerPathTB.Visible = SCMapRendererMarkerPathSpecifiedCB.Checked;
+            if (ren.markerPath == null || ren.markerPath == "")
+                SCMapRendererMarkerPathTB.Text = ren.markerPath = "change Me";
+            else
+                SCMapRendererMarkerPathTB.Text = ren.markerPath;
+           TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererMarkerPathTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.markerPath = SCMapRendererMarkerPathTB.Text;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererPointsPathSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.pointsPathSpecified = SCMapRendererPointsPathTB.Visible = SCMapRendererPointsPathSpecifiedCB.Checked;
+            if (ren.pointsPath == null || ren.pointsPath == "")
+                SCMapRendererPointsPathTB.Text = ren.pointsPath = "Change Me";
+            else
+                SCMapRendererPointsPathTB.Text = ren.pointsPath;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererPointsPathTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.pointsPath = SCMapRendererPointsPathTB.Text;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererActivePointsColorSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.activePointsColorSpecified = SCMapRendererActivePointsColorPB.Visible = SCMapRendererActivePointsColorSpecifiedCB.Checked;
+            if (ren.activePointsColor == null ||ren.activePointsColor == "")
+                ren.activePointsColor = "0xFFB40000";
+            SCMapRendererActivePointsColorPB.Invalidate();
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererActivePointsColorPB_Click(object sender, EventArgs e)
+        {
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
+            string col = ren.activePointsColor;
+            cpick.Color = ColorTranslator.FromHtml(col);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+                string Colour = $"0x{cpick.Color.Name.ToUpper()}";
+                ren.activePointsColor = Colour;
+                pb.Invalidate();
+                TerjeRespawns.isDirty = true;
+            }
+        }
+        private void SCMapRendererInnactivePointsColorSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.inactivePointsColorSpecified = SCMapRendererInnactivePointsColorPB.Visible = SCMapRendererInnactivePointsColorSpecifiedCB.Checked;
+            if (ren.inactivePointsColor == null || ren.inactivePointsColor == "")
+                ren.inactivePointsColor = "0xFF191919";
+            SCMapRendererInnactivePointsColorPB.Invalidate();
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererInnactivePointsColorPB_Click(object sender, EventArgs e)
+        {
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
+            string col = ren.inactivePointsColor;
+            cpick.Color = ColorTranslator.FromHtml(col);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+                string Colour = $"0x{cpick.Color.Name.ToUpper()}";
+                ren.inactivePointsColor = Colour;
+                pb.Invalidate();
+                TerjeRespawns.isDirty = true;
+            }
+        }
+        private void SCMapRendererActiveMarkerColorSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.activeMarkerColorSpecified = SCMapRendererActiveMarkerColorPB.Visible = SCMapRendererActiveMarkerColorSpecifiedCB.Checked;
+            if (ren.activeMarkerColor == null || ren.activeMarkerColor == "")
+                ren.activeMarkerColor = "0xFFB40000";
+            SCMapRendererActiveMarkerColorPB.Invalidate();
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererActiveMarkerColorPB_Click(object sender, EventArgs e)
+        {
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
+            string col = ren.activeMarkerColor;
+            cpick.Color = ColorTranslator.FromHtml(col);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+                string Colour = $"0x{cpick.Color.Name.ToUpper()}";
+                ren.activeMarkerColor = Colour;
+                pb.Invalidate();
+                TerjeRespawns.isDirty = true;
+            }
+        }
+        private void SCMapRendererInactiveMarkerColorSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            ren.inactiveMarkerColorSpecified = SCMapRendererInactiveMarkerColorPB.Visible = SCMapRendererInactiveMarkerColorSpecifiedCB.Checked;
+            if (ren.inactiveMarkerColor == null || ren.inactiveMarkerColor == "")
+                ren.inactiveMarkerColor = "0xFF191919";
+            SCMapRendererInactiveMarkerColorPB.Invalidate();
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCMapRendererInactiveMarkerColorPB_Click(object sender, EventArgs e)
+        {
+            TerjeMapRender ren = currentTreeNode.Tag as TerjeMapRender;
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
+            string col = ren.inactiveMarkerColor;
+            cpick.Color = ColorTranslator.FromHtml(col);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+                string Colour = $"0x{cpick.Color.Name.ToUpper()}";
+                ren.inactiveMarkerColor = Colour;
+                pb.Invalidate();
+                TerjeRespawns.isDirty = true;
+            }
+        }
+
+        private void addNewRespawnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeRespawn respawn = new TerjeRespawn()
+            {
+                displayName = "New Respawn",
+                id = "NewRespawn"
+            };
+            TerjeRespawns.Respawn.Add(respawn);
+            currentTreeNode.Nodes.Add(GetSpanNodes(respawn));
+            TerjeRespawns.isDirty = true;
+        }
+        private void removeRespawnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeRespawn respwn = currentTreeNode.Tag as TerjeRespawn;
+            (currentTreeNode.Parent.Tag as TerjeRespawns).Respawn.Remove(respwn);
+            currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            TerjeRespawns.isDirty = true;
+        }
+        private void addNewPointsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeRespawn respawn = currentTreeNode.Tag as TerjeRespawn;
+            respawn.Points = new BindingList<TerjeRespawnPoint>();
+            currentTreeNode.Nodes.Add(new TreeNode("Points")
+            {
+                Tag = respawn.Points
+            });
+            TerjeRespawns.isDirty = true;
+
+        }
+        private void AddNewPointtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TerjeRespawn respawn = currentTreeNode.Parent.Tag as TerjeRespawn;
+            TerjeRespawnPoint point = new TerjeRespawnPoint()
+            {
+                xSpecified = true,
+                x = currentproject.MapSize / 2,
+                zSpecified = true,
+                z = currentproject.MapSize / 2,
+            };
+            if (MapData.FileExists)
+            {
+                point.ySpecified = true;
+                point.y = (decimal)(MapData.gethieght((float)point.x, (float)point.z));
+            }
+            respawn.Points.Add(point);
+            currentTreeNode.Nodes.Add(GetPointNode(point));
+            currentTreeNode.Expand();
+            TerjeTV.SelectedNode = currentTreeNode.LastNode;
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPointsangleSpecifiedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeRespawnPoint point = currentTreeNode.Tag as TerjeRespawnPoint;
+            point.angleSpecified = SCPointsangleNUD.Visible = SCPointsangleSpecifiedCB.Checked;
+            SCPointsangleNUD.Value = point.angle;
+            currentTreeNode.Text = GetPointText(point);
+            TerjeRespawns.isDirty = true;
+        }
+        private void SCPointsangleNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TerjeRespawnPoint point = currentTreeNode.Tag as TerjeRespawnPoint;
+            point.angle = (int)SCPointsangleNUD.Value;
+            TerjeRespawns.isDirty = true;
+        }
+        private void ConvertPointstoPOStoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentTreeNode.Tag is TerjeRespawnPoint)
+            {
+                TerjeRespawnPoint point = currentTreeNode.Tag as TerjeRespawnPoint;
+                if (point.posSpecified)
+                    return;
+                point.xSpecified = point.ySpecified = point.zSpecified = false;
+                point.posSpecified = true; ;
+
+                point.pos = $"{point.x},{point.z}";
+
+                currentTreeNode.Text = GetPointText(point);
+            }
+            else if (currentTreeNode.Tag is BindingList<TerjeRespawnPoint>)
+            {
+                foreach (TreeNode tn in currentTreeNode.Nodes)
+                {
+                    TerjeRespawnPoint point = tn.Tag as TerjeRespawnPoint;
+                    if (point.posSpecified)
+                        continue;
+                    point.xSpecified = point.ySpecified = point.zSpecified = false;
+                    point.posSpecified = true; ;
+
+                    point.pos = $"{point.x},{point.y}";
+
+                    tn.Text = GetPointText(point);
+                }
+            }
+            TerjeRespawns.isDirty = true;
+        }
+        private void ConvertPointstoXYZtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentTreeNode.Tag is TerjeRespawnPoint)
+            {
+                TerjeRespawnPoint point = currentTreeNode.Tag as TerjeRespawnPoint;
+                point.posSpecified = false;
+                point.xSpecified = point.ySpecified = point.zSpecified = true;
+
+                point.x = Convert.ToDecimal(point.pos.Split(',')[0]);
+                point.z = Convert.ToDecimal(point.pos.Split(',')[1]);
+                if (MapData.FileExists)
+                {
+                    point.y = (decimal)(MapData.gethieght((float)point.x, (float)point.z));
+                }
+                currentTreeNode.Text = GetPointText(point);
+            }
+            else if(currentTreeNode.Tag is BindingList<TerjeRespawnPoint>)
+            {
+                foreach(TreeNode tn in currentTreeNode.Nodes)
+                {
+                    TerjeRespawnPoint point = tn.Tag as TerjeRespawnPoint;
+                    point.posSpecified = false;
+                    point.xSpecified = point.ySpecified = point.zSpecified = true;
+
+                    point.x = Convert.ToDecimal(point.pos.Split(',')[0]);
+                    point.z = Convert.ToDecimal(point.pos.Split(',')[1]);
+                    if (MapData.FileExists)
+                    {
+                        point.y = (decimal)(MapData.gethieght((float)point.x, (float)point.z));
+                    }
+                    tn.Text = GetPointText(point);
+                }
+            }
+            TerjeRespawns.isDirty = true;
+        }
+        private void RemovePointtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentTreeNode.Tag is TerjeRespawnPoint)
+            {
+                TerjeRespawnPoint point = currentTreeNode.Tag as TerjeRespawnPoint;
+                TerjeRespawn respawn = currentTreeNode.Parent.Parent.Tag as TerjeRespawn;
+                respawn.Points.Remove(point);
+                if (respawn.Points.Count < 1)
+                {
+                    respawn.Points = null;
+                    currentTreeNode.Parent.Parent.Nodes.Remove(currentTreeNode.Parent);
+                }
+                else
+                    currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            }
+            else if (currentTreeNode.Tag is BindingList<TerjeRespawnPoint>)
+            {
+                TerjeRespawn respawn = currentTreeNode.Parent.Tag as TerjeRespawn;
+                respawn.Points = null;
+                currentTreeNode.Parent.Nodes.Remove(currentTreeNode);
+            }
+            TerjeRespawns.isDirty = true;
         }
     }
     public class ComboBoxItem

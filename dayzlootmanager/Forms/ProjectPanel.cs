@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Odbc;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -185,10 +186,46 @@ namespace DayZeEditor
             else
                 ProjectFolderTB.Text = "";
         }
+        private void selectProfilefolderNamebutton_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fb = new FolderBrowserDialog();
+            if (fb.ShowDialog() == DialogResult.OK)
+            {
+                ProjectProfileTB.Text = fb.SelectedPath;
+            }
+        }
+
+        private void MissionFoldertoUsebutton_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fb = new FolderBrowserDialog();
+            if (fb.ShowDialog() == DialogResult.OK)
+            {
+                ProjectMissionFolderTB.Text = fb.SelectedPath;
+
+                string path1 = ProjectMissionFolderTB.Text;
+                string path2 = ProjectProfileTB.Text;
+
+                // Get two levels up from each path
+                string basePath1 = Directory.GetParent(Directory.GetParent(path1).FullName).FullName;
+                string basePath2 = Directory.GetParent(path2).FullName;
+
+                // Print results
+                Console.WriteLine("Base Path 1: " + basePath1);
+                Console.WriteLine("Base Path 2: " + basePath2);
+
+                // Compare
+                if (string.Equals(basePath1, basePath2, StringComparison.OrdinalIgnoreCase))
+                {
+                    ProjectFolderTB.Text = basePath1;
+                }
+                else
+                    MessageBox.Show("Root Directory seems to be different, check yo uhave selected the correct paths.....");
+            }
+        }
         private void darkButton2_Click(object sender, EventArgs e)
         {
             string projecttype = ProjectTypeComboBox.GetItemText(ProjectTypeComboBox.SelectedItem);
-            if (projecttype == "Create Blank / Use Exisitng Files")
+            if (projecttype == "Create Blank")
             {
                 string ProjectFolder = ProjectFolderTB.Text;
                 string ProjectName = ProjectNameTB.Text;
@@ -223,6 +260,7 @@ namespace DayZeEditor
                 projects.addtoprojects(project, false);
                 LoadProjectstoList();
                 MessageBox.Show("Project created, Please Close the editor and populate the missions files before trying to load this project if not using existing files...");
+                Process.Start(project.projectFullName);
             }
             else if (projecttype == "Create Local from FTP/SFTP")
             {
@@ -265,6 +303,7 @@ namespace DayZeEditor
                 Directory.CreateDirectory(ProjectPath);
 
                 NewProjectFTP ftpproject = new NewProjectFTP();
+                ftpproject.SetTitle = "New Project from FTP";
                 ftpproject.session = session;
                 DialogResult result = ftpproject.ShowDialog();
                 if (result == DialogResult.OK)
@@ -314,68 +353,30 @@ namespace DayZeEditor
             }
             else if (projecttype == "Connect Direct to FTP/SFTP")
             {
-                try
+            }
+            else if (projecttype == "Connect to Exisiting Server")
+            {
+                string ProjectPath = ProjectFolderTB.Text;
+                string ProjectName = ProjectNameTB.Text;
+                if (ProjectName == "")
                 {
-                    if (session == null || !session.Opened)
-                    {
-                        if (FTPHostNameTB.Text == "" || FTPHostNameTB.Text == null)
-                        {
-                            MessageBox.Show("Please fill in FTP Connection info in the FTP Tab....");
-                            return;
-                        }
-                        SessionOptions sessionOptions = new SessionOptions
-                        {
-                            Protocol = Protocol.Ftp,
-                            HostName = FTPHostNameTB.Text,
-                            PortNumber = Convert.ToInt32(FTPPortTB.Text),
-                            UserName = FTPUSernameTB.Text,
-                            Password = FTPPasswordTB.Text,
-                        };
-                        session = new Session();
-                        session.Open(sessionOptions);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Please check connection info.....");
+                    MessageBox.Show("Please select a Project name.");
                     return;
                 }
-                NewProjectFTP ftpproject = new NewProjectFTP();
-                ftpproject.session = session;
-                ftpproject.hideConsole = false;
-                ftpproject.showDriveletter = true;
-                DialogResult result = ftpproject.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    Thread load = new Thread(new ThreadStart(showLoading));
-                    load.Start();
-                    string profiledir = ftpproject.ProfileDirecrtory;
-                    string mpmissiondirectory = ftpproject.MpMissionDirectory;
-                    string mpmissionpath = Path.GetFileName(mpmissiondirectory);
-                    string profile = Path.GetFileName(profiledir);
-                    string rootdir = session.HomePath;
-                    string Driveletter = ftpproject.GetdriveLetter;
-                    rootdir = profiledir.Replace(rootdir, "");
-                    rootdir = rootdir.Replace(profile, "");
-                    string ProjectName = "";
-                    if (rootdir.Contains("/"))
-                        ProjectName = rootdir.Split('/')[1];
-                    else
-                        ProjectName = rootdir;
+                string missionsfolder = ProjectMissionFolderTB.Text;
+                string profilefolder = Path.GetFileName(ProjectProfileTB.Text);
+                string mpmissionpath = Path.GetFileName(missionsfolder);
 
-                    string ProjectPath = Driveletter + @":\" + ProjectName;
+                Project project = new Project();
+                project.AddNames(ProjectName, ProjectPath);
+                project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
+                project.mpmissionpath = mpmissionpath;
+                project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
+                project.ProfilePath = profilefolder;
+                projects.addtoprojects(project, false);
+                LoadProjectstoList();
+                MessageBox.Show("Project created, select the project from the list and load....");
 
-                    Project project = new Project();
-                    project.AddNames(ProjectName, ProjectPath);
-                    project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
-                    project.mpmissionpath = mpmissionpath;
-                    project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
-                    project.ProfilePath = profile;
-                    projects.addtoprojects(project);
-                    SetActiveProject(project);
-                    LoadProjectstoList();
-                    load.Abort();
-                }
             }
         }
         private static string _lastFileName;
@@ -416,32 +417,79 @@ namespace DayZeEditor
         private void ProjectTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string projecttype = ProjectTypeComboBox.GetItemText(ProjectTypeComboBox.SelectedItem);
-            if (projecttype == "Create Local from FT/SFTP" || projecttype == "Connect Direct to FTP/SFTP")
+            if (projecttype == "Create Local from FTP/SFTP" || projecttype == "Connect Direct to FTP/SFTP")
             {
-                darkLabel12.Visible = false;
-                darkLabel6.Visible = false;
+                ProjectNameLabel.Visible = true;
+                ProjectNameTB.Visible = true;
+
+                SelectProjectFolderlabel.Visible = true;
+                SelectProjectFolderlabel.Text = "Select Project Folder";
+                ProjectFolderTB.Visible = true;
+                ProjectFolderTB.ReadOnly = false;
+                ProjectFolderTB.Size = new Size(630, 20);
+                SelectProjectFolderbutton.Visible = true;
+
+                ProfileFolderNamelabel.Visible = false;
                 ProjectProfileTB.Visible = false;
+                selectProfilefolderNamebutton.Visible = false;
+
+                MissionFoldertoUselabel.Visible = false;
                 ProjectMissionFolderTB.Visible = false;
-                darkLabel5.Visible = true;
-                darkLabel2.Visible = true;
-                button1.Visible = true;
-                ProjectNameTB.Visible = true;
-                ProjectFolderTB.Visible = true;
-                darkButton2.Location = new Point(401, 105);
+                MissionFoldertoUsebutton.Visible = false;
+
+                CreateProjectbutton.Location = new Point(401, 105);
             }
-            else if (projecttype == "Create Blank / Use Exisitng Files")
+            else if (projecttype == "Create Blank")
             {
-                darkLabel12.Visible = true;
-                darkLabel6.Visible = true;
-                darkLabel5.Visible = true;
-                darkLabel2.Visible = true;
-                ProjectProfileTB.Visible = true;
-                ProjectMissionFolderTB.Visible = true;
-                button1.Visible = true;
+                ProjectNameLabel.Visible = true;
                 ProjectNameTB.Visible = true;
+
+                SelectProjectFolderlabel.Visible = true;
+                SelectProjectFolderlabel.Text = "Select Project Folder";
                 ProjectFolderTB.Visible = true;
+                ProjectFolderTB.ReadOnly = false;
+                ProjectFolderTB.Size = new Size(630, 20);
+                SelectProjectFolderbutton.Visible = true;
+
+                ProfileFolderNamelabel.Visible = true;
+                ProfileFolderNamelabel.Text = "Profile Folder Name";
+                ProjectProfileTB.Visible = true;
+                ProjectProfileTB.Size = new Size(657, 20);
+                selectProfilefolderNamebutton.Visible = false;
+
+                MissionFoldertoUselabel.Visible = true;
+                MissionFoldertoUselabel.Text = "Mission Folder to use";
+                ProjectMissionFolderTB.Visible = true;
                 ProjectMissionFolderTB.Size = new Size(657, 20);
-                darkButton2.Location = new Point(401, 156);
+                MissionFoldertoUsebutton.Visible = false;
+
+                CreateProjectbutton.Location = new Point(402, 149);
+            }
+            else if (projecttype == "Connect to Exisiting Server")
+            {
+                ProjectNameLabel.Visible = true;
+                ProjectNameTB.Visible = true;
+
+                SelectProjectFolderlabel.Visible = true;
+                SelectProjectFolderlabel.Text = "Project Folder";
+                ProjectFolderTB.Visible = true;
+                ProjectFolderTB.ReadOnly = true;
+                ProjectFolderTB.Size = new Size(657, 20);
+                SelectProjectFolderbutton.Visible = false;
+
+                ProfileFolderNamelabel.Visible = true;
+                ProfileFolderNamelabel.Text = "Profile Path";
+                ProjectProfileTB.Visible = true;
+                ProjectProfileTB.Size = new Size(630, 20);
+                selectProfilefolderNamebutton.Visible = true;
+
+                MissionFoldertoUselabel.Visible = true;
+                MissionFoldertoUselabel.Text = "Mission Path";
+                ProjectMissionFolderTB.Visible = true;
+                ProjectMissionFolderTB.Size = new Size(630, 20);
+                MissionFoldertoUsebutton.Visible = true;
+
+                CreateProjectbutton.Location = new Point(402, 149);
             }
         }
         private void darkButton1_Click(object sender, EventArgs e)
@@ -1162,6 +1210,8 @@ namespace DayZeEditor
             else
                 toolStripButton2.Visible = true;
         }
+
+
     }
     public class SFTPInfoList
     {

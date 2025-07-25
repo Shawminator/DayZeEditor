@@ -288,6 +288,12 @@
     <Compile Include="Forms\RHLootBoxManager.Designer.cs">
       <DependentUpon>RHLootBoxManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperForms\AddnewTerjeRespawnOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelperForms\AddnewTerjeRespawnOption.Designer.cs">
+      <DependentUpon>AddnewTerjeRespawnOption.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperForms\AddnewTerjeCondition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -577,6 +583,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RHLootBoxManager.resx">
       <DependentUpon>RHLootBoxManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelperForms\AddnewTerjeRespawnOption.resx">
+      <DependentUpon>AddnewTerjeRespawnOption.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\AddnewTerjeCondition.resx">
       <DependentUpon>AddnewTerjeCondition.cs</DependentUpon>

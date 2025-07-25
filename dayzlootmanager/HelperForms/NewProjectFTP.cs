@@ -22,35 +22,14 @@ namespace DayZeEditor
                 IsConsoleCB.Visible = value;
             }
         }
-
-        public bool showDriveletter
+        public bool isSFTP = true;
+        public string SetTitle
         {
             set
             {
-                darkLabel3.Visible = value;
-                darkComboBox1.Visible = value;
-                if (value == true)
-                {
-                    List<string> alpha = "DEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray().Select(c => c.ToString()).ToList();
-                    List<string> DriveList = Environment.GetLogicalDrives().ToList();
-                    for (int i = 0; i < DriveList.Count; i++)
-                    {
-                        DriveList[i] = DriveList[i].Replace(":\\", "");
-                    }
-                    List<string> result = alpha.Except(DriveList).ToList();
-                    darkComboBox1.DataSource = result;
-                }
+                TitleLabel.Text = value;
             }
         }
-        public string GetdriveLetter
-        {
-            get
-            {
-                return darkComboBox1.GetItemText(darkComboBox1.SelectedItem);
-            }
-        }
-
-
         public Session session { get; set; }
         public string CurrentRemoteDirectory { get; private set; }
         public string RemoteRoot { get; private set; }
@@ -176,6 +155,10 @@ namespace DayZeEditor
                 Isconsole = false;
                 darkTextBox1.Visible = true;
             }
+        }
+        private void darkButton3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

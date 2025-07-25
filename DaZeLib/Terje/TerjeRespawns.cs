@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Xml.Serialization;
 
 namespace DayZeLib
@@ -10,7 +11,21 @@ namespace DayZeLib
         [XmlIgnore]
         public string Filename { get; set; }
         [XmlIgnore]
-        public bool isDirty { get; set; }
+        private bool _isDirty;
+        [XmlIgnore]
+        public bool isDirty
+        {
+            get => _isDirty;
+            set
+            {
+                if (_isDirty != value)
+                {
+                    Debug.WriteLine($"isDirty changed to: {value}");
+                    _isDirty = value;
+                    // You can also set a breakpoint here
+                }
+            }
+        }
 
         private BindingList<TerjeRespawn> respawnField;
 

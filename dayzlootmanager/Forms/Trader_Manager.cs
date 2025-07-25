@@ -71,7 +71,6 @@ namespace DayZeEditor
         public TypesFile vanillatypes;
         public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
-        public string filename;
 
         public string DrJonesPath { get; set; }
 
@@ -102,7 +101,6 @@ namespace DayZeEditor
         private void Trader_Manager_Load(object sender, EventArgs e)
         {
             DrJonesPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Trader";
-            filename = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 

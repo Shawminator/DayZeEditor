@@ -79,6 +79,10 @@ namespace DayZeEditor
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.wind_dir_maxNUD = new System.Windows.Forms.NumericUpDown();
+            this.wind_dir_minNUD = new System.Windows.Forms.NumericUpDown();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.wind_speed_maxNUD = new System.Windows.Forms.NumericUpDown();
             this.wind_speed_minNUD = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
@@ -103,14 +107,18 @@ namespace DayZeEditor
             this.stormCB = new System.Windows.Forms.CheckBox();
             this.thunder_timeoutNUD = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
-            this.wind_dir_maxNUD = new System.Windows.Forms.NumericUpDown();
-            this.wind_dir_minNUD = new System.Windows.Forms.NumericUpDown();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.use_global_temperatureCB = new System.Windows.Forms.CheckBox();
             this.global_temperature_overrideNUD = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
+            this.thunder_thresholdNUD = new System.Windows.Forms.NumericUpDown();
+            this.label23 = new System.Windows.Forms.Label();
+            this.snowfall_threshold_timeoutNUD = new System.Windows.Forms.NumericUpDown();
+            this.label24 = new System.Windows.Forms.Label();
+            this.snowfall_threshold_maxNUD = new System.Windows.Forms.NumericUpDown();
+            this.snowfall_threshold_minNUD = new System.Windows.Forms.NumericUpDown();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox37.SuspendLayout();
@@ -134,6 +142,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.fog_minNUD)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_maxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_minNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wind_speed_maxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wind_speed_minNUD)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -147,10 +157,12 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.snowflake_scale_minNUD)).BeginInit();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.thunder_timeoutNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_maxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_minNUD)).BeginInit();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.global_temperature_overrideNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.thunder_thresholdNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.snowfall_threshold_timeoutNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.snowfall_threshold_maxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.snowfall_threshold_minNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -206,7 +218,7 @@ namespace DayZeEditor
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(12, 48);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(261, 560);
+            this.groupBox1.Size = new System.Drawing.Size(261, 590);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List of Weathers";
@@ -214,7 +226,7 @@ namespace DayZeEditor
             // darkButton5
             // 
             this.darkButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton5.Location = new System.Drawing.Point(6, 524);
+            this.darkButton5.Location = new System.Drawing.Point(6, 554);
             this.darkButton5.Name = "darkButton5";
             this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton5.Size = new System.Drawing.Size(110, 23);
@@ -225,7 +237,7 @@ namespace DayZeEditor
             // darkButton6
             // 
             this.darkButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton6.Location = new System.Drawing.Point(151, 524);
+            this.darkButton6.Location = new System.Drawing.Point(151, 554);
             this.darkButton6.Name = "darkButton6";
             this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton6.Size = new System.Drawing.Size(104, 23);
@@ -243,7 +255,7 @@ namespace DayZeEditor
             this.WeatherLB.FormattingEnabled = true;
             this.WeatherLB.Location = new System.Drawing.Point(6, 19);
             this.WeatherLB.Name = "WeatherLB";
-            this.WeatherLB.Size = new System.Drawing.Size(249, 498);
+            this.WeatherLB.Size = new System.Drawing.Size(249, 524);
             this.WeatherLB.TabIndex = 92;
             this.WeatherLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.WeatherLB.SelectedIndexChanged += new System.EventHandler(this.WeatherLB_SelectedIndexChanged);
@@ -616,7 +628,7 @@ namespace DayZeEditor
             131072});
             this.dyn_vol_fog_height_maxNUD.Location = new System.Drawing.Point(179, 93);
             this.dyn_vol_fog_height_maxNUD.Maximum = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -638,7 +650,7 @@ namespace DayZeEditor
             131072});
             this.dyn_vol_fog_height_minNUD.Location = new System.Drawing.Point(95, 93);
             this.dyn_vol_fog_height_minNUD.Maximum = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -689,7 +701,7 @@ namespace DayZeEditor
             131072});
             this.dyn_vol_fog_dist_maxNUD.Location = new System.Drawing.Point(179, 55);
             this.dyn_vol_fog_dist_maxNUD.Maximum = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -711,7 +723,7 @@ namespace DayZeEditor
             131072});
             this.dyn_vol_fog_dist_minNUD.Location = new System.Drawing.Point(95, 55);
             this.dyn_vol_fog_dist_minNUD.Maximum = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -866,6 +878,58 @@ namespace DayZeEditor
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Wind";
             // 
+            // wind_dir_maxNUD
+            // 
+            this.wind_dir_maxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.wind_dir_maxNUD.DecimalPlaces = 3;
+            this.wind_dir_maxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.wind_dir_maxNUD.Location = new System.Drawing.Point(95, 71);
+            this.wind_dir_maxNUD.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.wind_dir_maxNUD.Name = "wind_dir_maxNUD";
+            this.wind_dir_maxNUD.Size = new System.Drawing.Size(78, 20);
+            this.wind_dir_maxNUD.TabIndex = 76;
+            this.wind_dir_maxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.wind_dir_maxNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            // 
+            // wind_dir_minNUD
+            // 
+            this.wind_dir_minNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.wind_dir_minNUD.DecimalPlaces = 3;
+            this.wind_dir_minNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.wind_dir_minNUD.Location = new System.Drawing.Point(11, 71);
+            this.wind_dir_minNUD.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.wind_dir_minNUD.Name = "wind_dir_minNUD";
+            this.wind_dir_minNUD.Size = new System.Drawing.Size(78, 20);
+            this.wind_dir_minNUD.TabIndex = 75;
+            this.wind_dir_minNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.wind_dir_minNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(106, 54);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(40, 13);
+            this.label20.TabIndex = 74;
+            this.label20.Text = "dir max";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(31, 55);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(37, 13);
+            this.label21.TabIndex = 73;
+            this.label21.Text = "dir min";
+            // 
             // wind_speed_maxNUD
             // 
             this.wind_speed_maxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -877,11 +941,6 @@ namespace DayZeEditor
             0,
             131072});
             this.wind_speed_maxNUD.Location = new System.Drawing.Point(95, 32);
-            this.wind_speed_maxNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.wind_speed_maxNUD.Name = "wind_speed_maxNUD";
             this.wind_speed_maxNUD.Size = new System.Drawing.Size(78, 20);
             this.wind_speed_maxNUD.TabIndex = 72;
@@ -899,11 +958,6 @@ namespace DayZeEditor
             0,
             131072});
             this.wind_speed_minNUD.Location = new System.Drawing.Point(11, 32);
-            this.wind_speed_minNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.wind_speed_minNUD.Name = "wind_speed_minNUD";
             this.wind_speed_minNUD.Size = new System.Drawing.Size(78, 20);
             this.wind_speed_minNUD.TabIndex = 71;
@@ -1006,6 +1060,12 @@ namespace DayZeEditor
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.snowfall_threshold_maxNUD);
+            this.groupBox6.Controls.Add(this.snowfall_threshold_minNUD);
+            this.groupBox6.Controls.Add(this.label25);
+            this.groupBox6.Controls.Add(this.label26);
+            this.groupBox6.Controls.Add(this.snowfall_threshold_timeoutNUD);
+            this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.snowfall_maxNUD);
             this.groupBox6.Controls.Add(this.snowfall_minNUD);
             this.groupBox6.Controls.Add(this.label15);
@@ -1013,7 +1073,7 @@ namespace DayZeEditor
             this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox6.Location = new System.Drawing.Point(564, 238);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(279, 62);
+            this.groupBox6.Size = new System.Drawing.Size(279, 131);
             this.groupBox6.TabIndex = 77;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Snowfall";
@@ -1028,7 +1088,7 @@ namespace DayZeEditor
             0,
             0,
             131072});
-            this.snowfall_maxNUD.Location = new System.Drawing.Point(95, 34);
+            this.snowfall_maxNUD.Location = new System.Drawing.Point(95, 30);
             this.snowfall_maxNUD.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1050,7 +1110,7 @@ namespace DayZeEditor
             0,
             0,
             131072});
-            this.snowfall_minNUD.Location = new System.Drawing.Point(11, 34);
+            this.snowfall_minNUD.Location = new System.Drawing.Point(11, 30);
             this.snowfall_minNUD.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1065,7 +1125,7 @@ namespace DayZeEditor
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(115, 18);
+            this.label15.Location = new System.Drawing.Point(115, 14);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(26, 13);
             this.label15.TabIndex = 1;
@@ -1074,7 +1134,7 @@ namespace DayZeEditor
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(37, 18);
+            this.label16.Location = new System.Drawing.Point(37, 14);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(23, 13);
             this.label16.TabIndex = 0;
@@ -1088,12 +1148,12 @@ namespace DayZeEditor
             this.groupBox7.Controls.Add(this.label17);
             this.groupBox7.Controls.Add(this.label18);
             this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox7.Location = new System.Drawing.Point(564, 306);
+            this.groupBox7.Location = new System.Drawing.Point(564, 375);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(279, 81);
             this.groupBox7.TabIndex = 81;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Snowfall";
+            this.groupBox7.Text = "Snowflake";
             // 
             // use_snowflake_scaleCB
             // 
@@ -1160,13 +1220,15 @@ namespace DayZeEditor
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.thunder_thresholdNUD);
+            this.groupBox8.Controls.Add(this.label23);
             this.groupBox8.Controls.Add(this.stormCB);
             this.groupBox8.Controls.Add(this.thunder_timeoutNUD);
             this.groupBox8.Controls.Add(this.label19);
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox8.Location = new System.Drawing.Point(564, 392);
+            this.groupBox8.Location = new System.Drawing.Point(564, 459);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(279, 70);
+            this.groupBox8.Size = new System.Drawing.Size(279, 97);
             this.groupBox8.TabIndex = 82;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Storm";
@@ -1186,7 +1248,7 @@ namespace DayZeEditor
             // 
             this.thunder_timeoutNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.thunder_timeoutNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.thunder_timeoutNUD.Location = new System.Drawing.Point(95, 39);
+            this.thunder_timeoutNUD.Location = new System.Drawing.Point(109, 65);
             this.thunder_timeoutNUD.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -1203,61 +1265,9 @@ namespace DayZeEditor
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(8, 41);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(88, 13);
+            this.label19.Size = new System.Drawing.Size(97, 13);
             this.label19.TabIndex = 1;
-            this.label19.Text = "Thunder Timeout";
-            // 
-            // wind_dir_maxNUD
-            // 
-            this.wind_dir_maxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.wind_dir_maxNUD.DecimalPlaces = 3;
-            this.wind_dir_maxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.wind_dir_maxNUD.Location = new System.Drawing.Point(95, 71);
-            this.wind_dir_maxNUD.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.wind_dir_maxNUD.Name = "wind_dir_maxNUD";
-            this.wind_dir_maxNUD.Size = new System.Drawing.Size(78, 20);
-            this.wind_dir_maxNUD.TabIndex = 76;
-            this.wind_dir_maxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.wind_dir_maxNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
-            // 
-            // wind_dir_minNUD
-            // 
-            this.wind_dir_minNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.wind_dir_minNUD.DecimalPlaces = 3;
-            this.wind_dir_minNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.wind_dir_minNUD.Location = new System.Drawing.Point(11, 71);
-            this.wind_dir_minNUD.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.wind_dir_minNUD.Name = "wind_dir_minNUD";
-            this.wind_dir_minNUD.Size = new System.Drawing.Size(78, 20);
-            this.wind_dir_minNUD.TabIndex = 75;
-            this.wind_dir_minNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.wind_dir_minNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(106, 54);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(40, 13);
-            this.label20.TabIndex = 74;
-            this.label20.Text = "dir max";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(31, 55);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(37, 13);
-            this.label21.TabIndex = 73;
-            this.label21.Text = "dir min";
+            this.label19.Text = "Thunder Threshold";
             // 
             // groupBox9
             // 
@@ -1265,7 +1275,7 @@ namespace DayZeEditor
             this.groupBox9.Controls.Add(this.global_temperature_overrideNUD);
             this.groupBox9.Controls.Add(this.label22);
             this.groupBox9.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox9.Location = new System.Drawing.Point(564, 468);
+            this.groupBox9.Location = new System.Drawing.Point(564, 562);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(279, 70);
             this.groupBox9.TabIndex = 83;
@@ -1313,11 +1323,123 @@ namespace DayZeEditor
             this.label22.TabIndex = 1;
             this.label22.Text = "Override";
             // 
+            // thunder_thresholdNUD
+            // 
+            this.thunder_thresholdNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.thunder_thresholdNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.thunder_thresholdNUD.Location = new System.Drawing.Point(109, 39);
+            this.thunder_thresholdNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.thunder_thresholdNUD.Name = "thunder_thresholdNUD";
+            this.thunder_thresholdNUD.Size = new System.Drawing.Size(78, 20);
+            this.thunder_thresholdNUD.TabIndex = 77;
+            this.thunder_thresholdNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.thunder_thresholdNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(8, 67);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(88, 13);
+            this.label23.TabIndex = 76;
+            this.label23.Text = "Thunder Timeout";
+            // 
+            // snowfall_threshold_timeoutNUD
+            // 
+            this.snowfall_threshold_timeoutNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.snowfall_threshold_timeoutNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.snowfall_threshold_timeoutNUD.Location = new System.Drawing.Point(109, 98);
+            this.snowfall_threshold_timeoutNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.snowfall_threshold_timeoutNUD.Name = "snowfall_threshold_timeoutNUD";
+            this.snowfall_threshold_timeoutNUD.Size = new System.Drawing.Size(78, 20);
+            this.snowfall_threshold_timeoutNUD.TabIndex = 79;
+            this.snowfall_threshold_timeoutNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.snowfall_threshold_timeoutNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(8, 100);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(95, 13);
+            this.label24.TabIndex = 78;
+            this.label24.Text = "Threshold Timeout";
+            // 
+            // snowfall_threshold_maxNUD
+            // 
+            this.snowfall_threshold_maxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.snowfall_threshold_maxNUD.DecimalPlaces = 3;
+            this.snowfall_threshold_maxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.snowfall_threshold_maxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.snowfall_threshold_maxNUD.Location = new System.Drawing.Point(95, 72);
+            this.snowfall_threshold_maxNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.snowfall_threshold_maxNUD.Name = "snowfall_threshold_maxNUD";
+            this.snowfall_threshold_maxNUD.Size = new System.Drawing.Size(78, 20);
+            this.snowfall_threshold_maxNUD.TabIndex = 83;
+            this.snowfall_threshold_maxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.snowfall_threshold_maxNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            // 
+            // snowfall_threshold_minNUD
+            // 
+            this.snowfall_threshold_minNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.snowfall_threshold_minNUD.DecimalPlaces = 3;
+            this.snowfall_threshold_minNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.snowfall_threshold_minNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.snowfall_threshold_minNUD.Location = new System.Drawing.Point(11, 72);
+            this.snowfall_threshold_minNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.snowfall_threshold_minNUD.Name = "snowfall_threshold_minNUD";
+            this.snowfall_threshold_minNUD.Size = new System.Drawing.Size(78, 20);
+            this.snowfall_threshold_minNUD.TabIndex = 82;
+            this.snowfall_threshold_minNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.snowfall_threshold_minNUD.ValueChanged += new System.EventHandler(this.DWPDecimalsNUD_ValueChanged);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(97, 56);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(76, 13);
+            this.label25.TabIndex = 81;
+            this.label25.Text = "Threshold max";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(16, 56);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(73, 13);
+            this.label26.TabIndex = 80;
+            this.label26.Text = "Threshold min";
+            // 
             // DynamicWeatherPluginManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 620);
+            this.ClientSize = new System.Drawing.Size(1014, 650);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
@@ -1368,6 +1490,8 @@ namespace DayZeEditor
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_maxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_minNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wind_speed_maxNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wind_speed_minNUD)).EndInit();
             this.groupBox4.ResumeLayout(false);
@@ -1385,11 +1509,13 @@ namespace DayZeEditor
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.thunder_timeoutNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_maxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wind_dir_minNUD)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.global_temperature_overrideNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.thunder_thresholdNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.snowfall_threshold_timeoutNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.snowfall_threshold_maxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.snowfall_threshold_minNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1477,5 +1603,13 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox use_global_temperatureCB;
         private System.Windows.Forms.NumericUpDown global_temperature_overrideNUD;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.NumericUpDown thunder_thresholdNUD;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.NumericUpDown snowfall_threshold_maxNUD;
+        private System.Windows.Forms.NumericUpDown snowfall_threshold_minNUD;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.NumericUpDown snowfall_threshold_timeoutNUD;
+        private System.Windows.Forms.Label label24;
     }
 }

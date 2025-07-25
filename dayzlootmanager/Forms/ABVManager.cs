@@ -14,7 +14,6 @@ namespace DayZeEditor
     {
         public Project currentproject { get; set; }
         public string AbandonedVehicleRemovePath { get; private set; }
-        public string Projectname { get; private set; }
 
         private bool useraction;
         public AbandonedVehicleRemover AbandonedVehicleRemover;
@@ -80,7 +79,6 @@ namespace DayZeEditor
             customCulture.NumberFormat.NumberGroupSeparator = "";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
 
-            Projectname = currentproject.ProjectName;
 
             useraction = false;
             AbandonedVehicleRemovePath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\AbandonedVehicleRemover\\Settings.json";

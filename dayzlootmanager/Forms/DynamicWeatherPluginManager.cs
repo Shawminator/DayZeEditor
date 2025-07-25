@@ -22,7 +22,6 @@ namespace DayZeEditor
         private bool useraction;
 
         public WeatherDynamic CurrentDynamicWeather { get; private set; }
-
         public DynamicWeatherPlugin DynamicWeatherPlugin;
 
         public DynamicWeatherPluginManager()
@@ -162,11 +161,15 @@ namespace DayZeEditor
             wind_dir_maxNUD.Value = CurrentDynamicWeather.wind_dir_max;
             snowfall_minNUD.Value = CurrentDynamicWeather.snowfall_min;
             snowfall_maxNUD.Value= CurrentDynamicWeather.snowfall_max;
+            snowfall_threshold_minNUD.Value = CurrentDynamicWeather.snowfall_threshold_min;
+            snowfall_threshold_maxNUD.Value = CurrentDynamicWeather.snowfall_threshold_max;
+            snowfall_threshold_timeoutNUD.Value = CurrentDynamicWeather.snowfall_threshold_timeout;
             use_snowflake_scaleCB.Checked = CurrentDynamicWeather.use_snowflake_scale;
             snowflake_scale_minNUD.Value = CurrentDynamicWeather.snowflake_scale_min;
             snowflake_scale_maxNUD.Value = CurrentDynamicWeather.snowflake_scale_max;
 
             stormCB.Checked = CurrentDynamicWeather.storm;
+            thunder_thresholdNUD.Value = CurrentDynamicWeather.thunder_threshold;
             thunder_timeoutNUD.Value = CurrentDynamicWeather.thunder_timeout;
 
             use_global_temperatureCB.Checked = CurrentDynamicWeather.use_global_temperature;
@@ -204,10 +207,14 @@ namespace DayZeEditor
                 rain_max = 1.0m,
                 snowfall_min = 0.0m,
                 snowfall_max = 1.0m,
+                snowfall_threshold_min = 0.5m,
+                snowfall_threshold_max = 1.0m,
+                snowfall_threshold_timeout = 60m,
                 snowflake_scale_min = 0.5m,
                 snowflake_scale_max = 2.0m,
                 use_snowflake_scale = true,
                 storm = true,
+                thunder_threshold = 0.8m,
                 thunder_timeout = 0.0m,
                 use_global_temperature = true,
                 global_temperature_override = 35.0m

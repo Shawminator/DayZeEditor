@@ -23,7 +23,6 @@ namespace DayZeEditor
         public AdvancedWorkBenchConfig AdvancedWorkBenchConfig;
         public Craftitem CurrentCraftItem;
         public Craftcomponent CurrentCraftComponent;
-        public string Projectname;
         private bool useraction = false;
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -70,7 +69,6 @@ namespace DayZeEditor
             customCulture.NumberFormat.NumberGroupSeparator = "";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
 
-            Projectname = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 

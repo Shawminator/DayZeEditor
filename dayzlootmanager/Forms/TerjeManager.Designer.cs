@@ -59,7 +59,21 @@ namespace DayZeEditor
             this.addSelectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSelectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewPointtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConvertPointstoXYZtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConvertPointstoPOStoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewPointsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addDeathPintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeDeathPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSafeRadiusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RemoveSafeRadiusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewRespawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeRespawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addLootItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewLootCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -295,20 +309,130 @@ namespace DayZeEditor
             this.label72 = new System.Windows.Forms.Label();
             this.CONDExtraOptionshideOwnerWhenFalseCB = new System.Windows.Forms.CheckBox();
             this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB = new System.Windows.Forms.CheckBox();
-            this.label77 = new System.Windows.Forms.Label();
+            this.SCFaceGB = new System.Windows.Forms.GroupBox();
+            this.SCFacebackgroundSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.SCFacebackgroundTB = new System.Windows.Forms.TextBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.SCFaceiconTB = new System.Windows.Forms.TextBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.SCFaceclassnameTB = new System.Windows.Forms.TextBox();
+            this.SCobjectGB = new System.Windows.Forms.GroupBox();
+            this.darkButton3 = new DarkUI.Controls.DarkButton();
+            this.SCobjectSingleBindSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCobjectSingleBindCB = new System.Windows.Forms.CheckBox();
+            this.SCobjectHandlerSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.SCobjectHandlerTB = new System.Windows.Forms.TextBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
+            this.SCobjectclassnameTB = new System.Windows.Forms.TextBox();
+            this.SCDeathPointGB = new System.Windows.Forms.GroupBox();
+            this.SCDeathPointRequireBodySpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCDeathPointRequireBodyCB = new System.Windows.Forms.CheckBox();
+            this.label85 = new System.Windows.Forms.Label();
+            this.SCOptionsSafeRadiusGB = new System.Windows.Forms.GroupBox();
+            this.SCSafeRadiusOtherNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCSafeRadiusZombieSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label84 = new System.Windows.Forms.Label();
+            this.SCSafeRadiusAnimalSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label86 = new System.Windows.Forms.Label();
+            this.SCSafeRadiusPlayerSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCSafeRadiusPlayerNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCSafeRadiusAnimalNUD = new System.Windows.Forms.NumericUpDown();
+            this.label88 = new System.Windows.Forms.Label();
+            this.label89 = new System.Windows.Forms.Label();
+            this.SCSafeRadiusOtherSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCSafeRadiusZombieNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCOptionMapImageGB = new System.Windows.Forms.GroupBox();
+            this.label91 = new System.Windows.Forms.Label();
+            this.SCoptionsMapImagePathTB = new System.Windows.Forms.TextBox();
+            this.SCPlayerStatsGB = new System.Windows.Forms.GroupBox();
+            this.SCPlayerStatsHeatBufferNUD = new System.Windows.Forms.NumericUpDown();
+            this.label97 = new System.Windows.Forms.Label();
+            this.SCPlayerStatsHeatComfortSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCPlayerStatsHeatComfortNUD = new System.Windows.Forms.NumericUpDown();
+            this.label98 = new System.Windows.Forms.Label();
+            this.SCPlayerStatsHeatBufferSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCPlayerStatsMindNUD = new System.Windows.Forms.NumericUpDown();
+            this.label94 = new System.Windows.Forms.Label();
+            this.SCPlayerStatsWaterSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label95 = new System.Windows.Forms.Label();
+            this.SCPlayerStatsSleepSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCPlayerStatsSleepNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCPlayerStatsWaterNUD = new System.Windows.Forms.NumericUpDown();
+            this.label96 = new System.Windows.Forms.Label();
+            this.SCPlayerStatsMindSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCPlayerStatsEnergyNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCPlayerStatsHealthSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label87 = new System.Windows.Forms.Label();
+            this.SCPlayerStatsBloodSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label90 = new System.Windows.Forms.Label();
+            this.SCPlayerStatsShockSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCPlayerStatsShockNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCPlayerStatsBloodNUD = new System.Windows.Forms.NumericUpDown();
+            this.label92 = new System.Windows.Forms.Label();
+            this.label93 = new System.Windows.Forms.Label();
+            this.SCPlayerStatsEnergySpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCPlayerStatsHealthNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCMapRendererGB = new System.Windows.Forms.GroupBox();
+            this.SCMapRendererInactiveMarkerColorPB = new System.Windows.Forms.PictureBox();
+            this.SCMapRendererActiveMarkerColorPB = new System.Windows.Forms.PictureBox();
+            this.SCMapRendererInnactivePointsColorPB = new System.Windows.Forms.PictureBox();
+            this.SCMapRendererActivePointsColorPB = new System.Windows.Forms.PictureBox();
+            this.SCMapRendererShowMarkerCB = new System.Windows.Forms.ComboBox();
+            this.SCMapRendererShowPointsCB = new System.Windows.Forms.ComboBox();
+            this.SCMapRendererShowMarkerNameCB = new System.Windows.Forms.CheckBox();
+            this.SCMapRendererAllowInteractionCB = new System.Windows.Forms.CheckBox();
+            this.SCMapRendererPointsPathTB = new System.Windows.Forms.TextBox();
+            this.SCMapRendererMarkerPathTB = new System.Windows.Forms.TextBox();
+            this.label116 = new System.Windows.Forms.Label();
+            this.label115 = new System.Windows.Forms.Label();
+            this.SCMapRendererPOSZNUD = new System.Windows.Forms.NumericUpDown();
+            this.label114 = new System.Windows.Forms.Label();
+            this.SCMapRendererMarkerPathSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label108 = new System.Windows.Forms.Label();
+            this.SCMapRendererInactiveMarkerColorSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label110 = new System.Windows.Forms.Label();
+            this.SCMapRendererActivePointsColorSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label111 = new System.Windows.Forms.Label();
+            this.SCMapRendererInnactivePointsColorSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label112 = new System.Windows.Forms.Label();
+            this.SCMapRendererActiveMarkerColorSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label113 = new System.Windows.Forms.Label();
+            this.SCMapRendererPointsPathSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label99 = new System.Windows.Forms.Label();
+            this.SCMapRendererShowMarkerNameSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label100 = new System.Windows.Forms.Label();
+            this.SCMapRendererAllowInteractionSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label101 = new System.Windows.Forms.Label();
+            this.SCMapRendererZoomSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label102 = new System.Windows.Forms.Label();
+            this.SCMapRendererShowPointsSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCMapRendererZoomNUD = new System.Windows.Forms.NumericUpDown();
+            this.label103 = new System.Windows.Forms.Label();
+            this.SCMapRendererShowMarkerSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCMapRendererZNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCMapRendererPOSSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label104 = new System.Windows.Forms.Label();
+            this.SCMapRendererXSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.label105 = new System.Windows.Forms.Label();
+            this.SCMapRendererYSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCMapRendererYNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCMapRendererXNUD = new System.Windows.Forms.NumericUpDown();
+            this.label106 = new System.Windows.Forms.Label();
+            this.label107 = new System.Windows.Forms.Label();
+            this.SCMapRendererZSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCMapRendererPOSXNUD = new System.Windows.Forms.NumericUpDown();
             this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.panelEx1 = new TreeViewMS.PanelEx();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.MapPanel = new System.Windows.Forms.Panel();
-            this.SCFaceGB = new System.Windows.Forms.GroupBox();
-            this.label78 = new System.Windows.Forms.Label();
-            this.SCFaceiconTB = new System.Windows.Forms.TextBox();
-            this.label79 = new System.Windows.Forms.Label();
-            this.SCFaceclassnameTB = new System.Windows.Forms.TextBox();
-            this.label80 = new System.Windows.Forms.Label();
-            this.SCFacebackgroundTB = new System.Windows.Forms.TextBox();
-            this.SCFacebackgroundSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.SCPointsangleSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.SCPointsangleNUD = new System.Windows.Forms.NumericUpDown();
+            this.RemovePointtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip21.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -363,11 +487,42 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathminNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathvalueNUD)).BeginInit();
             this.CONDExtraOptionsGB.SuspendLayout();
+            this.SCFaceGB.SuspendLayout();
+            this.SCobjectGB.SuspendLayout();
+            this.SCDeathPointGB.SuspendLayout();
+            this.SCOptionsSafeRadiusGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCSafeRadiusOtherNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCSafeRadiusPlayerNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCSafeRadiusAnimalNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCSafeRadiusZombieNUD)).BeginInit();
+            this.SCOptionMapImageGB.SuspendLayout();
+            this.SCPlayerStatsGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsHeatBufferNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsHeatComfortNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsMindNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsSleepNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsWaterNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsEnergyNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsShockNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsBloodNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsHealthNUD)).BeginInit();
+            this.SCMapRendererGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererInactiveMarkerColorPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererActiveMarkerColorPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererInnactivePointsColorPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererActivePointsColorPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererPOSZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererZoomNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererXNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererPOSXNUD)).BeginInit();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.MapPanel.SuspendLayout();
-            this.SCFaceGB.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPointsangleNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -457,10 +612,25 @@ namespace DayZeEditor
             this.addSelectorToolStripMenuItem,
             this.removeSelectorToolStripMenuItem,
             this.addGroupToolStripMenuItem,
-            this.removeGroupToolStripMenuItem});
+            this.AddNewPointtoolStripMenuItem,
+            this.RemovePointtoolStripMenuItem,
+            this.ConvertPointstoXYZtoolStripMenuItem,
+            this.ConvertPointstoPOStoolStripMenuItem,
+            this.removeGroupToolStripMenuItem,
+            this.addNewPointsToolStripMenuItem,
+            this.addNewObjectToolStripMenuItem,
+            this.removeObjectToolStripMenuItem,
+            this.addDeathPintToolStripMenuItem,
+            this.removeDeathPointToolStripMenuItem,
+            this.addOptionsToolStripMenuItem,
+            this.removeOptionsToolStripMenuItem,
+            this.addSafeRadiusToolStripMenuItem,
+            this.RemoveSafeRadiusToolStripMenuItem,
+            this.addNewRespawnToolStripMenuItem,
+            this.removeRespawnToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 532);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 884);
             // 
             // addNewCraftingRecipeToolStripMenuItem
             // 
@@ -496,6 +666,7 @@ namespace DayZeEditor
             // 
             // addIngredientItemToolStripMenuItem
             // 
+            this.addIngredientItemToolStripMenuItem.AutoSize = false;
             this.addIngredientItemToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.addIngredientItemToolStripMenuItem.Name = "addIngredientItemToolStripMenuItem";
             this.addIngredientItemToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
@@ -646,6 +817,30 @@ namespace DayZeEditor
             this.addGroupToolStripMenuItem.Text = "Add Group";
             this.addGroupToolStripMenuItem.Click += new System.EventHandler(this.addGroupToolStripMenuItem_Click);
             // 
+            // AddNewPointtoolStripMenuItem
+            // 
+            this.AddNewPointtoolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.AddNewPointtoolStripMenuItem.Name = "AddNewPointtoolStripMenuItem";
+            this.AddNewPointtoolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.AddNewPointtoolStripMenuItem.Text = "Add New Point";
+            this.AddNewPointtoolStripMenuItem.Click += new System.EventHandler(this.AddNewPointtoolStripMenuItem_Click);
+            // 
+            // ConvertPointstoXYZtoolStripMenuItem
+            // 
+            this.ConvertPointstoXYZtoolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.ConvertPointstoXYZtoolStripMenuItem.Name = "ConvertPointstoXYZtoolStripMenuItem";
+            this.ConvertPointstoXYZtoolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.ConvertPointstoXYZtoolStripMenuItem.Text = "Convert Point(s) to XYZ";
+            this.ConvertPointstoXYZtoolStripMenuItem.Click += new System.EventHandler(this.ConvertPointstoXYZtoolStripMenuItem_Click);
+            // 
+            // ConvertPointstoPOStoolStripMenuItem
+            // 
+            this.ConvertPointstoPOStoolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.ConvertPointstoPOStoolStripMenuItem.Name = "ConvertPointstoPOStoolStripMenuItem";
+            this.ConvertPointstoPOStoolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.ConvertPointstoPOStoolStripMenuItem.Text = "Convert Point(s) to POS";
+            this.ConvertPointstoPOStoolStripMenuItem.Click += new System.EventHandler(this.ConvertPointstoPOStoolStripMenuItem_Click);
+            // 
             // removeGroupToolStripMenuItem
             // 
             this.removeGroupToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
@@ -653,6 +848,94 @@ namespace DayZeEditor
             this.removeGroupToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.removeGroupToolStripMenuItem.Text = "Remove Group";
             this.removeGroupToolStripMenuItem.Click += new System.EventHandler(this.removeGroupToolStripMenuItem_Click);
+            // 
+            // addNewPointsToolStripMenuItem
+            // 
+            this.addNewPointsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addNewPointsToolStripMenuItem.Name = "addNewPointsToolStripMenuItem";
+            this.addNewPointsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addNewPointsToolStripMenuItem.Text = "Add New Points";
+            this.addNewPointsToolStripMenuItem.Click += new System.EventHandler(this.addNewPointsToolStripMenuItem_Click);
+            // 
+            // addNewObjectToolStripMenuItem
+            // 
+            this.addNewObjectToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addNewObjectToolStripMenuItem.Name = "addNewObjectToolStripMenuItem";
+            this.addNewObjectToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addNewObjectToolStripMenuItem.Text = "Add New Object";
+            this.addNewObjectToolStripMenuItem.Click += new System.EventHandler(this.addNewObjectToolStripMenuItem_Click);
+            // 
+            // removeObjectToolStripMenuItem
+            // 
+            this.removeObjectToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeObjectToolStripMenuItem.Name = "removeObjectToolStripMenuItem";
+            this.removeObjectToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeObjectToolStripMenuItem.Text = "Remove Object";
+            this.removeObjectToolStripMenuItem.Click += new System.EventHandler(this.removeObjectToolStripMenuItem_Click);
+            // 
+            // addDeathPintToolStripMenuItem
+            // 
+            this.addDeathPintToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addDeathPintToolStripMenuItem.Name = "addDeathPintToolStripMenuItem";
+            this.addDeathPintToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addDeathPintToolStripMenuItem.Text = "Add Death Point";
+            this.addDeathPintToolStripMenuItem.Click += new System.EventHandler(this.addDeathPintToolStripMenuItem_Click);
+            // 
+            // removeDeathPointToolStripMenuItem
+            // 
+            this.removeDeathPointToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeDeathPointToolStripMenuItem.Name = "removeDeathPointToolStripMenuItem";
+            this.removeDeathPointToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeDeathPointToolStripMenuItem.Text = "Remove Death Point";
+            this.removeDeathPointToolStripMenuItem.Click += new System.EventHandler(this.removeDeathPointToolStripMenuItem_Click);
+            // 
+            // addOptionsToolStripMenuItem
+            // 
+            this.addOptionsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addOptionsToolStripMenuItem.Name = "addOptionsToolStripMenuItem";
+            this.addOptionsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addOptionsToolStripMenuItem.Text = "Add Options";
+            this.addOptionsToolStripMenuItem.Click += new System.EventHandler(this.addOptionsToolStripMenuItem_Click);
+            // 
+            // removeOptionsToolStripMenuItem
+            // 
+            this.removeOptionsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeOptionsToolStripMenuItem.Name = "removeOptionsToolStripMenuItem";
+            this.removeOptionsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeOptionsToolStripMenuItem.Text = "Remove Options";
+            this.removeOptionsToolStripMenuItem.Click += new System.EventHandler(this.removeOptionsToolStripMenuItem_Click);
+            // 
+            // addSafeRadiusToolStripMenuItem
+            // 
+            this.addSafeRadiusToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addSafeRadiusToolStripMenuItem.Name = "addSafeRadiusToolStripMenuItem";
+            this.addSafeRadiusToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addSafeRadiusToolStripMenuItem.Text = "Add Option";
+            this.addSafeRadiusToolStripMenuItem.Click += new System.EventHandler(this.addSafeRadiusToolStripMenuItem_Click);
+            // 
+            // RemoveSafeRadiusToolStripMenuItem
+            // 
+            this.RemoveSafeRadiusToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.RemoveSafeRadiusToolStripMenuItem.Name = "RemoveSafeRadiusToolStripMenuItem";
+            this.RemoveSafeRadiusToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.RemoveSafeRadiusToolStripMenuItem.Text = "Remove Option";
+            this.RemoveSafeRadiusToolStripMenuItem.Click += new System.EventHandler(this.RemoveSafeRadiusToolStripMenuItem_Click);
+            // 
+            // addNewRespawnToolStripMenuItem
+            // 
+            this.addNewRespawnToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.addNewRespawnToolStripMenuItem.Name = "addNewRespawnToolStripMenuItem";
+            this.addNewRespawnToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.addNewRespawnToolStripMenuItem.Text = "Add New Respawn";
+            this.addNewRespawnToolStripMenuItem.Click += new System.EventHandler(this.addNewRespawnToolStripMenuItem_Click);
+            // 
+            // removeRespawnToolStripMenuItem
+            // 
+            this.removeRespawnToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.removeRespawnToolStripMenuItem.Name = "removeRespawnToolStripMenuItem";
+            this.removeRespawnToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.removeRespawnToolStripMenuItem.Text = "Remove Respawn";
+            this.removeRespawnToolStripMenuItem.Click += new System.EventHandler(this.removeRespawnToolStripMenuItem_Click);
             // 
             // addLootItemsToolStripMenuItem
             // 
@@ -3080,6 +3363,12 @@ namespace DayZeEditor
             this.flowLayoutPanel1.Controls.Add(this.CONDExtraVariablesMathGB);
             this.flowLayoutPanel1.Controls.Add(this.CONDExtraOptionsGB);
             this.flowLayoutPanel1.Controls.Add(this.SCFaceGB);
+            this.flowLayoutPanel1.Controls.Add(this.SCobjectGB);
+            this.flowLayoutPanel1.Controls.Add(this.SCDeathPointGB);
+            this.flowLayoutPanel1.Controls.Add(this.SCOptionsSafeRadiusGB);
+            this.flowLayoutPanel1.Controls.Add(this.SCOptionMapImageGB);
+            this.flowLayoutPanel1.Controls.Add(this.SCPlayerStatsGB);
+            this.flowLayoutPanel1.Controls.Add(this.SCMapRendererGB);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(404, 48);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -3523,19 +3812,1512 @@ namespace DayZeEditor
             this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.UseVisualStyleBackColor = true;
             this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB.CheckedChanged += new System.EventHandler(this.CONDExtraOptionshideOwnerWhenFalseSpecifiedCB_CheckedChanged);
             // 
-            // label77
+            // SCFaceGB
             // 
-            this.label77.AutoSize = true;
-            this.label77.Location = new System.Drawing.Point(156, 3);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(0, 13);
-            this.label77.TabIndex = 126;
+            this.SCFaceGB.Controls.Add(this.SCFacebackgroundSpecifiedCB);
+            this.SCFaceGB.Controls.Add(this.label80);
+            this.SCFaceGB.Controls.Add(this.SCFacebackgroundTB);
+            this.SCFaceGB.Controls.Add(this.label78);
+            this.SCFaceGB.Controls.Add(this.SCFaceiconTB);
+            this.SCFaceGB.Controls.Add(this.label79);
+            this.SCFaceGB.Controls.Add(this.SCFaceclassnameTB);
+            this.SCFaceGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCFaceGB.Location = new System.Drawing.Point(2601, 137);
+            this.SCFaceGB.Name = "SCFaceGB";
+            this.SCFaceGB.Size = new System.Drawing.Size(427, 101);
+            this.SCFaceGB.TabIndex = 293;
+            this.SCFaceGB.TabStop = false;
+            this.SCFaceGB.Text = "Face";
+            // 
+            // SCFacebackgroundSpecifiedCB
+            // 
+            this.SCFacebackgroundSpecifiedCB.AutoSize = true;
+            this.SCFacebackgroundSpecifiedCB.Location = new System.Drawing.Point(32, 71);
+            this.SCFacebackgroundSpecifiedCB.Name = "SCFacebackgroundSpecifiedCB";
+            this.SCFacebackgroundSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCFacebackgroundSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCFacebackgroundSpecifiedCB.TabIndex = 250;
+            this.SCFacebackgroundSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCFacebackgroundSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCFacebackgroundSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCFacebackgroundSpecifiedCB_CheckedChanged);
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(53, 72);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(64, 13);
+            this.label80.TabIndex = 227;
+            this.label80.Text = "background";
+            // 
+            // SCFacebackgroundTB
+            // 
+            this.SCFacebackgroundTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCFacebackgroundTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCFacebackgroundTB.Location = new System.Drawing.Point(161, 68);
+            this.SCFacebackgroundTB.Name = "SCFacebackgroundTB";
+            this.SCFacebackgroundTB.Size = new System.Drawing.Size(259, 20);
+            this.SCFacebackgroundTB.TabIndex = 226;
+            this.SCFacebackgroundTB.TextChanged += new System.EventHandler(this.SCFacebackgroundTB_TextChanged);
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(53, 46);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(28, 13);
+            this.label78.TabIndex = 225;
+            this.label78.Text = "Icon";
+            // 
+            // SCFaceiconTB
+            // 
+            this.SCFaceiconTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCFaceiconTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCFaceiconTB.Location = new System.Drawing.Point(161, 42);
+            this.SCFaceiconTB.Name = "SCFaceiconTB";
+            this.SCFaceiconTB.Size = new System.Drawing.Size(259, 20);
+            this.SCFaceiconTB.TabIndex = 224;
+            this.SCFaceiconTB.TextChanged += new System.EventHandler(this.SCFaceiconTB_TextChanged);
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(54, 20);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(58, 13);
+            this.label79.TabIndex = 223;
+            this.label79.Text = "Classname";
+            // 
+            // SCFaceclassnameTB
+            // 
+            this.SCFaceclassnameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCFaceclassnameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCFaceclassnameTB.Location = new System.Drawing.Point(162, 16);
+            this.SCFaceclassnameTB.Name = "SCFaceclassnameTB";
+            this.SCFaceclassnameTB.Size = new System.Drawing.Size(259, 20);
+            this.SCFaceclassnameTB.TabIndex = 222;
+            this.SCFaceclassnameTB.TextChanged += new System.EventHandler(this.SCFaceclassnameTB_TextChanged);
+            // 
+            // SCobjectGB
+            // 
+            this.SCobjectGB.Controls.Add(this.darkButton3);
+            this.SCobjectGB.Controls.Add(this.SCobjectSingleBindSpecifiedCB);
+            this.SCobjectGB.Controls.Add(this.SCobjectSingleBindCB);
+            this.SCobjectGB.Controls.Add(this.SCobjectHandlerSpecifiedCB);
+            this.SCobjectGB.Controls.Add(this.label81);
+            this.SCobjectGB.Controls.Add(this.SCobjectHandlerTB);
+            this.SCobjectGB.Controls.Add(this.label82);
+            this.SCobjectGB.Controls.Add(this.label83);
+            this.SCobjectGB.Controls.Add(this.SCobjectclassnameTB);
+            this.SCobjectGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCobjectGB.Location = new System.Drawing.Point(2601, 244);
+            this.SCobjectGB.Name = "SCobjectGB";
+            this.SCobjectGB.Size = new System.Drawing.Size(427, 101);
+            this.SCobjectGB.TabIndex = 294;
+            this.SCobjectGB.TabStop = false;
+            this.SCobjectGB.Text = "Object";
+            // 
+            // darkButton3
+            // 
+            this.darkButton3.Location = new System.Drawing.Point(403, 15);
+            this.darkButton3.Name = "darkButton3";
+            this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton3.Size = new System.Drawing.Size(17, 23);
+            this.darkButton3.TabIndex = 287;
+            this.darkButton3.Text = "+";
+            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
+            // 
+            // SCobjectSingleBindSpecifiedCB
+            // 
+            this.SCobjectSingleBindSpecifiedCB.AutoSize = true;
+            this.SCobjectSingleBindSpecifiedCB.Location = new System.Drawing.Point(32, 46);
+            this.SCobjectSingleBindSpecifiedCB.Name = "SCobjectSingleBindSpecifiedCB";
+            this.SCobjectSingleBindSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCobjectSingleBindSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCobjectSingleBindSpecifiedCB.TabIndex = 252;
+            this.SCobjectSingleBindSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCobjectSingleBindSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCobjectSingleBindSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCobjectSingleBindSpecifiedCB_CheckedChanged);
+            // 
+            // SCobjectSingleBindCB
+            // 
+            this.SCobjectSingleBindCB.AutoSize = true;
+            this.SCobjectSingleBindCB.Location = new System.Drawing.Point(162, 43);
+            this.SCobjectSingleBindCB.Name = "SCobjectSingleBindCB";
+            this.SCobjectSingleBindCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCobjectSingleBindCB.Size = new System.Drawing.Size(15, 14);
+            this.SCobjectSingleBindCB.TabIndex = 251;
+            this.SCobjectSingleBindCB.Tag = "SCLItemscostNUD";
+            this.SCobjectSingleBindCB.UseVisualStyleBackColor = true;
+            this.SCobjectSingleBindCB.CheckedChanged += new System.EventHandler(this.SCobjectSingleBindCB_CheckedChanged);
+            // 
+            // SCobjectHandlerSpecifiedCB
+            // 
+            this.SCobjectHandlerSpecifiedCB.AutoSize = true;
+            this.SCobjectHandlerSpecifiedCB.Location = new System.Drawing.Point(32, 71);
+            this.SCobjectHandlerSpecifiedCB.Name = "SCobjectHandlerSpecifiedCB";
+            this.SCobjectHandlerSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCobjectHandlerSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCobjectHandlerSpecifiedCB.TabIndex = 250;
+            this.SCobjectHandlerSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCobjectHandlerSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCobjectHandlerSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCobjectHandlerSpecifiedCB_CheckedChanged);
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(53, 72);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(44, 13);
+            this.label81.TabIndex = 227;
+            this.label81.Text = "Handler";
+            // 
+            // SCobjectHandlerTB
+            // 
+            this.SCobjectHandlerTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCobjectHandlerTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCobjectHandlerTB.Location = new System.Drawing.Point(162, 69);
+            this.SCobjectHandlerTB.Name = "SCobjectHandlerTB";
+            this.SCobjectHandlerTB.Size = new System.Drawing.Size(259, 20);
+            this.SCobjectHandlerTB.TabIndex = 226;
+            this.SCobjectHandlerTB.TextChanged += new System.EventHandler(this.SCobjectHandlerTB_TextChanged);
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(53, 46);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(60, 13);
+            this.label82.TabIndex = 225;
+            this.label82.Text = "Single Bind";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(54, 20);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(58, 13);
+            this.label83.TabIndex = 223;
+            this.label83.Text = "Classname";
+            // 
+            // SCobjectclassnameTB
+            // 
+            this.SCobjectclassnameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCobjectclassnameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCobjectclassnameTB.Location = new System.Drawing.Point(162, 16);
+            this.SCobjectclassnameTB.Name = "SCobjectclassnameTB";
+            this.SCobjectclassnameTB.Size = new System.Drawing.Size(235, 20);
+            this.SCobjectclassnameTB.TabIndex = 222;
+            this.SCobjectclassnameTB.TextChanged += new System.EventHandler(this.SCobjectclassnameTB_TextChanged);
+            // 
+            // SCDeathPointGB
+            // 
+            this.SCDeathPointGB.Controls.Add(this.SCDeathPointRequireBodySpecifiedCB);
+            this.SCDeathPointGB.Controls.Add(this.SCDeathPointRequireBodyCB);
+            this.SCDeathPointGB.Controls.Add(this.label85);
+            this.SCDeathPointGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCDeathPointGB.Location = new System.Drawing.Point(2601, 351);
+            this.SCDeathPointGB.Name = "SCDeathPointGB";
+            this.SCDeathPointGB.Size = new System.Drawing.Size(427, 52);
+            this.SCDeathPointGB.TabIndex = 295;
+            this.SCDeathPointGB.TabStop = false;
+            this.SCDeathPointGB.Text = "DeathPoint";
+            // 
+            // SCDeathPointRequireBodySpecifiedCB
+            // 
+            this.SCDeathPointRequireBodySpecifiedCB.AutoSize = true;
+            this.SCDeathPointRequireBodySpecifiedCB.Location = new System.Drawing.Point(32, 22);
+            this.SCDeathPointRequireBodySpecifiedCB.Name = "SCDeathPointRequireBodySpecifiedCB";
+            this.SCDeathPointRequireBodySpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCDeathPointRequireBodySpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCDeathPointRequireBodySpecifiedCB.TabIndex = 252;
+            this.SCDeathPointRequireBodySpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCDeathPointRequireBodySpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCDeathPointRequireBodySpecifiedCB.CheckedChanged += new System.EventHandler(this.SCDeathPointRequireBodySpecifiedCB_CheckedChanged);
+            // 
+            // SCDeathPointRequireBodyCB
+            // 
+            this.SCDeathPointRequireBodyCB.AutoSize = true;
+            this.SCDeathPointRequireBodyCB.Location = new System.Drawing.Point(161, 22);
+            this.SCDeathPointRequireBodyCB.Name = "SCDeathPointRequireBodyCB";
+            this.SCDeathPointRequireBodyCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCDeathPointRequireBodyCB.Size = new System.Drawing.Size(15, 14);
+            this.SCDeathPointRequireBodyCB.TabIndex = 251;
+            this.SCDeathPointRequireBodyCB.Tag = "SCLItemscostNUD";
+            this.SCDeathPointRequireBodyCB.UseVisualStyleBackColor = true;
+            this.SCDeathPointRequireBodyCB.CheckedChanged += new System.EventHandler(this.SCDeathPointRequireBodyCB_CheckedChanged);
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(53, 22);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(76, 13);
+            this.label85.TabIndex = 225;
+            this.label85.Text = "Requires Body";
+            // 
+            // SCOptionsSafeRadiusGB
+            // 
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.SCSafeRadiusOtherNUD);
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.SCSafeRadiusZombieSpecifiedCB);
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.label84);
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.SCSafeRadiusAnimalSpecifiedCB);
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.label86);
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.SCSafeRadiusPlayerSpecifiedCB);
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.SCSafeRadiusPlayerNUD);
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.SCSafeRadiusAnimalNUD);
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.label88);
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.label89);
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.SCSafeRadiusOtherSpecifiedCB);
+            this.SCOptionsSafeRadiusGB.Controls.Add(this.SCSafeRadiusZombieNUD);
+            this.SCOptionsSafeRadiusGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCOptionsSafeRadiusGB.Location = new System.Drawing.Point(2601, 409);
+            this.SCOptionsSafeRadiusGB.Name = "SCOptionsSafeRadiusGB";
+            this.SCOptionsSafeRadiusGB.Size = new System.Drawing.Size(427, 134);
+            this.SCOptionsSafeRadiusGB.TabIndex = 296;
+            this.SCOptionsSafeRadiusGB.TabStop = false;
+            this.SCOptionsSafeRadiusGB.Text = "Safe Radius";
+            // 
+            // SCSafeRadiusOtherNUD
+            // 
+            this.SCSafeRadiusOtherNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCSafeRadiusOtherNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCSafeRadiusOtherNUD.Location = new System.Drawing.Point(161, 100);
+            this.SCSafeRadiusOtherNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.SCSafeRadiusOtherNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.SCSafeRadiusOtherNUD.Name = "SCSafeRadiusOtherNUD";
+            this.SCSafeRadiusOtherNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCSafeRadiusOtherNUD.TabIndex = 268;
+            this.SCSafeRadiusOtherNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCSafeRadiusOtherNUD.ValueChanged += new System.EventHandler(this.SCSafeRadiusOtherNUD_ValueChanged);
+            // 
+            // SCSafeRadiusZombieSpecifiedCB
+            // 
+            this.SCSafeRadiusZombieSpecifiedCB.AutoSize = true;
+            this.SCSafeRadiusZombieSpecifiedCB.Location = new System.Drawing.Point(30, 25);
+            this.SCSafeRadiusZombieSpecifiedCB.Name = "SCSafeRadiusZombieSpecifiedCB";
+            this.SCSafeRadiusZombieSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCSafeRadiusZombieSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCSafeRadiusZombieSpecifiedCB.TabIndex = 267;
+            this.SCSafeRadiusZombieSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCSafeRadiusZombieSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCSafeRadiusZombieSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCSafeRadiusZombieSpecifiedCB_CheckedChanged);
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(59, 51);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(38, 13);
+            this.label84.TabIndex = 266;
+            this.label84.Text = "Animal";
+            // 
+            // SCSafeRadiusAnimalSpecifiedCB
+            // 
+            this.SCSafeRadiusAnimalSpecifiedCB.AutoSize = true;
+            this.SCSafeRadiusAnimalSpecifiedCB.Location = new System.Drawing.Point(30, 51);
+            this.SCSafeRadiusAnimalSpecifiedCB.Name = "SCSafeRadiusAnimalSpecifiedCB";
+            this.SCSafeRadiusAnimalSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCSafeRadiusAnimalSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCSafeRadiusAnimalSpecifiedCB.TabIndex = 265;
+            this.SCSafeRadiusAnimalSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCSafeRadiusAnimalSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCSafeRadiusAnimalSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCSafeRadiusAnimalSpecifiedCB_CheckedChanged);
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(59, 77);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(36, 13);
+            this.label86.TabIndex = 264;
+            this.label86.Text = "Player";
+            // 
+            // SCSafeRadiusPlayerSpecifiedCB
+            // 
+            this.SCSafeRadiusPlayerSpecifiedCB.AutoSize = true;
+            this.SCSafeRadiusPlayerSpecifiedCB.Location = new System.Drawing.Point(30, 77);
+            this.SCSafeRadiusPlayerSpecifiedCB.Name = "SCSafeRadiusPlayerSpecifiedCB";
+            this.SCSafeRadiusPlayerSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCSafeRadiusPlayerSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCSafeRadiusPlayerSpecifiedCB.TabIndex = 263;
+            this.SCSafeRadiusPlayerSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCSafeRadiusPlayerSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCSafeRadiusPlayerSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCSafeRadiusPlayerSpecifiedCB_CheckedChanged);
+            // 
+            // SCSafeRadiusPlayerNUD
+            // 
+            this.SCSafeRadiusPlayerNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCSafeRadiusPlayerNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCSafeRadiusPlayerNUD.Location = new System.Drawing.Point(162, 75);
+            this.SCSafeRadiusPlayerNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.SCSafeRadiusPlayerNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.SCSafeRadiusPlayerNUD.Name = "SCSafeRadiusPlayerNUD";
+            this.SCSafeRadiusPlayerNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCSafeRadiusPlayerNUD.TabIndex = 262;
+            this.SCSafeRadiusPlayerNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCSafeRadiusPlayerNUD.ValueChanged += new System.EventHandler(this.SCSafeRadiusPlayerNUD_ValueChanged);
+            // 
+            // SCSafeRadiusAnimalNUD
+            // 
+            this.SCSafeRadiusAnimalNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCSafeRadiusAnimalNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCSafeRadiusAnimalNUD.Location = new System.Drawing.Point(162, 49);
+            this.SCSafeRadiusAnimalNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.SCSafeRadiusAnimalNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.SCSafeRadiusAnimalNUD.Name = "SCSafeRadiusAnimalNUD";
+            this.SCSafeRadiusAnimalNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCSafeRadiusAnimalNUD.TabIndex = 261;
+            this.SCSafeRadiusAnimalNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCSafeRadiusAnimalNUD.ValueChanged += new System.EventHandler(this.SCSafeRadiusAnimalNUD_ValueChanged);
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(59, 25);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(42, 13);
+            this.label88.TabIndex = 259;
+            this.label88.Text = "Zombie";
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(59, 101);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(33, 13);
+            this.label89.TabIndex = 257;
+            this.label89.Text = "Other";
+            // 
+            // SCSafeRadiusOtherSpecifiedCB
+            // 
+            this.SCSafeRadiusOtherSpecifiedCB.AutoSize = true;
+            this.SCSafeRadiusOtherSpecifiedCB.Location = new System.Drawing.Point(30, 101);
+            this.SCSafeRadiusOtherSpecifiedCB.Name = "SCSafeRadiusOtherSpecifiedCB";
+            this.SCSafeRadiusOtherSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCSafeRadiusOtherSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCSafeRadiusOtherSpecifiedCB.TabIndex = 256;
+            this.SCSafeRadiusOtherSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCSafeRadiusOtherSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCSafeRadiusOtherSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCSafeRadiusOtherSpecifiedCB_CheckedChanged);
+            // 
+            // SCSafeRadiusZombieNUD
+            // 
+            this.SCSafeRadiusZombieNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCSafeRadiusZombieNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCSafeRadiusZombieNUD.Location = new System.Drawing.Point(162, 23);
+            this.SCSafeRadiusZombieNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.SCSafeRadiusZombieNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.SCSafeRadiusZombieNUD.Name = "SCSafeRadiusZombieNUD";
+            this.SCSafeRadiusZombieNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCSafeRadiusZombieNUD.TabIndex = 203;
+            this.SCSafeRadiusZombieNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCSafeRadiusZombieNUD.ValueChanged += new System.EventHandler(this.SCSafeRadiusZombieNUD_ValueChanged);
+            // 
+            // SCOptionMapImageGB
+            // 
+            this.SCOptionMapImageGB.Controls.Add(this.label91);
+            this.SCOptionMapImageGB.Controls.Add(this.SCoptionsMapImagePathTB);
+            this.SCOptionMapImageGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCOptionMapImageGB.Location = new System.Drawing.Point(3034, 3);
+            this.SCOptionMapImageGB.Name = "SCOptionMapImageGB";
+            this.SCOptionMapImageGB.Size = new System.Drawing.Size(427, 56);
+            this.SCOptionMapImageGB.TabIndex = 297;
+            this.SCOptionMapImageGB.TabStop = false;
+            this.SCOptionMapImageGB.Text = "Map Image";
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(59, 22);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(29, 13);
+            this.label91.TabIndex = 260;
+            this.label91.Text = "Path";
+            // 
+            // SCoptionsMapImagePathTB
+            // 
+            this.SCoptionsMapImagePathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCoptionsMapImagePathTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCoptionsMapImagePathTB.Location = new System.Drawing.Point(161, 19);
+            this.SCoptionsMapImagePathTB.Name = "SCoptionsMapImagePathTB";
+            this.SCoptionsMapImagePathTB.Size = new System.Drawing.Size(253, 20);
+            this.SCoptionsMapImagePathTB.TabIndex = 207;
+            this.SCoptionsMapImagePathTB.TextChanged += new System.EventHandler(this.SCoptionsMapImagePathTB_TextChanged);
+            // 
+            // SCPlayerStatsGB
+            // 
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsHeatBufferNUD);
+            this.SCPlayerStatsGB.Controls.Add(this.label97);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsHeatComfortSpecifiedCB);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsHeatComfortNUD);
+            this.SCPlayerStatsGB.Controls.Add(this.label98);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsHeatBufferSpecifiedCB);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsMindNUD);
+            this.SCPlayerStatsGB.Controls.Add(this.label94);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsWaterSpecifiedCB);
+            this.SCPlayerStatsGB.Controls.Add(this.label95);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsSleepSpecifiedCB);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsSleepNUD);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsWaterNUD);
+            this.SCPlayerStatsGB.Controls.Add(this.label96);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsMindSpecifiedCB);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsEnergyNUD);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsHealthSpecifiedCB);
+            this.SCPlayerStatsGB.Controls.Add(this.label87);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsBloodSpecifiedCB);
+            this.SCPlayerStatsGB.Controls.Add(this.label90);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsShockSpecifiedCB);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsShockNUD);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsBloodNUD);
+            this.SCPlayerStatsGB.Controls.Add(this.label92);
+            this.SCPlayerStatsGB.Controls.Add(this.label93);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsEnergySpecifiedCB);
+            this.SCPlayerStatsGB.Controls.Add(this.SCPlayerStatsHealthNUD);
+            this.SCPlayerStatsGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPlayerStatsGB.Location = new System.Drawing.Point(3034, 65);
+            this.SCPlayerStatsGB.Name = "SCPlayerStatsGB";
+            this.SCPlayerStatsGB.Size = new System.Drawing.Size(427, 264);
+            this.SCPlayerStatsGB.TabIndex = 298;
+            this.SCPlayerStatsGB.TabStop = false;
+            this.SCPlayerStatsGB.Text = "Player Stats";
+            // 
+            // SCPlayerStatsHeatBufferNUD
+            // 
+            this.SCPlayerStatsHeatBufferNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCPlayerStatsHeatBufferNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPlayerStatsHeatBufferNUD.Location = new System.Drawing.Point(162, 229);
+            this.SCPlayerStatsHeatBufferNUD.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.SCPlayerStatsHeatBufferNUD.Minimum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            -2147483648});
+            this.SCPlayerStatsHeatBufferNUD.Name = "SCPlayerStatsHeatBufferNUD";
+            this.SCPlayerStatsHeatBufferNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCPlayerStatsHeatBufferNUD.TabIndex = 283;
+            this.SCPlayerStatsHeatBufferNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCPlayerStatsHeatBufferNUD.ValueChanged += new System.EventHandler(this.SCPlayerStatsHeatBufferNUD_ValueChanged);
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Location = new System.Drawing.Point(58, 205);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(69, 13);
+            this.label97.TabIndex = 282;
+            this.label97.Text = "Heat Comfort";
+            // 
+            // SCPlayerStatsHeatComfortSpecifiedCB
+            // 
+            this.SCPlayerStatsHeatComfortSpecifiedCB.AutoSize = true;
+            this.SCPlayerStatsHeatComfortSpecifiedCB.Location = new System.Drawing.Point(29, 205);
+            this.SCPlayerStatsHeatComfortSpecifiedCB.Name = "SCPlayerStatsHeatComfortSpecifiedCB";
+            this.SCPlayerStatsHeatComfortSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCPlayerStatsHeatComfortSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCPlayerStatsHeatComfortSpecifiedCB.TabIndex = 281;
+            this.SCPlayerStatsHeatComfortSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCPlayerStatsHeatComfortSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCPlayerStatsHeatComfortSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCPlayerStatsHeatComfortSpecifiedCB_CheckedChanged);
+            // 
+            // SCPlayerStatsHeatComfortNUD
+            // 
+            this.SCPlayerStatsHeatComfortNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCPlayerStatsHeatComfortNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPlayerStatsHeatComfortNUD.Location = new System.Drawing.Point(162, 203);
+            this.SCPlayerStatsHeatComfortNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SCPlayerStatsHeatComfortNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.SCPlayerStatsHeatComfortNUD.Name = "SCPlayerStatsHeatComfortNUD";
+            this.SCPlayerStatsHeatComfortNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCPlayerStatsHeatComfortNUD.TabIndex = 280;
+            this.SCPlayerStatsHeatComfortNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCPlayerStatsHeatComfortNUD.ValueChanged += new System.EventHandler(this.SCPlayerStatsHeatComfortNUD_ValueChanged);
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(58, 229);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(61, 13);
+            this.label98.TabIndex = 279;
+            this.label98.Text = "Heat Buffer";
+            // 
+            // SCPlayerStatsHeatBufferSpecifiedCB
+            // 
+            this.SCPlayerStatsHeatBufferSpecifiedCB.AutoSize = true;
+            this.SCPlayerStatsHeatBufferSpecifiedCB.Location = new System.Drawing.Point(29, 229);
+            this.SCPlayerStatsHeatBufferSpecifiedCB.Name = "SCPlayerStatsHeatBufferSpecifiedCB";
+            this.SCPlayerStatsHeatBufferSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCPlayerStatsHeatBufferSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCPlayerStatsHeatBufferSpecifiedCB.TabIndex = 278;
+            this.SCPlayerStatsHeatBufferSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCPlayerStatsHeatBufferSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCPlayerStatsHeatBufferSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCPlayerStatsHeatBufferSpecifiedCB_CheckedChanged);
+            // 
+            // SCPlayerStatsMindNUD
+            // 
+            this.SCPlayerStatsMindNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCPlayerStatsMindNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPlayerStatsMindNUD.Location = new System.Drawing.Point(162, 179);
+            this.SCPlayerStatsMindNUD.Name = "SCPlayerStatsMindNUD";
+            this.SCPlayerStatsMindNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCPlayerStatsMindNUD.TabIndex = 277;
+            this.SCPlayerStatsMindNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCPlayerStatsMindNUD.ValueChanged += new System.EventHandler(this.SCPlayerStatsMindNUD_ValueChanged);
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Location = new System.Drawing.Point(59, 128);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(36, 13);
+            this.label94.TabIndex = 276;
+            this.label94.Text = "Water";
+            // 
+            // SCPlayerStatsWaterSpecifiedCB
+            // 
+            this.SCPlayerStatsWaterSpecifiedCB.AutoSize = true;
+            this.SCPlayerStatsWaterSpecifiedCB.Location = new System.Drawing.Point(30, 128);
+            this.SCPlayerStatsWaterSpecifiedCB.Name = "SCPlayerStatsWaterSpecifiedCB";
+            this.SCPlayerStatsWaterSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCPlayerStatsWaterSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCPlayerStatsWaterSpecifiedCB.TabIndex = 275;
+            this.SCPlayerStatsWaterSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCPlayerStatsWaterSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCPlayerStatsWaterSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCPlayerStatsWaterSpecifiedCB_CheckedChanged);
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(59, 154);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(34, 13);
+            this.label95.TabIndex = 274;
+            this.label95.Text = "Sleep";
+            // 
+            // SCPlayerStatsSleepSpecifiedCB
+            // 
+            this.SCPlayerStatsSleepSpecifiedCB.AutoSize = true;
+            this.SCPlayerStatsSleepSpecifiedCB.Location = new System.Drawing.Point(30, 154);
+            this.SCPlayerStatsSleepSpecifiedCB.Name = "SCPlayerStatsSleepSpecifiedCB";
+            this.SCPlayerStatsSleepSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCPlayerStatsSleepSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCPlayerStatsSleepSpecifiedCB.TabIndex = 273;
+            this.SCPlayerStatsSleepSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCPlayerStatsSleepSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCPlayerStatsSleepSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCPlayerStatsSleepSpecifiedCB_CheckedChanged);
+            // 
+            // SCPlayerStatsSleepNUD
+            // 
+            this.SCPlayerStatsSleepNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCPlayerStatsSleepNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPlayerStatsSleepNUD.Location = new System.Drawing.Point(162, 153);
+            this.SCPlayerStatsSleepNUD.Maximum = new decimal(new int[] {
+            14000,
+            0,
+            0,
+            0});
+            this.SCPlayerStatsSleepNUD.Name = "SCPlayerStatsSleepNUD";
+            this.SCPlayerStatsSleepNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCPlayerStatsSleepNUD.TabIndex = 272;
+            this.SCPlayerStatsSleepNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCPlayerStatsSleepNUD.ValueChanged += new System.EventHandler(this.SCPlayerStatsSleepNUD_ValueChanged);
+            // 
+            // SCPlayerStatsWaterNUD
+            // 
+            this.SCPlayerStatsWaterNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCPlayerStatsWaterNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPlayerStatsWaterNUD.Location = new System.Drawing.Point(162, 126);
+            this.SCPlayerStatsWaterNUD.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.SCPlayerStatsWaterNUD.Name = "SCPlayerStatsWaterNUD";
+            this.SCPlayerStatsWaterNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCPlayerStatsWaterNUD.TabIndex = 271;
+            this.SCPlayerStatsWaterNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCPlayerStatsWaterNUD.ValueChanged += new System.EventHandler(this.SCPlayerStatsWaterNUD_ValueChanged);
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(59, 178);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(30, 13);
+            this.label96.TabIndex = 270;
+            this.label96.Text = "Mind";
+            // 
+            // SCPlayerStatsMindSpecifiedCB
+            // 
+            this.SCPlayerStatsMindSpecifiedCB.AutoSize = true;
+            this.SCPlayerStatsMindSpecifiedCB.Location = new System.Drawing.Point(30, 178);
+            this.SCPlayerStatsMindSpecifiedCB.Name = "SCPlayerStatsMindSpecifiedCB";
+            this.SCPlayerStatsMindSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCPlayerStatsMindSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCPlayerStatsMindSpecifiedCB.TabIndex = 269;
+            this.SCPlayerStatsMindSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCPlayerStatsMindSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCPlayerStatsMindSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCPlayerStatsMindSpecifiedCB_CheckedChanged);
+            // 
+            // SCPlayerStatsEnergyNUD
+            // 
+            this.SCPlayerStatsEnergyNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCPlayerStatsEnergyNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPlayerStatsEnergyNUD.Location = new System.Drawing.Point(162, 99);
+            this.SCPlayerStatsEnergyNUD.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.SCPlayerStatsEnergyNUD.Name = "SCPlayerStatsEnergyNUD";
+            this.SCPlayerStatsEnergyNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCPlayerStatsEnergyNUD.TabIndex = 268;
+            this.SCPlayerStatsEnergyNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCPlayerStatsEnergyNUD.ValueChanged += new System.EventHandler(this.SCPlayerStatsEnergyNUD_ValueChanged);
+            // 
+            // SCPlayerStatsHealthSpecifiedCB
+            // 
+            this.SCPlayerStatsHealthSpecifiedCB.AutoSize = true;
+            this.SCPlayerStatsHealthSpecifiedCB.Location = new System.Drawing.Point(30, 25);
+            this.SCPlayerStatsHealthSpecifiedCB.Name = "SCPlayerStatsHealthSpecifiedCB";
+            this.SCPlayerStatsHealthSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCPlayerStatsHealthSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCPlayerStatsHealthSpecifiedCB.TabIndex = 267;
+            this.SCPlayerStatsHealthSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCPlayerStatsHealthSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCPlayerStatsHealthSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCPlayerStatsHealthSpecifiedCB_CheckedChanged);
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Location = new System.Drawing.Point(59, 51);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(34, 13);
+            this.label87.TabIndex = 266;
+            this.label87.Text = "Blood";
+            // 
+            // SCPlayerStatsBloodSpecifiedCB
+            // 
+            this.SCPlayerStatsBloodSpecifiedCB.AutoSize = true;
+            this.SCPlayerStatsBloodSpecifiedCB.Location = new System.Drawing.Point(30, 51);
+            this.SCPlayerStatsBloodSpecifiedCB.Name = "SCPlayerStatsBloodSpecifiedCB";
+            this.SCPlayerStatsBloodSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCPlayerStatsBloodSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCPlayerStatsBloodSpecifiedCB.TabIndex = 265;
+            this.SCPlayerStatsBloodSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCPlayerStatsBloodSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCPlayerStatsBloodSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCPlayerStatsBloodSpecifiedCB_CheckedChanged);
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(59, 77);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(38, 13);
+            this.label90.TabIndex = 264;
+            this.label90.Text = "Shock";
+            // 
+            // SCPlayerStatsShockSpecifiedCB
+            // 
+            this.SCPlayerStatsShockSpecifiedCB.AutoSize = true;
+            this.SCPlayerStatsShockSpecifiedCB.Location = new System.Drawing.Point(30, 77);
+            this.SCPlayerStatsShockSpecifiedCB.Name = "SCPlayerStatsShockSpecifiedCB";
+            this.SCPlayerStatsShockSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCPlayerStatsShockSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCPlayerStatsShockSpecifiedCB.TabIndex = 263;
+            this.SCPlayerStatsShockSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCPlayerStatsShockSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCPlayerStatsShockSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCPlayerStatsShockSpecifiedCB_CheckedChanged);
+            // 
+            // SCPlayerStatsShockNUD
+            // 
+            this.SCPlayerStatsShockNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCPlayerStatsShockNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPlayerStatsShockNUD.Location = new System.Drawing.Point(162, 74);
+            this.SCPlayerStatsShockNUD.Name = "SCPlayerStatsShockNUD";
+            this.SCPlayerStatsShockNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCPlayerStatsShockNUD.TabIndex = 262;
+            this.SCPlayerStatsShockNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCPlayerStatsShockNUD.ValueChanged += new System.EventHandler(this.SCPlayerStatsShockNUD_ValueChanged);
+            // 
+            // SCPlayerStatsBloodNUD
+            // 
+            this.SCPlayerStatsBloodNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCPlayerStatsBloodNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPlayerStatsBloodNUD.Location = new System.Drawing.Point(162, 49);
+            this.SCPlayerStatsBloodNUD.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.SCPlayerStatsBloodNUD.Minimum = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.SCPlayerStatsBloodNUD.Name = "SCPlayerStatsBloodNUD";
+            this.SCPlayerStatsBloodNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCPlayerStatsBloodNUD.TabIndex = 261;
+            this.SCPlayerStatsBloodNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCPlayerStatsBloodNUD.Value = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.SCPlayerStatsBloodNUD.ValueChanged += new System.EventHandler(this.SCPlayerStatsBloodNUD_ValueChanged);
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(59, 25);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(38, 13);
+            this.label92.TabIndex = 259;
+            this.label92.Text = "Health";
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(59, 101);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(40, 13);
+            this.label93.TabIndex = 257;
+            this.label93.Text = "Energy";
+            // 
+            // SCPlayerStatsEnergySpecifiedCB
+            // 
+            this.SCPlayerStatsEnergySpecifiedCB.AutoSize = true;
+            this.SCPlayerStatsEnergySpecifiedCB.Location = new System.Drawing.Point(30, 101);
+            this.SCPlayerStatsEnergySpecifiedCB.Name = "SCPlayerStatsEnergySpecifiedCB";
+            this.SCPlayerStatsEnergySpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCPlayerStatsEnergySpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCPlayerStatsEnergySpecifiedCB.TabIndex = 256;
+            this.SCPlayerStatsEnergySpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCPlayerStatsEnergySpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCPlayerStatsEnergySpecifiedCB.CheckedChanged += new System.EventHandler(this.SCPlayerStatsEnergySpecifiedCB_CheckedChanged);
+            // 
+            // SCPlayerStatsHealthNUD
+            // 
+            this.SCPlayerStatsHealthNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCPlayerStatsHealthNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPlayerStatsHealthNUD.Location = new System.Drawing.Point(162, 23);
+            this.SCPlayerStatsHealthNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SCPlayerStatsHealthNUD.Name = "SCPlayerStatsHealthNUD";
+            this.SCPlayerStatsHealthNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCPlayerStatsHealthNUD.TabIndex = 203;
+            this.SCPlayerStatsHealthNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCPlayerStatsHealthNUD.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SCPlayerStatsHealthNUD.ValueChanged += new System.EventHandler(this.SCPlayerStatsHealthNUD_ValueChanged);
+            // 
+            // SCMapRendererGB
+            // 
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererInactiveMarkerColorPB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererActiveMarkerColorPB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererInnactivePointsColorPB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererActivePointsColorPB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererShowMarkerCB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererShowPointsCB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererShowMarkerNameCB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererAllowInteractionCB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererPointsPathTB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererMarkerPathTB);
+            this.SCMapRendererGB.Controls.Add(this.label116);
+            this.SCMapRendererGB.Controls.Add(this.label115);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererPOSZNUD);
+            this.SCMapRendererGB.Controls.Add(this.label114);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererMarkerPathSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.label108);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererInactiveMarkerColorSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.label110);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererActivePointsColorSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.label111);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererInnactivePointsColorSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.label112);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererActiveMarkerColorSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.label113);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererPointsPathSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.label99);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererShowMarkerNameSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.label100);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererAllowInteractionSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.label101);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererZoomSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.label102);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererShowPointsSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererZoomNUD);
+            this.SCMapRendererGB.Controls.Add(this.label103);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererShowMarkerSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererZNUD);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererPOSSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.label104);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererXSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.label105);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererYSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererYNUD);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererXNUD);
+            this.SCMapRendererGB.Controls.Add(this.label106);
+            this.SCMapRendererGB.Controls.Add(this.label107);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererZSpecifiedCB);
+            this.SCMapRendererGB.Controls.Add(this.SCMapRendererPOSXNUD);
+            this.SCMapRendererGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCMapRendererGB.Location = new System.Drawing.Point(3467, 3);
+            this.SCMapRendererGB.Name = "SCMapRendererGB";
+            this.SCMapRendererGB.Size = new System.Drawing.Size(427, 418);
+            this.SCMapRendererGB.TabIndex = 299;
+            this.SCMapRendererGB.TabStop = false;
+            this.SCMapRendererGB.Text = "Map Renderer";
+            // 
+            // SCMapRendererInactiveMarkerColorPB
+            // 
+            this.SCMapRendererInactiveMarkerColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SCMapRendererInactiveMarkerColorPB.BackgroundImage")));
+            this.SCMapRendererInactiveMarkerColorPB.Location = new System.Drawing.Point(162, 384);
+            this.SCMapRendererInactiveMarkerColorPB.Name = "SCMapRendererInactiveMarkerColorPB";
+            this.SCMapRendererInactiveMarkerColorPB.Size = new System.Drawing.Size(161, 13);
+            this.SCMapRendererInactiveMarkerColorPB.TabIndex = 317;
+            this.SCMapRendererInactiveMarkerColorPB.TabStop = false;
+            this.SCMapRendererInactiveMarkerColorPB.Click += new System.EventHandler(this.SCMapRendererInactiveMarkerColorPB_Click);
+            this.SCMapRendererInactiveMarkerColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox3_Paint);
+            // 
+            // SCMapRendererActiveMarkerColorPB
+            // 
+            this.SCMapRendererActiveMarkerColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SCMapRendererActiveMarkerColorPB.BackgroundImage")));
+            this.SCMapRendererActiveMarkerColorPB.Location = new System.Drawing.Point(162, 359);
+            this.SCMapRendererActiveMarkerColorPB.Name = "SCMapRendererActiveMarkerColorPB";
+            this.SCMapRendererActiveMarkerColorPB.Size = new System.Drawing.Size(161, 13);
+            this.SCMapRendererActiveMarkerColorPB.TabIndex = 316;
+            this.SCMapRendererActiveMarkerColorPB.TabStop = false;
+            this.SCMapRendererActiveMarkerColorPB.Click += new System.EventHandler(this.SCMapRendererActiveMarkerColorPB_Click);
+            this.SCMapRendererActiveMarkerColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox4_Paint);
+            // 
+            // SCMapRendererInnactivePointsColorPB
+            // 
+            this.SCMapRendererInnactivePointsColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SCMapRendererInnactivePointsColorPB.BackgroundImage")));
+            this.SCMapRendererInnactivePointsColorPB.Location = new System.Drawing.Point(162, 334);
+            this.SCMapRendererInnactivePointsColorPB.Name = "SCMapRendererInnactivePointsColorPB";
+            this.SCMapRendererInnactivePointsColorPB.Size = new System.Drawing.Size(161, 13);
+            this.SCMapRendererInnactivePointsColorPB.TabIndex = 315;
+            this.SCMapRendererInnactivePointsColorPB.TabStop = false;
+            this.SCMapRendererInnactivePointsColorPB.Click += new System.EventHandler(this.SCMapRendererInnactivePointsColorPB_Click);
+            this.SCMapRendererInnactivePointsColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
+            // 
+            // SCMapRendererActivePointsColorPB
+            // 
+            this.SCMapRendererActivePointsColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SCMapRendererActivePointsColorPB.BackgroundImage")));
+            this.SCMapRendererActivePointsColorPB.Location = new System.Drawing.Point(162, 309);
+            this.SCMapRendererActivePointsColorPB.Name = "SCMapRendererActivePointsColorPB";
+            this.SCMapRendererActivePointsColorPB.Size = new System.Drawing.Size(161, 13);
+            this.SCMapRendererActivePointsColorPB.TabIndex = 314;
+            this.SCMapRendererActivePointsColorPB.TabStop = false;
+            this.SCMapRendererActivePointsColorPB.Click += new System.EventHandler(this.SCMapRendererActivePointsColorPB_Click);
+            this.SCMapRendererActivePointsColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox5_Paint);
+            // 
+            // SCMapRendererShowMarkerCB
+            // 
+            this.SCMapRendererShowMarkerCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCMapRendererShowMarkerCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCMapRendererShowMarkerCB.FormattingEnabled = true;
+            this.SCMapRendererShowMarkerCB.Items.AddRange(new object[] {
+            "never",
+            "active",
+            "always"});
+            this.SCMapRendererShowMarkerCB.Location = new System.Drawing.Point(162, 176);
+            this.SCMapRendererShowMarkerCB.Name = "SCMapRendererShowMarkerCB";
+            this.SCMapRendererShowMarkerCB.Size = new System.Drawing.Size(187, 21);
+            this.SCMapRendererShowMarkerCB.TabIndex = 313;
+            this.SCMapRendererShowMarkerCB.SelectedIndexChanged += new System.EventHandler(this.SCMapRendererShowMarkerCB_SelectedIndexChanged);
+            // 
+            // SCMapRendererShowPointsCB
+            // 
+            this.SCMapRendererShowPointsCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCMapRendererShowPointsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCMapRendererShowPointsCB.FormattingEnabled = true;
+            this.SCMapRendererShowPointsCB.Items.AddRange(new object[] {
+            "never",
+            "active",
+            "always"});
+            this.SCMapRendererShowPointsCB.Location = new System.Drawing.Point(162, 150);
+            this.SCMapRendererShowPointsCB.Name = "SCMapRendererShowPointsCB";
+            this.SCMapRendererShowPointsCB.Size = new System.Drawing.Size(187, 21);
+            this.SCMapRendererShowPointsCB.TabIndex = 312;
+            this.SCMapRendererShowPointsCB.SelectedIndexChanged += new System.EventHandler(this.SCMapRendererShowPointsCB_SelectedIndexChanged);
+            // 
+            // SCMapRendererShowMarkerNameCB
+            // 
+            this.SCMapRendererShowMarkerNameCB.AutoSize = true;
+            this.SCMapRendererShowMarkerNameCB.Location = new System.Drawing.Point(162, 206);
+            this.SCMapRendererShowMarkerNameCB.Name = "SCMapRendererShowMarkerNameCB";
+            this.SCMapRendererShowMarkerNameCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererShowMarkerNameCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererShowMarkerNameCB.TabIndex = 311;
+            this.SCMapRendererShowMarkerNameCB.Tag = "SCLItemscostNUD";
+            this.SCMapRendererShowMarkerNameCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererShowMarkerNameCB.CheckedChanged += new System.EventHandler(this.SCMapRendererShowMarkerNameCB_CheckedChanged);
+            // 
+            // SCMapRendererAllowInteractionCB
+            // 
+            this.SCMapRendererAllowInteractionCB.AutoSize = true;
+            this.SCMapRendererAllowInteractionCB.Location = new System.Drawing.Point(162, 229);
+            this.SCMapRendererAllowInteractionCB.Name = "SCMapRendererAllowInteractionCB";
+            this.SCMapRendererAllowInteractionCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererAllowInteractionCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererAllowInteractionCB.TabIndex = 310;
+            this.SCMapRendererAllowInteractionCB.Tag = "SCLItemscostNUD";
+            this.SCMapRendererAllowInteractionCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererAllowInteractionCB.CheckedChanged += new System.EventHandler(this.SCMapRendererAllowInteractionCB_CheckedChanged);
+            // 
+            // SCMapRendererPointsPathTB
+            // 
+            this.SCMapRendererPointsPathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCMapRendererPointsPathTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCMapRendererPointsPathTB.Location = new System.Drawing.Point(162, 280);
+            this.SCMapRendererPointsPathTB.Name = "SCMapRendererPointsPathTB";
+            this.SCMapRendererPointsPathTB.Size = new System.Drawing.Size(253, 20);
+            this.SCMapRendererPointsPathTB.TabIndex = 309;
+            this.SCMapRendererPointsPathTB.TextChanged += new System.EventHandler(this.SCMapRendererPointsPathTB_TextChanged);
+            // 
+            // SCMapRendererMarkerPathTB
+            // 
+            this.SCMapRendererMarkerPathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCMapRendererMarkerPathTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCMapRendererMarkerPathTB.Location = new System.Drawing.Point(162, 256);
+            this.SCMapRendererMarkerPathTB.Name = "SCMapRendererMarkerPathTB";
+            this.SCMapRendererMarkerPathTB.Size = new System.Drawing.Size(253, 20);
+            this.SCMapRendererMarkerPathTB.TabIndex = 308;
+            this.SCMapRendererMarkerPathTB.TextChanged += new System.EventHandler(this.SCMapRendererMarkerPathTB_TextChanged);
+            // 
+            // label116
+            // 
+            this.label116.AutoSize = true;
+            this.label116.Location = new System.Drawing.Point(283, 26);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(14, 13);
+            this.label116.TabIndex = 307;
+            this.label116.Text = "Z";
+            // 
+            // label115
+            // 
+            this.label115.AutoSize = true;
+            this.label115.Location = new System.Drawing.Point(131, 26);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(14, 13);
+            this.label115.TabIndex = 306;
+            this.label115.Text = "X";
+            // 
+            // SCMapRendererPOSZNUD
+            // 
+            this.SCMapRendererPOSZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCMapRendererPOSZNUD.DecimalPlaces = 4;
+            this.SCMapRendererPOSZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCMapRendererPOSZNUD.Location = new System.Drawing.Point(303, 23);
+            this.SCMapRendererPOSZNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.SCMapRendererPOSZNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.SCMapRendererPOSZNUD.Name = "SCMapRendererPOSZNUD";
+            this.SCMapRendererPOSZNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCMapRendererPOSZNUD.TabIndex = 305;
+            this.SCMapRendererPOSZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCMapRendererPOSZNUD.ValueChanged += new System.EventHandler(this.SCMapRendererPOSZNUD_ValueChanged);
+            // 
+            // label114
+            // 
+            this.label114.AutoSize = true;
+            this.label114.Location = new System.Drawing.Point(53, 257);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(61, 13);
+            this.label114.TabIndex = 304;
+            this.label114.Text = "Merler Path";
+            // 
+            // SCMapRendererMarkerPathSpecifiedCB
+            // 
+            this.SCMapRendererMarkerPathSpecifiedCB.AutoSize = true;
+            this.SCMapRendererMarkerPathSpecifiedCB.Location = new System.Drawing.Point(29, 257);
+            this.SCMapRendererMarkerPathSpecifiedCB.Name = "SCMapRendererMarkerPathSpecifiedCB";
+            this.SCMapRendererMarkerPathSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererMarkerPathSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererMarkerPathSpecifiedCB.TabIndex = 303;
+            this.SCMapRendererMarkerPathSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererMarkerPathSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererMarkerPathSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererMarkerPathSpecifiedCB_CheckedChanged);
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.Location = new System.Drawing.Point(54, 386);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(107, 13);
+            this.label108.TabIndex = 301;
+            this.label108.Text = "Inactive Marker color";
+            // 
+            // SCMapRendererInactiveMarkerColorSpecifiedCB
+            // 
+            this.SCMapRendererInactiveMarkerColorSpecifiedCB.AutoSize = true;
+            this.SCMapRendererInactiveMarkerColorSpecifiedCB.Location = new System.Drawing.Point(29, 386);
+            this.SCMapRendererInactiveMarkerColorSpecifiedCB.Name = "SCMapRendererInactiveMarkerColorSpecifiedCB";
+            this.SCMapRendererInactiveMarkerColorSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererInactiveMarkerColorSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererInactiveMarkerColorSpecifiedCB.TabIndex = 300;
+            this.SCMapRendererInactiveMarkerColorSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererInactiveMarkerColorSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererInactiveMarkerColorSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererInactiveMarkerColorSpecifiedCB_CheckedChanged);
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.Location = new System.Drawing.Point(54, 309);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(96, 13);
+            this.label110.TabIndex = 295;
+            this.label110.Text = "Active Points Color";
+            // 
+            // SCMapRendererActivePointsColorSpecifiedCB
+            // 
+            this.SCMapRendererActivePointsColorSpecifiedCB.AutoSize = true;
+            this.SCMapRendererActivePointsColorSpecifiedCB.Location = new System.Drawing.Point(30, 309);
+            this.SCMapRendererActivePointsColorSpecifiedCB.Name = "SCMapRendererActivePointsColorSpecifiedCB";
+            this.SCMapRendererActivePointsColorSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererActivePointsColorSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererActivePointsColorSpecifiedCB.TabIndex = 294;
+            this.SCMapRendererActivePointsColorSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererActivePointsColorSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererActivePointsColorSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererActivePointsColorSpecifiedCB_CheckedChanged);
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.Location = new System.Drawing.Point(52, 335);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(110, 13);
+            this.label111.TabIndex = 293;
+            this.label111.Text = "Innactive Points Color";
+            // 
+            // SCMapRendererInnactivePointsColorSpecifiedCB
+            // 
+            this.SCMapRendererInnactivePointsColorSpecifiedCB.AutoSize = true;
+            this.SCMapRendererInnactivePointsColorSpecifiedCB.Location = new System.Drawing.Point(30, 335);
+            this.SCMapRendererInnactivePointsColorSpecifiedCB.Name = "SCMapRendererInnactivePointsColorSpecifiedCB";
+            this.SCMapRendererInnactivePointsColorSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererInnactivePointsColorSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererInnactivePointsColorSpecifiedCB.TabIndex = 292;
+            this.SCMapRendererInnactivePointsColorSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererInnactivePointsColorSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererInnactivePointsColorSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererInnactivePointsColorSpecifiedCB_CheckedChanged);
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.Location = new System.Drawing.Point(54, 359);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(100, 13);
+            this.label112.TabIndex = 289;
+            this.label112.Text = "Active Marker Color";
+            // 
+            // SCMapRendererActiveMarkerColorSpecifiedCB
+            // 
+            this.SCMapRendererActiveMarkerColorSpecifiedCB.AutoSize = true;
+            this.SCMapRendererActiveMarkerColorSpecifiedCB.Location = new System.Drawing.Point(30, 359);
+            this.SCMapRendererActiveMarkerColorSpecifiedCB.Name = "SCMapRendererActiveMarkerColorSpecifiedCB";
+            this.SCMapRendererActiveMarkerColorSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererActiveMarkerColorSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererActiveMarkerColorSpecifiedCB.TabIndex = 288;
+            this.SCMapRendererActiveMarkerColorSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererActiveMarkerColorSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererActiveMarkerColorSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererActiveMarkerColorSpecifiedCB_CheckedChanged);
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(54, 282);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(61, 13);
+            this.label113.TabIndex = 285;
+            this.label113.Text = "Points Path";
+            // 
+            // SCMapRendererPointsPathSpecifiedCB
+            // 
+            this.SCMapRendererPointsPathSpecifiedCB.AutoSize = true;
+            this.SCMapRendererPointsPathSpecifiedCB.Location = new System.Drawing.Point(30, 282);
+            this.SCMapRendererPointsPathSpecifiedCB.Name = "SCMapRendererPointsPathSpecifiedCB";
+            this.SCMapRendererPointsPathSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererPointsPathSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererPointsPathSpecifiedCB.TabIndex = 284;
+            this.SCMapRendererPointsPathSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererPointsPathSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererPointsPathSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererPointsPathSpecifiedCB_CheckedChanged);
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.Location = new System.Drawing.Point(53, 205);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(101, 13);
+            this.label99.TabIndex = 282;
+            this.label99.Text = "Show Marker Name";
+            // 
+            // SCMapRendererShowMarkerNameSpecifiedCB
+            // 
+            this.SCMapRendererShowMarkerNameSpecifiedCB.AutoSize = true;
+            this.SCMapRendererShowMarkerNameSpecifiedCB.Location = new System.Drawing.Point(29, 205);
+            this.SCMapRendererShowMarkerNameSpecifiedCB.Name = "SCMapRendererShowMarkerNameSpecifiedCB";
+            this.SCMapRendererShowMarkerNameSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererShowMarkerNameSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererShowMarkerNameSpecifiedCB.TabIndex = 281;
+            this.SCMapRendererShowMarkerNameSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererShowMarkerNameSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererShowMarkerNameSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererShowMarkerNameSpecifiedCB_CheckedChanged);
+            // 
+            // label100
+            // 
+            this.label100.AutoSize = true;
+            this.label100.Location = new System.Drawing.Point(53, 229);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(85, 13);
+            this.label100.TabIndex = 279;
+            this.label100.Text = "Allow Interaction";
+            // 
+            // SCMapRendererAllowInteractionSpecifiedCB
+            // 
+            this.SCMapRendererAllowInteractionSpecifiedCB.AutoSize = true;
+            this.SCMapRendererAllowInteractionSpecifiedCB.Location = new System.Drawing.Point(29, 229);
+            this.SCMapRendererAllowInteractionSpecifiedCB.Name = "SCMapRendererAllowInteractionSpecifiedCB";
+            this.SCMapRendererAllowInteractionSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererAllowInteractionSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererAllowInteractionSpecifiedCB.TabIndex = 278;
+            this.SCMapRendererAllowInteractionSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererAllowInteractionSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererAllowInteractionSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererAllowInteractionSpecifiedCB_CheckedChanged);
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.Location = new System.Drawing.Point(54, 128);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(34, 13);
+            this.label101.TabIndex = 276;
+            this.label101.Text = "Zoom";
+            // 
+            // SCMapRendererZoomSpecifiedCB
+            // 
+            this.SCMapRendererZoomSpecifiedCB.AutoSize = true;
+            this.SCMapRendererZoomSpecifiedCB.Location = new System.Drawing.Point(30, 128);
+            this.SCMapRendererZoomSpecifiedCB.Name = "SCMapRendererZoomSpecifiedCB";
+            this.SCMapRendererZoomSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererZoomSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererZoomSpecifiedCB.TabIndex = 275;
+            this.SCMapRendererZoomSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererZoomSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererZoomSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererZoomSpecifiedCB_CheckedChanged);
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Location = new System.Drawing.Point(54, 154);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(66, 13);
+            this.label102.TabIndex = 274;
+            this.label102.Text = "Show Points";
+            // 
+            // SCMapRendererShowPointsSpecifiedCB
+            // 
+            this.SCMapRendererShowPointsSpecifiedCB.AutoSize = true;
+            this.SCMapRendererShowPointsSpecifiedCB.Location = new System.Drawing.Point(30, 154);
+            this.SCMapRendererShowPointsSpecifiedCB.Name = "SCMapRendererShowPointsSpecifiedCB";
+            this.SCMapRendererShowPointsSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererShowPointsSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererShowPointsSpecifiedCB.TabIndex = 273;
+            this.SCMapRendererShowPointsSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererShowPointsSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererShowPointsSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererShowPointsSpecifiedCB_CheckedChanged);
+            // 
+            // SCMapRendererZoomNUD
+            // 
+            this.SCMapRendererZoomNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCMapRendererZoomNUD.DecimalPlaces = 2;
+            this.SCMapRendererZoomNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCMapRendererZoomNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.SCMapRendererZoomNUD.Location = new System.Drawing.Point(162, 126);
+            this.SCMapRendererZoomNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SCMapRendererZoomNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.SCMapRendererZoomNUD.Name = "SCMapRendererZoomNUD";
+            this.SCMapRendererZoomNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCMapRendererZoomNUD.TabIndex = 271;
+            this.SCMapRendererZoomNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCMapRendererZoomNUD.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.SCMapRendererZoomNUD.ValueChanged += new System.EventHandler(this.SCMapRendererZoomNUD_ValueChanged);
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Location = new System.Drawing.Point(54, 178);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(70, 13);
+            this.label103.TabIndex = 270;
+            this.label103.Text = "Show Marker";
+            // 
+            // SCMapRendererShowMarkerSpecifiedCB
+            // 
+            this.SCMapRendererShowMarkerSpecifiedCB.AutoSize = true;
+            this.SCMapRendererShowMarkerSpecifiedCB.Location = new System.Drawing.Point(30, 178);
+            this.SCMapRendererShowMarkerSpecifiedCB.Name = "SCMapRendererShowMarkerSpecifiedCB";
+            this.SCMapRendererShowMarkerSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererShowMarkerSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererShowMarkerSpecifiedCB.TabIndex = 269;
+            this.SCMapRendererShowMarkerSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererShowMarkerSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererShowMarkerSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererShowMarkerSpecifiedCB_CheckedChanged);
+            // 
+            // SCMapRendererZNUD
+            // 
+            this.SCMapRendererZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCMapRendererZNUD.DecimalPlaces = 4;
+            this.SCMapRendererZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCMapRendererZNUD.Location = new System.Drawing.Point(162, 99);
+            this.SCMapRendererZNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.SCMapRendererZNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.SCMapRendererZNUD.Name = "SCMapRendererZNUD";
+            this.SCMapRendererZNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCMapRendererZNUD.TabIndex = 268;
+            this.SCMapRendererZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCMapRendererZNUD.ValueChanged += new System.EventHandler(this.SCMapRendererZNUD_ValueChanged);
+            // 
+            // SCMapRendererPOSSpecifiedCB
+            // 
+            this.SCMapRendererPOSSpecifiedCB.AutoSize = true;
+            this.SCMapRendererPOSSpecifiedCB.Location = new System.Drawing.Point(30, 25);
+            this.SCMapRendererPOSSpecifiedCB.Name = "SCMapRendererPOSSpecifiedCB";
+            this.SCMapRendererPOSSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererPOSSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererPOSSpecifiedCB.TabIndex = 267;
+            this.SCMapRendererPOSSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererPOSSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererPOSSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererPOSSpecifiedCB_CheckedChanged);
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Location = new System.Drawing.Point(59, 51);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(14, 13);
+            this.label104.TabIndex = 266;
+            this.label104.Text = "X";
+            // 
+            // SCMapRendererXSpecifiedCB
+            // 
+            this.SCMapRendererXSpecifiedCB.AutoSize = true;
+            this.SCMapRendererXSpecifiedCB.Location = new System.Drawing.Point(30, 51);
+            this.SCMapRendererXSpecifiedCB.Name = "SCMapRendererXSpecifiedCB";
+            this.SCMapRendererXSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererXSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererXSpecifiedCB.TabIndex = 265;
+            this.SCMapRendererXSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererXSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererXSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererXSpecifiedCB_CheckedChanged);
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.Location = new System.Drawing.Point(59, 77);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(14, 13);
+            this.label105.TabIndex = 264;
+            this.label105.Text = "Y";
+            // 
+            // SCMapRendererYSpecifiedCB
+            // 
+            this.SCMapRendererYSpecifiedCB.AutoSize = true;
+            this.SCMapRendererYSpecifiedCB.Location = new System.Drawing.Point(30, 77);
+            this.SCMapRendererYSpecifiedCB.Name = "SCMapRendererYSpecifiedCB";
+            this.SCMapRendererYSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererYSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererYSpecifiedCB.TabIndex = 263;
+            this.SCMapRendererYSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererYSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererYSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererYSpecifiedCB_CheckedChanged);
+            // 
+            // SCMapRendererYNUD
+            // 
+            this.SCMapRendererYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCMapRendererYNUD.DecimalPlaces = 4;
+            this.SCMapRendererYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCMapRendererYNUD.Location = new System.Drawing.Point(162, 74);
+            this.SCMapRendererYNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.SCMapRendererYNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.SCMapRendererYNUD.Name = "SCMapRendererYNUD";
+            this.SCMapRendererYNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCMapRendererYNUD.TabIndex = 262;
+            this.SCMapRendererYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCMapRendererYNUD.ValueChanged += new System.EventHandler(this.SCMapRendererYNUD_ValueChanged);
+            // 
+            // SCMapRendererXNUD
+            // 
+            this.SCMapRendererXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCMapRendererXNUD.DecimalPlaces = 4;
+            this.SCMapRendererXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCMapRendererXNUD.Location = new System.Drawing.Point(162, 49);
+            this.SCMapRendererXNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.SCMapRendererXNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.SCMapRendererXNUD.Name = "SCMapRendererXNUD";
+            this.SCMapRendererXNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCMapRendererXNUD.TabIndex = 261;
+            this.SCMapRendererXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCMapRendererXNUD.ValueChanged += new System.EventHandler(this.SCMapRendererXNUD_ValueChanged);
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.Location = new System.Drawing.Point(54, 25);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(25, 13);
+            this.label106.TabIndex = 259;
+            this.label106.Text = "Pos";
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Location = new System.Drawing.Point(59, 101);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(14, 13);
+            this.label107.TabIndex = 257;
+            this.label107.Text = "Z";
+            // 
+            // SCMapRendererZSpecifiedCB
+            // 
+            this.SCMapRendererZSpecifiedCB.AutoSize = true;
+            this.SCMapRendererZSpecifiedCB.Location = new System.Drawing.Point(30, 101);
+            this.SCMapRendererZSpecifiedCB.Name = "SCMapRendererZSpecifiedCB";
+            this.SCMapRendererZSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SCMapRendererZSpecifiedCB.Size = new System.Drawing.Size(15, 14);
+            this.SCMapRendererZSpecifiedCB.TabIndex = 256;
+            this.SCMapRendererZSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
+            this.SCMapRendererZSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCMapRendererZSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCMapRendererZSpecifiedCB_CheckedChanged);
+            // 
+            // SCMapRendererPOSXNUD
+            // 
+            this.SCMapRendererPOSXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCMapRendererPOSXNUD.DecimalPlaces = 4;
+            this.SCMapRendererPOSXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCMapRendererPOSXNUD.Location = new System.Drawing.Point(162, 23);
+            this.SCMapRendererPOSXNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.SCMapRendererPOSXNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.SCMapRendererPOSXNUD.Name = "SCMapRendererPOSXNUD";
+            this.SCMapRendererPOSXNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCMapRendererPOSXNUD.TabIndex = 203;
+            this.SCMapRendererPOSXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCMapRendererPOSXNUD.ValueChanged += new System.EventHandler(this.SCMapRendererPOSXNUD_ValueChanged);
             // 
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
             this.checkBox9.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBox9.Location = new System.Drawing.Point(295, 4);
+            this.checkBox9.Location = new System.Drawing.Point(141, 5);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(67, 17);
             this.checkBox9.TabIndex = 125;
@@ -3587,8 +5369,8 @@ namespace DayZeEditor
             this.MapPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MapPanel.Controls.Add(this.flowLayoutPanel2);
             this.MapPanel.Controls.Add(this.panelEx1);
-            this.MapPanel.Controls.Add(this.label77);
             this.MapPanel.Controls.Add(this.trackBar1);
             this.MapPanel.Controls.Add(this.checkBox9);
             this.MapPanel.Location = new System.Drawing.Point(404, 48);
@@ -3596,91 +5378,53 @@ namespace DayZeEditor
             this.MapPanel.Size = new System.Drawing.Size(804, 596);
             this.MapPanel.TabIndex = 291;
             // 
-            // SCFaceGB
+            // flowLayoutPanel2
             // 
-            this.SCFaceGB.Controls.Add(this.SCFacebackgroundSpecifiedCB);
-            this.SCFaceGB.Controls.Add(this.label80);
-            this.SCFaceGB.Controls.Add(this.SCFacebackgroundTB);
-            this.SCFaceGB.Controls.Add(this.label78);
-            this.SCFaceGB.Controls.Add(this.SCFaceiconTB);
-            this.SCFaceGB.Controls.Add(this.label79);
-            this.SCFaceGB.Controls.Add(this.SCFaceclassnameTB);
-            this.SCFaceGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SCFaceGB.Location = new System.Drawing.Point(2601, 137);
-            this.SCFaceGB.Name = "SCFaceGB";
-            this.SCFaceGB.Size = new System.Drawing.Size(427, 101);
-            this.SCFaceGB.TabIndex = 293;
-            this.SCFaceGB.TabStop = false;
-            this.SCFaceGB.Text = "Face";
+            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel2.Controls.Add(this.SCPointsangleSpecifiedCB);
+            this.flowLayoutPanel2.Controls.Add(this.SCPointsangleNUD);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(214, 0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(590, 26);
+            this.flowLayoutPanel2.TabIndex = 63;
             // 
-            // label78
+            // SCPointsangleSpecifiedCB
             // 
-            this.label78.AutoSize = true;
-            this.label78.Location = new System.Drawing.Point(53, 46);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(28, 13);
-            this.label78.TabIndex = 225;
-            this.label78.Text = "Icon";
+            this.SCPointsangleSpecifiedCB.AutoSize = true;
+            this.SCPointsangleSpecifiedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPointsangleSpecifiedCB.Location = new System.Drawing.Point(3, 3);
+            this.SCPointsangleSpecifiedCB.Name = "SCPointsangleSpecifiedCB";
+            this.SCPointsangleSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.SCPointsangleSpecifiedCB.Size = new System.Drawing.Size(75, 17);
+            this.SCPointsangleSpecifiedCB.TabIndex = 0;
+            this.SCPointsangleSpecifiedCB.Text = "Use Angle";
+            this.SCPointsangleSpecifiedCB.UseVisualStyleBackColor = true;
+            this.SCPointsangleSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCPointsangleSpecifiedCB_CheckedChanged);
             // 
-            // SCFaceiconTB
+            // SCPointsangleNUD
             // 
-            this.SCFaceiconTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SCFaceiconTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SCFaceiconTB.Location = new System.Drawing.Point(161, 42);
-            this.SCFaceiconTB.Name = "SCFaceiconTB";
-            this.SCFaceiconTB.Size = new System.Drawing.Size(259, 20);
-            this.SCFaceiconTB.TabIndex = 224;
-            this.SCFaceiconTB.TextChanged += new System.EventHandler(this.SCFaceiconTB_TextChanged);
+            this.SCPointsangleNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCPointsangleNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCPointsangleNUD.Location = new System.Drawing.Point(84, 3);
+            this.SCPointsangleNUD.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.SCPointsangleNUD.Name = "SCPointsangleNUD";
+            this.SCPointsangleNUD.Size = new System.Drawing.Size(105, 20);
+            this.SCPointsangleNUD.TabIndex = 284;
+            this.SCPointsangleNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCPointsangleNUD.ValueChanged += new System.EventHandler(this.SCPointsangleNUD_ValueChanged);
             // 
-            // label79
+            // RemovePointtoolStripMenuItem
             // 
-            this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(54, 20);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(58, 13);
-            this.label79.TabIndex = 223;
-            this.label79.Text = "Classname";
-            // 
-            // SCFaceclassnameTB
-            // 
-            this.SCFaceclassnameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SCFaceclassnameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SCFaceclassnameTB.Location = new System.Drawing.Point(162, 16);
-            this.SCFaceclassnameTB.Name = "SCFaceclassnameTB";
-            this.SCFaceclassnameTB.Size = new System.Drawing.Size(259, 20);
-            this.SCFaceclassnameTB.TabIndex = 222;
-            this.SCFaceclassnameTB.TextChanged += new System.EventHandler(this.SCFaceclassnameTB_TextChanged);
-            // 
-            // label80
-            // 
-            this.label80.AutoSize = true;
-            this.label80.Location = new System.Drawing.Point(53, 72);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(64, 13);
-            this.label80.TabIndex = 227;
-            this.label80.Text = "background";
-            // 
-            // SCFacebackgroundTB
-            // 
-            this.SCFacebackgroundTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SCFacebackgroundTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SCFacebackgroundTB.Location = new System.Drawing.Point(161, 68);
-            this.SCFacebackgroundTB.Name = "SCFacebackgroundTB";
-            this.SCFacebackgroundTB.Size = new System.Drawing.Size(259, 20);
-            this.SCFacebackgroundTB.TabIndex = 226;
-            this.SCFacebackgroundTB.TextChanged += new System.EventHandler(this.SCFacebackgroundTB_TextChanged);
-            // 
-            // SCFacebackgroundSpecifiedCB
-            // 
-            this.SCFacebackgroundSpecifiedCB.AutoSize = true;
-            this.SCFacebackgroundSpecifiedCB.Location = new System.Drawing.Point(32, 71);
-            this.SCFacebackgroundSpecifiedCB.Name = "SCFacebackgroundSpecifiedCB";
-            this.SCFacebackgroundSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SCFacebackgroundSpecifiedCB.Size = new System.Drawing.Size(15, 14);
-            this.SCFacebackgroundSpecifiedCB.TabIndex = 250;
-            this.SCFacebackgroundSpecifiedCB.Tag = "SCLTimeoutsecondsNUD";
-            this.SCFacebackgroundSpecifiedCB.UseVisualStyleBackColor = true;
-            this.SCFacebackgroundSpecifiedCB.CheckedChanged += new System.EventHandler(this.SCFacebackgroundSpecifiedCB_CheckedChanged);
+            this.RemovePointtoolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.RemovePointtoolStripMenuItem.Name = "RemovePointtoolStripMenuItem";
+            this.RemovePointtoolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.RemovePointtoolStripMenuItem.Text = "Remove Point";
+            this.RemovePointtoolStripMenuItem.Click += new System.EventHandler(this.RemovePointtoolStripMenuItem_Click);
             // 
             // TerjeManager
             // 
@@ -3689,8 +5433,8 @@ namespace DayZeEditor
             this.ClientSize = new System.Drawing.Size(1220, 656);
             this.Controls.Add(this.TerjeTV);
             this.Controls.Add(this.darkToolStrip21);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.MapPanel);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TerjeManager";
             this.Text = "BaseBuildingPlus";
@@ -3769,13 +5513,51 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CONDExtraMathvalueNUD)).EndInit();
             this.CONDExtraOptionsGB.ResumeLayout(false);
             this.CONDExtraOptionsGB.PerformLayout();
+            this.SCFaceGB.ResumeLayout(false);
+            this.SCFaceGB.PerformLayout();
+            this.SCobjectGB.ResumeLayout(false);
+            this.SCobjectGB.PerformLayout();
+            this.SCDeathPointGB.ResumeLayout(false);
+            this.SCDeathPointGB.PerformLayout();
+            this.SCOptionsSafeRadiusGB.ResumeLayout(false);
+            this.SCOptionsSafeRadiusGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCSafeRadiusOtherNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCSafeRadiusPlayerNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCSafeRadiusAnimalNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCSafeRadiusZombieNUD)).EndInit();
+            this.SCOptionMapImageGB.ResumeLayout(false);
+            this.SCOptionMapImageGB.PerformLayout();
+            this.SCPlayerStatsGB.ResumeLayout(false);
+            this.SCPlayerStatsGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsHeatBufferNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsHeatComfortNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsMindNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsSleepNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsWaterNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsEnergyNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsShockNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsBloodNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPlayerStatsHealthNUD)).EndInit();
+            this.SCMapRendererGB.ResumeLayout(false);
+            this.SCMapRendererGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererInactiveMarkerColorPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererActiveMarkerColorPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererInnactivePointsColorPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererActivePointsColorPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererPOSZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererZoomNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererXNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCMapRendererPOSXNUD)).EndInit();
             this.panelEx1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.MapPanel.ResumeLayout(false);
             this.MapPanel.PerformLayout();
-            this.SCFaceGB.ResumeLayout(false);
-            this.SCFaceGB.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCPointsangleNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4046,7 +5828,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem removeSelectorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addGroupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeGroupToolStripMenuItem;
-        private System.Windows.Forms.Label label77;
         private System.Windows.Forms.CheckBox checkBox9;
         private TreeViewMS.PanelEx panelEx1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -4060,5 +5841,130 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.TextBox SCFaceclassnameTB;
         private System.Windows.Forms.CheckBox SCFacebackgroundSpecifiedCB;
+        private System.Windows.Forms.GroupBox SCobjectGB;
+        private System.Windows.Forms.CheckBox SCobjectHandlerSpecifiedCB;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.TextBox SCobjectHandlerTB;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.TextBox SCobjectclassnameTB;
+        private System.Windows.Forms.CheckBox SCobjectSingleBindSpecifiedCB;
+        private System.Windows.Forms.CheckBox SCobjectSingleBindCB;
+        private System.Windows.Forms.ToolStripMenuItem addNewObjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeObjectToolStripMenuItem;
+        private DarkUI.Controls.DarkButton darkButton3;
+        private System.Windows.Forms.GroupBox SCDeathPointGB;
+        private System.Windows.Forms.CheckBox SCDeathPointRequireBodySpecifiedCB;
+        private System.Windows.Forms.CheckBox SCDeathPointRequireBodyCB;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.ToolStripMenuItem addDeathPintToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeDeathPointToolStripMenuItem;
+        private System.Windows.Forms.GroupBox SCOptionsSafeRadiusGB;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.CheckBox SCSafeRadiusAnimalSpecifiedCB;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.CheckBox SCSafeRadiusPlayerSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCSafeRadiusPlayerNUD;
+        private System.Windows.Forms.NumericUpDown SCSafeRadiusAnimalNUD;
+        private System.Windows.Forms.Label label88;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.CheckBox SCSafeRadiusOtherSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCSafeRadiusZombieNUD;
+        private System.Windows.Forms.NumericUpDown SCSafeRadiusOtherNUD;
+        private System.Windows.Forms.CheckBox SCSafeRadiusZombieSpecifiedCB;
+        private System.Windows.Forms.ToolStripMenuItem addOptionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeOptionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addSafeRadiusToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem RemoveSafeRadiusToolStripMenuItem;
+        private System.Windows.Forms.GroupBox SCOptionMapImageGB;
+        private System.Windows.Forms.Label label91;
+        private System.Windows.Forms.TextBox SCoptionsMapImagePathTB;
+        private System.Windows.Forms.GroupBox SCPlayerStatsGB;
+        private System.Windows.Forms.NumericUpDown SCPlayerStatsMindNUD;
+        private System.Windows.Forms.Label label94;
+        private System.Windows.Forms.CheckBox SCPlayerStatsWaterSpecifiedCB;
+        private System.Windows.Forms.Label label95;
+        private System.Windows.Forms.CheckBox SCPlayerStatsSleepSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCPlayerStatsSleepNUD;
+        private System.Windows.Forms.NumericUpDown SCPlayerStatsWaterNUD;
+        private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.CheckBox SCPlayerStatsMindSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCPlayerStatsEnergyNUD;
+        private System.Windows.Forms.CheckBox SCPlayerStatsHealthSpecifiedCB;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.CheckBox SCPlayerStatsBloodSpecifiedCB;
+        private System.Windows.Forms.Label label90;
+        private System.Windows.Forms.CheckBox SCPlayerStatsShockSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCPlayerStatsShockNUD;
+        private System.Windows.Forms.NumericUpDown SCPlayerStatsBloodNUD;
+        private System.Windows.Forms.Label label92;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.CheckBox SCPlayerStatsEnergySpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCPlayerStatsHealthNUD;
+        private System.Windows.Forms.NumericUpDown SCPlayerStatsHeatBufferNUD;
+        private System.Windows.Forms.Label label97;
+        private System.Windows.Forms.CheckBox SCPlayerStatsHeatComfortSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCPlayerStatsHeatComfortNUD;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.CheckBox SCPlayerStatsHeatBufferSpecifiedCB;
+        private System.Windows.Forms.GroupBox SCMapRendererGB;
+        private System.Windows.Forms.Label label116;
+        private System.Windows.Forms.Label label115;
+        private System.Windows.Forms.NumericUpDown SCMapRendererPOSZNUD;
+        private System.Windows.Forms.Label label114;
+        private System.Windows.Forms.CheckBox SCMapRendererMarkerPathSpecifiedCB;
+        private System.Windows.Forms.Label label108;
+        private System.Windows.Forms.CheckBox SCMapRendererInactiveMarkerColorSpecifiedCB;
+        private System.Windows.Forms.Label label110;
+        private System.Windows.Forms.CheckBox SCMapRendererActivePointsColorSpecifiedCB;
+        private System.Windows.Forms.Label label111;
+        private System.Windows.Forms.CheckBox SCMapRendererInnactivePointsColorSpecifiedCB;
+        private System.Windows.Forms.Label label112;
+        private System.Windows.Forms.CheckBox SCMapRendererActiveMarkerColorSpecifiedCB;
+        private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.CheckBox SCMapRendererPointsPathSpecifiedCB;
+        private System.Windows.Forms.Label label99;
+        private System.Windows.Forms.CheckBox SCMapRendererShowMarkerNameSpecifiedCB;
+        private System.Windows.Forms.Label label100;
+        private System.Windows.Forms.CheckBox SCMapRendererAllowInteractionSpecifiedCB;
+        private System.Windows.Forms.Label label101;
+        private System.Windows.Forms.CheckBox SCMapRendererZoomSpecifiedCB;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.CheckBox SCMapRendererShowPointsSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCMapRendererZoomNUD;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.CheckBox SCMapRendererShowMarkerSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCMapRendererZNUD;
+        private System.Windows.Forms.CheckBox SCMapRendererPOSSpecifiedCB;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.CheckBox SCMapRendererXSpecifiedCB;
+        private System.Windows.Forms.Label label105;
+        private System.Windows.Forms.CheckBox SCMapRendererYSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCMapRendererYNUD;
+        private System.Windows.Forms.NumericUpDown SCMapRendererXNUD;
+        private System.Windows.Forms.Label label106;
+        private System.Windows.Forms.Label label107;
+        private System.Windows.Forms.CheckBox SCMapRendererZSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCMapRendererPOSXNUD;
+        private System.Windows.Forms.ComboBox SCMapRendererShowMarkerCB;
+        private System.Windows.Forms.ComboBox SCMapRendererShowPointsCB;
+        private System.Windows.Forms.CheckBox SCMapRendererShowMarkerNameCB;
+        private System.Windows.Forms.CheckBox SCMapRendererAllowInteractionCB;
+        private System.Windows.Forms.TextBox SCMapRendererPointsPathTB;
+        private System.Windows.Forms.TextBox SCMapRendererMarkerPathTB;
+        private System.Windows.Forms.PictureBox SCMapRendererInactiveMarkerColorPB;
+        private System.Windows.Forms.PictureBox SCMapRendererActiveMarkerColorPB;
+        private System.Windows.Forms.PictureBox SCMapRendererInnactivePointsColorPB;
+        private System.Windows.Forms.PictureBox SCMapRendererActivePointsColorPB;
+        private System.Windows.Forms.ToolStripMenuItem addNewRespawnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeRespawnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewPointsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddNewPointtoolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.CheckBox SCPointsangleSpecifiedCB;
+        private System.Windows.Forms.NumericUpDown SCPointsangleNUD;
+        private System.Windows.Forms.ToolStripMenuItem ConvertPointstoPOStoolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ConvertPointstoXYZtoolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem RemovePointtoolStripMenuItem;
     }
 }

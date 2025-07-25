@@ -47,10 +47,14 @@ namespace DayZeLib
         public decimal rain_max { get; set; }
         public decimal snowfall_min { get; set; }
         public decimal snowfall_max { get; set; }
+        public decimal snowfall_threshold_min { get; set; }
+        public decimal snowfall_threshold_max { get; set; }
+        public decimal snowfall_threshold_timeout { get; set; }
         public decimal snowflake_scale_min { get; set; }
         public decimal snowflake_scale_max { get; set; }
         public bool use_snowflake_scale { get; set; }
         public bool storm { get; set; }
+        public decimal thunder_threshold { get; set; }
         public decimal thunder_timeout { get; set; }
         public bool use_global_temperature { get; set; }
         public decimal global_temperature_override { get; set; }
