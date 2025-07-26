@@ -35,7 +35,7 @@ namespace DayZeLib
         private int activeField;
         private string classnameField;
         private Vec3 positionField;
-        private int spawnChanceField;
+        private decimal spawnChanceField;
         private string filterField;
         private bool filterFieldSpecified;
         private TerjeScriptableAreaData dataField;
@@ -64,7 +64,7 @@ namespace DayZeLib
             set => positionField = value;
         }
 
-        public int SpawnChance
+        public decimal SpawnChance
         {
             get => spawnChanceField;
             set => spawnChanceField = value;
@@ -103,7 +103,7 @@ namespace DayZeLib
         private int heightMaxField;
         private int radiusField;
         private bool radiusFieldSpecified;
-        private int powerField;
+        private decimal powerField;
 
         public int OuterRadius
         {
@@ -162,7 +162,7 @@ namespace DayZeLib
             set => radiusFieldSpecified = value;
         }
 
-        public int Power
+        public decimal Power
         {
             get => powerField;
             set => powerField = value;

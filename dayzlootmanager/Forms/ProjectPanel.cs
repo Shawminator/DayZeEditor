@@ -61,7 +61,10 @@ namespace DayZeEditor
             if (FTPPasswordTB.Text == null || FTPPasswordTB.Text == "")
                 toolStripButton2.Visible = false;
             else
+            {
                 toolStripButton2.Visible = true;
+                toolStripButton2.AutoSize = true;
+            }
         }
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
@@ -1166,10 +1169,15 @@ namespace DayZeEditor
                 SecureString password = DecryptString(infostring);
                 string readable = ToInsecureString(password);
                 ftpinfolist = JsonSerializer.Deserialize<SFTPInfoList>(readable);
-                SFTPInfo info = ftpinfolist.infolist.FirstOrDefault(x => x.projectname == ftpInfo.ToString());
-                if (info != null)
+                SFTPInfo info = ftpinfolist.infolist.FirstOrDefault(x => x.projectname == ftpInfo.projectname);
+                while (info != null)
                 {
-                    ftpinfolist.infolist.Remove(info);
+                    
+                    if (info != null)
+                    {
+                        ftpinfolist.infolist.Remove(info);
+                    }
+                    info = ftpinfolist.infolist.FirstOrDefault(x => x.projectname == ftpInfo.projectname);
                 }
                 ftpinfolist.infolist.Add(ftpInfo);
             }
@@ -1181,6 +1189,7 @@ namespace DayZeEditor
             string newinfolist = JsonSerializer.Serialize(ftpinfolist, options);
             Properties.Settings.Default.SFTPINFO = EncryptString(ToSecureString(newinfolist));
             Properties.Settings.Default.Save();
+            Console.WriteLine("INFO: FTP/SFTP Details saved.....");
         }
         static byte[] entropy = Encoding.Unicode.GetBytes("Sh4wm1nat0r5 3d1t0r 15 4he B3st");
         public static string EncryptString(SecureString input)

@@ -3482,7 +3482,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             TerjeScriptableArea area = currentTreeNode.Tag as TerjeScriptableArea;
-            area.SpawnChance = (int)SASpawnChanceNUD.Value;
+            area.SpawnChance = (decimal)SASpawnChanceNUD.Value;
             TerjeScriptableAreas.isDirty = true;
         }
         private void SkillsCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -3535,7 +3535,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             TerjeScriptableAreaData data = currentTreeNode.Tag as TerjeScriptableAreaData;
-            data.Power = (int)SADPowerNUD.Value;            
+            data.Power = (decimal)SADPowerNUD.Value;            
             TerjeScriptableAreas.isDirty = true;
         }
         private void SSLdisplayNameTB_TextChanged(object sender, EventArgs e)

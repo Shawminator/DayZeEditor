@@ -60,6 +60,7 @@ namespace DayZeEditor
             this.removeSelectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddNewPointtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RemovePointtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConvertPointstoXYZtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConvertPointstoPOStoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -432,7 +433,6 @@ namespace DayZeEditor
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.SCPointsangleSpecifiedCB = new System.Windows.Forms.CheckBox();
             this.SCPointsangleNUD = new System.Windows.Forms.NumericUpDown();
-            this.RemovePointtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip21.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -630,7 +630,7 @@ namespace DayZeEditor
             this.removeRespawnToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 884);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 862);
             // 
             // addNewCraftingRecipeToolStripMenuItem
             // 
@@ -824,6 +824,14 @@ namespace DayZeEditor
             this.AddNewPointtoolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.AddNewPointtoolStripMenuItem.Text = "Add New Point";
             this.AddNewPointtoolStripMenuItem.Click += new System.EventHandler(this.AddNewPointtoolStripMenuItem_Click);
+            // 
+            // RemovePointtoolStripMenuItem
+            // 
+            this.RemovePointtoolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.RemovePointtoolStripMenuItem.Name = "RemovePointtoolStripMenuItem";
+            this.RemovePointtoolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.RemovePointtoolStripMenuItem.Text = "Remove Point";
+            this.RemovePointtoolStripMenuItem.Click += new System.EventHandler(this.RemovePointtoolStripMenuItem_Click);
             // 
             // ConvertPointstoXYZtoolStripMenuItem
             // 
@@ -2158,6 +2166,11 @@ namespace DayZeEditor
             this.SASpawnChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.SASpawnChanceNUD.DecimalPlaces = 1;
             this.SASpawnChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SASpawnChanceNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.SASpawnChanceNUD.Location = new System.Drawing.Point(162, 149);
             this.SASpawnChanceNUD.Maximum = new decimal(new int[] {
             1,
@@ -2312,6 +2325,7 @@ namespace DayZeEditor
             // SADPowerNUD
             // 
             this.SADPowerNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SADPowerNUD.DecimalPlaces = 1;
             this.SADPowerNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SADPowerNUD.Location = new System.Drawing.Point(161, 121);
             this.SADPowerNUD.Maximum = new decimal(new int[] {
@@ -5418,14 +5432,6 @@ namespace DayZeEditor
             this.SCPointsangleNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.SCPointsangleNUD.ValueChanged += new System.EventHandler(this.SCPointsangleNUD_ValueChanged);
             // 
-            // RemovePointtoolStripMenuItem
-            // 
-            this.RemovePointtoolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.RemovePointtoolStripMenuItem.Name = "RemovePointtoolStripMenuItem";
-            this.RemovePointtoolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.RemovePointtoolStripMenuItem.Text = "Remove Point";
-            this.RemovePointtoolStripMenuItem.Click += new System.EventHandler(this.RemovePointtoolStripMenuItem_Click);
-            // 
             // TerjeManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5433,8 +5439,8 @@ namespace DayZeEditor
             this.ClientSize = new System.Drawing.Size(1220, 656);
             this.Controls.Add(this.TerjeTV);
             this.Controls.Add(this.darkToolStrip21);
-            this.Controls.Add(this.MapPanel);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.MapPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TerjeManager";
             this.Text = "BaseBuildingPlus";

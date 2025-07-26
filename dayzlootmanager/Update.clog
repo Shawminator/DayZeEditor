@@ -1,4 +1,10 @@
-﻿Version 0.8.4.0
+﻿Version 0.8.4.1
+[Updated]
+TerjeMod				-	Some Tweaks to scriptable areas.
+Econoomy				-	Ignore log file when creating project from ftp/sftp
+							fixed resaving connection details.
+
+Version 0.8.4.0
 [Updated]
 Project					-	Added option to create project for exisitng server(exmaple hook nto live server files on dedicated machine.)
 Dynamoc Weather Plugin	-	Update to latest version.
