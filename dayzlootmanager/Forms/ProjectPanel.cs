@@ -1128,6 +1128,7 @@ namespace DayZeEditor
         }
         private void LoadFTPInfo()
         {
+            if (ActiveProject == null) return;
             string infostring = Properties.Settings.Default.SFTPINFO;
             if (infostring == "") return;
             SecureString password = DecryptString(infostring);

@@ -169,6 +169,34 @@ namespace DayZeEditor
                         return;
                     }
                     Console.WriteLine("Will now serialize base economy files from Project " + Projects.ActiveProject);
+                    if(!Directory.Exists(Projects.getActiveProject().projectFullName))
+                    {
+                        Console.WriteLine(Projects.ActiveProject + " Cannot be found......\nRemoving from active project");
+                       // MessageBox.Show(Projects.ActiveProject + " Cannot be found......\nRemoving from active project");
+                        Project p = Projects.getActiveProject();
+                        Projects.Projects.Remove(p);
+                        Projects.ActiveProject = null;
+                        Projects.SaveProject(false, false);
+                        TypeManButton.Visible = false;
+                        TraderManButton.Visible = false;
+                        ExpansionSettingsButton.Visible = false;
+                        MarketButton.Visible = false;
+                        TraderPlusButton.Visible = false;
+                        Console.WriteLine("No Active Project Found, Please Load a Project from the Projects panel.....");
+                        toolStripStatusLabel1.Text = "No Active Project Found, Please Load/Create a Project from the Projects panel.....";
+                        ProjectPanel _TM = Application.OpenForms["ProjectPanel"] as ProjectPanel;
+                        _TM = new ProjectPanel
+                        {
+                            MdiParent = this,
+                            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                            Location = new System.Drawing.Point(30, 0),
+                            Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                            projects = Projects
+                        };
+                        _TM.Show();
+                        Console.WriteLine("loading Project manager....");
+                        return;
+                    }
                     Projects.getActiveProject().seteconomycore();
                     Projects.getActiveProject().seteconomydefinitions();
                     Projects.getActiveProject().setuserdefinitions();
