@@ -708,9 +708,7 @@
     <None Include="Maps\barrington_Map.png.xyz" />
     <None Include="Maps\bearisland_Map.png.xyz" />
     <None Include="Maps\bitterroot_Map.png.xyz" />
-    <None Include="Maps\Capare_Map.png.xyz">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Maps\Capare_Map.png.xyz" />
     <None Include="Maps\chernarusplus_Map.png.xyz">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -728,9 +726,7 @@
     <None Include="Maps\NorthTakistan_map.png.xyz" />
     <None Include="Maps\pripyat_Map.png.xyz" />
     <None Include="Maps\raman_Map.png.xyz" />
-    <None Include="Maps\rostow_Map.png.xyz">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Maps\rostow_Map.png.xyz" />
     <None Include="Maps\sakhal_map.png.xyz" />
     <None Include="Maps\takistanplus_Map.png.xyz" />
     <None Include="Maps\vela_Map.png.xyz" />
@@ -791,9 +787,7 @@
     <Content Include="Maps\barrington_Map.png" />
     <Content Include="Maps\bearisland_Map.png" />
     <Content Include="Maps\bitterroot_Map.png" />
-    <Content Include="Maps\Capare_Map.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Maps\Capare_Map.png" />
     <Content Include="Maps\chiemsee_Map.png" />
     <Content Include="Maps\chernarusplus_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -872,9 +866,7 @@
     <Content Include="Maps\NorthTakistan_map.png" />
     <Content Include="Maps\pripyat_Map.png" />
     <Content Include="Maps\raman_Map.png" />
-    <Content Include="Maps\rostow_Map.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Maps\rostow_Map.png" />
     <Content Include="Maps\sakhal_map.png" />
     <Content Include="Maps\swansisland_Map.png" />
     <Content Include="Maps\takistanplus_Map.png" />

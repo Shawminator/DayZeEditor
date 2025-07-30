@@ -1349,11 +1349,14 @@ namespace DayZeEditor
             {
                 savefiles = true;
             }
-            foreach (TerjeProtectionIDs prot in protectionIDsList)
+            if (protectionIDsList != null)
             {
-                if (prot.isDirty)
+                foreach (TerjeProtectionIDs prot in protectionIDsList)
                 {
-                    savefiles = true;
+                    if (prot.isDirty)
+                    {
+                        savefiles = true;
+                    }
                 }
             }
             if (TerjeLoadouts != null && TerjeLoadouts.isDirty)
@@ -1416,7 +1419,7 @@ namespace DayZeEditor
                 File.WriteAllText(TerjeCraftingFiles.Filename, sw.ToString());
                 midifiedfiles.Add(Path.GetFileName(TerjeCraftingFiles.Filename));
             }
-            if (Directory.Exists(TerjeSettingsPath + "CustomProtection"))
+            if (protectionIDsList != null)
             {
                 foreach (TerjeProtectionIDs prot in protectionIDsList)
                 {
