@@ -1,0 +1,27 @@
+{
+  "mainApp": {
+    "name": "MainApp",
+    "version": "1.5.0",
+    "zip": "MainApp.zip",
+    "downloadUrl": "https://github.com/youruser/MyAppSuiteRepo/releases/download/MainApp-v1.5.0/MainApp.zip",
+    "changelog": "New UI, performance improvements, and bug fixes."
+  },
+
+  "plugins": [
+    {
+      "name": "SamplePlugin",
+      "version": "1.2.0",
+      "dll": "SamplePlugin.dll",
+      "downloadUrl": "https://github.com/youruser/MyAppSuiteRepo/releases/download/SamplePlugin-v1.2.0/SamplePlugin.dll",
+      "changelog": "Improved performance and fixed bugs."
+    },
+    {
+      "name": "LoggerPlugin",
+      "version": "2.0.1",
+      "dll": "LoggerPlugin.dll",
+      "downloadUrl": "https://github.com/youruser/MyAppSuiteRepo/releases/download/LoggerPlugin-v2.0.1/LoggerPlugin.dll",
+      "changelog": "Added new logging levels."
+    }
+  ]
+}
+
