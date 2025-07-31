@@ -1,4 +1,9 @@
-﻿Version 0.8.4.1
+﻿Version 0.8.4.2
+[Updated]
+TerjeMod				-	Fixed Exiting form when some files are not present
+Expansion P2P			-	Added option to have empty Loadout on p2p npc
+
+Version 0.8.4.1
 [Updated]
 TerjeMod				-	Some Tweaks to scriptable areas.
 Econoomy				-	Ignore log file when creating project from ftp/sftp
