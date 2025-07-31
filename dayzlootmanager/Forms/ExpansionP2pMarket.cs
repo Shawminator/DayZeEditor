@@ -73,6 +73,11 @@ namespace DayZeEditor
 
             LoadoutList = new BindingList<AILoadouts>();
             AILoadoutsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts";
+            LoadoutList.Add(new AILoadouts()
+            {
+                Name = "",
+                ClassName = ""
+            });
             DirectoryInfo dinfo = new DirectoryInfo(AILoadoutsPath);
             FileInfo[] Files = dinfo.GetFiles("*.json");
             foreach (FileInfo file in Files)

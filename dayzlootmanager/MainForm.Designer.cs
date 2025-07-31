@@ -47,6 +47,7 @@ namespace DayZeEditor
             this.DiscordButton = new System.Windows.Forms.ToolStripButton();
             this.ProjectsButton = new System.Windows.Forms.ToolStripButton();
             this.TypeManButton = new System.Windows.Forms.ToolStripButton();
+            this.DynamicWeatherManagerButton = new System.Windows.Forms.ToolStripButton();
             this.TraderPlusButton = new System.Windows.Forms.ToolStripButton();
             this.TraderManButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionSettingsButton = new System.Windows.Forms.ToolStripButton();
@@ -55,16 +56,15 @@ namespace DayZeEditor
             this.ExpansionLoadoutManagerButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionAIButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionQuestsButton = new System.Windows.Forms.ToolStripButton();
+            this.TerjeManagerButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionCircleMarkerButton = new System.Windows.Forms.ToolStripButton();
             this.HelicrashManagerButton = new System.Windows.Forms.ToolStripButton();
             this.LootPoolManagerButton = new System.Windows.Forms.ToolStripButton();
             this.RHLootBoxManagerButton = new System.Windows.Forms.ToolStripButton();
             this.CapareWorkBenchManagerButton = new System.Windows.Forms.ToolStripButton();
-            this.TimedCrateManagerButton = new System.Windows.Forms.ToolStripButton();
             this.CapareTreasureManagerButton = new System.Windows.Forms.ToolStripButton();
-            this.TerjeManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.TimedCrateManagerButton = new System.Windows.Forms.ToolStripButton();
             this.LootchestButton = new System.Windows.Forms.ToolStripButton();
-            this.DynamicWeatherManagerButton = new System.Windows.Forms.ToolStripButton();
             this.SearchForLootManagerButton = new System.Windows.Forms.ToolStripButton();
             this.MPGSpawnerButton = new System.Windows.Forms.ToolStripButton();
             this.KOTHManagerButton = new System.Windows.Forms.ToolStripButton();
@@ -315,6 +315,18 @@ namespace DayZeEditor
             this.TypeManButton.Visible = false;
             this.TypeManButton.Click += new System.EventHandler(this.EconomyManagerButton_Click);
             // 
+            // DynamicWeatherManagerButton
+            // 
+            this.DynamicWeatherManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DynamicWeatherManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.DynamicWeatherManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("DynamicWeatherManagerButton.Image")));
+            this.DynamicWeatherManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DynamicWeatherManagerButton.Name = "DynamicWeatherManagerButton";
+            this.DynamicWeatherManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.DynamicWeatherManagerButton.Text = "Dynamic Weather Manager";
+            this.DynamicWeatherManagerButton.Visible = false;
+            this.DynamicWeatherManagerButton.Click += new System.EventHandler(this.DynamicWeatherManagerButton_Click);
+            // 
             // TraderPlusButton
             // 
             this.TraderPlusButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -411,6 +423,18 @@ namespace DayZeEditor
             this.ExpansionQuestsButton.Visible = false;
             this.ExpansionQuestsButton.Click += new System.EventHandler(this.ExpansionQuestsButton_Click);
             // 
+            // TerjeManagerButton
+            // 
+            this.TerjeManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TerjeManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerjeManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("TerjeManagerButton.Image")));
+            this.TerjeManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TerjeManagerButton.Name = "TerjeManagerButton";
+            this.TerjeManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.TerjeManagerButton.Text = "Terje Manager";
+            this.TerjeManagerButton.Visible = false;
+            this.TerjeManagerButton.Click += new System.EventHandler(this.TerjeManagerButton_Click);
+            // 
             // ExpansionCircleMarkerButton
             // 
             this.ExpansionCircleMarkerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -471,18 +495,6 @@ namespace DayZeEditor
             this.CapareWorkBenchManagerButton.Visible = false;
             this.CapareWorkBenchManagerButton.Click += new System.EventHandler(this.CapareWorkBenchManagerButton_Click);
             // 
-            // TimedCrateManagerButton
-            // 
-            this.TimedCrateManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.TimedCrateManagerButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.TimedCrateManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("TimedCrateManagerButton.Image")));
-            this.TimedCrateManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TimedCrateManagerButton.Name = "TimedCrateManagerButton";
-            this.TimedCrateManagerButton.Size = new System.Drawing.Size(147, 19);
-            this.TimedCrateManagerButton.Text = "Timed Crate Manager";
-            this.TimedCrateManagerButton.Visible = false;
-            this.TimedCrateManagerButton.Click += new System.EventHandler(this.TimedCrateManagerButton_Click);
-            // 
             // CapareTreasureManagerButton
             // 
             this.CapareTreasureManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -495,17 +507,17 @@ namespace DayZeEditor
             this.CapareTreasureManagerButton.Visible = false;
             this.CapareTreasureManagerButton.Click += new System.EventHandler(this.CapareTreasureManagerButton_Click);
             // 
-            // TerjeManagerButton
+            // TimedCrateManagerButton
             // 
-            this.TerjeManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.TerjeManagerButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerjeManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("TerjeManagerButton.Image")));
-            this.TerjeManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TerjeManagerButton.Name = "TerjeManagerButton";
-            this.TerjeManagerButton.Size = new System.Drawing.Size(147, 19);
-            this.TerjeManagerButton.Text = "Terje Manager";
-            this.TerjeManagerButton.Visible = false;
-            this.TerjeManagerButton.Click += new System.EventHandler(this.TerjeManagerButton_Click);
+            this.TimedCrateManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TimedCrateManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.TimedCrateManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("TimedCrateManagerButton.Image")));
+            this.TimedCrateManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TimedCrateManagerButton.Name = "TimedCrateManagerButton";
+            this.TimedCrateManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.TimedCrateManagerButton.Text = "Timed Crate Manager";
+            this.TimedCrateManagerButton.Visible = false;
+            this.TimedCrateManagerButton.Click += new System.EventHandler(this.TimedCrateManagerButton_Click);
             // 
             // LootchestButton
             // 
@@ -518,18 +530,6 @@ namespace DayZeEditor
             this.LootchestButton.Text = "CJ Loot Chest";
             this.LootchestButton.Visible = false;
             this.LootchestButton.Click += new System.EventHandler(this.Lootchest_Click);
-            // 
-            // DynamicWeatherManagerButton
-            // 
-            this.DynamicWeatherManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.DynamicWeatherManagerButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.DynamicWeatherManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("DynamicWeatherManagerButton.Image")));
-            this.DynamicWeatherManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DynamicWeatherManagerButton.Name = "DynamicWeatherManagerButton";
-            this.DynamicWeatherManagerButton.Size = new System.Drawing.Size(147, 19);
-            this.DynamicWeatherManagerButton.Text = "Dynamic Weather Manager";
-            this.DynamicWeatherManagerButton.Visible = false;
-            this.DynamicWeatherManagerButton.Click += new System.EventHandler(this.DynamicWeatherManagerButton_Click);
             // 
             // SearchForLootManagerButton
             // 
