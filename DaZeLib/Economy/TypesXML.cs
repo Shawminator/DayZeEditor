@@ -6,8 +6,6 @@ using System.Xml.Serialization;
 
 namespace DayZeLib
 {
-
-
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
     /// <remarks/>
     [System.SerializableAttribute()]

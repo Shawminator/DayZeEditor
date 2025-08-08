@@ -40,9 +40,9 @@ namespace DayZeLib
         [JsonIgnore]
         public QuExpansionQuestObjectiveTypeestType _ObjectiveTypeEnum { get; set; }
 
-        public int ConfigVersion { get; set; }
-        public int ID { get; set; }
-        public int ObjectiveType { get; set; }
+        public virtual int ConfigVersion { get; set; }
+        public virtual int ID { get; set; }
+        public virtual int ObjectiveType { get; set; }
 
 
 

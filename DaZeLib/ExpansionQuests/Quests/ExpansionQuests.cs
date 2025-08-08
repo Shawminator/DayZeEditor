@@ -55,6 +55,7 @@ namespace DayZeLib
                     Quests Quest = JsonSerializer.Deserialize<Quests>(File.ReadAllText(file.FullName));
                     Quest.Filename = Path.GetFileNameWithoutExtension(file.Name);
                     Quest.OriginalFilename = Path.GetFileNameWithoutExtension(file.Name);
+                    Quest.BaseName = "Quest_" + Quest.ID.ToString() + "_";
                     Quest.CreateLists();
                     QuestList.Add(Quest);
                     if (Quest.ConfigVersion != getQuestConfigVersion)
@@ -97,12 +98,14 @@ namespace DayZeLib
         }
         public void CreateNewQuest(int id)
         {
+            string basename = "Quest_" + id.ToString() + "_";
             string[] newdescription = new string[] { "Description on getting quest.", "Description while quest is active.", "Description when take in quest." };
             Quests newquest = new Quests()
             {
                 isDirty = true,
-                Filename = "Quest_" + id.ToString(),
-                OriginalFilename = "Quest_" + id.ToString(),
+                Filename = basename,
+                OriginalFilename = basename,
+                BaseName = basename,
                 ConfigVersion = m_QuestConfigVersion,
                 ID = id,
                 Type = 1,
@@ -158,11 +161,6 @@ namespace DayZeLib
             }
             Numberofquests.Sort();
             return Numberofquests;
-
-
-            //List<int> result = Enumerable.Range(1, Numberofquests.Max() + 1).Except(Numberofquests).ToList();
-            //result.Sort();
-            //return result[0];
         }
         public void RemoveNPCFromQuests(ExpansionQuestNPCs currentQuestNPC)
         {
@@ -266,11 +264,49 @@ namespace DayZeLib
             }
             return quests;
         }
+
+        public void SortItemlistbyitemName(bool atoZ)
+        {
+            if (atoZ)
+            {
+                var sortedListInstance = new BindingList<Quests>(QuestList.OrderBy(x => x.Title).ToList());
+                QuestList = sortedListInstance;
+            }
+            else if (!atoZ)
+            {
+                var sortedListInstance = new BindingList<Quests>(QuestList.OrderByDescending(x => x.Title).ToList());
+                QuestList = sortedListInstance;
+            }
+            foreach (Quests q in QuestList)
+            {
+                q.SortbyID = false;
+            }
+        }
+
+        public void SortItemlistbyID(bool mintoMax)
+        {
+            if (mintoMax)
+            {
+                var sortedListInstance = new BindingList<Quests>(QuestList.OrderBy(x => x.ID).ToList());
+                QuestList = sortedListInstance;
+            }
+            else if (!mintoMax)
+            {
+                var sortedListInstance = new BindingList<Quests>(QuestList.OrderByDescending(x => x.ID).ToList());
+                QuestList = sortedListInstance;
+            }
+            foreach (Quests q in QuestList)
+            {
+                q.SortbyID = true;
+            }
+        }
     }
     public class Quests
     {
         [JsonIgnore]
         public string Filename { get; set; }
+        [JsonIgnore]
+        public string BaseName { get; set; }
         [JsonIgnore]
         public string OriginalFilename { get; set; }
         [JsonIgnore]
@@ -332,6 +368,7 @@ namespace DayZeLib
         public Dictionary<string, int> FactionReputationRewards { get; set; }
         public int SuppressQuestLogOnCompetion { get; set; }
         public int Active { get; set; }
+        public bool SortbyID { get; internal set; }
 
         public Quests()
         {
@@ -345,7 +382,10 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            return Title;
+            if(SortbyID)
+                return $"{ID}:{Title}";
+            else
+                return Title;
         }
         public bool GetNPCLists(QuestNPCLists questNPCs)
         {

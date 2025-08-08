@@ -1267,7 +1267,8 @@ namespace DayZeEditor
         #region quests
         public Quests CurrentQuest { get; private set; }
         public BindingList<string> QuestActions { get; private set; }
-
+        public bool AtoZ = true;
+        public bool MintoMax = true;
         public void setupquests()
         {
             useraction = false;
@@ -1281,7 +1282,6 @@ namespace DayZeEditor
 
             useraction = true;
         }
-
         private void SetupFollowupCombobox()
         {
             Quests emptyquest = new Quests()
@@ -1302,14 +1302,13 @@ namespace DayZeEditor
             QuestFollowupQuestCB.ValueMember = "Value";
             QuestFollowupQuestCB.DataSource = questlist;
         }
-
         private void QuestsListLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (QuestsListLB.SelectedItems.Count < 1) return;
             CurrentQuest = QuestsListLB.SelectedItem as Quests;
             useraction = false;
             QuestRewardBehavorCB.DataSource = Enum.GetValues(typeof(ExpansionQuestRewardBehavior));
-            QuestFileNameTB.Text = CurrentQuest.Filename;
+            QuestFileNameTB.Text = CurrentQuest.Filename.Replace(CurrentQuest.BaseName, "");
             QuestConfigVersionNUD.Value = CurrentQuest.ConfigVersion;
             QuestIDNUD.Value = CurrentQuest.ID;
             QuestTypeCB.SelectedItem = (ExpansionQuestsQuestType)CurrentQuest.Type;
@@ -1415,11 +1414,101 @@ namespace DayZeEditor
 
             useraction = true;
         }
+        private void darkLabel88_Click(object sender, EventArgs e)
+        {
+            AtoZ = !AtoZ;
+            QuestsList.SortItemlistbyitemName(AtoZ);
+            QuestsListLB.DataSource = QuestsList.QuestList;
+            darkLabel90.Font = new Font(darkLabel90.Font, FontStyle.Regular);
+            darkLabel88.Font = new Font(darkLabel88.Font, FontStyle.Bold);
+            if (AtoZ)
+                darkLabel88.Text = "A-Z";
+            else
+                darkLabel88.Text = "Z-A";
+        }
+        private void darkLabel90_Click(object sender, EventArgs e)
+        {
+            MintoMax = !MintoMax;
+            QuestsList.SortItemlistbyID(MintoMax);
+            QuestsListLB.DataSource = QuestsList.QuestList;
+            darkLabel90.Font = new Font(darkLabel90.Font, FontStyle.Bold);
+            darkLabel88.Font = new Font(darkLabel88.Font, FontStyle.Regular);
+            if (MintoMax)
+                darkLabel90.Text = "ID  ↑";
+            else
+                darkLabel90.Text = "ID  ↓";
+        }
         private void QuestFileNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentQuest.Filename = QuestFileNameTB.Text;
+            CurrentQuest.Filename = CurrentQuest.BaseName + QuestFileNameTB.Text;
             CurrentQuest.isDirty = true;
+        }
+        private void QuestIDNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            List<int> AllQuestIDs = QuestsList.GetAllQuestIDS();
+            int currentid = CurrentQuest.ID;
+            int newid = (int)QuestIDNUD.Value;
+            if (AllQuestIDs.Contains(newid))
+            {
+                MessageBox.Show("That quest ID is allready in use, Please select a different ID");
+                useraction = false;
+                QuestIDNUD.Value = CurrentQuest.ID;
+                useraction = true;
+            }
+            else
+            {
+                //update currentquest
+                CurrentQuest.ID = newid;
+                CurrentQuest.BaseName = "Quest_" + CurrentQuest.ID.ToString() + "_";
+                CurrentQuest.Filename = CurrentQuest.BaseName + QuestFileNameTB.Text;
+                CurrentQuest.isDirty = true;
+                //update any other quest referencing the current quest as a pre quest or follow up
+                int count = 0;
+                foreach(Quests quest in QuestsList.QuestList)
+                {
+                    if (quest.PreQuestIDs.Contains(currentid) || quest.FollowUpQuest == currentid)
+                    {
+                        count++;
+                        if (quest.PreQuestIDs.Contains(currentid))
+                        {
+
+                            int index = quest.PreQuestIDs.IndexOf(currentid);
+                            if (index != -1)
+                            {
+                                quest.PreQuestIDs[index] = newid;
+                            }
+                            List<int> toberemoved = new List<int>();
+                            quest.PreQuests = new BindingList<Quests>();
+                            foreach (int prequest in quest.PreQuestIDs)
+                            {
+                                Quests _prequest = QuestsList.QuestList.FirstOrDefault(x => x.ID == prequest);
+                                if (_prequest == null)
+                                {
+                                    Console.WriteLine("\t\tQuest Title:" + quest.Title + " Quest ID:" + quest.ID.ToString() + " has a pre quest (Quest Id:" + prequest.ToString() + ") that doesnt exist,\nit will be removed from the pre quest list and the file saved.");
+                                    MessageBox.Show("Quest Title:" + quest.Title + " Quest ID:" + quest.ID.ToString() + " has a pre quest (Quest ID:" + prequest.ToString() + ") that doesnt exist,\nit will be removed from the pre quest list and the file saved.");
+                                    toberemoved.Add(prequest);
+                                }
+                                else
+                                    quest.PreQuests.Add(_prequest);
+                            }
+                            foreach (int id in toberemoved)
+                            {
+                                quest.PreQuestIDs.Remove(id);
+                            }
+                            quest.isDirty = true;
+                        }
+                        if (quest.FollowUpQuest == currentid)
+                        {
+                            quest.FollowUpQuest = newid;
+                            quest.isDirty = true;
+
+                        }
+                    }
+                }
+                Console.WriteLine($"Total number of additional quests edited :{count}");
+            }
         }
         private void QuestActiveCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -4862,6 +4951,9 @@ namespace DayZeEditor
             currentExpansionQuestObjectiveData.IsActive = checkBox3.Checked;
             currentplayer.isDirty = true;
         }
+
+
+
 
 
 

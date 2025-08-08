@@ -4,6 +4,9 @@ namespace DayZeLib
 {
     public class QuestObjectivesDelivery : QuestObjectivesBase
     {
+        public override int ConfigVersion { get; set; }
+        public override int ID { get; set; }
+        public override int ObjectiveType { get; set; }
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
         public BindingList<Delivery> Collections { get; set; }

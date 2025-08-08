@@ -7362,7 +7362,7 @@ namespace DayZeEditor
             this.groupBox36.Controls.Add(this.variablesvartypeNUD);
             this.groupBox36.Controls.Add(this.label64);
             this.groupBox36.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox36.Location = new System.Drawing.Point(240, 19);
+            this.groupBox36.Location = new System.Drawing.Point(249, 19);
             this.groupBox36.Name = "groupBox36";
             this.groupBox36.Size = new System.Drawing.Size(295, 105);
             this.groupBox36.TabIndex = 130;

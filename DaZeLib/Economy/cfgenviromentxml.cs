@@ -442,6 +442,4 @@ namespace DayZeLib
             }
         }
     }
-
-
 }

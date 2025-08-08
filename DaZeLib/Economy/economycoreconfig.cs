@@ -151,7 +151,6 @@ namespace DayZeLib
                 deletedirectory = true;
             }
         }
-
         public bool checkiftodelete(string modname)
         {
             economycoreCE ce = economycore.findFile(modname);
