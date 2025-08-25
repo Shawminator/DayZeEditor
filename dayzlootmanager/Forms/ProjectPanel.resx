@@ -142,9 +142,6 @@
         rkJggg==
 </value>
   </data>
-  <metadata name="darkToolStrip22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>565, 17</value>
-  </metadata>
   <data name="darkLabel7.Text" xml:space="preserve">
     <value>-Project Name:               The project name is what you want to call your project
 
@@ -167,7 +164,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABk
-        BgAAAk1TRnQBSQFMAgEBAgEAAYABAQGAAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        BgAAAk1TRnQBSQFMAgEBAgEAAYgBAQGIAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABEAMAAQEBAAEgBgABEP8ASwAEAhQAAwIBAwMCAQMDAgEDAwIBAwMCAQMDAgEDAwIBAwMCAQOYAAQC
         AysBQQMrAUEDKwFBAysBQQMrAUEDKwFBAysBQQMrAUEDKwFBAysBQQMSARcUAAMTARkDYAHoHP8BwwHA
         AbwB/5QAAdkBtAGJAf8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1

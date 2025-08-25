@@ -1826,10 +1826,10 @@ namespace DayZeEditor
             this.tabControl1.Controls.Add(this.LootParts);
             this.tabControl1.Controls.Add(this.Collection);
             this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
-            this.tabControl1.Location = new System.Drawing.Point(3, 7);
+            this.tabControl1.Location = new System.Drawing.Point(3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(483, 578);
+            this.tabControl1.Size = new System.Drawing.Size(483, 605);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 6;
             // 
@@ -1845,7 +1845,7 @@ namespace DayZeEditor
             this.LootParts.Location = new System.Drawing.Point(4, 5);
             this.LootParts.Name = "LootParts";
             this.LootParts.Padding = new System.Windows.Forms.Padding(3);
-            this.LootParts.Size = new System.Drawing.Size(475, 569);
+            this.LootParts.Size = new System.Drawing.Size(475, 596);
             this.LootParts.TabIndex = 0;
             this.LootParts.Text = "tabPage1";
             // 
@@ -1947,7 +1947,7 @@ namespace DayZeEditor
             this.groupBox6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox6.Location = new System.Drawing.Point(250, 8);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(202, 100);
+            this.groupBox6.Size = new System.Drawing.Size(202, 81);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Add Tag";
@@ -3039,7 +3039,7 @@ namespace DayZeEditor
             this.Collection.Controls.Add(this.groupBox8);
             this.Collection.Location = new System.Drawing.Point(4, 5);
             this.Collection.Name = "Collection";
-            this.Collection.Size = new System.Drawing.Size(475, 569);
+            this.Collection.Size = new System.Drawing.Size(475, 596);
             this.Collection.TabIndex = 1;
             this.Collection.Text = "tabPage2";
             // 
@@ -3931,6 +3931,7 @@ namespace DayZeEditor
             this.groupBox9.TabIndex = 27;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Children";
+            this.groupBox9.Enter += new System.EventHandler(this.groupBox9_Enter);
             // 
             // CreateeventSpawnButton
             // 
@@ -4610,7 +4611,7 @@ namespace DayZeEditor
             this.pictureBox1.TabIndex = 62;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseUp);
             this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);
@@ -6432,7 +6433,6 @@ namespace DayZeEditor
             this.fastColoredTextBox2.DefaultMarkerSize = 8;
             this.fastColoredTextBox2.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox2.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox2.IsReplaceMode = false;
             this.fastColoredTextBox2.Location = new System.Drawing.Point(3, 3);
@@ -16073,6 +16073,7 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);

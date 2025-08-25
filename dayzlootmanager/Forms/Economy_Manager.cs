@@ -2949,11 +2949,7 @@ namespace DayZeEditor
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                Cursor.Current = Cursors.SizeAll;
-                _mouseLastPosition = e.Location;
-            }
+
         }
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
@@ -11003,6 +10999,9 @@ namespace DayZeEditor
 
         }
 
+        private void groupBox9_Enter(object sender, EventArgs e)
+        {
 
+        }
     }
 }

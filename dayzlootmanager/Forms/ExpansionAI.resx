@@ -159,6 +159,9 @@
         MumKUcrrMOp1xxv2t/wPE+p32EmcnxNI4SF9P5J1AAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="darkToolStrip24.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>427, 21</value>
+  </metadata>
   <metadata name="darkToolStrip22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>292, 21</value>
   </metadata>
@@ -175,9 +178,6 @@ reorder using the up down arrows
   </data>
   <metadata name="darkToolStrip22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>292, 21</value>
-  </metadata>
-  <metadata name="darkToolStrip24.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>427, 21</value>
   </metadata>
   <metadata name="darkToolStrip25.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>562, 21</value>
@@ -226,6 +226,6 @@ to enable/disable the locations</value>
     <value>832, 21</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>134</value>
+    <value>25</value>
   </metadata>
 </root>

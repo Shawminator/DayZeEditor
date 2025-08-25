@@ -1,6 +1,8 @@
 ﻿using DarkUI.Forms;
 using DayZeLib;
+using SevenZipExtractor;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -126,6 +128,7 @@ namespace DayZeEditor
                     needtosave = true;
             }
             AISettings.Filename = AISettingsPath;
+            AISettings.createlistfromdict();
             SetupAISettings();
 
 
@@ -369,6 +372,7 @@ namespace DayZeEditor
                     File.Copy(AISettings.Filename, Path.GetDirectoryName(AISettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(AISettings.Filename) + ".bak", true);
                 }
                 AISettings.isDirty = false;
+                AISettings.CreateDictionary();
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(AISettings, options);
                 File.WriteAllText(AISettings.Filename, jsonString);
@@ -2348,6 +2352,7 @@ namespace DayZeEditor
         }
         #endregion aipatrolsettings
         #region AISettings
+        
         private void SetupAISettings()
         {
             doubleClickTimer.Interval = 100;
@@ -2384,7 +2389,59 @@ namespace DayZeEditor
             PreventClimbLB.ValueMember = "Value";
             PreventClimbLB.DataSource = AISettings.PreventClimb;
 
+
+            LightingConfigMinNightVisibilityMetersLB.DataSource = AISettings.AILightEntries;  // creates List<KeyValuePair<int, decimal>>
+
             useraction = true;
+        }
+        private void LightingConfigMinNightVisibilityMetersLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (LightingConfigMinNightVisibilityMetersLB.SelectedItem is AILightEntries entry)
+            {
+                numericUpDownKey.Value = entry.Key;
+                numericUpDownValue.Value = entry.Value;
+            }
+        }
+        private void numericUpDownKey_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (LightingConfigMinNightVisibilityMetersLB.SelectedItem is AILightEntries entry)
+            {
+                entry.Key = (int)numericUpDownKey.Value;
+                AISettings.isDirty = true;
+            }
+        }
+        private void numericUpDownValue_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (LightingConfigMinNightVisibilityMetersLB.SelectedItem is AILightEntries entry)
+            {
+                entry.Value = numericUpDownValue.Value;
+                AISettings.isDirty = true;
+            }
+            ;
+        }
+        private void darkButton39_Click(object sender, EventArgs e)
+        {
+            int nextKey = AISettings.AILightEntries.Any() ? AISettings.AILightEntries.Max(e2 => e2.Key) + 1 : 1;
+            decimal newValue = 0m;
+            var newEntry = new AILightEntries { Key = nextKey, Value = newValue };
+            AISettings.AILightEntries.Add(newEntry);
+            LightingConfigMinNightVisibilityMetersLB.SelectedItem = newEntry;
+            AISettings.isDirty = true;
+        }
+
+        private void darkButton38_Click(object sender, EventArgs e)
+        {
+            if (LightingConfigMinNightVisibilityMetersLB.SelectedItem is AILightEntries entry)
+            {
+                AISettings.AILightEntries.Remove(entry);
+                AISettings.isDirty = true;
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to remove.");
+            }
         }
         private void AccuracyMinNUD_ValueChanged(object sender, EventArgs e)
         {

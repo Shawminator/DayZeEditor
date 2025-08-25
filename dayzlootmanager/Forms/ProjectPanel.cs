@@ -1250,7 +1250,10 @@ namespace DayZeEditor
                 toolStripButton2.Visible = true;
         }
 
+        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
     public class SFTPInfoList
     {

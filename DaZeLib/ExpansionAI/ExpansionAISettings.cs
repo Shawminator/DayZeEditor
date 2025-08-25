@@ -1,12 +1,23 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace DayZeLib
 {
+    public class AILightEntries
+    {
+        public int Key { get; set; }
+        public decimal Value { get; set; }
+
+        public override string ToString() => Key.ToString();
+    }
     public class ExpansionAISettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 14;
+        const int CurrentVersion = 15;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -39,6 +50,11 @@ namespace DayZeLib
         public int EnableZombieVehicleAttackHandler { get; set; }
         public int EnableZombieVehicleAttackPhysics { get; set; }
 
+        public Dictionary<int, decimal> LightingConfigMinNightVisibilityMeters { get; set; }
+
+        [JsonIgnore]
+        public BindingList<AILightEntries> AILightEntries { get; set; }
+
         public bool checkver()
         {
             if (m_Version != CurrentVersion)
@@ -48,6 +64,15 @@ namespace DayZeLib
                 return true;
             }
             return false;
+        }
+
+        public void createlistfromdict()
+        {
+            AILightEntries = new BindingList<AILightEntries>(LightingConfigMinNightVisibilityMeters.Select(kvp => new AILightEntries { Key = kvp.Key, Value = kvp.Value }).ToList());
+        }
+        public void CreateDictionary()
+        {
+            LightingConfigMinNightVisibilityMeters = AILightEntries.ToDictionary(e => e.Key, e => e.Value);
         }
 
         public ExpansionAISettings()
@@ -72,6 +97,11 @@ namespace DayZeLib
             LogAIKilled = 1;
             EnableZombieVehicleAttackHandler = 0;
             EnableZombieVehicleAttackPhysics = 0;
+            LightingConfigMinNightVisibilityMeters = new Dictionary<int, decimal>
+            {
+                {0, 100.0m },
+                {1, 10.0m }
+            };
         }
     }
 
