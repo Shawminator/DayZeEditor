@@ -3577,7 +3577,65 @@ namespace DayZeEditor
             EnableEarPlugsCB.Checked = GeneralSettings.EnableEarPlugs == 1 ? true : false;
             InGameMenuLogoPathTB.Text = GeneralSettings.InGameMenuLogoPath;
             UseHUDColorsCB.Checked = GeneralSettings.UseHUDColors == 1 ? true : false;
+
+            LampSelectionModeCB.DataSource = new BindingList<LampComboboxItem>
+                {
+                    new LampComboboxItem
+                    {
+                        Value = "RANDOM",
+                        Description = "Completely random. May cause light overlap and thus flicker."
+                    },
+                    new LampComboboxItem
+                    {
+                        Value = "FARTHEST",
+                        Description = "Uses optimized farthest point sampling to evenly spread out the lights. May generate the same light positions on each server start (not guaranteed)."
+                    },
+                    new LampComboboxItem
+                    {
+                        Value = "FARTHEST_RANDOM",
+                        Description = "Like FARTHEST, but with random distribution."
+                    }
+                };
+
+            LampSelectionModeCB.DisplayMember = "Description"; // what the user sees
+            LampSelectionModeCB.ValueMember = "Value";
+
+            numericUpDown34.Value = GeneralSettings.LampAmount_OneInX;
+            LampSelectionModeCB.SelectedValue = GeneralSettings.LampSelectionMode;
+
             useraction = true;
+        }
+        private void LampSelectionModeCB_DropDown(object sender, EventArgs e)
+        {
+            int maxWidth = LampSelectionModeCB.DropDownWidth;
+            Graphics g = LampSelectionModeCB.CreateGraphics();
+
+            foreach (var item in LampSelectionModeCB.Items)
+            {
+                string s = ((LampComboboxItem)item).Description;
+                int itemWidth = (int)g.MeasureString(s, LampSelectionModeCB.Font).Width;
+                if (itemWidth > maxWidth)
+                    maxWidth = itemWidth;
+            }
+
+            LampSelectionModeCB.DropDownWidth = maxWidth;
+        }
+        private void LampSelectionModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            if (LampSelectionModeCB.SelectedValue is string selectedValue)
+            {
+                //MessageBox.Show($"Internal value: {selectedValue}");
+                GeneralSettings.LampSelectionMode = selectedValue;
+                GeneralSettings.isDirty = true;
+            }
+        }
+
+        private void numericUpDown34_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            GeneralSettings.LampAmount_OneInX = (int)numericUpDown34.Value;
+            GeneralSettings.isDirty = true;
         }
         private void HudColourPB_Click(object sender, EventArgs e)
         {
@@ -9605,6 +9663,7 @@ namespace DayZeEditor
         {
 
         }
+
 
     }
     public class NullToEmptyGearConverter : JsonConverter<ExpansionStartingGearItem>

@@ -5,7 +5,7 @@ namespace DayZeLib
 {
     public class MarketSettings
     {
-        const int CurrentVersion = 15;
+        const int CurrentVersion = 16;
 
         public int m_Version { get; set; }
         public int MarketSystemEnabled { get; set; }
@@ -37,6 +37,7 @@ namespace DayZeLib
         public int SZVehicleParkingTicketFine { get; set; }
         public int SZVehicleParkingFineUseKey { get; set; }
         public int DisallowUnpersisted { get; set; }
+        public int DisableClientSellTransactionDetails { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -101,7 +102,7 @@ namespace DayZeLib
             SZVehicleParkingTicketFine = 0;
             SZVehicleParkingFineUseKey = 1;
             DisallowUnpersisted = 0;
-
+            DisableClientSellTransactionDetails = 0;
 
         }
 

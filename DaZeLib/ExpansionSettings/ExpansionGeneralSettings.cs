@@ -26,9 +26,16 @@ namespace DayZeLib
         [Description("on all buildings on the map, not just predefined areas")]
         All_Buildings = 2,
     };
+    public class LampComboboxItem
+    {
+        public string Value { get; set; }     
+        public string Description { get; set; } 
+
+        public override string ToString() => Description; 
+    }
     public class ExpansionGeneralSettings
     {
-        static int CurrentVersion = 15;
+        static int CurrentVersion = 16;
 
         public int m_Version { get; set; }
         public int DisableShootToUnlock { get; set; }
@@ -39,6 +46,8 @@ namespace DayZeLib
         public decimal GravecrossSpawnTimeDelay { get; set; }
         public ExpansionMapping Mapping { get; set; }
         public int EnableLamps { get; set; }
+        public int LampAmount_OneInX { get; set; }
+        public string LampSelectionMode { get; set; }
         public int EnableGenerators { get; set; }
         public int EnableLighthouses { get; set; }
         public int EnableHUDNightvisionOverlay { get; set; }
@@ -73,6 +82,9 @@ namespace DayZeLib
             Mapping = new ExpansionMapping();
 
             EnableLamps = (int)LampModeEnum.AlwaysOnEverywhere;
+            LampAmount_OneInX = 3;
+            LampSelectionMode = "FARTHEST_RANDOM";
+
             EnableGenerators = 0;
             EnableLighthouses = 1;
 

@@ -72,6 +72,10 @@ namespace DayZeLib
                                 item.Variants[i] = item.Variants[i].ToLower();
                                 savefile = true;
                             }
+                            if(item.ClassName == item.Variants[i])
+                            {
+                                MessageBox.Show(cat.DisplayName + Environment.NewLine + item.ClassName + " Has a max price lower than the min price." + Environment.NewLine + "Please fix......");
+                            }
                         }
                         for (int j = 0; j < item.SpawnAttachments.Count; j++)
                         {

@@ -446,6 +446,7 @@ namespace DayZeEditor
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewMarketFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMarketFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DisableClientSellTransactionDetailsCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -1015,7 +1016,7 @@ namespace DayZeEditor
             this.tabControl1.Location = new System.Drawing.Point(0, 78);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1247, 627);
+            this.tabControl1.Size = new System.Drawing.Size(1247, 654);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 2;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -1027,7 +1028,7 @@ namespace DayZeEditor
             this.tabPage4.Controls.Add(this.darkToolStrip23);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1239, 599);
+            this.tabPage4.Size = new System.Drawing.Size(1239, 626);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Market Settings";
             // 
@@ -1040,7 +1041,7 @@ namespace DayZeEditor
             this.tabControl3.Location = new System.Drawing.Point(0, 28);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(1239, 571);
+            this.tabControl3.Size = new System.Drawing.Size(1239, 598);
             this.tabControl3.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl3.TabIndex = 10;
             this.tabControl3.SelectedIndexChanged += new System.EventHandler(this.tabControl3_SelectedIndexChanged);
@@ -1052,7 +1053,7 @@ namespace DayZeEditor
             this.tabPage9.Location = new System.Drawing.Point(4, 25);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(1231, 542);
+            this.tabPage9.Size = new System.Drawing.Size(1231, 569);
             this.tabPage9.TabIndex = 0;
             this.tabPage9.Text = "General Settings";
             // 
@@ -1069,11 +1070,12 @@ namespace DayZeEditor
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1225, 536);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1225, 563);
             this.flowLayoutPanel1.TabIndex = 9;
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.DisableClientSellTransactionDetailsCB);
             this.groupBox7.Controls.Add(this.DisallowUnpersistedCB);
             this.groupBox7.Controls.Add(this.SZVehicleParkingFineUseKeyCB);
             this.groupBox7.Controls.Add(this.label14);
@@ -5816,11 +5818,23 @@ namespace DayZeEditor
             this.removeMarketFileToolStripMenuItem.Text = "Remove Market File";
             this.removeMarketFileToolStripMenuItem.Click += new System.EventHandler(this.removeMarketFileToolStripMenuItem_Click);
             // 
+            // DisableClientSellTransactionDetailsCB
+            // 
+            this.DisableClientSellTransactionDetailsCB.AutoSize = true;
+            this.DisableClientSellTransactionDetailsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DisableClientSellTransactionDetailsCB.Location = new System.Drawing.Point(6, 500);
+            this.DisableClientSellTransactionDetailsCB.Name = "DisableClientSellTransactionDetailsCB";
+            this.DisableClientSellTransactionDetailsCB.Size = new System.Drawing.Size(204, 17);
+            this.DisableClientSellTransactionDetailsCB.TabIndex = 103;
+            this.DisableClientSellTransactionDetailsCB.Text = "Disable Client Sell Transaction Details";
+            this.DisableClientSellTransactionDetailsCB.UseVisualStyleBackColor = true;
+            this.DisableClientSellTransactionDetailsCB.CheckedChanged += new System.EventHandler(this.DisableClientSellTransactionDetailsCB_CheckedChanged);
+            // 
             // ExpansionMarket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1247, 705);
+            this.ClientSize = new System.Drawing.Size(1247, 732);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.darkToolStrip22);
             this.Controls.Add(this.darkToolStrip21);
@@ -6402,5 +6416,6 @@ namespace DayZeEditor
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox DisableClientSellTransactionDetailsCB;
     }
 }

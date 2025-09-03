@@ -35,6 +35,7 @@ namespace DayZeEditor
             this.TitleLabel = new System.Windows.Forms.Label();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.treeViewMS1 = new TreeViewMS.TreeViewMS();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,17 +93,31 @@ namespace DayZeEditor
             this.treeViewMS1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.treeViewMS1.ForeColor = System.Drawing.SystemColors.Control;
             this.treeViewMS1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.treeViewMS1.Location = new System.Drawing.Point(8, 34);
+            this.treeViewMS1.Location = new System.Drawing.Point(8, 51);
             this.treeViewMS1.Name = "treeViewMS1";
             this.treeViewMS1.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS1.SelectedNodes")));
-            this.treeViewMS1.Size = new System.Drawing.Size(376, 384);
+            this.treeViewMS1.SetMultiselect = true;
+            this.treeViewMS1.Size = new System.Drawing.Size(376, 367);
             this.treeViewMS1.TabIndex = 207;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox1.Location = new System.Drawing.Point(11, 31);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(113, 17);
+            this.checkBox1.TabIndex = 208;
+            this.checkBox1.Text = "Show As Filename";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // AddObjectives
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 450);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.treeViewMS1);
             this.Controls.Add(this.darkButton1);
             this.Controls.Add(this.panel1);
@@ -114,6 +129,7 @@ namespace DayZeEditor
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -124,5 +140,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Label TitleLabel;
         private DarkUI.Controls.DarkButton darkButton1;
         private TreeViewMS.TreeViewMS treeViewMS1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

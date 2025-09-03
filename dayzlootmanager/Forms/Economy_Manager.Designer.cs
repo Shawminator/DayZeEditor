@@ -6507,7 +6507,7 @@ namespace DayZeEditor
             this.groupBox21.Controls.Add(this.AttachmentGB);
             this.groupBox21.Controls.Add(this.SpawnabletypestagGB);
             this.groupBox21.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox21.Location = new System.Drawing.Point(814, 14);
+            this.groupBox21.Location = new System.Drawing.Point(818, 8);
             this.groupBox21.Name = "groupBox21";
             this.groupBox21.Size = new System.Drawing.Size(254, 574);
             this.groupBox21.TabIndex = 60;
@@ -7127,7 +7127,7 @@ namespace DayZeEditor
             this.RandomPresetItemGB.Controls.Add(this.label205);
             this.RandomPresetItemGB.Controls.Add(this.darkButton49);
             this.RandomPresetItemGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.RandomPresetItemGB.Location = new System.Drawing.Point(694, 3);
+            this.RandomPresetItemGB.Location = new System.Drawing.Point(694, 87);
             this.RandomPresetItemGB.Name = "RandomPresetItemGB";
             this.RandomPresetItemGB.Size = new System.Drawing.Size(242, 105);
             this.RandomPresetItemGB.TabIndex = 81;
@@ -7234,7 +7234,7 @@ namespace DayZeEditor
             this.RandompresetCargoGB.Controls.Add(this.RandomPresetCargoChanceNUD);
             this.RandompresetCargoGB.Controls.Add(this.label57);
             this.RandompresetCargoGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.RandompresetCargoGB.Location = new System.Drawing.Point(694, 3);
+            this.RandompresetCargoGB.Location = new System.Drawing.Point(942, 3);
             this.RandompresetCargoGB.Name = "RandompresetCargoGB";
             this.RandompresetCargoGB.Size = new System.Drawing.Size(242, 78);
             this.RandompresetCargoGB.TabIndex = 66;

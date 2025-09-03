@@ -35,3 +35,4 @@ NorthTakistan:12288
 GreenCounty:10240
 hashima:5120
 Deadfall:10240
+pnw:10240

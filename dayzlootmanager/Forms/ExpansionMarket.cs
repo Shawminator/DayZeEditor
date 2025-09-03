@@ -841,6 +841,7 @@ namespace DayZeEditor
             SZVehicleParkingTicketFineNUD.Value = marketsettings.SZVehicleParkingTicketFine;
             SZVehicleParkingFineUseKeyCB.Checked = marketsettings.SZVehicleParkingFineUseKey == 1 ? true : false;
             DisallowUnpersistedCB.Checked = marketsettings.DisallowUnpersisted == 1 ? true: false;
+            DisableClientSellTransactionDetailsCB.Checked = marketsettings.DisableClientSellTransactionDetails == 1 ? true : false;
 
             CurrencyIconTB.Text = marketsettings.CurrencyIcon;
 
@@ -1551,6 +1552,13 @@ namespace DayZeEditor
             if (action) return;
             marketsettings.DisallowUnpersisted = DisallowUnpersistedCB.Checked == true ? 1 : 0;
             marketsettings.isDirty = true;
+        }
+        private void DisableClientSellTransactionDetailsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            marketsettings.DisableClientSellTransactionDetails = DisableClientSellTransactionDetailsCB.Checked == true ? 1 : 0;
+            marketsettings.isDirty = true;
+
         }
         private void CurrencyIconTB_TextChanged(object sender, EventArgs e)
         {
@@ -4795,6 +4803,8 @@ namespace DayZeEditor
             }
             pictureBox3.Invalidate();
         }
+
+
     }
 }
 

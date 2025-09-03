@@ -347,7 +347,6 @@ namespace DayZeEditor
         {
             useraction = false;
             PlayerFactionCB.DataSource = new BindingList<string>(Factions);
-            CrashFactionCB.DataSource = new BindingList<string>(Factions);
             StaticPatrolFactionCB.DataSource = new BindingList<string>(Factions);
             SpatialGroupsPointSpatial_FactionCB.DataSource = new BindingList<string>(Factions);
             SpatialGroupsGroupSpatial_FactionCB.DataSource = new BindingList<string>(Factions);
@@ -502,15 +501,11 @@ namespace DayZeEditor
             {
                 LoadoutNameList.Add(Path.GetFileNameWithoutExtension(lo.Filename));
             }
-            CrashLoadoutFileCB.DisplayMember = "DisplayName";
-            CrashLoadoutFileCB.ValueMember = "Value";
-            CrashLoadoutFileCB.DataSource = new BindingList<string>(LoadoutNameList);
             StaticPatrolLB.Refresh();
 
             StaticPatrolLoadoutsCB.DisplayMember = "DisplayName";
             StaticPatrolLoadoutsCB.ValueMember = "Value";
             StaticPatrolLoadoutsCB.DataSource = new BindingList<string>(LoadoutNameList);
-            EventCrachPatrolLB.Refresh();
 
             LoadoutNameList2 = new BindingList<string>();
             foreach (AILoadouts lo in LoadoutList)
@@ -537,20 +532,16 @@ namespace DayZeEditor
         }
         private void toolStripButton14_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 4;
+            tabControl1.SelectedIndex = 3;
             toolStripButton15.AutoSize = true;
             toolStripButton16.AutoSize = true;
             toolStripButton17.AutoSize = true;
-        }
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedIndex = 1;
         }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             toolStripButton4.AutoSize = true;
             toolStripButton5.AutoSize = true;
-            tabControl1.SelectedIndex = 2;
+            tabControl1.SelectedIndex = 1;
         }
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
@@ -558,11 +549,11 @@ namespace DayZeEditor
             toolStripButton9.AutoSize = true;
             toolStripButton10.AutoSize = true;
             toolStripButton11.AutoSize = true;
-            tabControl1.SelectedIndex = 3;
+            tabControl1.SelectedIndex = 2;
         }
         private void toolStripButton18_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 5;
+            tabControl1.SelectedIndex = 4;
             LBCGB.Visible = false;
             nameLBCGB.Visible = false;
         }
@@ -570,7 +561,6 @@ namespace DayZeEditor
         {
             toolStripButton8.Checked = false;
             toolStripButton14.Checked = false;
-            toolStripButton3.Checked = false;
             toolStripButton1.Checked = false;
             toolStripButton6.Checked = false;
             toolStripButton18.Checked = false;
@@ -580,18 +570,15 @@ namespace DayZeEditor
                     toolStripButton8.Checked = true;
                     break;
                 case 1:
-                    toolStripButton3.Checked = true;
-                    break;
-                case 2:
                     toolStripButton1.Checked = true;
                     break;
-                case 3:
+                case 2:
                     toolStripButton6.Checked = true;
                     break;
-                case 4:
+                case 3:
                     toolStripButton14.Checked = true;
                     break;
-                case 5:
+                case 4:
                     toolStripButton18.Checked = true;
                     break;
             }
@@ -731,7 +718,6 @@ namespace DayZeEditor
             }
         }
         #region aipatrolsettings
-        public ExpansionAIObjectPatrol CurrentEventcrashpatrol;
         public ExpansionAIPatrol CurrentPatrol;
         public Vec3 CurrentWapypoint;
         public Loadbalancingcategorie currentLCB;
@@ -753,10 +739,6 @@ namespace DayZeEditor
             AIGeneralDanageMultiplierNUD.Value = AIPatrolSettings.DamageMultiplier;
             AIGeneralDamageReceivedMultiplierNUD.Value = AIPatrolSettings.DamageReceivedMultiplier;
             AIGeneralFormationScaleNUD.Value = AIPatrolSettings.FormationScale;
-
-            EventCrachPatrolLB.DisplayMember = "DisplayName";
-            EventCrachPatrolLB.ValueMember = "Value";
-            EventCrachPatrolLB.DataSource = AIPatrolSettings.ObjectPatrols;
 
             SuspendLayout();
 
@@ -999,136 +981,10 @@ namespace DayZeEditor
         }
 
         /// <summary>
-        /// Event Crash Settings
+        /// Stataic Patrol Settings
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EventCrachPatrolLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (EventCrachPatrolLB.SelectedItems.Count < 1) return;
-            useraction = false;
-            CurrentEventcrashpatrol = EventCrachPatrolLB.SelectedItem as ExpansionAIObjectPatrol;
-            CrashLoadBalancingCategoryCB.DataSource = new BindingSource( AIPatrolSettings._LoadBalancingCategories, null);
-            CrashEventNameTB.Text = CurrentEventcrashpatrol.Name;
-            CrashEventClassNameTB.Text = CurrentEventcrashpatrol.ClassName;
-            CrashPersistCB.Checked = CurrentEventcrashpatrol.Persist == 1 ? true : false;
-            CrashFactionCB.SelectedIndex = CrashFactionCB.FindStringExact(CurrentEventcrashpatrol.Faction);
-            CrashNumberOfAINUD.Value = CurrentEventcrashpatrol.NumberOfAI;
-            CrashBehaviourCB.SelectedIndex = CrashBehaviourCB.FindStringExact(CurrentEventcrashpatrol.Behaviour);
-            CrashLoadBalancingCategoryCB.SelectedIndex = CrashLoadBalancingCategoryCB.FindStringExact(CurrentEventcrashpatrol.LoadBalancingCategory);
-            CrashSpeedCB.SelectedIndex = CrashSpeedCB.FindStringExact(CurrentEventcrashpatrol.Speed);
-            CrashUnderThreatSpeedCB.SelectedIndex = CrashUnderThreatSpeedCB.FindStringExact(CurrentEventcrashpatrol.UnderThreatSpeed);
-            CrashAccuracyMinNud.Value = CurrentEventcrashpatrol.AccuracyMin;
-            CrashAccuracyMaxNUD.Value = CurrentEventcrashpatrol.AccuracyMax;
-            CrashThreatDistanceLimitNUD.Value = CurrentEventcrashpatrol.ThreatDistanceLimit;
-            crashNoiseInvestigationDistanceLimitNUD.Value = CurrentEventcrashpatrol.NoiseInvestigationDistanceLimit;
-            CrashDamageMultiplierNUD.Value = CurrentEventcrashpatrol.DamageMultiplier;
-            CrashSniperProneDistanceThresholdNUD.Value = CurrentEventcrashpatrol.SniperProneDistanceThreshold;
-            CrashMinDistRadiusNUD.Value = CurrentEventcrashpatrol.MinDistRadius;
-            CrashMaxDistRadiusNUD.Value = CurrentEventcrashpatrol.MaxDistRadius;
-            CrashDespawnRadiusNUD.Value = CurrentEventcrashpatrol.DespawnRadius;
-            CrashDespawnTimeNUD.Value = CurrentEventcrashpatrol.DespawnTime;
-            CrashMinSpreadRadiusNUD.Value = CurrentEventcrashpatrol.MinSpreadRadius;
-            CrashMaxSpreadRadiusNUD.Value = CurrentEventcrashpatrol.MaxSpreadRadius;
-            CrashRespawnTimeNUD.Value = CurrentEventcrashpatrol.RespawnTime;
-            CrashChanceNUD.Value = CurrentEventcrashpatrol.Chance;
-            CrashDamageReceivedMultiplierNUD.Value = CurrentEventcrashpatrol.DamageReceivedMultiplier;
-            CrashCanBeLootedCB.Checked = CurrentEventcrashpatrol.CanBeLooted == 1 ? true : false;
-            CrashCanBeTriggeredByAICB.Checked = CurrentEventcrashpatrol.CanBeTriggeredByAI == 1 ? true : false;
-            CrashLoadoutFileCB.SelectedIndex = CrashLoadoutFileCB.FindStringExact(CurrentEventcrashpatrol.Loadout);
-            CrashFormationCB.SelectedIndex = CrashFormationCB.FindStringExact(CurrentEventcrashpatrol.Formation);
-            CrashWaypointInterpolationCB.SelectedIndex = CrashWaypointInterpolationCB.FindStringExact(CurrentEventcrashpatrol.WaypointInterpolation);
-            crashFormationLoosenessNUD.Value = CurrentEventcrashpatrol.FormationLooseness;
-            crashFormationScaleNUD.Value = CurrentEventcrashpatrol.FormationScale;
-            int CrashUnlimitedReloadBitmask = CurrentEventcrashpatrol.UnlimitedReload;
-            if (CrashUnlimitedReloadBitmask == 1)
-                CrashUnlimitedReloadBitmask = 30;
-            CrashURAnimalsCB.Checked = ((CrashUnlimitedReloadBitmask & 2) != 0) ? true : false;
-            CrashURInfectedCB.Checked = ((CrashUnlimitedReloadBitmask & 4) != 0) ? true : false;
-            CrashURPlayersCB.Checked = ((CrashUnlimitedReloadBitmask & 8) != 0) ? true : false;
-            CrashURVehiclesCB.Checked = ((CrashUnlimitedReloadBitmask & 16) != 0) ? true : false;
-            for (int i = 0; i < crashLootingBehaviousCLB.Items.Count; i++)
-            {
-                crashLootingBehaviousCLB.SetItemChecked(i, false);
-            }
-            foreach (string s in CurrentEventcrashpatrol.LootingBehaviour.Split('|'))
-            {
-                if (s == "") continue;
-                crashLootingBehaviousCLB.SetItemChecked(crashLootingBehaviousCLB.Items.IndexOf(s.Trim()), true);
-            }
-
-
-            CrashUnitsLB.DisplayMember = "DisplayName";
-            CrashUnitsLB.ValueMember = "Value";
-            CrashUnitsLB.DataSource = CurrentEventcrashpatrol.Units;
-
-            useraction = true;
-        }
-        private void crashLootingBehaviousCLB_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (!useraction) return;
-            var list = (CheckedListBox)sender;
-            string changedItem = list.Items[e.Index].ToString();
-            bool willBeChecked = e.NewValue == CheckState.Checked;
-
-            // Temporarily remove the event handler to avoid recursion
-            list.ItemCheck -= crashLootingBehaviousCLB_ItemCheck;
-
-            if (changedItem == "ALL" && willBeChecked)
-            {
-                // Uncheck everything else
-                for (int i = 0; i < list.Items.Count; i++)
-                {
-                    if (i != e.Index)
-                        list.SetItemChecked(i, false);
-                }
-            }
-            else
-            {
-                // Uncheck "ALL" if anything else is checked
-                int allIndex = list.Items.IndexOf("ALL");
-                if (allIndex >= 0)
-                    list.SetItemChecked(allIndex, false);
-
-                if (changedItem == "WEAPONS" && willBeChecked)
-                {
-                    for (int i = 0; i < list.Items.Count; i++)
-                    {
-                        if (list.Items[i].ToString().StartsWith("WEAPONS_"))
-                            list.SetItemChecked(i, false);
-                    }
-                }
-                else if (changedItem.StartsWith("WEAPONS_") && willBeChecked)
-                {
-                    int weaponsIndex = list.Items.IndexOf("WEAPONS");
-                    if (weaponsIndex >= 0)
-                        list.SetItemChecked(weaponsIndex, false);
-                }
-
-                if (changedItem == "CLOTHING" && willBeChecked)
-                {
-                    for (int i = 0; i < list.Items.Count; i++)
-                    {
-                        if (list.Items[i].ToString().StartsWith("CLOTHING_"))
-                            list.SetItemChecked(i, false);
-                    }
-                }
-                else if (changedItem.StartsWith("CLOTHING_") && willBeChecked)
-                {
-                    int clothingIndex = list.Items.IndexOf("CLOTHING");
-                    if (clothingIndex >= 0)
-                        list.SetItemChecked(clothingIndex, false);
-                }
-            }
-
-            // Reattach the event handler
-            list.ItemCheck += crashLootingBehaviousCLB_ItemCheck;
-
-            // Finally, update the checked items string (now safely updated)
-            
-            CurrentEventcrashpatrol.LootingBehaviour = UpdateCheckedItemsString(list, e.Index, e.NewValue);
-            AIPatrolSettings.isDirty = true;
-        }
         private string UpdateCheckedItemsString(CheckedListBox list, int changingIndex, CheckState newState)
         {
             List<string> selected = new List<string>();
@@ -1142,279 +998,6 @@ namespace DayZeEditor
             }
             return string.Join(" | ", selected);
         }
-        private void CrashLoadBalancingCategoryCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.LoadBalancingCategory = CrashLoadBalancingCategoryCB.GetItemText(CrashLoadBalancingCategoryCB.SelectedItem);
-            AIPatrolSettings.isDirty = true;
-        }
-        private void darkButton7_Click(object sender, EventArgs e)
-        {
-            ExpansionAIObjectPatrol newpatrol = new ExpansionAIObjectPatrol()
-            {
-                Name = "NewName",
-                Persist = 0,
-                Faction = "WEST",
-                Formation = "",
-                FormationLooseness = (decimal)0.0,
-                Loadout = "",
-                Units = new BindingList<string>(),
-                NumberOfAI = -3,
-                Behaviour = "HALT_OR_ALTERNATE",
-                Speed = "WALK",
-                UnderThreatSpeed = "SPRINT",
-                CanBeLooted = 1,
-                UnlimitedReload = 0,
-                SniperProneDistanceThreshold = (decimal)0.0,
-                AccuracyMin = (decimal)-1.0,
-                AccuracyMax = (decimal)-1.0,
-                ThreatDistanceLimit = (decimal)-1.0,
-                NoiseInvestigationDistanceLimit = (decimal)-1.0,
-                DamageMultiplier = (decimal)-1.0,
-                DamageReceivedMultiplier = (decimal)-1.0,
-                MinDistRadius = (decimal)-2.0,
-                MaxDistRadius = (decimal)-2.0,
-                DespawnRadius = (decimal)-2.0,
-                MinSpreadRadius = (decimal)-2.0,
-                MaxSpreadRadius = (decimal)-2.0,
-                Chance = (decimal)1.0,
-                WaypointInterpolation = "",
-                DespawnTime = (decimal)-1.0,
-                RespawnTime = (decimal)-2.0,
-                ClassName = "Your Classname Goes Here"
-            };
-
-            AIPatrolSettings.ObjectPatrols.Add(newpatrol);
-            AIPatrolSettings.SetPatrolNames();
-            AIPatrolSettings.isDirty = true;
-        }
-        private void darkButton6_Click(object sender, EventArgs e)
-        {
-            AIPatrolSettings.ObjectPatrols.Remove(CurrentEventcrashpatrol);
-            AIPatrolSettings.SetPatrolNames();
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashEventNameTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.Name = CrashEventNameTB.Text;
-            AIPatrolSettings.isDirty = true;
-            EventCrachPatrolLB.Refresh();
-        }
-        private void CrashEventClassNameTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.ClassName = CrashEventClassNameTB.Text;
-            AIPatrolSettings.isDirty = true;
-            EventCrachPatrolLB.Refresh();
-        }
-        private void CrashFactionCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.Faction = CrashFactionCB.GetItemText(CrashFactionCB.SelectedItem);
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashLoadoutFileCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.Loadout = CrashLoadoutFileCB.GetItemText(CrashLoadoutFileCB.SelectedItem);
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashNumberOfAINUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.NumberOfAI = (int)CrashNumberOfAINUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashCanBeTriggeredByAICB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.CanBeTriggeredByAI = CrashCanBeTriggeredByAICB.Checked == true ? 1 : 0;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashBehaviourCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.Behaviour = CrashBehaviourCB.GetItemText(CrashBehaviourCB.SelectedItem);
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.Speed = CrashSpeedCB.GetItemText(CrashSpeedCB.SelectedItem);
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashUnderThreatSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.UnderThreatSpeed = CrashUnderThreatSpeedCB.GetItemText(CrashUnderThreatSpeedCB.SelectedItem);
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashMinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.MinDistRadius = CrashMinDistRadiusNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashMaxDistRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.MaxDistRadius = CrashMaxDistRadiusNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.DespawnRadius = CrashDespawnRadiusNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashDespawnTimeNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.DespawnTime = CrashDespawnTimeNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void numericUpDown7_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.AccuracyMin = CrashAccuracyMinNud.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void numericUpDown6_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.AccuracyMax = CrashAccuracyMaxNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashDamageMultiplierNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.DamageMultiplier = CrashDamageMultiplierNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashSniperProneDistanceThresholdNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.SniperProneDistanceThreshold = CrashSniperProneDistanceThresholdNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashThreatDistanceLimitNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.ThreatDistanceLimit = CrashThreatDistanceLimitNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashNoiseInvestigationDistanceLimitNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.NoiseInvestigationDistanceLimit = crashNoiseInvestigationDistanceLimitNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashMinSpreadRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.MinSpreadRadius = CrashMinSpreadRadiusNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashMaxSpreadRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.MaxSpreadRadius = CrashMaxSpreadRadiusNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashChanceNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.Chance = CrashChanceNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashCanBeLootedCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.CanBeLooted = CrashCanBeLootedCB.Checked == true ? 1 : 0;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashFormationCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.Formation = CrashFormationCB.GetItemText(CrashFormationCB.SelectedItem);
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashWaypointInterpolationCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.WaypointInterpolation = CrashWaypointInterpolationCB.GetItemText(CrashWaypointInterpolationCB.SelectedItem);
-            AIPatrolSettings.isDirty = true;
-        }
-        private void numericUpDown6_ValueChanged_1(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.RespawnTime = CrashRespawnTimeNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void crashFormationLoosenessNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.FormationLooseness = crashFormationLoosenessNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void crashFormationScaleNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.FormationScale = crashFormationScaleNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashDamageReceivedMultiplierNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.DamageReceivedMultiplier = CrashDamageReceivedMultiplierNUD.Value;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashPersistCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.Persist = CrashPersistCB.Checked == true ? 1 : 0;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void CrashURBitmaskCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            int CrashUnlimitedReloadBitmask = 0;
-            CrashUnlimitedReloadBitmask |= CrashURAnimalsCB.Checked ? 2 : 0;
-            CrashUnlimitedReloadBitmask |= CrashURInfectedCB.Checked ? 4 : 0;
-            CrashUnlimitedReloadBitmask |= CrashURPlayersCB.Checked ? 8 : 0;
-            CrashUnlimitedReloadBitmask |= CrashURVehiclesCB.Checked ? 16 : 0;
-            if (CrashUnlimitedReloadBitmask == 30)
-                CrashUnlimitedReloadBitmask = 1;
-            CurrentEventcrashpatrol.UnlimitedReload = CrashUnlimitedReloadBitmask;
-            AIPatrolSettings.isDirty = true;
-        }
-        private void darkButton16_Click(object sender, EventArgs e)
-        {
-            AddNewfileName form = new AddNewfileName()
-            {
-                setdescription = "Please enter the Unit you wish to add",
-                SetTitle = "Add Unit",
-                Setbutton = "Add"
-            };
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                CurrentEventcrashpatrol.Units.Add(form.NewFileName);
-                CrashUnitsLB.Invalidate();
-                AIPatrolSettings.isDirty = true;
-            }
-        }
-        private void darkButton15_Click(object sender, EventArgs e)
-        {
-            CurrentEventcrashpatrol.Units.Remove(CrashUnitsLB.GetItemText(CrashUnitsLB.SelectedItem));
-            CrashUnitsLB.Invalidate();
-            AIPatrolSettings.isDirty = true;
-        }
-        /// <summary>
-        /// Stataic Patrol Settings
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void StaticPatrolLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (StaticPatrolLB.SelectedItems.Count < 1) return;
@@ -1422,6 +1005,7 @@ namespace DayZeEditor
             CurrentPatrol = StaticPatrolLB.SelectedItem as ExpansionAIPatrol;
             StaticPatrolLoadBalancingCategoryCB.DataSource = new BindingSource(AIPatrolSettings._LoadBalancingCategories, null);
             StaticPatrolNameTB.Text = CurrentPatrol.Name;
+            textBox6.Text = CurrentPatrol.ObjectClassName;
             StaticPatrolPersistCB.Checked = CurrentPatrol.Persist == 1 ? true : false;
             StaticPatrolFactionCB.SelectedIndex = StaticPatrolFactionCB.FindStringExact(CurrentPatrol.Faction);
             StaticPatrolNumberOfAINUD.Value = CurrentPatrol.NumberOfAI;
@@ -1594,6 +1178,13 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentPatrol.Name = StaticPatrolNameTB.Text;
+            StaticPatrolLB.Refresh();
+            AIPatrolSettings.isDirty = true;
+        }
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.ObjectClassName = textBox6.Text;
             StaticPatrolLB.Refresh();
             AIPatrolSettings.isDirty = true;
         }

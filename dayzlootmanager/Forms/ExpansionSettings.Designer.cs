@@ -520,6 +520,9 @@ namespace DayZeEditor
             this.UseDeathScreenCB = new System.Windows.Forms.CheckBox();
             this.UseDeathScreenStatisticsCB = new System.Windows.Forms.CheckBox();
             this.groupBox35 = new System.Windows.Forms.GroupBox();
+            this.LampSelectionModeCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel301 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown34 = new System.Windows.Forms.NumericUpDown();
             this.darkLabel90 = new DarkUI.Controls.DarkLabel();
             this.EnableGeneratorsCB = new System.Windows.Forms.CheckBox();
             this.EnableLighthousesCB = new System.Windows.Forms.CheckBox();
@@ -1495,6 +1498,7 @@ namespace DayZeEditor
             this.groupBox37.SuspendLayout();
             this.groupBox36.SuspendLayout();
             this.groupBox35.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown34)).BeginInit();
             this.groupBox34.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DefaultMessageColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImportantMessageColorPB)).BeginInit();
@@ -7985,6 +7989,9 @@ namespace DayZeEditor
             // 
             // groupBox35
             // 
+            this.groupBox35.Controls.Add(this.LampSelectionModeCB);
+            this.groupBox35.Controls.Add(this.darkLabel301);
+            this.groupBox35.Controls.Add(this.numericUpDown34);
             this.groupBox35.Controls.Add(this.darkLabel90);
             this.groupBox35.Controls.Add(this.EnableGeneratorsCB);
             this.groupBox35.Controls.Add(this.EnableLighthousesCB);
@@ -7992,10 +7999,48 @@ namespace DayZeEditor
             this.groupBox35.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox35.Location = new System.Drawing.Point(520, 324);
             this.groupBox35.Name = "groupBox35";
-            this.groupBox35.Size = new System.Drawing.Size(173, 114);
+            this.groupBox35.Size = new System.Drawing.Size(173, 162);
             this.groupBox35.TabIndex = 6;
             this.groupBox35.TabStop = false;
             this.groupBox35.Text = "Lights";
+            // 
+            // LampSelectionModeCB
+            // 
+            this.LampSelectionModeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.LampSelectionModeCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.LampSelectionModeCB.FormattingEnabled = true;
+            this.LampSelectionModeCB.Location = new System.Drawing.Point(5, 135);
+            this.LampSelectionModeCB.Name = "LampSelectionModeCB";
+            this.LampSelectionModeCB.Size = new System.Drawing.Size(162, 21);
+            this.LampSelectionModeCB.TabIndex = 7;
+            this.LampSelectionModeCB.DropDown += new System.EventHandler(this.LampSelectionModeCB_DropDown);
+            this.LampSelectionModeCB.SelectedIndexChanged += new System.EventHandler(this.LampSelectionModeCB_SelectedIndexChanged);
+            // 
+            // darkLabel301
+            // 
+            this.darkLabel301.AutoSize = true;
+            this.darkLabel301.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel301.Location = new System.Drawing.Point(7, 102);
+            this.darkLabel301.Name = "darkLabel301";
+            this.darkLabel301.Size = new System.Drawing.Size(72, 26);
+            this.darkLabel301.TabIndex = 6;
+            this.darkLabel301.Text = "Lamp Amount\r\nOne In X";
+            // 
+            // numericUpDown34
+            // 
+            this.numericUpDown34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown34.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown34.Location = new System.Drawing.Point(106, 100);
+            this.numericUpDown34.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown34.Name = "numericUpDown34";
+            this.numericUpDown34.Size = new System.Drawing.Size(61, 20);
+            this.numericUpDown34.TabIndex = 5;
+            this.numericUpDown34.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown34.ValueChanged += new System.EventHandler(this.numericUpDown34_ValueChanged);
             // 
             // darkLabel90
             // 
@@ -19619,6 +19664,7 @@ namespace DayZeEditor
             this.groupBox36.PerformLayout();
             this.groupBox35.ResumeLayout(false);
             this.groupBox35.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown34)).EndInit();
             this.groupBox34.ResumeLayout(false);
             this.groupBox34.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DefaultMessageColorPB)).EndInit();
@@ -21306,5 +21352,8 @@ namespace DayZeEditor
         private System.Windows.Forms.RadioButton radioButton4;
         private DarkUI.Controls.DarkLabel darkLabel300;
         private System.Windows.Forms.CheckBox checkBox11;
+        private System.Windows.Forms.ComboBox LampSelectionModeCB;
+        private DarkUI.Controls.DarkLabel darkLabel301;
+        private System.Windows.Forms.NumericUpDown numericUpDown34;
     }
 }

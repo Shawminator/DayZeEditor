@@ -159,12 +159,6 @@
         MumKUcrrMOp1xxv2t/wPE+p32EmcnxNI4SF9P5J1AAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="darkToolStrip24.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>427, 21</value>
-  </metadata>
-  <metadata name="darkToolStrip22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>292, 21</value>
-  </metadata>
   <data name="darkLabel36.Text" xml:space="preserve">
     <value>Import From .map/.dze
 This Function import a set of coord 
@@ -178,9 +172,6 @@ reorder using the up down arrows
   </data>
   <metadata name="darkToolStrip22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>292, 21</value>
-  </metadata>
-  <metadata name="darkToolStrip25.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>562, 21</value>
   </metadata>
   <data name="darkLabel176.Text" xml:space="preserve">
     <value>The Classnames to use when placing in DayZ Editor are as follows:-
@@ -196,9 +187,6 @@ any existing Spatial Locations.
   </metadata>
   <metadata name="darkToolStrip24.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>427, 21</value>
-  </metadata>
-  <metadata name="darkToolStrip26.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>697, 21</value>
   </metadata>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>This will be filled automatically from the locations found in
