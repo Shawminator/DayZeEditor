@@ -26,7 +26,7 @@ namespace DayZeEditor
         public List<TypesFile> ModTypes;
 
         public BindingList<string> Factions { get; private set; }
-
+        public BindingList<Loadbalancingcategorie> Loadbalancing { get; set; }
 
         private bool _useraction;
 
@@ -125,6 +125,19 @@ namespace DayZeEditor
         {
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
+
+            string AIPatrolSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\AIPatrolSettings.json";
+            if (!File.Exists(AIPatrolSettingsPath))
+            {
+            }
+            else
+            {
+                Console.WriteLine("serializing " + Path.GetFileName(AIPatrolSettingsPath));
+                ExpansionAIPatrolSettings AIPatrolSettings = JsonSerializer.Deserialize<ExpansionAIPatrolSettings>(File.ReadAllText(AIPatrolSettingsPath));
+                AIPatrolSettings.SetLoadBalancingCategoriestoList();
+                Loadbalancing = AIPatrolSettings._LoadBalancingCategories;
+            }
+
             Setupallquests();
         }
         private void reloadAllQuestsDataToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3434,8 +3447,9 @@ namespace DayZeEditor
         private void ObjectivesAICampAISpawnsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ObjectivesAICampAISpawnsLB.SelectedItems.Count < 1) return;
+            expansionQuestAISpawnControlAICamp.LoadBalancingCategories = Loadbalancing;
             expansionQuestAISpawnControlAICamp.currentAISpawn = ObjectivesAICampAISpawnsLB.SelectedItem as ExpansionAIPatrol;
-            expansionQuestAISpawnControlAICamp.setAInumASReadOnly(true);
+             expansionQuestAISpawnControlAICamp.setAInumASReadOnly(true);
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
             expansionQuestAISpawnControlAICamp.isDirty = CurrentAICam.isDirty;
         }
@@ -3654,8 +3668,9 @@ namespace DayZeEditor
             QuestObjectivesActiveCB.Checked = CurrentAIPatrol.Active == 1 ? true : false;
             ObjectivesAIPatrolMaxDistanceNUD.Value = CurrentAIPatrol.MaxDistance;
             ObjectivesAIPatrolMinDistanceNUD.Value = CurrentAIPatrol.MinDistance;
-
+            expansionQuestAISpawnControlAIPatrol.LoadBalancingCategories = Loadbalancing;
             expansionQuestAISpawnControlAIPatrol.currentAISpawn = CurrentAIPatrol.AISpawn;
+           
             expansionQuestAISpawnControlAIPatrol.isDirty = CurrentAIPatrol.isDirty;
 
             ObjectivesAIPatrolAllowedWeaponsLB.DisplayMember = "DisplayName";
@@ -4553,6 +4568,7 @@ namespace DayZeEditor
         /// TreasureHunt
         /// </summary>
         public Vec3 CurrentWapypoint { get; private set; }
+
         private void SetupobjectiveTreasueHunt(TreeNodeMouseClickEventArgs e)
         {
             useraction = false;

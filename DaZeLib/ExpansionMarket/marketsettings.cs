@@ -5,7 +5,7 @@ namespace DayZeLib
 {
     public class MarketSettings
     {
-        const int CurrentVersion = 16;
+        const int CurrentVersion = 17;
 
         public int m_Version { get; set; }
         public int MarketSystemEnabled { get; set; }
@@ -341,6 +341,10 @@ namespace DayZeLib
                     return MarketMenuColors.ColorCategoryCorners;
                 case "ColorCategoryBackgroundColour":
                     return MarketMenuColors.ColorCategoryBackground;
+                case "ColorPlayerStockColour":
+                    return MarketMenuColors.ColorPlayerStock;
+                case "ColorRequirementsNotMetColour":
+                    return MarketMenuColors.ColorRequirementsNotMet;
             }
             return "";
         }
@@ -457,6 +461,12 @@ namespace DayZeLib
                 case "ColorCategoryBackgroundColour":
                     MarketMenuColors.ColorCategoryBackground = Colour;
                     break;
+                case "ColorPlayerStockColour":
+                    MarketMenuColors.ColorPlayerStock = Colour;
+                    break;
+                case "ColorRequirementsNotMetColour":
+                    MarketMenuColors.ColorRequirementsNotMet = Colour;
+                    break;
             }
         }
         public void AddnewSpawn(int v)
@@ -542,6 +552,8 @@ namespace DayZeLib
         public string ColorToggleCategoriesText { get; set; }
         public string ColorCategoryCorners { get; set; }
         public string ColorCategoryBackground { get; set; }
+        public string ColorPlayerStock { get; set; }
+        public string ColorRequirementsNotMet { get; set; }
 
         public MarketMenuColours()
         {
@@ -581,6 +593,8 @@ namespace DayZeLib
             ColorToggleCategoriesText = "C726518C";
             ColorCategoryCorners = "FBFCFEFF";
             ColorCategoryBackground = "222526FF";
+            ColorPlayerStock = "2980B9FF";
+            ColorRequirementsNotMet = "EB4635FF";
         }
     }
     public class ExpansionMarketSpawnPosition

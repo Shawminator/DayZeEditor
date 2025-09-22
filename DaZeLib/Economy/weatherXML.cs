@@ -11,26 +11,16 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
     public partial class weather
     {
-
         private weatherOvercast overcastField;
-
         private weatherFog fogField;
-
         private weatherRain rainField;
-
         private weatherWindMagnitude windMagnitudeField;
-
         private weatherWindDirection windDirectionField;
-
         private weatherSnowfall snowfallField;
-
         private weatherStorm stormField;
-
         private int resetField;
-
         private int enableField;
 
-        /// <remarks/>
         public weatherOvercast overcast
         {
             get
@@ -42,8 +32,6 @@ namespace DayZeLib
                 this.overcastField = value;
             }
         }
-
-        /// <remarks/>
         public weatherFog fog
         {
             get
@@ -55,8 +43,6 @@ namespace DayZeLib
                 this.fogField = value;
             }
         }
-
-        /// <remarks/>
         public weatherRain rain
         {
             get
@@ -68,8 +54,6 @@ namespace DayZeLib
                 this.rainField = value;
             }
         }
-
-        /// <remarks/>
         public weatherWindMagnitude windMagnitude
         {
             get
@@ -81,8 +65,6 @@ namespace DayZeLib
                 this.windMagnitudeField = value;
             }
         }
-
-        /// <remarks/>
         public weatherWindDirection windDirection
         {
             get
@@ -94,8 +76,6 @@ namespace DayZeLib
                 this.windDirectionField = value;
             }
         }
-
-        /// <remarks/>
         public weatherSnowfall snowfall
         {
             get
@@ -107,8 +87,6 @@ namespace DayZeLib
                 this.snowfallField = value;
             }
         }
-
-        /// <remarks/>
         public weatherStorm storm
         {
             get
@@ -120,8 +98,6 @@ namespace DayZeLib
                 this.stormField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int reset
         {
@@ -134,8 +110,6 @@ namespace DayZeLib
                 this.resetField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int enable
         {
@@ -150,22 +124,16 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercast
     {
-
         private weatherOvercastCurrent currentField;
-
         private weatherOvercastLimits limitsField;
-
         private weatherOvercastTimelimits timelimitsField;
-
         private weatherOvercastChangelimits changelimitsField;
 
-        /// <remarks/>
         public weatherOvercastCurrent current
         {
             get
@@ -177,8 +145,6 @@ namespace DayZeLib
                 this.currentField = value;
             }
         }
-
-        /// <remarks/>
         public weatherOvercastLimits limits
         {
             get
@@ -190,8 +156,6 @@ namespace DayZeLib
                 this.limitsField = value;
             }
         }
-
-        /// <remarks/>
         public weatherOvercastTimelimits timelimits
         {
             get
@@ -203,8 +167,6 @@ namespace DayZeLib
                 this.timelimitsField = value;
             }
         }
-
-        /// <remarks/>
         public weatherOvercastChangelimits changelimits
         {
             get
@@ -218,20 +180,15 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastCurrent
     {
-
         private decimal actualField;
-
         private int timeField;
-
         private int durationField;
 
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal actual
         {
@@ -244,8 +201,6 @@ namespace DayZeLib
                 this.actualField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int time
         {
@@ -258,8 +213,6 @@ namespace DayZeLib
                 this.timeField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int duration
         {
@@ -274,18 +227,14 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastLimits
     {
-
         private decimal minField;
-
         private decimal maxField;
 
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal min
         {
@@ -298,8 +247,6 @@ namespace DayZeLib
                 this.minField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal max
         {
@@ -314,18 +261,14 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastTimelimits
     {
-
         private int minField;
-
         private int maxField;
 
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int min
         {
@@ -338,8 +281,6 @@ namespace DayZeLib
                 this.minField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int max
         {
@@ -354,18 +295,14 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastChangelimits
     {
-
         private decimal minField;
-
         private decimal maxField;
 
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal min
         {
@@ -378,8 +315,6 @@ namespace DayZeLib
                 this.minField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal max
         {
@@ -394,22 +329,16 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFog
     {
-
         private weatherFogCurrent currentField;
-
         private weatherFogLimits limitsField;
-
         private weatherFogTimelimits timelimitsField;
-
         private weatherFogChangelimits changelimitsField;
 
-        /// <remarks/>
         public weatherFogCurrent current
         {
             get
@@ -421,8 +350,6 @@ namespace DayZeLib
                 this.currentField = value;
             }
         }
-
-        /// <remarks/>
         public weatherFogLimits limits
         {
             get
@@ -434,8 +361,6 @@ namespace DayZeLib
                 this.limitsField = value;
             }
         }
-
-        /// <remarks/>
         public weatherFogTimelimits timelimits
         {
             get
@@ -447,8 +372,6 @@ namespace DayZeLib
                 this.timelimitsField = value;
             }
         }
-
-        /// <remarks/>
         public weatherFogChangelimits changelimits
         {
             get
@@ -462,20 +385,15 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogCurrent
     {
-
         private decimal actualField;
-
         private int timeField;
-
         private int durationField;
 
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal actual
         {
@@ -488,8 +406,6 @@ namespace DayZeLib
                 this.actualField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int time
         {
@@ -502,8 +418,6 @@ namespace DayZeLib
                 this.timeField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int duration
         {
@@ -518,18 +432,14 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogLimits
     {
-
         private decimal minField;
-
         private decimal maxField;
 
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal min
         {
@@ -542,8 +452,6 @@ namespace DayZeLib
                 this.minField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal max
         {
@@ -558,18 +466,14 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogTimelimits
     {
-
         private int minField;
-
         private int maxField;
 
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int min
         {
@@ -582,8 +486,6 @@ namespace DayZeLib
                 this.minField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int max
         {
@@ -598,18 +500,14 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogChangelimits
     {
-
         private decimal minField;
-
         private decimal maxField;
 
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal min
         {
@@ -622,8 +520,6 @@ namespace DayZeLib
                 this.minField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal max
         {
@@ -638,24 +534,17 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRain
     {
-
         private weatherRainCurrent currentField;
-
         private weatherRainLimits limitsField;
-
         private weatherRainTimelimits timelimitsField;
-
         private weatherRainChangelimits changelimitsField;
-
         private weatherRainThresholds thresholdsField;
 
-        /// <remarks/>
         public weatherRainCurrent current
         {
             get
@@ -667,8 +556,6 @@ namespace DayZeLib
                 this.currentField = value;
             }
         }
-
-        /// <remarks/>
         public weatherRainLimits limits
         {
             get
@@ -680,8 +567,6 @@ namespace DayZeLib
                 this.limitsField = value;
             }
         }
-
-        /// <remarks/>
         public weatherRainTimelimits timelimits
         {
             get
@@ -693,8 +578,6 @@ namespace DayZeLib
                 this.timelimitsField = value;
             }
         }
-
-        /// <remarks/>
         public weatherRainChangelimits changelimits
         {
             get
@@ -706,8 +589,6 @@ namespace DayZeLib
                 this.changelimitsField = value;
             }
         }
-
-        /// <remarks/>
         public weatherRainThresholds thresholds
         {
             get
@@ -721,20 +602,15 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainCurrent
     {
-
         private decimal actualField;
-
         private int timeField;
-
         private int durationField;
 
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal actual
         {
@@ -747,8 +623,6 @@ namespace DayZeLib
                 this.actualField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int time
         {
@@ -761,8 +635,6 @@ namespace DayZeLib
                 this.timeField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int duration
         {
@@ -777,18 +649,14 @@ namespace DayZeLib
         }
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainLimits
     {
-
         private decimal minField;
-
         private decimal maxField;
 
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal min
         {
@@ -801,8 +669,6 @@ namespace DayZeLib
                 this.minField = value;
             }
         }
-
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal max
         {
@@ -818,7 +684,6 @@ namespace DayZeLib
 
     }
 
-    /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]

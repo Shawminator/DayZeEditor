@@ -1424,6 +1424,8 @@ namespace DayZeEditor
                 if (allIndex >= 0)
                     list.SetItemChecked(allIndex, false);
 
+
+                // WEAPONS logic
                 if (changedItem == "WEAPONS" && willBeChecked)
                 {
                     for (int i = 0; i < list.Items.Count; i++)
@@ -1439,6 +1441,7 @@ namespace DayZeEditor
                         list.SetItemChecked(weaponsIndex, false);
                 }
 
+                // CLOTHING logic
                 if (changedItem == "CLOTHING" && willBeChecked)
                 {
                     for (int i = 0; i < list.Items.Count; i++)
@@ -1452,6 +1455,30 @@ namespace DayZeEditor
                     int clothingIndex = list.Items.IndexOf("CLOTHING");
                     if (clothingIndex >= 0)
                         list.SetItemChecked(clothingIndex, false);
+                }
+
+                // CLOTHING_BACK hierarchy logic
+                if (changedItem == "CLOTHING_BACK" && willBeChecked)
+                {
+                    // Uncheck all sub-options
+                    for (int i = 0; i < list.Items.Count; i++)
+                    {
+                        string item = list.Items[i].ToString();
+                        if (item == "CLOTHING_BACK_SMALL" ||
+                            item == "CLOTHING_BACK_MEDIUM" ||
+                            item == "CLOTHING_BACK_LARGE")
+                        {
+                            list.SetItemChecked(i, false);
+                        }
+                    }
+                }
+                else if ((changedItem == "CLOTHING_BACK_SMALL" ||
+                          changedItem == "CLOTHING_BACK_MEDIUM" ||
+                          changedItem == "CLOTHING_BACK_LARGE") && willBeChecked)
+                {
+                    int backIndex = list.Items.IndexOf("CLOTHING_BACK");
+                    if (backIndex >= 0)
+                        list.SetItemChecked(backIndex, false);
                 }
             }
 

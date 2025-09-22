@@ -11003,5 +11003,20 @@ namespace DayZeEditor
         {
 
         }
+
+        private void IsYvalueusedCB_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EventSpawnTV_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void EventspawnPositionGB_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

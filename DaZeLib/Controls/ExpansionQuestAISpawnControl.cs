@@ -80,7 +80,18 @@ namespace DayZeEditor
                 updatevalues();
             }
         }
-
+        private BindingList<Loadbalancingcategorie> _LoadBalancingCategories { get; set; }
+        public BindingList<Loadbalancingcategorie> LoadBalancingCategories
+        {
+            get
+            {
+                return _LoadBalancingCategories;
+            }
+            set
+            {
+                _LoadBalancingCategories = value;
+            }
+        }
         public IList<string> Factions { get; set; }
         public IList<AILoadouts> LoadoutList { get; set; }
 
@@ -100,13 +111,13 @@ namespace DayZeEditor
             if (_currentAISpawn == null) return;
 
             useraction = false;
-
+            StaticPatrolLoadBalancingCategoryCB.DataSource = new BindingSource(_LoadBalancingCategories, null);
             StaticPatrolNameTB.Text = _currentAISpawn.Name;
+            textBox6.Text = _currentAISpawn.ObjectClassName;
             StaticPatrolPersistCB.Checked = _currentAISpawn.Persist == 1 ? true : false;
             StaticPatrolFactionCB.SelectedIndex = StaticPatrolFactionCB.FindStringExact(_currentAISpawn.Faction);
             StaticPatrolNumberOfAINUD.Value = _currentAISpawn.NumberOfAI;
             StaticPatrolBehaviorCB.SelectedIndex = StaticPatrolBehaviorCB.FindStringExact(_currentAISpawn.Behaviour);
-            StaticPatrolLootingBehaviorCB.SelectedIndex = StaticPatrolLootingBehaviorCB.FindStringExact(_currentAISpawn.LootingBehaviour);
             StaticPatrolSpeedCB.SelectedIndex = StaticPatrolSpeedCB.FindStringExact(_currentAISpawn.Speed);
             StaticPatrolUnderThreatSpeedCB.SelectedIndex = StaticPatrolUnderThreatSpeedCB.FindStringExact(_currentAISpawn.UnderThreatSpeed);
             StaticPatrolRespawnTimeNUD.Value = _currentAISpawn.RespawnTime;
@@ -128,10 +139,11 @@ namespace DayZeEditor
             StaticPatrolFormationCB.SelectedIndex = StaticPatrolFormationCB.FindStringExact(_currentAISpawn.Formation);
             StaticPatrolFormationLoosenessNUD.Value = _currentAISpawn.FormationLooseness;
             StaticPatrolWaypointInterpolationCB.SelectedIndex = StaticPatrolWaypointInterpolationCB.FindStringExact(_currentAISpawn.WaypointInterpolation);
+            StaticPatrolLoadBalancingCategoryCB.SelectedIndex = StaticPatrolLoadBalancingCategoryCB.FindStringExact(_currentAISpawn.LoadBalancingCategory);
             StaticPatrolUseRandomWaypointAsStartPointCB.Checked = _currentAISpawn.UseRandomWaypointAsStartPoint == 1 ? true : false;
             StaticPatrolNoiseInvestigationDistanceLimitNUD.Value = _currentAISpawn.NoiseInvestigationDistanceLimit;
             StaticPatrolCanBeTriggeredByAICB.Checked = _currentAISpawn.CanBeTriggeredByAI == 1 ? true : false;
-
+            StaticPatrolFormationScaleNUD.Value = _currentAISpawn.FormationScale;
             int StaticPatrolUnlimitedReloadBitmask = _currentAISpawn.UnlimitedReload;
             if (StaticPatrolUnlimitedReloadBitmask == 1)
                 StaticPatrolUnlimitedReloadBitmask = 30;
@@ -139,6 +151,16 @@ namespace DayZeEditor
             StaticPatrolURInfectedCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 4) != 0) ? true : false;
             StaticPatrolURPlayersCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 8) != 0) ? true : false;
             StaticPatrolURVehiclesCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 16) != 0) ? true : false;
+
+            for (int i = 0; i < StaticPatrolLootingBehaviousCLB.Items.Count; i++)
+            {
+                StaticPatrolLootingBehaviousCLB.SetItemChecked(i, false);
+            }
+            foreach (string s in _currentAISpawn.LootingBehaviour.Split('|'))
+            {
+                if (s == "") continue;
+                StaticPatrolLootingBehaviousCLB.SetItemChecked(StaticPatrolLootingBehaviousCLB.Items.IndexOf(s.Trim()), true);
+            }
 
             StaticPatrolUnitsLB.DisplayMember = "DisplayName";
             StaticPatrolUnitsLB.ValueMember = "Value";
@@ -219,12 +241,6 @@ namespace DayZeEditor
             isDirty = true;
         }
        
-        private void StaticPatrolLootingBehaviorCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.LootingBehaviour = StaticPatrolLootingBehaviorCB.GetItemText(StaticPatrolLootingBehaviorCB.SelectedItem);
-            isDirty = true;
-        }
 
         private void StaticPatrolSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -581,6 +597,135 @@ namespace DayZeEditor
             }
         }
 
+        private void StaticPatrolLootingBehaviousCLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ((CheckedListBox)sender).ClearSelected();
+        }
 
+        private void StaticPatrolLootingBehaviousCLB_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (!useraction) return;
+            var list = (CheckedListBox)sender;
+            string changedItem = list.Items[e.Index].ToString();
+            bool willBeChecked = e.NewValue == CheckState.Checked;
+
+            // Temporarily remove the event handler to avoid recursion
+            list.ItemCheck -= StaticPatrolLootingBehaviousCLB_ItemCheck;
+
+            if (changedItem == "ALL" && willBeChecked)
+            {
+                // Uncheck everything else
+                for (int i = 0; i < list.Items.Count; i++)
+                {
+                    if (i != e.Index)
+                        list.SetItemChecked(i, false);
+                }
+            }
+            else
+            {
+                // Uncheck "ALL" if anything else is checked
+                int allIndex = list.Items.IndexOf("ALL");
+                if (allIndex >= 0)
+                    list.SetItemChecked(allIndex, false);
+
+                // WEAPONS logic
+                if (changedItem == "WEAPONS" && willBeChecked)
+                {
+                    for (int i = 0; i < list.Items.Count; i++)
+                    {
+                        if (list.Items[i].ToString().StartsWith("WEAPONS_"))
+                            list.SetItemChecked(i, false);
+                    }
+                }
+                else if (changedItem.StartsWith("WEAPONS_") && willBeChecked)
+                {
+                    int weaponsIndex = list.Items.IndexOf("WEAPONS");
+                    if (weaponsIndex >= 0)
+                        list.SetItemChecked(weaponsIndex, false);
+                }
+
+                // CLOTHING logic
+                if (changedItem == "CLOTHING" && willBeChecked)
+                {
+                    for (int i = 0; i < list.Items.Count; i++)
+                    {
+                        if (list.Items[i].ToString().StartsWith("CLOTHING_"))
+                            list.SetItemChecked(i, false);
+                    }
+                }
+                else if (changedItem.StartsWith("CLOTHING_") && willBeChecked)
+                {
+                    int clothingIndex = list.Items.IndexOf("CLOTHING");
+                    if (clothingIndex >= 0)
+                        list.SetItemChecked(clothingIndex, false);
+                }
+
+                // CLOTHING_BACK hierarchy logic
+                if (changedItem == "CLOTHING_BACK" && willBeChecked)
+                {
+                    // Uncheck all sub-options
+                    for (int i = 0; i < list.Items.Count; i++)
+                    {
+                        string item = list.Items[i].ToString();
+                        if (item == "CLOTHING_BACK_SMALL" ||
+                            item == "CLOTHING_BACK_MEDIUM" ||
+                            item == "CLOTHING_BACK_LARGE")
+                        {
+                            list.SetItemChecked(i, false);
+                        }
+                    }
+                }
+                else if ((changedItem == "CLOTHING_BACK_SMALL" ||
+                          changedItem == "CLOTHING_BACK_MEDIUM" ||
+                          changedItem == "CLOTHING_BACK_LARGE") && willBeChecked)
+                {
+                    int backIndex = list.Items.IndexOf("CLOTHING_BACK");
+                    if (backIndex >= 0)
+                        list.SetItemChecked(backIndex, false);
+                }
+            }
+
+            // Reattach the event handler
+            list.ItemCheck += StaticPatrolLootingBehaviousCLB_ItemCheck;
+
+            // Finally, update the checked items string (now safely updated)
+
+            _currentAISpawn.LootingBehaviour = UpdateCheckedItemsString(list, e.Index, e.NewValue);
+            isDirty = true;
+        }
+        private string UpdateCheckedItemsString(CheckedListBox list, int changingIndex, CheckState newState)
+        {
+            List<string> selected = new List<string>();
+            for (int i = 0; i < list.Items.Count; i++)
+            {
+                bool isChecked = (i == changingIndex) ? (newState == CheckState.Checked) : list.GetItemChecked(i);
+                if (isChecked)
+                {
+                    selected.Add(list.Items[i].ToString());
+                }
+            }
+            return string.Join(" | ", selected);
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.ObjectClassName = textBox6.Text;
+            isDirty = true;
+        }
+
+        private void StaticPatrolFormationScaleNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.FormationScale = StaticPatrolFormationScaleNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolLoadBalancingCategoryCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.LoadBalancingCategory = StaticPatrolLoadBalancingCategoryCB.GetItemText(StaticPatrolLoadBalancingCategoryCB.SelectedItem);
+            isDirty = true;
+        }
     }
 }

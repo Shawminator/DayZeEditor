@@ -288,6 +288,9 @@ namespace DayZeEditor
             this.label121 = new System.Windows.Forms.Label();
             this.eventSpawnNameTB = new System.Windows.Forms.TextBox();
             this.EventGroupSpawnTab = new System.Windows.Forms.TabPage();
+            this.tabControl4 = new System.Windows.Forms.TabControl();
+            this.tabPage22 = new System.Windows.Forms.TabPage();
+            this.eventspawngroupTV = new TreeViewMS.TreeViewMS();
             this.groupBox58 = new System.Windows.Forms.GroupBox();
             this.eventgroupdelootCB = new System.Windows.Forms.CheckBox();
             this.eventgroupSecondarySpawnRB = new System.Windows.Forms.RadioButton();
@@ -308,9 +311,6 @@ namespace DayZeEditor
             this.label127 = new System.Windows.Forms.Label();
             this.eventgroupXNUD = new System.Windows.Forms.NumericUpDown();
             this.label128 = new System.Windows.Forms.Label();
-            this.tabControl4 = new System.Windows.Forms.TabControl();
-            this.tabPage22 = new System.Windows.Forms.TabPage();
-            this.eventspawngroupTV = new TreeViewMS.TreeViewMS();
             this.TypesTab = new System.Windows.Forms.TabPage();
             this.TypesSummaryTab = new System.Windows.Forms.TabPage();
             this.darkLabel27 = new DarkUI.Controls.DarkLabel();
@@ -1166,6 +1166,18 @@ namespace DayZeEditor
             this.listBox11 = new System.Windows.Forms.ListBox();
             this.playerRestrictedAreaFilesTab = new System.Windows.Forms.TabPage();
             this.cfgundergroundtriggersTab = new System.Windows.Forms.TabPage();
+            this.UndergroundTriggerTV = new TreeViewMS.TreeViewMS();
+            this.CFGUBreadCrumbGB = new System.Windows.Forms.GroupBox();
+            this.CFGUBreadCrumbRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel46 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel41 = new DarkUI.Controls.DarkLabel();
+            this.CFGUBreadCrumbUseRayCastCB = new System.Windows.Forms.CheckBox();
+            this.CFGUBreadCrumbEyeAccommodationNUD = new System.Windows.Forms.NumericUpDown();
+            this.CFGUBreadCrumbPositionZNUD = new System.Windows.Forms.NumericUpDown();
+            this.CFGUBreadCrumbPositionYNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel42 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel43 = new DarkUI.Controls.DarkLabel();
+            this.CFGUBreadCrumbPositionXNUD = new System.Windows.Forms.NumericUpDown();
             this.CFGUTriggerGB = new System.Windows.Forms.GroupBox();
             this.CFGUTriggerInterpolationSpeedNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel47 = new DarkUI.Controls.DarkLabel();
@@ -1183,18 +1195,6 @@ namespace DayZeEditor
             this.darkLabel39 = new DarkUI.Controls.DarkLabel();
             this.CFGUTriggerPositionXNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel40 = new DarkUI.Controls.DarkLabel();
-            this.UndergroundTriggerTV = new TreeViewMS.TreeViewMS();
-            this.CFGUBreadCrumbGB = new System.Windows.Forms.GroupBox();
-            this.CFGUBreadCrumbRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel46 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel41 = new DarkUI.Controls.DarkLabel();
-            this.CFGUBreadCrumbUseRayCastCB = new System.Windows.Forms.CheckBox();
-            this.CFGUBreadCrumbEyeAccommodationNUD = new System.Windows.Forms.NumericUpDown();
-            this.CFGUBreadCrumbPositionZNUD = new System.Windows.Forms.NumericUpDown();
-            this.CFGUBreadCrumbPositionYNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel42 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel43 = new DarkUI.Controls.DarkLabel();
-            this.CFGUBreadCrumbPositionXNUD = new System.Windows.Forms.NumericUpDown();
             this.TypesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
@@ -1368,6 +1368,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.eventzonedminNUD)).BeginInit();
             this.EventSpawnInfoGB.SuspendLayout();
             this.EventGroupSpawnTab.SuspendLayout();
+            this.tabControl4.SuspendLayout();
+            this.tabPage22.SuspendLayout();
             this.groupBox58.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eventgrouplootmaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupLootminNUD)).BeginInit();
@@ -1375,8 +1377,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupZNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupXNUD)).BeginInit();
-            this.tabControl4.SuspendLayout();
-            this.tabPage22.SuspendLayout();
             this.TypesTab.SuspendLayout();
             this.TypesSummaryTab.SuspendLayout();
             this.groupBox22.SuspendLayout();
@@ -1726,6 +1726,12 @@ namespace DayZeEditor
             this.groupBox80.SuspendLayout();
             this.groupBox79.SuspendLayout();
             this.cfgundergroundtriggersTab.SuspendLayout();
+            this.CFGUBreadCrumbGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbEyeAccommodationNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionXNUD)).BeginInit();
             this.CFGUTriggerGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CFGUTriggerInterpolationSpeedNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CFGUTriggerEyeAccommodationNUD)).BeginInit();
@@ -1738,12 +1744,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CFGUTriggerOrientationYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CFGUTriggerOrientationXNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CFGUTriggerPositionXNUD)).BeginInit();
-            this.CFGUBreadCrumbGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbEyeAccommodationNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionZNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionYNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionXNUD)).BeginInit();
             this.TypesContextMenu.SuspendLayout();
             this.EventSpawnContextMenu.SuspendLayout();
             this.EventgroupContextMenu.SuspendLayout();
@@ -4561,6 +4561,7 @@ namespace DayZeEditor
             this.EventSpawnTV.SetMultiselect = true;
             this.EventSpawnTV.Size = new System.Drawing.Size(253, 410);
             this.EventSpawnTV.TabIndex = 0;
+            this.EventSpawnTV.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.EventSpawnTV_AfterSelect);
             this.EventSpawnTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.EventSpawnTV_NodeMouseClick);
             // 
             // IsYvalueusedCB
@@ -4574,6 +4575,8 @@ namespace DayZeEditor
             this.IsYvalueusedCB.Tag = "Use Y Value";
             this.IsYvalueusedCB.Text = "Is Active";
             this.IsYvalueusedCB.UseVisualStyleBackColor = true;
+            this.IsYvalueusedCB.Visible = false;
+            this.IsYvalueusedCB.CheckedChanged += new System.EventHandler(this.IsYvalueusedCB_CheckedChanged);
             // 
             // trackBar1
             // 
@@ -4636,6 +4639,7 @@ namespace DayZeEditor
             this.EventspawnPositionGB.TabIndex = 3;
             this.EventspawnPositionGB.TabStop = false;
             this.EventspawnPositionGB.Text = "Position";
+            this.EventspawnPositionGB.Enter += new System.EventHandler(this.EventspawnPositionGB_Enter);
             // 
             // checkBox64
             // 
@@ -5017,14 +5021,55 @@ namespace DayZeEditor
             // EventGroupSpawnTab
             // 
             this.EventGroupSpawnTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.EventGroupSpawnTab.Controls.Add(this.groupBox58);
             this.EventGroupSpawnTab.Controls.Add(this.tabControl4);
+            this.EventGroupSpawnTab.Controls.Add(this.groupBox58);
             this.EventGroupSpawnTab.ForeColor = System.Drawing.SystemColors.Control;
             this.EventGroupSpawnTab.Location = new System.Drawing.Point(4, 25);
             this.EventGroupSpawnTab.Name = "EventGroupSpawnTab";
             this.EventGroupSpawnTab.Size = new System.Drawing.Size(1218, 596);
             this.EventGroupSpawnTab.TabIndex = 12;
             this.EventGroupSpawnTab.Text = "EventGroupSpawn";
+            // 
+            // tabControl4
+            // 
+            this.tabControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabControl4.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.tabControl4.Controls.Add(this.tabPage22);
+            this.tabControl4.ItemSize = new System.Drawing.Size(0, 1);
+            this.tabControl4.Location = new System.Drawing.Point(3, 3);
+            this.tabControl4.Name = "tabControl4";
+            this.tabControl4.SelectedIndex = 0;
+            this.tabControl4.Size = new System.Drawing.Size(334, 590);
+            this.tabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl4.TabIndex = 0;
+            // 
+            // tabPage22
+            // 
+            this.tabPage22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage22.Controls.Add(this.eventspawngroupTV);
+            this.tabPage22.Location = new System.Drawing.Point(4, 5);
+            this.tabPage22.Name = "tabPage22";
+            this.tabPage22.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage22.Size = new System.Drawing.Size(326, 581);
+            this.tabPage22.TabIndex = 0;
+            this.tabPage22.Text = "tabPage22";
+            // 
+            // eventspawngroupTV
+            // 
+            this.eventspawngroupTV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.eventspawngroupTV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.eventspawngroupTV.ForeColor = System.Drawing.SystemColors.Control;
+            this.eventspawngroupTV.HideSelection = false;
+            this.eventspawngroupTV.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.eventspawngroupTV.Location = new System.Drawing.Point(3, 3);
+            this.eventspawngroupTV.Name = "eventspawngroupTV";
+            this.eventspawngroupTV.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("eventspawngroupTV.SelectedNodes")));
+            this.eventspawngroupTV.SetMultiselect = true;
+            this.eventspawngroupTV.Size = new System.Drawing.Size(320, 575);
+            this.eventspawngroupTV.TabIndex = 0;
+            this.eventspawngroupTV.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.eventspawngroupTV_AfterSelect);
+            this.eventspawngroupTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.eventspawngroupTV_NodeMouseClick);
             // 
             // groupBox58
             // 
@@ -5048,7 +5093,7 @@ namespace DayZeEditor
             this.groupBox58.Controls.Add(this.eventgroupXNUD);
             this.groupBox58.Controls.Add(this.label128);
             this.groupBox58.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox58.Location = new System.Drawing.Point(348, 10);
+            this.groupBox58.Location = new System.Drawing.Point(358, 11);
             this.groupBox58.Name = "groupBox58";
             this.groupBox58.Size = new System.Drawing.Size(389, 457);
             this.groupBox58.TabIndex = 1;
@@ -5066,6 +5111,7 @@ namespace DayZeEditor
             this.eventgroupdelootCB.Text = "Deloot";
             this.eventgroupdelootCB.UseVisualStyleBackColor = true;
             this.eventgroupdelootCB.Visible = false;
+            this.eventgroupdelootCB.CheckedChanged += new System.EventHandler(this.eventgroupdelootCB_CheckedChanged);
             // 
             // eventgroupSecondarySpawnRB
             // 
@@ -5317,47 +5363,6 @@ namespace DayZeEditor
             this.label128.Size = new System.Drawing.Size(23, 13);
             this.label128.TabIndex = 2;
             this.label128.Text = "X :-";
-            // 
-            // tabControl4
-            // 
-            this.tabControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.tabControl4.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl4.Controls.Add(this.tabPage22);
-            this.tabControl4.ItemSize = new System.Drawing.Size(0, 1);
-            this.tabControl4.Location = new System.Drawing.Point(3, 3);
-            this.tabControl4.Name = "tabControl4";
-            this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(334, 590);
-            this.tabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl4.TabIndex = 0;
-            // 
-            // tabPage22
-            // 
-            this.tabPage22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage22.Controls.Add(this.eventspawngroupTV);
-            this.tabPage22.Location = new System.Drawing.Point(4, 5);
-            this.tabPage22.Name = "tabPage22";
-            this.tabPage22.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage22.Size = new System.Drawing.Size(326, 581);
-            this.tabPage22.TabIndex = 0;
-            this.tabPage22.Text = "tabPage22";
-            // 
-            // eventspawngroupTV
-            // 
-            this.eventspawngroupTV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.eventspawngroupTV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.eventspawngroupTV.ForeColor = System.Drawing.SystemColors.Control;
-            this.eventspawngroupTV.HideSelection = false;
-            this.eventspawngroupTV.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.eventspawngroupTV.Location = new System.Drawing.Point(3, 3);
-            this.eventspawngroupTV.Name = "eventspawngroupTV";
-            this.eventspawngroupTV.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("eventspawngroupTV.SelectedNodes")));
-            this.eventspawngroupTV.SetMultiselect = true;
-            this.eventspawngroupTV.Size = new System.Drawing.Size(320, 575);
-            this.eventspawngroupTV.TabIndex = 0;
-            this.eventspawngroupTV.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.eventspawngroupTV_AfterSelect);
-            this.eventspawngroupTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.eventspawngroupTV_NodeMouseClick);
             // 
             // TypesTab
             // 
@@ -6433,6 +6438,7 @@ namespace DayZeEditor
             this.fastColoredTextBox2.DefaultMarkerSize = 8;
             this.fastColoredTextBox2.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox2.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox2.IsReplaceMode = false;
             this.fastColoredTextBox2.Location = new System.Drawing.Point(3, 3);
@@ -16073,7 +16079,6 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);
@@ -17114,15 +17119,214 @@ namespace DayZeEditor
             // cfgundergroundtriggersTab
             // 
             this.cfgundergroundtriggersTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.cfgundergroundtriggersTab.Controls.Add(this.CFGUTriggerGB);
             this.cfgundergroundtriggersTab.Controls.Add(this.UndergroundTriggerTV);
             this.cfgundergroundtriggersTab.Controls.Add(this.CFGUBreadCrumbGB);
+            this.cfgundergroundtriggersTab.Controls.Add(this.CFGUTriggerGB);
             this.cfgundergroundtriggersTab.ForeColor = System.Drawing.SystemColors.Control;
             this.cfgundergroundtriggersTab.Location = new System.Drawing.Point(4, 25);
             this.cfgundergroundtriggersTab.Name = "cfgundergroundtriggersTab";
             this.cfgundergroundtriggersTab.Size = new System.Drawing.Size(1218, 596);
             this.cfgundergroundtriggersTab.TabIndex = 21;
             this.cfgundergroundtriggersTab.Text = "cfgundergroundtriggers";
+            // 
+            // UndergroundTriggerTV
+            // 
+            this.UndergroundTriggerTV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.UndergroundTriggerTV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.UndergroundTriggerTV.ForeColor = System.Drawing.SystemColors.Control;
+            this.UndergroundTriggerTV.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.UndergroundTriggerTV.Location = new System.Drawing.Point(8, 12);
+            this.UndergroundTriggerTV.Name = "UndergroundTriggerTV";
+            this.UndergroundTriggerTV.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("UndergroundTriggerTV.SelectedNodes")));
+            this.UndergroundTriggerTV.SetMultiselect = true;
+            this.UndergroundTriggerTV.Size = new System.Drawing.Size(361, 576);
+            this.UndergroundTriggerTV.TabIndex = 217;
+            this.UndergroundTriggerTV.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.UndergroundTriggerTV_AfterSelect);
+            this.UndergroundTriggerTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.UndergroundTriggerTV_NodeMouseClick);
+            // 
+            // CFGUBreadCrumbGB
+            // 
+            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbRadiusNUD);
+            this.CFGUBreadCrumbGB.Controls.Add(this.darkLabel46);
+            this.CFGUBreadCrumbGB.Controls.Add(this.darkLabel41);
+            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbUseRayCastCB);
+            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbEyeAccommodationNUD);
+            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbPositionZNUD);
+            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbPositionYNUD);
+            this.CFGUBreadCrumbGB.Controls.Add(this.darkLabel42);
+            this.CFGUBreadCrumbGB.Controls.Add(this.darkLabel43);
+            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbPositionXNUD);
+            this.CFGUBreadCrumbGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CFGUBreadCrumbGB.Location = new System.Drawing.Point(389, 12);
+            this.CFGUBreadCrumbGB.Name = "CFGUBreadCrumbGB";
+            this.CFGUBreadCrumbGB.Size = new System.Drawing.Size(461, 123);
+            this.CFGUBreadCrumbGB.TabIndex = 222;
+            this.CFGUBreadCrumbGB.TabStop = false;
+            this.CFGUBreadCrumbGB.Text = "BreadCrumb Info";
+            this.CFGUBreadCrumbGB.Visible = false;
+            // 
+            // CFGUBreadCrumbRadiusNUD
+            // 
+            this.CFGUBreadCrumbRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CFGUBreadCrumbRadiusNUD.DecimalPlaces = 2;
+            this.CFGUBreadCrumbRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CFGUBreadCrumbRadiusNUD.Location = new System.Drawing.Point(123, 92);
+            this.CFGUBreadCrumbRadiusNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.CFGUBreadCrumbRadiusNUD.Minimum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            -2147483648});
+            this.CFGUBreadCrumbRadiusNUD.Name = "CFGUBreadCrumbRadiusNUD";
+            this.CFGUBreadCrumbRadiusNUD.Size = new System.Drawing.Size(105, 20);
+            this.CFGUBreadCrumbRadiusNUD.TabIndex = 208;
+            this.CFGUBreadCrumbRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CFGUBreadCrumbRadiusNUD.ValueChanged += new System.EventHandler(this.CFGUBreadCrumbRadiusNUD_ValueChanged);
+            // 
+            // darkLabel46
+            // 
+            this.darkLabel46.AutoSize = true;
+            this.darkLabel46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel46.Location = new System.Drawing.Point(13, 94);
+            this.darkLabel46.Name = "darkLabel46";
+            this.darkLabel46.Size = new System.Drawing.Size(40, 13);
+            this.darkLabel46.TabIndex = 207;
+            this.darkLabel46.Text = "Radius";
+            // 
+            // darkLabel41
+            // 
+            this.darkLabel41.AutoSize = true;
+            this.darkLabel41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel41.Location = new System.Drawing.Point(13, 72);
+            this.darkLabel41.Name = "darkLabel41";
+            this.darkLabel41.Size = new System.Drawing.Size(69, 13);
+            this.darkLabel41.TabIndex = 206;
+            this.darkLabel41.Text = "Use RayCast";
+            // 
+            // CFGUBreadCrumbUseRayCastCB
+            // 
+            this.CFGUBreadCrumbUseRayCastCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CFGUBreadCrumbUseRayCastCB.AutoSize = true;
+            this.CFGUBreadCrumbUseRayCastCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CFGUBreadCrumbUseRayCastCB.Location = new System.Drawing.Point(123, 72);
+            this.CFGUBreadCrumbUseRayCastCB.Name = "CFGUBreadCrumbUseRayCastCB";
+            this.CFGUBreadCrumbUseRayCastCB.Size = new System.Drawing.Size(15, 14);
+            this.CFGUBreadCrumbUseRayCastCB.TabIndex = 205;
+            this.CFGUBreadCrumbUseRayCastCB.UseVisualStyleBackColor = true;
+            this.CFGUBreadCrumbUseRayCastCB.CheckedChanged += new System.EventHandler(this.CFGUBreadCrumbUseRayCastCB_CheckedChanged);
+            // 
+            // CFGUBreadCrumbEyeAccommodationNUD
+            // 
+            this.CFGUBreadCrumbEyeAccommodationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CFGUBreadCrumbEyeAccommodationNUD.DecimalPlaces = 2;
+            this.CFGUBreadCrumbEyeAccommodationNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CFGUBreadCrumbEyeAccommodationNUD.Location = new System.Drawing.Point(123, 42);
+            this.CFGUBreadCrumbEyeAccommodationNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.CFGUBreadCrumbEyeAccommodationNUD.Minimum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            -2147483648});
+            this.CFGUBreadCrumbEyeAccommodationNUD.Name = "CFGUBreadCrumbEyeAccommodationNUD";
+            this.CFGUBreadCrumbEyeAccommodationNUD.Size = new System.Drawing.Size(105, 20);
+            this.CFGUBreadCrumbEyeAccommodationNUD.TabIndex = 204;
+            this.CFGUBreadCrumbEyeAccommodationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CFGUBreadCrumbEyeAccommodationNUD.ValueChanged += new System.EventHandler(this.CFGUBreadCrumbEyeAccommodationNUD_ValueChanged);
+            // 
+            // CFGUBreadCrumbPositionZNUD
+            // 
+            this.CFGUBreadCrumbPositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CFGUBreadCrumbPositionZNUD.DecimalPlaces = 4;
+            this.CFGUBreadCrumbPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CFGUBreadCrumbPositionZNUD.Location = new System.Drawing.Point(345, 16);
+            this.CFGUBreadCrumbPositionZNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.CFGUBreadCrumbPositionZNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.CFGUBreadCrumbPositionZNUD.Name = "CFGUBreadCrumbPositionZNUD";
+            this.CFGUBreadCrumbPositionZNUD.Size = new System.Drawing.Size(105, 20);
+            this.CFGUBreadCrumbPositionZNUD.TabIndex = 200;
+            this.CFGUBreadCrumbPositionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CFGUBreadCrumbPositionZNUD.ValueChanged += new System.EventHandler(this.CFGUBreadCrumbPositionZNUD_ValueChanged);
+            // 
+            // CFGUBreadCrumbPositionYNUD
+            // 
+            this.CFGUBreadCrumbPositionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CFGUBreadCrumbPositionYNUD.DecimalPlaces = 4;
+            this.CFGUBreadCrumbPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CFGUBreadCrumbPositionYNUD.Location = new System.Drawing.Point(234, 16);
+            this.CFGUBreadCrumbPositionYNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.CFGUBreadCrumbPositionYNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.CFGUBreadCrumbPositionYNUD.Name = "CFGUBreadCrumbPositionYNUD";
+            this.CFGUBreadCrumbPositionYNUD.Size = new System.Drawing.Size(105, 20);
+            this.CFGUBreadCrumbPositionYNUD.TabIndex = 199;
+            this.CFGUBreadCrumbPositionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CFGUBreadCrumbPositionYNUD.ValueChanged += new System.EventHandler(this.CFGUBreadCrumbPositionYNUD_ValueChanged);
+            // 
+            // darkLabel42
+            // 
+            this.darkLabel42.AutoSize = true;
+            this.darkLabel42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel42.Location = new System.Drawing.Point(13, 44);
+            this.darkLabel42.Name = "darkLabel42";
+            this.darkLabel42.Size = new System.Drawing.Size(104, 13);
+            this.darkLabel42.TabIndex = 198;
+            this.darkLabel42.Text = "Eye Accommodation";
+            // 
+            // darkLabel43
+            // 
+            this.darkLabel43.AutoSize = true;
+            this.darkLabel43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel43.Location = new System.Drawing.Point(13, 18);
+            this.darkLabel43.Name = "darkLabel43";
+            this.darkLabel43.Size = new System.Drawing.Size(44, 13);
+            this.darkLabel43.TabIndex = 192;
+            this.darkLabel43.Text = "Position";
+            // 
+            // CFGUBreadCrumbPositionXNUD
+            // 
+            this.CFGUBreadCrumbPositionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CFGUBreadCrumbPositionXNUD.DecimalPlaces = 4;
+            this.CFGUBreadCrumbPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CFGUBreadCrumbPositionXNUD.Location = new System.Drawing.Point(123, 16);
+            this.CFGUBreadCrumbPositionXNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.CFGUBreadCrumbPositionXNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.CFGUBreadCrumbPositionXNUD.Name = "CFGUBreadCrumbPositionXNUD";
+            this.CFGUBreadCrumbPositionXNUD.Size = new System.Drawing.Size(105, 20);
+            this.CFGUBreadCrumbPositionXNUD.TabIndex = 193;
+            this.CFGUBreadCrumbPositionXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CFGUBreadCrumbPositionXNUD.ValueChanged += new System.EventHandler(this.CFGUBreadCrumbPositionXNUD_ValueChanged);
             // 
             // CFGUTriggerGB
             // 
@@ -17442,205 +17646,6 @@ namespace DayZeEditor
             this.darkLabel40.Size = new System.Drawing.Size(58, 13);
             this.darkLabel40.TabIndex = 194;
             this.darkLabel40.Text = "Orientation";
-            // 
-            // UndergroundTriggerTV
-            // 
-            this.UndergroundTriggerTV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.UndergroundTriggerTV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.UndergroundTriggerTV.ForeColor = System.Drawing.SystemColors.Control;
-            this.UndergroundTriggerTV.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.UndergroundTriggerTV.Location = new System.Drawing.Point(8, 12);
-            this.UndergroundTriggerTV.Name = "UndergroundTriggerTV";
-            this.UndergroundTriggerTV.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("UndergroundTriggerTV.SelectedNodes")));
-            this.UndergroundTriggerTV.SetMultiselect = true;
-            this.UndergroundTriggerTV.Size = new System.Drawing.Size(361, 576);
-            this.UndergroundTriggerTV.TabIndex = 217;
-            this.UndergroundTriggerTV.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.UndergroundTriggerTV_AfterSelect);
-            this.UndergroundTriggerTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.UndergroundTriggerTV_NodeMouseClick);
-            // 
-            // CFGUBreadCrumbGB
-            // 
-            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbRadiusNUD);
-            this.CFGUBreadCrumbGB.Controls.Add(this.darkLabel46);
-            this.CFGUBreadCrumbGB.Controls.Add(this.darkLabel41);
-            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbUseRayCastCB);
-            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbEyeAccommodationNUD);
-            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbPositionZNUD);
-            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbPositionYNUD);
-            this.CFGUBreadCrumbGB.Controls.Add(this.darkLabel42);
-            this.CFGUBreadCrumbGB.Controls.Add(this.darkLabel43);
-            this.CFGUBreadCrumbGB.Controls.Add(this.CFGUBreadCrumbPositionXNUD);
-            this.CFGUBreadCrumbGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CFGUBreadCrumbGB.Location = new System.Drawing.Point(389, 12);
-            this.CFGUBreadCrumbGB.Name = "CFGUBreadCrumbGB";
-            this.CFGUBreadCrumbGB.Size = new System.Drawing.Size(461, 123);
-            this.CFGUBreadCrumbGB.TabIndex = 222;
-            this.CFGUBreadCrumbGB.TabStop = false;
-            this.CFGUBreadCrumbGB.Text = "BreadCrumb Info";
-            this.CFGUBreadCrumbGB.Visible = false;
-            // 
-            // CFGUBreadCrumbRadiusNUD
-            // 
-            this.CFGUBreadCrumbRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CFGUBreadCrumbRadiusNUD.DecimalPlaces = 2;
-            this.CFGUBreadCrumbRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CFGUBreadCrumbRadiusNUD.Location = new System.Drawing.Point(123, 92);
-            this.CFGUBreadCrumbRadiusNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.CFGUBreadCrumbRadiusNUD.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.CFGUBreadCrumbRadiusNUD.Name = "CFGUBreadCrumbRadiusNUD";
-            this.CFGUBreadCrumbRadiusNUD.Size = new System.Drawing.Size(105, 20);
-            this.CFGUBreadCrumbRadiusNUD.TabIndex = 208;
-            this.CFGUBreadCrumbRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CFGUBreadCrumbRadiusNUD.ValueChanged += new System.EventHandler(this.CFGUBreadCrumbRadiusNUD_ValueChanged);
-            // 
-            // darkLabel46
-            // 
-            this.darkLabel46.AutoSize = true;
-            this.darkLabel46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel46.Location = new System.Drawing.Point(13, 94);
-            this.darkLabel46.Name = "darkLabel46";
-            this.darkLabel46.Size = new System.Drawing.Size(40, 13);
-            this.darkLabel46.TabIndex = 207;
-            this.darkLabel46.Text = "Radius";
-            // 
-            // darkLabel41
-            // 
-            this.darkLabel41.AutoSize = true;
-            this.darkLabel41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel41.Location = new System.Drawing.Point(13, 72);
-            this.darkLabel41.Name = "darkLabel41";
-            this.darkLabel41.Size = new System.Drawing.Size(69, 13);
-            this.darkLabel41.TabIndex = 206;
-            this.darkLabel41.Text = "Use RayCast";
-            // 
-            // CFGUBreadCrumbUseRayCastCB
-            // 
-            this.CFGUBreadCrumbUseRayCastCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CFGUBreadCrumbUseRayCastCB.AutoSize = true;
-            this.CFGUBreadCrumbUseRayCastCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CFGUBreadCrumbUseRayCastCB.Location = new System.Drawing.Point(123, 72);
-            this.CFGUBreadCrumbUseRayCastCB.Name = "CFGUBreadCrumbUseRayCastCB";
-            this.CFGUBreadCrumbUseRayCastCB.Size = new System.Drawing.Size(15, 14);
-            this.CFGUBreadCrumbUseRayCastCB.TabIndex = 205;
-            this.CFGUBreadCrumbUseRayCastCB.UseVisualStyleBackColor = true;
-            this.CFGUBreadCrumbUseRayCastCB.CheckedChanged += new System.EventHandler(this.CFGUBreadCrumbUseRayCastCB_CheckedChanged);
-            // 
-            // CFGUBreadCrumbEyeAccommodationNUD
-            // 
-            this.CFGUBreadCrumbEyeAccommodationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CFGUBreadCrumbEyeAccommodationNUD.DecimalPlaces = 2;
-            this.CFGUBreadCrumbEyeAccommodationNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CFGUBreadCrumbEyeAccommodationNUD.Location = new System.Drawing.Point(123, 42);
-            this.CFGUBreadCrumbEyeAccommodationNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.CFGUBreadCrumbEyeAccommodationNUD.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.CFGUBreadCrumbEyeAccommodationNUD.Name = "CFGUBreadCrumbEyeAccommodationNUD";
-            this.CFGUBreadCrumbEyeAccommodationNUD.Size = new System.Drawing.Size(105, 20);
-            this.CFGUBreadCrumbEyeAccommodationNUD.TabIndex = 204;
-            this.CFGUBreadCrumbEyeAccommodationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CFGUBreadCrumbEyeAccommodationNUD.ValueChanged += new System.EventHandler(this.CFGUBreadCrumbEyeAccommodationNUD_ValueChanged);
-            // 
-            // CFGUBreadCrumbPositionZNUD
-            // 
-            this.CFGUBreadCrumbPositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CFGUBreadCrumbPositionZNUD.DecimalPlaces = 4;
-            this.CFGUBreadCrumbPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CFGUBreadCrumbPositionZNUD.Location = new System.Drawing.Point(345, 16);
-            this.CFGUBreadCrumbPositionZNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.CFGUBreadCrumbPositionZNUD.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.CFGUBreadCrumbPositionZNUD.Name = "CFGUBreadCrumbPositionZNUD";
-            this.CFGUBreadCrumbPositionZNUD.Size = new System.Drawing.Size(105, 20);
-            this.CFGUBreadCrumbPositionZNUD.TabIndex = 200;
-            this.CFGUBreadCrumbPositionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CFGUBreadCrumbPositionZNUD.ValueChanged += new System.EventHandler(this.CFGUBreadCrumbPositionZNUD_ValueChanged);
-            // 
-            // CFGUBreadCrumbPositionYNUD
-            // 
-            this.CFGUBreadCrumbPositionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CFGUBreadCrumbPositionYNUD.DecimalPlaces = 4;
-            this.CFGUBreadCrumbPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CFGUBreadCrumbPositionYNUD.Location = new System.Drawing.Point(234, 16);
-            this.CFGUBreadCrumbPositionYNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.CFGUBreadCrumbPositionYNUD.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.CFGUBreadCrumbPositionYNUD.Name = "CFGUBreadCrumbPositionYNUD";
-            this.CFGUBreadCrumbPositionYNUD.Size = new System.Drawing.Size(105, 20);
-            this.CFGUBreadCrumbPositionYNUD.TabIndex = 199;
-            this.CFGUBreadCrumbPositionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CFGUBreadCrumbPositionYNUD.ValueChanged += new System.EventHandler(this.CFGUBreadCrumbPositionYNUD_ValueChanged);
-            // 
-            // darkLabel42
-            // 
-            this.darkLabel42.AutoSize = true;
-            this.darkLabel42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel42.Location = new System.Drawing.Point(13, 44);
-            this.darkLabel42.Name = "darkLabel42";
-            this.darkLabel42.Size = new System.Drawing.Size(104, 13);
-            this.darkLabel42.TabIndex = 198;
-            this.darkLabel42.Text = "Eye Accommodation";
-            // 
-            // darkLabel43
-            // 
-            this.darkLabel43.AutoSize = true;
-            this.darkLabel43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel43.Location = new System.Drawing.Point(13, 18);
-            this.darkLabel43.Name = "darkLabel43";
-            this.darkLabel43.Size = new System.Drawing.Size(44, 13);
-            this.darkLabel43.TabIndex = 192;
-            this.darkLabel43.Text = "Position";
-            // 
-            // CFGUBreadCrumbPositionXNUD
-            // 
-            this.CFGUBreadCrumbPositionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CFGUBreadCrumbPositionXNUD.DecimalPlaces = 4;
-            this.CFGUBreadCrumbPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CFGUBreadCrumbPositionXNUD.Location = new System.Drawing.Point(123, 16);
-            this.CFGUBreadCrumbPositionXNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.CFGUBreadCrumbPositionXNUD.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.CFGUBreadCrumbPositionXNUD.Name = "CFGUBreadCrumbPositionXNUD";
-            this.CFGUBreadCrumbPositionXNUD.Size = new System.Drawing.Size(105, 20);
-            this.CFGUBreadCrumbPositionXNUD.TabIndex = 193;
-            this.CFGUBreadCrumbPositionXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CFGUBreadCrumbPositionXNUD.ValueChanged += new System.EventHandler(this.CFGUBreadCrumbPositionXNUD_ValueChanged);
             // 
             // TypesContextMenu
             // 
@@ -18623,6 +18628,8 @@ namespace DayZeEditor
             this.EventSpawnInfoGB.ResumeLayout(false);
             this.EventSpawnInfoGB.PerformLayout();
             this.EventGroupSpawnTab.ResumeLayout(false);
+            this.tabControl4.ResumeLayout(false);
+            this.tabPage22.ResumeLayout(false);
             this.groupBox58.ResumeLayout(false);
             this.groupBox58.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eventgrouplootmaxNUD)).EndInit();
@@ -18631,8 +18638,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupZNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupYNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupXNUD)).EndInit();
-            this.tabControl4.ResumeLayout(false);
-            this.tabPage22.ResumeLayout(false);
             this.TypesTab.ResumeLayout(false);
             this.TypesSummaryTab.ResumeLayout(false);
             this.TypesSummaryTab.PerformLayout();
@@ -19077,6 +19082,13 @@ namespace DayZeEditor
             this.groupBox79.ResumeLayout(false);
             this.groupBox79.PerformLayout();
             this.cfgundergroundtriggersTab.ResumeLayout(false);
+            this.CFGUBreadCrumbGB.ResumeLayout(false);
+            this.CFGUBreadCrumbGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbEyeAccommodationNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionXNUD)).EndInit();
             this.CFGUTriggerGB.ResumeLayout(false);
             this.CFGUTriggerGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CFGUTriggerInterpolationSpeedNUD)).EndInit();
@@ -19090,13 +19102,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CFGUTriggerOrientationYNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CFGUTriggerOrientationXNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CFGUTriggerPositionXNUD)).EndInit();
-            this.CFGUBreadCrumbGB.ResumeLayout(false);
-            this.CFGUBreadCrumbGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbEyeAccommodationNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionZNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionYNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CFGUBreadCrumbPositionXNUD)).EndInit();
             this.TypesContextMenu.ResumeLayout(false);
             this.EventSpawnContextMenu.ResumeLayout(false);
             this.EventgroupContextMenu.ResumeLayout(false);
