@@ -217,6 +217,19 @@ namespace DayZeEditor
             this.CurrenciesLB = new System.Windows.Forms.ListBox();
             this.darkButton42 = new DarkUI.Controls.DarkButton();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.TraderInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.TPCategoriesLB = new System.Windows.Forms.ListBox();
+            this.darkButton24 = new DarkUI.Controls.DarkButton();
+            this.darkButton23 = new DarkUI.Controls.DarkButton();
+            this.darkLabel15 = new DarkUI.Controls.DarkLabel();
+            this.CurrenciesAcceptedLB = new System.Windows.Forms.ListBox();
+            this.darkButton29 = new DarkUI.Controls.DarkButton();
+            this.darkLabel17 = new DarkUI.Controls.DarkLabel();
+            this.darkButton27 = new DarkUI.Controls.DarkButton();
+            this.darkLabel16 = new DarkUI.Controls.DarkLabel();
+            this.LicensesRequiredLB = new System.Windows.Forms.ListBox();
+            this.darkButton30 = new DarkUI.Controls.DarkButton();
+            this.darkButton31 = new DarkUI.Controls.DarkButton();
             this.IsInsuranceCB = new System.Windows.Forms.CheckBox();
             this.TraderIDLabel = new System.Windows.Forms.Label();
             this.TraderNPCRoleTB = new System.Windows.Forms.TextBox();
@@ -243,23 +256,6 @@ namespace DayZeEditor
             this.darkButton33 = new DarkUI.Controls.DarkButton();
             this.darkLabel18 = new DarkUI.Controls.DarkLabel();
             this.TraderPlusTradersLB = new System.Windows.Forms.ListBox();
-            this.AddFromCategoryGroupBox = new System.Windows.Forms.GroupBox();
-            this.darkButton37 = new DarkUI.Controls.DarkButton();
-            this.darkButton22 = new DarkUI.Controls.DarkButton();
-            this.addfromCatLB = new System.Windows.Forms.ListBox();
-            this.TraderInfoGroupBox = new System.Windows.Forms.GroupBox();
-            this.TPCategoriesLB = new System.Windows.Forms.ListBox();
-            this.darkButton24 = new DarkUI.Controls.DarkButton();
-            this.darkButton23 = new DarkUI.Controls.DarkButton();
-            this.darkLabel15 = new DarkUI.Controls.DarkLabel();
-            this.CurrenciesAcceptedLB = new System.Windows.Forms.ListBox();
-            this.darkButton29 = new DarkUI.Controls.DarkButton();
-            this.darkLabel17 = new DarkUI.Controls.DarkLabel();
-            this.darkButton27 = new DarkUI.Controls.DarkButton();
-            this.darkLabel16 = new DarkUI.Controls.DarkLabel();
-            this.LicensesRequiredLB = new System.Windows.Forms.ListBox();
-            this.darkButton30 = new DarkUI.Controls.DarkButton();
-            this.darkButton31 = new DarkUI.Controls.DarkButton();
             this.AvailablecurrenciesGroupBox = new System.Windows.Forms.GroupBox();
             this.darkButton49 = new DarkUI.Controls.DarkButton();
             this.darkButton50 = new DarkUI.Controls.DarkButton();
@@ -268,6 +264,10 @@ namespace DayZeEditor
             this.darkButton47 = new DarkUI.Controls.DarkButton();
             this.darkButton48 = new DarkUI.Controls.DarkButton();
             this.AvailableLicenseLB = new System.Windows.Forms.ListBox();
+            this.AddFromCategoryGroupBox = new System.Windows.Forms.GroupBox();
+            this.darkButton37 = new DarkUI.Controls.DarkButton();
+            this.darkButton22 = new DarkUI.Controls.DarkButton();
+            this.addfromCatLB = new System.Windows.Forms.ListBox();
             this.MoveToCatGroupBox = new System.Windows.Forms.TabPage();
             this.ItemInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.darkLabel29 = new DarkUI.Controls.DarkLabel();
@@ -420,16 +420,16 @@ namespace DayZeEditor
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CurrencyValueNUD)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.TraderInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCOrientationX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCOrientationY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCOrientationZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionY)).BeginInit();
-            this.AddFromCategoryGroupBox.SuspendLayout();
-            this.TraderInfoGroupBox.SuspendLayout();
             this.AvailablecurrenciesGroupBox.SuspendLayout();
             this.AvailalbeLicneseGrouBox.SuspendLayout();
+            this.AddFromCategoryGroupBox.SuspendLayout();
             this.MoveToCatGroupBox.SuspendLayout();
             this.ItemInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DestockCoeffTB)).BeginInit();
@@ -847,7 +847,7 @@ namespace DayZeEditor
             this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
             this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton10.Size = new System.Drawing.Size(106, 25);
             this.toolStripButton10.Text = "Stock level Config";
             this.toolStripButton10.Visible = false;
             this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
@@ -2824,7 +2824,7 @@ namespace DayZeEditor
             this.CurrencyValueNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.CurrencyValueNUD.Location = new System.Drawing.Point(330, 30);
             this.CurrencyValueNUD.Maximum = new decimal(new int[] {
-            15000,
+            2147483647,
             0,
             0,
             0});
@@ -2886,6 +2886,7 @@ namespace DayZeEditor
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage4.Controls.Add(this.TraderInfoGroupBox);
             this.tabPage4.Controls.Add(this.IsInsuranceCB);
             this.tabPage4.Controls.Add(this.TraderIDLabel);
             this.tabPage4.Controls.Add(this.TraderNPCRoleTB);
@@ -2912,15 +2913,172 @@ namespace DayZeEditor
             this.tabPage4.Controls.Add(this.darkButton33);
             this.tabPage4.Controls.Add(this.darkLabel18);
             this.tabPage4.Controls.Add(this.TraderPlusTradersLB);
-            this.tabPage4.Controls.Add(this.AddFromCategoryGroupBox);
-            this.tabPage4.Controls.Add(this.TraderInfoGroupBox);
             this.tabPage4.Controls.Add(this.AvailablecurrenciesGroupBox);
             this.tabPage4.Controls.Add(this.AvailalbeLicneseGrouBox);
+            this.tabPage4.Controls.Add(this.AddFromCategoryGroupBox);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1062, 693);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
+            // 
+            // TraderInfoGroupBox
+            // 
+            this.TraderInfoGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.TraderInfoGroupBox.Controls.Add(this.TPCategoriesLB);
+            this.TraderInfoGroupBox.Controls.Add(this.darkButton24);
+            this.TraderInfoGroupBox.Controls.Add(this.darkButton23);
+            this.TraderInfoGroupBox.Controls.Add(this.darkLabel15);
+            this.TraderInfoGroupBox.Controls.Add(this.CurrenciesAcceptedLB);
+            this.TraderInfoGroupBox.Controls.Add(this.darkButton29);
+            this.TraderInfoGroupBox.Controls.Add(this.darkLabel17);
+            this.TraderInfoGroupBox.Controls.Add(this.darkButton27);
+            this.TraderInfoGroupBox.Controls.Add(this.darkLabel16);
+            this.TraderInfoGroupBox.Controls.Add(this.LicensesRequiredLB);
+            this.TraderInfoGroupBox.Controls.Add(this.darkButton30);
+            this.TraderInfoGroupBox.Controls.Add(this.darkButton31);
+            this.TraderInfoGroupBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.TraderInfoGroupBox.Location = new System.Drawing.Point(445, 6);
+            this.TraderInfoGroupBox.Name = "TraderInfoGroupBox";
+            this.TraderInfoGroupBox.Size = new System.Drawing.Size(458, 644);
+            this.TraderInfoGroupBox.TabIndex = 126;
+            this.TraderInfoGroupBox.TabStop = false;
+            this.TraderInfoGroupBox.Text = "Trader Assigned Categories and infos";
+            // 
+            // TPCategoriesLB
+            // 
+            this.TPCategoriesLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.TPCategoriesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TPCategoriesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.TPCategoriesLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TPCategoriesLB.FormattingEnabled = true;
+            this.TPCategoriesLB.Location = new System.Drawing.Point(13, 42);
+            this.TPCategoriesLB.Name = "TPCategoriesLB";
+            this.TPCategoriesLB.Size = new System.Drawing.Size(211, 563);
+            this.TPCategoriesLB.TabIndex = 108;
+            this.TPCategoriesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // darkButton24
+            // 
+            this.darkButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton24.Location = new System.Drawing.Point(13, 615);
+            this.darkButton24.Name = "darkButton24";
+            this.darkButton24.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton24.Size = new System.Drawing.Size(95, 23);
+            this.darkButton24.TabIndex = 109;
+            this.darkButton24.Text = "Add New";
+            this.darkButton24.Click += new System.EventHandler(this.darkButton24_Click);
+            // 
+            // darkButton23
+            // 
+            this.darkButton23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton23.Location = new System.Drawing.Point(114, 615);
+            this.darkButton23.Name = "darkButton23";
+            this.darkButton23.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton23.Size = new System.Drawing.Size(110, 23);
+            this.darkButton23.TabIndex = 110;
+            this.darkButton23.Text = "Removed Selected";
+            this.darkButton23.Click += new System.EventHandler(this.darkButton23_Click);
+            // 
+            // darkLabel15
+            // 
+            this.darkLabel15.AutoSize = true;
+            this.darkLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel15.Location = new System.Drawing.Point(10, 20);
+            this.darkLabel15.Name = "darkLabel15";
+            this.darkLabel15.Size = new System.Drawing.Size(91, 13);
+            this.darkLabel15.TabIndex = 111;
+            this.darkLabel15.Text = "Trader Categories";
+            // 
+            // CurrenciesAcceptedLB
+            // 
+            this.CurrenciesAcceptedLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.CurrenciesAcceptedLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CurrenciesAcceptedLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CurrenciesAcceptedLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CurrenciesAcceptedLB.FormattingEnabled = true;
+            this.CurrenciesAcceptedLB.Location = new System.Drawing.Point(232, 328);
+            this.CurrenciesAcceptedLB.Name = "CurrenciesAcceptedLB";
+            this.CurrenciesAcceptedLB.Size = new System.Drawing.Size(211, 277);
+            this.CurrenciesAcceptedLB.TabIndex = 112;
+            this.CurrenciesAcceptedLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // darkButton29
+            // 
+            this.darkButton29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton29.Location = new System.Drawing.Point(232, 615);
+            this.darkButton29.Name = "darkButton29";
+            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton29.Size = new System.Drawing.Size(95, 23);
+            this.darkButton29.TabIndex = 113;
+            this.darkButton29.Text = "Add New";
+            this.darkButton29.Click += new System.EventHandler(this.darkButton29_Click);
+            // 
+            // darkLabel17
+            // 
+            this.darkLabel17.AutoSize = true;
+            this.darkLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel17.Location = new System.Drawing.Point(232, 312);
+            this.darkLabel17.Name = "darkLabel17";
+            this.darkLabel17.Size = new System.Drawing.Size(106, 13);
+            this.darkLabel17.TabIndex = 119;
+            this.darkLabel17.Text = "Currencies Accepted";
+            // 
+            // darkButton27
+            // 
+            this.darkButton27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton27.Location = new System.Drawing.Point(333, 615);
+            this.darkButton27.Name = "darkButton27";
+            this.darkButton27.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton27.Size = new System.Drawing.Size(110, 23);
+            this.darkButton27.TabIndex = 114;
+            this.darkButton27.Text = "Removed Selected";
+            this.darkButton27.Click += new System.EventHandler(this.darkButton27_Click);
+            // 
+            // darkLabel16
+            // 
+            this.darkLabel16.AutoSize = true;
+            this.darkLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel16.Location = new System.Drawing.Point(232, 20);
+            this.darkLabel16.Name = "darkLabel16";
+            this.darkLabel16.Size = new System.Drawing.Size(95, 13);
+            this.darkLabel16.TabIndex = 118;
+            this.darkLabel16.Text = "Licenses Required";
+            // 
+            // LicensesRequiredLB
+            // 
+            this.LicensesRequiredLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.LicensesRequiredLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.LicensesRequiredLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.LicensesRequiredLB.FormattingEnabled = true;
+            this.LicensesRequiredLB.Location = new System.Drawing.Point(232, 42);
+            this.LicensesRequiredLB.Name = "LicensesRequiredLB";
+            this.LicensesRequiredLB.Size = new System.Drawing.Size(211, 225);
+            this.LicensesRequiredLB.TabIndex = 115;
+            this.LicensesRequiredLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // darkButton30
+            // 
+            this.darkButton30.Location = new System.Drawing.Point(333, 273);
+            this.darkButton30.Name = "darkButton30";
+            this.darkButton30.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton30.Size = new System.Drawing.Size(110, 23);
+            this.darkButton30.TabIndex = 117;
+            this.darkButton30.Text = "Removed Selected";
+            this.darkButton30.Click += new System.EventHandler(this.darkButton30_Click);
+            // 
+            // darkButton31
+            // 
+            this.darkButton31.Location = new System.Drawing.Point(232, 273);
+            this.darkButton31.Name = "darkButton31";
+            this.darkButton31.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton31.Size = new System.Drawing.Size(95, 23);
+            this.darkButton31.TabIndex = 116;
+            this.darkButton31.Text = "Add New";
+            this.darkButton31.Click += new System.EventHandler(this.darkButton31_Click);
             // 
             // IsInsuranceCB
             // 
@@ -3274,217 +3432,6 @@ namespace DayZeEditor
             this.TraderPlusTradersLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.TraderPlusTradersLB.SelectedIndexChanged += new System.EventHandler(this.TraderPlusTradersLB_SelectedIndexChanged);
             // 
-            // AddFromCategoryGroupBox
-            // 
-            this.AddFromCategoryGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddFromCategoryGroupBox.Controls.Add(this.darkButton37);
-            this.AddFromCategoryGroupBox.Controls.Add(this.darkButton22);
-            this.AddFromCategoryGroupBox.Controls.Add(this.addfromCatLB);
-            this.AddFromCategoryGroupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.AddFromCategoryGroupBox.Location = new System.Drawing.Point(445, 6);
-            this.AddFromCategoryGroupBox.Name = "AddFromCategoryGroupBox";
-            this.AddFromCategoryGroupBox.Size = new System.Drawing.Size(294, 439);
-            this.AddFromCategoryGroupBox.TabIndex = 149;
-            this.AddFromCategoryGroupBox.TabStop = false;
-            this.AddFromCategoryGroupBox.Text = "Add From Category";
-            this.AddFromCategoryGroupBox.Visible = false;
-            // 
-            // darkButton37
-            // 
-            this.darkButton37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton37.Location = new System.Drawing.Point(159, 410);
-            this.darkButton37.Name = "darkButton37";
-            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton37.Size = new System.Drawing.Size(129, 23);
-            this.darkButton37.TabIndex = 2;
-            this.darkButton37.Text = "Cancel";
-            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
-            // 
-            // darkButton22
-            // 
-            this.darkButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton22.Location = new System.Drawing.Point(6, 411);
-            this.darkButton22.Name = "darkButton22";
-            this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton22.Size = new System.Drawing.Size(129, 23);
-            this.darkButton22.TabIndex = 1;
-            this.darkButton22.Text = "Add Selected";
-            this.darkButton22.Click += new System.EventHandler(this.darkButton22_Click);
-            // 
-            // addfromCatLB
-            // 
-            this.addfromCatLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.addfromCatLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.addfromCatLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.addfromCatLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.addfromCatLB.FormattingEnabled = true;
-            this.addfromCatLB.Location = new System.Drawing.Point(7, 18);
-            this.addfromCatLB.Name = "addfromCatLB";
-            this.addfromCatLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.addfromCatLB.Size = new System.Drawing.Size(281, 381);
-            this.addfromCatLB.TabIndex = 0;
-            this.addfromCatLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // TraderInfoGroupBox
-            // 
-            this.TraderInfoGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.TraderInfoGroupBox.Controls.Add(this.TPCategoriesLB);
-            this.TraderInfoGroupBox.Controls.Add(this.darkButton24);
-            this.TraderInfoGroupBox.Controls.Add(this.darkButton23);
-            this.TraderInfoGroupBox.Controls.Add(this.darkLabel15);
-            this.TraderInfoGroupBox.Controls.Add(this.CurrenciesAcceptedLB);
-            this.TraderInfoGroupBox.Controls.Add(this.darkButton29);
-            this.TraderInfoGroupBox.Controls.Add(this.darkLabel17);
-            this.TraderInfoGroupBox.Controls.Add(this.darkButton27);
-            this.TraderInfoGroupBox.Controls.Add(this.darkLabel16);
-            this.TraderInfoGroupBox.Controls.Add(this.LicensesRequiredLB);
-            this.TraderInfoGroupBox.Controls.Add(this.darkButton30);
-            this.TraderInfoGroupBox.Controls.Add(this.darkButton31);
-            this.TraderInfoGroupBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.TraderInfoGroupBox.Location = new System.Drawing.Point(445, 6);
-            this.TraderInfoGroupBox.Name = "TraderInfoGroupBox";
-            this.TraderInfoGroupBox.Size = new System.Drawing.Size(458, 644);
-            this.TraderInfoGroupBox.TabIndex = 126;
-            this.TraderInfoGroupBox.TabStop = false;
-            this.TraderInfoGroupBox.Text = "Trader Assigned Categories and infos";
-            // 
-            // TPCategoriesLB
-            // 
-            this.TPCategoriesLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.TPCategoriesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.TPCategoriesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.TPCategoriesLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.TPCategoriesLB.FormattingEnabled = true;
-            this.TPCategoriesLB.Location = new System.Drawing.Point(13, 42);
-            this.TPCategoriesLB.Name = "TPCategoriesLB";
-            this.TPCategoriesLB.Size = new System.Drawing.Size(211, 563);
-            this.TPCategoriesLB.TabIndex = 108;
-            this.TPCategoriesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // darkButton24
-            // 
-            this.darkButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton24.Location = new System.Drawing.Point(13, 615);
-            this.darkButton24.Name = "darkButton24";
-            this.darkButton24.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton24.Size = new System.Drawing.Size(95, 23);
-            this.darkButton24.TabIndex = 109;
-            this.darkButton24.Text = "Add New";
-            this.darkButton24.Click += new System.EventHandler(this.darkButton24_Click);
-            // 
-            // darkButton23
-            // 
-            this.darkButton23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton23.Location = new System.Drawing.Point(114, 615);
-            this.darkButton23.Name = "darkButton23";
-            this.darkButton23.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton23.Size = new System.Drawing.Size(110, 23);
-            this.darkButton23.TabIndex = 110;
-            this.darkButton23.Text = "Removed Selected";
-            this.darkButton23.Click += new System.EventHandler(this.darkButton23_Click);
-            // 
-            // darkLabel15
-            // 
-            this.darkLabel15.AutoSize = true;
-            this.darkLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel15.Location = new System.Drawing.Point(10, 20);
-            this.darkLabel15.Name = "darkLabel15";
-            this.darkLabel15.Size = new System.Drawing.Size(91, 13);
-            this.darkLabel15.TabIndex = 111;
-            this.darkLabel15.Text = "Trader Categories";
-            // 
-            // CurrenciesAcceptedLB
-            // 
-            this.CurrenciesAcceptedLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.CurrenciesAcceptedLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CurrenciesAcceptedLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.CurrenciesAcceptedLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CurrenciesAcceptedLB.FormattingEnabled = true;
-            this.CurrenciesAcceptedLB.Location = new System.Drawing.Point(232, 328);
-            this.CurrenciesAcceptedLB.Name = "CurrenciesAcceptedLB";
-            this.CurrenciesAcceptedLB.Size = new System.Drawing.Size(211, 277);
-            this.CurrenciesAcceptedLB.TabIndex = 112;
-            this.CurrenciesAcceptedLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // darkButton29
-            // 
-            this.darkButton29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton29.Location = new System.Drawing.Point(232, 615);
-            this.darkButton29.Name = "darkButton29";
-            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton29.Size = new System.Drawing.Size(95, 23);
-            this.darkButton29.TabIndex = 113;
-            this.darkButton29.Text = "Add New";
-            this.darkButton29.Click += new System.EventHandler(this.darkButton29_Click);
-            // 
-            // darkLabel17
-            // 
-            this.darkLabel17.AutoSize = true;
-            this.darkLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel17.Location = new System.Drawing.Point(232, 312);
-            this.darkLabel17.Name = "darkLabel17";
-            this.darkLabel17.Size = new System.Drawing.Size(106, 13);
-            this.darkLabel17.TabIndex = 119;
-            this.darkLabel17.Text = "Currencies Accepted";
-            // 
-            // darkButton27
-            // 
-            this.darkButton27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton27.Location = new System.Drawing.Point(333, 615);
-            this.darkButton27.Name = "darkButton27";
-            this.darkButton27.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton27.Size = new System.Drawing.Size(110, 23);
-            this.darkButton27.TabIndex = 114;
-            this.darkButton27.Text = "Removed Selected";
-            this.darkButton27.Click += new System.EventHandler(this.darkButton27_Click);
-            // 
-            // darkLabel16
-            // 
-            this.darkLabel16.AutoSize = true;
-            this.darkLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel16.Location = new System.Drawing.Point(232, 20);
-            this.darkLabel16.Name = "darkLabel16";
-            this.darkLabel16.Size = new System.Drawing.Size(95, 13);
-            this.darkLabel16.TabIndex = 118;
-            this.darkLabel16.Text = "Licenses Required";
-            // 
-            // LicensesRequiredLB
-            // 
-            this.LicensesRequiredLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.LicensesRequiredLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.LicensesRequiredLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.LicensesRequiredLB.FormattingEnabled = true;
-            this.LicensesRequiredLB.Location = new System.Drawing.Point(232, 42);
-            this.LicensesRequiredLB.Name = "LicensesRequiredLB";
-            this.LicensesRequiredLB.Size = new System.Drawing.Size(211, 225);
-            this.LicensesRequiredLB.TabIndex = 115;
-            this.LicensesRequiredLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // darkButton30
-            // 
-            this.darkButton30.Location = new System.Drawing.Point(333, 273);
-            this.darkButton30.Name = "darkButton30";
-            this.darkButton30.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton30.Size = new System.Drawing.Size(110, 23);
-            this.darkButton30.TabIndex = 117;
-            this.darkButton30.Text = "Removed Selected";
-            this.darkButton30.Click += new System.EventHandler(this.darkButton30_Click);
-            // 
-            // darkButton31
-            // 
-            this.darkButton31.Location = new System.Drawing.Point(232, 273);
-            this.darkButton31.Name = "darkButton31";
-            this.darkButton31.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton31.Size = new System.Drawing.Size(95, 23);
-            this.darkButton31.TabIndex = 116;
-            this.darkButton31.Text = "Add New";
-            this.darkButton31.Click += new System.EventHandler(this.darkButton31_Click);
-            // 
             // AvailablecurrenciesGroupBox
             // 
             this.AvailablecurrenciesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -3590,6 +3537,59 @@ namespace DayZeEditor
             this.AvailableLicenseLB.Size = new System.Drawing.Size(281, 381);
             this.AvailableLicenseLB.TabIndex = 0;
             this.AvailableLicenseLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // AddFromCategoryGroupBox
+            // 
+            this.AddFromCategoryGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddFromCategoryGroupBox.Controls.Add(this.darkButton37);
+            this.AddFromCategoryGroupBox.Controls.Add(this.darkButton22);
+            this.AddFromCategoryGroupBox.Controls.Add(this.addfromCatLB);
+            this.AddFromCategoryGroupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AddFromCategoryGroupBox.Location = new System.Drawing.Point(445, 6);
+            this.AddFromCategoryGroupBox.Name = "AddFromCategoryGroupBox";
+            this.AddFromCategoryGroupBox.Size = new System.Drawing.Size(294, 439);
+            this.AddFromCategoryGroupBox.TabIndex = 149;
+            this.AddFromCategoryGroupBox.TabStop = false;
+            this.AddFromCategoryGroupBox.Text = "Add From Category";
+            this.AddFromCategoryGroupBox.Visible = false;
+            // 
+            // darkButton37
+            // 
+            this.darkButton37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton37.Location = new System.Drawing.Point(159, 410);
+            this.darkButton37.Name = "darkButton37";
+            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton37.Size = new System.Drawing.Size(129, 23);
+            this.darkButton37.TabIndex = 2;
+            this.darkButton37.Text = "Cancel";
+            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
+            // 
+            // darkButton22
+            // 
+            this.darkButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton22.Location = new System.Drawing.Point(6, 411);
+            this.darkButton22.Name = "darkButton22";
+            this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton22.Size = new System.Drawing.Size(129, 23);
+            this.darkButton22.TabIndex = 1;
+            this.darkButton22.Text = "Add Selected";
+            this.darkButton22.Click += new System.EventHandler(this.darkButton22_Click);
+            // 
+            // addfromCatLB
+            // 
+            this.addfromCatLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.addfromCatLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.addfromCatLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.addfromCatLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.addfromCatLB.FormattingEnabled = true;
+            this.addfromCatLB.Location = new System.Drawing.Point(7, 18);
+            this.addfromCatLB.Name = "addfromCatLB";
+            this.addfromCatLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.addfromCatLB.Size = new System.Drawing.Size(281, 381);
+            this.addfromCatLB.TabIndex = 0;
+            this.addfromCatLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // MoveToCatGroupBox
             // 
@@ -3837,7 +3837,7 @@ namespace DayZeEditor
             this.BuyPriceNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BuyPriceNUD.Location = new System.Drawing.Point(66, 155);
             this.BuyPriceNUD.Maximum = new decimal(new int[] {
-            100000000,
+            2147483647,
             0,
             0,
             0});
@@ -5052,17 +5052,17 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CurrencyValueNUD)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.TraderInfoGroupBox.ResumeLayout(false);
+            this.TraderInfoGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCOrientationX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCOrientationY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCOrientationZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionY)).EndInit();
-            this.AddFromCategoryGroupBox.ResumeLayout(false);
-            this.TraderInfoGroupBox.ResumeLayout(false);
-            this.TraderInfoGroupBox.PerformLayout();
             this.AvailablecurrenciesGroupBox.ResumeLayout(false);
             this.AvailalbeLicneseGrouBox.ResumeLayout(false);
+            this.AddFromCategoryGroupBox.ResumeLayout(false);
             this.MoveToCatGroupBox.ResumeLayout(false);
             this.MoveToCatGroupBox.PerformLayout();
             this.ItemInfoGroupBox.ResumeLayout(false);
