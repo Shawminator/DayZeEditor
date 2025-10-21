@@ -7913,7 +7913,7 @@ namespace DayZeEditor
             else if (usingtreenode.Tag != null && usingtreenode.Tag is string)
             {
                 currentignoretype = null;
-                if (usingtreenode.Tag.ToString() == "Parent")
+                if (usingtreenode.Tag.ToString() == "CFGIgnoreList")
                 {
                     if (e.Button == MouseButtons.Right)
                     {
@@ -7947,8 +7947,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultipleofSameItem = false,
-                LowerCase = true
+                UseMultipleofSameItem = false
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)

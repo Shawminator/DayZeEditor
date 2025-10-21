@@ -196,22 +196,6 @@
         nOccAdABIDXXE1nzAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="darkToolStrip23.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>500, 17</value>
-  </metadata>
-  <data name="CategorycolourPB.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAGElEQVQYV2M4
-        gAT+IwEGKkogc5AVUVECAH8Xp6Gyc4w8AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="MarketCatsTV.SelectedNodes" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAEAQAAABxTeXN0ZW0uQ29sbGVjdGlvbnMuQXJyYXlMaXN0AwAAAAZfaXRl
-        bXMFX3NpemUIX3ZlcnNpb24FAAAICAkCAAAAAAAAAAAAAAAQAgAAAAAAAAAL
-</value>
-  </data>
   <data name="ColorRequirementsNotMetColour.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -511,9 +495,6 @@
         nOccAdABIDXXE1nzAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="darkToolStrip24.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>790, 17</value>
-  </metadata>
   <data name="TradercheckPanel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -555,6 +536,19 @@
   <metadata name="darkToolStrip24.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>790, 17</value>
   </metadata>
+  <data name="CategorycolourPB.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAGElEQVQYV2M4
+        gAT+IwEGKkogc5AVUVECAH8Xp6Gyc4w8AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="MarketCatsTV.SelectedNodes" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAEAQAAABxTeXN0ZW0uQ29sbGVjdGlvbnMuQXJyYXlMaXN0AwAAAAZfaXRl
+        bXMFX3NpemUIX3ZlcnNpb24FAAAICAkCAAAAAAAAAAAAAAAQAgAAAAAAAAAL
+</value>
+  </data>
   <metadata name="ttpShow.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>155, 17</value>
   </metadata>
@@ -566,7 +560,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB+
-        FwAAAk1TRnQBSQFMAgEBAgEAAeABCgHgAQoBHAEAARwBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFw
+        FwAAAk1TRnQBSQFMAgEBAgEAAegBCgHoAQoBHAEAARwBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFw
         AwABHAMAAQEBAAEgBgABMTYAAxgBIQM9AWgDUAGaA1gBugFdAl8BzgFdAl8BzgNZAb4DUgGgA0ABcAMf
         ASxIAAMLAQ4DOgFhA1ABmwJXAVgBvANcAcsCXQFfAc4CWgFbAcQDUwGqA0cBggMhAS//ACEAAycBOgNV
         AawBQAGoAUAB/QEAAbQBAAH/AQABsgEAAf8BAAGyAQAB/wEAAbMBAAH/AQABswEAAf8BAAGyAQAB/wEA
@@ -605,7 +599,7 @@
         A1YBtQM+AWsCAAHuAf8CAAHuAf8DSgGJDAADVgGzAgAB7QH/AgAB8AH/AgAB8AH/AgAB7gH/AlkBWgHA
         DAADVAGoAgAB7QH/AgAB8AH/AgAB8AH/AgAB7QH/A0kBhwgAAxsBJQIAAfAB/wIAAe4B/wNfAdXgAANX
         AbEBAAGyAQAB/wEAAbsBAAH/AyUBNxAAAwIBAwNdAd8BAAGzAQAB/wEAAcEBAAH/AQABvgEAAf8BAAG+
-        AQAB/wFcAmUB5wEAAboBAAH/AQABwAEAAf8BAAG/AQAB/wEAAbEBAAH/A0gBgxAAAxIBGAFMAoAB/gEA
+        AQAB/wFcAmUB5wEAAboBAAH/AQABwAEAAf8BAAG/AQAB/wEAAbEBAAH/A0gBgxAAAxIBGAFNAoAB/gEA
         AbMBAAH/AVsCXgHTA00BkQIAAe4B/wIAAe4B/wM4AVwMAAMOARIDXQHqAgAB7gH/AgAB8AH/AgAB8AH/
         AgAB7gH/A1IBowQAA0IBdQIAAe4B/wIAAfAB/wIAAfAB/wIAAe4B/wJbAWEB3gMDAQQMAANdAd8CAAHu
         Af8DYgHu4AABWQJaAcABAAGyAQAB/wEAAb8BAAH/AxoBJBAAAVkCXAHDAQABsQEAAf8BAAHAAQAB/wEA

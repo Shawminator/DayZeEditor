@@ -4192,7 +4192,7 @@ namespace DayZeEditor
                 }
             }
             File.WriteAllText(currentproject.projectFullName + "//missing_market_types.txt", sb.ToString());
-            File.WriteAllLines(currentproject.projectFullName + "//missing_market_typesToPaste.txt", missingclassnames.ToArray());
+            //File.WriteAllLines(currentproject.projectFullName + "//missing_market_typesToPaste.txt", missingclassnames.ToArray());
         }
 
         private void ExpansionMarket_FormClosing(object sender, FormClosingEventArgs e)
