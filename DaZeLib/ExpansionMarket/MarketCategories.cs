@@ -72,10 +72,6 @@ namespace DayZeLib
                                 item.Variants[i] = item.Variants[i].ToLower();
                                 savefile = true;
                             }
-                            if(item.ClassName == item.Variants[i])
-                            {
-                                MessageBox.Show(cat.DisplayName + Environment.NewLine + item.ClassName + " Has a max price lower than the min price." + Environment.NewLine + "Please fix......");
-                            }
                         }
                         for (int j = 0; j < item.SpawnAttachments.Count; j++)
                         {
@@ -85,20 +81,10 @@ namespace DayZeLib
                                 savefile = true;
                             }
                         }
-                        if (item.MaxPriceThreshold < item.MinPriceThreshold)
-                            MessageBox.Show(cat.DisplayName + Environment.NewLine + item.ClassName + " Has a max price lower than the min price." + Environment.NewLine + "Please fix......");
-                        if (item.MaxStockThreshold < item.MinStockThreshold)
-                            MessageBox.Show(cat.DisplayName + Environment.NewLine + item.ClassName + " Has a max stock lower than the min Stock." + Environment.NewLine + "Please fix......");
                     }
-                    //if (System.IO.Path.GetFileNameWithoutExtension(file.FullName).Any(char.IsLower))
-                    //{
-                    //    cat.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName).ToUpper();
-                    //    savefile = true;
-                    //}
-                    //else
-                    //{
-                        cat.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
-                    //}
+                   
+                    cat.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
+
                     string folder = System.IO.Path.GetDirectoryName(file.FullName).Replace(Path, "");
                     if(folder != "")
                     {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
 
 namespace DayZeLib
@@ -17,7 +18,7 @@ namespace DayZeLib
     public class ExpansionAISettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 15;
+        const int CurrentVersion = 16;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -41,6 +42,7 @@ namespace DayZeLib
         public int MemeLevel { get; set; }
         public int CanRecruitFriendly { get; set; }
         public int CanRecruitGuards { get; set; }
+        public int MaxRecruitableAI { get; set; }
         public BindingList<string> PreventClimb { get; set; }
         public decimal FormationScale { get; set; } //added in version 13
         public BindingList<string> PlayerFactions { get; set; }

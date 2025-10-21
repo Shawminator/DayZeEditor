@@ -139,6 +139,13 @@ namespace DayZeEditor
             {
                 foreach (string line in richTextBox1.Lines)
                 {
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(line.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+
                     Additem(line);
                 }
             }

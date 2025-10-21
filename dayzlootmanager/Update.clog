@@ -1,4 +1,16 @@
-﻿Version 0.8.4.3
+﻿Version 0.8.4.5
+[Updated]
+expansion				-   Updated to match latest expansion update
+Loadout/lootdrops		-	Added Lootdrop config to loadout manager. now called exp loadout/lootdrops
+Market					-	Removed sperate add from string, string can now be added through the add from type button
+							will check for whitspace and/or empty entries
+Debug/Core				-	Debug file renamed, if coresettings.json doesn not exist it will be created
+
+Version 0.8.4.4
+[Updated]
+expansion				-	Updated to match latest exopansion update
+
+Version 0.8.4.3
 [Updated]
 expansion				-	Updated to match latest exopansion update
 

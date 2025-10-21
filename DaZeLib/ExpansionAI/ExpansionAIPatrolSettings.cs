@@ -318,6 +318,7 @@ namespace DayZeLib
         public string Speed { get; set; }
         public string UnderThreatSpeed { get; set; }
         public int CanBeLooted { get; set; }
+        public string LootDropOnDeath { get; set; }
         public int UnlimitedReload { get; set; }
         public decimal SniperProneDistanceThreshold { get; set; }
         public decimal AccuracyMin { get; set; }
@@ -357,6 +358,7 @@ namespace DayZeLib
             Speed = "";
             UnderThreatSpeed = "";
             CanBeLooted = 1;
+            LootDropOnDeath = "";
             UnlimitedReload = 0;
             SniperProneDistanceThreshold = (decimal)0.0;
             AccuracyMin = -1;
@@ -396,6 +398,7 @@ namespace DayZeLib
             Speed = spd;
             UnderThreatSpeed = threatspd;
             CanBeLooted = canbelooted == true ? 1 : 0;
+            LootDropOnDeath = "";
             UnlimitedReload = unlimitedreload == true ? 1 : 0; ;
             SniperProneDistanceThreshold = (decimal)0.0;
             AccuracyMin = -1;

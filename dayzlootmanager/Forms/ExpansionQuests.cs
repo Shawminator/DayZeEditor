@@ -55,7 +55,6 @@ namespace DayZeEditor
         public QuestNPCLists QuestNPCs { get; set; }
         public QuestPersistantDataPlayersList QuestPlayerDataList { get; set; }
         public QuestPersistentServerData QuestPersistentServerData { get; set; }
-        public BindingList<AILoadouts> LoadoutList { get; set; }
 
 
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
@@ -157,33 +156,74 @@ namespace DayZeEditor
 
             bool needtosave = false;
 
-            LoadoutList = new BindingList<AILoadouts>();
+            AILoadoutsConfig AILoadoutsConfig = new AILoadoutsConfig();
+
+            AILoadoutsConfig.LoadoutsData = new BindingList<AILoadouts>();
+
             AILoadoutsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts";
             DirectoryInfo dinfo = new DirectoryInfo(AILoadoutsPath);
             FileInfo[] Files = dinfo.GetFiles("*.json");
-            Console.WriteLine("\nserializing AI Loadouts.");
             foreach (FileInfo file in Files)
             {
                 try
                 {
-                    Console.WriteLine("\tserializing " + Path.GetFileName(file.FullName));
+                    Console.WriteLine("serializing " + Path.GetFileName(file.FullName));
                     AILoadouts AILoadouts = JsonSerializer.Deserialize<AILoadouts>(File.ReadAllText(file.FullName));
                     AILoadouts.Filename = file.FullName;
                     AILoadouts.Setname();
                     AILoadouts.isDirty = false;
-                    LoadoutList.Add(AILoadouts);
+                    AILoadoutsConfig.LoadoutsData.Add(AILoadouts);
                 }
                 catch { }
             }
-            expansionQuestAISpawnControlAICamp.LoadoutList = LoadoutList;
+
+            AILoadoutsConfig.AILootDropsData = new BindingList<AILootDrops>();
+            LootDropOnDeathListPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\AI\\LootDrops";
+            DirectoryInfo dinfo1 = new DirectoryInfo(LootDropOnDeathListPath);
+            FileInfo[] Files1 = dinfo1.GetFiles("*.json");
+            foreach (FileInfo file in Files1)
+            {
+                try
+                {
+                    Console.WriteLine("serializing " + Path.GetFileName(file.FullName));
+                    AILootDrops AILootDrops = new AILootDrops();
+                    AILootDrops.LootdropList = JsonSerializer.Deserialize<BindingList<AILoadouts>>(File.ReadAllText(file.FullName));
+                    AILootDrops.Filename = file.FullName;
+                    AILootDrops.Setname();
+                    AILootDrops.isDirty = false;
+                    AILoadoutsConfig.AILootDropsData.Add(AILootDrops);
+                }
+                catch { }
+            }
+
+            BindingList<string>  LoadoutNameList = new BindingList<string>
+            {
+                ""
+            };
+            foreach (AILoadouts lo in AILoadoutsConfig.LoadoutsData)
+            {
+                LoadoutNameList.Add(Path.GetFileNameWithoutExtension(lo.Filename));
+            }
+            BindingList<string> LootDropOnDeathNameList = new BindingList<string>
+            {
+                ""
+            };
+            foreach (AILootDrops AILootDrops in AILoadoutsConfig.AILootDropsData)
+            {
+                LootDropOnDeathNameList.Add(Path.GetFileNameWithoutExtension(AILootDrops.Name));
+            }
+
+            expansionQuestAISpawnControlAICamp.LoadoutList = LoadoutNameList;
+            expansionQuestAISpawnControlAICamp.AILootDropsList = LootDropOnDeathNameList;
             expansionQuestAISpawnControlAICamp.setuplists();
 
             ObjectivesAIVIPNPCLoadoutFileCB.DisplayMember = "DisplayName";
             ObjectivesAIVIPNPCLoadoutFileCB.ValueMember = "Value";
-            ObjectivesAIVIPNPCLoadoutFileCB.DataSource = LoadoutList;
+            ObjectivesAIVIPNPCLoadoutFileCB.DataSource = LoadoutNameList;
 
 
-            expansionQuestAISpawnControlAIPatrol.LoadoutList = LoadoutList;
+            expansionQuestAISpawnControlAIPatrol.LoadoutList = LoadoutNameList;
+            expansionQuestAISpawnControlAIPatrol.AILootDropsList = LootDropOnDeathNameList;
             expansionQuestAISpawnControlAIPatrol.setuplists();
 
             QuestsSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings\\QuestSettings.json";
@@ -4569,6 +4609,7 @@ namespace DayZeEditor
         /// </summary>
         public Vec3 CurrentWapypoint { get; private set; }
 
+
         private void SetupobjectiveTreasueHunt(TreeNodeMouseClickEventArgs e)
         {
             useraction = false;
@@ -4806,6 +4847,8 @@ namespace DayZeEditor
         #region Persistant Player Data
         public ExpansionQuestPersistentQuestData currentExpansionQuestPersistentQuestData;
         public ExpansionQuestObjectiveData currentExpansionQuestObjectiveData;
+        private string LootDropOnDeathListPath;
+
         private void setupplayerdata()
         {
             useraction = false;

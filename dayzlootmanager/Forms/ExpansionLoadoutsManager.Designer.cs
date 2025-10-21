@@ -62,10 +62,6 @@ namespace DayZeEditor
             this.ItemAttachmentSlotNameCB = new System.Windows.Forms.ComboBox();
             this.darkLabel9 = new DarkUI.Controls.DarkLabel();
             this.treeViewMS1 = new TreeViewMS.TreeViewMS();
-            this.darkButton15 = new DarkUI.Controls.DarkButton();
-            this.darkButton16 = new DarkUI.Controls.DarkButton();
-            this.darkLabel5 = new DarkUI.Controls.DarkLabel();
-            this.loadoutsLB = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AddNewAttachmentItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RemoveAttachemtItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,6 +71,10 @@ namespace DayZeEditor
             this.RemoveSetItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewLoadoutFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeLoadoutFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewLootDropFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RemoveLootDropFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.darkLabel2 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
@@ -516,61 +516,14 @@ namespace DayZeEditor
             this.treeViewMS1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.treeViewMS1.ForeColor = System.Drawing.SystemColors.Control;
             this.treeViewMS1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.treeViewMS1.Location = new System.Drawing.Point(242, 65);
+            this.treeViewMS1.Location = new System.Drawing.Point(12, 65);
             this.treeViewMS1.Name = "treeViewMS1";
             this.treeViewMS1.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS1.SelectedNodes")));
             this.treeViewMS1.SetMultiselect = true;
-            this.treeViewMS1.Size = new System.Drawing.Size(321, 437);
+            this.treeViewMS1.Size = new System.Drawing.Size(551, 437);
             this.treeViewMS1.TabIndex = 212;
             this.treeViewMS1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMS1_AfterSelect);
             this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS1_NodeMouseClick);
-            // 
-            // darkButton15
-            // 
-            this.darkButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton15.Location = new System.Drawing.Point(12, 479);
-            this.darkButton15.Name = "darkButton15";
-            this.darkButton15.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton15.Size = new System.Drawing.Size(110, 23);
-            this.darkButton15.TabIndex = 211;
-            this.darkButton15.Text = "Add";
-            this.darkButton15.Click += new System.EventHandler(this.darkButton15_Click);
-            // 
-            // darkButton16
-            // 
-            this.darkButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton16.Location = new System.Drawing.Point(132, 479);
-            this.darkButton16.Name = "darkButton16";
-            this.darkButton16.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton16.Size = new System.Drawing.Size(104, 23);
-            this.darkButton16.TabIndex = 210;
-            this.darkButton16.Text = "Remove";
-            this.darkButton16.Click += new System.EventHandler(this.darkButton16_Click);
-            // 
-            // darkLabel5
-            // 
-            this.darkLabel5.AutoSize = true;
-            this.darkLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel5.Location = new System.Drawing.Point(12, 49);
-            this.darkLabel5.Name = "darkLabel5";
-            this.darkLabel5.Size = new System.Drawing.Size(51, 13);
-            this.darkLabel5.TabIndex = 209;
-            this.darkLabel5.Text = "Loadouts";
-            // 
-            // loadoutsLB
-            // 
-            this.loadoutsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.loadoutsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.loadoutsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.loadoutsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.loadoutsLB.FormattingEnabled = true;
-            this.loadoutsLB.Location = new System.Drawing.Point(12, 65);
-            this.loadoutsLB.Name = "loadoutsLB";
-            this.loadoutsLB.Size = new System.Drawing.Size(224, 407);
-            this.loadoutsLB.TabIndex = 208;
-            this.loadoutsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.loadoutsLB.SelectedIndexChanged += new System.EventHandler(this.loadoutsLB_SelectedIndexChanged);
             // 
             // contextMenuStrip1
             // 
@@ -582,9 +535,13 @@ namespace DayZeEditor
             this.AddNewSetItemToolStripMenuItem,
             this.RemoveSetItemToolStripMenuItem,
             this.addNewItemToolStripMenuItem,
-            this.removeItemToolStripMenuItem});
+            this.removeItemToolStripMenuItem,
+            this.addNewLoadoutFileToolStripMenuItem,
+            this.removeLoadoutFileToolStripMenuItem,
+            this.addNewLootDropFileToolStripMenuItem,
+            this.RemoveLootDropFileToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(217, 180);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(217, 268);
             // 
             // AddNewAttachmentItemToolStripMenuItem
             // 
@@ -642,11 +599,39 @@ namespace DayZeEditor
             this.removeItemToolStripMenuItem.Text = "Remove item";
             this.removeItemToolStripMenuItem.Click += new System.EventHandler(this.removeItemToolStripMenuItem_Click);
             // 
+            // addNewLoadoutFileToolStripMenuItem
+            // 
+            this.addNewLoadoutFileToolStripMenuItem.Name = "addNewLoadoutFileToolStripMenuItem";
+            this.addNewLoadoutFileToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.addNewLoadoutFileToolStripMenuItem.Text = "Add New Loadout File";
+            this.addNewLoadoutFileToolStripMenuItem.Click += new System.EventHandler(this.addNewLoadoutFileToolStripMenuItem_Click);
+            // 
+            // removeLoadoutFileToolStripMenuItem
+            // 
+            this.removeLoadoutFileToolStripMenuItem.Name = "removeLoadoutFileToolStripMenuItem";
+            this.removeLoadoutFileToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.removeLoadoutFileToolStripMenuItem.Text = "Remove Loadout File";
+            this.removeLoadoutFileToolStripMenuItem.Click += new System.EventHandler(this.removeLoadoutFileToolStripMenuItem_Click);
+            // 
+            // addNewLootDropFileToolStripMenuItem
+            // 
+            this.addNewLootDropFileToolStripMenuItem.Name = "addNewLootDropFileToolStripMenuItem";
+            this.addNewLootDropFileToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.addNewLootDropFileToolStripMenuItem.Text = "Add New LootDrop File";
+            this.addNewLootDropFileToolStripMenuItem.Click += new System.EventHandler(this.addNewLootDropFileToolStripMenuItem_Click);
+            // 
+            // RemoveLootDropFileToolStripMenuItem
+            // 
+            this.RemoveLootDropFileToolStripMenuItem.Name = "RemoveLootDropFileToolStripMenuItem";
+            this.RemoveLootDropFileToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.RemoveLootDropFileToolStripMenuItem.Text = "Remove LootDrop File";
+            this.RemoveLootDropFileToolStripMenuItem.Click += new System.EventHandler(this.RemoveLootDropFileToolStripMenuItem_Click);
+            // 
             // darkLabel1
             // 
             this.darkLabel1.AutoSize = true;
             this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(242, 49);
+            this.darkLabel1.Location = new System.Drawing.Point(12, 49);
             this.darkLabel1.Name = "darkLabel1";
             this.darkLabel1.Size = new System.Drawing.Size(43, 13);
             this.darkLabel1.TabIndex = 215;
@@ -657,7 +642,7 @@ namespace DayZeEditor
             // 
             this.darkLabel2.AutoSize = true;
             this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel2.Location = new System.Drawing.Point(288, 49);
+            this.darkLabel2.Location = new System.Drawing.Point(61, 49);
             this.darkLabel2.Name = "darkLabel2";
             this.darkLabel2.Size = new System.Drawing.Size(61, 13);
             this.darkLabel2.TabIndex = 216;
@@ -672,13 +657,9 @@ namespace DayZeEditor
             this.Controls.Add(this.darkLabel2);
             this.Controls.Add(this.darkLabel1);
             this.Controls.Add(this.treeViewMS1);
-            this.Controls.Add(this.darkButton15);
-            this.Controls.Add(this.darkButton16);
-            this.Controls.Add(this.darkLabel5);
-            this.Controls.Add(this.loadoutsLB);
             this.Controls.Add(this.darkToolStrip21);
-            this.Controls.Add(this.InventoryattchemntGB);
             this.Controls.Add(this.LoadOutGB);
+            this.Controls.Add(this.InventoryattchemntGB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ExpansionLoadoutsManager";
             this.Text = "ExpansionLoadoutsManager";
@@ -740,10 +721,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ComboBox ItemAttachmentSlotNameCB;
         private DarkUI.Controls.DarkLabel darkLabel9;
         private TreeViewMS.TreeViewMS treeViewMS1;
-        private DarkUI.Controls.DarkButton darkButton15;
-        private DarkUI.Controls.DarkButton darkButton16;
-        private DarkUI.Controls.DarkLabel darkLabel5;
-        private System.Windows.Forms.ListBox loadoutsLB;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem AddNewAttachmentItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem RemoveAttachemtItemToolStripMenuItem;
@@ -756,5 +733,9 @@ namespace DayZeEditor
         private System.Windows.Forms.GroupBox groupBox1;
         private DarkUI.Controls.DarkLabel darkLabel1;
         private DarkUI.Controls.DarkLabel darkLabel2;
+        private System.Windows.Forms.ToolStripMenuItem addNewLoadoutFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeLoadoutFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewLootDropFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem RemoveLootDropFileToolStripMenuItem;
     }
 }

@@ -274,10 +274,10 @@ namespace DayZeEditor
             this.SafezoneCB = new System.Windows.Forms.CheckBox();
             this.VehicleCarKeyCB = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.EnableInventoryCargoTidyCB = new System.Windows.Forms.CheckBox();
+            this.FixCELifetimeCB = new System.Windows.Forms.CheckBox();
             this.darkLabel215 = new DarkUI.Controls.DarkLabel();
             this.ServerUpdateRateLimitNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel216 = new DarkUI.Controls.DarkLabel();
-            this.DebugVehiclePlayerNetworkBubbleModeNUD = new System.Windows.Forms.NumericUpDown();
             this.AirdropSettingsTabPage = new System.Windows.Forms.TabPage();
             this.darkLabel300 = new DarkUI.Controls.DarkLabel();
             this.checkBox11 = new System.Windows.Forms.CheckBox();
@@ -1434,7 +1434,6 @@ namespace DayZeEditor
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ServerUpdateRateLimitNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DebugVehiclePlayerNetworkBubbleModeNUD)).BeginInit();
             this.AirdropSettingsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown31)).BeginInit();
@@ -4905,23 +4904,49 @@ namespace DayZeEditor
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.EnableInventoryCargoTidyCB);
+            this.groupBox7.Controls.Add(this.FixCELifetimeCB);
             this.groupBox7.Controls.Add(this.darkLabel215);
             this.groupBox7.Controls.Add(this.ServerUpdateRateLimitNUD);
-            this.groupBox7.Controls.Add(this.darkLabel216);
-            this.groupBox7.Controls.Add(this.DebugVehiclePlayerNetworkBubbleModeNUD);
             this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox7.Location = new System.Drawing.Point(8, 13);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(301, 99);
             this.groupBox7.TabIndex = 0;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Debug";
+            this.groupBox7.Text = "Core";
+            // 
+            // EnableInventoryCargoTidyCB
+            // 
+            this.EnableInventoryCargoTidyCB.AutoSize = true;
+            this.EnableInventoryCargoTidyCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EnableInventoryCargoTidyCB.Location = new System.Drawing.Point(6, 68);
+            this.EnableInventoryCargoTidyCB.Name = "EnableInventoryCargoTidyCB";
+            this.EnableInventoryCargoTidyCB.Size = new System.Drawing.Size(160, 17);
+            this.EnableInventoryCargoTidyCB.TabIndex = 41;
+            this.EnableInventoryCargoTidyCB.Text = "Enable Inventory Cargo Tidy";
+            this.EnableInventoryCargoTidyCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EnableInventoryCargoTidyCB.UseVisualStyleBackColor = true;
+            this.EnableInventoryCargoTidyCB.CheckedChanged += new System.EventHandler(this.checkBox13_CheckedChanged);
+            // 
+            // FixCELifetimeCB
+            // 
+            this.FixCELifetimeCB.AutoSize = true;
+            this.FixCELifetimeCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.FixCELifetimeCB.Location = new System.Drawing.Point(6, 45);
+            this.FixCELifetimeCB.Name = "FixCELifetimeCB";
+            this.FixCELifetimeCB.Size = new System.Drawing.Size(100, 17);
+            this.FixCELifetimeCB.TabIndex = 40;
+            this.FixCELifetimeCB.Text = "Fix CE Lifetimes";
+            this.FixCELifetimeCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.FixCELifetimeCB.UseVisualStyleBackColor = true;
+            this.FixCELifetimeCB.CheckedChanged += new System.EventHandler(this.FixCELifetimeCB_CheckedChanged);
             // 
             // darkLabel215
             // 
             this.darkLabel215.AutoSize = true;
             this.darkLabel215.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel215.Location = new System.Drawing.Point(78, 55);
+            this.darkLabel215.Location = new System.Drawing.Point(78, 23);
             this.darkLabel215.Name = "darkLabel215";
             this.darkLabel215.Size = new System.Drawing.Size(126, 13);
             this.darkLabel215.TabIndex = 39;
@@ -4931,7 +4956,7 @@ namespace DayZeEditor
             // 
             this.ServerUpdateRateLimitNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ServerUpdateRateLimitNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ServerUpdateRateLimitNUD.Location = new System.Drawing.Point(7, 51);
+            this.ServerUpdateRateLimitNUD.Location = new System.Drawing.Point(7, 19);
             this.ServerUpdateRateLimitNUD.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -4942,32 +4967,6 @@ namespace DayZeEditor
             this.ServerUpdateRateLimitNUD.TabIndex = 1;
             this.ServerUpdateRateLimitNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ServerUpdateRateLimitNUD.ValueChanged += new System.EventHandler(this.ServerUpdateRateLimitNUD_ValueChanged);
-            // 
-            // darkLabel216
-            // 
-            this.darkLabel216.AutoSize = true;
-            this.darkLabel216.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel216.Location = new System.Drawing.Point(78, 29);
-            this.darkLabel216.Name = "darkLabel216";
-            this.darkLabel216.Size = new System.Drawing.Size(218, 13);
-            this.darkLabel216.TabIndex = 37;
-            this.darkLabel216.Text = "Debug Vehicle Player Network Bubble Mode";
-            // 
-            // DebugVehiclePlayerNetworkBubbleModeNUD
-            // 
-            this.DebugVehiclePlayerNetworkBubbleModeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DebugVehiclePlayerNetworkBubbleModeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DebugVehiclePlayerNetworkBubbleModeNUD.Location = new System.Drawing.Point(7, 25);
-            this.DebugVehiclePlayerNetworkBubbleModeNUD.Maximum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.DebugVehiclePlayerNetworkBubbleModeNUD.Name = "DebugVehiclePlayerNetworkBubbleModeNUD";
-            this.DebugVehiclePlayerNetworkBubbleModeNUD.Size = new System.Drawing.Size(65, 20);
-            this.DebugVehiclePlayerNetworkBubbleModeNUD.TabIndex = 0;
-            this.DebugVehiclePlayerNetworkBubbleModeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DebugVehiclePlayerNetworkBubbleModeNUD.ValueChanged += new System.EventHandler(this.DebugVehiclePlayerNetworkBubbleModeNUD_ValueChanged);
             // 
             // AirdropSettingsTabPage
             // 
@@ -19582,7 +19581,6 @@ namespace DayZeEditor
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ServerUpdateRateLimitNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DebugVehiclePlayerNetworkBubbleModeNUD)).EndInit();
             this.AirdropSettingsTabPage.ResumeLayout(false);
             this.AirdropSettingsTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown33)).EndInit();
@@ -21082,8 +21080,6 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox ShowHUDMemberDistanceCB;
         private DarkUI.Controls.DarkLabel darkLabel215;
         private System.Windows.Forms.NumericUpDown ServerUpdateRateLimitNUD;
-        private DarkUI.Controls.DarkLabel darkLabel216;
-        private System.Windows.Forms.NumericUpDown DebugVehiclePlayerNetworkBubbleModeNUD;
         private System.Windows.Forms.CheckBox ShowPlayerFactionCB;
         private System.Windows.Forms.CheckBox EnableFactionPersistenceCB;
         private System.Windows.Forms.CheckBox UseFactionReputationCB;
@@ -21355,5 +21351,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ComboBox LampSelectionModeCB;
         private DarkUI.Controls.DarkLabel darkLabel301;
         private System.Windows.Forms.NumericUpDown numericUpDown34;
+        private System.Windows.Forms.CheckBox EnableInventoryCargoTidyCB;
+        private System.Windows.Forms.CheckBox FixCELifetimeCB;
     }
 }

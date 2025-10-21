@@ -198,9 +198,16 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(l.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+
                     Craftcomponent newitem = new Craftcomponent()
                     {
-                        Classname = l,
+                        Classname = cleanName,
                         Amount = 1,
                         Destroy = 1,
                         Changehealth = 0
@@ -363,7 +370,13 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    CIresultTB.Text = l;
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(l.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+                    CIresultTB.Text = cleanName;
                 }
             }
             else if (result == DialogResult.Cancel)
@@ -386,7 +399,14 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    CICPClassnameTB.Text = l;
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(l.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+
+                    CICPClassnameTB.Text = cleanName;
                 }
             }
             else if (result == DialogResult.Cancel)

@@ -395,7 +395,8 @@ namespace DayZeEditor
             this.ExpansionLoadoutManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ExpansionLoadoutManagerButton.Name = "ExpansionLoadoutManagerButton";
             this.ExpansionLoadoutManagerButton.Size = new System.Drawing.Size(147, 19);
-            this.ExpansionLoadoutManagerButton.Text = "Expansion Loadouts";
+            this.ExpansionLoadoutManagerButton.Text = "Exp Loadouts/Lootdrop";
+            this.ExpansionLoadoutManagerButton.ToolTipText = "Expansion\r\nLoadouts/Lootdrop";
             this.ExpansionLoadoutManagerButton.Visible = false;
             this.ExpansionLoadoutManagerButton.Click += new System.EventHandler(this.ExpansionLoadoutManagerButton_Click);
             // 
@@ -586,7 +587,7 @@ namespace DayZeEditor
             this.AirdropUpgradedManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("AirdropUpgradedManagerButton.Image")));
             this.AirdropUpgradedManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AirdropUpgradedManagerButton.Name = "AirdropUpgradedManagerButton";
-            this.AirdropUpgradedManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.AirdropUpgradedManagerButton.Size = new System.Drawing.Size(105, 19);
             this.AirdropUpgradedManagerButton.Text = "Airdrop upgraded";
             this.AirdropUpgradedManagerButton.Visible = false;
             this.AirdropUpgradedManagerButton.Click += new System.EventHandler(this.AirdropUpgradedManagerButton_Click);
@@ -598,7 +599,7 @@ namespace DayZeEditor
             this.UtopiaAirdropButton.Image = ((System.Drawing.Image)(resources.GetObject("UtopiaAirdropButton.Image")));
             this.UtopiaAirdropButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.UtopiaAirdropButton.Name = "UtopiaAirdropButton";
-            this.UtopiaAirdropButton.Size = new System.Drawing.Size(147, 19);
+            this.UtopiaAirdropButton.Size = new System.Drawing.Size(115, 19);
             this.UtopiaAirdropButton.Text = "Utopia AD Manager";
             this.UtopiaAirdropButton.Visible = false;
             this.UtopiaAirdropButton.Click += new System.EventHandler(this.UtopiaAirdropButton_Click);
@@ -610,7 +611,7 @@ namespace DayZeEditor
             this.WorkBenchReduxButton.Image = ((System.Drawing.Image)(resources.GetObject("WorkBenchReduxButton.Image")));
             this.WorkBenchReduxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.WorkBenchReduxButton.Name = "WorkBenchReduxButton";
-            this.WorkBenchReduxButton.Size = new System.Drawing.Size(147, 19);
+            this.WorkBenchReduxButton.Size = new System.Drawing.Size(107, 19);
             this.WorkBenchReduxButton.Text = "WorkBench Redux";
             this.WorkBenchReduxButton.Visible = false;
             this.WorkBenchReduxButton.Click += new System.EventHandler(this.WorkBenchReduxButton_Click);
@@ -622,7 +623,7 @@ namespace DayZeEditor
             this.RAGTysonBBManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("RAGTysonBBManagerButton.Image")));
             this.RAGTysonBBManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RAGTysonBBManagerButton.Name = "RAGTysonBBManagerButton";
-            this.RAGTysonBBManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.RAGTysonBBManagerButton.Size = new System.Drawing.Size(85, 19);
             this.RAGTysonBBManagerButton.Text = "RAG Tyson BB";
             this.RAGTysonBBManagerButton.Visible = false;
             this.RAGTysonBBManagerButton.Click += new System.EventHandler(this.RAGTysonBBManagerButton_Click);
@@ -634,7 +635,7 @@ namespace DayZeEditor
             this.PVZCZManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("PVZCZManagerButton.Image")));
             this.PVZCZManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PVZCZManagerButton.Name = "PVZCZManagerButton";
-            this.PVZCZManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.PVZCZManagerButton.Size = new System.Drawing.Size(65, 19);
             this.PVZCZManagerButton.Text = "PVZ Mods";
             this.PVZCZManagerButton.Visible = false;
             this.PVZCZManagerButton.Click += new System.EventHandler(this.PVZCZManagerButton_Click);
@@ -646,7 +647,7 @@ namespace DayZeEditor
             this.BBPManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("BBPManagerButton.Image")));
             this.BBPManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BBPManagerButton.Name = "BBPManagerButton";
-            this.BBPManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.BBPManagerButton.Size = new System.Drawing.Size(107, 19);
             this.BBPManagerButton.Text = "Base Building Plus";
             this.BBPManagerButton.Visible = false;
             this.BBPManagerButton.Click += new System.EventHandler(this.BBPManagerButton_Click);
@@ -658,7 +659,7 @@ namespace DayZeEditor
             this.AbandonedVehicleRemoverManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("AbandonedVehicleRemoverManagerButton.Image")));
             this.AbandonedVehicleRemoverManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AbandonedVehicleRemoverManagerButton.Name = "AbandonedVehicleRemoverManagerButton";
-            this.AbandonedVehicleRemoverManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.AbandonedVehicleRemoverManagerButton.Size = new System.Drawing.Size(98, 19);
             this.AbandonedVehicleRemoverManagerButton.Text = "Vehicle Remover";
             this.AbandonedVehicleRemoverManagerButton.Visible = false;
             this.AbandonedVehicleRemoverManagerButton.Click += new System.EventHandler(this.AbandonedVehicleRemoverManagerButton_Click);
@@ -670,7 +671,7 @@ namespace DayZeEditor
             this.KillRewardManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("KillRewardManagerButton.Image")));
             this.KillRewardManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.KillRewardManagerButton.Name = "KillRewardManagerButton";
-            this.KillRewardManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.KillRewardManagerButton.Size = new System.Drawing.Size(119, 19);
             this.KillRewardManagerButton.Text = "Kill Reward Manager";
             this.KillRewardManagerButton.Visible = false;
             this.KillRewardManagerButton.Click += new System.EventHandler(this.KillRewardManagerButton_Click);
@@ -682,7 +683,7 @@ namespace DayZeEditor
             this.BreachingChargeManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("BreachingChargeManagerButton.Image")));
             this.BreachingChargeManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BreachingChargeManagerButton.Name = "BreachingChargeManagerButton";
-            this.BreachingChargeManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.BreachingChargeManagerButton.Size = new System.Drawing.Size(105, 19);
             this.BreachingChargeManagerButton.Text = "Breaching Charge";
             this.BreachingChargeManagerButton.Visible = false;
             this.BreachingChargeManagerButton.Click += new System.EventHandler(this.BreachingChargeManagerButton_Click);
@@ -694,7 +695,7 @@ namespace DayZeEditor
             this.KOSzoneManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("KOSzoneManagerButton.Image")));
             this.KOSzoneManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.KOSzoneManagerButton.Name = "KOSzoneManagerButton";
-            this.KOSzoneManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.KOSzoneManagerButton.Size = new System.Drawing.Size(81, 19);
             this.KOSzoneManagerButton.Text = "RH KOS Zone";
             this.KOSzoneManagerButton.Visible = false;
             this.KOSzoneManagerButton.Click += new System.EventHandler(this.KOSzoneManagerButton_Click);
@@ -706,7 +707,7 @@ namespace DayZeEditor
             this.MysteryBoxButton.Image = ((System.Drawing.Image)(resources.GetObject("MysteryBoxButton.Image")));
             this.MysteryBoxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MysteryBoxButton.Name = "MysteryBoxButton";
-            this.MysteryBoxButton.Size = new System.Drawing.Size(147, 19);
+            this.MysteryBoxButton.Size = new System.Drawing.Size(75, 19);
             this.MysteryBoxButton.Text = "Mystery Box";
             this.MysteryBoxButton.Visible = false;
             this.MysteryBoxButton.Click += new System.EventHandler(this.MysteryBoxButton_Click);
@@ -718,7 +719,7 @@ namespace DayZeEditor
             this.AdvancedWorkbenchButton.Image = ((System.Drawing.Image)(resources.GetObject("AdvancedWorkbenchButton.Image")));
             this.AdvancedWorkbenchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AdvancedWorkbenchButton.Name = "AdvancedWorkbenchButton";
-            this.AdvancedWorkbenchButton.Size = new System.Drawing.Size(147, 19);
+            this.AdvancedWorkbenchButton.Size = new System.Drawing.Size(89, 19);
             this.AdvancedWorkbenchButton.Text = "BP Workbench";
             this.AdvancedWorkbenchButton.Visible = false;
             this.AdvancedWorkbenchButton.Click += new System.EventHandler(this.AdvancedWB_Click);
@@ -730,7 +731,7 @@ namespace DayZeEditor
             this.DNAKeyCardsButton.Image = ((System.Drawing.Image)(resources.GetObject("DNAKeyCardsButton.Image")));
             this.DNAKeyCardsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DNAKeyCardsButton.Name = "DNAKeyCardsButton";
-            this.DNAKeyCardsButton.Size = new System.Drawing.Size(147, 19);
+            this.DNAKeyCardsButton.Size = new System.Drawing.Size(88, 19);
             this.DNAKeyCardsButton.Text = "DNA KeyCards";
             this.DNAKeyCardsButton.Visible = false;
             // 
@@ -741,7 +742,7 @@ namespace DayZeEditor
             this.PlayerDBButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerDBButton.Image")));
             this.PlayerDBButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerDBButton.Name = "PlayerDBButton";
-            this.PlayerDBButton.Size = new System.Drawing.Size(147, 19);
+            this.PlayerDBButton.Size = new System.Drawing.Size(111, 19);
             this.PlayerDBButton.Text = "Player DB Manager";
             this.PlayerDBButton.Click += new System.EventHandler(this.PlayerDBButton_Click);
             // 
@@ -752,7 +753,7 @@ namespace DayZeEditor
             this.MapOutputtoXYZButton.Image = ((System.Drawing.Image)(resources.GetObject("MapOutputtoXYZButton.Image")));
             this.MapOutputtoXYZButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MapOutputtoXYZButton.Name = "MapOutputtoXYZButton";
-            this.MapOutputtoXYZButton.Size = new System.Drawing.Size(147, 19);
+            this.MapOutputtoXYZButton.Size = new System.Drawing.Size(111, 19);
             this.MapOutputtoXYZButton.Text = "MapOutput to XYZ";
             this.MapOutputtoXYZButton.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -763,7 +764,7 @@ namespace DayZeEditor
             this.DzetoObjectSpawnerButton.Image = ((System.Drawing.Image)(resources.GetObject("DzetoObjectSpawnerButton.Image")));
             this.DzetoObjectSpawnerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DzetoObjectSpawnerButton.Name = "DzetoObjectSpawnerButton";
-            this.DzetoObjectSpawnerButton.Size = new System.Drawing.Size(147, 19);
+            this.DzetoObjectSpawnerButton.Size = new System.Drawing.Size(127, 19);
             this.DzetoObjectSpawnerButton.Text = "Dze to ObjectSpawner";
             this.DzetoObjectSpawnerButton.Click += new System.EventHandler(this.toolStripButton1_Click_1);
             // 
@@ -774,7 +775,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(147, 19);
+            this.toolStripButton2.Size = new System.Drawing.Size(100, 19);
             this.toolStripButton2.Text = "Image Convertor";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click_1);
             // 

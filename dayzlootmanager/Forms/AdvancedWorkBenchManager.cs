@@ -127,12 +127,19 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(l.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+
                     Craftitem newitem = new Craftitem()
                     {
-                        Result = l,
+                        Result = cleanName,
                         ResultCount = 1,
                         CraftType = "craft",
-                        RecipeName = "Craft " + l,
+                        RecipeName = "Craft " + cleanName,
                         CraftComponents = new BindingList<Craftcomponent>(),
                         AttachmentsNeed = new BindingList<string>()
                     };

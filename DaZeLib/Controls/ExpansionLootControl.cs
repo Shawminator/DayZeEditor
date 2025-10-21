@@ -314,9 +314,16 @@ namespace DayZeLib
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(l.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+
                     ExpansionLoot Newloot = new ExpansionLoot()
                     {
-                        Name = l,
+                        Name = cleanName,
                         Attachments = new BindingList<ExpansionLootVariant>(),
                         Chance = (decimal)0.5,
                         Max = -1,
@@ -350,7 +357,14 @@ namespace DayZeLib
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    ExpansionLootVariant Newloot = new ExpansionLootVariant(l);
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(l.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+
+                    ExpansionLootVariant Newloot = new ExpansionLootVariant(cleanName);
                     ExpansionLoot loot = ExpansionLootTV.SelectedNode.Parent.Tag as ExpansionLoot;
                     loot.Variants.Add(Newloot);
                     TreeNode tn = getLootVarients(Newloot);
@@ -388,9 +402,16 @@ namespace DayZeLib
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(l.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+
                     if (ExpansionLootTV.SelectedNode.Parent.Tag is ExpansionLoot)
                     {
-                        ExpansionLootVariant Newloot = new ExpansionLootVariant(l);
+                        ExpansionLootVariant Newloot = new ExpansionLootVariant(cleanName);
                         ExpansionLoot loot = ExpansionLootTV.SelectedNode.Parent.Tag as ExpansionLoot;
                         loot.Attachments.Add(Newloot);
                         TreeNode tn = getLootVarients(Newloot);
@@ -399,7 +420,7 @@ namespace DayZeLib
                     }
                     else if (ExpansionLootTV.SelectedNode.Parent.Tag is ExpansionLootVariant)
                     {
-                        ExpansionLootVariant Newloot = new ExpansionLootVariant(l);
+                        ExpansionLootVariant Newloot = new ExpansionLootVariant(cleanName);
                         ExpansionLootVariant loot = ExpansionLootTV.SelectedNode.Parent.Tag as ExpansionLootVariant;
                         loot.Attachments.Add(Newloot);
                         TreeNode tn = getLootVarients(Newloot);

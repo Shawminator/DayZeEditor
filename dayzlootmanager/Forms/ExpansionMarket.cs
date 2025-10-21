@@ -202,7 +202,9 @@ namespace DayZeEditor
                     NoZoneTraders.Add(tm);
             }
 
+            
 
+            
 
             Console.WriteLine("Setting Market Setting Variables");
             Loadsettings();
@@ -233,9 +235,64 @@ namespace DayZeEditor
             trackBar1.Value = 1;
             SetNPCScale();
 
+            Console.WriteLine("Checking some stuff");
+            CheckStuff();
+
             if (needtosave)
             {
                 saveMarketfiles();
+            }
+        }
+        private void CheckStuff()
+        {
+            foreach (Categories cat in MarketCats.CatList)
+            {
+                foreach (marketItem item in cat.Items)
+                {
+                    for (int i = 0; i < item.Variants.Count; i++)
+                    {
+                        if (item.ClassName == item.Variants[i])
+                        {
+                            MessageBox.Show(Path.GetFileName(cat.Filename) + Environment.NewLine + item.ClassName + " Lists itself as a varient." + Environment.NewLine + "Please fix......");
+                            Console.WriteLine("\t" + Path.GetFileName(cat.Filename) + Environment.NewLine + "\t" + item.ClassName + " Lists itself as a varient." + Environment.NewLine + "\t" + "Please fix......" + Environment.NewLine);
+                        }
+                    }
+                    if (item.Variants.Count > 0)
+                    {
+                        //need to check if this item is a varient elsewhere
+                        foreach (marketItem parentitem in cat.Items)
+                        {
+                            foreach (string var in parentitem.Variants)
+                            {
+                                if (var.ToLower() == item.ClassName.ToLower())
+                                {
+                                    MessageBox.Show(Path.GetFileName(cat.Filename) + Environment.NewLine + item.ClassName + " lists own variants but is a variant of " + parentitem.ClassName.ToLower() + Environment.NewLine + "Please fix......");
+                                    Console.WriteLine("\t" + Path.GetFileName(cat.Filename) + Environment.NewLine + "\t" + item.ClassName + " lists own variants but is a variant of " + parentitem.ClassName.ToLower() + Environment.NewLine + "\t" + "Please fix......" + Environment.NewLine);
+                                }
+                            }
+
+                        }
+                    }
+                    for (int j = 0; j < item.SpawnAttachments.Count; j++)
+                    {
+                        string catname = MarketCats.GetCatNameFromItemName(item.SpawnAttachments[j]);
+                        if (catname == null)
+                        {
+                            MessageBox.Show(Path.GetFileName(cat.Filename) + Environment.NewLine + item.SpawnAttachments[j] + " on " + item.ClassName + " does not exist in market" + Environment.NewLine + "Please fix......");
+                            Console.WriteLine("\t" + Path.GetFileName(cat.Filename) + Environment.NewLine + "\t" + item.SpawnAttachments[j] + " on " + item.ClassName + " does not exist in market" + Environment.NewLine + "\t" + "Please fix......" + Environment.NewLine);
+                        }
+                    }
+                    if (item.MaxPriceThreshold < item.MinPriceThreshold)
+                    {
+                        MessageBox.Show(Path.GetFileName(cat.Filename) + Environment.NewLine + item.ClassName + " Has a max price lower than the min price." + Environment.NewLine + "Please fix......");
+                        Console.WriteLine("\t" + Path.GetFileName(cat.Filename) + Environment.NewLine + item.ClassName + " Has a max price lower than the min price." + Environment.NewLine + "\t" + "Please fix......" + Environment.NewLine);
+                    }
+                    if (item.MaxStockThreshold < item.MinStockThreshold)
+                    {
+                        MessageBox.Show(Path.GetFileName(cat.Filename) + Environment.NewLine + item.ClassName + " Has a max stock lower than the min Stock." + Environment.NewLine + "Please fix......");
+                        Console.WriteLine("\t" + Path.GetFileName(cat.Filename) + Environment.NewLine + "\t" + item.ClassName + " Has a max stock lower than the min Stock." + Environment.NewLine + "\t" + "Please fix......" + Environment.NewLine);
+                    }
+                }
             }
         }
         private void SetupListBoxes()
@@ -1516,9 +1573,17 @@ namespace DayZeEditor
             if (result == DialogResult.OK)
             {
                 List<string> addedtypes = form.addedtypes.ToList();
+
                 foreach (string l in addedtypes)
                 {
-                    marketsettings.VehicleKeys.Add(l);
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(l.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+
+                    marketsettings.VehicleKeys.Add(cleanName);
                     marketsettings.isDirty = true;
                 }
             }
@@ -2319,14 +2384,21 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(l.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+
                     if (form.UseMultipleofSameItem)
                     {
-                        currentitem.SpawnAttachments.Add(l);
+                        currentitem.SpawnAttachments.Add(cleanName);
                         currentCat.isDirty = true;
                     }
-                    else if (!currentitem.SpawnAttachments.Contains(l))
+                    else if (!currentitem.SpawnAttachments.Contains(cleanName))
                     {
-                        currentitem.SpawnAttachments.Add(l);
+                        currentitem.SpawnAttachments.Add(cleanName);
                         currentCat.isDirty = true;
                     }
                 }
@@ -2379,9 +2451,16 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!currentitem.Variants.Contains(l))
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(l.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+
+                    if (!currentitem.Variants.Contains(cleanName))
                     {
-                        currentitem.Variants.Add(l);
+                        currentitem.Variants.Add(cleanName);
                         currentCat.isDirty = true;
                     }
                 }
@@ -2498,9 +2577,16 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
+                    // Trim and remove all whitespace characters
+                    string cleanName = new string(l.Where(c => !char.IsWhiteSpace(c)).ToArray());
+
+                    // Skip if empty after cleaning
+                    if (string.IsNullOrEmpty(cleanName))
+                        continue;
+
                     marketItem NewContainer = new marketItem
                     {
-                        ClassName = l,
+                        ClassName = cleanName,
                         MaxPriceThreshold = 0,
                         MinPriceThreshold = 0,
                         MaxStockThreshold = 0,
@@ -4080,29 +4166,33 @@ namespace DayZeEditor
         private void checkForItemsNotInTypesFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
+            List<string> missingclassnames = new List<string>();
             foreach (Categories cats in MarketCats.CatList)
             {
                 foreach (marketItem item in cats.Items)
                 {
-                    item.ClassName = currentproject.getcorrectclassamefromtypes(item.ClassName).ToLower();
-                    if (item.ClassName.ToLower().StartsWith("*** missing item type"))
+                    string missingClassname = currentproject.getcorrectclassamefromtypes(item.ClassName).ToLower();
+                    if (missingClassname.ToLower().StartsWith("*** missing item type"))
                     {
                         sb.Append(cats.DisplayName + " contains and item not in the types : " + item.ClassName + Environment.NewLine);
+                        missingclassnames.Add(item.ClassName);
                     }
                     if (item.Variants.Count > 0)
                     {
                         for (int i = 0; i < item.Variants.Count; i++)
                         {
-                            item.Variants[i] = currentproject.getcorrectclassamefromtypes(item.Variants[i]).ToLower();
-                            if (item.Variants[i].ToLower().StartsWith("*** missing item type"))
+                            string missingVarients = currentproject.getcorrectclassamefromtypes(item.Variants[i]).ToLower();
+                            if (missingVarients.ToLower().StartsWith("*** missing item type"))
                             {
                                 sb.Append(cats.DisplayName + " contains and item which has varients not in the types : " + item.ClassName + " : " + item.Variants[i] + Environment.NewLine);
+                                missingclassnames.Add(item.Variants[i]);
                             }
                         }
                     }
                 }
             }
             File.WriteAllText(currentproject.projectFullName + "//missing_market_types.txt", sb.ToString());
+            File.WriteAllLines(currentproject.projectFullName + "//missing_market_typesToPaste.txt", missingclassnames.ToArray());
         }
 
         private void ExpansionMarket_FormClosing(object sender, FormClosingEventArgs e)

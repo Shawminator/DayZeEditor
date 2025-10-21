@@ -29,9 +29,11 @@ namespace DayZeEditor
         public ExpansionAISettings AISettings { get; set; }
         public ExpansionAILocationSettings ExpansionAILocationSettings { get; set; }
         public ExpansionAIPatrolSettings AIPatrolSettings { get; set; }
-        public BindingList<AILoadouts> LoadoutList { get; private set; }
+        public AILoadoutsConfig AILoadoutsConfig { get; set; }
+       
         public BindingList<string> LoadoutNameList { get; private set; }
         public BindingList<string> LoadoutNameList2 { get; private set; }
+        public BindingList<string> LootDropOnDeathNameList { get; private set; }
         public BindingList<string> Factions { get; set; }
         public MapData MapData { get; private set; }
         public Spatial_Notifications m_Spatial_Notifications { get; set; }
@@ -39,6 +41,7 @@ namespace DayZeEditor
         public Spatial_Groups m_Spatial_Groups { get; set; }
         public string AISettingsPath;
         public string AILoadoutsPath;
+        public string LootDropOnDeathListPath;
         public string AIPatrolSettingsPath;
         public string AILocationsPath;
         public string AIDynamicSettingsPath;
@@ -92,7 +95,9 @@ namespace DayZeEditor
 
             bool needtosave = false;
 
-            LoadoutList = new BindingList<AILoadouts>();
+            AILoadoutsConfig = new AILoadoutsConfig();
+
+            AILoadoutsConfig.LoadoutsData = new BindingList<AILoadouts>();
             AILoadoutsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts";
             DirectoryInfo dinfo = new DirectoryInfo(AILoadoutsPath);
             FileInfo[] Files = dinfo.GetFiles("*.json");
@@ -105,7 +110,26 @@ namespace DayZeEditor
                     AILoadouts.Filename = file.FullName;
                     AILoadouts.Setname();
                     AILoadouts.isDirty = false;
-                    LoadoutList.Add(AILoadouts);
+                    AILoadoutsConfig.LoadoutsData.Add(AILoadouts);
+                }
+                catch { }
+            }
+
+            AILoadoutsConfig.AILootDropsData = new BindingList<AILootDrops>();
+            LootDropOnDeathListPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\AI\\LootDrops";
+            DirectoryInfo dinfo1 = new DirectoryInfo(LootDropOnDeathListPath);
+            FileInfo[] Files1 = dinfo1.GetFiles("*.json");
+            foreach (FileInfo file in Files1)
+            {
+                try
+                {
+                    Console.WriteLine("serializing " + Path.GetFileName(file.FullName));
+                    AILootDrops AILootDrops = new AILootDrops();
+                    AILootDrops.LootdropList = JsonSerializer.Deserialize<BindingList<AILoadouts>>(File.ReadAllText(file.FullName));
+                    AILootDrops.Filename = file.FullName;
+                    AILootDrops.Setname();
+                    AILootDrops.isDirty = false;
+                    AILoadoutsConfig.AILootDropsData.Add(AILootDrops);
                 }
                 catch { }
             }
@@ -310,7 +334,7 @@ namespace DayZeEditor
                 needtosave = true;
             }
 
-            foreach (AILoadouts AILO in LoadoutList)
+            foreach (AILootDrops AILO in AILoadoutsConfig.AILootDropsData)
             {
                 if (AILO.isDirty)
                 {
@@ -393,7 +417,7 @@ namespace DayZeEditor
                 midifiedfiles.Add(Path.GetFileName(AIPatrolSettings.Filename));
             }
 
-            foreach (AILoadouts AILO in LoadoutList)
+            foreach (AILoadouts AILO in AILoadoutsConfig.LoadoutsData)
             {
                 if (AILO.isDirty)
                 {
@@ -496,19 +520,35 @@ namespace DayZeEditor
         private void SetupLoadoutList()
         {
             useraction = false;
-            LoadoutNameList = new BindingList<string>();
-            foreach (AILoadouts lo in LoadoutList)
+            LoadoutNameList = new BindingList<string>
+            {
+                ""
+            };
+            foreach (AILoadouts lo in AILoadoutsConfig.LoadoutsData)
             {
                 LoadoutNameList.Add(Path.GetFileNameWithoutExtension(lo.Filename));
             }
+            LootDropOnDeathNameList = new BindingList<string>
+            {
+                ""
+            };
+            foreach (AILootDrops AILootDrops in AILoadoutsConfig.AILootDropsData)
+            {
+               LootDropOnDeathNameList.Add(Path.GetFileNameWithoutExtension(AILootDrops.Name));
+            }
+
             StaticPatrolLB.Refresh();
 
             StaticPatrolLoadoutsCB.DisplayMember = "DisplayName";
             StaticPatrolLoadoutsCB.ValueMember = "Value";
             StaticPatrolLoadoutsCB.DataSource = new BindingList<string>(LoadoutNameList);
 
+            StaticPatrolLootDropOnDeathCB.DisplayMember = "DisplayName";
+            StaticPatrolLootDropOnDeathCB.ValueMember = "Value";
+            StaticPatrolLootDropOnDeathCB.DataSource = new BindingList<string>(LootDropOnDeathNameList);
+
             LoadoutNameList2 = new BindingList<string>();
-            foreach (AILoadouts lo in LoadoutList)
+            foreach (AILoadouts lo in AILoadoutsConfig.LoadoutsData)
             {
                 LoadoutNameList2.Add(Path.GetFileName(lo.Filename));
             }
@@ -1032,6 +1072,7 @@ namespace DayZeEditor
             StaticPatrolFormationLoosenessNUD.Value = CurrentPatrol.FormationLooseness;
             StaticPatrolLoadBalancingCategoryCB.SelectedIndex = StaticPatrolLoadBalancingCategoryCB.FindStringExact(CurrentPatrol.LoadBalancingCategory);
             StaticPatrolWaypointInterpolationCB.SelectedIndex = StaticPatrolWaypointInterpolationCB.FindStringExact(CurrentPatrol.WaypointInterpolation);
+            StaticPatrolLootDropOnDeathCB.SelectedIndex = StaticPatrolLootDropOnDeathCB.FindStringExact(CurrentPatrol.LootDropOnDeath);
             StaticPatrolUseRandomWaypointAsStartPointCB.Checked = CurrentPatrol.UseRandomWaypointAsStartPoint == 1 ? true : false;
             StaticPatrolCanBeTriggeredByAICB.Checked = CurrentPatrol.CanBeTriggeredByAI == 1 ? true : false;
             StaticPatrolNoiseInvestigationDistanceLimitNUD.Value = CurrentPatrol.NoiseInvestigationDistanceLimit;
@@ -1198,6 +1239,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentPatrol.Loadout = StaticPatrolLoadoutsCB.GetItemText(StaticPatrolLoadoutsCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolLootDropOnDeathCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.LootDropOnDeath = StaticPatrolLootDropOnDeathCB.GetItemText(StaticPatrolLootDropOnDeathCB.SelectedItem);
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolNumberOfAINUD_ValueChanged(object sender, EventArgs e)
@@ -1989,6 +2036,7 @@ namespace DayZeEditor
             MannersCB.Checked = AISettings.Manners == 1 ? true : false;
             CanRecruitGuardsCB.Checked = AISettings.CanRecruitGuards == 1 ? true : false;
             CanRecruitFriendlyCB.Checked = AISettings.CanRecruitFriendly == 1 ? true : false;
+            MaxRecruitableAINUD.Value = AISettings.MaxRecruitableAI;
             LogAIHitByCB.Checked = AISettings.LogAIHitBy == 1 ? true : false;
             LogAIKilledCB.Checked = AISettings.LogAIKilled == 1 ? true : false;
 
@@ -2120,6 +2168,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             AISettings.CanRecruitFriendly = CanRecruitFriendlyCB.Checked == true ? 1 : 0;
+            AISettings.isDirty = true;
+        }
+        private void MaxRecruitableAINUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.MaxRecruitableAI = (int)MaxRecruitableAINUD.Value;
             AISettings.isDirty = true;
         }
         private void LogAIHitByCB_CheckedChanged(object sender, EventArgs e)
@@ -2793,6 +2847,7 @@ namespace DayZeEditor
         public Spatial_Location currentSpatialLocation { get; set; }
         public Spatial_Audio currentSpatialAudio { get; set; }
         public Vec3 currentspawnPosition { get; set; }
+
 
         private void SetupSpatialGroups()
         {

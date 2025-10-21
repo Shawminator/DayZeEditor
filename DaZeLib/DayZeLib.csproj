@@ -206,7 +206,7 @@
     <Compile Include="ExpansionSettings\ExpansionBookSettings.cs" />
     <Compile Include="ExpansionSettings\ExpansionChatSettings.cs" />
     <Compile Include="ExpansionSettings\ExpansionDamageSystemSettings.cs" />
-    <Compile Include="ExpansionSettings\ExpansionDebugSettings.cs" />
+    <Compile Include="ExpansionSettings\ExpansionCoreSettings.cs" />
     <Compile Include="ExpansionSettings\ExpansionGarageSettings.cs" />
     <Compile Include="ExpansionSettings\ExpansionGeneralSettings.cs" />
     <Compile Include="ExpansionSettings\ExpansionHardlineSettings.cs" />

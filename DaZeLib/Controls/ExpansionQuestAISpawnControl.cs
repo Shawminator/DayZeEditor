@@ -93,8 +93,8 @@ namespace DayZeEditor
             }
         }
         public IList<string> Factions { get; set; }
-        public IList<AILoadouts> LoadoutList { get; set; }
-
+        public IList<string> LoadoutList { get; set; }
+        public IList<string> AILootDropsList { get; set; }
 
         public ExpansionQuestAISpawnControl()
         {
@@ -104,7 +104,8 @@ namespace DayZeEditor
         public void setuplists()
         {
             StaticPatrolFactionCB.DataSource = new BindingList<string>(Factions);
-            StaticPatrolLoadoutsCB.DataSource = new BindingList<AILoadouts>(LoadoutList);
+            StaticPatrolLoadoutsCB.DataSource = new BindingList<string>(LoadoutList);
+            StaticPatrolLootDropOnDeathCB.DataSource = new BindingList<string>(AILootDropsList);
         }
         private void updatevalues()
         {
@@ -240,8 +241,7 @@ namespace DayZeEditor
             _currentAISpawn.Behaviour = StaticPatrolBehaviorCB.GetItemText(StaticPatrolBehaviorCB.SelectedItem);
             isDirty = true;
         }
-       
-
+  
         private void StaticPatrolSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -693,6 +693,7 @@ namespace DayZeEditor
             _currentAISpawn.LootingBehaviour = UpdateCheckedItemsString(list, e.Index, e.NewValue);
             isDirty = true;
         }
+
         private string UpdateCheckedItemsString(CheckedListBox list, int changingIndex, CheckState newState)
         {
             List<string> selected = new List<string>();
@@ -725,6 +726,13 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             _currentAISpawn.LoadBalancingCategory = StaticPatrolLoadBalancingCategoryCB.GetItemText(StaticPatrolLoadBalancingCategoryCB.SelectedItem);
+            isDirty = true;
+        }
+
+        private void StaticPatrolLootDropOnDeathCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.LootDropOnDeath = StaticPatrolLootDropOnDeathCB.GetItemText(StaticPatrolLootDropOnDeathCB.SelectedItem);
             isDirty = true;
         }
     }

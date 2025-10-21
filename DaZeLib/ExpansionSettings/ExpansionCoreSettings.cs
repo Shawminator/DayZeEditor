@@ -2,24 +2,26 @@
 
 namespace DayZeLib
 {
-    public class ExpansionDebugSettings
+    public class ExpansionCoreSettings
     {
-        const int CurrentVersion = 6;
+        const int CurrentVersion = 8;
 
         public int m_Version { get; set; }
-        public int DebugVehiclePlayerNetworkBubbleMode { get; set; }
         public int ServerUpdateRateLimit { get; set; }
+        public int FixCELifetime { get; set; }
+        public int EnableInventoryCargoTidy { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public ExpansionDebugSettings()
+        public ExpansionCoreSettings()
         {
             m_Version = CurrentVersion;
-            DebugVehiclePlayerNetworkBubbleMode = 0;
             ServerUpdateRateLimit = 0;
+            FixCELifetime = 0;
+            EnableInventoryCargoTidy = 0;
         }
 
         public bool checkver()

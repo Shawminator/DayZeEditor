@@ -54,7 +54,7 @@ namespace DayZeEditor
         public string BookSettingsPath;
         public string ChatSettingsPath;
         public string DamageSystemSettingsPath;
-        public string DebugSettingsPath;
+        public string CoreSettingsPath;
         public string GarageSettingsPath;
         public string GeneralSettingsPath;
         public string HArdlineSettingsPath;
@@ -84,7 +84,7 @@ namespace DayZeEditor
         public ExpansionBookSettings BookSettings;
         public ExpansionChatSettings ChatSettings;
         public ExpansionDamageSystemSettings DamageSystemSettings;
-        public ExpansionDebugSettings DebugSettings;
+        public ExpansionCoreSettings CoreSettings;
         public ExpansionGarageSettings GarageSettings;
         public ExpansionGeneralSettings GeneralSettings;
         public ExpansionHardlineSettings HardLineSettings;
@@ -392,23 +392,30 @@ namespace DayZeEditor
             ChatSettings.Filename = ChatSettingsPath;
             LoadChatsettings();
 
-            DebugSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\DebugSettings.json";
-            if (!File.Exists(DebugSettingsPath))
+            if (File.Exists(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\DebugSettings.json"))
             {
-                DebugSettings = new ExpansionDebugSettings();
-                DebugSettings.isDirty = true;
+                File.Move(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\DebugSettings.json",
+                    currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\DebugSettings.txt");
+                Console.WriteLine("Renamed DebugSettings.json to DebugSettings.txt");
+            }
+
+            CoreSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\CoreSettings.json";
+            if (!File.Exists(CoreSettingsPath))
+            {
+                CoreSettings = new ExpansionCoreSettings();
+                CoreSettings.isDirty = true;
                 needtosave = true;
-                Console.WriteLine(Path.GetFileName(DebugSettingsPath) + " File not found, Creating new....");
+                Console.WriteLine(Path.GetFileName(CoreSettingsPath) + " File not found, Creating new....");
             }
             else
             {
-                Console.WriteLine("serializing " + Path.GetFileName(DebugSettingsPath));
-                DebugSettings = JsonSerializer.Deserialize<ExpansionDebugSettings>(File.ReadAllText(DebugSettingsPath));
-                DebugSettings.isDirty = false;
-                if (DebugSettings.checkver())
+                Console.WriteLine("serializing " + Path.GetFileName(CoreSettingsPath));
+                CoreSettings = JsonSerializer.Deserialize<ExpansionCoreSettings>(File.ReadAllText(CoreSettingsPath));
+                CoreSettings.isDirty = false;
+                if (CoreSettings.checkver())
                     needtosave = true;
             }
-            DebugSettings.Filename = DebugSettingsPath;
+            CoreSettings.Filename = CoreSettingsPath;
             loaddebugsettings();
 
             GarageSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\GarageSettings.json";
@@ -971,11 +978,11 @@ namespace DayZeEditor
             File.WriteAllText(DamageSystemSettings.Filename, jsonString);
             midifiedfiles.Add(Path.GetFileName(DamageSystemSettings.Filename));
 
-            DebugSettings.isDirty = false;
+            CoreSettings.isDirty = false;
             options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-            jsonString = JsonSerializer.Serialize(DebugSettings, options);
-            File.WriteAllText(DebugSettings.Filename, jsonString);
-            midifiedfiles.Add(Path.GetFileName(DebugSettings.Filename));
+            jsonString = JsonSerializer.Serialize(CoreSettings, options);
+            File.WriteAllText(CoreSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(CoreSettings.Filename));
 
             GarageSettings.isDirty = false;
             options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -1233,18 +1240,18 @@ namespace DayZeEditor
                 File.WriteAllText(DamageSystemSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(DamageSystemSettings.Filename));
             }
-            if (DebugSettings.isDirty)
+            if (CoreSettings.isDirty)
             {
-                DebugSettings.isDirty = false;
+                CoreSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(DebugSettings, options);
-                if (currentproject.Createbackups && File.Exists(DebugSettings.Filename))
+                string jsonString = JsonSerializer.Serialize(CoreSettings, options);
+                if (currentproject.Createbackups && File.Exists(CoreSettings.Filename))
                 {
-                    Directory.CreateDirectory(Path.GetDirectoryName(DebugSettings.Filename) + "\\Backup\\" + SaveTime);
-                    File.Copy(DebugSettings.Filename, Path.GetDirectoryName(DebugSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(DebugSettings.Filename) + ".bak", true);
+                    Directory.CreateDirectory(Path.GetDirectoryName(CoreSettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(CoreSettings.Filename, Path.GetDirectoryName(CoreSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(CoreSettings.Filename) + ".bak", true);
                 }
-                File.WriteAllText(DebugSettings.Filename, jsonString);
-                midifiedfiles.Add(Path.GetFileName(DebugSettings.Filename));
+                File.WriteAllText(CoreSettings.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(CoreSettings.Filename));
             }
 
             if (GarageSettings.isDirty)
@@ -1697,7 +1704,7 @@ namespace DayZeEditor
             {
                 needtosave = true;
             }
-            if (DebugSettings.isDirty)
+            if (CoreSettings.isDirty)
             {
                 needtosave = true;
             }
@@ -3524,29 +3531,36 @@ namespace DayZeEditor
             DamageSystemSettings.isDirty = true;
         }
         #endregion damagesystemsettings
-        #region debugsettings
+ 
+        #region debugsettings/CoreSettings
         private void loaddebugsettings()
         {
             useraction = false;
-            DebugVehiclePlayerNetworkBubbleModeNUD.Value = DebugSettings.DebugVehiclePlayerNetworkBubbleMode;
-            ServerUpdateRateLimitNUD.Value = DebugSettings.ServerUpdateRateLimit;
+            ServerUpdateRateLimitNUD.Value = CoreSettings.ServerUpdateRateLimit;
+            FixCELifetimeCB.Checked = CoreSettings.FixCELifetime == 1 ? true : false;
+            EnableInventoryCargoTidyCB.Checked = CoreSettings.EnableInventoryCargoTidy == 1 ? true : false;
             useraction = true;
-        }
-        private void DebugVehiclePlayerNetworkBubbleModeNUD_ValueChanged(object sender, EventArgs e)
-        {
-
-            if (!useraction) return;
-            DebugSettings.DebugVehiclePlayerNetworkBubbleMode = (int)DebugVehiclePlayerNetworkBubbleModeNUD.Value;
-            DebugSettings.isDirty = true;
         }
         private void ServerUpdateRateLimitNUD_ValueChanged(object sender, EventArgs e)
         {
-
             if (!useraction) return;
-            DebugSettings.ServerUpdateRateLimit = (int)ServerUpdateRateLimitNUD.Value;
-            DebugSettings.isDirty = true;
+            CoreSettings.ServerUpdateRateLimit = (int)ServerUpdateRateLimitNUD.Value;
+            CoreSettings.isDirty = true;
         }
-        #endregion debugsettings
+        private void FixCELifetimeCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CoreSettings.FixCELifetime = FixCELifetimeCB.Checked == true ? 1 : 0;
+            CoreSettings.isDirty = true;
+        }
+
+        private void checkBox13_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CoreSettings.EnableInventoryCargoTidy = EnableInventoryCargoTidyCB.Checked == true ? 1 : 0;
+            CoreSettings.isDirty = true;
+        }
+        #endregion debugsettings/CoreSettings
 
         #region Generalsettings
         private void loadGeneralSettings()
