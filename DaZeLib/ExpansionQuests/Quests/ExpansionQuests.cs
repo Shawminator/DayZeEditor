@@ -320,6 +320,8 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isusingdescription { get; set; }
         [JsonIgnore]
+        public bool SortbyID { get; internal set; }
+        [JsonIgnore]
         public BindingList<ExpansionQuestNPCs> QuestGivers;
         [JsonIgnore]
         public BindingList<ExpansionQuestNPCs> QuestTurnIns;
@@ -368,7 +370,7 @@ namespace DayZeLib
         public Dictionary<string, int> FactionReputationRewards { get; set; }
         public int SuppressQuestLogOnCompetion { get; set; }
         public int Active { get; set; }
-        public bool SortbyID { get; internal set; }
+
 
         public Quests()
         {

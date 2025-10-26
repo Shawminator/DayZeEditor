@@ -9678,7 +9678,10 @@ namespace DayZeEditor
 
         }
 
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
     public class NullToEmptyGearConverter : JsonConverter<ExpansionStartingGearItem>
     {

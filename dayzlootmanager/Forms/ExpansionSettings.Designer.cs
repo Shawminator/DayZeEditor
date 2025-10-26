@@ -6634,6 +6634,7 @@ namespace DayZeEditor
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(229, 20);
             this.textBox6.TabIndex = 7;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // darkLabel33
             // 
