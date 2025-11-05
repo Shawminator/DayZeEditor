@@ -70,6 +70,8 @@ namespace DayZeEditor
             this.AIGeneralEnabledCB = new System.Windows.Forms.CheckBox();
             this.AIGeneralRespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.MaxRecruitableAINUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel4 = new DarkUI.Controls.DarkLabel();
             this.numericUpDownKey = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownValue = new System.Windows.Forms.NumericUpDown();
             this.darkLabel203 = new DarkUI.Controls.DarkLabel();
@@ -120,6 +122,8 @@ namespace DayZeEditor
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.StaticPatrolLootDropOnDeathCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel10 = new DarkUI.Controls.DarkLabel();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.darkLabel204 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolLoadBalancingCategoryCB = new System.Windows.Forms.ComboBox();
@@ -565,10 +569,6 @@ namespace DayZeEditor
             this.removeGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewLoadBlancingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeLoadBalancingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MaxRecruitableAINUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel4 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolLootDropOnDeathCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel10 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -587,6 +587,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.AIGeneralMinDistRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AIGeneralRespawnTimeNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxRecruitableAINUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DamageReceivedMultiplierNUD)).BeginInit();
@@ -743,7 +744,6 @@ namespace DayZeEditor
             this.nameLBCGB.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxRecruitableAINUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1427,6 +1427,32 @@ namespace DayZeEditor
             this.groupBox1.TabIndex = 129;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AI Settings";
+            // 
+            // MaxRecruitableAINUD
+            // 
+            this.MaxRecruitableAINUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MaxRecruitableAINUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MaxRecruitableAINUD.Location = new System.Drawing.Point(192, 123);
+            this.MaxRecruitableAINUD.Maximum = new decimal(new int[] {
+            200000,
+            0,
+            0,
+            0});
+            this.MaxRecruitableAINUD.Name = "MaxRecruitableAINUD";
+            this.MaxRecruitableAINUD.Size = new System.Drawing.Size(106, 20);
+            this.MaxRecruitableAINUD.TabIndex = 214;
+            this.MaxRecruitableAINUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MaxRecruitableAINUD.ValueChanged += new System.EventHandler(this.MaxRecruitableAINUD_ValueChanged);
+            // 
+            // darkLabel4
+            // 
+            this.darkLabel4.AutoSize = true;
+            this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel4.Location = new System.Drawing.Point(17, 125);
+            this.darkLabel4.Name = "darkLabel4";
+            this.darkLabel4.Size = new System.Drawing.Size(97, 13);
+            this.darkLabel4.TabIndex = 215;
+            this.darkLabel4.Text = "Max Recruitable AI";
             // 
             // numericUpDownKey
             // 
@@ -2155,6 +2181,33 @@ namespace DayZeEditor
             this.tabPage3.Size = new System.Drawing.Size(966, 615);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "AI PAtrol Settings";
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // StaticPatrolLootDropOnDeathCB
+            // 
+            this.StaticPatrolLootDropOnDeathCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolLootDropOnDeathCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolLootDropOnDeathCB.FormattingEnabled = true;
+            this.StaticPatrolLootDropOnDeathCB.Items.AddRange(new object[] {
+            "",
+            "CatmullRom",
+            "NaturalCubic",
+            "UniformCubic"});
+            this.StaticPatrolLootDropOnDeathCB.Location = new System.Drawing.Point(116, 323);
+            this.StaticPatrolLootDropOnDeathCB.Name = "StaticPatrolLootDropOnDeathCB";
+            this.StaticPatrolLootDropOnDeathCB.Size = new System.Drawing.Size(328, 21);
+            this.StaticPatrolLootDropOnDeathCB.TabIndex = 308;
+            this.StaticPatrolLootDropOnDeathCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolLootDropOnDeathCB_SelectedIndexChanged);
+            // 
+            // darkLabel10
+            // 
+            this.darkLabel10.AutoSize = true;
+            this.darkLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel10.Location = new System.Drawing.Point(7, 326);
+            this.darkLabel10.Name = "darkLabel10";
+            this.darkLabel10.Size = new System.Drawing.Size(103, 13);
+            this.darkLabel10.TabIndex = 307;
+            this.darkLabel10.Text = "Loot Drop On Death";
             // 
             // textBox6
             // 
@@ -7407,7 +7460,7 @@ namespace DayZeEditor
             this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(79, 25);
+            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton7.Text = "Notifications";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -7426,7 +7479,7 @@ namespace DayZeEditor
             this.toolStripButton9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(48, 25);
+            this.toolStripButton9.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton9.Text = "Players";
             this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
@@ -7445,7 +7498,7 @@ namespace DayZeEditor
             this.toolStripButton10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(91, 25);
+            this.toolStripButton10.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton10.Text = "Spatial Settings";
             this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
             // 
@@ -7464,7 +7517,7 @@ namespace DayZeEditor
             this.toolStripButton11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton11.Name = "toolStripButton11";
-            this.toolStripButton11.Size = new System.Drawing.Size(138, 25);
+            this.toolStripButton11.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton11.Text = "Spatial Groups and Stuff";
             this.toolStripButton11.Click += new System.EventHandler(this.toolStripButton11_Click);
             // 
@@ -8512,58 +8565,6 @@ namespace DayZeEditor
             this.removeLoadBalancingToolStripMenuItem.Text = "Remove Load Balancing";
             this.removeLoadBalancingToolStripMenuItem.Click += new System.EventHandler(this.removeLoadBalancingToolStripMenuItem_Click);
             // 
-            // MaxRecruitableAINUD
-            // 
-            this.MaxRecruitableAINUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.MaxRecruitableAINUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxRecruitableAINUD.Location = new System.Drawing.Point(192, 123);
-            this.MaxRecruitableAINUD.Maximum = new decimal(new int[] {
-            200000,
-            0,
-            0,
-            0});
-            this.MaxRecruitableAINUD.Name = "MaxRecruitableAINUD";
-            this.MaxRecruitableAINUD.Size = new System.Drawing.Size(106, 20);
-            this.MaxRecruitableAINUD.TabIndex = 214;
-            this.MaxRecruitableAINUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.MaxRecruitableAINUD.ValueChanged += new System.EventHandler(this.MaxRecruitableAINUD_ValueChanged);
-            // 
-            // darkLabel4
-            // 
-            this.darkLabel4.AutoSize = true;
-            this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel4.Location = new System.Drawing.Point(17, 125);
-            this.darkLabel4.Name = "darkLabel4";
-            this.darkLabel4.Size = new System.Drawing.Size(97, 13);
-            this.darkLabel4.TabIndex = 215;
-            this.darkLabel4.Text = "Max Recruitable AI";
-            // 
-            // StaticPatrolLootDropOnDeathCB
-            // 
-            this.StaticPatrolLootDropOnDeathCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolLootDropOnDeathCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolLootDropOnDeathCB.FormattingEnabled = true;
-            this.StaticPatrolLootDropOnDeathCB.Items.AddRange(new object[] {
-            "",
-            "CatmullRom",
-            "NaturalCubic",
-            "UniformCubic"});
-            this.StaticPatrolLootDropOnDeathCB.Location = new System.Drawing.Point(116, 323);
-            this.StaticPatrolLootDropOnDeathCB.Name = "StaticPatrolLootDropOnDeathCB";
-            this.StaticPatrolLootDropOnDeathCB.Size = new System.Drawing.Size(328, 21);
-            this.StaticPatrolLootDropOnDeathCB.TabIndex = 308;
-            this.StaticPatrolLootDropOnDeathCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolLootDropOnDeathCB_SelectedIndexChanged);
-            // 
-            // darkLabel10
-            // 
-            this.darkLabel10.AutoSize = true;
-            this.darkLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel10.Location = new System.Drawing.Point(7, 326);
-            this.darkLabel10.Name = "darkLabel10";
-            this.darkLabel10.Size = new System.Drawing.Size(103, 13);
-            this.darkLabel10.TabIndex = 307;
-            this.darkLabel10.Text = "Loot Drop On Death";
-            // 
             // ExpansionAI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8599,6 +8600,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.AIGeneralRespawnTimeNUD)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxRecruitableAINUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKey)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DamageReceivedMultiplierNUD)).EndInit();
@@ -8781,7 +8783,6 @@ namespace DayZeEditor
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MaxRecruitableAINUD)).EndInit();
             this.ResumeLayout(false);
 
         }

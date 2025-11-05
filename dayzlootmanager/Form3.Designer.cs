@@ -1,7 +1,6 @@
-﻿
-namespace DayZeEditor
+﻿namespace DayZeEditor
 {
-    partial class ExpansionLoadoutsManager
+    partial class Form3
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +28,6 @@ namespace DayZeEditor
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpansionLoadoutsManager));
-            this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
-            this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.LoadOutGB = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -61,23 +55,6 @@ namespace DayZeEditor
             this.InventoryattchemntGB = new System.Windows.Forms.GroupBox();
             this.ItemAttachmentSlotNameCB = new System.Windows.Forms.ComboBox();
             this.darkLabel9 = new DarkUI.Controls.DarkLabel();
-            this.treeViewMS1 = new TreeViewMS.TreeViewMS();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.AddNewAttachmentItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RemoveAttachemtItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddNewCargoItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RemoveCargoItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddNewSetItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RemoveSetItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewLoadoutFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeLoadoutFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewLootDropFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RemoveLootDropFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
-            this.darkToolStrip21.SuspendLayout();
             this.LoadOutGB.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -90,60 +67,16 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.InventoryattchemntGB.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // darkToolStrip21
-            // 
-            this.darkToolStrip21.AutoSize = false;
-            this.darkToolStrip21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.darkToolStrip21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkToolStrip21.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SaveFileButton,
-            this.toolStripButton2});
-            this.darkToolStrip21.Location = new System.Drawing.Point(0, 0);
-            this.darkToolStrip21.Name = "darkToolStrip21";
-            this.darkToolStrip21.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip21.Size = new System.Drawing.Size(856, 45);
-            this.darkToolStrip21.TabIndex = 48;
-            this.darkToolStrip21.Text = "darkToolStrip21";
-            // 
-            // SaveFileButton
-            // 
-            this.SaveFileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.SaveFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SaveFileButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.SaveFileButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveFileButton.Image")));
-            this.SaveFileButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.SaveFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SaveFileButton.Name = "SaveFileButton";
-            this.SaveFileButton.Size = new System.Drawing.Size(42, 42);
-            this.SaveFileButton.Text = "toolStripButton1";
-            this.SaveFileButton.ToolTipText = "Save Dirty Files";
-            this.SaveFileButton.Click += new System.EventHandler(this.SaveFileButton_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(42, 42);
-            this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.ToolTipText = "Open Settings folder";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // LoadOutGB
             // 
             this.LoadOutGB.Controls.Add(this.flowLayoutPanel1);
             this.LoadOutGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.LoadOutGB.Location = new System.Drawing.Point(569, 46);
+            this.LoadOutGB.Location = new System.Drawing.Point(12, 12);
             this.LoadOutGB.Name = "LoadOutGB";
             this.LoadOutGB.Size = new System.Drawing.Size(278, 456);
-            this.LoadOutGB.TabIndex = 214;
+            this.LoadOutGB.TabIndex = 215;
             this.LoadOutGB.TabStop = false;
             this.LoadOutGB.Text = "Loadout item";
             // 
@@ -180,7 +113,6 @@ namespace DayZeEditor
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(144, 20);
             this.textBox1.TabIndex = 180;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // darkButton11
             // 
@@ -191,7 +123,6 @@ namespace DayZeEditor
             this.darkButton11.Size = new System.Drawing.Size(20, 20);
             this.darkButton11.TabIndex = 179;
             this.darkButton11.Text = "+";
-            this.darkButton11.Click += new System.EventHandler(this.darkButton11_Click);
             // 
             // darkLabel40
             // 
@@ -228,7 +159,6 @@ namespace DayZeEditor
             this.numericUpDown1.Size = new System.Drawing.Size(105, 20);
             this.numericUpDown1.TabIndex = 186;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // groupBox2
             // 
@@ -264,7 +194,6 @@ namespace DayZeEditor
             this.numericUpDown2.Size = new System.Drawing.Size(105, 20);
             this.numericUpDown2.TabIndex = 184;
             this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // darkLabel41
             // 
@@ -306,7 +235,6 @@ namespace DayZeEditor
             this.numericUpDown3.Size = new System.Drawing.Size(105, 20);
             this.numericUpDown3.TabIndex = 182;
             this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
             // 
             // HealthGB
             // 
@@ -356,7 +284,6 @@ namespace DayZeEditor
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(169, 20);
             this.textBox2.TabIndex = 195;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // darkLabel46
             // 
@@ -398,7 +325,6 @@ namespace DayZeEditor
             this.numericUpDown5.Size = new System.Drawing.Size(105, 20);
             this.numericUpDown5.TabIndex = 191;
             this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown5.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
             // 
             // numericUpDown4
             // 
@@ -420,7 +346,6 @@ namespace DayZeEditor
             this.numericUpDown4.Size = new System.Drawing.Size(105, 20);
             this.numericUpDown4.TabIndex = 193;
             this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown4.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
             // 
             // darkButton8
             // 
@@ -431,7 +356,6 @@ namespace DayZeEditor
             this.darkButton8.Size = new System.Drawing.Size(110, 23);
             this.darkButton8.TabIndex = 199;
             this.darkButton8.Text = "Add";
-            this.darkButton8.Click += new System.EventHandler(this.darkButton8_Click);
             // 
             // darkButton9
             // 
@@ -442,7 +366,6 @@ namespace DayZeEditor
             this.darkButton9.Size = new System.Drawing.Size(104, 23);
             this.darkButton9.TabIndex = 198;
             this.darkButton9.Text = "Remove";
-            this.darkButton9.Click += new System.EventHandler(this.darkButton9_Click);
             // 
             // listBox1
             // 
@@ -456,18 +379,16 @@ namespace DayZeEditor
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(244, 108);
             this.listBox1.TabIndex = 197;
-            this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // InventoryattchemntGB
             // 
             this.InventoryattchemntGB.Controls.Add(this.ItemAttachmentSlotNameCB);
             this.InventoryattchemntGB.Controls.Add(this.darkLabel9);
             this.InventoryattchemntGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.InventoryattchemntGB.Location = new System.Drawing.Point(569, 46);
+            this.InventoryattchemntGB.Location = new System.Drawing.Point(296, 12);
             this.InventoryattchemntGB.Name = "InventoryattchemntGB";
             this.InventoryattchemntGB.Size = new System.Drawing.Size(278, 70);
-            this.InventoryattchemntGB.TabIndex = 213;
+            this.InventoryattchemntGB.TabIndex = 216;
             this.InventoryattchemntGB.TabStop = false;
             this.InventoryattchemntGB.Text = "Inventory Attchments";
             this.InventoryattchemntGB.Visible = false;
@@ -497,7 +418,6 @@ namespace DayZeEditor
             this.ItemAttachmentSlotNameCB.Name = "ItemAttachmentSlotNameCB";
             this.ItemAttachmentSlotNameCB.Size = new System.Drawing.Size(244, 21);
             this.ItemAttachmentSlotNameCB.TabIndex = 177;
-            this.ItemAttachmentSlotNameCB.SelectedIndexChanged += new System.EventHandler(this.ItemAttachmentSlotNameCB_SelectedIndexChanged);
             // 
             // darkLabel9
             // 
@@ -509,164 +429,17 @@ namespace DayZeEditor
             this.darkLabel9.TabIndex = 176;
             this.darkLabel9.Text = "SlotName";
             // 
-            // treeViewMS1
-            // 
-            this.treeViewMS1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.treeViewMS1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.treeViewMS1.ForeColor = System.Drawing.SystemColors.Control;
-            this.treeViewMS1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.treeViewMS1.Location = new System.Drawing.Point(12, 65);
-            this.treeViewMS1.Name = "treeViewMS1";
-            this.treeViewMS1.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS1.SelectedNodes")));
-            this.treeViewMS1.SetMultiselect = true;
-            this.treeViewMS1.Size = new System.Drawing.Size(551, 437);
-            this.treeViewMS1.TabIndex = 212;
-            this.treeViewMS1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMS1_AfterSelect);
-            this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS1_NodeMouseClick);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddNewAttachmentItemToolStripMenuItem,
-            this.RemoveAttachemtItemToolStripMenuItem,
-            this.AddNewCargoItemToolStripMenuItem,
-            this.RemoveCargoItemToolStripMenuItem,
-            this.AddNewSetItemToolStripMenuItem,
-            this.RemoveSetItemToolStripMenuItem,
-            this.addNewItemToolStripMenuItem,
-            this.removeItemToolStripMenuItem,
-            this.addNewLoadoutFileToolStripMenuItem,
-            this.removeLoadoutFileToolStripMenuItem,
-            this.addNewLootDropFileToolStripMenuItem,
-            this.RemoveLootDropFileToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(217, 268);
-            // 
-            // AddNewAttachmentItemToolStripMenuItem
-            // 
-            this.AddNewAttachmentItemToolStripMenuItem.Name = "AddNewAttachmentItemToolStripMenuItem";
-            this.AddNewAttachmentItemToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.AddNewAttachmentItemToolStripMenuItem.Text = "Add New Attachment Item";
-            this.AddNewAttachmentItemToolStripMenuItem.Click += new System.EventHandler(this.AddNewAttachmentItemToolStripMenuItem_Click);
-            // 
-            // RemoveAttachemtItemToolStripMenuItem
-            // 
-            this.RemoveAttachemtItemToolStripMenuItem.Name = "RemoveAttachemtItemToolStripMenuItem";
-            this.RemoveAttachemtItemToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.RemoveAttachemtItemToolStripMenuItem.Text = "Remove Attachemt Item";
-            this.RemoveAttachemtItemToolStripMenuItem.Click += new System.EventHandler(this.RemoveAttachemtItemToolStripMenuItem_Click);
-            // 
-            // AddNewCargoItemToolStripMenuItem
-            // 
-            this.AddNewCargoItemToolStripMenuItem.Name = "AddNewCargoItemToolStripMenuItem";
-            this.AddNewCargoItemToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.AddNewCargoItemToolStripMenuItem.Text = "Add New Cargo Item";
-            this.AddNewCargoItemToolStripMenuItem.Click += new System.EventHandler(this.AddNewCargoItemToolStripMenuItem_Click);
-            // 
-            // RemoveCargoItemToolStripMenuItem
-            // 
-            this.RemoveCargoItemToolStripMenuItem.Name = "RemoveCargoItemToolStripMenuItem";
-            this.RemoveCargoItemToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.RemoveCargoItemToolStripMenuItem.Text = "Remove Cargo Item";
-            this.RemoveCargoItemToolStripMenuItem.Click += new System.EventHandler(this.RemoveCargoItemToolStripMenuItem_Click);
-            // 
-            // AddNewSetItemToolStripMenuItem
-            // 
-            this.AddNewSetItemToolStripMenuItem.Name = "AddNewSetItemToolStripMenuItem";
-            this.AddNewSetItemToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.AddNewSetItemToolStripMenuItem.Text = "Add New Set Item";
-            this.AddNewSetItemToolStripMenuItem.Click += new System.EventHandler(this.AddNewSetItemToolStripMenuItem_Click);
-            // 
-            // RemoveSetItemToolStripMenuItem
-            // 
-            this.RemoveSetItemToolStripMenuItem.Name = "RemoveSetItemToolStripMenuItem";
-            this.RemoveSetItemToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.RemoveSetItemToolStripMenuItem.Text = "Remove Set Item";
-            this.RemoveSetItemToolStripMenuItem.Click += new System.EventHandler(this.RemoveSetItemToolStripMenuItem_Click);
-            // 
-            // addNewItemToolStripMenuItem
-            // 
-            this.addNewItemToolStripMenuItem.Name = "addNewItemToolStripMenuItem";
-            this.addNewItemToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.addNewItemToolStripMenuItem.Text = "Add New Item";
-            this.addNewItemToolStripMenuItem.Click += new System.EventHandler(this.addNewItemToolStripMenuItem_Click);
-            // 
-            // removeItemToolStripMenuItem
-            // 
-            this.removeItemToolStripMenuItem.Name = "removeItemToolStripMenuItem";
-            this.removeItemToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.removeItemToolStripMenuItem.Text = "Remove item";
-            this.removeItemToolStripMenuItem.Click += new System.EventHandler(this.removeItemToolStripMenuItem_Click);
-            // 
-            // addNewLoadoutFileToolStripMenuItem
-            // 
-            this.addNewLoadoutFileToolStripMenuItem.Name = "addNewLoadoutFileToolStripMenuItem";
-            this.addNewLoadoutFileToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.addNewLoadoutFileToolStripMenuItem.Text = "Add New Loadout File";
-            this.addNewLoadoutFileToolStripMenuItem.Click += new System.EventHandler(this.addNewLoadoutFileToolStripMenuItem_Click);
-            // 
-            // removeLoadoutFileToolStripMenuItem
-            // 
-            this.removeLoadoutFileToolStripMenuItem.Name = "removeLoadoutFileToolStripMenuItem";
-            this.removeLoadoutFileToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.removeLoadoutFileToolStripMenuItem.Text = "Remove Loadout File";
-            this.removeLoadoutFileToolStripMenuItem.Click += new System.EventHandler(this.removeLoadoutFileToolStripMenuItem_Click);
-            // 
-            // addNewLootDropFileToolStripMenuItem
-            // 
-            this.addNewLootDropFileToolStripMenuItem.Name = "addNewLootDropFileToolStripMenuItem";
-            this.addNewLootDropFileToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.addNewLootDropFileToolStripMenuItem.Text = "Add New LootDrop File";
-            this.addNewLootDropFileToolStripMenuItem.Click += new System.EventHandler(this.addNewLootDropFileToolStripMenuItem_Click);
-            // 
-            // RemoveLootDropFileToolStripMenuItem
-            // 
-            this.RemoveLootDropFileToolStripMenuItem.Name = "RemoveLootDropFileToolStripMenuItem";
-            this.RemoveLootDropFileToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.RemoveLootDropFileToolStripMenuItem.Text = "Remove LootDrop File";
-            this.RemoveLootDropFileToolStripMenuItem.Click += new System.EventHandler(this.RemoveLootDropFileToolStripMenuItem_Click);
-            // 
-            // darkLabel1
-            // 
-            this.darkLabel1.AutoSize = true;
-            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(12, 49);
-            this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(43, 13);
-            this.darkLabel1.TabIndex = 215;
-            this.darkLabel1.Text = "Expand";
-            this.darkLabel1.Click += new System.EventHandler(this.darkLabel1_Click);
-            // 
-            // darkLabel2
-            // 
-            this.darkLabel2.AutoSize = true;
-            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel2.Location = new System.Drawing.Point(61, 49);
-            this.darkLabel2.Name = "darkLabel2";
-            this.darkLabel2.Size = new System.Drawing.Size(61, 13);
-            this.darkLabel2.TabIndex = 216;
-            this.darkLabel2.Text = "/   Collapse";
-            this.darkLabel2.Click += new System.EventHandler(this.darkLabel2_Click);
-            // 
-            // ExpansionLoadoutsManager
+            // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 508);
-            this.Controls.Add(this.darkLabel2);
-            this.Controls.Add(this.darkLabel1);
-            this.Controls.Add(this.treeViewMS1);
-            this.Controls.Add(this.darkToolStrip21);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ClientSize = new System.Drawing.Size(1645, 845);
             this.Controls.Add(this.InventoryattchemntGB);
             this.Controls.Add(this.LoadOutGB);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ExpansionLoadoutsManager";
-            this.Text = "ExpansionLoadoutsManager";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExpansionLoadoutsManager_FormClosing);
-            this.Load += new System.EventHandler(this.ExpansionLoadoutsManager_Load);
-            this.darkToolStrip21.ResumeLayout(false);
-            this.darkToolStrip21.PerformLayout();
+            this.ForeColor = System.Drawing.SystemColors.Control;
+            this.Name = "Form3";
+            this.Text = "Form3";
             this.LoadOutGB.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
@@ -683,17 +456,12 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.InventoryattchemntGB.ResumeLayout(false);
             this.InventoryattchemntGB.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private DarkUI.Controls.DarkToolStrip2 darkToolStrip21;
-        private System.Windows.Forms.ToolStripButton SaveFileButton;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.GroupBox LoadOutGB;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox7;
@@ -708,34 +476,18 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel42;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.GroupBox HealthGB;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private DarkUI.Controls.DarkLabel darkLabel45;
+        private System.Windows.Forms.TextBox textBox2;
+        private DarkUI.Controls.DarkLabel darkLabel46;
+        private DarkUI.Controls.DarkLabel darkLabel44;
+        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
         private DarkUI.Controls.DarkButton darkButton8;
         private DarkUI.Controls.DarkButton darkButton9;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private DarkUI.Controls.DarkLabel darkLabel45;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private DarkUI.Controls.DarkLabel darkLabel44;
-        private DarkUI.Controls.DarkLabel darkLabel46;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.GroupBox InventoryattchemntGB;
         private System.Windows.Forms.ComboBox ItemAttachmentSlotNameCB;
         private DarkUI.Controls.DarkLabel darkLabel9;
-        private TreeViewMS.TreeViewMS treeViewMS1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem AddNewAttachmentItemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem RemoveAttachemtItemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AddNewCargoItemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem RemoveCargoItemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AddNewSetItemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem RemoveSetItemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewItemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeItemToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private DarkUI.Controls.DarkLabel darkLabel1;
-        private DarkUI.Controls.DarkLabel darkLabel2;
-        private System.Windows.Forms.ToolStripMenuItem addNewLoadoutFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeLoadoutFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewLootDropFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem RemoveLootDropFileToolStripMenuItem;
     }
 }

@@ -4481,6 +4481,9 @@ namespace DayZeEditor
             ((CheckedListBox)sender).ClearSelected();
         }
 
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
