@@ -92,6 +92,7 @@ namespace DayZeLib
             MemeLevel = 1;
             CanRecruitFriendly = 1;
             CanRecruitGuards = 0;
+            MaxRecruitableAI = 1;
             PreventClimb = new BindingList<string>();
             FormationScale = (decimal)1.0;
             PlayerFactions = new BindingList<string>();
