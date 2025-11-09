@@ -108,6 +108,19 @@ namespace DayZeEditor
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
+            else
+            {
+                Console.Write("serializing " + Path.GetFileName(TerjeSettingsPath + "CustomCrafting\\Recipes.xml"));
+                TerjeCraftingFiles = new TerjeRecipes();
+                TerjeCraftingFiles.Filename = TerjeSettingsPath + "CustomCrafting\\Recipes.xml";
+                TerjeCraftingFiles.Items = new BindingList<object>();
+                if (TerjeCraftingFiles != null)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("  Empty file Created....");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+            }
             if (Directory.Exists(TerjeSettingsPath + "CustomProtection"))
             {
                 DirectoryInfo dir = new DirectoryInfo(TerjeSettingsPath + "CustomProtection"); //Assuming Test is your Folder
@@ -1415,6 +1428,8 @@ namespace DayZeEditor
                 ns.Add("", "");
                 var sw = new StringWriter();
                 var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+                if(!Directory.Exists(Path.GetDirectoryName(TerjeCraftingFiles.Filename)))
+                    Directory.CreateDirectory(Path.GetDirectoryName(TerjeCraftingFiles.Filename));
                 serializer.Serialize(xmlWriter, TerjeCraftingFiles, ns);
                 File.WriteAllText(TerjeCraftingFiles.Filename, sw.ToString());
                 midifiedfiles.Add(Path.GetFileName(TerjeCraftingFiles.Filename));
