@@ -3537,7 +3537,7 @@ namespace DayZeEditor
         {
             useraction = false;
             ServerUpdateRateLimitNUD.Value = CoreSettings.ServerUpdateRateLimit;
-            FixCELifetimeCB.Checked = CoreSettings.FixCELifetime == 1 ? true : false;
+            FixCELifetimeCB.Checked = CoreSettings.ForceExactCEItemLifetime == 1 ? true : false;
             EnableInventoryCargoTidyCB.Checked = CoreSettings.EnableInventoryCargoTidy == 1 ? true : false;
             useraction = true;
         }
@@ -3550,7 +3550,7 @@ namespace DayZeEditor
         private void FixCELifetimeCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CoreSettings.FixCELifetime = FixCELifetimeCB.Checked == true ? 1 : 0;
+            CoreSettings.ForceExactCEItemLifetime = FixCELifetimeCB.Checked == true ? 1 : 0;
             CoreSettings.isDirty = true;
         }
 

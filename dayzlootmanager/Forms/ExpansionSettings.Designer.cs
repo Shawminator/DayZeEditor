@@ -4935,9 +4935,9 @@ namespace DayZeEditor
             this.FixCELifetimeCB.ForeColor = System.Drawing.SystemColors.Control;
             this.FixCELifetimeCB.Location = new System.Drawing.Point(6, 45);
             this.FixCELifetimeCB.Name = "FixCELifetimeCB";
-            this.FixCELifetimeCB.Size = new System.Drawing.Size(100, 17);
+            this.FixCELifetimeCB.Size = new System.Drawing.Size(162, 17);
             this.FixCELifetimeCB.TabIndex = 40;
-            this.FixCELifetimeCB.Text = "Fix CE Lifetimes";
+            this.FixCELifetimeCB.Text = "Force Exact CE Item Lifetime";
             this.FixCELifetimeCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.FixCELifetimeCB.UseVisualStyleBackColor = true;
             this.FixCELifetimeCB.CheckedChanged += new System.EventHandler(this.FixCELifetimeCB_CheckedChanged);

@@ -129,6 +129,7 @@ namespace DayZeEditor
             StaticPatrolAccuracyMinNUD.Value = _currentAISpawn.AccuracyMin;
             StaticPatrolAccuracyMaxNUD.Value = _currentAISpawn.AccuracyMax;
             StaticPatrolDamageReceivedMultiplierNUD.Value = _currentAISpawn.DamageReceivedMultiplier;
+            StaticPatrolHeadshotResistanceNUD.Value = _currentAISpawn.HeadshotResistance;
             StaticPatrolThreatDistanceLimitNUD.Value = _currentAISpawn.ThreatDistanceLimit;
             StaticPatrolSniperProneDistanceThresholdNUD.Value = _currentAISpawn.SniperProneDistanceThreshold;
             StaticPatrolDamageMultiplierNUD.Value = _currentAISpawn.DamageMultiplier;
@@ -733,6 +734,13 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             _currentAISpawn.LootDropOnDeath = StaticPatrolLootDropOnDeathCB.GetItemText(StaticPatrolLootDropOnDeathCB.SelectedItem);
+            isDirty = true;
+        }
+
+        private void StaticPatrolHeadshotResistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.HeadshotResistance = StaticPatrolHeadshotResistanceNUD.Value;
             isDirty = true;
         }
     }

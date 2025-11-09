@@ -4,11 +4,11 @@ namespace DayZeLib
 {
     public class ExpansionCoreSettings
     {
-        const int CurrentVersion = 8;
+        const int CurrentVersion = 9;
 
         public int m_Version { get; set; }
         public int ServerUpdateRateLimit { get; set; }
-        public int FixCELifetime { get; set; }
+        public int ForceExactCEItemLifetime { get; set; }
         public int EnableInventoryCargoTidy { get; set; }
 
         [JsonIgnore]
@@ -20,7 +20,7 @@ namespace DayZeLib
         {
             m_Version = CurrentVersion;
             ServerUpdateRateLimit = 0;
-            FixCELifetime = 0;
+            ForceExactCEItemLifetime = 0;
             EnableInventoryCargoTidy = 0;
         }
 

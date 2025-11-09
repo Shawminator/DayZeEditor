@@ -77,7 +77,7 @@ namespace DayZeLib
     public class ExpansionAIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 25;
+        const int CurrentVersion = 27;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -327,6 +327,7 @@ namespace DayZeLib
         public decimal NoiseInvestigationDistanceLimit { get; set; }
         public decimal DamageMultiplier { get; set; }
         public decimal DamageReceivedMultiplier { get; set; }
+        public decimal HeadshotResistance { get; set; }
         public int CanBeTriggeredByAI { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
@@ -367,6 +368,7 @@ namespace DayZeLib
             NoiseInvestigationDistanceLimit = -1;
             DamageMultiplier = -1;
             DamageReceivedMultiplier = (decimal)-1.0;
+            HeadshotResistance = 0;
             CanBeTriggeredByAI = 0;
             MinDistRadius = -1;
             MaxDistRadius = -1;
@@ -407,6 +409,7 @@ namespace DayZeLib
             NoiseInvestigationDistanceLimit = -1;
             DamageMultiplier = -1;
             DamageReceivedMultiplier = (decimal)-1.0;
+            HeadshotResistance = 0;
             CanBeTriggeredByAI = 0;
             MinDistRadius = -1;
             MaxDistRadius = -1;

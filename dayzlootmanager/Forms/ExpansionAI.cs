@@ -1063,6 +1063,7 @@ namespace DayZeEditor
             StaticPatrolThreatDistanceLimitNUD.Value = CurrentPatrol.ThreatDistanceLimit;
             StaticPatrolSniperProneDistanceThresholdNUD.Value = CurrentPatrol.SniperProneDistanceThreshold;
             StaticPatrolDamageMultiplierNUD.Value = CurrentPatrol.DamageMultiplier;
+            StaticPatrolHeadshotResistanceNUD.Value = CurrentPatrol.HeadshotResistance;
             StaticPatrolChanceCB.Value = CurrentPatrol.Chance;
             StaticPatrolCanBeLotedCB.Checked = CurrentPatrol.CanBeLooted == 1 ? true : false;
             StaticPatrolLoadoutsCB.SelectedIndex = StaticPatrolLoadoutsCB.FindStringExact(CurrentPatrol.Loadout);
@@ -1361,6 +1362,13 @@ namespace DayZeEditor
             if (!useraction) return;
             CurrentPatrol.ThreatDistanceLimit = StaticPatrolThreatDistanceLimitNUD.Value;
             AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolHeadshotResistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.HeadshotResistance = StaticPatrolHeadshotResistanceNUD.Value;
+            AIPatrolSettings.isDirty = true;
+
         }
         private void StaticPatrolMinSpreadRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -4485,5 +4493,7 @@ namespace DayZeEditor
         {
 
         }
+
+
     }
 }
