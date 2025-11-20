@@ -1664,6 +1664,7 @@ namespace DayZeEditor
             TraderIconTB.Text = currentTrader.TraderIcon;
             DisplayCurrencyValueNUD.Value = currentTrader.DisplayCurrencyValue;
             DisplayCurrencyNameTB.Text = currentTrader.DisplayCurrencyName;
+            UseCategoryOrderCB.Checked = currentTrader.UseCategoryOrder == 1 ? true : false;
 
             listBox10.DisplayMember = "Name";
             listBox10.ValueMember = "Value";
@@ -2172,6 +2173,12 @@ namespace DayZeEditor
         {
             if (action) return;
             currentTrader.DisplayCurrencyName = DisplayCurrencyNameTB.Text;
+            currentTrader.isDirty = true;
+        }
+        private void UseCategoryOrderCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentTrader.UseCategoryOrder = UseCategoryOrderCB.Checked == true? 1:0;
             currentTrader.isDirty = true;
         }
         #endregion trader

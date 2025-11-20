@@ -571,6 +571,11 @@ namespace DayZeEditor
             this.removeGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewLoadBlancingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeLoadBalancingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+<<<<<<< HEAD
+=======
+            this.MemeLevelNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel18 = new DarkUI.Controls.DarkLabel();
+>>>>>>> f7accd242fc6338e253c58725101b275c2b993a1
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -747,6 +752,10 @@ namespace DayZeEditor
             this.nameLBCGB.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+<<<<<<< HEAD
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.MemeLevelNUD)).BeginInit();
+>>>>>>> f7accd242fc6338e253c58725101b275c2b993a1
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1375,6 +1384,8 @@ namespace DayZeEditor
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.MemeLevelNUD);
+            this.groupBox1.Controls.Add(this.darkLabel18);
             this.groupBox1.Controls.Add(this.MaxRecruitableAINUD);
             this.groupBox1.Controls.Add(this.darkLabel4);
             this.groupBox1.Controls.Add(this.numericUpDownKey);
@@ -1435,7 +1446,7 @@ namespace DayZeEditor
             // 
             this.MaxRecruitableAINUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MaxRecruitableAINUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxRecruitableAINUD.Location = new System.Drawing.Point(192, 123);
+            this.MaxRecruitableAINUD.Location = new System.Drawing.Point(486, 123);
             this.MaxRecruitableAINUD.Maximum = new decimal(new int[] {
             200000,
             0,
@@ -1451,7 +1462,7 @@ namespace DayZeEditor
             // 
             this.darkLabel4.AutoSize = true;
             this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel4.Location = new System.Drawing.Point(17, 125);
+            this.darkLabel4.Location = new System.Drawing.Point(316, 125);
             this.darkLabel4.Name = "darkLabel4";
             this.darkLabel4.Size = new System.Drawing.Size(97, 13);
             this.darkLabel4.TabIndex = 215;
@@ -8602,6 +8613,40 @@ namespace DayZeEditor
             this.removeLoadBalancingToolStripMenuItem.Text = "Remove Load Balancing";
             this.removeLoadBalancingToolStripMenuItem.Click += new System.EventHandler(this.removeLoadBalancingToolStripMenuItem_Click);
             // 
+<<<<<<< HEAD
+=======
+            // MemeLevelNUD
+            // 
+            this.MemeLevelNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MemeLevelNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MemeLevelNUD.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.MemeLevelNUD.Location = new System.Drawing.Point(192, 123);
+            this.MemeLevelNUD.Maximum = new decimal(new int[] {
+            200000,
+            0,
+            0,
+            0});
+            this.MemeLevelNUD.Name = "MemeLevelNUD";
+            this.MemeLevelNUD.Size = new System.Drawing.Size(106, 20);
+            this.MemeLevelNUD.TabIndex = 216;
+            this.MemeLevelNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MemeLevelNUD.ValueChanged += new System.EventHandler(this.MemeLevelNUD_ValueChanged);
+            // 
+            // darkLabel18
+            // 
+            this.darkLabel18.AutoSize = true;
+            this.darkLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel18.Location = new System.Drawing.Point(17, 125);
+            this.darkLabel18.Name = "darkLabel18";
+            this.darkLabel18.Size = new System.Drawing.Size(65, 13);
+            this.darkLabel18.TabIndex = 217;
+            this.darkLabel18.Text = "Meme Level";
+            // 
+>>>>>>> f7accd242fc6338e253c58725101b275c2b993a1
             // ExpansionAI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8821,6 +8866,10 @@ namespace DayZeEditor
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+<<<<<<< HEAD
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.MemeLevelNUD)).EndInit();
+>>>>>>> f7accd242fc6338e253c58725101b275c2b993a1
             this.ResumeLayout(false);
 
         }
@@ -9367,5 +9416,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel10;
         private DarkUI.Controls.DarkLabel darkLabel11;
         private System.Windows.Forms.NumericUpDown StaticPatrolHeadshotResistanceNUD;
+        private System.Windows.Forms.NumericUpDown MemeLevelNUD;
+        private DarkUI.Controls.DarkLabel darkLabel18;
     }
 }

@@ -2044,6 +2044,7 @@ namespace DayZeEditor
             MannersCB.Checked = AISettings.Manners == 1 ? true : false;
             CanRecruitGuardsCB.Checked = AISettings.CanRecruitGuards == 1 ? true : false;
             CanRecruitFriendlyCB.Checked = AISettings.CanRecruitFriendly == 1 ? true : false;
+            MemeLevelNUD.Value = AISettings.MemeLevel;
             MaxRecruitableAINUD.Value = AISettings.MaxRecruitableAI;
             LogAIHitByCB.Checked = AISettings.LogAIHitBy == 1 ? true : false;
             LogAIKilledCB.Checked = AISettings.LogAIKilled == 1 ? true : false;
@@ -2176,6 +2177,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             AISettings.CanRecruitFriendly = CanRecruitFriendlyCB.Checked == true ? 1 : 0;
+            AISettings.isDirty = true;
+        }
+        private void MemeLevelNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.MemeLevel = (int)MemeLevelNUD.Value;
             AISettings.isDirty = true;
         }
         private void MaxRecruitableAINUD_ValueChanged(object sender, EventArgs e)

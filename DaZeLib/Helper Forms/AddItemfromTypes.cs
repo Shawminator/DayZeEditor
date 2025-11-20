@@ -146,7 +146,7 @@ namespace DayZeEditor
                     if (string.IsNullOrEmpty(cleanName))
                         continue;
 
-                    Additem(line);
+                    Additem(cleanName);
                 }
             }
         }
