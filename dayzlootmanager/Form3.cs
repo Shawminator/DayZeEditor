@@ -16,5 +16,10 @@ namespace DayZeEditor
         {
             InitializeComponent();
         }
+
+        private void groupBox68_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

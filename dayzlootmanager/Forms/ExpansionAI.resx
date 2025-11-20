@@ -124,47 +124,40 @@
   <data name="SaveFileButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACYAAAAWCAYAAACsR+4DAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANZSURBVEhLzZbvTxN3GMD9k7Y5NxeniIvLsgWUH7LEN3YC
-        GWNumr0c2RuTvXBvgEK6tgqW8cO16qiYbSb7paK2tHctpdz1x93aQkWkUmCbKIu0n+W+LiSudeOWlHDJ
-        577P9/Lck0+ee/LN7WCbXjuM2+tV1dsKU2Iv7drNgYMNHDrcQk1ts+CdmmZqa+s40d7Eh+3vCtrammhs
-        fBvLsXp27qritT37Smr9F6bE9h+ox+NRBW63IhgcUrns7gcuA15gjEfLI5w58wVK+Eu6u69QVV3H7j17
-        S+r9G6bE6hs+4OJFlcFBeYO+/hBfDzsAD6wbcqOs3P+K06c7kXydOJ0/0tfnZ79JOVNih+ta8XiUZ8Rc
-        A5M47Q70WC+puINUwkkkaKWj4wRj33yOzfYDHk8MlyvA3n01m5b7X2JDQ2GGhyOCkZEp+vsnsFq/o6fn
-        e0Fv7zXs9mvYbD9t5Lnd07hcE1RVHyqpWw7TYpcuxXA4btDVdUXMj4HVepWeHkPsn3xLd/cYnV1ebLaf
-        8Y7qHG/+rKRuOcyJ1b/PwECICxdGyeUyLC9lWMqXkl9Mk1vQRWzkPFicweu9yvnzQSyWT0vqlsOUWF1D
-        G3bHOKGQj0wmTkyViMfkZ4jFZFK/TvFodf7pXpVIpVR0LYLTeR3Lex0ldcthWszhGEeS7qCqYWTpFn7/
-        dbGG5NsCI1aUIKsP55HlW0hiL5NMTHL27I1Ki/nQdYVodIK1xzl0PSLi6ekAynRAxOHQbbGfjgbQtOhW
-        iBld8JFOx1BVibXHC6RTUWKqLPZTEb/oWDwe+vtTyqRSylaIPe3YbFYTc2PMlKZNoiUnuT+vA2vkFzMk
-        k2HRSSNnZjaxNWKy7COXm+FuNs7c3YQgm42z+CBNsfAby0uzZLMx8dzIWVjIoCWN4a+omPEp76AoITH4
-        9+aSqEqQYPAmwcBN/P5fxCpJRmfHRRyNSiTi4cp2zG43jgs/hcIfrD/JU1hfYv2JQf65FAq/o2tTlTsu
-        Go+0i44ZYrAKxRWKhWUoGqw8Hx4KMaNjx1sqcPK/+dZRMWPxeES8CH9ukiL35jTOnRvnSNNHJXXLYUrs
-        xZdfFb8vFksrJ099wscnT20KI7eltY03Djbyws5XSuqWw5TYVrIhth2vvwB+MWH+dDzb5wAAAABJRU5E
-        rkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANMSURBVEhLzZbZT1NBFIf9k1RcMC4sBmM0oBTExBcrS0Tc
+        iI8SX0x80BegEmwRCshmEaVAXBJ3FlvovS1taXu72BZQscimAmqk/DwzGqL1YnpNSpjky8zcnnvy5Zy5
+        k27AOh1cbFdK2rpCkdjmrclIz8jBocOFyMwq4BzMLEBWVjbOlOThdMlRTnFxHnJzD0B9XIWkrSnYsXOP
+        bL5/oUgsNV2F9nY3x2BwcZqa3bhr0FOGu4SR6MbibCuuXr0Gl+0GKiu7kJKWjeSdu2VzrgYbcYupck7h
+        zh03mprEFer0Vtxu0VGGdmCJyXVi7v0tXL5cDsFUjpqaJ6irMyNVoRwbcYsdzi6ialGVfhNraBxGjVaH
+        gKcKQUmHoLcGdosGZWVn0H3vCqqrH9M7HjQ0DGH3nsy45f5LrLnZhpYWO6e11QG9fhAazQNcv/6QU1X1
+        CFrtI5J6uhJnMIyQ3CC19ZBs7lgUi3V0eKDTvURFRRc/PwyNpoeEmFgs9+n3bpRXGEnyGYydAeQXXJLN
+        HYsyMdVJNDZa0dbWicnJMGZnwpiZ/pvpqRAmIwG+ZjEfpkZhNPagvt4CtfqibO5YFIll5xRDq+uD1WpC
+        OCzB4xYgecQ/8BDB1w4sLkz83FNMMOhGwG+nD+EF1CfKZHPHolhMR2KC8Aputw2i0A+z+QWfreIAh61d
+        LgsW5icgiv0Uy/YifN5h3Lz5MtFiJgQCLjidg/j6ZZLWdr4eGRmCi2Brm3WA70ecQ/D7nWshxqpgQijk
+        oaoJJBZBKOiklol877CbecUkyfqrldTaoGvtKjY27ufnhp0pv38Yft8w3k8EKNNXOvxh+Hw2XkkWMzrm
+        XRsxUTTRVzmKN+MS3r7xcsZpPfUhhOXoR/oSx2jv4c9ZTCQSJnF2+BPeylfULis/+O/e+uCm1lksvbAM
+        9dKz53wWBFbZPr52OgV4JVtiK6bVsuvCjGj0M5a+TyO6NEMzY3pVotFP1FJH4q6L3CMlvGJMDFgAlueo
+        dbM0M+ZWB/NcjFUsvzABN/++/cf4GZMkO38R+BYny9RyP2pr+3Ak76xs7ljYiFts05bt/O+LWl2E86UX
+        cO58aVyw2MKiYuzNyMXGpG2yuWNRJLaWrIitvwH8AH4xYf4DkBnMAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="toolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
-  <metadata name="darkToolStrip22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>292, 21</value>
-  </metadata>
-  <metadata name="darkToolStrip24.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>427, 21</value>
-  </metadata>
   <data name="darkLabel36.Text" xml:space="preserve">
     <value>Import From .map/.dze
 This Function import a set of coord 
@@ -176,8 +169,8 @@ to see which points need to be
 reorder using the up down arrows
 </value>
   </data>
-  <metadata name="darkToolStrip25.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>562, 21</value>
+  <metadata name="darkToolStrip22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>292, 21</value>
   </metadata>
   <data name="darkLabel176.Text" xml:space="preserve">
     <value>The Classnames to use when placing in DayZ Editor are as follows:-
@@ -193,9 +186,6 @@ any existing Spatial Locations.
   </metadata>
   <metadata name="darkToolStrip24.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>427, 21</value>
-  </metadata>
-  <metadata name="darkToolStrip26.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>697, 21</value>
   </metadata>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>This will be filled automatically from the locations found in
