@@ -70,6 +70,8 @@ namespace DayZeEditor
             this.AIGeneralEnabledCB = new System.Windows.Forms.CheckBox();
             this.AIGeneralRespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.MemeLevelNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel18 = new DarkUI.Controls.DarkLabel();
             this.MaxRecruitableAINUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel4 = new DarkUI.Controls.DarkLabel();
             this.numericUpDownKey = new System.Windows.Forms.NumericUpDown();
@@ -571,11 +573,6 @@ namespace DayZeEditor
             this.removeGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewLoadBlancingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeLoadBalancingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-<<<<<<< HEAD
-=======
-            this.MemeLevelNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel18 = new DarkUI.Controls.DarkLabel();
->>>>>>> f7accd242fc6338e253c58725101b275c2b993a1
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -594,6 +591,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.AIGeneralMinDistRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AIGeneralRespawnTimeNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MemeLevelNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxRecruitableAINUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownValue)).BeginInit();
@@ -752,10 +750,6 @@ namespace DayZeEditor
             this.nameLBCGB.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-<<<<<<< HEAD
-=======
-            ((System.ComponentModel.ISupportInitialize)(this.MemeLevelNUD)).BeginInit();
->>>>>>> f7accd242fc6338e253c58725101b275c2b993a1
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1441,6 +1435,37 @@ namespace DayZeEditor
             this.groupBox1.TabIndex = 129;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AI Settings";
+            // 
+            // MemeLevelNUD
+            // 
+            this.MemeLevelNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MemeLevelNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MemeLevelNUD.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.MemeLevelNUD.Location = new System.Drawing.Point(192, 123);
+            this.MemeLevelNUD.Maximum = new decimal(new int[] {
+            200000,
+            0,
+            0,
+            0});
+            this.MemeLevelNUD.Name = "MemeLevelNUD";
+            this.MemeLevelNUD.Size = new System.Drawing.Size(106, 20);
+            this.MemeLevelNUD.TabIndex = 216;
+            this.MemeLevelNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MemeLevelNUD.ValueChanged += new System.EventHandler(this.MemeLevelNUD_ValueChanged);
+            // 
+            // darkLabel18
+            // 
+            this.darkLabel18.AutoSize = true;
+            this.darkLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel18.Location = new System.Drawing.Point(17, 125);
+            this.darkLabel18.Name = "darkLabel18";
+            this.darkLabel18.Size = new System.Drawing.Size(65, 13);
+            this.darkLabel18.TabIndex = 217;
+            this.darkLabel18.Text = "Meme Level";
             // 
             // MaxRecruitableAINUD
             // 
@@ -3046,7 +3071,7 @@ namespace DayZeEditor
             "JOG",
             "SPRINT",
             "RANDOM",
-            "RANDOM_NONSTATIC "});
+            "RANDOM_NONSTATIC"});
             this.StaticPatrolSpeedCB.Location = new System.Drawing.Point(116, 215);
             this.StaticPatrolSpeedCB.Name = "StaticPatrolSpeedCB";
             this.StaticPatrolSpeedCB.Size = new System.Drawing.Size(330, 21);
@@ -3074,7 +3099,7 @@ namespace DayZeEditor
             "JOG",
             "SPRINT",
             "RANDOM",
-            "RANDOM_NONSTATIC "});
+            "RANDOM_NONSTATIC"});
             this.StaticPatrolUnderThreatSpeedCB.Location = new System.Drawing.Point(116, 242);
             this.StaticPatrolUnderThreatSpeedCB.Name = "StaticPatrolUnderThreatSpeedCB";
             this.StaticPatrolUnderThreatSpeedCB.Size = new System.Drawing.Size(330, 21);
@@ -3643,7 +3668,7 @@ namespace DayZeEditor
             this.toolStripButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton4.Size = new System.Drawing.Size(101, 25);
             this.toolStripButton4.Text = "AI Patrol Settings";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
@@ -3662,7 +3687,7 @@ namespace DayZeEditor
             this.toolStripButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton5.Size = new System.Drawing.Size(152, 25);
             this.toolStripButton5.Text = "AI Patrol Map Visualisation";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -7508,7 +7533,7 @@ namespace DayZeEditor
             this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton7.Size = new System.Drawing.Size(79, 25);
             this.toolStripButton7.Text = "Notifications";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -7527,7 +7552,7 @@ namespace DayZeEditor
             this.toolStripButton9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton9.Size = new System.Drawing.Size(48, 25);
             this.toolStripButton9.Text = "Players";
             this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
@@ -7546,7 +7571,7 @@ namespace DayZeEditor
             this.toolStripButton10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton10.Size = new System.Drawing.Size(91, 25);
             this.toolStripButton10.Text = "Spatial Settings";
             this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
             // 
@@ -7565,7 +7590,7 @@ namespace DayZeEditor
             this.toolStripButton11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton11.Name = "toolStripButton11";
-            this.toolStripButton11.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton11.Size = new System.Drawing.Size(138, 25);
             this.toolStripButton11.Text = "Spatial Groups and Stuff";
             this.toolStripButton11.Click += new System.EventHandler(this.toolStripButton11_Click);
             // 
@@ -8613,40 +8638,6 @@ namespace DayZeEditor
             this.removeLoadBalancingToolStripMenuItem.Text = "Remove Load Balancing";
             this.removeLoadBalancingToolStripMenuItem.Click += new System.EventHandler(this.removeLoadBalancingToolStripMenuItem_Click);
             // 
-<<<<<<< HEAD
-=======
-            // MemeLevelNUD
-            // 
-            this.MemeLevelNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.MemeLevelNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MemeLevelNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.MemeLevelNUD.Location = new System.Drawing.Point(192, 123);
-            this.MemeLevelNUD.Maximum = new decimal(new int[] {
-            200000,
-            0,
-            0,
-            0});
-            this.MemeLevelNUD.Name = "MemeLevelNUD";
-            this.MemeLevelNUD.Size = new System.Drawing.Size(106, 20);
-            this.MemeLevelNUD.TabIndex = 216;
-            this.MemeLevelNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.MemeLevelNUD.ValueChanged += new System.EventHandler(this.MemeLevelNUD_ValueChanged);
-            // 
-            // darkLabel18
-            // 
-            this.darkLabel18.AutoSize = true;
-            this.darkLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel18.Location = new System.Drawing.Point(17, 125);
-            this.darkLabel18.Name = "darkLabel18";
-            this.darkLabel18.Size = new System.Drawing.Size(65, 13);
-            this.darkLabel18.TabIndex = 217;
-            this.darkLabel18.Text = "Meme Level";
-            // 
->>>>>>> f7accd242fc6338e253c58725101b275c2b993a1
             // ExpansionAI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8682,6 +8673,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.AIGeneralRespawnTimeNUD)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MemeLevelNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxRecruitableAINUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKey)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownValue)).EndInit();
@@ -8866,10 +8858,6 @@ namespace DayZeEditor
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-<<<<<<< HEAD
-=======
-            ((System.ComponentModel.ISupportInitialize)(this.MemeLevelNUD)).EndInit();
->>>>>>> f7accd242fc6338e253c58725101b275c2b993a1
             this.ResumeLayout(false);
 
         }
