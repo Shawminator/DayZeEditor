@@ -2052,6 +2052,11 @@ namespace DayZeEditor
             EnableZombieVehicleAttackHandlerCB.Checked = AISettings.EnableZombieVehicleAttackHandler == 1 ? true : false;
             EnableZombieVehicleAttackPhysicsCB.Checked = AISettings.EnableZombieVehicleAttackPhysics == 1 ? true : false;
 
+            AggressionTimeoutNUD.Value = AISettings.AggressionTimeout;
+            GuardAggressionTimeoutNUD.Value = AISettings.GuardAggressionTimeout;
+            OverrideClientWeaponFiringCB.Checked = AISettings.OverrideClientWeaponFiring == 1 ? true : false;
+            RecreateWeaponNetworkRepresentationCB.Checked = AISettings.RecreateWeaponNetworkRepresentation == 1 ? true : false;
+
             AISettingsAdminsLB.DisplayMember = "DisplayName";
             AISettingsAdminsLB.ValueMember = "Value";
             AISettingsAdminsLB.DataSource = AISettings.Admins;
@@ -2271,6 +2276,30 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             AISettings.EnableZombieVehicleAttackPhysics = EnableZombieVehicleAttackPhysicsCB.Checked == true ? 1 : 0;
+            AISettings.isDirty = true;
+        }
+        private void AggressionTimeoutNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.AggressionTimeout = AggressionTimeoutNUD.Value;
+            AISettings.isDirty = true;
+        }
+        private void GuardAggressionTimeoutNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.GuardAggressionTimeout = GuardAggressionTimeoutNUD.Value;
+            AISettings.isDirty = true;
+        }
+        private void OverrideClientWeaponFiringCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.OverrideClientWeaponFiring = OverrideClientWeaponFiringCB.Checked == true ? 1 : 0;
+            AISettings.isDirty = true;
+        }
+        private void RecreateWeaponNetworkRepresentationCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.RecreateWeaponNetworkRepresentation = RecreateWeaponNetworkRepresentationCB.Checked == true ? 1 : 0;
             AISettings.isDirty = true;
         }
         #endregion AISettings
@@ -4500,7 +4529,6 @@ namespace DayZeEditor
         {
 
         }
-
 
     }
 }

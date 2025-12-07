@@ -181,12 +181,6 @@
         LyJhsf+LmNhVvP4CDbBc6WBQTa4AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="treeViewMS1.SelectedNodes" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAEAQAAABxTeXN0ZW0uQ29sbGVjdGlvbnMuQXJyYXlMaXN0AwAAAAZfaXRl
-        bXMFX3NpemUIX3ZlcnNpb24FAAAICAkCAAAAAAAAAAAAAAAQAgAAAAAAAAAL
-</value>
-  </data>
   <data name="InfoLabel.Text" xml:space="preserve">
     <value>GroupQuestMode
 Integer.
@@ -202,6 +196,12 @@ Integer.
         iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAGElEQVQYV2M4
         gAT+IwEGKkogc5AVUVECAH8Xp6Gyc4w8AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="treeViewMS1.SelectedNodes" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAEAQAAABxTeXN0ZW0uQ29sbGVjdGlvbnMuQXJyYXlMaXN0AwAAAAZfaXRl
+        bXMFX3NpemUIX3ZlcnNpb24FAAAICAkCAAAAAAAAAAAAAAAQAgAAAAAAAAAL
 </value>
   </data>
   <data name="treeViewMS2.SelectedNodes" mimetype="application/x-microsoft.net.object.binary.base64">

@@ -2726,7 +2726,7 @@ namespace DayZeEditor
             // 
             this.QuestsFactionReputationRequirementsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.QuestsFactionReputationRequirementsNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestsFactionReputationRequirementsNUD.Location = new System.Drawing.Point(131, 178);
+            this.QuestsFactionReputationRequirementsNUD.Location = new System.Drawing.Point(141, 179);
             this.QuestsFactionReputationRequirementsNUD.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -2744,9 +2744,9 @@ namespace DayZeEditor
             this.darkLabel168.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel168.Location = new System.Drawing.Point(14, 181);
             this.darkLabel168.Name = "darkLabel168";
-            this.darkLabel168.Size = new System.Drawing.Size(116, 13);
+            this.darkLabel168.Size = new System.Drawing.Size(121, 13);
             this.darkLabel168.TabIndex = 250;
-            this.darkLabel168.Text = "Reputation Requirment";
+            this.darkLabel168.Text = "Reputation Requirments";
             // 
             // darkButton82
             // 
@@ -2852,7 +2852,7 @@ namespace DayZeEditor
             // 
             this.QuestFactionReputationRewardsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.QuestFactionReputationRewardsNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestFactionReputationRewardsNUD.Location = new System.Drawing.Point(134, 177);
+            this.QuestFactionReputationRewardsNUD.Location = new System.Drawing.Point(141, 177);
             this.QuestFactionReputationRewardsNUD.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -2870,9 +2870,9 @@ namespace DayZeEditor
             this.darkLabel169.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel169.Location = new System.Drawing.Point(17, 180);
             this.darkLabel169.Name = "darkLabel169";
-            this.darkLabel169.Size = new System.Drawing.Size(116, 13);
+            this.darkLabel169.Size = new System.Drawing.Size(104, 13);
             this.darkLabel169.TabIndex = 250;
-            this.darkLabel169.Text = "Reputation Requirment";
+            this.darkLabel169.Text = "Reputation Rewards";
             // 
             // darkButton84
             // 
@@ -4528,6 +4528,7 @@ namespace DayZeEditor
             // 
             // expansionQuestAISpawnControlAICamp
             // 
+            this.expansionQuestAISpawnControlAICamp.AILootDropsList = null;
             this.expansionQuestAISpawnControlAICamp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.expansionQuestAISpawnControlAICamp.currentAISpawn = null;
             this.expansionQuestAISpawnControlAICamp.Factions = null;
@@ -4795,6 +4796,7 @@ namespace DayZeEditor
             // 
             // expansionQuestAISpawnControlAIPatrol
             // 
+            this.expansionQuestAISpawnControlAIPatrol.AILootDropsList = null;
             this.expansionQuestAISpawnControlAIPatrol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.expansionQuestAISpawnControlAIPatrol.currentAISpawn = null;
             this.expansionQuestAISpawnControlAIPatrol.Factions = null;

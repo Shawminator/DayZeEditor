@@ -1386,6 +1386,8 @@ namespace DayZeEditor
             this.addNewSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.KillFeedDrownedCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1760,6 +1762,7 @@ namespace DayZeEditor
             this.darkToolStrip22.SuspendLayout();
             this.darkToolStrip26.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -3245,9 +3248,9 @@ namespace DayZeEditor
             this.groupBox28.Controls.Add(this.EnableTerritoriesTCB);
             this.groupBox28.Controls.Add(this.UseWholeMapForInviteListTCB);
             this.groupBox28.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox28.Location = new System.Drawing.Point(784, 288);
+            this.groupBox28.Location = new System.Drawing.Point(784, 320);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(290, 322);
+            this.groupBox28.Size = new System.Drawing.Size(290, 290);
             this.groupBox28.TabIndex = 6;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Territories";
@@ -3256,7 +3259,7 @@ namespace DayZeEditor
             // 
             this.darkLabel299.AutoSize = true;
             this.darkLabel299.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel299.Location = new System.Drawing.Point(80, 272);
+            this.darkLabel299.Location = new System.Drawing.Point(80, 266);
             this.darkLabel299.Name = "darkLabel299";
             this.darkLabel299.Size = new System.Drawing.Size(192, 13);
             this.darkLabel299.TabIndex = 46;
@@ -3266,7 +3269,7 @@ namespace DayZeEditor
             // 
             this.MaxCodeLocksOnItemsPerTerritoryTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MaxCodeLocksOnItemsPerTerritoryTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxCodeLocksOnItemsPerTerritoryTNUD.Location = new System.Drawing.Point(9, 268);
+            this.MaxCodeLocksOnItemsPerTerritoryTNUD.Location = new System.Drawing.Point(9, 262);
             this.MaxCodeLocksOnItemsPerTerritoryTNUD.Maximum = new decimal(new int[] {
             99999999,
             0,
@@ -3287,7 +3290,7 @@ namespace DayZeEditor
             // 
             this.darkLabel298.AutoSize = true;
             this.darkLabel298.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel298.Location = new System.Drawing.Point(80, 246);
+            this.darkLabel298.Location = new System.Drawing.Point(80, 240);
             this.darkLabel298.Name = "darkLabel298";
             this.darkLabel298.Size = new System.Drawing.Size(178, 13);
             this.darkLabel298.TabIndex = 44;
@@ -3297,7 +3300,7 @@ namespace DayZeEditor
             // 
             this.MaxCodeLocksOnBBPerTerritoryTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MaxCodeLocksOnBBPerTerritoryTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxCodeLocksOnBBPerTerritoryTNUD.Location = new System.Drawing.Point(9, 242);
+            this.MaxCodeLocksOnBBPerTerritoryTNUD.Location = new System.Drawing.Point(9, 236);
             this.MaxCodeLocksOnBBPerTerritoryTNUD.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -3331,7 +3334,7 @@ namespace DayZeEditor
             // 
             this.darkLabel263.AutoSize = true;
             this.darkLabel263.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel263.Location = new System.Drawing.Point(80, 219);
+            this.darkLabel263.Location = new System.Drawing.Point(80, 213);
             this.darkLabel263.Name = "darkLabel263";
             this.darkLabel263.Size = new System.Drawing.Size(83, 13);
             this.darkLabel263.TabIndex = 42;
@@ -3341,7 +3344,7 @@ namespace DayZeEditor
             // 
             this.TerritoryInviteCooldownNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.TerritoryInviteCooldownNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerritoryInviteCooldownNUD.Location = new System.Drawing.Point(9, 215);
+            this.TerritoryInviteCooldownNUD.Location = new System.Drawing.Point(9, 209);
             this.TerritoryInviteCooldownNUD.Name = "TerritoryInviteCooldownNUD";
             this.TerritoryInviteCooldownNUD.Size = new System.Drawing.Size(65, 20);
             this.TerritoryInviteCooldownNUD.TabIndex = 9;
@@ -3352,7 +3355,7 @@ namespace DayZeEditor
             // 
             this.AuthenticateCodeLockIfTerritoryMemberTCB.AutoSize = true;
             this.AuthenticateCodeLockIfTerritoryMemberTCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AuthenticateCodeLockIfTerritoryMemberTCB.Location = new System.Drawing.Point(9, 192);
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.Location = new System.Drawing.Point(9, 186);
             this.AuthenticateCodeLockIfTerritoryMemberTCB.Name = "AuthenticateCodeLockIfTerritoryMemberTCB";
             this.AuthenticateCodeLockIfTerritoryMemberTCB.Size = new System.Drawing.Size(229, 17);
             this.AuthenticateCodeLockIfTerritoryMemberTCB.TabIndex = 8;
@@ -3365,7 +3368,7 @@ namespace DayZeEditor
             // 
             this.darkLabel176.AutoSize = true;
             this.darkLabel176.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel176.Location = new System.Drawing.Point(80, 167);
+            this.darkLabel176.Location = new System.Drawing.Point(80, 161);
             this.darkLabel176.Name = "darkLabel176";
             this.darkLabel176.Size = new System.Drawing.Size(147, 13);
             this.darkLabel176.TabIndex = 39;
@@ -3376,7 +3379,7 @@ namespace DayZeEditor
             this.TerritoryInviteAcceptRadiusTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.TerritoryInviteAcceptRadiusTNUD.DecimalPlaces = 1;
             this.TerritoryInviteAcceptRadiusTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerritoryInviteAcceptRadiusTNUD.Location = new System.Drawing.Point(9, 163);
+            this.TerritoryInviteAcceptRadiusTNUD.Location = new System.Drawing.Point(9, 157);
             this.TerritoryInviteAcceptRadiusTNUD.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3392,7 +3395,7 @@ namespace DayZeEditor
             // 
             this.darkLabel82.AutoSize = true;
             this.darkLabel82.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel82.Location = new System.Drawing.Point(80, 66);
+            this.darkLabel82.Location = new System.Drawing.Point(80, 60);
             this.darkLabel82.Name = "darkLabel82";
             this.darkLabel82.Size = new System.Drawing.Size(68, 13);
             this.darkLabel82.TabIndex = 37;
@@ -3403,7 +3406,7 @@ namespace DayZeEditor
             this.TerritorySizeTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.TerritorySizeTNUD.DecimalPlaces = 1;
             this.TerritorySizeTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerritorySizeTNUD.Location = new System.Drawing.Point(9, 62);
+            this.TerritorySizeTNUD.Location = new System.Drawing.Point(9, 56);
             this.TerritorySizeTNUD.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3419,7 +3422,7 @@ namespace DayZeEditor
             // 
             this.darkLabel81.AutoSize = true;
             this.darkLabel81.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel81.Location = new System.Drawing.Point(80, 142);
+            this.darkLabel81.Location = new System.Drawing.Point(80, 136);
             this.darkLabel81.Name = "darkLabel81";
             this.darkLabel81.Size = new System.Drawing.Size(119, 13);
             this.darkLabel81.TabIndex = 35;
@@ -3429,7 +3432,7 @@ namespace DayZeEditor
             // 
             this.MaxTerritoryPerPlayerTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MaxTerritoryPerPlayerTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxTerritoryPerPlayerTNUD.Location = new System.Drawing.Point(9, 138);
+            this.MaxTerritoryPerPlayerTNUD.Location = new System.Drawing.Point(9, 132);
             this.MaxTerritoryPerPlayerTNUD.Name = "MaxTerritoryPerPlayerTNUD";
             this.MaxTerritoryPerPlayerTNUD.Size = new System.Drawing.Size(65, 20);
             this.MaxTerritoryPerPlayerTNUD.TabIndex = 6;
@@ -3440,7 +3443,7 @@ namespace DayZeEditor
             // 
             this.darkLabel80.AutoSize = true;
             this.darkLabel80.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel80.Location = new System.Drawing.Point(80, 116);
+            this.darkLabel80.Location = new System.Drawing.Point(80, 110);
             this.darkLabel80.Name = "darkLabel80";
             this.darkLabel80.Size = new System.Drawing.Size(126, 13);
             this.darkLabel80.TabIndex = 33;
@@ -3450,7 +3453,7 @@ namespace DayZeEditor
             // 
             this.MaxMembersInTerritoryTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MaxMembersInTerritoryTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxMembersInTerritoryTNUD.Location = new System.Drawing.Point(9, 112);
+            this.MaxMembersInTerritoryTNUD.Location = new System.Drawing.Point(9, 106);
             this.MaxMembersInTerritoryTNUD.Name = "MaxMembersInTerritoryTNUD";
             this.MaxMembersInTerritoryTNUD.Size = new System.Drawing.Size(65, 20);
             this.MaxMembersInTerritoryTNUD.TabIndex = 5;
@@ -3461,7 +3464,7 @@ namespace DayZeEditor
             // 
             this.darkLabel79.AutoSize = true;
             this.darkLabel79.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel79.Location = new System.Drawing.Point(80, 90);
+            this.darkLabel79.Location = new System.Drawing.Point(80, 84);
             this.darkLabel79.Name = "darkLabel79";
             this.darkLabel79.Size = new System.Drawing.Size(115, 13);
             this.darkLabel79.TabIndex = 31;
@@ -3472,7 +3475,7 @@ namespace DayZeEditor
             this.TerritoryPerimeterSizeTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.TerritoryPerimeterSizeTNUD.DecimalPlaces = 1;
             this.TerritoryPerimeterSizeTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerritoryPerimeterSizeTNUD.Location = new System.Drawing.Point(9, 86);
+            this.TerritoryPerimeterSizeTNUD.Location = new System.Drawing.Point(9, 80);
             this.TerritoryPerimeterSizeTNUD.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3501,7 +3504,7 @@ namespace DayZeEditor
             // 
             this.UseWholeMapForInviteListTCB.AutoSize = true;
             this.UseWholeMapForInviteListTCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.UseWholeMapForInviteListTCB.Location = new System.Drawing.Point(9, 43);
+            this.UseWholeMapForInviteListTCB.Location = new System.Drawing.Point(9, 37);
             this.UseWholeMapForInviteListTCB.Name = "UseWholeMapForInviteListTCB";
             this.UseWholeMapForInviteListTCB.Size = new System.Drawing.Size(169, 17);
             this.UseWholeMapForInviteListTCB.TabIndex = 2;
@@ -3512,54 +3515,11 @@ namespace DayZeEditor
             // 
             // groupBox27
             // 
-            this.groupBox27.Controls.Add(this.KillFeedAICB);
-            this.groupBox27.Controls.Add(this.KillFeedMessageTypeCB);
-            this.groupBox27.Controls.Add(this.LeftMessageTypeCB);
-            this.groupBox27.Controls.Add(this.JoinMessageTypeCB);
-            this.groupBox27.Controls.Add(this.KillFeedAnimalCB);
-            this.groupBox27.Controls.Add(this.KillFeedDiedUnknownCB);
-            this.groupBox27.Controls.Add(this.KillFeedKilledUnknownCB);
-            this.groupBox27.Controls.Add(this.KillFeedInfectedCB);
-            this.groupBox27.Controls.Add(this.KillFeedBarehandsCB);
-            this.groupBox27.Controls.Add(this.KillFeedMeleeWeaponCB);
-            this.groupBox27.Controls.Add(this.KillFeedWeaponCB);
-            this.groupBox27.Controls.Add(this.KillFeedSuicideCB);
-            this.groupBox27.Controls.Add(this.KillFeedStatusEffectsCB);
-            this.groupBox27.Controls.Add(this.KillFeedBleedingCB);
-            this.groupBox27.Controls.Add(this.KillFeedFireCB);
-            this.groupBox27.Controls.Add(this.KillFeedWeaponExplosionCB);
-            this.groupBox27.Controls.Add(this.KillFeedStarvationCB);
-            this.groupBox27.Controls.Add(this.KillFeedDehydrationCB);
-            this.groupBox27.Controls.Add(this.KillFeedBoatHitNoDriverCB);
-            this.groupBox27.Controls.Add(this.KillFeedBoatCrashCB);
-            this.groupBox27.Controls.Add(this.KillFeedBarbedWireCB);
-            this.groupBox27.Controls.Add(this.KillFeedBoatCrashCrewCB);
-            this.groupBox27.Controls.Add(this.KillFeedBoatHitDriverCB);
-            this.groupBox27.Controls.Add(this.KillFeedHeliCrashCrewCB);
-            this.groupBox27.Controls.Add(this.KillFeedHeliCrashCB);
-            this.groupBox27.Controls.Add(this.KillFeedHeliHitNoDriverCB);
-            this.groupBox27.Controls.Add(this.KillFeedHeliHitDriverCB);
-            this.groupBox27.Controls.Add(this.KillFeedCarCrashCrewCB);
-            this.groupBox27.Controls.Add(this.KillFeedCarCrashCB);
-            this.groupBox27.Controls.Add(this.KillFeedFallCB);
-            this.groupBox27.Controls.Add(this.KillFeedCarHitNoDriverCB);
-            this.groupBox27.Controls.Add(this.KillFeedCarHitDriverCB);
-            this.groupBox27.Controls.Add(this.EnableKillFeedCB);
-            this.groupBox27.Controls.Add(this.ShowTerritoryNotificationsCB);
-            this.groupBox27.Controls.Add(this.ShowPlayerAirdropDroppedCB);
-            this.groupBox27.Controls.Add(this.ShowPlayerAirdropClosingOnCB);
-            this.groupBox27.Controls.Add(this.ShowPlayerAirdropStartedCB);
-            this.groupBox27.Controls.Add(this.ShowAirdropEndedCB);
-            this.groupBox27.Controls.Add(this.ShowAirdropStartedCB);
-            this.groupBox27.Controls.Add(this.ShowAirdropDroppedCB);
-            this.groupBox27.Controls.Add(this.ShowAirdropClosingOnCB);
-            this.groupBox27.Controls.Add(this.EnableNotificationCB);
-            this.groupBox27.Controls.Add(this.ShowPlayerJoinServerCB);
-            this.groupBox27.Controls.Add(this.ShowPlayerLeftServerCB);
+            this.groupBox27.Controls.Add(this.flowLayoutPanel2);
             this.groupBox27.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox27.Location = new System.Drawing.Point(315, 13);
             this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(759, 269);
+            this.groupBox27.Size = new System.Drawing.Size(759, 301);
             this.groupBox27.TabIndex = 3;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "Notifications";
@@ -3568,7 +3528,7 @@ namespace DayZeEditor
             // 
             this.KillFeedAICB.AutoSize = true;
             this.KillFeedAICB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedAICB.Location = new System.Drawing.Point(608, 245);
+            this.KillFeedAICB.Location = new System.Drawing.Point(563, 141);
             this.KillFeedAICB.Name = "KillFeedAICB";
             this.KillFeedAICB.Size = new System.Drawing.Size(79, 17);
             this.KillFeedAICB.TabIndex = 40;
@@ -3580,7 +3540,7 @@ namespace DayZeEditor
             // KillFeedMessageTypeCB
             // 
             this.KillFeedMessageTypeCB.FormattingEnabled = true;
-            this.KillFeedMessageTypeCB.Location = new System.Drawing.Point(233, 86);
+            this.KillFeedMessageTypeCB.Location = new System.Drawing.Point(201, 72);
             this.KillFeedMessageTypeCB.Name = "KillFeedMessageTypeCB";
             this.KillFeedMessageTypeCB.Size = new System.Drawing.Size(192, 21);
             this.KillFeedMessageTypeCB.TabIndex = 11;
@@ -3589,7 +3549,7 @@ namespace DayZeEditor
             // LeftMessageTypeCB
             // 
             this.LeftMessageTypeCB.FormattingEnabled = true;
-            this.LeftMessageTypeCB.Location = new System.Drawing.Point(23, 107);
+            this.LeftMessageTypeCB.Location = new System.Drawing.Point(3, 99);
             this.LeftMessageTypeCB.Name = "LeftMessageTypeCB";
             this.LeftMessageTypeCB.Size = new System.Drawing.Size(192, 21);
             this.LeftMessageTypeCB.TabIndex = 2;
@@ -3598,7 +3558,7 @@ namespace DayZeEditor
             // JoinMessageTypeCB
             // 
             this.JoinMessageTypeCB.FormattingEnabled = true;
-            this.JoinMessageTypeCB.Location = new System.Drawing.Point(23, 60);
+            this.JoinMessageTypeCB.Location = new System.Drawing.Point(3, 49);
             this.JoinMessageTypeCB.Name = "JoinMessageTypeCB";
             this.JoinMessageTypeCB.Size = new System.Drawing.Size(192, 21);
             this.JoinMessageTypeCB.TabIndex = 1;
@@ -3608,7 +3568,7 @@ namespace DayZeEditor
             // 
             this.KillFeedAnimalCB.AutoSize = true;
             this.KillFeedAnimalCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedAnimalCB.Location = new System.Drawing.Point(608, 177);
+            this.KillFeedAnimalCB.Location = new System.Drawing.Point(563, 118);
             this.KillFeedAnimalCB.Name = "KillFeedAnimalCB";
             this.KillFeedAnimalCB.Size = new System.Drawing.Size(100, 17);
             this.KillFeedAnimalCB.TabIndex = 37;
@@ -3621,7 +3581,7 @@ namespace DayZeEditor
             // 
             this.KillFeedDiedUnknownCB.AutoSize = true;
             this.KillFeedDiedUnknownCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedDiedUnknownCB.Location = new System.Drawing.Point(608, 223);
+            this.KillFeedDiedUnknownCB.Location = new System.Drawing.Point(563, 210);
             this.KillFeedDiedUnknownCB.Name = "KillFeedDiedUnknownCB";
             this.KillFeedDiedUnknownCB.Size = new System.Drawing.Size(140, 17);
             this.KillFeedDiedUnknownCB.TabIndex = 39;
@@ -3634,7 +3594,7 @@ namespace DayZeEditor
             // 
             this.KillFeedKilledUnknownCB.AutoSize = true;
             this.KillFeedKilledUnknownCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedKilledUnknownCB.Location = new System.Drawing.Point(608, 200);
+            this.KillFeedKilledUnknownCB.Location = new System.Drawing.Point(563, 187);
             this.KillFeedKilledUnknownCB.Name = "KillFeedKilledUnknownCB";
             this.KillFeedKilledUnknownCB.Size = new System.Drawing.Size(143, 17);
             this.KillFeedKilledUnknownCB.TabIndex = 38;
@@ -3647,7 +3607,7 @@ namespace DayZeEditor
             // 
             this.KillFeedInfectedCB.AutoSize = true;
             this.KillFeedInfectedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedInfectedCB.Location = new System.Drawing.Point(608, 154);
+            this.KillFeedInfectedCB.Location = new System.Drawing.Point(563, 95);
             this.KillFeedInfectedCB.Name = "KillFeedInfectedCB";
             this.KillFeedInfectedCB.Size = new System.Drawing.Size(108, 17);
             this.KillFeedInfectedCB.TabIndex = 36;
@@ -3660,7 +3620,7 @@ namespace DayZeEditor
             // 
             this.KillFeedBarehandsCB.AutoSize = true;
             this.KillFeedBarehandsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBarehandsCB.Location = new System.Drawing.Point(609, 132);
+            this.KillFeedBarehandsCB.Location = new System.Drawing.Point(563, 72);
             this.KillFeedBarehandsCB.Name = "KillFeedBarehandsCB";
             this.KillFeedBarehandsCB.Size = new System.Drawing.Size(120, 17);
             this.KillFeedBarehandsCB.TabIndex = 35;
@@ -3673,7 +3633,7 @@ namespace DayZeEditor
             // 
             this.KillFeedMeleeWeaponCB.AutoSize = true;
             this.KillFeedMeleeWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedMeleeWeaponCB.Location = new System.Drawing.Point(608, 111);
+            this.KillFeedMeleeWeaponCB.Location = new System.Drawing.Point(563, 49);
             this.KillFeedMeleeWeaponCB.Name = "KillFeedMeleeWeaponCB";
             this.KillFeedMeleeWeaponCB.Size = new System.Drawing.Size(142, 17);
             this.KillFeedMeleeWeaponCB.TabIndex = 34;
@@ -3686,7 +3646,7 @@ namespace DayZeEditor
             // 
             this.KillFeedWeaponCB.AutoSize = true;
             this.KillFeedWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedWeaponCB.Location = new System.Drawing.Point(608, 88);
+            this.KillFeedWeaponCB.Location = new System.Drawing.Point(563, 26);
             this.KillFeedWeaponCB.Name = "KillFeedWeaponCB";
             this.KillFeedWeaponCB.Size = new System.Drawing.Size(110, 17);
             this.KillFeedWeaponCB.TabIndex = 33;
@@ -3699,7 +3659,7 @@ namespace DayZeEditor
             // 
             this.KillFeedSuicideCB.AutoSize = true;
             this.KillFeedSuicideCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedSuicideCB.Location = new System.Drawing.Point(608, 65);
+            this.KillFeedSuicideCB.Location = new System.Drawing.Point(563, 3);
             this.KillFeedSuicideCB.Name = "KillFeedSuicideCB";
             this.KillFeedSuicideCB.Size = new System.Drawing.Size(104, 17);
             this.KillFeedSuicideCB.TabIndex = 32;
@@ -3712,7 +3672,7 @@ namespace DayZeEditor
             // 
             this.KillFeedStatusEffectsCB.AutoSize = true;
             this.KillFeedStatusEffectsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedStatusEffectsCB.Location = new System.Drawing.Point(608, 42);
+            this.KillFeedStatusEffectsCB.Location = new System.Drawing.Point(399, 256);
             this.KillFeedStatusEffectsCB.Name = "KillFeedStatusEffectsCB";
             this.KillFeedStatusEffectsCB.Size = new System.Drawing.Size(135, 17);
             this.KillFeedStatusEffectsCB.TabIndex = 31;
@@ -3725,7 +3685,7 @@ namespace DayZeEditor
             // 
             this.KillFeedBleedingCB.AutoSize = true;
             this.KillFeedBleedingCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBleedingCB.Location = new System.Drawing.Point(608, 19);
+            this.KillFeedBleedingCB.Location = new System.Drawing.Point(399, 233);
             this.KillFeedBleedingCB.Name = "KillFeedBleedingCB";
             this.KillFeedBleedingCB.Size = new System.Drawing.Size(110, 17);
             this.KillFeedBleedingCB.TabIndex = 30;
@@ -3738,7 +3698,7 @@ namespace DayZeEditor
             // 
             this.KillFeedFireCB.AutoSize = true;
             this.KillFeedFireCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedFireCB.Location = new System.Drawing.Point(438, 183);
+            this.KillFeedFireCB.Location = new System.Drawing.Point(399, 210);
             this.KillFeedFireCB.Name = "KillFeedFireCB";
             this.KillFeedFireCB.Size = new System.Drawing.Size(86, 17);
             this.KillFeedFireCB.TabIndex = 26;
@@ -3751,7 +3711,7 @@ namespace DayZeEditor
             // 
             this.KillFeedWeaponExplosionCB.AutoSize = true;
             this.KillFeedWeaponExplosionCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedWeaponExplosionCB.Location = new System.Drawing.Point(438, 206);
+            this.KillFeedWeaponExplosionCB.Location = new System.Drawing.Point(399, 187);
             this.KillFeedWeaponExplosionCB.Name = "KillFeedWeaponExplosionCB";
             this.KillFeedWeaponExplosionCB.Size = new System.Drawing.Size(158, 17);
             this.KillFeedWeaponExplosionCB.TabIndex = 27;
@@ -3764,7 +3724,7 @@ namespace DayZeEditor
             // 
             this.KillFeedStarvationCB.AutoSize = true;
             this.KillFeedStarvationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedStarvationCB.Location = new System.Drawing.Point(438, 250);
+            this.KillFeedStarvationCB.Location = new System.Drawing.Point(399, 164);
             this.KillFeedStarvationCB.Name = "KillFeedStarvationCB";
             this.KillFeedStarvationCB.Size = new System.Drawing.Size(117, 17);
             this.KillFeedStarvationCB.TabIndex = 29;
@@ -3777,7 +3737,7 @@ namespace DayZeEditor
             // 
             this.KillFeedDehydrationCB.AutoSize = true;
             this.KillFeedDehydrationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedDehydrationCB.Location = new System.Drawing.Point(438, 229);
+            this.KillFeedDehydrationCB.Location = new System.Drawing.Point(399, 141);
             this.KillFeedDehydrationCB.Name = "KillFeedDehydrationCB";
             this.KillFeedDehydrationCB.Size = new System.Drawing.Size(126, 17);
             this.KillFeedDehydrationCB.TabIndex = 28;
@@ -3790,7 +3750,7 @@ namespace DayZeEditor
             // 
             this.KillFeedBoatHitNoDriverCB.AutoSize = true;
             this.KillFeedBoatHitNoDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBoatHitNoDriverCB.Location = new System.Drawing.Point(438, 88);
+            this.KillFeedBoatHitNoDriverCB.Location = new System.Drawing.Point(399, 118);
             this.KillFeedBoatHitNoDriverCB.Name = "KillFeedBoatHitNoDriverCB";
             this.KillFeedBoatHitNoDriverCB.Size = new System.Drawing.Size(155, 17);
             this.KillFeedBoatHitNoDriverCB.TabIndex = 22;
@@ -3803,7 +3763,7 @@ namespace DayZeEditor
             // 
             this.KillFeedBoatCrashCB.AutoSize = true;
             this.KillFeedBoatCrashCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBoatCrashCB.Location = new System.Drawing.Point(438, 114);
+            this.KillFeedBoatCrashCB.Location = new System.Drawing.Point(399, 95);
             this.KillFeedBoatCrashCB.Name = "KillFeedBoatCrashCB";
             this.KillFeedBoatCrashCB.Size = new System.Drawing.Size(121, 17);
             this.KillFeedBoatCrashCB.TabIndex = 23;
@@ -3816,7 +3776,7 @@ namespace DayZeEditor
             // 
             this.KillFeedBarbedWireCB.AutoSize = true;
             this.KillFeedBarbedWireCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBarbedWireCB.Location = new System.Drawing.Point(438, 160);
+            this.KillFeedBarbedWireCB.Location = new System.Drawing.Point(399, 72);
             this.KillFeedBarbedWireCB.Name = "KillFeedBarbedWireCB";
             this.KillFeedBarbedWireCB.Size = new System.Drawing.Size(128, 17);
             this.KillFeedBarbedWireCB.TabIndex = 25;
@@ -3829,7 +3789,7 @@ namespace DayZeEditor
             // 
             this.KillFeedBoatCrashCrewCB.AutoSize = true;
             this.KillFeedBoatCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBoatCrashCrewCB.Location = new System.Drawing.Point(438, 137);
+            this.KillFeedBoatCrashCrewCB.Location = new System.Drawing.Point(399, 49);
             this.KillFeedBoatCrashCrewCB.Name = "KillFeedBoatCrashCrewCB";
             this.KillFeedBoatCrashCrewCB.Size = new System.Drawing.Size(148, 17);
             this.KillFeedBoatCrashCrewCB.TabIndex = 24;
@@ -3842,7 +3802,7 @@ namespace DayZeEditor
             // 
             this.KillFeedBoatHitDriverCB.AutoSize = true;
             this.KillFeedBoatHitDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBoatHitDriverCB.Location = new System.Drawing.Point(438, 66);
+            this.KillFeedBoatHitDriverCB.Location = new System.Drawing.Point(399, 26);
             this.KillFeedBoatHitDriverCB.Name = "KillFeedBoatHitDriverCB";
             this.KillFeedBoatHitDriverCB.Size = new System.Drawing.Size(138, 17);
             this.KillFeedBoatHitDriverCB.TabIndex = 21;
@@ -3855,7 +3815,7 @@ namespace DayZeEditor
             // 
             this.KillFeedHeliCrashCrewCB.AutoSize = true;
             this.KillFeedHeliCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedHeliCrashCrewCB.Location = new System.Drawing.Point(438, 42);
+            this.KillFeedHeliCrashCrewCB.Location = new System.Drawing.Point(399, 3);
             this.KillFeedHeliCrashCrewCB.Name = "KillFeedHeliCrashCrewCB";
             this.KillFeedHeliCrashCrewCB.Size = new System.Drawing.Size(144, 17);
             this.KillFeedHeliCrashCrewCB.TabIndex = 20;
@@ -3868,7 +3828,7 @@ namespace DayZeEditor
             // 
             this.KillFeedHeliCrashCB.AutoSize = true;
             this.KillFeedHeliCrashCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedHeliCrashCB.Location = new System.Drawing.Point(438, 19);
+            this.KillFeedHeliCrashCB.Location = new System.Drawing.Point(201, 260);
             this.KillFeedHeliCrashCB.Name = "KillFeedHeliCrashCB";
             this.KillFeedHeliCrashCB.Size = new System.Drawing.Size(117, 17);
             this.KillFeedHeliCrashCB.TabIndex = 19;
@@ -3881,7 +3841,7 @@ namespace DayZeEditor
             // 
             this.KillFeedHeliHitNoDriverCB.AutoSize = true;
             this.KillFeedHeliHitNoDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedHeliHitNoDriverCB.Location = new System.Drawing.Point(233, 248);
+            this.KillFeedHeliHitNoDriverCB.Location = new System.Drawing.Point(201, 237);
             this.KillFeedHeliHitNoDriverCB.Name = "KillFeedHeliHitNoDriverCB";
             this.KillFeedHeliHitNoDriverCB.Size = new System.Drawing.Size(151, 17);
             this.KillFeedHeliHitNoDriverCB.TabIndex = 18;
@@ -3894,7 +3854,7 @@ namespace DayZeEditor
             // 
             this.KillFeedHeliHitDriverCB.AutoSize = true;
             this.KillFeedHeliHitDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedHeliHitDriverCB.Location = new System.Drawing.Point(233, 229);
+            this.KillFeedHeliHitDriverCB.Location = new System.Drawing.Point(201, 214);
             this.KillFeedHeliHitDriverCB.Name = "KillFeedHeliHitDriverCB";
             this.KillFeedHeliHitDriverCB.Size = new System.Drawing.Size(134, 17);
             this.KillFeedHeliHitDriverCB.TabIndex = 17;
@@ -3907,7 +3867,7 @@ namespace DayZeEditor
             // 
             this.KillFeedCarCrashCrewCB.AutoSize = true;
             this.KillFeedCarCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedCarCrashCrewCB.Location = new System.Drawing.Point(233, 206);
+            this.KillFeedCarCrashCrewCB.Location = new System.Drawing.Point(201, 191);
             this.KillFeedCarCrashCrewCB.Name = "KillFeedCarCrashCrewCB";
             this.KillFeedCarCrashCrewCB.Size = new System.Drawing.Size(142, 17);
             this.KillFeedCarCrashCrewCB.TabIndex = 16;
@@ -3920,7 +3880,7 @@ namespace DayZeEditor
             // 
             this.KillFeedCarCrashCB.AutoSize = true;
             this.KillFeedCarCrashCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedCarCrashCB.Location = new System.Drawing.Point(233, 183);
+            this.KillFeedCarCrashCB.Location = new System.Drawing.Point(201, 168);
             this.KillFeedCarCrashCB.Name = "KillFeedCarCrashCB";
             this.KillFeedCarCrashCB.Size = new System.Drawing.Size(115, 17);
             this.KillFeedCarCrashCB.TabIndex = 15;
@@ -3933,7 +3893,7 @@ namespace DayZeEditor
             // 
             this.KillFeedFallCB.AutoSize = true;
             this.KillFeedFallCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedFallCB.Location = new System.Drawing.Point(233, 114);
+            this.KillFeedFallCB.Location = new System.Drawing.Point(201, 145);
             this.KillFeedFallCB.Name = "KillFeedFallCB";
             this.KillFeedFallCB.Size = new System.Drawing.Size(85, 17);
             this.KillFeedFallCB.TabIndex = 12;
@@ -3946,7 +3906,7 @@ namespace DayZeEditor
             // 
             this.KillFeedCarHitNoDriverCB.AutoSize = true;
             this.KillFeedCarHitNoDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedCarHitNoDriverCB.Location = new System.Drawing.Point(233, 160);
+            this.KillFeedCarHitNoDriverCB.Location = new System.Drawing.Point(201, 122);
             this.KillFeedCarHitNoDriverCB.Name = "KillFeedCarHitNoDriverCB";
             this.KillFeedCarHitNoDriverCB.Size = new System.Drawing.Size(149, 17);
             this.KillFeedCarHitNoDriverCB.TabIndex = 14;
@@ -3959,7 +3919,7 @@ namespace DayZeEditor
             // 
             this.KillFeedCarHitDriverCB.AutoSize = true;
             this.KillFeedCarHitDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedCarHitDriverCB.Location = new System.Drawing.Point(233, 137);
+            this.KillFeedCarHitDriverCB.Location = new System.Drawing.Point(201, 99);
             this.KillFeedCarHitDriverCB.Name = "KillFeedCarHitDriverCB";
             this.KillFeedCarHitDriverCB.Size = new System.Drawing.Size(132, 17);
             this.KillFeedCarHitDriverCB.TabIndex = 13;
@@ -3972,7 +3932,7 @@ namespace DayZeEditor
             // 
             this.EnableKillFeedCB.AutoSize = true;
             this.EnableKillFeedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EnableKillFeedCB.Location = new System.Drawing.Point(233, 67);
+            this.EnableKillFeedCB.Location = new System.Drawing.Point(201, 49);
             this.EnableKillFeedCB.Name = "EnableKillFeedCB";
             this.EnableKillFeedCB.Size = new System.Drawing.Size(102, 17);
             this.EnableKillFeedCB.TabIndex = 30;
@@ -3985,7 +3945,7 @@ namespace DayZeEditor
             // 
             this.ShowTerritoryNotificationsCB.AutoSize = true;
             this.ShowTerritoryNotificationsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowTerritoryNotificationsCB.Location = new System.Drawing.Point(233, 42);
+            this.ShowTerritoryNotificationsCB.Location = new System.Drawing.Point(201, 26);
             this.ShowTerritoryNotificationsCB.Name = "ShowTerritoryNotificationsCB";
             this.ShowTerritoryNotificationsCB.Size = new System.Drawing.Size(155, 17);
             this.ShowTerritoryNotificationsCB.TabIndex = 10;
@@ -3998,7 +3958,7 @@ namespace DayZeEditor
             // 
             this.ShowPlayerAirdropDroppedCB.AutoSize = true;
             this.ShowPlayerAirdropDroppedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPlayerAirdropDroppedCB.Location = new System.Drawing.Point(233, 19);
+            this.ShowPlayerAirdropDroppedCB.Location = new System.Drawing.Point(201, 3);
             this.ShowPlayerAirdropDroppedCB.Name = "ShowPlayerAirdropDroppedCB";
             this.ShowPlayerAirdropDroppedCB.Size = new System.Drawing.Size(165, 17);
             this.ShowPlayerAirdropDroppedCB.TabIndex = 9;
@@ -4011,7 +3971,7 @@ namespace DayZeEditor
             // 
             this.ShowPlayerAirdropClosingOnCB.AutoSize = true;
             this.ShowPlayerAirdropClosingOnCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPlayerAirdropClosingOnCB.Location = new System.Drawing.Point(23, 248);
+            this.ShowPlayerAirdropClosingOnCB.Location = new System.Drawing.Point(3, 241);
             this.ShowPlayerAirdropClosingOnCB.Name = "ShowPlayerAirdropClosingOnCB";
             this.ShowPlayerAirdropClosingOnCB.Size = new System.Drawing.Size(169, 17);
             this.ShowPlayerAirdropClosingOnCB.TabIndex = 8;
@@ -4024,7 +3984,7 @@ namespace DayZeEditor
             // 
             this.ShowPlayerAirdropStartedCB.AutoSize = true;
             this.ShowPlayerAirdropStartedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPlayerAirdropStartedCB.Location = new System.Drawing.Point(23, 226);
+            this.ShowPlayerAirdropStartedCB.Location = new System.Drawing.Point(3, 218);
             this.ShowPlayerAirdropStartedCB.Name = "ShowPlayerAirdropStartedCB";
             this.ShowPlayerAirdropStartedCB.Size = new System.Drawing.Size(158, 17);
             this.ShowPlayerAirdropStartedCB.TabIndex = 7;
@@ -4037,7 +3997,7 @@ namespace DayZeEditor
             // 
             this.ShowAirdropEndedCB.AutoSize = true;
             this.ShowAirdropEndedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowAirdropEndedCB.Location = new System.Drawing.Point(23, 203);
+            this.ShowAirdropEndedCB.Location = new System.Drawing.Point(3, 195);
             this.ShowAirdropEndedCB.Name = "ShowAirdropEndedCB";
             this.ShowAirdropEndedCB.Size = new System.Drawing.Size(123, 17);
             this.ShowAirdropEndedCB.TabIndex = 6;
@@ -4050,7 +4010,7 @@ namespace DayZeEditor
             // 
             this.ShowAirdropStartedCB.AutoSize = true;
             this.ShowAirdropStartedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowAirdropStartedCB.Location = new System.Drawing.Point(23, 134);
+            this.ShowAirdropStartedCB.Location = new System.Drawing.Point(3, 172);
             this.ShowAirdropStartedCB.Name = "ShowAirdropStartedCB";
             this.ShowAirdropStartedCB.Size = new System.Drawing.Size(126, 17);
             this.ShowAirdropStartedCB.TabIndex = 3;
@@ -4063,7 +4023,7 @@ namespace DayZeEditor
             // 
             this.ShowAirdropDroppedCB.AutoSize = true;
             this.ShowAirdropDroppedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowAirdropDroppedCB.Location = new System.Drawing.Point(23, 180);
+            this.ShowAirdropDroppedCB.Location = new System.Drawing.Point(3, 149);
             this.ShowAirdropDroppedCB.Name = "ShowAirdropDroppedCB";
             this.ShowAirdropDroppedCB.Size = new System.Drawing.Size(133, 17);
             this.ShowAirdropDroppedCB.TabIndex = 5;
@@ -4076,7 +4036,7 @@ namespace DayZeEditor
             // 
             this.ShowAirdropClosingOnCB.AutoSize = true;
             this.ShowAirdropClosingOnCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowAirdropClosingOnCB.Location = new System.Drawing.Point(23, 157);
+            this.ShowAirdropClosingOnCB.Location = new System.Drawing.Point(3, 126);
             this.ShowAirdropClosingOnCB.Name = "ShowAirdropClosingOnCB";
             this.ShowAirdropClosingOnCB.Size = new System.Drawing.Size(137, 17);
             this.ShowAirdropClosingOnCB.TabIndex = 4;
@@ -4089,7 +4049,7 @@ namespace DayZeEditor
             // 
             this.EnableNotificationCB.AutoSize = true;
             this.EnableNotificationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EnableNotificationCB.Location = new System.Drawing.Point(23, 19);
+            this.EnableNotificationCB.Location = new System.Drawing.Point(3, 3);
             this.EnableNotificationCB.Name = "EnableNotificationCB";
             this.EnableNotificationCB.Size = new System.Drawing.Size(115, 17);
             this.EnableNotificationCB.TabIndex = 0;
@@ -4102,7 +4062,7 @@ namespace DayZeEditor
             // 
             this.ShowPlayerJoinServerCB.AutoSize = true;
             this.ShowPlayerJoinServerCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPlayerJoinServerCB.Location = new System.Drawing.Point(23, 42);
+            this.ShowPlayerJoinServerCB.Location = new System.Drawing.Point(3, 26);
             this.ShowPlayerJoinServerCB.Name = "ShowPlayerJoinServerCB";
             this.ShowPlayerJoinServerCB.Size = new System.Drawing.Size(141, 17);
             this.ShowPlayerJoinServerCB.TabIndex = 18;
@@ -4115,7 +4075,7 @@ namespace DayZeEditor
             // 
             this.ShowPlayerLeftServerCB.AutoSize = true;
             this.ShowPlayerLeftServerCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPlayerLeftServerCB.Location = new System.Drawing.Point(23, 88);
+            this.ShowPlayerLeftServerCB.Location = new System.Drawing.Point(3, 76);
             this.ShowPlayerLeftServerCB.Name = "ShowPlayerLeftServerCB";
             this.ShowPlayerLeftServerCB.Size = new System.Drawing.Size(140, 17);
             this.ShowPlayerLeftServerCB.TabIndex = 17;
@@ -4186,9 +4146,9 @@ namespace DayZeEditor
             this.groupBox9.Controls.Add(this.ShowPartyMember3DMarkersCB);
             this.groupBox9.Controls.Add(this.UseWholeMapForInviteListCB);
             this.groupBox9.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox9.Location = new System.Drawing.Point(315, 288);
+            this.groupBox9.Location = new System.Drawing.Point(315, 320);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(463, 321);
+            this.groupBox9.Size = new System.Drawing.Size(463, 289);
             this.groupBox9.TabIndex = 5;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Party Settings";
@@ -19504,6 +19464,73 @@ namespace DayZeEditor
             this.removeSubMenuCategoryToolStripMenuItem.Text = "Remove Sub Menu Category";
             this.removeSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeSubMenuCategoryToolStripMenuItem_Click);
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.EnableNotificationCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerJoinServerCB);
+            this.flowLayoutPanel2.Controls.Add(this.JoinMessageTypeCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerLeftServerCB);
+            this.flowLayoutPanel2.Controls.Add(this.LeftMessageTypeCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropClosingOnCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropDroppedCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropStartedCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropEndedCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerAirdropStartedCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerAirdropClosingOnCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerAirdropDroppedCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowTerritoryNotificationsCB);
+            this.flowLayoutPanel2.Controls.Add(this.EnableKillFeedCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedMessageTypeCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarHitDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarHitNoDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedFallCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarCrashCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarCrashCrewCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliHitDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliHitNoDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliCrashCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliCrashCrewCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatHitDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatCrashCrewCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBarbedWireCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatCrashCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatHitNoDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedDehydrationCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedStarvationCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedWeaponExplosionCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedFireCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBleedingCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedStatusEffectsCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedSuicideCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedWeaponCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedMeleeWeaponCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBarehandsCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedInfectedCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedAnimalCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedAICB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedDrownedCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedKilledUnknownCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedDiedUnknownCB);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(753, 282);
+            this.flowLayoutPanel2.TabIndex = 41;
+            // 
+            // KillFeedDrownedCB
+            // 
+            this.KillFeedDrownedCB.AutoSize = true;
+            this.KillFeedDrownedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedDrownedCB.Location = new System.Drawing.Point(563, 164);
+            this.KillFeedDrownedCB.Name = "KillFeedDrownedCB";
+            this.KillFeedDrownedCB.Size = new System.Drawing.Size(112, 17);
+            this.KillFeedDrownedCB.TabIndex = 41;
+            this.KillFeedDrownedCB.Text = "Kill Feed Drowned";
+            this.KillFeedDrownedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedDrownedCB.UseVisualStyleBackColor = true;
+            this.KillFeedDrownedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -19570,7 +19597,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxMembersInTerritoryTNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TerritoryPerimeterSizeTNUD)).EndInit();
             this.groupBox27.ResumeLayout(false);
-            this.groupBox27.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox9.ResumeLayout(false);
@@ -19993,6 +20019,8 @@ namespace DayZeEditor
             this.darkToolStrip26.ResumeLayout(false);
             this.darkToolStrip26.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -21354,5 +21382,7 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown numericUpDown34;
         private System.Windows.Forms.CheckBox EnableInventoryCargoTidyCB;
         private System.Windows.Forms.CheckBox FixCELifetimeCB;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.CheckBox KillFeedDrownedCB;
     }
 }

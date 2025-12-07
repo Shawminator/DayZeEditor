@@ -69,6 +69,7 @@ namespace DayZeLib
         public bool KillFeedInfected{ get; set; }
         public bool KillFeedAnimal{ get; set; }
         public bool KillFeedAI{ get; set; }
+        public bool KillFeedDrowned { get; set; }
         public bool KillFeedKilledUnknown{ get; set; }
         public bool KillFeedDiedUnknown{ get; set; }
 
@@ -136,6 +137,7 @@ namespace DayZeLib
             KillFeedBarehands = true;
             KillFeedInfected = true;
             KillFeedAnimal = true;
+            KillFeedDrowned = true;
             KillFeedKilledUnknown = true;
             KillFeedDiedUnknown = true;
 

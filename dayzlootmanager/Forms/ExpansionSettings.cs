@@ -5870,6 +5870,7 @@ namespace DayZeEditor
             KillFeedInfectedCB.Checked = NotificationSettings.KillFeedInfected;
             KillFeedAnimalCB.Checked = NotificationSettings.KillFeedAnimal;
             KillFeedAICB.Checked = NotificationSettings.KillFeedAI;
+            KillFeedDrownedCB.Checked = NotificationSettings.KillFeedDrowned;
             KillFeedKilledUnknownCB.Checked = NotificationSettings.KillFeedKilledUnknown;
             KillFeedDiedUnknownCB.Checked = NotificationSettings.KillFeedDiedUnknown;
             useraction = true;
