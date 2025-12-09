@@ -31,9 +31,9 @@ namespace DayZeEditor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpansionMarket));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -331,6 +331,7 @@ namespace DayZeEditor
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.UseCategoryOrderCB = new System.Windows.Forms.CheckBox();
             this.darkLabel81 = new DarkUI.Controls.DarkLabel();
             this.darkButton47 = new DarkUI.Controls.DarkButton();
             this.darkButton46 = new DarkUI.Controls.DarkButton();
@@ -448,7 +449,6 @@ namespace DayZeEditor
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewMarketFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMarketFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UseCategoryOrderCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -676,7 +676,7 @@ namespace DayZeEditor
             this.setMinStockForAllItemsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.setMinStockForAllItemsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.setMinStockForAllItemsToolStripMenuItem.Name = "setMinStockForAllItemsToolStripMenuItem";
-            this.setMinStockForAllItemsToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.setMinStockForAllItemsToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.setMinStockForAllItemsToolStripMenuItem.Text = "Set Min Stock for All items";
             this.setMinStockForAllItemsToolStripMenuItem.Click += new System.EventHandler(this.setMinStockForAllItemsToolStripMenuItem_Click);
             // 
@@ -685,7 +685,7 @@ namespace DayZeEditor
             this.setMAxStockForAllItemsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.setMAxStockForAllItemsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.setMAxStockForAllItemsToolStripMenuItem.Name = "setMAxStockForAllItemsToolStripMenuItem";
-            this.setMAxStockForAllItemsToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.setMAxStockForAllItemsToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.setMAxStockForAllItemsToolStripMenuItem.Text = "Set Max Stock for All Items";
             this.setMAxStockForAllItemsToolStripMenuItem.Click += new System.EventHandler(this.setMAxStockForAllItemsToolStripMenuItem_Click);
             // 
@@ -694,7 +694,7 @@ namespace DayZeEditor
             this.syncMinToMaxPricesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.syncMinToMaxPricesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.syncMinToMaxPricesToolStripMenuItem.Name = "syncMinToMaxPricesToolStripMenuItem";
-            this.syncMinToMaxPricesToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.syncMinToMaxPricesToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.syncMinToMaxPricesToolStripMenuItem.Text = "Sync All Min To Max Prices";
             this.syncMinToMaxPricesToolStripMenuItem.Click += new System.EventHandler(this.syncMinToMaxPricesToolStripMenuItem_Click);
             // 
@@ -703,7 +703,7 @@ namespace DayZeEditor
             this.syncMaxToMinPricesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.syncMaxToMinPricesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.syncMaxToMinPricesToolStripMenuItem.Name = "syncMaxToMinPricesToolStripMenuItem";
-            this.syncMaxToMinPricesToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.syncMaxToMinPricesToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.syncMaxToMinPricesToolStripMenuItem.Text = "Sync All Max to Min Prices";
             this.syncMaxToMinPricesToolStripMenuItem.Click += new System.EventHandler(this.syncMaxToMinPricesToolStripMenuItem_Click);
             // 
@@ -712,7 +712,7 @@ namespace DayZeEditor
             this.setPricesForItemWithZeroToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.setPricesForItemWithZeroToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.setPricesForItemWithZeroToolStripMenuItem.Name = "setPricesForItemWithZeroToolStripMenuItem";
-            this.setPricesForItemWithZeroToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.setPricesForItemWithZeroToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.setPricesForItemWithZeroToolStripMenuItem.Text = "Set Prices for item with zero";
             this.setPricesForItemWithZeroToolStripMenuItem.Click += new System.EventHandler(this.setPricesForItemWithZeroToolStripMenuItem_Click);
             // 
@@ -721,7 +721,7 @@ namespace DayZeEditor
             this.setMinMaxStockForItemsWith0ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.setMinMaxStockForItemsWith0ToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.setMinMaxStockForItemsWith0ToolStripMenuItem.Name = "setMinMaxStockForItemsWith0ToolStripMenuItem";
-            this.setMinMaxStockForItemsWith0ToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.setMinMaxStockForItemsWith0ToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.setMinMaxStockForItemsWith0ToolStripMenuItem.Text = "Set Min/Max Stock for items with 0";
             this.setMinMaxStockForItemsWith0ToolStripMenuItem.Click += new System.EventHandler(this.setMinMaxStockForItemsWith0ToolStripMenuItem_Click);
             // 
@@ -730,7 +730,7 @@ namespace DayZeEditor
             this.checkForItemsNotInTypesFilesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.checkForItemsNotInTypesFilesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.checkForItemsNotInTypesFilesToolStripMenuItem.Name = "checkForItemsNotInTypesFilesToolStripMenuItem";
-            this.checkForItemsNotInTypesFilesToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.checkForItemsNotInTypesFilesToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.checkForItemsNotInTypesFilesToolStripMenuItem.Text = "Check for Items Not in Types files";
             this.checkForItemsNotInTypesFilesToolStripMenuItem.Click += new System.EventHandler(this.checkForItemsNotInTypesFilesToolStripMenuItem_Click);
             // 
@@ -739,7 +739,7 @@ namespace DayZeEditor
             this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(258, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(259, 22);
             this.toolStripMenuItem1.Text = "Set Staring level for all cats";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -748,7 +748,7 @@ namespace DayZeEditor
             this.toolStripMenuItem4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripMenuItem4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(258, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(259, 22);
             this.toolStripMenuItem4.Text = "Create Categories from types";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
@@ -777,7 +777,7 @@ namespace DayZeEditor
             this.setMaxStockForSelectedCategoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.setMaxStockForSelectedCategoryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.setMaxStockForSelectedCategoryToolStripMenuItem.Name = "setMaxStockForSelectedCategoryToolStripMenuItem";
-            this.setMaxStockForSelectedCategoryToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.setMaxStockForSelectedCategoryToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
             this.setMaxStockForSelectedCategoryToolStripMenuItem.Text = "Set Max Stock for Selected Category";
             this.setMaxStockForSelectedCategoryToolStripMenuItem.Click += new System.EventHandler(this.setMaxStockForSelectedCategoryToolStripMenuItem_Click);
             // 
@@ -786,7 +786,7 @@ namespace DayZeEditor
             this.setMinStockForSelectedCategoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.setMinStockForSelectedCategoryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.setMinStockForSelectedCategoryToolStripMenuItem.Name = "setMinStockForSelectedCategoryToolStripMenuItem";
-            this.setMinStockForSelectedCategoryToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.setMinStockForSelectedCategoryToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
             this.setMinStockForSelectedCategoryToolStripMenuItem.Text = "Set Min Stock for Selected category";
             this.setMinStockForSelectedCategoryToolStripMenuItem.Click += new System.EventHandler(this.setMinStockForSelectedCategoryToolStripMenuItem_Click);
             // 
@@ -795,7 +795,7 @@ namespace DayZeEditor
             this.setMaxPriceForSelectedCategoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.setMaxPriceForSelectedCategoryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.setMaxPriceForSelectedCategoryToolStripMenuItem.Name = "setMaxPriceForSelectedCategoryToolStripMenuItem";
-            this.setMaxPriceForSelectedCategoryToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.setMaxPriceForSelectedCategoryToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
             this.setMaxPriceForSelectedCategoryToolStripMenuItem.Text = "Set Max Price for Selected Category";
             this.setMaxPriceForSelectedCategoryToolStripMenuItem.Click += new System.EventHandler(this.setMaxPriceForSelectedCategoryToolStripMenuItem_Click);
             // 
@@ -804,7 +804,7 @@ namespace DayZeEditor
             this.setMinPriceForSelectedCategoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.setMinPriceForSelectedCategoryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.setMinPriceForSelectedCategoryToolStripMenuItem.Name = "setMinPriceForSelectedCategoryToolStripMenuItem";
-            this.setMinPriceForSelectedCategoryToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.setMinPriceForSelectedCategoryToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
             this.setMinPriceForSelectedCategoryToolStripMenuItem.Text = "Set Min Price for Selected category";
             this.setMinPriceForSelectedCategoryToolStripMenuItem.Click += new System.EventHandler(this.setMinPriceForSelectedCategoryToolStripMenuItem_Click);
             // 
@@ -813,7 +813,7 @@ namespace DayZeEditor
             this.setPriceForItemsWithZeroToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.setPriceForItemsWithZeroToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.setPriceForItemsWithZeroToolStripMenuItem.Name = "setPriceForItemsWithZeroToolStripMenuItem";
-            this.setPriceForItemsWithZeroToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.setPriceForItemsWithZeroToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
             this.setPriceForItemsWithZeroToolStripMenuItem.Text = "Set Price for items with Zero";
             this.setPriceForItemsWithZeroToolStripMenuItem.Click += new System.EventHandler(this.setPriceForItemsWithZeroToolStripMenuItem_Click);
             // 
@@ -822,7 +822,7 @@ namespace DayZeEditor
             this.setMaxPriceToPercentageOfMinToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.setMaxPriceToPercentageOfMinToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.setMaxPriceToPercentageOfMinToolStripMenuItem.Name = "setMaxPriceToPercentageOfMinToolStripMenuItem";
-            this.setMaxPriceToPercentageOfMinToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.setMaxPriceToPercentageOfMinToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
             this.setMaxPriceToPercentageOfMinToolStripMenuItem.Text = "Set max Price to Percentage of min";
             this.setMaxPriceToPercentageOfMinToolStripMenuItem.Click += new System.EventHandler(this.setMaxPriceToPercentageOfMinToolStripMenuItem_Click);
             // 
@@ -831,7 +831,7 @@ namespace DayZeEditor
             this.setMinPricePercentageOfMaxToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.setMinPricePercentageOfMaxToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.setMinPricePercentageOfMaxToolStripMenuItem.Name = "setMinPricePercentageOfMaxToolStripMenuItem";
-            this.setMinPricePercentageOfMaxToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.setMinPricePercentageOfMaxToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
             this.setMinPricePercentageOfMaxToolStripMenuItem.Text = "Set Min Price Percentage of max";
             this.setMinPricePercentageOfMaxToolStripMenuItem.Click += new System.EventHandler(this.setMinPricePercentageOfMaxToolStripMenuItem_Click);
             // 
@@ -840,7 +840,7 @@ namespace DayZeEditor
             this.toolStripMenuItem3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripMenuItem3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(263, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(264, 22);
             this.toolStripMenuItem3.Text = "Change Price by %";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click_1);
             // 
@@ -849,7 +849,7 @@ namespace DayZeEditor
             this.exportItemsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.exportItemsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.exportItemsToolStripMenuItem.Name = "exportItemsToolStripMenuItem";
-            this.exportItemsToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.exportItemsToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
             this.exportItemsToolStripMenuItem.Text = "Export Items";
             this.exportItemsToolStripMenuItem.Click += new System.EventHandler(this.exportItemsToolStripMenuItem_Click);
             // 
@@ -858,7 +858,7 @@ namespace DayZeEditor
             this.getPriceFromListToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.getPriceFromListToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.getPriceFromListToolStripMenuItem.Name = "getPriceFromListToolStripMenuItem";
-            this.getPriceFromListToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.getPriceFromListToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
             this.getPriceFromListToolStripMenuItem.Text = "Get Price from List";
             this.getPriceFromListToolStripMenuItem.Click += new System.EventHandler(this.getPriceFromListToolStripMenuItem_Click);
             // 
@@ -867,7 +867,7 @@ namespace DayZeEditor
             this.chnageAttchmentsToLowerCaseToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.chnageAttchmentsToLowerCaseToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.chnageAttchmentsToLowerCaseToolStripMenuItem.Name = "chnageAttchmentsToLowerCaseToolStripMenuItem";
-            this.chnageAttchmentsToLowerCaseToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.chnageAttchmentsToLowerCaseToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
             this.chnageAttchmentsToLowerCaseToolStripMenuItem.Text = "Chnage Attchments to lower Case";
             this.chnageAttchmentsToLowerCaseToolStripMenuItem.Click += new System.EventHandler(this.chnageAttchmentsToLowerCaseToolStripMenuItem_Click);
             // 
@@ -4071,34 +4071,34 @@ namespace DayZeEditor
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(9, 246);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(518, 344);
             this.dataGridView1.TabIndex = 87;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -4430,6 +4430,19 @@ namespace DayZeEditor
             this.tabPage2.Size = new System.Drawing.Size(1239, 626);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Traders";
+            // 
+            // UseCategoryOrderCB
+            // 
+            this.UseCategoryOrderCB.AutoSize = true;
+            this.UseCategoryOrderCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.UseCategoryOrderCB.Location = new System.Drawing.Point(417, 222);
+            this.UseCategoryOrderCB.Name = "UseCategoryOrderCB";
+            this.UseCategoryOrderCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.UseCategoryOrderCB.Size = new System.Drawing.Size(119, 17);
+            this.UseCategoryOrderCB.TabIndex = 175;
+            this.UseCategoryOrderCB.Text = "Use Category Order";
+            this.UseCategoryOrderCB.UseVisualStyleBackColor = true;
+            this.UseCategoryOrderCB.CheckedChanged += new System.EventHandler(this.UseCategoryOrderCB_CheckedChanged);
             // 
             // darkLabel81
             // 
@@ -5763,7 +5776,7 @@ namespace DayZeEditor
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(76, 30);
+            this.toolStripButton3.Size = new System.Drawing.Size(75, 30);
             this.toolStripButton3.Text = "Trader Maps";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
@@ -5783,7 +5796,7 @@ namespace DayZeEditor
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(79, 30);
+            this.toolStripButton4.Size = new System.Drawing.Size(78, 30);
             this.toolStripButton4.Text = "Trader Zones";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
@@ -5803,7 +5816,7 @@ namespace DayZeEditor
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(49, 30);
+            this.toolStripButton5.Size = new System.Drawing.Size(48, 30);
             this.toolStripButton5.Text = "Traders";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -5848,19 +5861,6 @@ namespace DayZeEditor
             this.removeMarketFileToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.removeMarketFileToolStripMenuItem.Text = "Remove Market File";
             this.removeMarketFileToolStripMenuItem.Click += new System.EventHandler(this.removeMarketFileToolStripMenuItem_Click);
-            // 
-            // UseCategoryOrderCB
-            // 
-            this.UseCategoryOrderCB.AutoSize = true;
-            this.UseCategoryOrderCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.UseCategoryOrderCB.Location = new System.Drawing.Point(417, 222);
-            this.UseCategoryOrderCB.Name = "UseCategoryOrderCB";
-            this.UseCategoryOrderCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.UseCategoryOrderCB.Size = new System.Drawing.Size(119, 17);
-            this.UseCategoryOrderCB.TabIndex = 175;
-            this.UseCategoryOrderCB.Text = "Use Category Order";
-            this.UseCategoryOrderCB.UseVisualStyleBackColor = true;
-            this.UseCategoryOrderCB.CheckedChanged += new System.EventHandler(this.UseCategoryOrderCB_CheckedChanged);
             // 
             // ExpansionMarket
             // 
