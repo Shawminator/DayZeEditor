@@ -1,74 +1,31 @@
-﻿Arrow
-Error
-Airdrop
-Car
-Deliver
-Radiation
-Trader
-Water 1
-Infected 1
-Infected 2
-Skull 1
-Helicopter
-Base
-Boat
-Fishing
-Territory
-Bear
-Claw
-Drip
-Ear
-Eye
-Fireplace
-Heart
-Hook
-Info
-Knife
-Marker
-Map Marker
-Menu
-Moon
-Pen
-Persona
-Pill
-Questionmark
-Skull 2
-Skull 3
-Star
-Sun
-Tent
-Thermometer
-Water 2
-Book 1
-Book 2
-Ellipse
-Square
-Grab
-Open Hand
-Map
-Note
-Orientation
-Radio
-Shield
-Snow
-Group
-Vehicle Crash
+﻿Ambush
 Animal Skull
 Apple
 Apple Core
 Arrows
 Axe
+Arrow
+Airdrop
+Anomaly
 Backpack
 Bandage
+Bandit
 Batteries
 Berries
-Kitchen Knife Big
 Binoculars
 Bolt
 Bonfire
 Bottle
 Bow
+Base
+Boat
+Book 1
+Book 2
 Broken Lighter
+Bear
+Car
+Car 2
+Craft
 Can Of Beans Big
 Can Of Beans Small
 Car Keys
@@ -77,16 +34,30 @@ Chain Saw
 Chicken
 Chocolate
 Cigarets
+Circuit Board
 Cloth
 Compass
 Corn
 Crowbar
 Cow
+Claw
+Coins
+Coins 2
+Codelock
+Deliver
 Dinosaur Skull
 Dry Wood
+Drip
+Ear
+Eye
+Error
+Exclamationmark
+Ellipse
 Eatable Flowers
 Electrical Tape
 Empty Can
+Fishing
+Fireplace
 Fish
 Flare
 Flare Gun
@@ -94,6 +65,8 @@ Flare Gun Ammo
 Flashlight
 Fox
 Frying Pan
+Grab
+Group
 Gas
 Gas Mask
 Golf Club
@@ -102,26 +75,50 @@ Grenade
 Guitar
 Gun
 Gun Bullets
+Heart
+Hook
+Helicopter
 Hammer
 Herbal Medicine
 Home Made Grenade
 Human Skull
+Info
+Infected 1
+Infected 2
 Insect
+Knife
 Kitchen Knife
+Kitchen Knife Big
 Ladder
 Lantern
 Lighter
+Menu
+Marker
+Map
+Map Marker
+Moon
 Machette
-Paper Map
 Matches
 Medic Box
 Mushrooms
+Note
 Nails
+Open Hand
+Orientation
+Options
+Pen
+Persona
+Pill
+Paper Map
 Paper
 Pills
 Pipe Wrench
 Powder
 Pumpkin
+Questionmark
+Questionmark 2
+Radiation
+Radio
 Rabbit
 Racoon
 Radio
@@ -129,6 +126,14 @@ Rat
 Rock 1
 Rock 2
 Rope
+Skull 1
+Skull 2
+Skull 3
+Star
+Sun
+Snow
+Square
+Shield
 Saw
 Scrap Metal
 Screwdriver
@@ -136,11 +141,33 @@ Shotgun
 Shotgun Bullets
 Shovel
 Soda
-Tent Small
+Soldier
+Status
+Territory
+Trader
+Tent
+Thermometer
+Tent
+Vehicle Crash
+Water 1
+Water 2
 Walkie Talkie
 Water Jug
 Wild Pork
 Worms
+Three Stick
+Sleeping Bag
+Slingshot
+Molotov
+Lizard
+Cooked Meat 1
+Cooked Meat 2
+Cooked Meat 3
+Collection Of Bolts
+Collection Of Sticks 1
+Collection Of Sticks 2
+Collection Of Sticks 3
+Collection Of Sticks 4
 Discord
 Reddit
 Steam
@@ -151,3 +178,12 @@ Twitter
 YouTube
 Patreon
 Guilded
+PayPal
+Cross
+Battery Full
+Battery Med
+Battery Low
+Battery Empty
+Clock Blank
+Expansion
+Expansion B/W
