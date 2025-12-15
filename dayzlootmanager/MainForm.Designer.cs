@@ -623,8 +623,8 @@ namespace DayZeEditor
             this.RAGTysonBBManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("RAGTysonBBManagerButton.Image")));
             this.RAGTysonBBManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RAGTysonBBManagerButton.Name = "RAGTysonBBManagerButton";
-            this.RAGTysonBBManagerButton.Size = new System.Drawing.Size(85, 19);
-            this.RAGTysonBBManagerButton.Text = "RAG Tyson BB";
+            this.RAGTysonBBManagerButton.Size = new System.Drawing.Size(62, 19);
+            this.RAGTysonBBManagerButton.Text = "RAG Stuff";
             this.RAGTysonBBManagerButton.Visible = false;
             this.RAGTysonBBManagerButton.Click += new System.EventHandler(this.RAGTysonBBManagerButton_Click);
             // 

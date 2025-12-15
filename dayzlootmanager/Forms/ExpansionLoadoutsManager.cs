@@ -1889,6 +1889,16 @@ namespace DayZeEditor
                 if (!string.IsNullOrWhiteSpace(AILoadoutsPath) && Directory.Exists(AILoadoutsPath))
                     Process.Start(AILoadoutsPath);
             }
+            else if (CurrentTreenode.Text == "LootDrops")
+            {
+                if (!string.IsNullOrWhiteSpace(LootDropOnDeathListPath) && Directory.Exists(LootDropOnDeathListPath))
+                    Process.Start(LootDropOnDeathListPath);
+            }
+            else if (CurrentTreenode.Text == "Loadouts")
+            {
+                if (!string.IsNullOrWhiteSpace(AILoadoutsPath) && Directory.Exists(AILoadoutsPath))
+                    Process.Start(AILoadoutsPath);
+            }
             else
                 MessageBox.Show("Loadouts path not found: " + AILoadoutsPath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

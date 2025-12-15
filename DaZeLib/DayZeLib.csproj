@@ -280,7 +280,8 @@
     <Compile Include="PVZ\DarkHorde\Zombies\Pvz_TheDarkHorde_ZombiesOptions.cs" />
     <Compile Include="PVZ\InfoPanel\PvZmoD_Information_Panel.cs" />
     <Compile Include="PVZ\PVZModsConfigs.cs" />
-    <Compile Include="Rag\RagBasebuilding.cs" />
+    <Compile Include="Rag\RaGBBConfig.cs" />
+    <Compile Include="Rag\RaGCoreConfig.cs" />
     <Compile Include="RHCaptureTheFlag\CaptureTheFlag.cs" />
     <Compile Include="RHLootBoxes\RHLootBoxes.cs" />
     <Compile Include="SearchForLoot\SFLConfig.cs" />

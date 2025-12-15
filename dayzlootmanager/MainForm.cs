@@ -476,7 +476,8 @@ namespace DayZeEditor
                 else
                     BBPManagerButton.Visible = false;
 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\RaG_BaseBuilding\\RaG_BaseBuilding.json"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\RaG_Core\\Configs\\RaG_BaseBuilding\\RaG_BaseBuilding.json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\RaG_Core\\Configs\\RaG_Core\\RaG_Core.json"))
                     RAGTysonBBManagerButton.Visible = true;
                 else
                     RAGTysonBBManagerButton.Visible = false;
