@@ -77,7 +77,7 @@ namespace DayZeLib
     public class ExpansionAIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 27;
+        const int CurrentVersion = 28;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -98,6 +98,8 @@ namespace DayZeLib
 
         public decimal ThreatDistanceLimit { get; set; }
         public decimal NoiseInvestigationDistanceLimit { get; set; }
+        public decimal MaxFlankingDistance { get; set; }
+        public int EnableFlankingOutsideCombat { get; set; }
         public decimal DamageMultiplier { get; set; }
         public decimal DamageReceivedMultiplier { get; set; }
 
@@ -123,6 +125,8 @@ namespace DayZeLib
             ThreatDistanceLimit = (decimal)-1.0;
             DamageMultiplier = (decimal)-1.0;
             NoiseInvestigationDistanceLimit = (decimal)-1.0;
+            MaxFlankingDistance = (decimal)-1;
+            EnableFlankingOutsideCombat = -1;
             DamageReceivedMultiplier = (decimal)-1.0;
             LoadBalancingCategories = new Dictionary<string, BindingList<Loadbalancingcategories>>();
             _LoadBalancingCategories = new BindingList<Loadbalancingcategorie>();
@@ -325,6 +329,8 @@ namespace DayZeLib
         public decimal AccuracyMax { get; set; }
         public decimal ThreatDistanceLimit { get; set; }
         public decimal NoiseInvestigationDistanceLimit { get; set; }
+        public decimal MaxFlankingDistance { get; set; }
+        public int EnableFlankingOutsideCombat { get; set; }
         public decimal DamageMultiplier { get; set; }
         public decimal DamageReceivedMultiplier { get; set; }
         public decimal HeadshotResistance { get; set; }
@@ -366,6 +372,8 @@ namespace DayZeLib
             AccuracyMax = -1;
             ThreatDistanceLimit = -1;
             NoiseInvestigationDistanceLimit = -1;
+            MaxFlankingDistance = -1;
+            EnableFlankingOutsideCombat = -1;
             DamageMultiplier = -1;
             DamageReceivedMultiplier = (decimal)-1.0;
             HeadshotResistance = 0;
@@ -407,6 +415,8 @@ namespace DayZeLib
             AccuracyMax = -1;
             ThreatDistanceLimit = -1;
             NoiseInvestigationDistanceLimit = -1;
+            MaxFlankingDistance = -1;
+            EnableFlankingOutsideCombat = -1;
             DamageMultiplier = -1;
             DamageReceivedMultiplier = (decimal)-1.0;
             HeadshotResistance = 0;

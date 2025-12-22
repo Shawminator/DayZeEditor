@@ -776,6 +776,8 @@ namespace DayZeEditor
             AIGeneralAccuracyMaxNUD.Value = AIPatrolSettings.AccuracyMax;
             AIGeneralThreatDistanceLimitNUD.Value = AIPatrolSettings.ThreatDistanceLimit;
             AIGeneralNoiseInvestigationDistanceLimitNUD.Value = AIPatrolSettings.NoiseInvestigationDistanceLimit;
+            AIGeneralMaxFlankingDistanceNUD.Value = AIPatrolSettings.MaxFlankingDistance;
+            AIGeneralEnableFlankingOutsideCombatNUD.Value = AIPatrolSettings.EnableFlankingOutsideCombat;
             AIGeneralDanageMultiplierNUD.Value = AIPatrolSettings.DamageMultiplier;
             AIGeneralDamageReceivedMultiplierNUD.Value = AIPatrolSettings.DamageReceivedMultiplier;
             AIGeneralFormationScaleNUD.Value = AIPatrolSettings.FormationScale;
@@ -1019,6 +1021,19 @@ namespace DayZeEditor
             AIPatrolSettings.NoiseInvestigationDistanceLimit = AIGeneralNoiseInvestigationDistanceLimitNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void AIGeneralMaxFlankingDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AIPatrolSettings.MaxFlankingDistance = AIGeneralMaxFlankingDistanceNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+
+        private void AIGeneralEnableFlankingOutsideCombatNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AIPatrolSettings.EnableFlankingOutsideCombat = (int)AIGeneralEnableFlankingOutsideCombatNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
 
         /// <summary>
         /// Stataic Patrol Settings
@@ -1077,6 +1092,8 @@ namespace DayZeEditor
             StaticPatrolUseRandomWaypointAsStartPointCB.Checked = CurrentPatrol.UseRandomWaypointAsStartPoint == 1 ? true : false;
             StaticPatrolCanBeTriggeredByAICB.Checked = CurrentPatrol.CanBeTriggeredByAI == 1 ? true : false;
             StaticPatrolNoiseInvestigationDistanceLimitNUD.Value = CurrentPatrol.NoiseInvestigationDistanceLimit;
+            StaticPatrolMaxFlankingDistanceNUD.Value = CurrentPatrol.MaxFlankingDistance;
+            StaticPatrolEnableFlankingOutsideCombatNUD.Value = CurrentPatrol.EnableFlankingOutsideCombat;
             StaticPatrolFormationScaleNUD.Value = CurrentPatrol.FormationScale;
             int StaticPatrolUnlimitedReloadBitmask = CurrentPatrol.UnlimitedReload;
             if (StaticPatrolUnlimitedReloadBitmask == 1)
@@ -1545,11 +1562,22 @@ namespace DayZeEditor
             CurrentPatrol.LootingBehaviour = UpdateCheckedItemsString(list, e.Index, e.NewValue);
             AIPatrolSettings.isDirty = true;
         }
-
         private void StaticPatrolFormationScaleNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             CurrentPatrol.FormationScale = StaticPatrolFormationScaleNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolMaxFlankingDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.MaxFlankingDistance = StaticPatrolMaxFlankingDistanceNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolEnableFlankingOutsideCombatNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.EnableFlankingOutsideCombat = (int)StaticPatrolEnableFlankingOutsideCombatNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void darkButton4_Click(object sender, EventArgs e)
@@ -2036,6 +2064,8 @@ namespace DayZeEditor
             AccuracyMaxNUD.Value = AISettings.AccuracyMax;
             ThreatDistanceLimitNUD.Value = AISettings.ThreatDistanceLimit;
             NoiseInvestigationDistanceLimitNUD.Value = AISettings.NoiseInvestigationDistanceLimit;
+            MaxFlankingDistanceNUD.Value = AISettings.MaxFlankingDistance;
+            EnableFlankingOutsideCombatCB.Checked = AISettings.EnableFlankingOutsideCombat == 1 ? true : false;
             DamageMultiplierNUD.Value = AISettings.DamageMultiplier;
             FormationScaleNUD.Value = AISettings.FormationScale;
             SniperProneDistanceThresholdNUD.Value = AISettings.SniperProneDistanceThreshold;
@@ -2300,6 +2330,19 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             AISettings.RecreateWeaponNetworkRepresentation = RecreateWeaponNetworkRepresentationCB.Checked == true ? 1 : 0;
+            AISettings.isDirty = true;
+        }
+        private void MaxFlankingDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.MaxFlankingDistance = MaxFlankingDistanceNUD.Value;
+            AISettings.isDirty = true;
+        }
+
+        private void EnableFlankingOutsideCombatCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.EnableFlankingOutsideCombat = EnableFlankingOutsideCombatCB.Checked == true ? 1 : 0;
             AISettings.isDirty = true;
         }
         #endregion AISettings
@@ -4529,6 +4572,7 @@ namespace DayZeEditor
         {
 
         }
+
 
     }
 }

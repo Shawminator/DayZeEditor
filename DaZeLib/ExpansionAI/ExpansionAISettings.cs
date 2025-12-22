@@ -19,7 +19,7 @@ namespace DayZeLib
     public class ExpansionAISettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 18;
+        const int CurrentVersion = 19;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -32,6 +32,8 @@ namespace DayZeLib
 
         public decimal ThreatDistanceLimit { get; set; }
         public decimal NoiseInvestigationDistanceLimit { get; set; }
+        public decimal MaxFlankingDistance { get; set; }
+        public int EnableFlankingOutsideCombat { get; set; }
         public decimal DamageMultiplier { get; set; }
         public decimal DamageReceivedMultiplier { get; set; }
         
@@ -90,6 +92,8 @@ namespace DayZeLib
             AccuracyMax = (decimal)0.95;
             ThreatDistanceLimit = (decimal)1000.0;
             NoiseInvestigationDistanceLimit = (decimal)500.0;
+            MaxFlankingDistance = (decimal)200.0;
+            EnableFlankingOutsideCombat = 0;
             DamageMultiplier = (decimal)1.0;
             DamageReceivedMultiplier = (decimal)1.0;
             Admins = new BindingList<string>();
