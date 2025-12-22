@@ -44,6 +44,13 @@ namespace DayZeLib
         VEHICLE = 16,
         ALL_OR = 30  //! AI | ANIMAL | INFECTED | PLAYER | VEHICLE
     };
+    public enum eAIStance
+    {
+        UNKNOWN = -1,
+        STANDING,
+        CROUCHED,
+        PRONE
+    }
     public enum eAILootingBehavior
     {
         NONE = 0,
@@ -321,6 +328,8 @@ namespace DayZeLib
         public string LootingBehaviour { get; set; }
         public string Speed { get; set; }
         public string UnderThreatSpeed { get; set; }
+        public string DefaultStance { get; set; }
+        public decimal DefaultLookAngle { get; set; }
         public int CanBeLooted { get; set; }
         public string LootDropOnDeath { get; set; }
         public int UnlimitedReload { get; set; }
@@ -364,6 +373,8 @@ namespace DayZeLib
             LootingBehaviour = "DEFAULT";
             Speed = "";
             UnderThreatSpeed = "";
+            DefaultStance = "STANDING";
+            DefaultLookAngle = (decimal)0.0;
             CanBeLooted = 1;
             LootDropOnDeath = "";
             UnlimitedReload = 0;
@@ -407,6 +418,8 @@ namespace DayZeLib
             LootingBehaviour = "DEFAULT";
             Speed = spd;
             UnderThreatSpeed = threatspd;
+            DefaultStance = "STANDING";
+            DefaultLookAngle = (decimal)0.0;
             CanBeLooted = canbelooted == true ? 1 : 0;
             LootDropOnDeath = "";
             UnlimitedReload = unlimitedreload == true ? 1 : 0; ;

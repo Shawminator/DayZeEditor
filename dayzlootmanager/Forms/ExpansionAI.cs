@@ -1067,6 +1067,8 @@ namespace DayZeEditor
             StaticPatrolBehaviorCB.SelectedIndex = StaticPatrolBehaviorCB.FindStringExact(CurrentPatrol.Behaviour);
             StaticPatrolSpeedCB.SelectedIndex = StaticPatrolSpeedCB.FindStringExact(CurrentPatrol.Speed);
             StaticPatrolUnderThreatSpeedCB.SelectedIndex = StaticPatrolUnderThreatSpeedCB.FindStringExact(CurrentPatrol.UnderThreatSpeed);
+            StaticPatroDefaultStanceCB.SelectedIndex = StaticPatroDefaultStanceCB.FindStringExact(CurrentPatrol.DefaultStance);
+            StaticPatrolDefaultLookAngleNUD.Value = CurrentPatrol.DefaultLookAngle;
             StaticPatrolRespawnTimeNUD.Value = CurrentPatrol.RespawnTime;
             StaticPatrolDespawnTimeNUD.Value = CurrentPatrol.DespawnTime;
             StaticPatrolMinDistRadiusNUD.Value = CurrentPatrol.MinDistRadius;
@@ -1580,6 +1582,19 @@ namespace DayZeEditor
             CurrentPatrol.EnableFlankingOutsideCombat = (int)StaticPatrolEnableFlankingOutsideCombatNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void StaticPatroDefaultStanceCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.DefaultStance = StaticPatroDefaultStanceCB.GetItemText(StaticPatroDefaultStanceCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
+        }
+
+        private void StaticPatrolDefaultLookAngleNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.DefaultLookAngle = StaticPatrolDefaultLookAngleNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
         private void darkButton4_Click(object sender, EventArgs e)
         {
             ExpansionAIPatrol newpatrol = new ExpansionAIPatrol()
@@ -1595,6 +1610,8 @@ namespace DayZeEditor
                 Behaviour = "ALTERNATE",
                 Speed = "WALK",
                 UnderThreatSpeed = "SPRINT",
+                DefaultStance = "STANDING",
+                DefaultLookAngle = (decimal)0.0,
                 CanBeLooted = 1,
                 UnlimitedReload = 1,
                 SniperProneDistanceThreshold = (decimal)0.0,
@@ -1602,6 +1619,8 @@ namespace DayZeEditor
                 AccuracyMax = -1,
                 ThreatDistanceLimit = -1,
                 NoiseInvestigationDistanceLimit = -1,
+                MaxFlankingDistance = (decimal)200.0,
+                EnableFlankingOutsideCombat = 0,
                 DamageMultiplier = -1,
                 DamageReceivedMultiplier = -1,
                 MinDistRadius = -1,
