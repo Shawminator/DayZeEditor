@@ -1138,7 +1138,7 @@ namespace DayZeEditor
         private void MaxVehicleDistanceToTraderNUD_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
-            marketsettings.MaxLargeVehicleDistanceToTrader = (int)MaxVehicleDistanceToTraderNUD.Value;
+            marketsettings.MaxVehicleDistanceToTrader = (int)MaxVehicleDistanceToTraderNUD.Value;
             marketsettings.isDirty = true;
         }
         private void NetworkBatchSizeNUD_ValueChanged(object sender, EventArgs e)
