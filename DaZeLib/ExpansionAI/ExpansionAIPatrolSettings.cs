@@ -84,7 +84,7 @@ namespace DayZeLib
     public class ExpansionAIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 28;
+        const int CurrentVersion = 30;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -324,6 +324,7 @@ namespace DayZeLib
         public string Loadout { get; set; }
         public BindingList<string> Units { get; set; }
         public int NumberOfAI { get; set; }
+        public int NumberOfAIMax { get; set; }
         public string Behaviour { get; set; }
         public string LootingBehaviour { get; set; }
         public string Speed { get; set; }
@@ -369,6 +370,7 @@ namespace DayZeLib
             Loadout = "";
             Units = new BindingList<string>();
             NumberOfAI = -3;
+            NumberOfAIMax = 0;
             Behaviour = "";
             LootingBehaviour = "DEFAULT";
             Speed = "";
@@ -402,6 +404,7 @@ namespace DayZeLib
             WaypointInterpolation = "";
             UseRandomWaypointAsStartPoint = 1;
             Waypoints = new BindingList<float[]>();
+            _waypoints = new BindingList<Vec3>();
         }
         public ExpansionAIPatrol(int bod = 1, string spd = "JOG", string threatspd = "SPRINT", string beh = "ALTERNATE", string fac = "WEST", string loa = "HumanLoadout", bool canbelooted = true, bool unlimitedreload = false, decimal chance = (decimal)1.0, float mindistradius = -2, float maxdistradius = -2, decimal respawntime = -2, decimal wprnd = 0, List<float[]> way = null)
         {
@@ -414,6 +417,7 @@ namespace DayZeLib
             Loadout = loa;
             Units = new BindingList<string>();
             NumberOfAI = bod;
+            NumberOfAIMax = 0;
             Behaviour = beh;
             LootingBehaviour = "DEFAULT";
             Speed = spd;

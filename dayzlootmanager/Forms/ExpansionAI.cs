@@ -1064,6 +1064,7 @@ namespace DayZeEditor
             StaticPatrolPersistCB.Checked = CurrentPatrol.Persist == 1 ? true : false;
             StaticPatrolFactionCB.SelectedIndex = StaticPatrolFactionCB.FindStringExact(CurrentPatrol.Faction);
             StaticPatrolNumberOfAINUD.Value = CurrentPatrol.NumberOfAI;
+            StaticPatrolNumberOfAIMaxNUD.Value = CurrentPatrol.NumberOfAIMax;
             StaticPatrolBehaviorCB.SelectedIndex = StaticPatrolBehaviorCB.FindStringExact(CurrentPatrol.Behaviour);
             StaticPatrolSpeedCB.SelectedIndex = StaticPatrolSpeedCB.FindStringExact(CurrentPatrol.Speed);
             StaticPatrolUnderThreatSpeedCB.SelectedIndex = StaticPatrolUnderThreatSpeedCB.FindStringExact(CurrentPatrol.UnderThreatSpeed);
@@ -1271,6 +1272,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentPatrol.NumberOfAI = (int)StaticPatrolNumberOfAINUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolNumberOfAIMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.NumberOfAIMax = (int)StaticPatrolNumberOfAIMaxNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolFormationLoosenessNUD_ValueChanged(object sender, EventArgs e)

@@ -4545,7 +4545,7 @@ namespace DayZeEditor
             // darkButton89
             // 
             this.darkButton89.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton89.Location = new System.Drawing.Point(268, 405);
+            this.darkButton89.Location = new System.Drawing.Point(268, 471);
             this.darkButton89.Name = "darkButton89";
             this.darkButton89.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton89.Size = new System.Drawing.Size(69, 28);
@@ -4556,7 +4556,7 @@ namespace DayZeEditor
             // darkButton88
             // 
             this.darkButton88.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton88.Location = new System.Drawing.Point(343, 406);
+            this.darkButton88.Location = new System.Drawing.Point(343, 472);
             this.darkButton88.Name = "darkButton88";
             this.darkButton88.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton88.Size = new System.Drawing.Size(105, 28);
@@ -5898,7 +5898,7 @@ namespace DayZeEditor
             this.ObjectivesTargetGB.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTargetGB.Location = new System.Drawing.Point(4049, 3);
             this.ObjectivesTargetGB.Name = "ObjectivesTargetGB";
-            this.ObjectivesTargetGB.Size = new System.Drawing.Size(520, 499);
+            this.ObjectivesTargetGB.Size = new System.Drawing.Size(520, 505);
             this.ObjectivesTargetGB.TabIndex = 234;
             this.ObjectivesTargetGB.TabStop = false;
             this.ObjectivesTargetGB.Text = "Target";
@@ -6378,7 +6378,7 @@ namespace DayZeEditor
             this.ObjectivesTravelGB.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTravelGB.Location = new System.Drawing.Point(4575, 3);
             this.ObjectivesTravelGB.Name = "ObjectivesTravelGB";
-            this.ObjectivesTravelGB.Size = new System.Drawing.Size(358, 252);
+            this.ObjectivesTravelGB.Size = new System.Drawing.Size(358, 240);
             this.ObjectivesTravelGB.TabIndex = 235;
             this.ObjectivesTravelGB.TabStop = false;
             this.ObjectivesTravelGB.Text = "Travel";

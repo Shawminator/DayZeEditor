@@ -118,9 +118,12 @@ namespace DayZeEditor
             StaticPatrolPersistCB.Checked = _currentAISpawn.Persist == 1 ? true : false;
             StaticPatrolFactionCB.SelectedIndex = StaticPatrolFactionCB.FindStringExact(_currentAISpawn.Faction);
             StaticPatrolNumberOfAINUD.Value = _currentAISpawn.NumberOfAI;
+            StaticPatrolNumberOfAIMaxNUD.Value = _currentAISpawn.NumberOfAIMax;
             StaticPatrolBehaviorCB.SelectedIndex = StaticPatrolBehaviorCB.FindStringExact(_currentAISpawn.Behaviour);
             StaticPatrolSpeedCB.SelectedIndex = StaticPatrolSpeedCB.FindStringExact(_currentAISpawn.Speed);
             StaticPatrolUnderThreatSpeedCB.SelectedIndex = StaticPatrolUnderThreatSpeedCB.FindStringExact(_currentAISpawn.UnderThreatSpeed);
+            StaticPatroDefaultStanceCB.SelectedIndex = StaticPatroDefaultStanceCB.FindStringExact(_currentAISpawn.DefaultStance);
+            StaticPatrolDefaultLookAngleNUD.Value = _currentAISpawn.DefaultLookAngle;
             StaticPatrolRespawnTimeNUD.Value = _currentAISpawn.RespawnTime;
             StaticPatrolDespawnTimeNUD.Value = _currentAISpawn.DespawnTime;
             StaticPatrolMinDistRadiusNUD.Value = _currentAISpawn.MinDistRadius;
@@ -145,6 +148,8 @@ namespace DayZeEditor
             StaticPatrolUseRandomWaypointAsStartPointCB.Checked = _currentAISpawn.UseRandomWaypointAsStartPoint == 1 ? true : false;
             StaticPatrolNoiseInvestigationDistanceLimitNUD.Value = _currentAISpawn.NoiseInvestigationDistanceLimit;
             StaticPatrolCanBeTriggeredByAICB.Checked = _currentAISpawn.CanBeTriggeredByAI == 1 ? true : false;
+            StaticPatrolMaxFlankingDistanceNUD.Value = _currentAISpawn.MaxFlankingDistance;
+            StaticPatrolEnableFlankingOutsideCombatNUD.Value = _currentAISpawn.EnableFlankingOutsideCombat;
             StaticPatrolFormationScaleNUD.Value = _currentAISpawn.FormationScale;
             int StaticPatrolUnlimitedReloadBitmask = _currentAISpawn.UnlimitedReload;
             if (StaticPatrolUnlimitedReloadBitmask == 1)
@@ -741,6 +746,41 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             _currentAISpawn.HeadshotResistance = StaticPatrolHeadshotResistanceNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolNumberOfAIMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.NumberOfAIMax = (int)StaticPatrolNumberOfAIMaxNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatroDefaultStanceCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.DefaultStance = StaticPatroDefaultStanceCB.GetItemText(StaticPatroDefaultStanceCB.SelectedItem);
+            isDirty = true;
+        }
+
+        private void StaticPatrolDefaultLookAngleNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.DefaultLookAngle = StaticPatrolDefaultLookAngleNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolMaxFlankingDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.MaxFlankingDistance = StaticPatrolMaxFlankingDistanceNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolEnableFlankingOutsideCombatNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.EnableFlankingOutsideCombat = (int)StaticPatrolEnableFlankingOutsideCombatNUD.Value;
             isDirty = true;
         }
     }

@@ -161,6 +161,10 @@ namespace DayZeEditor
             AILoadoutsConfig.LoadoutsData = new BindingList<AILoadouts>();
 
             AILoadoutsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts";
+            if (!Directory.Exists(AILoadoutsPath))
+            {
+                Directory.CreateDirectory(AILoadoutsPath);
+            }
             DirectoryInfo dinfo = new DirectoryInfo(AILoadoutsPath);
             FileInfo[] Files = dinfo.GetFiles("*.json");
             foreach (FileInfo file in Files)
@@ -179,6 +183,10 @@ namespace DayZeEditor
 
             AILoadoutsConfig.AILootDropsData = new BindingList<AILootDrops>();
             LootDropOnDeathListPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\AI\\LootDrops";
+            if (!Directory.Exists(LootDropOnDeathListPath))
+            {
+                Directory.CreateDirectory(LootDropOnDeathListPath);
+            }
             DirectoryInfo dinfo1 = new DirectoryInfo(LootDropOnDeathListPath);
             FileInfo[] Files1 = dinfo1.GetFiles("*.json");
             foreach (FileInfo file in Files1)
@@ -3660,6 +3668,7 @@ namespace DayZeEditor
                                             "eAI_SurvivorM_Taiki"
                                 },
                                 NumberOfAI = 1,
+                                NumberOfAIMax = 0,
                                 Behaviour = "ALTERNATE",
                                 Speed = "WALK",
                                 UnderThreatSpeed = "SPRINT",
