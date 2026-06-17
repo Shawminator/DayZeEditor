@@ -9683,6 +9683,11 @@ namespace DayZeEditor
         {
 
         }
+
+        private void ClassNameTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     public class NullToEmptyGearConverter : JsonConverter<ExpansionStartingGearItem>
     {

@@ -4132,6 +4132,7 @@ namespace DayZeEditor
             this.QuestObjectivesConfigVersionNUD.Size = new System.Drawing.Size(120, 20);
             this.QuestObjectivesConfigVersionNUD.TabIndex = 106;
             this.QuestObjectivesConfigVersionNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.QuestObjectivesConfigVersionNUD.ValueChanged += new System.EventHandler(this.QuestObjectivesConfigVersionNUD_ValueChanged);
             // 
             // darkLabel45
             // 
@@ -4207,6 +4208,7 @@ namespace DayZeEditor
             this.QuestsObjectivesIDNUD.Size = new System.Drawing.Size(120, 20);
             this.QuestsObjectivesIDNUD.TabIndex = 107;
             this.QuestsObjectivesIDNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.QuestsObjectivesIDNUD.ValueChanged += new System.EventHandler(this.QuestsObjectivesIDNUD_ValueChanged);
             // 
             // darkLabel46
             // 
@@ -4236,6 +4238,7 @@ namespace DayZeEditor
             this.QuestObjectivesObjectiveTypeCB.Name = "QuestObjectivesObjectiveTypeCB";
             this.QuestObjectivesObjectiveTypeCB.Size = new System.Drawing.Size(248, 21);
             this.QuestObjectivesObjectiveTypeCB.TabIndex = 128;
+            this.QuestObjectivesObjectiveTypeCB.SelectedIndexChanged += new System.EventHandler(this.QuestObjectivesObjectiveTypeCB_SelectedIndexChanged);
             // 
             // darkLabel47
             // 
@@ -6962,6 +6965,7 @@ namespace DayZeEditor
             this.treeViewMS1.SetMultiselect = true;
             this.treeViewMS1.Size = new System.Drawing.Size(230, 619);
             this.treeViewMS1.TabIndex = 206;
+            this.treeViewMS1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMS1_AfterSelect);
             this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS1_NodeMouseClick);
             // 
             // Tab5

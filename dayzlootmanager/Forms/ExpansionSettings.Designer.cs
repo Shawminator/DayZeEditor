@@ -171,50 +171,52 @@ namespace DayZeEditor
             this.EnableTerritoriesTCB = new System.Windows.Forms.CheckBox();
             this.UseWholeMapForInviteListTCB = new System.Windows.Forms.CheckBox();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
-            this.KillFeedAICB = new System.Windows.Forms.CheckBox();
-            this.KillFeedMessageTypeCB = new System.Windows.Forms.ComboBox();
-            this.LeftMessageTypeCB = new System.Windows.Forms.ComboBox();
-            this.JoinMessageTypeCB = new System.Windows.Forms.ComboBox();
-            this.KillFeedAnimalCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedDiedUnknownCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedKilledUnknownCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedInfectedCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedBarehandsCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedMeleeWeaponCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedWeaponCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedSuicideCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedStatusEffectsCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedBleedingCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedFireCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedWeaponExplosionCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedStarvationCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedDehydrationCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedBoatHitNoDriverCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedBoatCrashCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedBarbedWireCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedBoatCrashCrewCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedBoatHitDriverCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedHeliCrashCrewCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedHeliCrashCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedHeliHitNoDriverCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedHeliHitDriverCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedCarCrashCrewCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedCarCrashCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedFallCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedCarHitNoDriverCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedCarHitDriverCB = new System.Windows.Forms.CheckBox();
-            this.EnableKillFeedCB = new System.Windows.Forms.CheckBox();
-            this.ShowTerritoryNotificationsCB = new System.Windows.Forms.CheckBox();
-            this.ShowPlayerAirdropDroppedCB = new System.Windows.Forms.CheckBox();
-            this.ShowPlayerAirdropClosingOnCB = new System.Windows.Forms.CheckBox();
-            this.ShowPlayerAirdropStartedCB = new System.Windows.Forms.CheckBox();
-            this.ShowAirdropEndedCB = new System.Windows.Forms.CheckBox();
-            this.ShowAirdropStartedCB = new System.Windows.Forms.CheckBox();
-            this.ShowAirdropDroppedCB = new System.Windows.Forms.CheckBox();
-            this.ShowAirdropClosingOnCB = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.EnableNotificationCB = new System.Windows.Forms.CheckBox();
             this.ShowPlayerJoinServerCB = new System.Windows.Forms.CheckBox();
+            this.JoinMessageTypeCB = new System.Windows.Forms.ComboBox();
             this.ShowPlayerLeftServerCB = new System.Windows.Forms.CheckBox();
+            this.LeftMessageTypeCB = new System.Windows.Forms.ComboBox();
+            this.ShowAirdropClosingOnCB = new System.Windows.Forms.CheckBox();
+            this.ShowAirdropDroppedCB = new System.Windows.Forms.CheckBox();
+            this.ShowAirdropStartedCB = new System.Windows.Forms.CheckBox();
+            this.ShowAirdropEndedCB = new System.Windows.Forms.CheckBox();
+            this.ShowPlayerAirdropStartedCB = new System.Windows.Forms.CheckBox();
+            this.ShowPlayerAirdropClosingOnCB = new System.Windows.Forms.CheckBox();
+            this.ShowPlayerAirdropDroppedCB = new System.Windows.Forms.CheckBox();
+            this.ShowTerritoryNotificationsCB = new System.Windows.Forms.CheckBox();
+            this.EnableKillFeedCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedMessageTypeCB = new System.Windows.Forms.ComboBox();
+            this.KillFeedCarHitDriverCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedCarHitNoDriverCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedFallCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedCarCrashCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedCarCrashCrewCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedHeliHitDriverCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedHeliHitNoDriverCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedHeliCrashCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedHeliCrashCrewCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedBoatHitDriverCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedBoatCrashCrewCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedBarbedWireCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedBoatCrashCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedBoatHitNoDriverCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedDehydrationCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedStarvationCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedWeaponExplosionCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedFireCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedBleedingCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedStatusEffectsCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedSuicideCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedWeaponCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedMeleeWeaponCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedBarehandsCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedInfectedCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedAnimalCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedAICB = new System.Windows.Forms.CheckBox();
+            this.KillFeedDrownedCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedKilledUnknownCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedDiedUnknownCB = new System.Windows.Forms.CheckBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.EnablePlayerListCB = new System.Windows.Forms.CheckBox();
             this.EnableTooltipCB = new System.Windows.Forms.CheckBox();
@@ -687,6 +689,54 @@ namespace DayZeEditor
             this.panel6 = new System.Windows.Forms.Panel();
             this.tabControl6 = new System.Windows.Forms.TabControl();
             this.tabPage22 = new System.Windows.Forms.TabPage();
+            this.ContaminatedAreaGB = new System.Windows.Forms.GroupBox();
+            this.numericUpDown29 = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel181 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown30 = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel182 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown27 = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel179 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown28 = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel180 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel177 = new DarkUI.Controls.DarkLabel();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.darkLabel178 = new DarkUI.Controls.DarkLabel();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.groupBox70 = new System.Windows.Forms.GroupBox();
+            this.darkLabel197 = new DarkUI.Controls.DarkLabel();
+            this.PPERequesterTypeTB = new System.Windows.Forms.TextBox();
+            this.darkLabel198 = new DarkUI.Controls.DarkLabel();
+            this.TinyPartNameTB = new System.Windows.Forms.TextBox();
+            this.darkLabel199 = new DarkUI.Controls.DarkLabel();
+            this.AroundPartNameTB = new System.Windows.Forms.TextBox();
+            this.groupBox71 = new System.Windows.Forms.GroupBox();
+            this.OuterRingToggleCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel200 = new DarkUI.Controls.DarkLabel();
+            this.VerticalOffsetNUD = new System.Windows.Forms.NumericUpDown();
+            this.ParticleNameTB = new System.Windows.Forms.TextBox();
+            this.darkLabel201 = new DarkUI.Controls.DarkLabel();
+            this.VerticalLayersNUD = new System.Windows.Forms.NumericUpDown();
+            this.VerticalLayers = new DarkUI.Controls.DarkLabel();
+            this.OuterOffsetNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel202 = new DarkUI.Controls.DarkLabel();
+            this.OuterPartDistNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel203 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel204 = new DarkUI.Controls.DarkLabel();
+            this.InnerPartDistNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel205 = new DarkUI.Controls.DarkLabel();
+            this.InnerRingCountNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel206 = new DarkUI.Controls.DarkLabel();
+            this.NegHeightNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel207 = new DarkUI.Controls.DarkLabel();
+            this.PosHeightNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel208 = new DarkUI.Controls.DarkLabel();
+            this.RadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel209 = new DarkUI.Controls.DarkLabel();
+            this.posZNUD = new System.Windows.Forms.NumericUpDown();
+            this.posYNUD = new System.Windows.Forms.NumericUpDown();
+            this.PosXNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel210 = new DarkUI.Controls.DarkLabel();
             this.AirdropMissionGB = new System.Windows.Forms.GroupBox();
             this.MissionAirdropPlaneClassNameTB = new System.Windows.Forms.TextBox();
             this.darkLabel296 = new DarkUI.Controls.DarkLabel();
@@ -736,54 +786,6 @@ namespace DayZeEditor
             this.darkLabel104 = new DarkUI.Controls.DarkLabel();
             this.MissionSpeedNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel102 = new DarkUI.Controls.DarkLabel();
-            this.ContaminatedAreaGB = new System.Windows.Forms.GroupBox();
-            this.numericUpDown29 = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel181 = new DarkUI.Controls.DarkLabel();
-            this.numericUpDown30 = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel182 = new DarkUI.Controls.DarkLabel();
-            this.numericUpDown27 = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel179 = new DarkUI.Controls.DarkLabel();
-            this.numericUpDown28 = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel180 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel177 = new DarkUI.Controls.DarkLabel();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.darkLabel178 = new DarkUI.Controls.DarkLabel();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.groupBox70 = new System.Windows.Forms.GroupBox();
-            this.darkLabel197 = new DarkUI.Controls.DarkLabel();
-            this.PPERequesterTypeTB = new System.Windows.Forms.TextBox();
-            this.darkLabel198 = new DarkUI.Controls.DarkLabel();
-            this.TinyPartNameTB = new System.Windows.Forms.TextBox();
-            this.darkLabel199 = new DarkUI.Controls.DarkLabel();
-            this.AroundPartNameTB = new System.Windows.Forms.TextBox();
-            this.groupBox71 = new System.Windows.Forms.GroupBox();
-            this.OuterRingToggleCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel200 = new DarkUI.Controls.DarkLabel();
-            this.VerticalOffsetNUD = new System.Windows.Forms.NumericUpDown();
-            this.ParticleNameTB = new System.Windows.Forms.TextBox();
-            this.darkLabel201 = new DarkUI.Controls.DarkLabel();
-            this.VerticalLayersNUD = new System.Windows.Forms.NumericUpDown();
-            this.VerticalLayers = new DarkUI.Controls.DarkLabel();
-            this.OuterOffsetNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel202 = new DarkUI.Controls.DarkLabel();
-            this.OuterPartDistNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel203 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel204 = new DarkUI.Controls.DarkLabel();
-            this.InnerPartDistNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel205 = new DarkUI.Controls.DarkLabel();
-            this.InnerRingCountNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel206 = new DarkUI.Controls.DarkLabel();
-            this.NegHeightNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel207 = new DarkUI.Controls.DarkLabel();
-            this.PosHeightNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel208 = new DarkUI.Controls.DarkLabel();
-            this.RadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel209 = new DarkUI.Controls.DarkLabel();
-            this.posZNUD = new System.Windows.Forms.NumericUpDown();
-            this.posYNUD = new System.Windows.Forms.NumericUpDown();
-            this.PosXNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel210 = new DarkUI.Controls.DarkLabel();
             this.tabPage23 = new System.Windows.Forms.TabPage();
             this.darkLabel273 = new DarkUI.Controls.DarkLabel();
             this.darkLabel272 = new DarkUI.Controls.DarkLabel();
@@ -1386,8 +1388,6 @@ namespace DayZeEditor
             this.addNewSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.KillFeedDrownedCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1429,6 +1429,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxMembersInTerritoryTNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TerritoryPerimeterSizeTNUD)).BeginInit();
             this.groupBox27.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InviteCooldownNUD)).BeginInit();
@@ -1552,21 +1553,6 @@ namespace DayZeEditor
             this.panel6.SuspendLayout();
             this.tabControl6.SuspendLayout();
             this.tabPage22.SuspendLayout();
-            this.AirdropMissionGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionDropZoneSpeedNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MIssionDropZoneHeightNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionFallSpeedNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown38)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown37)).BeginInit();
-            this.SpecificInfectedAirdropGB.SuspendLayout();
-            this.groupBox81.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionDropXNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionDropRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionDropYNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionWeightNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionMissionMaxTimeNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionHeightNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionSpeedNUD)).BeginInit();
             this.ContaminatedAreaGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown30)).BeginInit();
@@ -1586,6 +1572,21 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.posZNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosXNUD)).BeginInit();
+            this.AirdropMissionGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDropZoneSpeedNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MIssionDropZoneHeightNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionFallSpeedNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown38)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown37)).BeginInit();
+            this.SpecificInfectedAirdropGB.SuspendLayout();
+            this.groupBox81.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDropXNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDropRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDropYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionWeightNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionMissionMaxTimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionHeightNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionSpeedNUD)).BeginInit();
             this.tabPage23.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -1762,7 +1763,6 @@ namespace DayZeEditor
             this.darkToolStrip22.SuspendLayout();
             this.darkToolStrip26.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -3524,526 +3524,59 @@ namespace DayZeEditor
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "Notifications";
             // 
-            // KillFeedAICB
-            // 
-            this.KillFeedAICB.AutoSize = true;
-            this.KillFeedAICB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedAICB.Location = new System.Drawing.Point(563, 141);
-            this.KillFeedAICB.Name = "KillFeedAICB";
-            this.KillFeedAICB.Size = new System.Drawing.Size(79, 17);
-            this.KillFeedAICB.TabIndex = 40;
-            this.KillFeedAICB.Text = "Kill Feed AI";
-            this.KillFeedAICB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedAICB.UseVisualStyleBackColor = true;
-            this.KillFeedAICB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedMessageTypeCB
-            // 
-            this.KillFeedMessageTypeCB.FormattingEnabled = true;
-            this.KillFeedMessageTypeCB.Location = new System.Drawing.Point(201, 72);
-            this.KillFeedMessageTypeCB.Name = "KillFeedMessageTypeCB";
-            this.KillFeedMessageTypeCB.Size = new System.Drawing.Size(192, 21);
-            this.KillFeedMessageTypeCB.TabIndex = 11;
-            this.KillFeedMessageTypeCB.SelectedIndexChanged += new System.EventHandler(this.KillFeedMessageTypeCB_SelectedIndexChanged);
-            // 
-            // LeftMessageTypeCB
-            // 
-            this.LeftMessageTypeCB.FormattingEnabled = true;
-            this.LeftMessageTypeCB.Location = new System.Drawing.Point(3, 99);
-            this.LeftMessageTypeCB.Name = "LeftMessageTypeCB";
-            this.LeftMessageTypeCB.Size = new System.Drawing.Size(192, 21);
-            this.LeftMessageTypeCB.TabIndex = 2;
-            this.LeftMessageTypeCB.SelectedIndexChanged += new System.EventHandler(this.LeftMessageTypeCB_SelectedIndexChanged);
-            // 
-            // JoinMessageTypeCB
-            // 
-            this.JoinMessageTypeCB.FormattingEnabled = true;
-            this.JoinMessageTypeCB.Location = new System.Drawing.Point(3, 49);
-            this.JoinMessageTypeCB.Name = "JoinMessageTypeCB";
-            this.JoinMessageTypeCB.Size = new System.Drawing.Size(192, 21);
-            this.JoinMessageTypeCB.TabIndex = 1;
-            this.JoinMessageTypeCB.SelectedIndexChanged += new System.EventHandler(this.JoinMessageTypeCB_SelectedIndexChanged);
-            // 
-            // KillFeedAnimalCB
-            // 
-            this.KillFeedAnimalCB.AutoSize = true;
-            this.KillFeedAnimalCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedAnimalCB.Location = new System.Drawing.Point(563, 118);
-            this.KillFeedAnimalCB.Name = "KillFeedAnimalCB";
-            this.KillFeedAnimalCB.Size = new System.Drawing.Size(100, 17);
-            this.KillFeedAnimalCB.TabIndex = 37;
-            this.KillFeedAnimalCB.Text = "Kill Feed Animal";
-            this.KillFeedAnimalCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedAnimalCB.UseVisualStyleBackColor = true;
-            this.KillFeedAnimalCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedDiedUnknownCB
-            // 
-            this.KillFeedDiedUnknownCB.AutoSize = true;
-            this.KillFeedDiedUnknownCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedDiedUnknownCB.Location = new System.Drawing.Point(563, 210);
-            this.KillFeedDiedUnknownCB.Name = "KillFeedDiedUnknownCB";
-            this.KillFeedDiedUnknownCB.Size = new System.Drawing.Size(140, 17);
-            this.KillFeedDiedUnknownCB.TabIndex = 39;
-            this.KillFeedDiedUnknownCB.Text = "Kill Feed Died Unknown";
-            this.KillFeedDiedUnknownCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedDiedUnknownCB.UseVisualStyleBackColor = true;
-            this.KillFeedDiedUnknownCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedKilledUnknownCB
-            // 
-            this.KillFeedKilledUnknownCB.AutoSize = true;
-            this.KillFeedKilledUnknownCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedKilledUnknownCB.Location = new System.Drawing.Point(563, 187);
-            this.KillFeedKilledUnknownCB.Name = "KillFeedKilledUnknownCB";
-            this.KillFeedKilledUnknownCB.Size = new System.Drawing.Size(143, 17);
-            this.KillFeedKilledUnknownCB.TabIndex = 38;
-            this.KillFeedKilledUnknownCB.Text = "Kill Feed Killed Unknown";
-            this.KillFeedKilledUnknownCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedKilledUnknownCB.UseVisualStyleBackColor = true;
-            this.KillFeedKilledUnknownCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedInfectedCB
-            // 
-            this.KillFeedInfectedCB.AutoSize = true;
-            this.KillFeedInfectedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedInfectedCB.Location = new System.Drawing.Point(563, 95);
-            this.KillFeedInfectedCB.Name = "KillFeedInfectedCB";
-            this.KillFeedInfectedCB.Size = new System.Drawing.Size(108, 17);
-            this.KillFeedInfectedCB.TabIndex = 36;
-            this.KillFeedInfectedCB.Text = "Kill Feed Infected";
-            this.KillFeedInfectedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedInfectedCB.UseVisualStyleBackColor = true;
-            this.KillFeedInfectedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedBarehandsCB
-            // 
-            this.KillFeedBarehandsCB.AutoSize = true;
-            this.KillFeedBarehandsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBarehandsCB.Location = new System.Drawing.Point(563, 72);
-            this.KillFeedBarehandsCB.Name = "KillFeedBarehandsCB";
-            this.KillFeedBarehandsCB.Size = new System.Drawing.Size(120, 17);
-            this.KillFeedBarehandsCB.TabIndex = 35;
-            this.KillFeedBarehandsCB.Text = "Kill Feed Barehands";
-            this.KillFeedBarehandsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedBarehandsCB.UseVisualStyleBackColor = true;
-            this.KillFeedBarehandsCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedMeleeWeaponCB
-            // 
-            this.KillFeedMeleeWeaponCB.AutoSize = true;
-            this.KillFeedMeleeWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedMeleeWeaponCB.Location = new System.Drawing.Point(563, 49);
-            this.KillFeedMeleeWeaponCB.Name = "KillFeedMeleeWeaponCB";
-            this.KillFeedMeleeWeaponCB.Size = new System.Drawing.Size(142, 17);
-            this.KillFeedMeleeWeaponCB.TabIndex = 34;
-            this.KillFeedMeleeWeaponCB.Text = "Kill Feed Melee Weapon";
-            this.KillFeedMeleeWeaponCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedMeleeWeaponCB.UseVisualStyleBackColor = true;
-            this.KillFeedMeleeWeaponCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedWeaponCB
-            // 
-            this.KillFeedWeaponCB.AutoSize = true;
-            this.KillFeedWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedWeaponCB.Location = new System.Drawing.Point(563, 26);
-            this.KillFeedWeaponCB.Name = "KillFeedWeaponCB";
-            this.KillFeedWeaponCB.Size = new System.Drawing.Size(110, 17);
-            this.KillFeedWeaponCB.TabIndex = 33;
-            this.KillFeedWeaponCB.Text = "Kill Feed Weapon";
-            this.KillFeedWeaponCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedWeaponCB.UseVisualStyleBackColor = true;
-            this.KillFeedWeaponCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedSuicideCB
-            // 
-            this.KillFeedSuicideCB.AutoSize = true;
-            this.KillFeedSuicideCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedSuicideCB.Location = new System.Drawing.Point(563, 3);
-            this.KillFeedSuicideCB.Name = "KillFeedSuicideCB";
-            this.KillFeedSuicideCB.Size = new System.Drawing.Size(104, 17);
-            this.KillFeedSuicideCB.TabIndex = 32;
-            this.KillFeedSuicideCB.Text = "Kill Feed Suicide";
-            this.KillFeedSuicideCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedSuicideCB.UseVisualStyleBackColor = true;
-            this.KillFeedSuicideCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedStatusEffectsCB
-            // 
-            this.KillFeedStatusEffectsCB.AutoSize = true;
-            this.KillFeedStatusEffectsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedStatusEffectsCB.Location = new System.Drawing.Point(399, 256);
-            this.KillFeedStatusEffectsCB.Name = "KillFeedStatusEffectsCB";
-            this.KillFeedStatusEffectsCB.Size = new System.Drawing.Size(135, 17);
-            this.KillFeedStatusEffectsCB.TabIndex = 31;
-            this.KillFeedStatusEffectsCB.Text = "Kill Feed Status Effects";
-            this.KillFeedStatusEffectsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedStatusEffectsCB.UseVisualStyleBackColor = true;
-            this.KillFeedStatusEffectsCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedBleedingCB
-            // 
-            this.KillFeedBleedingCB.AutoSize = true;
-            this.KillFeedBleedingCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBleedingCB.Location = new System.Drawing.Point(399, 233);
-            this.KillFeedBleedingCB.Name = "KillFeedBleedingCB";
-            this.KillFeedBleedingCB.Size = new System.Drawing.Size(110, 17);
-            this.KillFeedBleedingCB.TabIndex = 30;
-            this.KillFeedBleedingCB.Text = "Kill Feed Bleeding";
-            this.KillFeedBleedingCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedBleedingCB.UseVisualStyleBackColor = true;
-            this.KillFeedBleedingCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedFireCB
-            // 
-            this.KillFeedFireCB.AutoSize = true;
-            this.KillFeedFireCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedFireCB.Location = new System.Drawing.Point(399, 210);
-            this.KillFeedFireCB.Name = "KillFeedFireCB";
-            this.KillFeedFireCB.Size = new System.Drawing.Size(86, 17);
-            this.KillFeedFireCB.TabIndex = 26;
-            this.KillFeedFireCB.Text = "Kill Feed Fire";
-            this.KillFeedFireCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedFireCB.UseVisualStyleBackColor = true;
-            this.KillFeedFireCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedWeaponExplosionCB
-            // 
-            this.KillFeedWeaponExplosionCB.AutoSize = true;
-            this.KillFeedWeaponExplosionCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedWeaponExplosionCB.Location = new System.Drawing.Point(399, 187);
-            this.KillFeedWeaponExplosionCB.Name = "KillFeedWeaponExplosionCB";
-            this.KillFeedWeaponExplosionCB.Size = new System.Drawing.Size(158, 17);
-            this.KillFeedWeaponExplosionCB.TabIndex = 27;
-            this.KillFeedWeaponExplosionCB.Text = "Kill Feed Weapon Explosion";
-            this.KillFeedWeaponExplosionCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedWeaponExplosionCB.UseVisualStyleBackColor = true;
-            this.KillFeedWeaponExplosionCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedStarvationCB
-            // 
-            this.KillFeedStarvationCB.AutoSize = true;
-            this.KillFeedStarvationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedStarvationCB.Location = new System.Drawing.Point(399, 164);
-            this.KillFeedStarvationCB.Name = "KillFeedStarvationCB";
-            this.KillFeedStarvationCB.Size = new System.Drawing.Size(117, 17);
-            this.KillFeedStarvationCB.TabIndex = 29;
-            this.KillFeedStarvationCB.Text = "Kill Feed Starvation";
-            this.KillFeedStarvationCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedStarvationCB.UseVisualStyleBackColor = true;
-            this.KillFeedStarvationCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedDehydrationCB
-            // 
-            this.KillFeedDehydrationCB.AutoSize = true;
-            this.KillFeedDehydrationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedDehydrationCB.Location = new System.Drawing.Point(399, 141);
-            this.KillFeedDehydrationCB.Name = "KillFeedDehydrationCB";
-            this.KillFeedDehydrationCB.Size = new System.Drawing.Size(126, 17);
-            this.KillFeedDehydrationCB.TabIndex = 28;
-            this.KillFeedDehydrationCB.Text = "Kill Feed Dehydration";
-            this.KillFeedDehydrationCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedDehydrationCB.UseVisualStyleBackColor = true;
-            this.KillFeedDehydrationCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedBoatHitNoDriverCB
-            // 
-            this.KillFeedBoatHitNoDriverCB.AutoSize = true;
-            this.KillFeedBoatHitNoDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBoatHitNoDriverCB.Location = new System.Drawing.Point(399, 118);
-            this.KillFeedBoatHitNoDriverCB.Name = "KillFeedBoatHitNoDriverCB";
-            this.KillFeedBoatHitNoDriverCB.Size = new System.Drawing.Size(155, 17);
-            this.KillFeedBoatHitNoDriverCB.TabIndex = 22;
-            this.KillFeedBoatHitNoDriverCB.Text = "Kill Feed Boat Hit No Driver";
-            this.KillFeedBoatHitNoDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedBoatHitNoDriverCB.UseVisualStyleBackColor = true;
-            this.KillFeedBoatHitNoDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedBoatCrashCB
-            // 
-            this.KillFeedBoatCrashCB.AutoSize = true;
-            this.KillFeedBoatCrashCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBoatCrashCB.Location = new System.Drawing.Point(399, 95);
-            this.KillFeedBoatCrashCB.Name = "KillFeedBoatCrashCB";
-            this.KillFeedBoatCrashCB.Size = new System.Drawing.Size(121, 17);
-            this.KillFeedBoatCrashCB.TabIndex = 23;
-            this.KillFeedBoatCrashCB.Text = "Kill Feed Boat Crash";
-            this.KillFeedBoatCrashCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedBoatCrashCB.UseVisualStyleBackColor = true;
-            this.KillFeedBoatCrashCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedBarbedWireCB
-            // 
-            this.KillFeedBarbedWireCB.AutoSize = true;
-            this.KillFeedBarbedWireCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBarbedWireCB.Location = new System.Drawing.Point(399, 72);
-            this.KillFeedBarbedWireCB.Name = "KillFeedBarbedWireCB";
-            this.KillFeedBarbedWireCB.Size = new System.Drawing.Size(128, 17);
-            this.KillFeedBarbedWireCB.TabIndex = 25;
-            this.KillFeedBarbedWireCB.Text = "Kill Feed Barbed Wire";
-            this.KillFeedBarbedWireCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedBarbedWireCB.UseVisualStyleBackColor = true;
-            this.KillFeedBarbedWireCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedBoatCrashCrewCB
-            // 
-            this.KillFeedBoatCrashCrewCB.AutoSize = true;
-            this.KillFeedBoatCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBoatCrashCrewCB.Location = new System.Drawing.Point(399, 49);
-            this.KillFeedBoatCrashCrewCB.Name = "KillFeedBoatCrashCrewCB";
-            this.KillFeedBoatCrashCrewCB.Size = new System.Drawing.Size(148, 17);
-            this.KillFeedBoatCrashCrewCB.TabIndex = 24;
-            this.KillFeedBoatCrashCrewCB.Text = "Kill Feed Boat Crash Crew";
-            this.KillFeedBoatCrashCrewCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedBoatCrashCrewCB.UseVisualStyleBackColor = true;
-            this.KillFeedBoatCrashCrewCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedBoatHitDriverCB
-            // 
-            this.KillFeedBoatHitDriverCB.AutoSize = true;
-            this.KillFeedBoatHitDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBoatHitDriverCB.Location = new System.Drawing.Point(399, 26);
-            this.KillFeedBoatHitDriverCB.Name = "KillFeedBoatHitDriverCB";
-            this.KillFeedBoatHitDriverCB.Size = new System.Drawing.Size(138, 17);
-            this.KillFeedBoatHitDriverCB.TabIndex = 21;
-            this.KillFeedBoatHitDriverCB.Text = "Kill Feed Boat Hit Driver";
-            this.KillFeedBoatHitDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedBoatHitDriverCB.UseVisualStyleBackColor = true;
-            this.KillFeedBoatHitDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedHeliCrashCrewCB
-            // 
-            this.KillFeedHeliCrashCrewCB.AutoSize = true;
-            this.KillFeedHeliCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedHeliCrashCrewCB.Location = new System.Drawing.Point(399, 3);
-            this.KillFeedHeliCrashCrewCB.Name = "KillFeedHeliCrashCrewCB";
-            this.KillFeedHeliCrashCrewCB.Size = new System.Drawing.Size(144, 17);
-            this.KillFeedHeliCrashCrewCB.TabIndex = 20;
-            this.KillFeedHeliCrashCrewCB.Text = "Kill Feed Heli Crash Crew";
-            this.KillFeedHeliCrashCrewCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedHeliCrashCrewCB.UseVisualStyleBackColor = true;
-            this.KillFeedHeliCrashCrewCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedHeliCrashCB
-            // 
-            this.KillFeedHeliCrashCB.AutoSize = true;
-            this.KillFeedHeliCrashCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedHeliCrashCB.Location = new System.Drawing.Point(201, 260);
-            this.KillFeedHeliCrashCB.Name = "KillFeedHeliCrashCB";
-            this.KillFeedHeliCrashCB.Size = new System.Drawing.Size(117, 17);
-            this.KillFeedHeliCrashCB.TabIndex = 19;
-            this.KillFeedHeliCrashCB.Text = "Kill Feed Heli Crash";
-            this.KillFeedHeliCrashCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedHeliCrashCB.UseVisualStyleBackColor = true;
-            this.KillFeedHeliCrashCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedHeliHitNoDriverCB
-            // 
-            this.KillFeedHeliHitNoDriverCB.AutoSize = true;
-            this.KillFeedHeliHitNoDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedHeliHitNoDriverCB.Location = new System.Drawing.Point(201, 237);
-            this.KillFeedHeliHitNoDriverCB.Name = "KillFeedHeliHitNoDriverCB";
-            this.KillFeedHeliHitNoDriverCB.Size = new System.Drawing.Size(151, 17);
-            this.KillFeedHeliHitNoDriverCB.TabIndex = 18;
-            this.KillFeedHeliHitNoDriverCB.Text = "Kill Feed Heli Hit No Driver";
-            this.KillFeedHeliHitNoDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedHeliHitNoDriverCB.UseVisualStyleBackColor = true;
-            this.KillFeedHeliHitNoDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedHeliHitDriverCB
-            // 
-            this.KillFeedHeliHitDriverCB.AutoSize = true;
-            this.KillFeedHeliHitDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedHeliHitDriverCB.Location = new System.Drawing.Point(201, 214);
-            this.KillFeedHeliHitDriverCB.Name = "KillFeedHeliHitDriverCB";
-            this.KillFeedHeliHitDriverCB.Size = new System.Drawing.Size(134, 17);
-            this.KillFeedHeliHitDriverCB.TabIndex = 17;
-            this.KillFeedHeliHitDriverCB.Text = "Kill Feed Heli Hit Driver";
-            this.KillFeedHeliHitDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedHeliHitDriverCB.UseVisualStyleBackColor = true;
-            this.KillFeedHeliHitDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedCarCrashCrewCB
-            // 
-            this.KillFeedCarCrashCrewCB.AutoSize = true;
-            this.KillFeedCarCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedCarCrashCrewCB.Location = new System.Drawing.Point(201, 191);
-            this.KillFeedCarCrashCrewCB.Name = "KillFeedCarCrashCrewCB";
-            this.KillFeedCarCrashCrewCB.Size = new System.Drawing.Size(142, 17);
-            this.KillFeedCarCrashCrewCB.TabIndex = 16;
-            this.KillFeedCarCrashCrewCB.Text = "Kill Feed Car Crash Crew";
-            this.KillFeedCarCrashCrewCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedCarCrashCrewCB.UseVisualStyleBackColor = true;
-            this.KillFeedCarCrashCrewCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedCarCrashCB
-            // 
-            this.KillFeedCarCrashCB.AutoSize = true;
-            this.KillFeedCarCrashCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedCarCrashCB.Location = new System.Drawing.Point(201, 168);
-            this.KillFeedCarCrashCB.Name = "KillFeedCarCrashCB";
-            this.KillFeedCarCrashCB.Size = new System.Drawing.Size(115, 17);
-            this.KillFeedCarCrashCB.TabIndex = 15;
-            this.KillFeedCarCrashCB.Text = "Kill Feed Car Crash";
-            this.KillFeedCarCrashCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedCarCrashCB.UseVisualStyleBackColor = true;
-            this.KillFeedCarCrashCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedFallCB
-            // 
-            this.KillFeedFallCB.AutoSize = true;
-            this.KillFeedFallCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedFallCB.Location = new System.Drawing.Point(201, 145);
-            this.KillFeedFallCB.Name = "KillFeedFallCB";
-            this.KillFeedFallCB.Size = new System.Drawing.Size(85, 17);
-            this.KillFeedFallCB.TabIndex = 12;
-            this.KillFeedFallCB.Text = "Kill Feed Fall";
-            this.KillFeedFallCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedFallCB.UseVisualStyleBackColor = true;
-            this.KillFeedFallCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedCarHitNoDriverCB
-            // 
-            this.KillFeedCarHitNoDriverCB.AutoSize = true;
-            this.KillFeedCarHitNoDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedCarHitNoDriverCB.Location = new System.Drawing.Point(201, 122);
-            this.KillFeedCarHitNoDriverCB.Name = "KillFeedCarHitNoDriverCB";
-            this.KillFeedCarHitNoDriverCB.Size = new System.Drawing.Size(149, 17);
-            this.KillFeedCarHitNoDriverCB.TabIndex = 14;
-            this.KillFeedCarHitNoDriverCB.Text = "Kill Feed Car Hit No Driver";
-            this.KillFeedCarHitNoDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedCarHitNoDriverCB.UseVisualStyleBackColor = true;
-            this.KillFeedCarHitNoDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedCarHitDriverCB
-            // 
-            this.KillFeedCarHitDriverCB.AutoSize = true;
-            this.KillFeedCarHitDriverCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedCarHitDriverCB.Location = new System.Drawing.Point(201, 99);
-            this.KillFeedCarHitDriverCB.Name = "KillFeedCarHitDriverCB";
-            this.KillFeedCarHitDriverCB.Size = new System.Drawing.Size(132, 17);
-            this.KillFeedCarHitDriverCB.TabIndex = 13;
-            this.KillFeedCarHitDriverCB.Text = "Kill Feed Car Hit Driver";
-            this.KillFeedCarHitDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedCarHitDriverCB.UseVisualStyleBackColor = true;
-            this.KillFeedCarHitDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // EnableKillFeedCB
-            // 
-            this.EnableKillFeedCB.AutoSize = true;
-            this.EnableKillFeedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EnableKillFeedCB.Location = new System.Drawing.Point(201, 49);
-            this.EnableKillFeedCB.Name = "EnableKillFeedCB";
-            this.EnableKillFeedCB.Size = new System.Drawing.Size(102, 17);
-            this.EnableKillFeedCB.TabIndex = 30;
-            this.EnableKillFeedCB.Text = "Enable Kill Feed";
-            this.EnableKillFeedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.EnableKillFeedCB.UseVisualStyleBackColor = true;
-            this.EnableKillFeedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // ShowTerritoryNotificationsCB
-            // 
-            this.ShowTerritoryNotificationsCB.AutoSize = true;
-            this.ShowTerritoryNotificationsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowTerritoryNotificationsCB.Location = new System.Drawing.Point(201, 26);
-            this.ShowTerritoryNotificationsCB.Name = "ShowTerritoryNotificationsCB";
-            this.ShowTerritoryNotificationsCB.Size = new System.Drawing.Size(155, 17);
-            this.ShowTerritoryNotificationsCB.TabIndex = 10;
-            this.ShowTerritoryNotificationsCB.Text = "Show Territory Notifications";
-            this.ShowTerritoryNotificationsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowTerritoryNotificationsCB.UseVisualStyleBackColor = true;
-            this.ShowTerritoryNotificationsCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // ShowPlayerAirdropDroppedCB
-            // 
-            this.ShowPlayerAirdropDroppedCB.AutoSize = true;
-            this.ShowPlayerAirdropDroppedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPlayerAirdropDroppedCB.Location = new System.Drawing.Point(201, 3);
-            this.ShowPlayerAirdropDroppedCB.Name = "ShowPlayerAirdropDroppedCB";
-            this.ShowPlayerAirdropDroppedCB.Size = new System.Drawing.Size(165, 17);
-            this.ShowPlayerAirdropDroppedCB.TabIndex = 9;
-            this.ShowPlayerAirdropDroppedCB.Text = "Show Player Airdrop Dropped";
-            this.ShowPlayerAirdropDroppedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowPlayerAirdropDroppedCB.UseVisualStyleBackColor = true;
-            this.ShowPlayerAirdropDroppedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // ShowPlayerAirdropClosingOnCB
-            // 
-            this.ShowPlayerAirdropClosingOnCB.AutoSize = true;
-            this.ShowPlayerAirdropClosingOnCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPlayerAirdropClosingOnCB.Location = new System.Drawing.Point(3, 241);
-            this.ShowPlayerAirdropClosingOnCB.Name = "ShowPlayerAirdropClosingOnCB";
-            this.ShowPlayerAirdropClosingOnCB.Size = new System.Drawing.Size(169, 17);
-            this.ShowPlayerAirdropClosingOnCB.TabIndex = 8;
-            this.ShowPlayerAirdropClosingOnCB.Text = "Show Player Airdrop Closing in";
-            this.ShowPlayerAirdropClosingOnCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowPlayerAirdropClosingOnCB.UseVisualStyleBackColor = true;
-            this.ShowPlayerAirdropClosingOnCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // ShowPlayerAirdropStartedCB
-            // 
-            this.ShowPlayerAirdropStartedCB.AutoSize = true;
-            this.ShowPlayerAirdropStartedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPlayerAirdropStartedCB.Location = new System.Drawing.Point(3, 218);
-            this.ShowPlayerAirdropStartedCB.Name = "ShowPlayerAirdropStartedCB";
-            this.ShowPlayerAirdropStartedCB.Size = new System.Drawing.Size(158, 17);
-            this.ShowPlayerAirdropStartedCB.TabIndex = 7;
-            this.ShowPlayerAirdropStartedCB.Text = "Show Player Airdrop Started";
-            this.ShowPlayerAirdropStartedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowPlayerAirdropStartedCB.UseVisualStyleBackColor = true;
-            this.ShowPlayerAirdropStartedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // ShowAirdropEndedCB
-            // 
-            this.ShowAirdropEndedCB.AutoSize = true;
-            this.ShowAirdropEndedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowAirdropEndedCB.Location = new System.Drawing.Point(3, 195);
-            this.ShowAirdropEndedCB.Name = "ShowAirdropEndedCB";
-            this.ShowAirdropEndedCB.Size = new System.Drawing.Size(123, 17);
-            this.ShowAirdropEndedCB.TabIndex = 6;
-            this.ShowAirdropEndedCB.Text = "Show Airdrop Ended";
-            this.ShowAirdropEndedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowAirdropEndedCB.UseVisualStyleBackColor = true;
-            this.ShowAirdropEndedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // ShowAirdropStartedCB
-            // 
-            this.ShowAirdropStartedCB.AutoSize = true;
-            this.ShowAirdropStartedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowAirdropStartedCB.Location = new System.Drawing.Point(3, 172);
-            this.ShowAirdropStartedCB.Name = "ShowAirdropStartedCB";
-            this.ShowAirdropStartedCB.Size = new System.Drawing.Size(126, 17);
-            this.ShowAirdropStartedCB.TabIndex = 3;
-            this.ShowAirdropStartedCB.Text = "Show Airdrop Started";
-            this.ShowAirdropStartedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowAirdropStartedCB.UseVisualStyleBackColor = true;
-            this.ShowAirdropStartedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // ShowAirdropDroppedCB
-            // 
-            this.ShowAirdropDroppedCB.AutoSize = true;
-            this.ShowAirdropDroppedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowAirdropDroppedCB.Location = new System.Drawing.Point(3, 149);
-            this.ShowAirdropDroppedCB.Name = "ShowAirdropDroppedCB";
-            this.ShowAirdropDroppedCB.Size = new System.Drawing.Size(133, 17);
-            this.ShowAirdropDroppedCB.TabIndex = 5;
-            this.ShowAirdropDroppedCB.Text = "Show Airdrop Dropped";
-            this.ShowAirdropDroppedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowAirdropDroppedCB.UseVisualStyleBackColor = true;
-            this.ShowAirdropDroppedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // ShowAirdropClosingOnCB
-            // 
-            this.ShowAirdropClosingOnCB.AutoSize = true;
-            this.ShowAirdropClosingOnCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowAirdropClosingOnCB.Location = new System.Drawing.Point(3, 126);
-            this.ShowAirdropClosingOnCB.Name = "ShowAirdropClosingOnCB";
-            this.ShowAirdropClosingOnCB.Size = new System.Drawing.Size(137, 17);
-            this.ShowAirdropClosingOnCB.TabIndex = 4;
-            this.ShowAirdropClosingOnCB.Text = "Show Airdrop Closing in";
-            this.ShowAirdropClosingOnCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowAirdropClosingOnCB.UseVisualStyleBackColor = true;
-            this.ShowAirdropClosingOnCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.EnableNotificationCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerJoinServerCB);
+            this.flowLayoutPanel2.Controls.Add(this.JoinMessageTypeCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerLeftServerCB);
+            this.flowLayoutPanel2.Controls.Add(this.LeftMessageTypeCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropClosingOnCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropDroppedCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropStartedCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropEndedCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerAirdropStartedCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerAirdropClosingOnCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerAirdropDroppedCB);
+            this.flowLayoutPanel2.Controls.Add(this.ShowTerritoryNotificationsCB);
+            this.flowLayoutPanel2.Controls.Add(this.EnableKillFeedCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedMessageTypeCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarHitDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarHitNoDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedFallCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarCrashCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarCrashCrewCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliHitDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliHitNoDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliCrashCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliCrashCrewCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatHitDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatCrashCrewCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBarbedWireCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatCrashCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatHitNoDriverCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedDehydrationCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedStarvationCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedWeaponExplosionCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedFireCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBleedingCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedStatusEffectsCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedSuicideCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedWeaponCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedMeleeWeaponCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedBarehandsCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedInfectedCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedAnimalCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedAICB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedDrownedCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedKilledUnknownCB);
+            this.flowLayoutPanel2.Controls.Add(this.KillFeedDiedUnknownCB);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(753, 282);
+            this.flowLayoutPanel2.TabIndex = 41;
             // 
             // EnableNotificationCB
             // 
@@ -4071,6 +3604,15 @@ namespace DayZeEditor
             this.ShowPlayerJoinServerCB.UseVisualStyleBackColor = true;
             this.ShowPlayerJoinServerCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
             // 
+            // JoinMessageTypeCB
+            // 
+            this.JoinMessageTypeCB.FormattingEnabled = true;
+            this.JoinMessageTypeCB.Location = new System.Drawing.Point(3, 49);
+            this.JoinMessageTypeCB.Name = "JoinMessageTypeCB";
+            this.JoinMessageTypeCB.Size = new System.Drawing.Size(192, 21);
+            this.JoinMessageTypeCB.TabIndex = 1;
+            this.JoinMessageTypeCB.SelectedIndexChanged += new System.EventHandler(this.JoinMessageTypeCB_SelectedIndexChanged);
+            // 
             // ShowPlayerLeftServerCB
             // 
             this.ShowPlayerLeftServerCB.AutoSize = true;
@@ -4083,6 +3625,531 @@ namespace DayZeEditor
             this.ShowPlayerLeftServerCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ShowPlayerLeftServerCB.UseVisualStyleBackColor = true;
             this.ShowPlayerLeftServerCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // LeftMessageTypeCB
+            // 
+            this.LeftMessageTypeCB.FormattingEnabled = true;
+            this.LeftMessageTypeCB.Location = new System.Drawing.Point(3, 99);
+            this.LeftMessageTypeCB.Name = "LeftMessageTypeCB";
+            this.LeftMessageTypeCB.Size = new System.Drawing.Size(192, 21);
+            this.LeftMessageTypeCB.TabIndex = 2;
+            this.LeftMessageTypeCB.SelectedIndexChanged += new System.EventHandler(this.LeftMessageTypeCB_SelectedIndexChanged);
+            // 
+            // ShowAirdropClosingOnCB
+            // 
+            this.ShowAirdropClosingOnCB.AutoSize = true;
+            this.ShowAirdropClosingOnCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowAirdropClosingOnCB.Location = new System.Drawing.Point(3, 126);
+            this.ShowAirdropClosingOnCB.Name = "ShowAirdropClosingOnCB";
+            this.ShowAirdropClosingOnCB.Size = new System.Drawing.Size(137, 17);
+            this.ShowAirdropClosingOnCB.TabIndex = 4;
+            this.ShowAirdropClosingOnCB.Text = "Show Airdrop Closing in";
+            this.ShowAirdropClosingOnCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowAirdropClosingOnCB.UseVisualStyleBackColor = true;
+            this.ShowAirdropClosingOnCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // ShowAirdropDroppedCB
+            // 
+            this.ShowAirdropDroppedCB.AutoSize = true;
+            this.ShowAirdropDroppedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowAirdropDroppedCB.Location = new System.Drawing.Point(3, 149);
+            this.ShowAirdropDroppedCB.Name = "ShowAirdropDroppedCB";
+            this.ShowAirdropDroppedCB.Size = new System.Drawing.Size(133, 17);
+            this.ShowAirdropDroppedCB.TabIndex = 5;
+            this.ShowAirdropDroppedCB.Text = "Show Airdrop Dropped";
+            this.ShowAirdropDroppedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowAirdropDroppedCB.UseVisualStyleBackColor = true;
+            this.ShowAirdropDroppedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // ShowAirdropStartedCB
+            // 
+            this.ShowAirdropStartedCB.AutoSize = true;
+            this.ShowAirdropStartedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowAirdropStartedCB.Location = new System.Drawing.Point(3, 172);
+            this.ShowAirdropStartedCB.Name = "ShowAirdropStartedCB";
+            this.ShowAirdropStartedCB.Size = new System.Drawing.Size(126, 17);
+            this.ShowAirdropStartedCB.TabIndex = 3;
+            this.ShowAirdropStartedCB.Text = "Show Airdrop Started";
+            this.ShowAirdropStartedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowAirdropStartedCB.UseVisualStyleBackColor = true;
+            this.ShowAirdropStartedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // ShowAirdropEndedCB
+            // 
+            this.ShowAirdropEndedCB.AutoSize = true;
+            this.ShowAirdropEndedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowAirdropEndedCB.Location = new System.Drawing.Point(3, 195);
+            this.ShowAirdropEndedCB.Name = "ShowAirdropEndedCB";
+            this.ShowAirdropEndedCB.Size = new System.Drawing.Size(123, 17);
+            this.ShowAirdropEndedCB.TabIndex = 6;
+            this.ShowAirdropEndedCB.Text = "Show Airdrop Ended";
+            this.ShowAirdropEndedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowAirdropEndedCB.UseVisualStyleBackColor = true;
+            this.ShowAirdropEndedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // ShowPlayerAirdropStartedCB
+            // 
+            this.ShowPlayerAirdropStartedCB.AutoSize = true;
+            this.ShowPlayerAirdropStartedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowPlayerAirdropStartedCB.Location = new System.Drawing.Point(3, 218);
+            this.ShowPlayerAirdropStartedCB.Name = "ShowPlayerAirdropStartedCB";
+            this.ShowPlayerAirdropStartedCB.Size = new System.Drawing.Size(158, 17);
+            this.ShowPlayerAirdropStartedCB.TabIndex = 7;
+            this.ShowPlayerAirdropStartedCB.Text = "Show Player Airdrop Started";
+            this.ShowPlayerAirdropStartedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowPlayerAirdropStartedCB.UseVisualStyleBackColor = true;
+            this.ShowPlayerAirdropStartedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // ShowPlayerAirdropClosingOnCB
+            // 
+            this.ShowPlayerAirdropClosingOnCB.AutoSize = true;
+            this.ShowPlayerAirdropClosingOnCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowPlayerAirdropClosingOnCB.Location = new System.Drawing.Point(3, 241);
+            this.ShowPlayerAirdropClosingOnCB.Name = "ShowPlayerAirdropClosingOnCB";
+            this.ShowPlayerAirdropClosingOnCB.Size = new System.Drawing.Size(169, 17);
+            this.ShowPlayerAirdropClosingOnCB.TabIndex = 8;
+            this.ShowPlayerAirdropClosingOnCB.Text = "Show Player Airdrop Closing in";
+            this.ShowPlayerAirdropClosingOnCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowPlayerAirdropClosingOnCB.UseVisualStyleBackColor = true;
+            this.ShowPlayerAirdropClosingOnCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // ShowPlayerAirdropDroppedCB
+            // 
+            this.ShowPlayerAirdropDroppedCB.AutoSize = true;
+            this.ShowPlayerAirdropDroppedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowPlayerAirdropDroppedCB.Location = new System.Drawing.Point(201, 3);
+            this.ShowPlayerAirdropDroppedCB.Name = "ShowPlayerAirdropDroppedCB";
+            this.ShowPlayerAirdropDroppedCB.Size = new System.Drawing.Size(165, 17);
+            this.ShowPlayerAirdropDroppedCB.TabIndex = 9;
+            this.ShowPlayerAirdropDroppedCB.Text = "Show Player Airdrop Dropped";
+            this.ShowPlayerAirdropDroppedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowPlayerAirdropDroppedCB.UseVisualStyleBackColor = true;
+            this.ShowPlayerAirdropDroppedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // ShowTerritoryNotificationsCB
+            // 
+            this.ShowTerritoryNotificationsCB.AutoSize = true;
+            this.ShowTerritoryNotificationsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowTerritoryNotificationsCB.Location = new System.Drawing.Point(201, 26);
+            this.ShowTerritoryNotificationsCB.Name = "ShowTerritoryNotificationsCB";
+            this.ShowTerritoryNotificationsCB.Size = new System.Drawing.Size(155, 17);
+            this.ShowTerritoryNotificationsCB.TabIndex = 10;
+            this.ShowTerritoryNotificationsCB.Text = "Show Territory Notifications";
+            this.ShowTerritoryNotificationsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowTerritoryNotificationsCB.UseVisualStyleBackColor = true;
+            this.ShowTerritoryNotificationsCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // EnableKillFeedCB
+            // 
+            this.EnableKillFeedCB.AutoSize = true;
+            this.EnableKillFeedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EnableKillFeedCB.Location = new System.Drawing.Point(201, 49);
+            this.EnableKillFeedCB.Name = "EnableKillFeedCB";
+            this.EnableKillFeedCB.Size = new System.Drawing.Size(102, 17);
+            this.EnableKillFeedCB.TabIndex = 30;
+            this.EnableKillFeedCB.Text = "Enable Kill Feed";
+            this.EnableKillFeedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EnableKillFeedCB.UseVisualStyleBackColor = true;
+            this.EnableKillFeedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedMessageTypeCB
+            // 
+            this.KillFeedMessageTypeCB.FormattingEnabled = true;
+            this.KillFeedMessageTypeCB.Location = new System.Drawing.Point(201, 72);
+            this.KillFeedMessageTypeCB.Name = "KillFeedMessageTypeCB";
+            this.KillFeedMessageTypeCB.Size = new System.Drawing.Size(192, 21);
+            this.KillFeedMessageTypeCB.TabIndex = 11;
+            this.KillFeedMessageTypeCB.SelectedIndexChanged += new System.EventHandler(this.KillFeedMessageTypeCB_SelectedIndexChanged);
+            // 
+            // KillFeedCarHitDriverCB
+            // 
+            this.KillFeedCarHitDriverCB.AutoSize = true;
+            this.KillFeedCarHitDriverCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedCarHitDriverCB.Location = new System.Drawing.Point(201, 99);
+            this.KillFeedCarHitDriverCB.Name = "KillFeedCarHitDriverCB";
+            this.KillFeedCarHitDriverCB.Size = new System.Drawing.Size(132, 17);
+            this.KillFeedCarHitDriverCB.TabIndex = 13;
+            this.KillFeedCarHitDriverCB.Text = "Kill Feed Car Hit Driver";
+            this.KillFeedCarHitDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedCarHitDriverCB.UseVisualStyleBackColor = true;
+            this.KillFeedCarHitDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedCarHitNoDriverCB
+            // 
+            this.KillFeedCarHitNoDriverCB.AutoSize = true;
+            this.KillFeedCarHitNoDriverCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedCarHitNoDriverCB.Location = new System.Drawing.Point(201, 122);
+            this.KillFeedCarHitNoDriverCB.Name = "KillFeedCarHitNoDriverCB";
+            this.KillFeedCarHitNoDriverCB.Size = new System.Drawing.Size(149, 17);
+            this.KillFeedCarHitNoDriverCB.TabIndex = 14;
+            this.KillFeedCarHitNoDriverCB.Text = "Kill Feed Car Hit No Driver";
+            this.KillFeedCarHitNoDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedCarHitNoDriverCB.UseVisualStyleBackColor = true;
+            this.KillFeedCarHitNoDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedFallCB
+            // 
+            this.KillFeedFallCB.AutoSize = true;
+            this.KillFeedFallCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedFallCB.Location = new System.Drawing.Point(201, 145);
+            this.KillFeedFallCB.Name = "KillFeedFallCB";
+            this.KillFeedFallCB.Size = new System.Drawing.Size(85, 17);
+            this.KillFeedFallCB.TabIndex = 12;
+            this.KillFeedFallCB.Text = "Kill Feed Fall";
+            this.KillFeedFallCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedFallCB.UseVisualStyleBackColor = true;
+            this.KillFeedFallCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedCarCrashCB
+            // 
+            this.KillFeedCarCrashCB.AutoSize = true;
+            this.KillFeedCarCrashCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedCarCrashCB.Location = new System.Drawing.Point(201, 168);
+            this.KillFeedCarCrashCB.Name = "KillFeedCarCrashCB";
+            this.KillFeedCarCrashCB.Size = new System.Drawing.Size(115, 17);
+            this.KillFeedCarCrashCB.TabIndex = 15;
+            this.KillFeedCarCrashCB.Text = "Kill Feed Car Crash";
+            this.KillFeedCarCrashCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedCarCrashCB.UseVisualStyleBackColor = true;
+            this.KillFeedCarCrashCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedCarCrashCrewCB
+            // 
+            this.KillFeedCarCrashCrewCB.AutoSize = true;
+            this.KillFeedCarCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedCarCrashCrewCB.Location = new System.Drawing.Point(201, 191);
+            this.KillFeedCarCrashCrewCB.Name = "KillFeedCarCrashCrewCB";
+            this.KillFeedCarCrashCrewCB.Size = new System.Drawing.Size(142, 17);
+            this.KillFeedCarCrashCrewCB.TabIndex = 16;
+            this.KillFeedCarCrashCrewCB.Text = "Kill Feed Car Crash Crew";
+            this.KillFeedCarCrashCrewCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedCarCrashCrewCB.UseVisualStyleBackColor = true;
+            this.KillFeedCarCrashCrewCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedHeliHitDriverCB
+            // 
+            this.KillFeedHeliHitDriverCB.AutoSize = true;
+            this.KillFeedHeliHitDriverCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedHeliHitDriverCB.Location = new System.Drawing.Point(201, 214);
+            this.KillFeedHeliHitDriverCB.Name = "KillFeedHeliHitDriverCB";
+            this.KillFeedHeliHitDriverCB.Size = new System.Drawing.Size(134, 17);
+            this.KillFeedHeliHitDriverCB.TabIndex = 17;
+            this.KillFeedHeliHitDriverCB.Text = "Kill Feed Heli Hit Driver";
+            this.KillFeedHeliHitDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedHeliHitDriverCB.UseVisualStyleBackColor = true;
+            this.KillFeedHeliHitDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedHeliHitNoDriverCB
+            // 
+            this.KillFeedHeliHitNoDriverCB.AutoSize = true;
+            this.KillFeedHeliHitNoDriverCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedHeliHitNoDriverCB.Location = new System.Drawing.Point(201, 237);
+            this.KillFeedHeliHitNoDriverCB.Name = "KillFeedHeliHitNoDriverCB";
+            this.KillFeedHeliHitNoDriverCB.Size = new System.Drawing.Size(151, 17);
+            this.KillFeedHeliHitNoDriverCB.TabIndex = 18;
+            this.KillFeedHeliHitNoDriverCB.Text = "Kill Feed Heli Hit No Driver";
+            this.KillFeedHeliHitNoDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedHeliHitNoDriverCB.UseVisualStyleBackColor = true;
+            this.KillFeedHeliHitNoDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedHeliCrashCB
+            // 
+            this.KillFeedHeliCrashCB.AutoSize = true;
+            this.KillFeedHeliCrashCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedHeliCrashCB.Location = new System.Drawing.Point(201, 260);
+            this.KillFeedHeliCrashCB.Name = "KillFeedHeliCrashCB";
+            this.KillFeedHeliCrashCB.Size = new System.Drawing.Size(117, 17);
+            this.KillFeedHeliCrashCB.TabIndex = 19;
+            this.KillFeedHeliCrashCB.Text = "Kill Feed Heli Crash";
+            this.KillFeedHeliCrashCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedHeliCrashCB.UseVisualStyleBackColor = true;
+            this.KillFeedHeliCrashCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedHeliCrashCrewCB
+            // 
+            this.KillFeedHeliCrashCrewCB.AutoSize = true;
+            this.KillFeedHeliCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedHeliCrashCrewCB.Location = new System.Drawing.Point(399, 3);
+            this.KillFeedHeliCrashCrewCB.Name = "KillFeedHeliCrashCrewCB";
+            this.KillFeedHeliCrashCrewCB.Size = new System.Drawing.Size(144, 17);
+            this.KillFeedHeliCrashCrewCB.TabIndex = 20;
+            this.KillFeedHeliCrashCrewCB.Text = "Kill Feed Heli Crash Crew";
+            this.KillFeedHeliCrashCrewCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedHeliCrashCrewCB.UseVisualStyleBackColor = true;
+            this.KillFeedHeliCrashCrewCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedBoatHitDriverCB
+            // 
+            this.KillFeedBoatHitDriverCB.AutoSize = true;
+            this.KillFeedBoatHitDriverCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedBoatHitDriverCB.Location = new System.Drawing.Point(399, 26);
+            this.KillFeedBoatHitDriverCB.Name = "KillFeedBoatHitDriverCB";
+            this.KillFeedBoatHitDriverCB.Size = new System.Drawing.Size(138, 17);
+            this.KillFeedBoatHitDriverCB.TabIndex = 21;
+            this.KillFeedBoatHitDriverCB.Text = "Kill Feed Boat Hit Driver";
+            this.KillFeedBoatHitDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedBoatHitDriverCB.UseVisualStyleBackColor = true;
+            this.KillFeedBoatHitDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedBoatCrashCrewCB
+            // 
+            this.KillFeedBoatCrashCrewCB.AutoSize = true;
+            this.KillFeedBoatCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedBoatCrashCrewCB.Location = new System.Drawing.Point(399, 49);
+            this.KillFeedBoatCrashCrewCB.Name = "KillFeedBoatCrashCrewCB";
+            this.KillFeedBoatCrashCrewCB.Size = new System.Drawing.Size(148, 17);
+            this.KillFeedBoatCrashCrewCB.TabIndex = 24;
+            this.KillFeedBoatCrashCrewCB.Text = "Kill Feed Boat Crash Crew";
+            this.KillFeedBoatCrashCrewCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedBoatCrashCrewCB.UseVisualStyleBackColor = true;
+            this.KillFeedBoatCrashCrewCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedBarbedWireCB
+            // 
+            this.KillFeedBarbedWireCB.AutoSize = true;
+            this.KillFeedBarbedWireCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedBarbedWireCB.Location = new System.Drawing.Point(399, 72);
+            this.KillFeedBarbedWireCB.Name = "KillFeedBarbedWireCB";
+            this.KillFeedBarbedWireCB.Size = new System.Drawing.Size(128, 17);
+            this.KillFeedBarbedWireCB.TabIndex = 25;
+            this.KillFeedBarbedWireCB.Text = "Kill Feed Barbed Wire";
+            this.KillFeedBarbedWireCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedBarbedWireCB.UseVisualStyleBackColor = true;
+            this.KillFeedBarbedWireCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedBoatCrashCB
+            // 
+            this.KillFeedBoatCrashCB.AutoSize = true;
+            this.KillFeedBoatCrashCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedBoatCrashCB.Location = new System.Drawing.Point(399, 95);
+            this.KillFeedBoatCrashCB.Name = "KillFeedBoatCrashCB";
+            this.KillFeedBoatCrashCB.Size = new System.Drawing.Size(121, 17);
+            this.KillFeedBoatCrashCB.TabIndex = 23;
+            this.KillFeedBoatCrashCB.Text = "Kill Feed Boat Crash";
+            this.KillFeedBoatCrashCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedBoatCrashCB.UseVisualStyleBackColor = true;
+            this.KillFeedBoatCrashCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedBoatHitNoDriverCB
+            // 
+            this.KillFeedBoatHitNoDriverCB.AutoSize = true;
+            this.KillFeedBoatHitNoDriverCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedBoatHitNoDriverCB.Location = new System.Drawing.Point(399, 118);
+            this.KillFeedBoatHitNoDriverCB.Name = "KillFeedBoatHitNoDriverCB";
+            this.KillFeedBoatHitNoDriverCB.Size = new System.Drawing.Size(155, 17);
+            this.KillFeedBoatHitNoDriverCB.TabIndex = 22;
+            this.KillFeedBoatHitNoDriverCB.Text = "Kill Feed Boat Hit No Driver";
+            this.KillFeedBoatHitNoDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedBoatHitNoDriverCB.UseVisualStyleBackColor = true;
+            this.KillFeedBoatHitNoDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedDehydrationCB
+            // 
+            this.KillFeedDehydrationCB.AutoSize = true;
+            this.KillFeedDehydrationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedDehydrationCB.Location = new System.Drawing.Point(399, 141);
+            this.KillFeedDehydrationCB.Name = "KillFeedDehydrationCB";
+            this.KillFeedDehydrationCB.Size = new System.Drawing.Size(126, 17);
+            this.KillFeedDehydrationCB.TabIndex = 28;
+            this.KillFeedDehydrationCB.Text = "Kill Feed Dehydration";
+            this.KillFeedDehydrationCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedDehydrationCB.UseVisualStyleBackColor = true;
+            this.KillFeedDehydrationCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedStarvationCB
+            // 
+            this.KillFeedStarvationCB.AutoSize = true;
+            this.KillFeedStarvationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedStarvationCB.Location = new System.Drawing.Point(399, 164);
+            this.KillFeedStarvationCB.Name = "KillFeedStarvationCB";
+            this.KillFeedStarvationCB.Size = new System.Drawing.Size(117, 17);
+            this.KillFeedStarvationCB.TabIndex = 29;
+            this.KillFeedStarvationCB.Text = "Kill Feed Starvation";
+            this.KillFeedStarvationCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedStarvationCB.UseVisualStyleBackColor = true;
+            this.KillFeedStarvationCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedWeaponExplosionCB
+            // 
+            this.KillFeedWeaponExplosionCB.AutoSize = true;
+            this.KillFeedWeaponExplosionCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedWeaponExplosionCB.Location = new System.Drawing.Point(399, 187);
+            this.KillFeedWeaponExplosionCB.Name = "KillFeedWeaponExplosionCB";
+            this.KillFeedWeaponExplosionCB.Size = new System.Drawing.Size(158, 17);
+            this.KillFeedWeaponExplosionCB.TabIndex = 27;
+            this.KillFeedWeaponExplosionCB.Text = "Kill Feed Weapon Explosion";
+            this.KillFeedWeaponExplosionCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedWeaponExplosionCB.UseVisualStyleBackColor = true;
+            this.KillFeedWeaponExplosionCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedFireCB
+            // 
+            this.KillFeedFireCB.AutoSize = true;
+            this.KillFeedFireCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedFireCB.Location = new System.Drawing.Point(399, 210);
+            this.KillFeedFireCB.Name = "KillFeedFireCB";
+            this.KillFeedFireCB.Size = new System.Drawing.Size(86, 17);
+            this.KillFeedFireCB.TabIndex = 26;
+            this.KillFeedFireCB.Text = "Kill Feed Fire";
+            this.KillFeedFireCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedFireCB.UseVisualStyleBackColor = true;
+            this.KillFeedFireCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedBleedingCB
+            // 
+            this.KillFeedBleedingCB.AutoSize = true;
+            this.KillFeedBleedingCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedBleedingCB.Location = new System.Drawing.Point(399, 233);
+            this.KillFeedBleedingCB.Name = "KillFeedBleedingCB";
+            this.KillFeedBleedingCB.Size = new System.Drawing.Size(110, 17);
+            this.KillFeedBleedingCB.TabIndex = 30;
+            this.KillFeedBleedingCB.Text = "Kill Feed Bleeding";
+            this.KillFeedBleedingCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedBleedingCB.UseVisualStyleBackColor = true;
+            this.KillFeedBleedingCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedStatusEffectsCB
+            // 
+            this.KillFeedStatusEffectsCB.AutoSize = true;
+            this.KillFeedStatusEffectsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedStatusEffectsCB.Location = new System.Drawing.Point(399, 256);
+            this.KillFeedStatusEffectsCB.Name = "KillFeedStatusEffectsCB";
+            this.KillFeedStatusEffectsCB.Size = new System.Drawing.Size(135, 17);
+            this.KillFeedStatusEffectsCB.TabIndex = 31;
+            this.KillFeedStatusEffectsCB.Text = "Kill Feed Status Effects";
+            this.KillFeedStatusEffectsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedStatusEffectsCB.UseVisualStyleBackColor = true;
+            this.KillFeedStatusEffectsCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedSuicideCB
+            // 
+            this.KillFeedSuicideCB.AutoSize = true;
+            this.KillFeedSuicideCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedSuicideCB.Location = new System.Drawing.Point(563, 3);
+            this.KillFeedSuicideCB.Name = "KillFeedSuicideCB";
+            this.KillFeedSuicideCB.Size = new System.Drawing.Size(104, 17);
+            this.KillFeedSuicideCB.TabIndex = 32;
+            this.KillFeedSuicideCB.Text = "Kill Feed Suicide";
+            this.KillFeedSuicideCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedSuicideCB.UseVisualStyleBackColor = true;
+            this.KillFeedSuicideCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedWeaponCB
+            // 
+            this.KillFeedWeaponCB.AutoSize = true;
+            this.KillFeedWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedWeaponCB.Location = new System.Drawing.Point(563, 26);
+            this.KillFeedWeaponCB.Name = "KillFeedWeaponCB";
+            this.KillFeedWeaponCB.Size = new System.Drawing.Size(110, 17);
+            this.KillFeedWeaponCB.TabIndex = 33;
+            this.KillFeedWeaponCB.Text = "Kill Feed Weapon";
+            this.KillFeedWeaponCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedWeaponCB.UseVisualStyleBackColor = true;
+            this.KillFeedWeaponCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedMeleeWeaponCB
+            // 
+            this.KillFeedMeleeWeaponCB.AutoSize = true;
+            this.KillFeedMeleeWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedMeleeWeaponCB.Location = new System.Drawing.Point(563, 49);
+            this.KillFeedMeleeWeaponCB.Name = "KillFeedMeleeWeaponCB";
+            this.KillFeedMeleeWeaponCB.Size = new System.Drawing.Size(142, 17);
+            this.KillFeedMeleeWeaponCB.TabIndex = 34;
+            this.KillFeedMeleeWeaponCB.Text = "Kill Feed Melee Weapon";
+            this.KillFeedMeleeWeaponCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedMeleeWeaponCB.UseVisualStyleBackColor = true;
+            this.KillFeedMeleeWeaponCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedBarehandsCB
+            // 
+            this.KillFeedBarehandsCB.AutoSize = true;
+            this.KillFeedBarehandsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedBarehandsCB.Location = new System.Drawing.Point(563, 72);
+            this.KillFeedBarehandsCB.Name = "KillFeedBarehandsCB";
+            this.KillFeedBarehandsCB.Size = new System.Drawing.Size(120, 17);
+            this.KillFeedBarehandsCB.TabIndex = 35;
+            this.KillFeedBarehandsCB.Text = "Kill Feed Barehands";
+            this.KillFeedBarehandsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedBarehandsCB.UseVisualStyleBackColor = true;
+            this.KillFeedBarehandsCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedInfectedCB
+            // 
+            this.KillFeedInfectedCB.AutoSize = true;
+            this.KillFeedInfectedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedInfectedCB.Location = new System.Drawing.Point(563, 95);
+            this.KillFeedInfectedCB.Name = "KillFeedInfectedCB";
+            this.KillFeedInfectedCB.Size = new System.Drawing.Size(108, 17);
+            this.KillFeedInfectedCB.TabIndex = 36;
+            this.KillFeedInfectedCB.Text = "Kill Feed Infected";
+            this.KillFeedInfectedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedInfectedCB.UseVisualStyleBackColor = true;
+            this.KillFeedInfectedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedAnimalCB
+            // 
+            this.KillFeedAnimalCB.AutoSize = true;
+            this.KillFeedAnimalCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedAnimalCB.Location = new System.Drawing.Point(563, 118);
+            this.KillFeedAnimalCB.Name = "KillFeedAnimalCB";
+            this.KillFeedAnimalCB.Size = new System.Drawing.Size(100, 17);
+            this.KillFeedAnimalCB.TabIndex = 37;
+            this.KillFeedAnimalCB.Text = "Kill Feed Animal";
+            this.KillFeedAnimalCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedAnimalCB.UseVisualStyleBackColor = true;
+            this.KillFeedAnimalCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedAICB
+            // 
+            this.KillFeedAICB.AutoSize = true;
+            this.KillFeedAICB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedAICB.Location = new System.Drawing.Point(563, 141);
+            this.KillFeedAICB.Name = "KillFeedAICB";
+            this.KillFeedAICB.Size = new System.Drawing.Size(79, 17);
+            this.KillFeedAICB.TabIndex = 40;
+            this.KillFeedAICB.Text = "Kill Feed AI";
+            this.KillFeedAICB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedAICB.UseVisualStyleBackColor = true;
+            this.KillFeedAICB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedDrownedCB
+            // 
+            this.KillFeedDrownedCB.AutoSize = true;
+            this.KillFeedDrownedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedDrownedCB.Location = new System.Drawing.Point(563, 164);
+            this.KillFeedDrownedCB.Name = "KillFeedDrownedCB";
+            this.KillFeedDrownedCB.Size = new System.Drawing.Size(112, 17);
+            this.KillFeedDrownedCB.TabIndex = 41;
+            this.KillFeedDrownedCB.Text = "Kill Feed Drowned";
+            this.KillFeedDrownedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedDrownedCB.UseVisualStyleBackColor = true;
+            this.KillFeedDrownedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedKilledUnknownCB
+            // 
+            this.KillFeedKilledUnknownCB.AutoSize = true;
+            this.KillFeedKilledUnknownCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedKilledUnknownCB.Location = new System.Drawing.Point(563, 187);
+            this.KillFeedKilledUnknownCB.Name = "KillFeedKilledUnknownCB";
+            this.KillFeedKilledUnknownCB.Size = new System.Drawing.Size(143, 17);
+            this.KillFeedKilledUnknownCB.TabIndex = 38;
+            this.KillFeedKilledUnknownCB.Text = "Kill Feed Killed Unknown";
+            this.KillFeedKilledUnknownCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedKilledUnknownCB.UseVisualStyleBackColor = true;
+            this.KillFeedKilledUnknownCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedDiedUnknownCB
+            // 
+            this.KillFeedDiedUnknownCB.AutoSize = true;
+            this.KillFeedDiedUnknownCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedDiedUnknownCB.Location = new System.Drawing.Point(563, 210);
+            this.KillFeedDiedUnknownCB.Name = "KillFeedDiedUnknownCB";
+            this.KillFeedDiedUnknownCB.Size = new System.Drawing.Size(140, 17);
+            this.KillFeedDiedUnknownCB.TabIndex = 39;
+            this.KillFeedDiedUnknownCB.Text = "Kill Feed Died Unknown";
+            this.KillFeedDiedUnknownCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedDiedUnknownCB.UseVisualStyleBackColor = true;
+            this.KillFeedDiedUnknownCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
             // 
             // groupBox10
             // 
@@ -10109,14 +10176,661 @@ namespace DayZeEditor
             // tabPage22
             // 
             this.tabPage22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage22.Controls.Add(this.AirdropMissionGB);
             this.tabPage22.Controls.Add(this.ContaminatedAreaGB);
+            this.tabPage22.Controls.Add(this.AirdropMissionGB);
             this.tabPage22.Location = new System.Drawing.Point(4, 25);
             this.tabPage22.Name = "tabPage22";
             this.tabPage22.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage22.Size = new System.Drawing.Size(1187, 710);
             this.tabPage22.TabIndex = 0;
             this.tabPage22.Text = "Locations";
+            // 
+            // ContaminatedAreaGB
+            // 
+            this.ContaminatedAreaGB.Controls.Add(this.numericUpDown29);
+            this.ContaminatedAreaGB.Controls.Add(this.darkLabel181);
+            this.ContaminatedAreaGB.Controls.Add(this.numericUpDown30);
+            this.ContaminatedAreaGB.Controls.Add(this.darkLabel182);
+            this.ContaminatedAreaGB.Controls.Add(this.numericUpDown27);
+            this.ContaminatedAreaGB.Controls.Add(this.darkLabel179);
+            this.ContaminatedAreaGB.Controls.Add(this.numericUpDown28);
+            this.ContaminatedAreaGB.Controls.Add(this.darkLabel180);
+            this.ContaminatedAreaGB.Controls.Add(this.darkLabel177);
+            this.ContaminatedAreaGB.Controls.Add(this.textBox15);
+            this.ContaminatedAreaGB.Controls.Add(this.textBox16);
+            this.ContaminatedAreaGB.Controls.Add(this.darkLabel178);
+            this.ContaminatedAreaGB.Controls.Add(this.checkBox7);
+            this.ContaminatedAreaGB.Controls.Add(this.groupBox70);
+            this.ContaminatedAreaGB.Controls.Add(this.groupBox71);
+            this.ContaminatedAreaGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ContaminatedAreaGB.Location = new System.Drawing.Point(3, 3);
+            this.ContaminatedAreaGB.Name = "ContaminatedAreaGB";
+            this.ContaminatedAreaGB.Size = new System.Drawing.Size(386, 551);
+            this.ContaminatedAreaGB.TabIndex = 0;
+            this.ContaminatedAreaGB.TabStop = false;
+            this.ContaminatedAreaGB.Text = "Contaminated Area";
+            this.ContaminatedAreaGB.Visible = false;
+            // 
+            // numericUpDown29
+            // 
+            this.numericUpDown29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown29.DecimalPlaces = 1;
+            this.numericUpDown29.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown29.Location = new System.Drawing.Point(275, 96);
+            this.numericUpDown29.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown29.Name = "numericUpDown29";
+            this.numericUpDown29.Size = new System.Drawing.Size(101, 20);
+            this.numericUpDown29.TabIndex = 8;
+            this.numericUpDown29.Tag = "Weight";
+            this.numericUpDown29.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown29.ValueChanged += new System.EventHandler(this.numericUpDown29_ValueChanged);
+            // 
+            // darkLabel181
+            // 
+            this.darkLabel181.AutoSize = true;
+            this.darkLabel181.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel181.Location = new System.Drawing.Point(207, 98);
+            this.darkLabel181.Name = "darkLabel181";
+            this.darkLabel181.Size = new System.Drawing.Size(41, 13);
+            this.darkLabel181.TabIndex = 7;
+            this.darkLabel181.Tag = "";
+            this.darkLabel181.Text = "Weight";
+            // 
+            // numericUpDown30
+            // 
+            this.numericUpDown30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown30.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown30.Location = new System.Drawing.Point(275, 70);
+            this.numericUpDown30.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown30.Name = "numericUpDown30";
+            this.numericUpDown30.Size = new System.Drawing.Size(101, 20);
+            this.numericUpDown30.TabIndex = 6;
+            this.numericUpDown30.Tag = "MissionMaxTime";
+            this.numericUpDown30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown30.ValueChanged += new System.EventHandler(this.numericUpDown30_ValueChanged_1);
+            // 
+            // darkLabel182
+            // 
+            this.darkLabel182.AutoSize = true;
+            this.darkLabel182.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel182.Location = new System.Drawing.Point(138, 72);
+            this.darkLabel182.Name = "darkLabel182";
+            this.darkLabel182.Size = new System.Drawing.Size(131, 13);
+            this.darkLabel182.TabIndex = 5;
+            this.darkLabel182.Text = "Mission Max Time (  Mins )";
+            // 
+            // numericUpDown27
+            // 
+            this.numericUpDown27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown27.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown27.Location = new System.Drawing.Point(108, 515);
+            this.numericUpDown27.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown27.Name = "numericUpDown27";
+            this.numericUpDown27.Size = new System.Drawing.Size(71, 20);
+            this.numericUpDown27.TabIndex = 12;
+            this.numericUpDown27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown27.ValueChanged += new System.EventHandler(this.numericUpDown27_ValueChanged);
+            // 
+            // darkLabel179
+            // 
+            this.darkLabel179.AutoSize = true;
+            this.darkLabel179.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel179.Location = new System.Drawing.Point(3, 517);
+            this.darkLabel179.Name = "darkLabel179";
+            this.darkLabel179.Size = new System.Drawing.Size(102, 13);
+            this.darkLabel179.TabIndex = 11;
+            this.darkLabel179.Text = "Start Decay Lifetime";
+            // 
+            // numericUpDown28
+            // 
+            this.numericUpDown28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown28.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown28.Location = new System.Drawing.Point(305, 515);
+            this.numericUpDown28.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown28.Name = "numericUpDown28";
+            this.numericUpDown28.Size = new System.Drawing.Size(71, 20);
+            this.numericUpDown28.TabIndex = 14;
+            this.numericUpDown28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown28.ValueChanged += new System.EventHandler(this.numericUpDown28_ValueChanged);
+            // 
+            // darkLabel180
+            // 
+            this.darkLabel180.AutoSize = true;
+            this.darkLabel180.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel180.Location = new System.Drawing.Point(194, 517);
+            this.darkLabel180.Name = "darkLabel180";
+            this.darkLabel180.Size = new System.Drawing.Size(107, 13);
+            this.darkLabel180.TabIndex = 13;
+            this.darkLabel180.Text = "Finish Decay Lifetime";
+            // 
+            // darkLabel177
+            // 
+            this.darkLabel177.AutoSize = true;
+            this.darkLabel177.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel177.Location = new System.Drawing.Point(12, 21);
+            this.darkLabel177.Name = "darkLabel177";
+            this.darkLabel177.Size = new System.Drawing.Size(67, 13);
+            this.darkLabel177.TabIndex = 0;
+            this.darkLabel177.Text = "Mission Path";
+            // 
+            // textBox15
+            // 
+            this.textBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox15.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox15.Location = new System.Drawing.Point(85, 18);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(293, 20);
+            this.textBox15.TabIndex = 1;
+            this.textBox15.TextChanged += new System.EventHandler(this.textBox15_TextChanged_1);
+            // 
+            // textBox16
+            // 
+            this.textBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox16.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox16.Location = new System.Drawing.Point(85, 44);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(293, 20);
+            this.textBox16.TabIndex = 3;
+            this.textBox16.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
+            // 
+            // darkLabel178
+            // 
+            this.darkLabel178.AutoSize = true;
+            this.darkLabel178.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel178.Location = new System.Drawing.Point(12, 47);
+            this.darkLabel178.Name = "darkLabel178";
+            this.darkLabel178.Size = new System.Drawing.Size(73, 13);
+            this.darkLabel178.TabIndex = 2;
+            this.darkLabel178.Text = "Mission Name";
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox7.Location = new System.Drawing.Point(17, 70);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(76, 17);
+            this.checkBox7.TabIndex = 4;
+            this.checkBox7.Tag = "Enabled";
+            this.checkBox7.Text = "Is Enabled";
+            this.checkBox7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            // 
+            // groupBox70
+            // 
+            this.groupBox70.Controls.Add(this.darkLabel197);
+            this.groupBox70.Controls.Add(this.PPERequesterTypeTB);
+            this.groupBox70.Controls.Add(this.darkLabel198);
+            this.groupBox70.Controls.Add(this.TinyPartNameTB);
+            this.groupBox70.Controls.Add(this.darkLabel199);
+            this.groupBox70.Controls.Add(this.AroundPartNameTB);
+            this.groupBox70.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox70.Location = new System.Drawing.Point(6, 357);
+            this.groupBox70.Name = "groupBox70";
+            this.groupBox70.Size = new System.Drawing.Size(370, 152);
+            this.groupBox70.TabIndex = 10;
+            this.groupBox70.TabStop = false;
+            this.groupBox70.Text = "Player Data";
+            // 
+            // darkLabel197
+            // 
+            this.darkLabel197.AutoSize = true;
+            this.darkLabel197.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel197.Location = new System.Drawing.Point(13, 104);
+            this.darkLabel197.Name = "darkLabel197";
+            this.darkLabel197.Size = new System.Drawing.Size(101, 13);
+            this.darkLabel197.TabIndex = 4;
+            this.darkLabel197.Text = "PPERequesterType";
+            // 
+            // PPERequesterTypeTB
+            // 
+            this.PPERequesterTypeTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PPERequesterTypeTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PPERequesterTypeTB.Location = new System.Drawing.Point(6, 120);
+            this.PPERequesterTypeTB.Name = "PPERequesterTypeTB";
+            this.PPERequesterTypeTB.Size = new System.Drawing.Size(358, 20);
+            this.PPERequesterTypeTB.TabIndex = 5;
+            this.PPERequesterTypeTB.TextChanged += new System.EventHandler(this.PPERequesterTypeTB_TextChanged);
+            // 
+            // darkLabel198
+            // 
+            this.darkLabel198.AutoSize = true;
+            this.darkLabel198.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel198.Location = new System.Drawing.Point(13, 61);
+            this.darkLabel198.Name = "darkLabel198";
+            this.darkLabel198.Size = new System.Drawing.Size(74, 13);
+            this.darkLabel198.TabIndex = 2;
+            this.darkLabel198.Text = "TinyPartName";
+            // 
+            // TinyPartNameTB
+            // 
+            this.TinyPartNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TinyPartNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TinyPartNameTB.Location = new System.Drawing.Point(7, 77);
+            this.TinyPartNameTB.Name = "TinyPartNameTB";
+            this.TinyPartNameTB.Size = new System.Drawing.Size(357, 20);
+            this.TinyPartNameTB.TabIndex = 3;
+            this.TinyPartNameTB.TextChanged += new System.EventHandler(this.TinyPartNameTB_TextChanged);
+            // 
+            // darkLabel199
+            // 
+            this.darkLabel199.AutoSize = true;
+            this.darkLabel199.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel199.Location = new System.Drawing.Point(13, 19);
+            this.darkLabel199.Name = "darkLabel199";
+            this.darkLabel199.Size = new System.Drawing.Size(88, 13);
+            this.darkLabel199.TabIndex = 0;
+            this.darkLabel199.Text = "AroundPartName";
+            // 
+            // AroundPartNameTB
+            // 
+            this.AroundPartNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AroundPartNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AroundPartNameTB.Location = new System.Drawing.Point(7, 35);
+            this.AroundPartNameTB.Name = "AroundPartNameTB";
+            this.AroundPartNameTB.Size = new System.Drawing.Size(357, 20);
+            this.AroundPartNameTB.TabIndex = 1;
+            this.AroundPartNameTB.TextChanged += new System.EventHandler(this.AroundPartNameTB_TextChanged);
+            // 
+            // groupBox71
+            // 
+            this.groupBox71.Controls.Add(this.OuterRingToggleCB);
+            this.groupBox71.Controls.Add(this.darkLabel200);
+            this.groupBox71.Controls.Add(this.VerticalOffsetNUD);
+            this.groupBox71.Controls.Add(this.ParticleNameTB);
+            this.groupBox71.Controls.Add(this.darkLabel201);
+            this.groupBox71.Controls.Add(this.VerticalLayersNUD);
+            this.groupBox71.Controls.Add(this.VerticalLayers);
+            this.groupBox71.Controls.Add(this.OuterOffsetNUD);
+            this.groupBox71.Controls.Add(this.darkLabel202);
+            this.groupBox71.Controls.Add(this.OuterPartDistNUD);
+            this.groupBox71.Controls.Add(this.darkLabel203);
+            this.groupBox71.Controls.Add(this.darkLabel204);
+            this.groupBox71.Controls.Add(this.InnerPartDistNUD);
+            this.groupBox71.Controls.Add(this.darkLabel205);
+            this.groupBox71.Controls.Add(this.InnerRingCountNUD);
+            this.groupBox71.Controls.Add(this.darkLabel206);
+            this.groupBox71.Controls.Add(this.NegHeightNUD);
+            this.groupBox71.Controls.Add(this.darkLabel207);
+            this.groupBox71.Controls.Add(this.PosHeightNUD);
+            this.groupBox71.Controls.Add(this.darkLabel208);
+            this.groupBox71.Controls.Add(this.RadiusNUD);
+            this.groupBox71.Controls.Add(this.darkLabel209);
+            this.groupBox71.Controls.Add(this.posZNUD);
+            this.groupBox71.Controls.Add(this.posYNUD);
+            this.groupBox71.Controls.Add(this.PosXNUD);
+            this.groupBox71.Controls.Add(this.darkLabel210);
+            this.groupBox71.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox71.Location = new System.Drawing.Point(6, 122);
+            this.groupBox71.Name = "groupBox71";
+            this.groupBox71.Size = new System.Drawing.Size(370, 229);
+            this.groupBox71.TabIndex = 9;
+            this.groupBox71.TabStop = false;
+            this.groupBox71.Text = "Data";
+            // 
+            // OuterRingToggleCB
+            // 
+            this.OuterRingToggleCB.AutoSize = true;
+            this.OuterRingToggleCB.Location = new System.Drawing.Point(333, 100);
+            this.OuterRingToggleCB.Name = "OuterRingToggleCB";
+            this.OuterRingToggleCB.Size = new System.Drawing.Size(15, 14);
+            this.OuterRingToggleCB.TabIndex = 15;
+            this.OuterRingToggleCB.UseVisualStyleBackColor = true;
+            this.OuterRingToggleCB.CheckedChanged += new System.EventHandler(this.OuterRingToggleCB_CheckedChanged);
+            // 
+            // darkLabel200
+            // 
+            this.darkLabel200.AutoSize = true;
+            this.darkLabel200.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel200.Location = new System.Drawing.Point(13, 177);
+            this.darkLabel200.Name = "darkLabel200";
+            this.darkLabel200.Size = new System.Drawing.Size(70, 13);
+            this.darkLabel200.TabIndex = 24;
+            this.darkLabel200.Text = "ParticleName";
+            // 
+            // VerticalOffsetNUD
+            // 
+            this.VerticalOffsetNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.VerticalOffsetNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.VerticalOffsetNUD.Location = new System.Drawing.Point(102, 151);
+            this.VerticalOffsetNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.VerticalOffsetNUD.Name = "VerticalOffsetNUD";
+            this.VerticalOffsetNUD.Size = new System.Drawing.Size(71, 20);
+            this.VerticalOffsetNUD.TabIndex = 21;
+            this.VerticalOffsetNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.VerticalOffsetNUD.ValueChanged += new System.EventHandler(this.VerticalOffsetNUD_ValueChanged);
+            // 
+            // ParticleNameTB
+            // 
+            this.ParticleNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ParticleNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ParticleNameTB.Location = new System.Drawing.Point(7, 193);
+            this.ParticleNameTB.Name = "ParticleNameTB";
+            this.ParticleNameTB.Size = new System.Drawing.Size(357, 20);
+            this.ParticleNameTB.TabIndex = 25;
+            this.ParticleNameTB.TextChanged += new System.EventHandler(this.ParticleNameTB_TextChanged);
+            // 
+            // darkLabel201
+            // 
+            this.darkLabel201.AutoSize = true;
+            this.darkLabel201.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel201.Location = new System.Drawing.Point(13, 153);
+            this.darkLabel201.Name = "darkLabel201";
+            this.darkLabel201.Size = new System.Drawing.Size(70, 13);
+            this.darkLabel201.TabIndex = 20;
+            this.darkLabel201.Text = "VerticalOffset";
+            // 
+            // VerticalLayersNUD
+            // 
+            this.VerticalLayersNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.VerticalLayersNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.VerticalLayersNUD.Location = new System.Drawing.Point(102, 125);
+            this.VerticalLayersNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.VerticalLayersNUD.Name = "VerticalLayersNUD";
+            this.VerticalLayersNUD.Size = new System.Drawing.Size(71, 20);
+            this.VerticalLayersNUD.TabIndex = 17;
+            this.VerticalLayersNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.VerticalLayersNUD.ValueChanged += new System.EventHandler(this.VerticalLayersNUD_ValueChanged);
+            // 
+            // VerticalLayers
+            // 
+            this.VerticalLayers.AutoSize = true;
+            this.VerticalLayers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.VerticalLayers.Location = new System.Drawing.Point(13, 127);
+            this.VerticalLayers.Name = "VerticalLayers";
+            this.VerticalLayers.Size = new System.Drawing.Size(73, 13);
+            this.VerticalLayers.TabIndex = 16;
+            this.VerticalLayers.Text = "VerticalLayers";
+            // 
+            // OuterOffsetNUD
+            // 
+            this.OuterOffsetNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OuterOffsetNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OuterOffsetNUD.Location = new System.Drawing.Point(277, 151);
+            this.OuterOffsetNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.OuterOffsetNUD.Name = "OuterOffsetNUD";
+            this.OuterOffsetNUD.Size = new System.Drawing.Size(71, 20);
+            this.OuterOffsetNUD.TabIndex = 23;
+            this.OuterOffsetNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OuterOffsetNUD.ValueChanged += new System.EventHandler(this.OuterOffsetNUD_ValueChanged);
+            // 
+            // darkLabel202
+            // 
+            this.darkLabel202.AutoSize = true;
+            this.darkLabel202.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel202.Location = new System.Drawing.Point(188, 153);
+            this.darkLabel202.Name = "darkLabel202";
+            this.darkLabel202.Size = new System.Drawing.Size(61, 13);
+            this.darkLabel202.TabIndex = 22;
+            this.darkLabel202.Text = "OuterOffset";
+            // 
+            // OuterPartDistNUD
+            // 
+            this.OuterPartDistNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OuterPartDistNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OuterPartDistNUD.Location = new System.Drawing.Point(277, 125);
+            this.OuterPartDistNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.OuterPartDistNUD.Name = "OuterPartDistNUD";
+            this.OuterPartDistNUD.Size = new System.Drawing.Size(71, 20);
+            this.OuterPartDistNUD.TabIndex = 19;
+            this.OuterPartDistNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OuterPartDistNUD.ValueChanged += new System.EventHandler(this.OuterPartDistNUD_ValueChanged);
+            // 
+            // darkLabel203
+            // 
+            this.darkLabel203.AutoSize = true;
+            this.darkLabel203.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel203.Location = new System.Drawing.Point(188, 127);
+            this.darkLabel203.Name = "darkLabel203";
+            this.darkLabel203.Size = new System.Drawing.Size(70, 13);
+            this.darkLabel203.TabIndex = 18;
+            this.darkLabel203.Text = "OuterPartDist";
+            // 
+            // darkLabel204
+            // 
+            this.darkLabel204.AutoSize = true;
+            this.darkLabel204.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel204.Location = new System.Drawing.Point(188, 101);
+            this.darkLabel204.Name = "darkLabel204";
+            this.darkLabel204.Size = new System.Drawing.Size(88, 13);
+            this.darkLabel204.TabIndex = 14;
+            this.darkLabel204.Text = "OuterRingToggle";
+            // 
+            // InnerPartDistNUD
+            // 
+            this.InnerPartDistNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.InnerPartDistNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.InnerPartDistNUD.Location = new System.Drawing.Point(277, 71);
+            this.InnerPartDistNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.InnerPartDistNUD.Name = "InnerPartDistNUD";
+            this.InnerPartDistNUD.Size = new System.Drawing.Size(71, 20);
+            this.InnerPartDistNUD.TabIndex = 11;
+            this.InnerPartDistNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.InnerPartDistNUD.ValueChanged += new System.EventHandler(this.InnerPartDistNUD_ValueChanged);
+            // 
+            // darkLabel205
+            // 
+            this.darkLabel205.AutoSize = true;
+            this.darkLabel205.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel205.Location = new System.Drawing.Point(188, 73);
+            this.darkLabel205.Name = "darkLabel205";
+            this.darkLabel205.Size = new System.Drawing.Size(68, 13);
+            this.darkLabel205.TabIndex = 10;
+            this.darkLabel205.Text = "InnerPartDist";
+            // 
+            // InnerRingCountNUD
+            // 
+            this.InnerRingCountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.InnerRingCountNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.InnerRingCountNUD.Location = new System.Drawing.Point(277, 45);
+            this.InnerRingCountNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.InnerRingCountNUD.Name = "InnerRingCountNUD";
+            this.InnerRingCountNUD.Size = new System.Drawing.Size(71, 20);
+            this.InnerRingCountNUD.TabIndex = 7;
+            this.InnerRingCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.InnerRingCountNUD.ValueChanged += new System.EventHandler(this.InnerRingCountNUD_ValueChanged);
+            // 
+            // darkLabel206
+            // 
+            this.darkLabel206.AutoSize = true;
+            this.darkLabel206.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel206.Location = new System.Drawing.Point(188, 47);
+            this.darkLabel206.Name = "darkLabel206";
+            this.darkLabel206.Size = new System.Drawing.Size(81, 13);
+            this.darkLabel206.TabIndex = 6;
+            this.darkLabel206.Text = "InnerRingCount";
+            // 
+            // NegHeightNUD
+            // 
+            this.NegHeightNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.NegHeightNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.NegHeightNUD.Location = new System.Drawing.Point(102, 97);
+            this.NegHeightNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.NegHeightNUD.Name = "NegHeightNUD";
+            this.NegHeightNUD.Size = new System.Drawing.Size(71, 20);
+            this.NegHeightNUD.TabIndex = 13;
+            this.NegHeightNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.NegHeightNUD.ValueChanged += new System.EventHandler(this.NegHeightNUD_ValueChanged);
+            // 
+            // darkLabel207
+            // 
+            this.darkLabel207.AutoSize = true;
+            this.darkLabel207.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel207.Location = new System.Drawing.Point(16, 99);
+            this.darkLabel207.Name = "darkLabel207";
+            this.darkLabel207.Size = new System.Drawing.Size(58, 13);
+            this.darkLabel207.TabIndex = 12;
+            this.darkLabel207.Text = "NegHeight";
+            // 
+            // PosHeightNUD
+            // 
+            this.PosHeightNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PosHeightNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PosHeightNUD.Location = new System.Drawing.Point(102, 71);
+            this.PosHeightNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.PosHeightNUD.Name = "PosHeightNUD";
+            this.PosHeightNUD.Size = new System.Drawing.Size(71, 20);
+            this.PosHeightNUD.TabIndex = 9;
+            this.PosHeightNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PosHeightNUD.ValueChanged += new System.EventHandler(this.PosHeightNUD_ValueChanged);
+            // 
+            // darkLabel208
+            // 
+            this.darkLabel208.AutoSize = true;
+            this.darkLabel208.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel208.Location = new System.Drawing.Point(16, 73);
+            this.darkLabel208.Name = "darkLabel208";
+            this.darkLabel208.Size = new System.Drawing.Size(56, 13);
+            this.darkLabel208.TabIndex = 8;
+            this.darkLabel208.Text = "PosHeight";
+            // 
+            // RadiusNUD
+            // 
+            this.RadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RadiusNUD.Location = new System.Drawing.Point(102, 45);
+            this.RadiusNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.RadiusNUD.Name = "RadiusNUD";
+            this.RadiusNUD.Size = new System.Drawing.Size(71, 20);
+            this.RadiusNUD.TabIndex = 5;
+            this.RadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RadiusNUD.ValueChanged += new System.EventHandler(this.RadiusNUD_ValueChanged);
+            // 
+            // darkLabel209
+            // 
+            this.darkLabel209.AutoSize = true;
+            this.darkLabel209.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel209.Location = new System.Drawing.Point(16, 47);
+            this.darkLabel209.Name = "darkLabel209";
+            this.darkLabel209.Size = new System.Drawing.Size(40, 13);
+            this.darkLabel209.TabIndex = 4;
+            this.darkLabel209.Text = "Radius";
+            // 
+            // posZNUD
+            // 
+            this.posZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.posZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.posZNUD.Location = new System.Drawing.Point(277, 19);
+            this.posZNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.posZNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
+            this.posZNUD.Name = "posZNUD";
+            this.posZNUD.Size = new System.Drawing.Size(71, 20);
+            this.posZNUD.TabIndex = 3;
+            this.posZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.posZNUD.ValueChanged += new System.EventHandler(this.posZNUD_ValueChanged);
+            // 
+            // posYNUD
+            // 
+            this.posYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.posYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.posYNUD.Location = new System.Drawing.Point(191, 19);
+            this.posYNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.posYNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
+            this.posYNUD.Name = "posYNUD";
+            this.posYNUD.Size = new System.Drawing.Size(71, 20);
+            this.posYNUD.TabIndex = 2;
+            this.posYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.posYNUD.ValueChanged += new System.EventHandler(this.posYNUD_ValueChanged);
+            // 
+            // PosXNUD
+            // 
+            this.PosXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PosXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PosXNUD.Location = new System.Drawing.Point(102, 19);
+            this.PosXNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.PosXNUD.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
+            this.PosXNUD.Name = "PosXNUD";
+            this.PosXNUD.Size = new System.Drawing.Size(71, 20);
+            this.PosXNUD.TabIndex = 1;
+            this.PosXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PosXNUD.ValueChanged += new System.EventHandler(this.PosXNUD_ValueChanged);
+            // 
+            // darkLabel210
+            // 
+            this.darkLabel210.AutoSize = true;
+            this.darkLabel210.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel210.Location = new System.Drawing.Point(16, 21);
+            this.darkLabel210.Name = "darkLabel210";
+            this.darkLabel210.Size = new System.Drawing.Size(44, 13);
+            this.darkLabel210.TabIndex = 0;
+            this.darkLabel210.Text = "Position";
             // 
             // AirdropMissionGB
             // 
@@ -10804,653 +11518,6 @@ namespace DayZeEditor
             this.darkLabel102.Size = new System.Drawing.Size(38, 13);
             this.darkLabel102.TabIndex = 12;
             this.darkLabel102.Text = "Speed";
-            // 
-            // ContaminatedAreaGB
-            // 
-            this.ContaminatedAreaGB.Controls.Add(this.numericUpDown29);
-            this.ContaminatedAreaGB.Controls.Add(this.darkLabel181);
-            this.ContaminatedAreaGB.Controls.Add(this.numericUpDown30);
-            this.ContaminatedAreaGB.Controls.Add(this.darkLabel182);
-            this.ContaminatedAreaGB.Controls.Add(this.numericUpDown27);
-            this.ContaminatedAreaGB.Controls.Add(this.darkLabel179);
-            this.ContaminatedAreaGB.Controls.Add(this.numericUpDown28);
-            this.ContaminatedAreaGB.Controls.Add(this.darkLabel180);
-            this.ContaminatedAreaGB.Controls.Add(this.darkLabel177);
-            this.ContaminatedAreaGB.Controls.Add(this.textBox15);
-            this.ContaminatedAreaGB.Controls.Add(this.textBox16);
-            this.ContaminatedAreaGB.Controls.Add(this.darkLabel178);
-            this.ContaminatedAreaGB.Controls.Add(this.checkBox7);
-            this.ContaminatedAreaGB.Controls.Add(this.groupBox70);
-            this.ContaminatedAreaGB.Controls.Add(this.groupBox71);
-            this.ContaminatedAreaGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ContaminatedAreaGB.Location = new System.Drawing.Point(3, 3);
-            this.ContaminatedAreaGB.Name = "ContaminatedAreaGB";
-            this.ContaminatedAreaGB.Size = new System.Drawing.Size(386, 551);
-            this.ContaminatedAreaGB.TabIndex = 0;
-            this.ContaminatedAreaGB.TabStop = false;
-            this.ContaminatedAreaGB.Text = "Contaminated Area";
-            this.ContaminatedAreaGB.Visible = false;
-            // 
-            // numericUpDown29
-            // 
-            this.numericUpDown29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown29.DecimalPlaces = 1;
-            this.numericUpDown29.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown29.Location = new System.Drawing.Point(275, 96);
-            this.numericUpDown29.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numericUpDown29.Name = "numericUpDown29";
-            this.numericUpDown29.Size = new System.Drawing.Size(101, 20);
-            this.numericUpDown29.TabIndex = 8;
-            this.numericUpDown29.Tag = "Weight";
-            this.numericUpDown29.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown29.ValueChanged += new System.EventHandler(this.numericUpDown29_ValueChanged);
-            // 
-            // darkLabel181
-            // 
-            this.darkLabel181.AutoSize = true;
-            this.darkLabel181.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel181.Location = new System.Drawing.Point(207, 98);
-            this.darkLabel181.Name = "darkLabel181";
-            this.darkLabel181.Size = new System.Drawing.Size(41, 13);
-            this.darkLabel181.TabIndex = 7;
-            this.darkLabel181.Tag = "";
-            this.darkLabel181.Text = "Weight";
-            // 
-            // numericUpDown30
-            // 
-            this.numericUpDown30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown30.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown30.Location = new System.Drawing.Point(275, 70);
-            this.numericUpDown30.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numericUpDown30.Name = "numericUpDown30";
-            this.numericUpDown30.Size = new System.Drawing.Size(101, 20);
-            this.numericUpDown30.TabIndex = 6;
-            this.numericUpDown30.Tag = "MissionMaxTime";
-            this.numericUpDown30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown30.ValueChanged += new System.EventHandler(this.numericUpDown30_ValueChanged_1);
-            // 
-            // darkLabel182
-            // 
-            this.darkLabel182.AutoSize = true;
-            this.darkLabel182.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel182.Location = new System.Drawing.Point(138, 72);
-            this.darkLabel182.Name = "darkLabel182";
-            this.darkLabel182.Size = new System.Drawing.Size(131, 13);
-            this.darkLabel182.TabIndex = 5;
-            this.darkLabel182.Text = "Mission Max Time (  Mins )";
-            // 
-            // numericUpDown27
-            // 
-            this.numericUpDown27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown27.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown27.Location = new System.Drawing.Point(108, 515);
-            this.numericUpDown27.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numericUpDown27.Name = "numericUpDown27";
-            this.numericUpDown27.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown27.TabIndex = 12;
-            this.numericUpDown27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown27.ValueChanged += new System.EventHandler(this.numericUpDown27_ValueChanged);
-            // 
-            // darkLabel179
-            // 
-            this.darkLabel179.AutoSize = true;
-            this.darkLabel179.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel179.Location = new System.Drawing.Point(3, 517);
-            this.darkLabel179.Name = "darkLabel179";
-            this.darkLabel179.Size = new System.Drawing.Size(102, 13);
-            this.darkLabel179.TabIndex = 11;
-            this.darkLabel179.Text = "Start Decay Lifetime";
-            // 
-            // numericUpDown28
-            // 
-            this.numericUpDown28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown28.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown28.Location = new System.Drawing.Point(305, 515);
-            this.numericUpDown28.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numericUpDown28.Name = "numericUpDown28";
-            this.numericUpDown28.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown28.TabIndex = 14;
-            this.numericUpDown28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown28.ValueChanged += new System.EventHandler(this.numericUpDown28_ValueChanged);
-            // 
-            // darkLabel180
-            // 
-            this.darkLabel180.AutoSize = true;
-            this.darkLabel180.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel180.Location = new System.Drawing.Point(194, 517);
-            this.darkLabel180.Name = "darkLabel180";
-            this.darkLabel180.Size = new System.Drawing.Size(107, 13);
-            this.darkLabel180.TabIndex = 13;
-            this.darkLabel180.Text = "Finish Decay Lifetime";
-            // 
-            // darkLabel177
-            // 
-            this.darkLabel177.AutoSize = true;
-            this.darkLabel177.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel177.Location = new System.Drawing.Point(12, 21);
-            this.darkLabel177.Name = "darkLabel177";
-            this.darkLabel177.Size = new System.Drawing.Size(67, 13);
-            this.darkLabel177.TabIndex = 0;
-            this.darkLabel177.Text = "Mission Path";
-            // 
-            // textBox15
-            // 
-            this.textBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox15.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox15.Location = new System.Drawing.Point(85, 18);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(293, 20);
-            this.textBox15.TabIndex = 1;
-            this.textBox15.TextChanged += new System.EventHandler(this.textBox15_TextChanged_1);
-            // 
-            // textBox16
-            // 
-            this.textBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox16.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox16.Location = new System.Drawing.Point(85, 44);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(293, 20);
-            this.textBox16.TabIndex = 3;
-            this.textBox16.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
-            // 
-            // darkLabel178
-            // 
-            this.darkLabel178.AutoSize = true;
-            this.darkLabel178.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel178.Location = new System.Drawing.Point(12, 47);
-            this.darkLabel178.Name = "darkLabel178";
-            this.darkLabel178.Size = new System.Drawing.Size(73, 13);
-            this.darkLabel178.TabIndex = 2;
-            this.darkLabel178.Text = "Mission Name";
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBox7.Location = new System.Drawing.Point(17, 70);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(76, 17);
-            this.checkBox7.TabIndex = 4;
-            this.checkBox7.Tag = "Enabled";
-            this.checkBox7.Text = "Is Enabled";
-            this.checkBox7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox7.UseVisualStyleBackColor = true;
-            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
-            // 
-            // groupBox70
-            // 
-            this.groupBox70.Controls.Add(this.darkLabel197);
-            this.groupBox70.Controls.Add(this.PPERequesterTypeTB);
-            this.groupBox70.Controls.Add(this.darkLabel198);
-            this.groupBox70.Controls.Add(this.TinyPartNameTB);
-            this.groupBox70.Controls.Add(this.darkLabel199);
-            this.groupBox70.Controls.Add(this.AroundPartNameTB);
-            this.groupBox70.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox70.Location = new System.Drawing.Point(6, 357);
-            this.groupBox70.Name = "groupBox70";
-            this.groupBox70.Size = new System.Drawing.Size(370, 152);
-            this.groupBox70.TabIndex = 10;
-            this.groupBox70.TabStop = false;
-            this.groupBox70.Text = "Player Data";
-            // 
-            // darkLabel197
-            // 
-            this.darkLabel197.AutoSize = true;
-            this.darkLabel197.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel197.Location = new System.Drawing.Point(13, 104);
-            this.darkLabel197.Name = "darkLabel197";
-            this.darkLabel197.Size = new System.Drawing.Size(101, 13);
-            this.darkLabel197.TabIndex = 4;
-            this.darkLabel197.Text = "PPERequesterType";
-            // 
-            // PPERequesterTypeTB
-            // 
-            this.PPERequesterTypeTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PPERequesterTypeTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PPERequesterTypeTB.Location = new System.Drawing.Point(6, 120);
-            this.PPERequesterTypeTB.Name = "PPERequesterTypeTB";
-            this.PPERequesterTypeTB.Size = new System.Drawing.Size(358, 20);
-            this.PPERequesterTypeTB.TabIndex = 5;
-            this.PPERequesterTypeTB.TextChanged += new System.EventHandler(this.PPERequesterTypeTB_TextChanged);
-            // 
-            // darkLabel198
-            // 
-            this.darkLabel198.AutoSize = true;
-            this.darkLabel198.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel198.Location = new System.Drawing.Point(13, 61);
-            this.darkLabel198.Name = "darkLabel198";
-            this.darkLabel198.Size = new System.Drawing.Size(74, 13);
-            this.darkLabel198.TabIndex = 2;
-            this.darkLabel198.Text = "TinyPartName";
-            // 
-            // TinyPartNameTB
-            // 
-            this.TinyPartNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.TinyPartNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.TinyPartNameTB.Location = new System.Drawing.Point(7, 77);
-            this.TinyPartNameTB.Name = "TinyPartNameTB";
-            this.TinyPartNameTB.Size = new System.Drawing.Size(357, 20);
-            this.TinyPartNameTB.TabIndex = 3;
-            this.TinyPartNameTB.TextChanged += new System.EventHandler(this.TinyPartNameTB_TextChanged);
-            // 
-            // darkLabel199
-            // 
-            this.darkLabel199.AutoSize = true;
-            this.darkLabel199.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel199.Location = new System.Drawing.Point(13, 19);
-            this.darkLabel199.Name = "darkLabel199";
-            this.darkLabel199.Size = new System.Drawing.Size(88, 13);
-            this.darkLabel199.TabIndex = 0;
-            this.darkLabel199.Text = "AroundPartName";
-            // 
-            // AroundPartNameTB
-            // 
-            this.AroundPartNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AroundPartNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AroundPartNameTB.Location = new System.Drawing.Point(7, 35);
-            this.AroundPartNameTB.Name = "AroundPartNameTB";
-            this.AroundPartNameTB.Size = new System.Drawing.Size(357, 20);
-            this.AroundPartNameTB.TabIndex = 1;
-            this.AroundPartNameTB.TextChanged += new System.EventHandler(this.AroundPartNameTB_TextChanged);
-            // 
-            // groupBox71
-            // 
-            this.groupBox71.Controls.Add(this.OuterRingToggleCB);
-            this.groupBox71.Controls.Add(this.darkLabel200);
-            this.groupBox71.Controls.Add(this.VerticalOffsetNUD);
-            this.groupBox71.Controls.Add(this.ParticleNameTB);
-            this.groupBox71.Controls.Add(this.darkLabel201);
-            this.groupBox71.Controls.Add(this.VerticalLayersNUD);
-            this.groupBox71.Controls.Add(this.VerticalLayers);
-            this.groupBox71.Controls.Add(this.OuterOffsetNUD);
-            this.groupBox71.Controls.Add(this.darkLabel202);
-            this.groupBox71.Controls.Add(this.OuterPartDistNUD);
-            this.groupBox71.Controls.Add(this.darkLabel203);
-            this.groupBox71.Controls.Add(this.darkLabel204);
-            this.groupBox71.Controls.Add(this.InnerPartDistNUD);
-            this.groupBox71.Controls.Add(this.darkLabel205);
-            this.groupBox71.Controls.Add(this.InnerRingCountNUD);
-            this.groupBox71.Controls.Add(this.darkLabel206);
-            this.groupBox71.Controls.Add(this.NegHeightNUD);
-            this.groupBox71.Controls.Add(this.darkLabel207);
-            this.groupBox71.Controls.Add(this.PosHeightNUD);
-            this.groupBox71.Controls.Add(this.darkLabel208);
-            this.groupBox71.Controls.Add(this.RadiusNUD);
-            this.groupBox71.Controls.Add(this.darkLabel209);
-            this.groupBox71.Controls.Add(this.posZNUD);
-            this.groupBox71.Controls.Add(this.posYNUD);
-            this.groupBox71.Controls.Add(this.PosXNUD);
-            this.groupBox71.Controls.Add(this.darkLabel210);
-            this.groupBox71.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox71.Location = new System.Drawing.Point(6, 122);
-            this.groupBox71.Name = "groupBox71";
-            this.groupBox71.Size = new System.Drawing.Size(370, 229);
-            this.groupBox71.TabIndex = 9;
-            this.groupBox71.TabStop = false;
-            this.groupBox71.Text = "Data";
-            // 
-            // OuterRingToggleCB
-            // 
-            this.OuterRingToggleCB.AutoSize = true;
-            this.OuterRingToggleCB.Location = new System.Drawing.Point(333, 100);
-            this.OuterRingToggleCB.Name = "OuterRingToggleCB";
-            this.OuterRingToggleCB.Size = new System.Drawing.Size(15, 14);
-            this.OuterRingToggleCB.TabIndex = 15;
-            this.OuterRingToggleCB.UseVisualStyleBackColor = true;
-            this.OuterRingToggleCB.CheckedChanged += new System.EventHandler(this.OuterRingToggleCB_CheckedChanged);
-            // 
-            // darkLabel200
-            // 
-            this.darkLabel200.AutoSize = true;
-            this.darkLabel200.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel200.Location = new System.Drawing.Point(13, 177);
-            this.darkLabel200.Name = "darkLabel200";
-            this.darkLabel200.Size = new System.Drawing.Size(70, 13);
-            this.darkLabel200.TabIndex = 24;
-            this.darkLabel200.Text = "ParticleName";
-            // 
-            // VerticalOffsetNUD
-            // 
-            this.VerticalOffsetNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.VerticalOffsetNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.VerticalOffsetNUD.Location = new System.Drawing.Point(102, 151);
-            this.VerticalOffsetNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.VerticalOffsetNUD.Name = "VerticalOffsetNUD";
-            this.VerticalOffsetNUD.Size = new System.Drawing.Size(71, 20);
-            this.VerticalOffsetNUD.TabIndex = 21;
-            this.VerticalOffsetNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.VerticalOffsetNUD.ValueChanged += new System.EventHandler(this.VerticalOffsetNUD_ValueChanged);
-            // 
-            // ParticleNameTB
-            // 
-            this.ParticleNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ParticleNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ParticleNameTB.Location = new System.Drawing.Point(7, 193);
-            this.ParticleNameTB.Name = "ParticleNameTB";
-            this.ParticleNameTB.Size = new System.Drawing.Size(357, 20);
-            this.ParticleNameTB.TabIndex = 25;
-            this.ParticleNameTB.TextChanged += new System.EventHandler(this.ParticleNameTB_TextChanged);
-            // 
-            // darkLabel201
-            // 
-            this.darkLabel201.AutoSize = true;
-            this.darkLabel201.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel201.Location = new System.Drawing.Point(13, 153);
-            this.darkLabel201.Name = "darkLabel201";
-            this.darkLabel201.Size = new System.Drawing.Size(70, 13);
-            this.darkLabel201.TabIndex = 20;
-            this.darkLabel201.Text = "VerticalOffset";
-            // 
-            // VerticalLayersNUD
-            // 
-            this.VerticalLayersNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.VerticalLayersNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.VerticalLayersNUD.Location = new System.Drawing.Point(102, 125);
-            this.VerticalLayersNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.VerticalLayersNUD.Name = "VerticalLayersNUD";
-            this.VerticalLayersNUD.Size = new System.Drawing.Size(71, 20);
-            this.VerticalLayersNUD.TabIndex = 17;
-            this.VerticalLayersNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.VerticalLayersNUD.ValueChanged += new System.EventHandler(this.VerticalLayersNUD_ValueChanged);
-            // 
-            // VerticalLayers
-            // 
-            this.VerticalLayers.AutoSize = true;
-            this.VerticalLayers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.VerticalLayers.Location = new System.Drawing.Point(13, 127);
-            this.VerticalLayers.Name = "VerticalLayers";
-            this.VerticalLayers.Size = new System.Drawing.Size(73, 13);
-            this.VerticalLayers.TabIndex = 16;
-            this.VerticalLayers.Text = "VerticalLayers";
-            // 
-            // OuterOffsetNUD
-            // 
-            this.OuterOffsetNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.OuterOffsetNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.OuterOffsetNUD.Location = new System.Drawing.Point(277, 151);
-            this.OuterOffsetNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.OuterOffsetNUD.Name = "OuterOffsetNUD";
-            this.OuterOffsetNUD.Size = new System.Drawing.Size(71, 20);
-            this.OuterOffsetNUD.TabIndex = 23;
-            this.OuterOffsetNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OuterOffsetNUD.ValueChanged += new System.EventHandler(this.OuterOffsetNUD_ValueChanged);
-            // 
-            // darkLabel202
-            // 
-            this.darkLabel202.AutoSize = true;
-            this.darkLabel202.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel202.Location = new System.Drawing.Point(188, 153);
-            this.darkLabel202.Name = "darkLabel202";
-            this.darkLabel202.Size = new System.Drawing.Size(61, 13);
-            this.darkLabel202.TabIndex = 22;
-            this.darkLabel202.Text = "OuterOffset";
-            // 
-            // OuterPartDistNUD
-            // 
-            this.OuterPartDistNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.OuterPartDistNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.OuterPartDistNUD.Location = new System.Drawing.Point(277, 125);
-            this.OuterPartDistNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.OuterPartDistNUD.Name = "OuterPartDistNUD";
-            this.OuterPartDistNUD.Size = new System.Drawing.Size(71, 20);
-            this.OuterPartDistNUD.TabIndex = 19;
-            this.OuterPartDistNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OuterPartDistNUD.ValueChanged += new System.EventHandler(this.OuterPartDistNUD_ValueChanged);
-            // 
-            // darkLabel203
-            // 
-            this.darkLabel203.AutoSize = true;
-            this.darkLabel203.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel203.Location = new System.Drawing.Point(188, 127);
-            this.darkLabel203.Name = "darkLabel203";
-            this.darkLabel203.Size = new System.Drawing.Size(70, 13);
-            this.darkLabel203.TabIndex = 18;
-            this.darkLabel203.Text = "OuterPartDist";
-            // 
-            // darkLabel204
-            // 
-            this.darkLabel204.AutoSize = true;
-            this.darkLabel204.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel204.Location = new System.Drawing.Point(188, 101);
-            this.darkLabel204.Name = "darkLabel204";
-            this.darkLabel204.Size = new System.Drawing.Size(88, 13);
-            this.darkLabel204.TabIndex = 14;
-            this.darkLabel204.Text = "OuterRingToggle";
-            // 
-            // InnerPartDistNUD
-            // 
-            this.InnerPartDistNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.InnerPartDistNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.InnerPartDistNUD.Location = new System.Drawing.Point(277, 71);
-            this.InnerPartDistNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.InnerPartDistNUD.Name = "InnerPartDistNUD";
-            this.InnerPartDistNUD.Size = new System.Drawing.Size(71, 20);
-            this.InnerPartDistNUD.TabIndex = 11;
-            this.InnerPartDistNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.InnerPartDistNUD.ValueChanged += new System.EventHandler(this.InnerPartDistNUD_ValueChanged);
-            // 
-            // darkLabel205
-            // 
-            this.darkLabel205.AutoSize = true;
-            this.darkLabel205.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel205.Location = new System.Drawing.Point(188, 73);
-            this.darkLabel205.Name = "darkLabel205";
-            this.darkLabel205.Size = new System.Drawing.Size(68, 13);
-            this.darkLabel205.TabIndex = 10;
-            this.darkLabel205.Text = "InnerPartDist";
-            // 
-            // InnerRingCountNUD
-            // 
-            this.InnerRingCountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.InnerRingCountNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.InnerRingCountNUD.Location = new System.Drawing.Point(277, 45);
-            this.InnerRingCountNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.InnerRingCountNUD.Name = "InnerRingCountNUD";
-            this.InnerRingCountNUD.Size = new System.Drawing.Size(71, 20);
-            this.InnerRingCountNUD.TabIndex = 7;
-            this.InnerRingCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.InnerRingCountNUD.ValueChanged += new System.EventHandler(this.InnerRingCountNUD_ValueChanged);
-            // 
-            // darkLabel206
-            // 
-            this.darkLabel206.AutoSize = true;
-            this.darkLabel206.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel206.Location = new System.Drawing.Point(188, 47);
-            this.darkLabel206.Name = "darkLabel206";
-            this.darkLabel206.Size = new System.Drawing.Size(81, 13);
-            this.darkLabel206.TabIndex = 6;
-            this.darkLabel206.Text = "InnerRingCount";
-            // 
-            // NegHeightNUD
-            // 
-            this.NegHeightNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.NegHeightNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.NegHeightNUD.Location = new System.Drawing.Point(102, 97);
-            this.NegHeightNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.NegHeightNUD.Name = "NegHeightNUD";
-            this.NegHeightNUD.Size = new System.Drawing.Size(71, 20);
-            this.NegHeightNUD.TabIndex = 13;
-            this.NegHeightNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NegHeightNUD.ValueChanged += new System.EventHandler(this.NegHeightNUD_ValueChanged);
-            // 
-            // darkLabel207
-            // 
-            this.darkLabel207.AutoSize = true;
-            this.darkLabel207.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel207.Location = new System.Drawing.Point(16, 99);
-            this.darkLabel207.Name = "darkLabel207";
-            this.darkLabel207.Size = new System.Drawing.Size(58, 13);
-            this.darkLabel207.TabIndex = 12;
-            this.darkLabel207.Text = "NegHeight";
-            // 
-            // PosHeightNUD
-            // 
-            this.PosHeightNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PosHeightNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PosHeightNUD.Location = new System.Drawing.Point(102, 71);
-            this.PosHeightNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.PosHeightNUD.Name = "PosHeightNUD";
-            this.PosHeightNUD.Size = new System.Drawing.Size(71, 20);
-            this.PosHeightNUD.TabIndex = 9;
-            this.PosHeightNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PosHeightNUD.ValueChanged += new System.EventHandler(this.PosHeightNUD_ValueChanged);
-            // 
-            // darkLabel208
-            // 
-            this.darkLabel208.AutoSize = true;
-            this.darkLabel208.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel208.Location = new System.Drawing.Point(16, 73);
-            this.darkLabel208.Name = "darkLabel208";
-            this.darkLabel208.Size = new System.Drawing.Size(56, 13);
-            this.darkLabel208.TabIndex = 8;
-            this.darkLabel208.Text = "PosHeight";
-            // 
-            // RadiusNUD
-            // 
-            this.RadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.RadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.RadiusNUD.Location = new System.Drawing.Point(102, 45);
-            this.RadiusNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.RadiusNUD.Name = "RadiusNUD";
-            this.RadiusNUD.Size = new System.Drawing.Size(71, 20);
-            this.RadiusNUD.TabIndex = 5;
-            this.RadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.RadiusNUD.ValueChanged += new System.EventHandler(this.RadiusNUD_ValueChanged);
-            // 
-            // darkLabel209
-            // 
-            this.darkLabel209.AutoSize = true;
-            this.darkLabel209.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel209.Location = new System.Drawing.Point(16, 47);
-            this.darkLabel209.Name = "darkLabel209";
-            this.darkLabel209.Size = new System.Drawing.Size(40, 13);
-            this.darkLabel209.TabIndex = 4;
-            this.darkLabel209.Text = "Radius";
-            // 
-            // posZNUD
-            // 
-            this.posZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.posZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.posZNUD.Location = new System.Drawing.Point(277, 19);
-            this.posZNUD.Maximum = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            0});
-            this.posZNUD.Minimum = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            -2147483648});
-            this.posZNUD.Name = "posZNUD";
-            this.posZNUD.Size = new System.Drawing.Size(71, 20);
-            this.posZNUD.TabIndex = 3;
-            this.posZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.posZNUD.ValueChanged += new System.EventHandler(this.posZNUD_ValueChanged);
-            // 
-            // posYNUD
-            // 
-            this.posYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.posYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.posYNUD.Location = new System.Drawing.Point(191, 19);
-            this.posYNUD.Maximum = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            0});
-            this.posYNUD.Minimum = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            -2147483648});
-            this.posYNUD.Name = "posYNUD";
-            this.posYNUD.Size = new System.Drawing.Size(71, 20);
-            this.posYNUD.TabIndex = 2;
-            this.posYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.posYNUD.ValueChanged += new System.EventHandler(this.posYNUD_ValueChanged);
-            // 
-            // PosXNUD
-            // 
-            this.PosXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PosXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PosXNUD.Location = new System.Drawing.Point(102, 19);
-            this.PosXNUD.Maximum = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            0});
-            this.PosXNUD.Minimum = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            -2147483648});
-            this.PosXNUD.Name = "PosXNUD";
-            this.PosXNUD.Size = new System.Drawing.Size(71, 20);
-            this.PosXNUD.TabIndex = 1;
-            this.PosXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PosXNUD.ValueChanged += new System.EventHandler(this.PosXNUD_ValueChanged);
-            // 
-            // darkLabel210
-            // 
-            this.darkLabel210.AutoSize = true;
-            this.darkLabel210.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel210.Location = new System.Drawing.Point(16, 21);
-            this.darkLabel210.Name = "darkLabel210";
-            this.darkLabel210.Size = new System.Drawing.Size(44, 13);
-            this.darkLabel210.TabIndex = 0;
-            this.darkLabel210.Text = "Position";
             // 
             // tabPage23
             // 
@@ -12295,11 +12362,11 @@ namespace DayZeEditor
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage2.Controls.Add(this.treeViewMS3);
+            this.tabPage2.Controls.Add(this.groupBox94);
             this.tabPage2.Controls.Add(this.groupBox93);
             this.tabPage2.Controls.Add(this.groupBox91);
             this.tabPage2.Controls.Add(this.groupBox92);
-            this.tabPage2.Controls.Add(this.treeViewMS3);
-            this.tabPage2.Controls.Add(this.groupBox94);
             this.tabPage2.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
@@ -12486,8 +12553,6 @@ namespace DayZeEditor
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage1.Controls.Add(this.groupBox89);
-            this.tabPage1.Controls.Add(this.groupBox90);
             this.tabPage1.Controls.Add(this.checkBox10);
             this.tabPage1.Controls.Add(this.darkLabel289);
             this.tabPage1.Controls.Add(this.darkButton100);
@@ -12500,6 +12565,8 @@ namespace DayZeEditor
             this.tabPage1.Controls.Add(this.numericUpDown39);
             this.tabPage1.Controls.Add(this.darkLabel288);
             this.tabPage1.Controls.Add(this.groupBox88);
+            this.tabPage1.Controls.Add(this.groupBox89);
+            this.tabPage1.Controls.Add(this.groupBox90);
             this.tabPage1.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
@@ -12551,7 +12618,7 @@ namespace DayZeEditor
             this.listBox33.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox33.ForeColor = System.Drawing.SystemColors.Control;
             this.listBox33.FormattingEnabled = true;
-            this.listBox33.Location = new System.Drawing.Point(6, 17);
+            this.listBox33.Location = new System.Drawing.Point(6, 16);
             this.listBox33.Name = "listBox33";
             this.listBox33.Size = new System.Drawing.Size(312, 147);
             this.listBox33.TabIndex = 0;
@@ -13174,7 +13241,7 @@ namespace DayZeEditor
             this.toolStripButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton3.Size = new System.Drawing.Size(106, 22);
             this.toolStripButton3.Text = "Storage Container";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
@@ -13193,7 +13260,7 @@ namespace DayZeEditor
             this.toolStripButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(144, 22);
             this.toolStripButton1.Text = "Storage Menu Categories";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -13212,7 +13279,7 @@ namespace DayZeEditor
             this.toolStripButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton4.Size = new System.Drawing.Size(95, 22);
             this.toolStripButton4.Text = "Storage Configs";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
@@ -18283,6 +18350,7 @@ namespace DayZeEditor
             this.ClassNameTB.Size = new System.Drawing.Size(229, 20);
             this.ClassNameTB.TabIndex = 4;
             this.ClassNameTB.Tag = "Container";
+            this.ClassNameTB.TextChanged += new System.EventHandler(this.ClassNameTB_TextChanged);
             // 
             // groupBox42
             // 
@@ -19464,73 +19532,6 @@ namespace DayZeEditor
             this.removeSubMenuCategoryToolStripMenuItem.Text = "Remove Sub Menu Category";
             this.removeSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeSubMenuCategoryToolStripMenuItem_Click);
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.EnableNotificationCB);
-            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerJoinServerCB);
-            this.flowLayoutPanel2.Controls.Add(this.JoinMessageTypeCB);
-            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerLeftServerCB);
-            this.flowLayoutPanel2.Controls.Add(this.LeftMessageTypeCB);
-            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropClosingOnCB);
-            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropDroppedCB);
-            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropStartedCB);
-            this.flowLayoutPanel2.Controls.Add(this.ShowAirdropEndedCB);
-            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerAirdropStartedCB);
-            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerAirdropClosingOnCB);
-            this.flowLayoutPanel2.Controls.Add(this.ShowPlayerAirdropDroppedCB);
-            this.flowLayoutPanel2.Controls.Add(this.ShowTerritoryNotificationsCB);
-            this.flowLayoutPanel2.Controls.Add(this.EnableKillFeedCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedMessageTypeCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarHitDriverCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarHitNoDriverCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedFallCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarCrashCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedCarCrashCrewCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliHitDriverCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliHitNoDriverCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliCrashCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedHeliCrashCrewCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatHitDriverCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatCrashCrewCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedBarbedWireCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatCrashCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedBoatHitNoDriverCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedDehydrationCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedStarvationCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedWeaponExplosionCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedFireCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedBleedingCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedStatusEffectsCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedSuicideCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedWeaponCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedMeleeWeaponCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedBarehandsCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedInfectedCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedAnimalCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedAICB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedDrownedCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedKilledUnknownCB);
-            this.flowLayoutPanel2.Controls.Add(this.KillFeedDiedUnknownCB);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(753, 282);
-            this.flowLayoutPanel2.TabIndex = 41;
-            // 
-            // KillFeedDrownedCB
-            // 
-            this.KillFeedDrownedCB.AutoSize = true;
-            this.KillFeedDrownedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedDrownedCB.Location = new System.Drawing.Point(563, 164);
-            this.KillFeedDrownedCB.Name = "KillFeedDrownedCB";
-            this.KillFeedDrownedCB.Size = new System.Drawing.Size(112, 17);
-            this.KillFeedDrownedCB.TabIndex = 41;
-            this.KillFeedDrownedCB.Text = "Kill Feed Drowned";
-            this.KillFeedDrownedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedDrownedCB.UseVisualStyleBackColor = true;
-            this.KillFeedDrownedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -19597,6 +19598,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxMembersInTerritoryTNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TerritoryPerimeterSizeTNUD)).EndInit();
             this.groupBox27.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox9.ResumeLayout(false);
@@ -19756,24 +19759,6 @@ namespace DayZeEditor
             this.panel6.ResumeLayout(false);
             this.tabControl6.ResumeLayout(false);
             this.tabPage22.ResumeLayout(false);
-            this.AirdropMissionGB.ResumeLayout(false);
-            this.AirdropMissionGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionDropZoneSpeedNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MIssionDropZoneHeightNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionFallSpeedNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown38)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown37)).EndInit();
-            this.SpecificInfectedAirdropGB.ResumeLayout(false);
-            this.SpecificInfectedAirdropGB.PerformLayout();
-            this.groupBox81.ResumeLayout(false);
-            this.groupBox81.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionDropXNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionDropRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionDropYNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionWeightNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionMissionMaxTimeNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionHeightNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionSpeedNUD)).EndInit();
             this.ContaminatedAreaGB.ResumeLayout(false);
             this.ContaminatedAreaGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown29)).EndInit();
@@ -19796,6 +19781,24 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.posZNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posYNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosXNUD)).EndInit();
+            this.AirdropMissionGB.ResumeLayout(false);
+            this.AirdropMissionGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDropZoneSpeedNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MIssionDropZoneHeightNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionFallSpeedNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown38)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown37)).EndInit();
+            this.SpecificInfectedAirdropGB.ResumeLayout(false);
+            this.SpecificInfectedAirdropGB.PerformLayout();
+            this.groupBox81.ResumeLayout(false);
+            this.groupBox81.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDropXNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDropRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionDropYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionWeightNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionMissionMaxTimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionHeightNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionSpeedNUD)).EndInit();
             this.tabPage23.ResumeLayout(false);
             this.tabPage23.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -20019,8 +20022,6 @@ namespace DayZeEditor
             this.darkToolStrip26.ResumeLayout(false);
             this.darkToolStrip26.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -5037,8 +5037,27 @@ namespace DayZeEditor
 
 
 
+
         #endregion Persistant Player Data
 
+        private void QuestObjectivesConfigVersionNUD_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void QuestsObjectivesIDNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QuestObjectivesObjectiveTypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void treeViewMS1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
     }
 }

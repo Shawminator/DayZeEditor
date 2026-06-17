@@ -609,7 +609,7 @@ namespace DayZeEditor
             this.groupBox1.Controls.Add(this.darkButton4);
             this.groupBox1.Controls.Add(this.darkButton3);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Location = new System.Drawing.Point(549, 26);
+            this.groupBox1.Location = new System.Drawing.Point(549, 82);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(329, 231);
             this.groupBox1.TabIndex = 308;
